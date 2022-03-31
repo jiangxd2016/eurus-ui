@@ -1,0 +1,22 @@
+{
+  "name": "eurus-app",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.4",
+    "@vitejs/plugin-vue-jsx": "^1.2.0",
+    "autoprefixer": "^10.4.0",
+    "eurus-ui": "0.0.0",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19",
+    "unplugin-vue-components": "^0.17.0",
+    "vite": "^2.6.4"
+  }
+}

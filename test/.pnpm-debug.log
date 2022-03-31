@@ -1,0 +1,213 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "eurus-app",
+      "version": "0.0.0",
+      "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview"
+      },
+      "dependencies": {
+        "vue": "^3.2.16"
+      },
+      "devDependencies": {
+        "@vitejs/plugin-vue": "^1.9.4",
+        "@vitejs/plugin-vue-jsx": "^1.2.0",
+        "autoprefixer": "^10.4.0",
+        "eurus-ui": "0.0.0",
+        "postcss": "^8.3.11",
+        "tailwindcss": "^2.2.19",
+        "unplugin-vue-components": "^0.17.0",
+        "vite": "^2.6.4"
+      }
+    },
+    "prefix": "/Users/jiangxd/Documents/www/eurus-ui/test"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/Users/jiangxd/.pnpm-store/v3",
+    "virtualStoreDir": "/Users/jiangxd/Documents/www/eurus-ui/test/node_modules/.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "stage": "resolution_started"
+  },
+  "4 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmmirror.com/@vitejs/plugin-vue/1.9.4",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@vitejs/plugin-vue",
+      "rawSpec": "^1.9.4"
+    }
+  },
+  "5 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/@vitejs/plugin-vue/1.9.4",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "resolved"
+  },
+  "6 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmmirror.com/@vitejs/plugin-vue-jsx/1.2.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@vitejs/plugin-vue-jsx",
+      "rawSpec": "^1.2.0"
+    }
+  },
+  "7 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/@vitejs/plugin-vue-jsx/1.2.0",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "resolved"
+  },
+  "8 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmmirror.com/unplugin-vue-components/0.17.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "unplugin-vue-components",
+      "rawSpec": "^0.17.0"
+    }
+  },
+  "9 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/unplugin-vue-components/0.17.0",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "resolved"
+  },
+  "10 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/@vitejs/plugin-vue/1.9.4",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "found_in_store"
+  },
+  "11 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmmirror.com/autoprefixer/10.4.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "autoprefixer",
+      "rawSpec": "^10.4.0"
+    }
+  },
+  "12 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/autoprefixer/10.4.0",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "resolved"
+  },
+  "13 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmmirror.com/postcss/8.3.11",
+    "wanted": {
+      "dependentId": ".",
+      "name": "postcss",
+      "rawSpec": "^8.3.11"
+    }
+  },
+  "14 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/postcss/8.3.11",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "resolved"
+  },
+  "15 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/@vitejs/plugin-vue-jsx/1.2.0",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "found_in_store"
+  },
+  "16 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/autoprefixer/10.4.0",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "found_in_store"
+  },
+  "17 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/postcss/8.3.11",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "found_in_store"
+  },
+  "18 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmmirror.com/vue/3.2.21",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vue",
+      "rawSpec": "^3.2.16"
+    }
+  },
+  "19 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/vue/3.2.21",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "resolved"
+  },
+  "20 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmmirror.com/tailwindcss/2.2.19",
+    "wanted": {
+      "dependentId": ".",
+      "name": "tailwindcss",
+      "rawSpec": "^2.2.19"
+    }
+  },
+  "21 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/tailwindcss/2.2.19",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "resolved"
+  },
+  "22 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/vue/3.2.21",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "found_in_store"
+  },
+  "23 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmmirror.com/vite/2.6.13",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vite",
+      "rawSpec": "^2.6.4"
+    }
+  },
+  "24 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/vite/2.6.13",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "resolved"
+  },
+  "25 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/vite/2.6.13",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "found_in_store"
+  },
+  "26 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "registry.npmmirror.com/tailwindcss/2.2.19",
+    "size": 3287091,
+    "status": "started"
+  },
+  "27 debug pnpm:fetching-progress": {
+    "attempt": 1,
+    "packageId": "registry.npmmirror.com/unplugin-vue-components/0.17.0",
+    "size": 45294,
+    "status": "started"
+  },
+  "28 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/unplugin-vue-components/0.17.0",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "fetched"
+  },
+  "29 debug pnpm:progress": {
+    "packageId": "registry.npmmirror.com/tailwindcss/2.2.19",
+    "requester": "/Users/jiangxd/Documents/www/eurus-ui/test",
+    "status": "fetched"
+  },
+  "30 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "eurus-ui is not in the npm registry, or you have no permission to fetch it.\n\nNo authorization header was set for the request.",
+    "request": {
+      "url": "https://registry.npm.taobao.org/eurus-ui"
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "eurus-ui",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://registry.npm.taobao.org/eurus-ui: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET https://registry.npm.taobao.org/eurus-ui: Not Found - 404\n    at RetryOperation._fn (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:84843:18)\n    at runMicrotasks (<anonymous>)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"
+    }
+  }
+}

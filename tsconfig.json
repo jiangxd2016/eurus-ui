@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+    "declaration": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "paths": {
+      "eurus-ui": ["./src"]
+    },
+    "types": [
+      "unplugin-icons/types/vue",
+    ]
+  },
+  "typeAcquisition": {
+    "include": ["vue"]
+  },
+  "include": ["typings/**/*.d.ts","node_modules/unplugin-icons/types/vue"]
+}

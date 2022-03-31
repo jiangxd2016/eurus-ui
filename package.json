@@ -1,0 +1,109 @@
+{
+  "name": "eurus-ui",
+  "version": "0.0.0",
+  "description": "",
+  "workspaces": [
+    "packages/*",
+    "docs"
+  ],
+  "engines": {
+    "node": ">= 12"
+  },
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
+  "scripts": {
+    "dev": "pnpm run clean && pnpm run gen-version && esno ./scripts/rollup.watch.ts",
+    "build:compts": "pnpm run clean && esno ./scripts/gen.compts.ts",
+    "build:esm": "pnpm run gen-version && cross-env MODULE_ENV=esm esno ./scripts/build.module.ts",
+    "build:cjs": "pnpm run gen-version && cross-env MODULE_ENV=cjs esno ./scripts/build.module.ts",
+    "build:full": "pnpm run clean && pnpm run build:esm && pnpm run build:cjs && esno scripts/full.build.ts",
+    "gen-version": "esno ./scripts/gen.version.ts",
+    "clean": "rimraf dist lib es",
+    "docs:dev": "pnpm -C docs dev",
+    "docs:build": "pnpm -C docs build",
+    "docs:serve": "pnpm -C docs serve",
+    "commit": "git-cz",
+    "release": "standard-version",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "log": "conventional-changelog",
+    "lint": "eslint --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue}\"",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiangxd2016/eurus-ui.git"
+  },
+  "keywords": [
+    "UI"
+  ],
+  "author": "jiangxd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jiangxd2016/eurus-ui/issues"
+  },
+  "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && npx git-cz --hook"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,vue}": [
+      "eslint --fix"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "async-validator": "^4.0.7",
+    "dayjs": "^1.10.7"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "@ixfe/eslint-config": "^0.0.2",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-replace": "^3.0.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^15.0.2",
+    "@types/stylus": "^0.48.34",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "@vitejs/plugin-vue-jsx": "^1.2.0",
+    "@vue/compiler-sfc": "^3.2.22",
+    "@vue/test-utils": "^2.0.0-rc.18",
+    "chokidar": "^3.5.2",
+    "cross-env": "^7.0.3",
+    "cssnano": "^5.0.10",
+    "cz-conventional-changelog": "^3.3.0",
+    "esbuild": "^0.13.15",
+    "eslint": "^8.11.0",
+    "esno": "^0.12.1",
+    "klaw-sync": "^6.0.0",
+    "ora": "^6.0.1",
+    "postcss": "^8.3.11",
+    "postcss-import": "^14.0.2",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.59.0",
+    "rollup-plugin-esbuild": "^4.2.3",
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-purge-icons": "^0.7.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-ts": "^2.0.4",
+    "rollup-plugin-vue": "^6.0.0",
+    "stylus": "^0.55.0",
+    "ts-morph": "^13.0.2",
+    "typescript": "^4.5.2",
+    "vitest": "^0.6.0",
+    "vue": "^3.2.26"
+  }
+}
