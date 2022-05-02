@@ -52,10 +52,6 @@ declare module 'vue' {
     ToggleSideBarButton: typeof import('./.vitepress/theme/components/ToggleSideBarButton.vue')['default']
     'Uil:letterChineseA': typeof import('~icons/uil/letter-chinese-a')['default']
     VueRun: typeof import('./.vitepress/components/coder-run/vue-run.vue')['default']
-    VueRunControl: typeof import('./.vitepress/components/coder-run/components/vue-run-control.vue')['default']
-    VueRunHeader: typeof import('./.vitepress/components/coder-run/components/vue-run-header.vue')['default']
-    VueRunMain: typeof import('./.vitepress/components/coder-run/components/vue-run-main.vue')['default']
-    VueRunPreview: typeof import('./.vitepress/components/coder-run/components/vue-run-preview.vue')['default']
   }
 }
 
