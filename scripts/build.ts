@@ -29,7 +29,7 @@ export async function genTypes(): Promise<void> {
   const sourceFiles: SourceFile[] = []
 
   await Promise.all(
-    filePaths.map(async (file) => {
+    filePaths.map(async(file) => {
       if (file.endsWith('.ts') && !file.includes('packages')) {
         const sourceFile = project.addSourceFileAtPath(file)
         sourceFiles.push(sourceFile)
@@ -55,25 +55,25 @@ export async function genTypes(): Promise<void> {
 // fork from  https://github.com/a7ul/esbuild-node-tsc
 
 export type Config = Partial<{
-  outDir: string
-  tsConfigFile?: string
+  outDir: string;
+  tsConfigFile?: string;
   esbuild: {
-    entryPoints?: string[]
-    minify?: boolean
-    target?: string
-    plugins?: Plugin[]
-    format?: 'cjs' | 'esm'
-  }
+    entryPoints?: string[];
+    minify?: boolean;
+    target?: string;
+    plugins?: Plugin[];
+    format?: 'cjs' | 'esm';
+  };
   assets: {
-    baseDir?: string
-    outDir?: string
-    filePatterns?: string[]
-  }
+    baseDir?: string;
+    outDir?: string;
+    filePatterns?: string[];
+  };
 }>
 
 function getTSConfig(_tsConfigFile = 'tsconfig.json') {
   const tsConfigFile = ts.findConfigFile(cwd, ts.sys.fileExists, _tsConfigFile)
-  if (!tsConfigFile) throw new Error(`tsconfig.json not found in the current directory! ${cwd}`)
+  if (!tsConfigFile) { throw new Error(`tsconfig.json not found in the current directory! ${cwd}`) }
 
   const configFile = ts.readConfigFile(tsConfigFile, ts.sys.readFile)
   const tsConfig = ts.parseJsonConfigFileContent(configFile.config, ts.sys, cwd)
@@ -86,12 +86,12 @@ function esBuildSourceMapOptions(tsConfig: TSConfig) {
   const { sourceMap, inlineSources, inlineSourceMap } = tsConfig.options
 
   // inlineSources requires either inlineSourceMap or sourceMap
-  if (inlineSources && !inlineSourceMap && !sourceMap) return false
+  if (inlineSources && !inlineSourceMap && !sourceMap) { return false }
 
   // Mutually exclusive in tsconfig
-  if (sourceMap && inlineSourceMap) return false
+  if (sourceMap && inlineSourceMap) { return false }
 
-  if (inlineSourceMap) return 'inline'
+  if (inlineSourceMap) { return 'inline' }
 
   return sourceMap
 }

@@ -21,7 +21,7 @@ function watchSrc() {
     })
 }
 
-;(async () => {
+(async() => {
   await buildCompts()
   await genTypes()
   await compileTS()
