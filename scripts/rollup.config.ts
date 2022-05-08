@@ -82,8 +82,8 @@ export const getPath = (
   name: string,
   path: string
 ): {
-  input: InputOption
-  output: OutputOptions
+  input: InputOption;
+  output: OutputOptions;
 } => {
   const input: InputOption = `${path}/index.ts`
   const output: OutputOptions = {

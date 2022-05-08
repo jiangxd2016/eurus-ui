@@ -81,11 +81,11 @@ export default defineComponent({
       plain: props.plain,
       circle: props.circle,
       round: props.round,
-      [`e-button--${props.size}`]: !!props.size,
+      [`e-button--${props.size}`]: props.size > 0,
     })
 
     const handleClick = (e: Event) => {
-      if (props.disabled || props.loading) return false
+      if (props.disabled || props.loading) { return false }
 
       emit('click', e)
     }

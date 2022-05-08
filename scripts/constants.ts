@@ -28,7 +28,7 @@ export const tsModuleConfig = `./src/${isEsm ? 'tsconfig.esm.json' : 'tsconfig.c
 export const filePaths = klawSync(path.resolve(cwd(), 'src'), {
   nodir: true,
 })
-  .map((item) => item.path)
+  .map(item => item.path)
   .filter((file) => {
     return file.endsWith('.ts') && !file.includes('packages')
   })

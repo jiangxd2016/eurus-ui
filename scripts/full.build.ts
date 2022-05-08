@@ -32,6 +32,6 @@ const Config = defineConfig([
   },
 ])
 
-Config.forEach(async (i) => {
+Config.forEach(async(i) => {
   await build(i)
 })

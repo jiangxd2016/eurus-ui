@@ -8,7 +8,7 @@ async function build(option) {
 }
 
 export async function buildCompts(): Promise<void> {
-  return Config.forEach(async (i) => {
+  return Config.forEach(async(i) => {
     await build(i)
   })
 }
