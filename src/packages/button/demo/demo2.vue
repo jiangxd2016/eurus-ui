@@ -10,6 +10,7 @@
   <EButton type="primary" :loading="true" size="lg">123</EButton>
   <EButton type="primary" :loading="true" size="xl">123</EButton>
 </template>
+
 <script lang="ts">
 import { EButton } from 'eurus-ui'
 export default {

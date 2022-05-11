@@ -81,7 +81,7 @@ export default defineComponent({
       plain: props.plain,
       circle: props.circle,
       round: props.round,
-      [`e-button--${props.size}`]: props.size > 0,
+      [`e-button--${props.size}`]: props.size 
     })
 
     const handleClick = (e: Event) => {

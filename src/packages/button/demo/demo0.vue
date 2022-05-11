@@ -6,6 +6,7 @@
   <EButton type="error">error</EButton>
   <EButton type="purple">purple</EButton>
 </template>
+
 <script lang="ts">
 import { EButton } from 'eurus-ui'
 export default {
