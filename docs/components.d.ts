@@ -13,6 +13,7 @@ declare module 'vue' {
     CodeDemos: typeof import('./.vitepress/components/CodeDemos.vue')['default']
     Codemirror: typeof import('./.vitepress/components/coder-run/components/codemrror/codemirror.vue')['default']
     Content: typeof import('./.vitepress/components/Content.ts')['default']
+    Counter: typeof import('./.vitepress/components/Counter.vue')['default']
     DarkModeSwitch: typeof import('./.vitepress/theme/components/DarkModeSwitch.vue')['default']
     Debug: typeof import('./.vitepress/components/Debug.vue')['default']
     DemoContainer: typeof import('./.vitepress/theme/components/DemoContainer.vue')['default']

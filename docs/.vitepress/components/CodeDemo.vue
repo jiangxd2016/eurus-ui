@@ -3,7 +3,6 @@ import { shallowReactive, defineProps, defineAsyncComponent, onMounted } from 'v
 import { useClipboard } from '@vueuse/core'
 import { useData } from 'vitepress'
 import { submitCodepen } from '../theme/utils'
-import { log } from 'console'
 
 const data = useData()
 const codepen = data.theme.value.codepen
