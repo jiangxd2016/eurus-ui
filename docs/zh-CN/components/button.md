@@ -19,6 +19,8 @@ Vue.createApp().use(Button.name, Button)
   src="../src/packages/button/demo"
 />
 
+
+<Counter    src="../src/packages/button/demo"/>
 ## props
 
 ## event

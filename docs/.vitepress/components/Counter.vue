@@ -11,11 +11,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref,provide, inject, defineAsyncComponent } from 'vue'
 
-const props = defineProps<{ init?: number }>()
+const props = defineProps<{ src?: string }>() 
 
-const counter = ref(props.init || 0)
+
+const glob :any[]=  inject("glob")
+
+console.log(glob);
+
+for (const path in glob) {
+    console.log(path, glob[path]);
+}
+const counter = ref( 0)
 </script>
 
 <style scoped>

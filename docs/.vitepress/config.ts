@@ -1,3 +1,5 @@
+import { defineConfig } from "vitepress"
+
 // @ts-check
 const path = require('path')
 const fse = require("fs-extra")
@@ -53,7 +55,7 @@ function site(lang: string) {
 /**
  * @type {import('vitepress').UserConfig}
  */
-module.exports = {
+module.exports = defineConfig({
   title: 'eurus-ui docs',
   description: "",
   head: [
@@ -103,4 +105,4 @@ module.exports = {
       md.use(demo)
     },
   },
-}
+})

@@ -14,5 +14,8 @@
     "skipLibCheck": true
   },
   "include": ["**/*", ".vitepress/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "vueCompilerOptions":{
+    "experimentalDisableTemplateSupport":true
+  }
 }

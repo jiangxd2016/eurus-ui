@@ -6,12 +6,13 @@ import IconsResolver from 'unplugin-icons/resolver'
 import WindiCSS from 'vite-plugin-windicss'
 import ViteRestart from 'vite-plugin-restart'
 import Inspect from 'vite-plugin-inspect'
-import Markdown from 'vite-plugin-md'
-import Vue from '@vitejs/plugin-vue'
+
+
 const config: UserConfig = {
   resolve: {
     alias: {
       'eurus-ui/': `${resolve(__dirname, '../dist/es')}/`,
+      "packages":`${resolve(__dirname, '../src/packages')}/`
     },
   },
   optimizeDeps: {
@@ -27,10 +28,7 @@ const config: UserConfig = {
     },
   },
   plugins: [
-    Vue({
-      include: [/\.vue$/, /\.md$/], // <--
-    }),
-    Markdown(),
+
     Components({
       dirs: ['.vitepress/theme/components', '.vitepress/components'],
       extensions: ['vue', 'ts'],
