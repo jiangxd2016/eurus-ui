@@ -1,21 +1,25 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "target": "ESNext",
+    "baseUrl": ".",
     "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"],
     "strict": true,
-    "allowJs": true,
-    "noImplicitAny": false,
-    "skipLibCheck": true
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "vite/client",
+      "vue/ref-macros",
+    ],
+    "paths": {
+      "~/*": ["src/*"]
+    }
   },
-  "include": ["**/*", ".vitepress/**/*"],
-  "exclude": ["node_modules"],
-  "vueCompilerOptions":{
-    "experimentalDisableTemplateSupport":true
-  }
+  "exclude": ["dist", "node_modules",]
 }

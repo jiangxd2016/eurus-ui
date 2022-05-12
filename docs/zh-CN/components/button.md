@@ -15,12 +15,7 @@ Vue.createApp().use(Button.name, Button)
 
 ## 案例
 
-<demo-wrapper
-  src="../src/packages/button/demo"
-/>
-
-
-<Counter    src="../src/packages/button/demo"/>
+<Counter  components="button"/>
 ## props
 
 ## event
