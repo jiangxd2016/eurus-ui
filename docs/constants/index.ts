@@ -47,10 +47,12 @@ export const sidebarCN = [
 
   {
     text: '基础组件',
-    items: [{
-      text: '基础组件测试',
-      link: '/zh-CN/base/button',
-    }
+    activeMatch: '^/zh-CN/base/',
+    children: [
+      {
+        text: '基础组件测试',
+        link: '/zh-CN/base/button',
+      }
     ]
   },
   {
