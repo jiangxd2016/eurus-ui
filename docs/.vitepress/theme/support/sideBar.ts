@@ -22,7 +22,7 @@ export function getSideBarConfig(
   sidebar: DefaultTheme.SideBarConfig | DefaultTheme.MultiSideBarConfig,
   path: string
 ): DefaultTheme.SideBarConfig {
-  if (isSideBarConfig(sidebar)) return sidebar
+  if (isSideBarConfig(sidebar)) { return sidebar }
 
   // get the very first segment of the path to compare with nulti sidebar keys
   // and make sure it's surrounded by slash
@@ -32,7 +32,7 @@ export function getSideBarConfig(
 
   for (const dir of Object.keys(sidebar)) {
     // make sure the multi sidebar key is surrounded by slash too
-    if (path === ensureSlash(dir)){
+    if (path === ensureSlash(dir)) {
       return sidebar[dir]
     }
   }
@@ -50,11 +50,9 @@ export function getFlatSideBarLinks(
   sidebar: DefaultTheme.SideBarItem[]
 ): DefaultTheme.SideBarLink[] {
   return sidebar.reduce<DefaultTheme.SideBarLink[]>((links, item) => {
-    if (item.link)
-      links.push({ text: item.text, link: removeExtention(item.link) })
+    if (item.link) { links.push({ text: item.text, link: removeExtention(item.link) }) }
 
-    if (isSideBarGroup(item))
-      links = [...links, ...getFlatSideBarLinks(item.children)]
+    if (isSideBarGroup(item)) { links = [...links, ...getFlatSideBarLinks(item.children)] }
 
     return links
   }, [])

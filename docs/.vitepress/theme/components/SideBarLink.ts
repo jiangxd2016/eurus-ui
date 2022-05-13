@@ -1,20 +1,21 @@
-import { FunctionalComponent, h, VNode } from 'vue'
+import type { FunctionalComponent, VNode } from 'vue';
+import { h } from 'vue'
 import { useRoute, useData } from 'vitepress'
-import { DefaultTheme } from '../config'
+import type { DefaultTheme } from '../config'
 import { joinUrl, isActive } from '../utils'
 
 export interface Header {
-  level: number
-  title: string
-  slug: string
+  level: number;
+  title: string;
+  slug: string;
 }
 
 interface HeaderWithChildren extends Header {
-  children?: Header[]
+  children?: Header[];
 }
 
 export const SideBarLink: FunctionalComponent<{
-  item: DefaultTheme.SideBarItem
+  item: DefaultTheme.SideBarItem;
 }> = (props: any) => {
   const route = useRoute()
   const { site } = useData()
@@ -40,12 +41,10 @@ export const SideBarLink: FunctionalComponent<{
 }
 
 function resolveLink(base: string, path?: string): string | undefined {
-  if (path === undefined)
-    return path
+  if (path === undefined) { return path }
 
   // keep relative hash to the same page
-  if (path.startsWith('#'))
-    return path
+  if (path.startsWith('#')) { return path }
 
   return joinUrl(base, path)
 }
@@ -78,11 +77,7 @@ function groupHeaders(headers: Header[]): HeaderWithChildren[] {
   headers = headers.map(h => Object.assign({}, h))
   let lastH2: HeaderWithChildren
   headers.forEach((h) => {
-    if (h.level === 2)
-      lastH2 = h
-
-    else if (lastH2)
-      (lastH2.children || (lastH2.children = [])).push(h)
+    if (h.level === 2) { lastH2 = h } else if (lastH2) { (lastH2.children || (lastH2.children = [])).push(h) }
   })
   return headers.filter(h => h.level === 2)
 }

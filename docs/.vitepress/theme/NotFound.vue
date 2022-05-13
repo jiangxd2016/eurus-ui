@@ -7,12 +7,11 @@
 </template>
 
 <script setup lang="ts">
+import { useData } from 'vitepress'
 
-  import {useData} from 'vitepress'
+const { site } = useData()
 
-  const {site} = useData()
-
-  const msgs = [
+const msgs = [
   'There\'s nothing here.',
   'How did we get here?',
   'That\'s a Four-Oh-Four.',

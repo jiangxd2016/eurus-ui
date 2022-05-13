@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, withBase } from 'vitepress'
@@ -14,10 +13,10 @@ const hasNoBase = (path: string) => !path.startsWith('/zh-CN/') && !path.startsW
 <template>
   <button aria-label="Lang Switch" class="nav-btn ">
     <a class="block" style="height:1.2em" :href="!hasNoBase(zhPath) ? withBase(zhPath) : zhPath">
-      <uil:letter-chinese-a v-show="isEn(route.path)"/>
+      <uil:letter-chinese-a v-show="isEn(route.path)" />
     </a>
     <a class="block" style="height:1.2em" :href="!hasNoBase(enPath) ? withBase(enPath) : enPath">
-      <ri:english-input v-show="isZh(route.path)"/>
+      <ri:english-input v-show="isZh(route.path)" />
     </a>
   </button>
 </template>

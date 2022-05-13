@@ -4,7 +4,7 @@ import { isArray, ensureStartingSlash } from '../utils'
 import { getSideBarConfig, getFlatSideBarLinks } from '../support/sideBar'
 
 export function useNextAndPrevLinks() {
-  const { site, page} = useData()
+  const { site, page } = useData()
   const path = computed(() => {
     return ensureStartingSlash(page.value.relativePath)
   })
@@ -26,13 +26,11 @@ export function useNextAndPrevLinks() {
       site.value.themeConfig.nextLinks !== false
       && index.value > -1
       && index.value < candidates.value.length - 1
-    )
-      return candidates.value[index.value + 1]
+    ) { return candidates.value[index.value + 1] }
   })
 
   const prev = computed(() => {
-    if (site.value.themeConfig.prevLinks !== false && index.value > 0)
-      return candidates.value[index.value - 1]
+    if (site.value.themeConfig.prevLinks !== false && index.value > 0) { return candidates.value[index.value - 1] }
   })
 
   const hasLinks = computed(() => !!next.value || !!prev.value)

@@ -25,11 +25,11 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData} from 'vitepress'
+import { useData } from 'vitepress'
 import { isDark } from '../composables/dark'
 import NavLink from './NavLink.vue'
 
-const {frontmatter,site} = useData()
+const { frontmatter, site } = useData()
 
 const hasHeroText = computed(() => frontmatter.value.heroText !== null)
 const hasTagline = computed(() => frontmatter.value.tagline !== null)
@@ -41,10 +41,10 @@ const hasAltAction = computed(
 
 const showHero = computed(() => {
   return (
-    frontmatter.value.heroImage ||
-    hasHeroText.value ||
-    hasTagline.value ||
-    hasAction.value
+    frontmatter.value.heroImage
+    || hasHeroText.value
+    || hasTagline.value
+    || hasAction.value
   )
 })
 </script>

@@ -11,7 +11,7 @@ import type { DocSearchHit } from '@docsearch/react/dist/esm/types'
 import type { DefaultTheme } from '../config'
 
 const props = defineProps<{
-  options: DefaultTheme.AlgoliaSearchOptions
+  options: DefaultTheme.AlgoliaSearchOptions;
 }>()
 
 const vm = getCurrentInstance()
@@ -68,11 +68,7 @@ function initialize(userOptions: any) {
 
           // Router doesn't handle same-page navigation so we use the native
           // browser location API for anchor navigation
-          if (route.path === hitPathname)
-            window.location.assign(window.location.origin + suggestionUrl)
-
-          else
-            router.go(suggestionUrl)
+          if (route.path === hitPathname) { window.location.assign(window.location.origin + suggestionUrl) } else { router.go(suggestionUrl) }
         },
       },
 
@@ -88,8 +84,8 @@ function initialize(userOptions: any) {
         hit,
         children,
       }: {
-        hit: DocSearchHit
-        children: any
+        hit: DocSearchHit;
+        children: any;
       }) => {
         const relativeHit = hit.url.startsWith('http')
           ? getRelativePath(hit.url as string)
@@ -103,19 +99,16 @@ function initialize(userOptions: any) {
           props: {
             href: hit.url,
             onClick: (event: MouseEvent) => {
-              if (isSpecialClick(event))
-                return
+              if (isSpecialClick(event)) { return }
 
               // we rely on the native link scrolling when user is already on
               // the right anchor because Router doesn't support duplicated
               // history entries
-              if (route.path === relativeHit)
-                return
+              if (route.path === relativeHit) { return }
 
               // if the hits goes to another page, we prevent the native link
               // behavior to leverage the Router loading feature
-              if (route.path !== relativeHit)
-                event.preventDefault()
+              if (route.path !== relativeHit) { event.preventDefault() }
 
               router.go(relativeHit)
             },

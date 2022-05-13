@@ -15,7 +15,7 @@ import { useNavLink } from '../composables/navLink'
 import OutboundLink from './icons/OutboundLink.vue'
 
 const props = defineProps<{
-  item: DefaultTheme.NavItemWithLink
+  item: DefaultTheme.NavItemWithLink;
 }>()
 
 const propsRefs = toRefs(props)

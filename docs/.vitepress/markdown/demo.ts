@@ -1,4 +1,6 @@
 // @ts-check
+import viteConfig from '../../vite.config'
+
 const fs = require('fs')
 
 const klawSync = require('klaw-sync')
@@ -17,20 +19,18 @@ const loadLanguages = require('prismjs/components/index')
 // required to make embedded highlighting work...
 loadLanguages(['markup', 'css', 'javascript'])
 
-import viteConfig from '../../vite.config'
-
 let insertStyleList: string[] = []
-const matchHtmlRegExp = /["'&<>]/
+const matchHtmlRegExp = /["&'<>]/
 
 interface MarkdownParsedData {
-  hoistedTags?: string[]
-  links?: string[]
-  headers?: any[]
+  hoistedTags?: string[];
+  links?: string[];
+  headers?: any[];
   component?: Array<{
-    name: string
-    path: string
-    glob?: boolean
-  }>
+    name: string;
+    path: string;
+    glob?: boolean;
+  }>;
 }
 
 const argv: any = minimist(process.argv.slice(2))
@@ -71,7 +71,7 @@ function replaceContent(content: string, components: MarkdownParsedData['compone
   if (DEMO_RE.test(content.trim()) || DEMOS_RE.test(content.trim())) {
     const demoPath = getDemoTruePath(content.trim())
 
-    if (!demoPath) return content
+    if (!demoPath) { return content }
 
     const { demoCodeStrs, demoCodeRaws, truePath, demoCDNRaws } = demoFileHtmlStr(demoPath)
     const name = 'comp' + (Math.random() * 10000).toFixed(0)
@@ -93,17 +93,17 @@ function replaceContent(content: string, components: MarkdownParsedData['compone
         codeStrs="${Array.isArray(demoCodeRaws) ? demoCodeRaws.join(anchor) : demoCodeRaws}"
         template="${
           Array.isArray(demoCDNRaws)
-            ? demoCDNRaws.map((cdn) => cdn.template).join(anchor)
+            ? demoCDNRaws.map(cdn => cdn.template).join(anchor)
             : demoCDNRaws?.template ?? ''
         }"
         script="${
           Array.isArray(demoCDNRaws)
-            ? demoCDNRaws.map((cdn) => cdn.script).join(anchor)
+            ? demoCDNRaws.map(cdn => cdn.script).join(anchor)
             : demoCDNRaws?.script ?? ''
         }"
         styles="${
           Array.isArray(demoCDNRaws)
-            ? demoCDNRaws.map((cdn) => cdn.styles).join(anchor)
+            ? demoCDNRaws.map(cdn => cdn.styles).join(anchor)
             : demoCDNRaws?.styles ?? ''
         }"
         ${DEMO_RE.test(content.trim()) ? `:demo="${name}"` : `demos="${demos}"`}
@@ -120,8 +120,8 @@ function getDemoTruePath(content: string) {
 }
 
 function demoFileHtmlStr(path: string) {
-  const truePath =
-    path.startsWith('./') || path.startsWith('../')
+  const truePath
+    = path.startsWith('./') || path.startsWith('../')
       ? resolve(root, path)
       : resolve(process.cwd(), path)
 
@@ -137,11 +137,11 @@ function demoFileHtmlStr(path: string) {
       const codeStr = fs.readFileSync(p, 'utf-8')
       const htmlStr = encodeURIComponent(highlight(codeStr, 'vue'))
 
-      return htmlStr.replace(/\'/g, '&')
+      return htmlStr.replaceAll('\'', '&')
     })
 
     const demoCodeRaws = demoEntries.map((p: string) => {
-      return encodeURIComponent(fs.readFileSync(p, 'utf-8')).replace(/\'/g, '&')
+      return encodeURIComponent(fs.readFileSync(p, 'utf-8')).replaceAll('\'', '&')
     })
 
     const demoCDNRaws = demoEntries.map((p: string) => {
@@ -157,29 +157,28 @@ function demoFileHtmlStr(path: string) {
   } else {
     const content = fs.readFileSync(truePath, 'utf-8')
 
-    const htmlStr = encodeURIComponent(highlight(content, 'vue')).replace(/\'/g, '&')
+    const htmlStr = encodeURIComponent(highlight(content, 'vue')).replaceAll('\'', '&')
     return {
       demoCodeStrs: htmlStr,
-      demoCodeRaws: encodeURIComponent(content).replace(/\'/g, '&'),
+      demoCodeRaws: encodeURIComponent(content).replaceAll('\'', '&'),
       demoCDNRaws: compileDemo(content),
       truePath,
     }
   }
 }
 
-
 function compileDemo(content: string) {
   
-  console.log("======================")
+  console.log('======================')
   console.log(content)
-  console.log("======================")
+  console.log('======================')
   const result = parse(content)
 
   const tpl = result.descriptor.template?.content ?? ''
   const script = result.descriptor.script?.content ?? ''
   const setup = result.descriptor.scriptSetup?.content ?? ''
 
-  let autoImportStyle: string[] = []
+  const autoImportStyle: string[] = []
   try {
     const alias = viteConfig?.resolve?.alias
     if (alias) {
@@ -193,7 +192,7 @@ function compileDemo(content: string) {
               alias[key] + 'packages/' + comptName + '/index.css',
               'utf-8'
             )
-            console.log("reload style",style);
+            console.log('reload style', style);
             
             style && autoImportStyle.push(style)
           }
@@ -204,8 +203,8 @@ function compileDemo(content: string) {
     console.log(error)
   }
 
-  const styles =
-    result.descriptor.styles?.map((s: any) => {
+  const styles
+    = result.descriptor.styles?.map((s: any) => {
       if (s.lang === 'stylus') {
         return stylus(s.content).render()
       }
@@ -216,7 +215,7 @@ function compileDemo(content: string) {
 
   const scriptResult = result.descriptor.script
     ? compileScript(
-        parse(
+      parse(
           `
       <script>
       ${transformSync(script, { loader: 'ts' }).code}
@@ -225,14 +224,14 @@ function compileDemo(content: string) {
       ${transformSync(setup, { loader: 'ts' }).code}
       <\/script>
     `
-        ).descriptor,
-        {
-          id: Math.random().toString(36).substr(2, 9),
-        }
-      )
+      ).descriptor,
+      {
+        id: Math.random().toString(36).slice(2, 11),
+      }
+    )
     : { content: '' }
 
-  console.log({styles})
+  console.log({ styles })
   return {
     template: encodeURIComponent(tpl),
     script: encodeURIComponent(scriptResult.content),
@@ -250,16 +249,16 @@ function compileDemo(content: string) {
 
 function escapeHtml(str: string) {
   var str = '' + str
-  var match = matchHtmlRegExp.exec(str)
+  const match = matchHtmlRegExp.exec(str)
 
   if (!match) {
     return str
   }
 
-  var escape
-  var html = ''
-  var index = 0
-  var lastIndex = 0
+  let escape
+  let html = ''
+  let index = 0
+  let lastIndex = 0
 
   for (index = match.index; index < str.length; index++) {
     switch (str.charCodeAt(index)) {
@@ -321,7 +320,7 @@ const highlight = (str: string, lang: string) => {
   if (!prism.languages[lang]) {
     try {
       loadLanguages([lang])
-    } catch (e) {
+    } catch {
       console.warn(
         chalk.yellow(`[vitepress] Syntax highlight for language "${lang}" is not supported.`)
       )

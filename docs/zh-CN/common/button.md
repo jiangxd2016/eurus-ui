@@ -2,22 +2,20 @@
 class: 'button-doc'
 sidebarDepth: 2
 ---
+
 # Button 按钮
 
 ## 引入
 
 ```javascript
-import { Button } from 'my-lib'
+import { Button } from 'eurus-ui'
 
-Vue.creatApp().use(Button.name, Button)
+Vue.createApp().use(Button.name, Button)
 ```
 
 ## 案例
 
-<demo-wrapper
-  src="demo"
-/>
-
+<Counter  components="button"/>
 ## props
 
 ## event

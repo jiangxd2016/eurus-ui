@@ -17,8 +17,7 @@ import ClientOnly from '../components/ClientOnly'
 import Demo from '../components/CodeDemo.vue'
 import Demos from '../components/CodeDemos.vue'
 
-import Counter from "../components/Counter.vue"
-
+import Counter from '../components/Counter.vue'
 
 const theme = {
   Layout,

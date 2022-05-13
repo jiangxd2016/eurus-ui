@@ -4,4 +4,3 @@ node_modules/
 **/*.html
 .eslintrc.js
 !.vitepress
-docs

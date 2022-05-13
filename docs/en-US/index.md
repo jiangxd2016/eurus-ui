@@ -1,6 +1,6 @@
 ---
 home: true
-heroAlt: 
+heroAlt:
 heroSub: 'seed'
 heroText: My UI library
 tagline: 我的组件库简介
@@ -8,8 +8,8 @@ tagline: 我的组件库简介
 actionText: start
 actionLink: /en-US/components/
 
-altActionText: start
+altActionText: more
 altActionLink: /en-US/
 
-footer: MIT Licensed | Copyright © 2021-PRESENT S
+footer: MIT Licensed | Copyright © 2021-PRESENT
 ---

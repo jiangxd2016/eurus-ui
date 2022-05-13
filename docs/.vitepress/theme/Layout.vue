@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, defineAsyncComponent, provide } from 'vue'
-import { useRoute,useData} from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 
 // components
 import NavBar from './components/NavBar.vue'
@@ -64,8 +64,8 @@ const Home = defineAsyncComponent(() => import('./components/Home.vue'))
 
 // generic state
 const route = useRoute()
-  const { site } = useData()
-  const theme = computed(() => site.value.themeConfig)
+const { site } = useData()
+const theme = computed(() => site.value.themeConfig)
 
 const AlgoliaSearchBox = defineAsyncComponent(
   () => import('./components/AlgoliaSearchBox.vue')
@@ -80,13 +80,13 @@ const enableHome = computed(() => !!route.data.frontmatter.home)
 const showNavbar = computed(() => {
   const { themeConfig } = site.value
   const { frontmatter } = route.data
-  if (frontmatter.navbar === false || themeConfig.navbar === false) return false
+  if (frontmatter.navbar === false || themeConfig.navbar === false) { return false }
 
   return (
-    site.value.title ||
-    themeConfig.logo ||
-    themeConfig.repo ||
-    themeConfig.nav
+    site.value.title
+    || themeConfig.logo
+    || themeConfig.repo
+    || themeConfig.nav
   )
 })
 
@@ -101,11 +101,11 @@ const showSidebar = computed(() => {
   const { frontmatter } = route.data
   const { themeConfig } = site.value
   return (
-    !frontmatter.home &&
-    frontmatter.sidebar !== false &&
-    ((typeof themeConfig.sidebar === 'object' &&
-      Object.keys(themeConfig.sidebar).length !== 0) ||
-      (Array.isArray(themeConfig.sidebar) && themeConfig.sidebar.length !== 0))
+    !frontmatter.home
+    && frontmatter.sidebar !== false
+    && ((typeof themeConfig.sidebar === 'object'
+      && Object.keys(themeConfig.sidebar).length > 0)
+      || (Array.isArray(themeConfig.sidebar) && themeConfig.sidebar.length > 0))
   )
 })
 
@@ -130,7 +130,7 @@ const pageClasses = computed(() => {
   ]
 })
 
-const glob = import.meta.glob("packages/**/demo/*.*", { as: 'raw' })
+const glob = import.meta.glob('packages/**/demo/*.*', { as: 'raw' })
 
 provide('glob', glob)
 </script>

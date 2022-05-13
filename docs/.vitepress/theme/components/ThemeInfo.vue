@@ -3,7 +3,7 @@ import { defineProps } from 'vue'
 import type { ThemeInfo } from '../../gallery'
 
 defineProps<{
-  theme: ThemeInfo
+  theme: ThemeInfo;
 }>()
 </script>
 
@@ -35,7 +35,7 @@ defineProps<{
       <div v-else class="text-current text-sm opacity-50">
         {{ theme.author.name }}
       </div>
-      <div class="flex-auto"></div>
+      <div class="flex-auto" />
       <a
         v-if="theme.id"
         :href="`https://npmjs.com/package/${theme.id}`"

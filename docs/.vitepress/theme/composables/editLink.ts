@@ -5,8 +5,7 @@ import { endingSlashRE, isNullish, isExternal } from '../utils'
 const bitbucketRE = /bitbucket.org/
 
 export function useEditLink() {
-  const { site, page} = useData()
-
+  const { site, page } = useData()
 
   const url = computed(() => {
     const showEditLink = isNullish(page.value.frontmatter.editLink)
@@ -22,8 +21,7 @@ export function useEditLink() {
 
     const { relativePath } = page.value
 
-    if (!showEditLink || !relativePath || !repo)
-      return null
+    if (!showEditLink || !relativePath || !repo) { return null }
 
     return createUrl(repo, docsRepo, docsDir, docsBranch, relativePath)
   })

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { defineProps,computed } from 'vue'
+import { defineProps, computed } from 'vue'
 import demo from './CodeDemo.vue'
 
 const props = defineProps({
-  demos: { type: String, default: ''},
+  demos: { type: String, default: '' },
   htmlStrs: { type: String, default: '' },
-  codeStrs: { type: String, default: ''  },
-  template: { type: String, default: ''  },
-  script: { type: String, default: ''  },
-  styles: { type: String, default: ''  },
+  codeStrs: { type: String, default: '' },
+  template: { type: String, default: '' },
+  script: { type: String, default: '' },
+  styles: { type: String, default: '' },
   src: { type: String },
 })
 
@@ -30,15 +30,15 @@ const styless = computed(() => props.styles.split(anchor))
 <template>
   <div class="eurus-demo-container">
     <component
+      :is="demo"
       v-for="(item, index) in comps"
-      :demo="item"
       :key="index"
+      :demo="item"
       :html-strs="decodedHtmlStrs[index]"
       :code-strs="decodeCodeRaws[index]"
       :template="templates[index]"
       :script="scripts[index]"
       :styles="styless[index]"
-      :is="demo"
     />
   </div>
 </template>

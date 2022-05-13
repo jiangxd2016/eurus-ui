@@ -1,8 +1,8 @@
 import { computed } from 'vue'
 import { useRoute, useData } from 'vitepress'
-import { useActiveSidebarLinks } from './activeSidebarLink'
 import { getSideBarConfig } from '../support/sideBar'
-import { DefaultTheme } from '../config'
+import type { DefaultTheme } from '../config'
+import { useActiveSidebarLinks } from './activeSidebarLink'
 
 export function useSideBar() {
   const route = useRoute()
@@ -68,7 +68,7 @@ function resolveAutoSidebar(
       lastH2 = item
       ret.push(item)
     } else if (lastH2) {
-      ;((lastH2 as any).children || ((lastH2 as any).children = [])).push(item)
+      ((lastH2 as any).children || ((lastH2 as any).children = [])).push(item)
     }
   })
 

@@ -16,8 +16,7 @@ export function isExternal(path: string): boolean {
 }
 
 export function isActive(route: any, path?: string): boolean {
-  if (path === undefined)
-    return false
+  if (path === undefined) { return false }
 
   const routePath = normalize(route.path)
   const pagePath = normalize(path)
@@ -33,11 +32,9 @@ export function joinUrl(base: string, path: string): string {
   const baseEndsWithSlash = base.endsWith('/')
   const pathStartsWithSlash = path.startsWith('/')
 
-  if (baseEndsWithSlash && pathStartsWithSlash)
-    return base.slice(0, -1) + path
+  if (baseEndsWithSlash && pathStartsWithSlash) { return base.slice(0, -1) + path }
 
-  if (!baseEndsWithSlash && !pathStartsWithSlash)
-    return `${base}/${path}`
+  if (!baseEndsWithSlash && !pathStartsWithSlash) { return `${base}/${path}` }
 
   return base + path
 }
@@ -45,8 +42,7 @@ export function joinUrl(base: string, path: string): string {
 export function getPathDirName(path: string): string {
   const segments = path.split('/')
 
-  if (segments[segments.length - 1])
-    segments.pop()
+  if (segments[segments.length - 1]) { segments.pop() }
 
   return ensureEndingSlash(segments.join('/'))
 }
@@ -71,42 +67,42 @@ export function removeExtention(path: string): string {
   return path.replace(/(index)?(\.(md|html))?$/, '') || '/'
 }
 export function submitCodepen(data: {
-  template: string
-  script: string
-  styles: string
+  template: string;
+  script: string;
+  styles: string;
 }) {
   const resourcesTpl = `
 <script src="//unpkg.com/vue@next"><\/script>
 <script src="//unpkg.com/mand-mobile-next/dist/lib/mand-mobile.full.js"><\/script>
   `
 
-  let htmlTpl = `
+  const htmlTpl = `
 ${resourcesTpl}
 <div id="app">
 ${decodeURIComponent(data.template)}
 </div>
     `
-  let cssTpl = `
+  const cssTpl = `
 @import url("//unpkg.com/mand-mobile-next/dist/lib/mand-mobile-next.full.css");
 ${(decodeURIComponent(data.styles) || '').trim()}
   `
   let jsTpl = data.script
     ? decodeURIComponent(data.script)
-        .replace(/export default/, 'var Main =')
-        .trim()
-        .replace(
-          /import ({.*}) from \\?("|')vue\\?("|')/g,
-          (s, s1) => `const ${s1} = Vue`
-        )
-        .replace(
-          /import {?.*}? from \\?("|')mand-mobile-next\/(\w+-?\w+)\\?("|')(;?)/g,
-          (s, s1, s2) =>
+      .replace(/export default/, 'var Main =')
+      .trim()
+      .replace(
+        /import ({.*}) from \\?("|')vue\\?("|')/g,
+        (s, s1) => `const ${s1} = Vue`
+      )
+      .replace(
+        /import {?.*}? from \\?("|')mand-mobile-next\/(\w+-?\w+)\\?("|')(;?)/g,
+        (s, s1, s2) =>
             `const {${s2
               .replace(/\w/, (s: any) => s.toUpperCase())
               .replace(/-(\w)/, (s: any, s1: string) =>
                 s1.toUpperCase()
               )}} = MandMobile`
-        )
+      )
     : 'var Main = {}'
   jsTpl += `
 ;const app = Vue.createApp(Main);
@@ -131,8 +127,8 @@ app.mount("#app")
   input.setAttribute('type', 'hidden')
   input.setAttribute('value', JSON.stringify(payload))
 
-  form.appendChild(input)
-  document.body.appendChild(form)
+  form.append(input)
+  document.body.append(form)
   form.submit()
-  document.body.removeChild(form)
+  form.remove()
 }

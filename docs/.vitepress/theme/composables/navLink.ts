@@ -1,4 +1,5 @@
-import { computed, Ref } from 'vue'
+import type { Ref } from 'vue';
+import { computed } from 'vue'
 import { useRoute } from 'vitepress'
 import type { DefaultTheme } from '../config'
 import { isExternal as isExternalCheck } from '../utils'
@@ -16,8 +17,7 @@ export function useNavLink(item: Ref<DefaultTheme.NavItemWithLink>) {
     let active = false
     if (item.value.activeMatch) {
       active = new RegExp(item.value.activeMatch).test(routePath)
-    }
-    else {
+    } else {
       const itemPath = normalizePath(withBase(item.value.link))
       active
         = itemPath === '/'
@@ -30,7 +30,7 @@ export function useNavLink(item: Ref<DefaultTheme.NavItemWithLink>) {
         active,
         isExternal,
       },
-      'href':item.value.link,
+      'href': item.value.link,
       'target': item.value.target || isExternal ? '_blank' : null,
       'rel': item.value.rel || isExternal ? 'noopener noreferrer' : null,
       'aria-label': item.value.ariaLabel,

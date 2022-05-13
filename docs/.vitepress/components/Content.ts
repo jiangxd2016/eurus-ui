@@ -1,7 +1,7 @@
 import { defineComponent, h } from 'vue'
 import { useRoute } from 'vitepress'
 
- const Content = defineComponent({
+const Content = defineComponent({
   name: 'VitePressContent',
   setup() {
     const route = useRoute()
@@ -11,6 +11,5 @@ import { useRoute } from 'vitepress'
       ])
   }
 })
-
 
 export default Content

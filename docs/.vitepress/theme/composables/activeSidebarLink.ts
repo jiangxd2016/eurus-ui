@@ -30,8 +30,7 @@ export function useActiveSidebarLinks() {
 
     activeLink = document.querySelector(`.sidebar a[href="${hash}"]`)
 
-    if (!activeLink)
-      return
+    if (!activeLink) { return }
 
     activeLink.classList.add('active')
 
@@ -41,8 +40,7 @@ export function useActiveSidebarLinks() {
     if (rootLi && rootLi !== activeLink.parentElement) {
       rootActiveLink = rootLi.querySelector('a')
       rootActiveLink && rootActiveLink.classList.add('active')
-    }
-    else {
+    } else {
       rootActiveLink = null
     }
   }
@@ -67,13 +65,13 @@ export function useActiveSidebarLinks() {
 }
 
 function getSidebarLinks(): HTMLAnchorElement[] {
-  return [].slice.call(
+  return Array.prototype.slice.call(
     document.querySelectorAll('.sidebar a.sidebar-link-item'),
   )
 }
 
 function getAnchors(sidebarLinks: HTMLAnchorElement[]): HTMLAnchorElement[] {
-  return [].slice
+  return Array.prototype.slice
     .call(document.querySelectorAll('.header-anchor'))
     .filter((anchor: HTMLAnchorElement) =>
       sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash),
@@ -97,14 +95,11 @@ function isAnchorActive(
 ): [boolean, string | null] {
   const scrollTop = window.scrollY
 
-  if (index === 0 && scrollTop === 0)
-    return [true, null]
+  if (index === 0 && scrollTop === 0) { return [true, null] }
 
-  if (scrollTop < getAnchorTop(anchor))
-    return [false, null]
+  if (scrollTop < getAnchorTop(anchor)) { return [false, null] }
 
-  if (!nextAnchor || scrollTop < getAnchorTop(nextAnchor))
-    return [true, decodeURIComponent(anchor.hash)]
+  if (!nextAnchor || scrollTop < getAnchorTop(nextAnchor)) { return [true, decodeURIComponent(anchor.hash)] }
 
   return [false, null]
 }
@@ -114,8 +109,7 @@ function throttleAndDebounce(fn: () => void, delay: number): () => void {
   let called = false
 
   return () => {
-    if (timeout)
-      clearTimeout(timeout)
+    if (timeout) { clearTimeout(timeout) }
 
     if (!called) {
       fn()
@@ -123,8 +117,7 @@ function throttleAndDebounce(fn: () => void, delay: number): () => void {
       setTimeout(() => {
         called = false
       }, delay)
-    }
-    else {
+    } else {
       timeout = setTimeout(fn, delay)
     }
   }

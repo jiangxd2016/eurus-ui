@@ -1,15 +1,15 @@
 ---
 home: true
-heroAlt: 
+heroAlt:
 heroSub: ''
 heroText: My UI library
-tagline: 我的组件库简介
+tagline:  UI library
 
 actionText: 开始使用
-actionLink: /zh-CN/components/
+actionLink: /zh-CN/components
 
 altActionText: 了解更多
-altActionLink: /
+altActionLink: /zh-CN/quick-start
 
-footer: MIT Licensed | Copyright © 2021-PRESENT 
+footer: MIT Licensed | Copyright © 2021-PRESENT
 ---

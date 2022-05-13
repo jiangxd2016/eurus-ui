@@ -11,7 +11,6 @@
     </div>
 
     <div class="nav-icons">
-
       <div v-if="repo" class="item">
         <a class="nav-btn" :href="repo.link" target="_blank" aria-label="View GitHub Repo">
           <carbon-logo-github />
@@ -22,7 +21,7 @@
         <dark-mode-switch />
       </div>
       <div class="lang">
-          <lang-switch />
+        <lang-switch />
       </div>
     </div>
 
@@ -38,9 +37,8 @@ import NavLinks from './NavLinks.vue'
 import ToggleSideBarButton from './ToggleSideBarButton.vue'
 import DarkModeSwitch from './DarkModeSwitch.vue'
 import LangSwitch from './LangSwitch.vue'
-const repo = useRepo()
-
 defineEmits(['toggle'])
+const repo = useRepo()
 </script>
 
 <style scoped>

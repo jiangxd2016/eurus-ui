@@ -7,11 +7,11 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted } from 'vue'
-import { useData} from 'vitepress'
+import { useData } from 'vitepress'
 
 export default defineComponent({
   setup() {
- const { site, page} = useData()
+    const { site, page } = useData()
 
     const datetime = ref('')
 

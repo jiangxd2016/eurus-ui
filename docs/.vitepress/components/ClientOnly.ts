@@ -1,6 +1,6 @@
 import { ref, onMounted, defineComponent } from 'vue'
 
- const ClientOnly = defineComponent({
+const ClientOnly = defineComponent({
   setup(_, { slots }) {
     const show = ref(false)
     onMounted(() => {
@@ -9,7 +9,5 @@ import { ref, onMounted, defineComponent } from 'vue'
     return () => (show.value && slots.default ? slots.default() : null)
   }
 })
-
-
 
 export default ClientOnly

@@ -17,12 +17,11 @@
 </template>
 
 <script lang="ts" setup>
-import {useData,withBase} from "vitepress"
-import { computed } from "vue";
+import { useData, withBase } from 'vitepress'
+import { computed } from 'vue';
 
-const {site}  = useData();
+const { site } = useData();
 const themeConfig = computed(() => site.value.themeConfig)
-
 </script>
 
 <style scoped>

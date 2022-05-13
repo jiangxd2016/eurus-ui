@@ -1,7 +1,7 @@
 <template>
   <nav v-if="show" class="nav-links">
     <template v-if="links">
-      <div  v-for="item in !isEn ? theme.nav : theme.navEn" :key="item.text" class="item">
+      <div v-for="item in !isEn ? theme.nav : theme.navEn" :key="item.text" class="item">
         <NavDropdownLink v-if="item.items" :item="item" />
         <NavLink v-else :item="item" />
       </div>
@@ -15,13 +15,13 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData ,useRoute} from 'vitepress'
+import { useData, useRoute } from 'vitepress'
 import { useLocaleLinks } from '../composables/nav'
+import { useRepo } from '../composables/repo'
 import NavLink from './NavLink.vue'
 import NavDropdownLink from './NavDropdownLink.vue'
-import { useRepo } from '../composables/repo'
 
-  const { site,theme } = useData()
+const { site, theme } = useData()
 const localeLinks = useLocaleLinks()
 const repo = useRepo()
 

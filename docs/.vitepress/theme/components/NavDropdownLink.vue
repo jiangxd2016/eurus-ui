@@ -20,7 +20,7 @@ import type { DefaultTheme } from '../config'
 import NavDropdownLinkItem from './NavDropdownLinkItem.vue'
 
 defineProps<{
-  item: DefaultTheme.NavItemWithChildren
+  item: DefaultTheme.NavItemWithChildren;
 }>()
 
 const route = useRoute()

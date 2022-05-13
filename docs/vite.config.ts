@@ -7,12 +7,11 @@ import WindiCSS from 'vite-plugin-windicss'
 import ViteRestart from 'vite-plugin-restart'
 import Inspect from 'vite-plugin-inspect'
 
-
 const config: UserConfig = {
   resolve: {
     alias: {
       'eurus-ui/': `${resolve(__dirname, '../dist/es')}/`,
-      "packages":`${resolve(__dirname, '../src/packages')}/`
+      'packages': `${resolve(__dirname, '../src/packages')}/`
     },
   },
   optimizeDeps: {
@@ -46,13 +45,13 @@ const config: UserConfig = {
       preflight: false,
     }),
     ViteRestart({
-      restart: ['.vitepress/config/*.*', '../dist/**/*.*'],
+      restart: ['.vitepress/config/*.*', '../dist/**/*.*', './zh-CN/**/*.*', './en-US/**/*.*'],
     }),
     {
       name: 'code-block-escape',
       enforce: 'post',
       transform(code, id) {
-        if (!id.endsWith('.md')) return
+        if (!id.endsWith('.md')) { return }
         return code.replace(/\/\/```/gm, '```')
       },
     },

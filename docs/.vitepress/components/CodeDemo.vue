@@ -4,10 +4,6 @@ import { useClipboard } from '@vueuse/core'
 import { useData } from 'vitepress'
 import { submitCodepen } from '../theme/utils'
 
-const data = useData()
-const codepen = data.theme.value.codepen
-const reg = /(?<=packages\/).*?(?=\/demo)/
-
 const props = defineProps({
   demo: { type: String, default: '' },
   template: { type: String, default: '' },
@@ -18,6 +14,10 @@ const props = defineProps({
   src: { type: String },
 })
 
+const data = useData()
+const codepen = data.theme.value.codepen
+const reg = /(?<=packages\/).*?(?=\/demo)/
+
 const demoInfo = shallowReactive({
   title: '',
   describe: '',
@@ -27,8 +27,8 @@ const demoInfo = shallowReactive({
 })
 
 const demoPath: any = props.demo.match(reg)
-const demoStyle = decodeURIComponent(props.styles.replace(/\&/g, "'").replace(/\/n/, ''))
-const demoHTML = decodeURIComponent(props.htmlStrs.replace(/\&/g, "'"))
+const demoStyle = decodeURIComponent(props.styles.replaceAll('&', '\'').replace(/\/n/, ''))
+const demoHTML = decodeURIComponent(props.htmlStrs.replaceAll('&', '\''))
 
 const id = demoPath[0] || 'default'
 
@@ -45,7 +45,7 @@ if (demoStyle) {
     const style = document.createElement('style')
     style.innerHTML = demoStyle
     style.id = id
-    document.body.appendChild(style)
+    document.body.append(style)
   }
 }
 
@@ -55,12 +55,12 @@ const codepenHandler = () => {
 
 const copyHandler = () => {
   const { copy, isSupported } = useClipboard({
-    source: decodeURIComponent(props.codeStrs.replace(/\&/g, "'")),
+    source: decodeURIComponent(props.codeStrs.replaceAll('&', '\'')),
   })
 
   isSupported && copy()
 
-  if (demoInfo.copied) return
+  if (demoInfo.copied) { return }
 
   demoInfo.copied = true
   globalThis.setTimeout(() => {
@@ -80,7 +80,7 @@ const copyHandler = () => {
       >
         <p class="m-0">{{ demoInfo.title || '基础' }}</p>
         <!-- operation -->
-        <div class="relative flex px-2 text-center" :class="'justify-end'">
+        <div class="relative flex px-2 text-center justify-end">
           <la:codepen
             v-show="codepen"
             class="text-md cursor-pointer <sm:text-sm"
@@ -97,12 +97,12 @@ const copyHandler = () => {
         v-if="demoInfo.describe"
         class="text-xs my-1 <sm:text-xs <sm:my-1"
         v-text="demoInfo.describe"
-      ></div>
+      />
       <!-- demo -->
       <div class="demo-component p-4px">
         <component
           :is="defineAsyncComponent(() => import(/* @vite-ignore */ props.demo))"
-        ></component>
+        />
       </div>
 
       <div v-if="demoInfo.showCodeExample" class="example-code language-vue relative">
@@ -126,7 +126,6 @@ const copyHandler = () => {
 </template>
 
 <style lang="stylus">
-
 .border-bottom {
   border-bottom: 1px dotted rgba(229, 231, 235, 1);
 }

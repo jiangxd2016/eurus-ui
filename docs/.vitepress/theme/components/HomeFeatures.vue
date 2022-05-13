@@ -19,9 +19,9 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useData} from 'vitepress'
+import { useData } from 'vitepress'
 
-const {frontmatter} = useData()
+const { frontmatter } = useData()
 
 const hasFeatures = computed(() => {
   return frontmatter.value.features && frontmatter.value.features.length > 0

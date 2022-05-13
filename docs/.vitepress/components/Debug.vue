@@ -14,7 +14,7 @@ watch(open, (value) => {
 </script>
 
 <template>
-  <div class="debug" :class="{ open }" ref="el" @click="open = !open">
+  <div ref="el" class="debug" :class="{ open }" @click="open = !open">
     <p class="title">Debug</p>
     <pre class="block">{{ data }}</pre>
   </div>
