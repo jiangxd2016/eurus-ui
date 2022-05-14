@@ -5,7 +5,7 @@ module.exports = defineConfig({
   title: 'eurus-ui docs',
   description: docsDescription,
   head: [
-    ['link', { rel: 'icon', type: 'image/png', href: 'ogo.png' }],
+    // ['link', { rel: 'icon', type: 'image/png', href: 'ogo.png' }],
     ['meta', { name: 'author', content: 'eurus-ui' }],
     ['meta', { property: 'og:title', content: docsName }],
     ['meta', { property: 'og:image', content: docsDescription }],

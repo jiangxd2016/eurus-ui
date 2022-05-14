@@ -6,7 +6,7 @@ heroText: My UI library
 tagline:  UI library
 
 actionText: 开始使用
-actionLink: /zh-CN/components
+actionLink: /zh-CN/base/button
 
 altActionText: 了解更多
 altActionLink: /zh-CN/quick-start
