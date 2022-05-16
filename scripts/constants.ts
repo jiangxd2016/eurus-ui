@@ -3,7 +3,6 @@ import process, { cwd } from 'process'
 import path, { resolve } from 'path'
 import type { OutputOptions } from 'rollup'
 import klawSync from 'klaw-sync'
-
 export const name = 'eurus-ui'
 
 export const file = (type: string): string => `dist/${name}.${type}.js`
@@ -16,9 +15,9 @@ export const defaultOutput: OutputOptions = {
 }
 
 export const dirname = path.resolve()
-export const projectPath = path.join(__dirname, '..')
-export const compRoot = resolve(projectPath, 'src/packages')
-export const srcPath = path.join(projectPath, 'src')
+
+export const compRoot = resolve(dirname, 'src/packages')
+export const srcPath = path.join(dirname, 'src')
 
 export const isEsm = process.env.MODULE_ENV !== 'cjs'
 

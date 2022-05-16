@@ -1,5 +1,5 @@
 import { defineConfig, rollup } from 'rollup'
-import { defaultBuildConfig } from './rollup.config'
+import { defaultBuildConfig } from './rollup-config'
 import { defaultInput, defaultOutput, file, name } from './constants'
 
 async function build(option) {

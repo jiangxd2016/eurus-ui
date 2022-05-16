@@ -128,6 +128,8 @@ function getBuildMetadata() {
 
 async function buildSourceFiles(esbuildOptions: Partial<BuildOptions>) {
   return await build({
+    // external & bundle 冲突
+    //@see https://esbuild.github.io/api/#bundle
     bundle: false,
     external: ['src/packages/*'],
     ...esbuildOptions,

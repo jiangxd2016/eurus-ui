@@ -1,5 +1,5 @@
 import { rollup } from 'rollup'
-import Config from './gen.config'
+import Config from './gen-config'
 
 async function build(option) {
   const bundle = await rollup(option)

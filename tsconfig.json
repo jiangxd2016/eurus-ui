@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
@@ -12,12 +12,9 @@
     "paths": {
       "eurus-ui": ["./src"]
     },
-    "types": [
-      "unplugin-icons/types/vue",
-    ]
   },
   "typeAcquisition": {
     "include": ["vue"]
   },
-  "include": ["typings/**/*.d.ts","node_modules/unplugin-icons/types/vue"]
+  "include": ["typings/**/*.d.ts"]
 }

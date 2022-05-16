@@ -1,7 +1,7 @@
 import chokidar from 'chokidar'
 import { srcPath } from './constants'
 
-import { buildCompts } from './gen.compts'
+import { buildCompts } from './gen-compts'
 import { compileTS, genTypes } from './build'
 function watchSrc() {
   chokidar

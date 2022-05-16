@@ -1,7 +1,7 @@
 import path from 'path'
 import fg from 'fast-glob'
 
-import { defaultBuildConfig, getPath } from './rollup.config'
+import { defaultBuildConfig, getPath } from './rollup-config'
 import { compRoot } from './constants'
 
 function getPackages() {
