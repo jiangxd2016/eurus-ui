@@ -7,7 +7,6 @@ import type { depLibsType } from 'vue-running'
 import 'vue-running/dist/style.css'
 import { parse } from 'comment-parser';
 import { LibraryJs, LibraryCss } from '../../constants';
-import ClientOnly from './ClientOnly'
 
 interface demoProps {
   options?: any;
@@ -138,7 +137,7 @@ const codeMirrorOption = {
   </ClientOnly>
 </template>
 
-<style lang="stylus">
+<style>
 .border-bottom {
   border-bottom: 1px dotted rgba(229, 231, 235, 1);
 }
@@ -167,14 +166,11 @@ const codeMirrorOption = {
   transition: opacity 250ms linear;
 }
 
-.demo-component{
-  .e-button{
+.demo-component .e-button{
     margin: 10px;
   }
 
-  .e-button:last-of-type{
+.demo-component .e-button:last-of-type{
     margin-right: 0
   }
-}
-
 </style>
