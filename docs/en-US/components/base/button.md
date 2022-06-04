@@ -14,7 +14,6 @@ Vue.createApp().use(Button.name, Button)
 ```
 
 
-<Counter  components="button"/>
 ## props
 
 ## event

@@ -5,8 +5,11 @@
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext", "DOM"],
     "declaration": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "rootDir": "./src",
     "outDir": "./dist",
     "paths": {
@@ -16,5 +19,8 @@
   "typeAcquisition": {
     "include": ["vue"]
   },
-  "include": ["typings/**/*.d.ts"]
+  "include": ["typings/**/*.d.ts"],
+  "vueCompilerOptions": {
+    "experimentalDisableTemplateSupport": true
+  }
 }

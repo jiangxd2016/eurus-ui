@@ -35,46 +35,46 @@ module.exports = defineConfig({
     nav: [{ text: '组件', link: '/zh-CN/components/' }],
 
     sidebar: {
-      '/en-US/components/': [
-        {
-          text: 'How to use',
-          // collapsible: true,
-          items: [
-            {
-              text: 'Changelog',
-              link: '/en-US/components/',
-            },
-            {
-              text: 'QuickStart',
-              link: '/en-US/quick-start',
-            },
-          ],
-        },
-        {
-          text: 'Components',
-          items: [
-            {
-              text: 'Base Components',
-              link: '/en-US/components/base',
-            },
-            {
-              text: 'Common Components',
-              link: '/en-US/components/common',
-            }, {
-              text: 'Form Components',
-              link: '/en-US/components/form',
-            },
-            {
-              text: 'navigation Components',
-              link: '/en-US/components/navigation',
-            },
-            {
-              text: 'Message Components',
-              link: '/en-US/components/message',
-            },
-          ],
-        },
-      ],
+      // '/en-US/components/': [
+      //   {
+      //     text: 'How to use',
+      //     // collapsible: true,
+      //     items: [
+      //       {
+      //         text: 'Changelog',
+      //         link: '/en-US/components/',
+      //       },
+      //       {
+      //         text: 'QuickStart',
+      //         link: '/en-US/quick-start',
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     text: 'Components',
+      //     items: [
+      //       {
+      //         text: 'Base Components',
+      //         link: '/en-US/components/base',
+      //       },
+      //       {
+      //         text: 'Common Components',
+      //         link: '/en-US/components/common',
+      //       }, {
+      //         text: 'Form Components',
+      //         link: '/en-US/components/form',
+      //       },
+      //       {
+      //         text: 'navigation Components',
+      //         link: '/en-US/components/navigation',
+      //       },
+      //       {
+      //         text: 'Message Components',
+      //         link: '/en-US/components/message',
+      //       },
+      //     ],
+      //   },
+      // ],
       '/zh-CN/components/': sidebarCN
     },
     algolia: {

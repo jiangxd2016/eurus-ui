@@ -61,21 +61,21 @@ export const sidebarCN = [
         text: '基础组件测试',
         link: '/zh-CN/components/button',
       },
-      {
-        text: '通用组件',
-        link: '/zh-CN/common',
-      }, {
-        text: '表单组件',
-        link: '/zh-CN/components/form',
-      },
-      {
-        text: '导航组件',
-        link: '/zh-CN/components/navigation',
-      },
-      {
-        text: '消息组件',
-        link: '/zh-CN/components/message',
-      },
+      // {
+      //   text: '通用组件',
+      //   link: '/zh-CN/common',
+      // }, {
+      //   text: '表单组件',
+      //   link: '/zh-CN/components/form',
+      // },
+      // {
+      //   text: '导航组件',
+      //   link: '/zh-CN/components/navigation',
+      // },
+      // {
+      //   text: '消息组件',
+      //   link: '/zh-CN/components/message',
+      // },
 
     ]
   }
