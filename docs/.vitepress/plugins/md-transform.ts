@@ -1,3 +1,11 @@
+/*
+ * @Author: jiangxd
+ * @Date: 2022-06-04 12:51:55
+ * @LastEditTime: 2022-06-04 22:50:59
+ * @LastEditors: jiangxd
+ * @Description:
+ * @FilePath: /eurus-ui/docs/.vitepress/plugins/md-transform.ts
+ */
 import path from 'path'
 import klawSync from 'klaw-sync'
 
@@ -5,7 +13,6 @@ import type { Plugin } from 'vite'
 import { packagesDir } from '../../constants';
 
 const PACKAGES_PATH = path.resolve(__dirname, '../../', packagesDir)
-console.log(PACKAGES_PATH);
 
 const components = klawSync(PACKAGES_PATH, {
   nofile: true,

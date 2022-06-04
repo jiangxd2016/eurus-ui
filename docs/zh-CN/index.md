@@ -8,6 +8,9 @@ hero:
   name: VueComponentsLibSeed
   text: A vue3.0 components library template
   tagline: Vue3.0 组件库的次佳实践.
+  image:
+    src: /logo.svg
+    alt: Vitest
   actions:
     - theme: brand
       text: 开始使用
