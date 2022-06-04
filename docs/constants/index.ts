@@ -1,6 +1,10 @@
-export const docsName = 'eurus-ui'
-export const docsDescription = 'eurus-ui'
-
+export const docsName = 'Eurus UI'
+export const docsDescription = 'A Vue3 component library'
+// demo dir
+export const packagesDir = './packages'
+// library js
+export const LibraryJs = '../../test-dist/eurus-ui.esm.js'
+export const LibraryCss = '../../test-dist/eurus-ui.esm.css'
 export const sidebarUS = [
 
   {
@@ -33,42 +37,47 @@ export const sidebarUS = [
   },
 
 ]
-
 export const sidebarCN = [
-
   {
-    text: '更新日志',
-    link: '/zh-CN/changelog',
+    text: '使用',
+    // collapsible: true,
+    items: [
+
+      {
+        text: '更新日志',
+        link: '/zh-CN/guider/changelog',
+      },
+      {
+        text: '快速开始',
+        link: '/zh-CN/guider/quick-start',
+      },
+
+    ],
   },
   {
-    text: '快速开始',
-    link: '/zh-CN/quick-start',
-  },
-
-  {
-    text: '基础组件',
-    activeMatch: '^/zh-CN/base/',
-    children: [
+    text: '组件',
+    items: [
       {
         text: '基础组件测试',
-        link: '/zh-CN/base/button',
-      }
-    ]
-  },
-  {
-    text: '通用组件',
-    link: '/zh-CN/common',
-  }, {
-    text: '表单组件',
-    link: '/zh-CN/components/form',
-  },
-  {
-    text: '导航组件',
-    link: '/zh-CN/components/navigation',
-  },
-  {
-    text: '消息组件',
-    link: '/zh-CN/components/message',
-  },
+        link: '/zh-CN/components/button',
+      },
+      {
+        text: '通用组件',
+        link: '/zh-CN/common',
+      }, {
+        text: '表单组件',
+        link: '/zh-CN/components/form',
+      },
+      {
+        text: '导航组件',
+        link: '/zh-CN/components/navigation',
+      },
+      {
+        text: '消息组件',
+        link: '/zh-CN/components/message',
+      },
 
+    ]
+  }
 ]
+

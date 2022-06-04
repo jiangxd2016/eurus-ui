@@ -13,9 +13,7 @@ import { Button } from 'eurus-ui'
 Vue.createApp().use(Button.name, Button)
 ```
 
-## 案例
-
-<Counter  components="button"/>
+<Demo src="button/demo/demo0.vue" />
 ## props
 
 ## event

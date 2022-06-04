@@ -1,14 +1,10 @@
-import { defineConfig } from 'vite-plugin-windicss'
+import { defineConfig } from 'unocss'
 
 export default defineConfig({
-  extract: {
-    include: [
-      '.vitepress/theme/**/*.{ts,vue}',
-      '.vitepress/components/**/*.vue',
-    ],
-  },
-
-  attributify: true,
+  include: [
+    '.vitepress/theme/**/*.{ts,vue}',
+    '.vitepress/components/**/*.vue',
+  ],
 
   safelist: [
     'pb-5',
@@ -16,9 +12,7 @@ export default defineConfig({
     'dark:text-white',
     'opacity-85',
   ],
-  shortcuts: {
-    'bg-main': 'bg-white dark:bg-[#111]',
-  },
+
   theme: {
     extend: {
       colors: {

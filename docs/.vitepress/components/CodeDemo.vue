@@ -1,125 +1,138 @@
 <script setup lang="ts">
-import { shallowReactive, defineProps, defineAsyncComponent, onMounted } from 'vue'
 import { useClipboard } from '@vueuse/core'
-import { useData } from 'vitepress'
-import { submitCodepen } from '../theme/utils'
 
-const props = defineProps({
-  demo: { type: String, default: '' },
-  template: { type: String, default: '' },
-  script: { type: String, default: '' },
-  styles: { type: String, default: '' },
-  htmlStrs: { type: String, default: '' },
-  codeStrs: { type: String, default: '' },
-  src: { type: String },
-})
+import { inject, reactive, ref } from 'vue';
+import VueRunning from 'vue-running'
+import type { depLibsType } from 'vue-running'
+import 'vue-running/dist/style.css'
+import { parse } from 'comment-parser';
+import { LibraryJs, LibraryCss } from '../../constants';
+import ClientOnly from './ClientOnly'
 
-const data = useData()
-const codepen = data.theme.value.codepen
-const reg = /(?<=packages\/).*?(?=\/demo)/
+interface demoProps {
+  options?: any;
+  key: string;
+  code: string;
+  title: string;
+  describe: string;
+  description: string;
+  showCode: boolean;
+}
+const props = defineProps<{ component: string }>()
+const commentReg = /\/\*(\s|.)*?\*\//gi
 
-const demoInfo = shallowReactive({
-  title: '',
-  describe: '',
-  ...props.demo,
-  showCodeExample: false,
-  copied: false,
-})
+const demoList = reactive<demoProps[]>([])
+const clipSuccess = ref(false)
 
-const demoPath: any = props.demo.match(reg)
-const demoStyle = decodeURIComponent(props.styles.replaceAll('&', '\'').replace(/\/n/, ''))
-const demoHTML = decodeURIComponent(props.htmlStrs.replaceAll('&', '\''))
+const libJs = new URL(LibraryJs, import.meta.url).href;
+const libCss = new URL(LibraryCss, import.meta.url).href;
 
-const id = demoPath[0] || 'default'
+const glob = inject<{ [key in string]: string }>('glob')
 
-if (demoStyle) {
-  console.log('reload styles')
-  const el = document.getElementById(id);
+Object.entries(glob!).forEach((item) => {
 
-  console.log(el)
-  console.log(demoStyle)
+  const [key, value] = item;
+  if (key.includes(props.component)) {
 
-  if (el) {
-    el.innerHTML = demoStyle
-  } else {
-    const style = document.createElement('style')
-    style.innerHTML = demoStyle
-    style.id = id
-    document.body.append(style)
+    // 文件中有且必须只存在一处注释
+    const { description = '', problems = [], tags = [] } = parse(value)[0]
+
+    if (problems.length > 0) {
+      console.warn(`${key} has problems`);
+    }
+
+    // 读取完成注释，删除掉注释
+    const code = value.replace(commentReg, '').trim()
+
+    demoList.push({
+      key,
+      ...Object.fromEntries(tags.map(item => [item.tag, item.name])) as any,
+      description,
+      showCode: true,
+      code,
+    })
   }
-}
 
-const codepenHandler = () => {
-  submitCodepen(props)
-}
+})
 
-const copyHandler = () => {
+const depLibs: depLibsType[] = [{
+  name: 'eurus-ui',
+  url: libJs,
+  type: 'js',
+}, {
+  name: 'eurus-ui-css',
+  url: libCss,
+  type: 'css',
+},
+]
+
+const copyHandler = (index: number) => {
+  clipSuccess.value = false;
   const { copy, isSupported } = useClipboard({
-    source: decodeURIComponent(props.codeStrs.replaceAll('&', '\'')),
+    source: decodeURIComponent(demoList[index].code.replaceAll('&', '\'')),
   })
 
-  isSupported && copy()
+  isSupported && copy().then(()=>{
+    clipSuccess.value = true;
+    setTimeout(() => {
+      clipSuccess.value = false
+    }, 2000);
+  })
 
-  if (demoInfo.copied) { return }
+}
 
-  demoInfo.copied = true
-  globalThis.setTimeout(() => {
-    demoInfo.copied = false
-  }, 1200)
+const codeMirrorOption = {
+  readOnly: true,
+  lineNumbers: false,
+  scrollbarStyle: null,
+  cursorBlinkRate: -1
 }
 </script>
 
 <template>
   <ClientOnly>
     <div
-      class="eurus-demo flex flex-col mb-8 rounded-lg border-1 border-gray-200 border-solid last:mb-0 divide-y"
+      v-for="(demoInfo, index) in demoList" :key="demoInfo.key"
+      class="eurus-demo flex flex-col mb-8"
     >
-      <!-- title -->
-      <div
-        class="flex justify-between items-center text-sm py-2 px-2 <sm:text-md border-bottom border-gray-200 select-none"
-      >
-        <p class="m-0">{{ demoInfo.title || '基础' }}</p>
-        <!-- operation -->
-        <div class="relative flex px-2 text-center justify-end">
-          <la:codepen
-            v-show="codepen"
-            class="text-md cursor-pointer <sm:text-sm"
-            @click="codepenHandler"
-          />
-          <ph:code
-            class="text-md cursor-pointer ml-4 <sm:text-sm"
-            :class="[demoInfo.showCodeExample ? 'active-code' : '']"
-            @click="demoInfo.showCodeExample = !demoInfo.showCodeExample"
-          />
-        </div>
-      </div>
-      <div
-        v-if="demoInfo.describe"
-        class="text-xs my-1 <sm:text-xs <sm:my-1"
-        v-text="demoInfo.describe"
-      />
-      <!-- demo -->
-      <div class="demo-component p-4px">
-        <component
-          :is="defineAsyncComponent(() => import(/* @vite-ignore */ props.demo))"
-        />
-      </div>
+      <h2 :id="demoInfo.title" tabindex="-1">{{ demoInfo.title }} <a class="header-anchor" :href="`#${demoInfo.title}`" aria-hidden="true">#</a></h2>
 
-      <div v-if="demoInfo.showCodeExample" class="example-code language-vue relative">
-        <ph:copy-thin
-          class="absolute top-2 right-2 z-10 text-cool-gray-400 text-md cursor-pointer <sm:text-sm"
-          @click="copyHandler"
-        />
-        <transition name="fade">
-          <span
-            v-show="demoInfo.copied"
-            class="block absolute left-1/2 top-1.5rem text-xs text-blue-500 bg-blue-gray-50 rounded-md shadow-sm"
-            style="padding: 4px 10px; z-index: 9999; transform: translate(-50%, -80%)"
-          >
-            复制成功!
-          </span>
-        </transition>
-        <div v-html="demoHTML" />
+      <div class="demo-wrapper b-color-hex-DDDDDD b-1 rd">
+        <div
+          class="flex justify-between items-center text-sm py-2 px-2 <sm:text-md border-bottom  border-bottom border-gray-200 select-none"
+        >
+          <p class="m-0">{{ demoInfo.describe || '基础' }}</p>
+          <!-- operation -->
+          <div class="relative flex px-2 text-center justify-center">
+            <div
+              i-ph-code
+              class="text-md cursor-pointer ml-4 <sm:text-sm"
+              :class="[demoInfo.showCode ? 'active-code' : '']"
+              @click="demoInfo.showCode = !demoInfo.showCode"
+            />
+          </div>
+        </div>
+        <!-- demo -->
+        <div class="demo-component ">
+          <VueRunning :key="demoInfo.key" layout="vertical" :show-code="demoInfo.showCode" :dep-libs="depLibs" :code="demoInfo.code" :code-mirror-option="codeMirrorOption" />
+        </div>
+
+        <div v-if="demoInfo.showCode" class="example-code language-vue relative">
+          <div
+            i-ph-copy-thin
+            class="absolute top-2 right-2 z-10 text-cool-gray-400 text-md cursor-pointer <sm:text-sm"
+            @click="copyHandler(index)"
+          />
+          <transition name="fade">
+            <span
+              v-show="clipSuccess"
+              class="block absolute left-1/2 top-1.5rem text-xs text-blue-500 bg-blue-gray-50 rounded-md shadow-sm"
+              style="padding: 4px 10px; z-index: 9999; transform: translate(-50%, -80%)"
+            >
+              复制成功!
+            </span>
+          </transition>
+        </div>
       </div>
     </div>
   </ClientOnly>
@@ -163,4 +176,5 @@ const copyHandler = () => {
     margin-right: 0
   }
 }
+
 </style>

@@ -13,7 +13,6 @@ import { Button } from 'eurus-ui'
 Vue.createApp().use(Button.name, Button)
 ```
 
-## 案例
 
 <Counter  components="button"/>
 ## props

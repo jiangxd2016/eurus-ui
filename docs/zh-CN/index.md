@@ -1,15 +1,28 @@
 ---
-home: true
-heroAlt:
-heroSub: ''
-heroText: My UI library
-tagline:  UI library
+layout: home
 
-actionText: 开始使用
-actionLink: /zh-CN/base/button
+title: VueCompLibSeed
+titleTemplate: Vite & Vue powered static site generator
 
-altActionText: 了解更多
-altActionLink: /zh-CN/quick-start
+hero:
+  name: VueComponentsLibSeed
+  text: A vue3.0 components library template
+  tagline: Vue3.0 组件库的次佳实践.
+  actions:
+    - theme: brand
+      text: 开始使用
+      link: /zh-CN/guider/quick-start.html
+    - theme: alt
+      text: 了解更多
+      link: https://github.com/jiangxd2016/eurus-ui
 
-footer: MIT Licensed | Copyright © 2021-PRESENT
+features:
+  - title: 🌈 Speedy dev & build
+    details: more fast.
+  - title: 🎆 Customize friendly
+    details: DIY everything.
+  - title: 🍭 Rich scripts
+    details: inspired by esbuild-plugin-vue & vue-dts-gen.
+  - title: 😋 Type friendly
+    details: easy to use
 ---
