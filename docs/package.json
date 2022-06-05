@@ -38,6 +38,7 @@
       "ignoreMissing": [
         "@algolia/client-search",
         "react",
+        "@docsearch/js",
         "react-dom",
         "@types/react"
       ]
