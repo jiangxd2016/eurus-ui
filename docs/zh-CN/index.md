@@ -1,13 +1,13 @@
 ---
 layout: home
 
-title: VueCompLibSeed
+title: Eurus UI
 titleTemplate: Vite & Vue powered static site generator
 
 hero:
-  name: VueComponentsLibSeed
-  text: A vue3.0 components library template
-  tagline: Vue3.0 组件库的次佳实践.
+  name: Eurus UI
+  text: A vue3.0 component
+  tagline: Vue3.0 组件库
   image:
     src: /logo.svg
     alt: Vitest

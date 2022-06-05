@@ -10,6 +10,7 @@ import { resolve } from 'path'
 import type { UserConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import Unocss from 'unocss/vite'
+import Inspect from 'vite-plugin-inspect'
 import { presetAttributify, presetIcons, presetUno, presetWind } from 'unocss'
 import { packagesDir } from './constants'
 import { MarkdownTransform } from './.vitepress/plugins/md-transform'
@@ -35,6 +36,7 @@ const config: UserConfig = {
     },
   },
   plugins: [
+    Inspect(),
     Components({
       dirs: ['.vitepress/theme/components', '.vitepress/components'],
       extensions: ['vue', 'ts'],
