@@ -1,58 +1,29 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 
-import { inject, reactive, ref } from 'vue';
+import { computed,  ref } from 'vue';
 import VueRunning from 'vue-running'
 import type { depLibsType } from 'vue-running'
 import 'vue-running/dist/style.css'
-import { parse } from 'comment-parser';
-import { LibraryJs, LibraryCss } from '../../constants';
+import { LibraryJs, LibraryCss } from '../constants';
 
 interface demoProps {
   options?: any;
   key: string;
   code: string;
-  title: string;
-  describe: string;
-  description: string;
-  showCode: boolean;
+  title?: string;
+  describe?: string;
+  description?: string;
+  showCode?: boolean;
 }
-const props = defineProps<{ component: string }>()
-const commentReg = /\/\*(\s|.)*?\*\//gi
+const props = defineProps<{ src: string,source:string }>()
 
-const demoList = reactive<demoProps[]>([])
 const clipSuccess = ref(false)
 
 const libJs = new URL(LibraryJs, import.meta.url).href;
 const libCss = new URL(LibraryCss, import.meta.url).href;
 
-const glob = inject<{ [key in string]: string }>('glob')
 
-Object.entries(glob!).forEach((item) => {
-
-  const [key, value] = item;
-  if (key.includes(props.component)) {
-
-    // 文件中有且必须只存在一处注释
-    const { description = '', problems = [], tags = [] } = parse(value)[0]
-
-    if (problems.length > 0) {
-      console.warn(`${key} has problems`);
-    }
-
-    // 读取完成注释，删除掉注释
-    const code = value.replace(commentReg, '').trim()
-
-    demoList.push({
-      key,
-      ...Object.fromEntries(tags.map(item => [item.tag, item.name])) as any,
-      description,
-      showCode: true,
-      code,
-    })
-  }
-
-})
 
 const depLibs: depLibsType[] = [{
   name: 'eurus-ui',
@@ -65,10 +36,10 @@ const depLibs: depLibsType[] = [{
 },
 ]
 
-const copyHandler = (index: number) => {
+const copyHandler = () => {
   clipSuccess.value = false;
   const { copy, isSupported } = useClipboard({
-    source: decodeURIComponent(demoList[index].code.replaceAll('&', '\'')),
+    source: decodeURIComponent(demoInfo.code.replaceAll('&', '\'')),
   })
 
   isSupported && copy().then(()=>{
@@ -86,12 +57,22 @@ const codeMirrorOption = {
   scrollbarStyle: null,
   cursorBlinkRate: -1
 }
+
+const demoInfo= computed<demoProps|any>(()=>{
+  return {
+    title:"",
+    showCode:false,
+    code:decodeURIComponent(props.source),
+    describe:"",
+    description:""
+  }
+})
+
 </script>
 
 <template>
   <ClientOnly>
     <div
-      v-for="(demoInfo, index) in demoList" :key="demoInfo.key"
       class="eurus-demo flex flex-col mb-8"
     >
       <h2 :id="demoInfo.title" tabindex="-1">{{ demoInfo.title }} <a class="header-anchor" :href="`#${demoInfo.title}`" aria-hidden="true">#</a></h2>
@@ -113,14 +94,14 @@ const codeMirrorOption = {
         </div>
         <!-- demo -->
         <div class="demo-component ">
-          <VueRunning :key="demoInfo.key" layout="vertical" :show-code="demoInfo.showCode" :dep-libs="depLibs" :code="demoInfo.code" :code-mirror-option="codeMirrorOption" />
+          <VueRunning  layout="vertical" :show-code="demoInfo.showCode" :dep-libs="depLibs" :code="demoInfo.code" :code-mirror-option="codeMirrorOption" />
         </div>
 
         <div v-if="demoInfo.showCode" class="example-code language-vue relative">
           <div
             i-ph-copy-thin
             class="absolute top-2 right-2 z-10 text-cool-gray-400 text-md cursor-pointer <sm:text-sm"
-            @click="copyHandler(index)"
+            @click="copyHandler()"
           />
           <transition name="fade">
             <span

@@ -1,13 +1,6 @@
-/*
- * @Author: jiangxd
- * @Date: 2022-06-04 12:51:55
- * @LastEditTime: 2022-06-04 23:01:34
- * @LastEditors: jiangxd
- * @Description:
- * @FilePath: /eurus-ui/docs/.vitepress/config.ts
- */
+
 import { defineConfig } from 'vitepress'
-import { docsName, docsDescription, sidebarCN, sidebarUS } from '../constants'
+import { docsName, docsDescription, sidebarCN, sidebarUS } from './constants'
 
 module.exports = defineConfig({
   title: 'Eurus UI',
@@ -29,7 +22,6 @@ module.exports = defineConfig({
     ],
   ],
   lang: 'en-US',
-
   themeConfig: {
     logo: '/logo.png',
     nav: [{ text: '组件', link: '/zh-CN/components/' }],
@@ -88,7 +80,6 @@ module.exports = defineConfig({
       dir: 'docs',
       text: 'Edit this page on GitHub',
     },
-
     socialLinks: [
       {
         icon: 'github',

@@ -1,16 +1,9 @@
-/*
- * @Author: jiangxd
- * @Date: 2022-06-04 12:51:55
- * @LastEditTime: 2022-06-04 22:50:59
- * @LastEditors: jiangxd
- * @Description:
- * @FilePath: /eurus-ui/docs/.vitepress/plugins/md-transform.ts
- */
+
 import path from 'path'
 import klawSync from 'klaw-sync'
-
+import fs from 'fs'
 import type { Plugin } from 'vite'
-import { packagesDir } from '../../constants';
+import { packagesDir } from '../constants';
 
 const PACKAGES_PATH = path.resolve(__dirname, '../../', packagesDir)
 
@@ -24,28 +17,18 @@ export function MarkdownTransform(): Plugin {
     name: 'element-plus-md-transform',
     enforce: 'pre',
     async transform(code, id) {
-      if (!id.endsWith('.md')) { return }
+
+      if (!id.endsWith('.md')) return
 
       const componentId = path.basename(id, '.md')
 
-      if (!components.includes(componentId)) { return }
-
-      const append = {
-        headers: [],
-        footers: [],
-        scriptSetups: [
-          `const demos = import.meta.globEager('../../../src/packages/${componentId}/demo/demo*.vue')`,
-        ],
-      }
-
-      code += `
-<script setup>
-${append.scriptSetups}
-</script>
-`
+      if (!components.includes(componentId)) return
+      const src = code.match(/(?<=src=\").*?(?=\")/g)![0];
+      const source = fs.readFileSync(path.resolve(src),'utf-8');
+      const codeSplit = code.split("code-demo")
 
       return {
-        code,
+        code:  codeSplit[0] + `code-demo source="${encodeURIComponent(source)}" ` + codeSplit[1],
       }
     },
   }

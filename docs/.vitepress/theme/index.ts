@@ -10,15 +10,21 @@
 
 import Theme from 'vitepress/theme'
 
-
 import '../style/main.css'
 import '../style/vars.css'
-const theme = {
-  ...Theme,
-  async enhanceApp({ app }: { app: any }) {
-    const Demo = typeof window === 'undefined' ? await import("../components/srrDemo.vue") : await import('../components/CodeDemo.vue')
-    app.component('Demo', Demo)
 
-  },
+
+async function getTheme(){
+  const CodeDemo = typeof window === 'undefined' ? await import("../components/srrDemo.vue") : await import('../components/CodeDemo.vue')
+
+  return  {
+    ...Theme,
+     enhanceApp({ app }: { app: any }) {
+      app.component('CodeDemo', CodeDemo.default)
+    },
+  }
 }
+
+const theme =await getTheme()
+
 export default theme

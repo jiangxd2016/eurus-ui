@@ -1,17 +1,12 @@
 <template>
-  <EButton>default</EButton>
-  <EButton type="primary">primary</EButton>
-  <EButton type="info">info</EButton>
-  <EButton type="warning">warning</EButton>
-  <EButton type="error">error</EButton>
-  <EButton type="purple">purple</EButton>
+  <e-button>default</e-button>
+  <e-button type="primary">primary</e-button>
+  <e-button type="info">info</e-button>
+  <e-button type="warning">warning</e-button>
+  <e-button type="error">error</e-button>
+  <e-button type="purple">purple</e-button>
 </template>
 
-<script lang="ts">
-import { EButton } from 'eurus-ui'
-export default {
-  name: 'ButtonDemo',
-  title: '基本1',
-  describe: '基本用法',
-}
+<script  setup>
+  import { EButton } from 'eurus-ui'
 </script>
