@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, PropType } from 'vue'
 import { defineComponent, reactive } from 'vue'
 
 import { LoadingIcon } from '../../icons'
-import './style.styl'
+import './style.scss'
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -81,7 +81,7 @@ export default defineComponent({
       plain: props.plain,
       circle: props.circle,
       round: props.round,
-      [`e-button--${props.size}`]: props.size 
+      [`e-button--${props.size}`]: props.size
     })
 
     const handleClick = (e: Event) => {

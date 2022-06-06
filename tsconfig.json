@@ -1,9 +1,19 @@
 {
   "compilerOptions": {
+
+    "sourceMap": false,
+    "useDefineForClassFields": false,
+    "allowJs": false,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "emitDeclarationOnly": true,
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
+    "baseUrl": ".",
     "jsx": "preserve",
     "lib": ["esnext", "DOM"],
     "declaration": true,
@@ -19,7 +29,7 @@
   "typeAcquisition": {
     "include": ["vue"]
   },
-  "include": ["typings/**/*.d.ts"],
+  "include": ["src","typings/**/*.d.ts"],
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true
   }
