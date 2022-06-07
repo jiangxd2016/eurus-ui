@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, PropType } from 'vue'
 import { defineComponent, reactive } from 'vue'
 
 import { LoadingIcon } from '../../icons'
-import './style.scss'
+import "./style.scss"
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'

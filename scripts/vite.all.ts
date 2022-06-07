@@ -1,18 +1,13 @@
 import { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import path from 'path'
-import postcssImport from 'postcss-import'
+
 const config: InlineConfig = {
   mode: 'production',
-  css: {
-
-  },
   build: {
-    minify: false,
+    minify: true,
     emptyOutDir: false,
-    brotliSize: false,
-    cssCodeSplit:false,
+    brotliSize: true,
     rollupOptions: {
       input: ['src/index.ts'],
       output: [

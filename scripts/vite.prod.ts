@@ -4,13 +4,11 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 
 const config: InlineConfig = {
   mode: 'production',
-
   build: {
     target: 'modules',
     emptyOutDir: false,
-    minify: false,
-    brotliSize: false,
-
+    minify: true,
+    brotliSize: true,
     rollupOptions: {
       input: ['src/index.ts'],
       output: [

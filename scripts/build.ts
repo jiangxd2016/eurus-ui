@@ -6,6 +6,8 @@ import { build } from 'vite';
 import genVersion from "./gen-version";
 
 const nodeEnv = process.env.NODE_ENV;
+console.log(`[vite lib css] ${nodeEnv}`);
+
 let config = configDev;
 
 if(nodeEnv === "all"){
