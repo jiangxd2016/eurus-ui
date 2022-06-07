@@ -4,11 +4,11 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import libInjectCss from './index';
 import Inspect from 'vite-plugin-inspect'
 import inlineToExtract from './toExtract';
+import scss from 'rollup-plugin-scss'
+
 const config: InlineConfig = {
   mode: 'production',
-  server: {
-    port: 3000,
-  }, build: {
+  build: {
     emptyOutDir: false,
     minify: false,
     brotliSize: false,
@@ -35,7 +35,7 @@ const config: InlineConfig = {
   plugins: [
     // inlineToExtract(),
     // Inspect(),
-    //  libInjectCss(),
+     libInjectCss(),
       vue(),
        vueJsx()],
 };

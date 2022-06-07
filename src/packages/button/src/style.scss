@@ -13,9 +13,10 @@
   text-decoration: none;
   vertical-align: middle;
   outline: 0;
+
   border: 0;
   border-radius: 4px;
-  background: rgba(0, 0, 0, 0);
+  background:$btn-color;
 }
 
 .e-button:hover {
