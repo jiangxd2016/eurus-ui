@@ -24,7 +24,6 @@ export default function libInjectCss(): Plugin {
       const filePath = (path) => resolve(viteConfig.root, outDir, path);
 
       if (fileRegex.test(id)) {
-        console.log(id);
 
         return {
           code: null,
@@ -46,7 +45,6 @@ export default function libInjectCss(): Plugin {
         const outDir = viteConfig.build.outDir || "dist";
         const fileName = file[0];
         const filePath = resolve(root, outDir, fileName);
-        console.log({ filePath, fileName ,root});
 
 
       }
