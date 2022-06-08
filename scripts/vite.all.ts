@@ -8,13 +8,11 @@ const config: InlineConfig = {
   css: {
     preprocessorOptions: {
       scss: {
-        charset: false,
         additionalData: `@import "${dirname}/src/stylus/inject";`,
       },
     }
   },
   build: {
-    minify: true,
     emptyOutDir: false,
     brotliSize: false,
     rollupOptions: {
@@ -29,7 +27,6 @@ const config: InlineConfig = {
       formats: ['es', 'cjs'],
       fileName: (module) => {
         return `eurus-ui.${module === 'es' ? 'm' : 'c'}js`
-
       }
     },
   },

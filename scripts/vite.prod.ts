@@ -8,7 +8,6 @@ const config: InlineConfig = {
   build: {
     target: 'modules',
     emptyOutDir: false,
-    minify: true,
     brotliSize: false,
     rollupOptions: {
       input: ['src/index.ts'],

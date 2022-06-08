@@ -18,14 +18,14 @@ async function run() {
   await genVersion();
   if (nodeEnv) {
     await Promise.all(config.map(item => build(item)));
-    console.log('[eurus-ui build]: build type')
+    console.log('[eurus-ui build]: start build type')
     // genrate type
     exec('npm run build-types')
   } else {
 
     await build(configDev);
     exec('npm run build-types-esm')
-    console.log('[eurus-ui dev] start watch');
+    console.log('[eurus-ui dev] start watch change ...');
 
     const watcher = chokidar.watch('src/**/*', {
       ignored: ['**/demo/*.vue', '**/*.md', '**/*.spec.ts'], // ignore dotfiles
