@@ -1,24 +1,44 @@
 
-import configProd from "./vite.prod"
-import configDev from "./vite.dev";
-import configAll from "./vite.all"
+
 import { build } from 'vite';
+import { InlineConfig } from "vite";
+import chokidar from "chokidar"
+import {exec} from "child_process";
+
+
+import configDev from "./vite.dev";
+import configProd from "./vite.prod"
+import configAll from "./vite.all"
+
 import genVersion from "./gen-version";
 
+
 const nodeEnv = process.env.NODE_ENV;
-console.log(`[vite lib css] ${nodeEnv}`);
+console.log(`[vite build env] ${nodeEnv}`);
 
-let config = configDev;
+const config: InlineConfig[] = [configProd, nodeEnv === "all" && configAll].filter(Boolean);
 
-if(nodeEnv === "all"){
-  config = configAll
-}
-if(nodeEnv === "compts"){
-  config = configProd
-}
 async function run() {
+
   await genVersion();
-  await build(config);
+
+  if (nodeEnv) {
+    await Promise.all(config.map(item => build(item)));
+  }else{
+   await build(configDev);
+    const watcher = chokidar.watch('src/**/*', {
+      ignored: ["**/demo/*.vue","**/*.md","**/*.spec.ts"], // ignore dotfiles
+      persistent: true,
+      interval: 1000,
+    });
+    watcher.on('change', ()=>{
+        build(configDev);
+      })
+  }
+
+  // genrate type
+  exec("npm run build-types")
+
 }
 
 run()

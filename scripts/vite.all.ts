@@ -1,35 +1,29 @@
 import { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-
+import { resolve } from 'path';
+const dirname = resolve()
 const config: InlineConfig = {
   mode: 'production',
+  css: {
+    preprocessorOptions: {
+      scss: {
+        charset: false,
+        additionalData: `@import "${dirname}/src/stylus/inject";`,
+      },
+    }
+  },
   build: {
     minify: true,
     emptyOutDir: false,
-    brotliSize: true,
+    brotliSize: false,
     rollupOptions: {
-      input: ['src/index.ts'],
-      output: [
-        {
-          format: 'es',
-          dir: 'dist/es',
-          exports: 'named',
-          entryFileNames: '[name].js',
-          preserveModules: true,
-          preserveModulesRoot: 'packages',
-        },
-        {
-          format: 'cjs',
-          dir: 'dist/lib',
-          exports: 'named',
-          entryFileNames: '[name].js',
-          preserveModules: true,
-          preserveModulesRoot: 'packages',
-        },
-      ],
+      output: {
+        exports: 'named',
+      },
       external: ['vue']
     },
+
     lib: {
       entry: 'src/index.ts',
       formats: ['es', 'cjs'],

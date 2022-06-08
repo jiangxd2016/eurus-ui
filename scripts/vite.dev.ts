@@ -1,18 +1,14 @@
 import { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import libInjectCss from './index';
-import Inspect from 'vite-plugin-inspect'
-import inlineToExtract from './toExtract';
-import scss from 'rollup-plugin-scss'
+import viteCssPlugin from './vite-css-plugin';
 
 const config: InlineConfig = {
-  mode: 'production',
+  mode: 'development',
   build: {
     emptyOutDir: false,
     minify: false,
     brotliSize: false,
-    watch: {},
     rollupOptions: {
       input: ['src/index.ts'],
       output: [
@@ -33,11 +29,9 @@ const config: InlineConfig = {
     },
   },
   plugins: [
-    // inlineToExtract(),
-    // Inspect(),
-     libInjectCss(),
-      vue(),
-       vueJsx()],
+    viteCssPlugin(),
+    vue(),
+    vueJsx()],
 };
 
 export default config;

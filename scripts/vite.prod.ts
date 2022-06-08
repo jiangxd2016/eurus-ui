@@ -1,6 +1,7 @@
 import { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import viteCssPlugin from './vite-css-plugin';
 
 const config: InlineConfig = {
   mode: 'production',
@@ -8,7 +9,7 @@ const config: InlineConfig = {
     target: 'modules',
     emptyOutDir: false,
     minify: true,
-    brotliSize: true,
+    brotliSize: false,
     rollupOptions: {
       input: ['src/index.ts'],
       output: [
@@ -29,14 +30,15 @@ const config: InlineConfig = {
           preserveModulesRoot: 'packages',
         },
       ],
+
       external: ['vue']
     },
     lib: {
       entry: 'src/index.ts',
-      formats: ['es', 'cjs'],
+      formats: ['es'],
     },
   },
-  plugins: [ vue(), vueJsx()],
+  plugins: [viteCssPlugin(), vue(), vueJsx()],
 };
 
 export default config;
