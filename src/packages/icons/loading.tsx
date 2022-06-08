@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import "./style.scss"
+import './style.scss'
 export default defineComponent({
   name: 'LoadingIcon',
   render() {
