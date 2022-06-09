@@ -1,6 +1,6 @@
 {
   "name": "eurus-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "type": "module",
   "private": true,
@@ -76,7 +76,7 @@
     "sass": "^1.52.2",
     "standard-changelog": "^2.0.27",
     "typescript": "^4.7.3",
-    "vite": "^2.9.9",
+    "vite": "^3.0.0-alpha.9",
     "vitest": "^0.13.1",
     "vue": "^3.2.26",
     "vue-tsc": "^0.35.2"

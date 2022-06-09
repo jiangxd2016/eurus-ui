@@ -12,7 +12,9 @@ import genVersion from './gen-version';
 const nodeEnv = process.env.NODE_ENV;
 console.log(`[eurus-ui env] ${nodeEnv}`);
 
-const config: InlineConfig[] = [configProd, nodeEnv === 'all' && configAll].filter(Boolean);
+// configProd,
+
+const config: InlineConfig[] = [nodeEnv === 'all' && configAll].filter(Boolean);
 
 async function run() {
   await genVersion();

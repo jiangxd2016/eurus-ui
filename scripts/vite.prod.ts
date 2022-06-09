@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import type { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -5,10 +6,14 @@ import viteCssPlugin from './vite-css-plugin';
 
 const config: InlineConfig = {
   mode: 'production',
+  resolve: {
+    alias: {
+      '~/': `${resolve(resolve(), 'src')}/`,
+    },
+  },
   build: {
     target: 'modules',
     emptyOutDir: false,
-    brotliSize: false,
     rollupOptions: {
       input: ['src/index.ts'],
       output: [

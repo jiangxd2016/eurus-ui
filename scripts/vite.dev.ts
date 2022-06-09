@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import type { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -5,9 +6,14 @@ import viteCssPlugin from './vite-css-plugin';
 
 const config: InlineConfig = {
   mode: 'development',
+  resolve: {
+    alias: {
+      '~/': `${resolve(resolve(), 'src')}/`,
+    },
+  },
   build: {
     minify: false,
-    brotliSize: false,
+    emptyOutDir: false,
     rollupOptions: {
       input: ['src/index.ts'],
       output: [
@@ -17,7 +23,6 @@ const config: InlineConfig = {
           exports: 'named',
           entryFileNames: '[name].js',
           preserveModules: true,
-          preserveModulesRoot: 'packages',
         },
       ],
       external: ['vue']

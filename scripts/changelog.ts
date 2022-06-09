@@ -42,7 +42,7 @@ function getLastChangeLogCommit() {
     encoding: 'utf-8',
   }).split('\n');
 
-  return changeLogCommits.find(cmt => VERSION_REG.test(cmt)).slice(0, 8);
+  return changeLogCommits.find(cmt => VERSION_REG.test(cmt))?.slice(0, 8);
 }
 
 function getGitCommitMap(lastCommit) {

@@ -9,6 +9,7 @@ let viteConfig: ResolvedConfig;
 const injectPath = resolve(dirname, './src/stylus/inject.scss');
 const InjectCss: string = fs.readFileSync(injectPath, 'utf-8');
 
+// TODO: 目前只支持sass。
 const fileRegex = /.(scss|less|css)(\?used)?$/;
 const replaceReg = /import(.*).(scss|less|css)('|")/;
 const injectPathReg = /(?<=\s("|')).*?(?=("|'))/
@@ -16,9 +17,10 @@ const pathReg = /(?<=src).*/
 
 const compileToCSS = async function (css: string, path: string) {
   try {
-    const res = sass.renderSync({ includePaths: [injectPath], data: InjectCss + css });
+    const res = sass.renderSync({ data: InjectCss + css });
 
     const outputDir = viteConfig.inlineConfig.build.rollupOptions.output as any[]
+
     const resolvePath = resolve(path, '../')
 
     outputDir.forEach((item) => {
