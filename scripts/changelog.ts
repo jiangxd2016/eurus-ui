@@ -27,7 +27,7 @@ function updateVersion() {
       }
       const newPkg = JSON.stringify({ ...pkg, version: newVersion }, null, 2);
       writeFileSync('package.json', `${newPkg}\n`, 'utf8');
-      console.log('\u001B[32m%s\u001B[0m', '\n🎉 good job! package.json 文件已更新.\n');
+      console.log('\u001B[32m%s\u001B[0m', '\n🎉  package.json 文件已更新.\n');
       rl.close();
     });
 
@@ -42,7 +42,7 @@ function getLastChangeLogCommit() {
     encoding: 'utf-8',
   }).split('\n');
 
-  return changeLogCommits.find(cmt => VERSION_REG.test(cmt))?.slice(0, 8);
+  return changeLogCommits.find(cmt => VERSION_REG.test(cmt))?.slice(0, 8) ?? "";
 }
 
 function getGitCommitMap(lastCommit) {
