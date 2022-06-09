@@ -6,7 +6,7 @@ import sass from 'sass'
 const dirname = resolve();
 
 let viteConfig: ResolvedConfig;
-const injectPath = resolve(dirname, './src/stylus/inject.scss');
+const injectPath = resolve(dirname, './src/scss/index.scss');
 const InjectCss: string = fs.readFileSync(injectPath, 'utf-8');
 
 // TODO: 目前只支持sass。
@@ -15,9 +15,35 @@ const replaceReg = /import(.*).(scss|less|css)('|")/;
 const injectPathReg = /(?<=\s("|')).*?(?=("|'))/
 const pathReg = /(?<=src).*/
 
+/**
+ * Returns a sass `importer` list:
+ * @see https://sass-lang.com/documentation/js-api#importer
+ */
+
 const compileToCSS = async function (css: string, path: string) {
   try {
-    const res = sass.renderSync({ data: InjectCss + css });
+    const res = sass.compile(path, {
+
+      loadPaths: [dirname + '/src/scss/*'],
+      importers: [{
+        canonicalize(url) {
+
+          if (url.startsWith('~')) {
+            console.log({ url: new URL(dirname + url.slice(1)) });
+            return new URL(dirname + url.slice(1));
+          }
+          return new URL(url);
+        },
+        load(canonicalUrl) {
+          console.log({ canonicalUrl });
+
+          return {
+            contents: `body {background-color: ${canonicalUrl.pathname}}`,
+            syntax: 'scss'
+          };
+        }
+      }]
+    });
 
     const outputDir = viteConfig.inlineConfig.build.rollupOptions.output as any[]
 
