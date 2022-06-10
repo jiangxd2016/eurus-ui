@@ -23,26 +23,7 @@ const pathReg = /(?<=src).*/
 const compileToCSS = async function (css: string, path: string) {
   try {
     const res = sass.compile(path, {
-
       loadPaths: [dirname + '/src/scss/*'],
-      importers: [{
-        canonicalize(url) {
-
-          if (url.startsWith('~')) {
-            console.log({ url: new URL(dirname + url.slice(1)) });
-            return new URL(dirname + url.slice(1));
-          }
-          return new URL(url);
-        },
-        load(canonicalUrl) {
-          console.log({ canonicalUrl });
-
-          return {
-            contents: `body {background-color: ${canonicalUrl.pathname}}`,
-            syntax: 'scss'
-          };
-        }
-      }]
     });
 
     const outputDir = viteConfig.inlineConfig.build.rollupOptions.output as any[]

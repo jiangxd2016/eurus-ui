@@ -20,7 +20,7 @@ const config: InlineConfig = {
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "${dirname}/src/stylus/inject";`,
+        additionalData: `@import "${dirname}/src/scss/index";`,
       },
     }
   },
