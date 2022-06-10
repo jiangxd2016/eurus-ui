@@ -7,6 +7,12 @@ import viteCssPlugin from './vite-css-plugin';
 const dirname = resolve()
 const config: InlineConfig = {
   mode: 'development',
+  resolve: {
+    alias: {
+      '~/': `${resolve(resolve(), 'src')}/`,
+    },
+  },
+
   build: {
     minify: false,
     emptyOutDir: false,
