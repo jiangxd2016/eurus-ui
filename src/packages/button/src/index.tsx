@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue'
 import { defineComponent, reactive } from 'vue'
 
-import { LoadingIcon } from '~/package/icons'
+import { LoadingIcon } from '~/packages/icons'
 import './style.scss'
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'

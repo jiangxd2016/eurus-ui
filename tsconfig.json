@@ -14,7 +14,10 @@
     "strict": true,
     "baseUrl": ".",
     "jsx": "preserve",
-    "lib": ["esnext", "DOM"],
+    "lib": [
+      "esnext",
+      "DOM"
+    ],
     "declaration": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
@@ -22,13 +25,20 @@
     "rootDir": "src",
     "outDir": "./dist",
     "paths": {
-      "~": ["src"]
-    },
+      "~/*": [
+        "src/*"
+      ]
+    }
   },
   "typeAcquisition": {
-    "include": ["vue"]
+    "include": [
+      "vue"
+    ]
   },
-  "include": ["src","typings/**/*.d.ts"],
+  "include": [
+    "src",
+    "typings/**/*.d.ts"
+  ],
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true
   }
