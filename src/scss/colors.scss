@@ -1,76 +1,76 @@
 \:root {
-  q-color-primary: #{$primary};
-  q-color-secondary: #{$secondary};
-  q-color-accent: #{$accent};
-  q-color-positive: #{$positive};
-  q-color-negative: #{$negative};
-  q-color-info: #{$info};
-  q-color-warning: #{$warning};
-  q-color-dark: #{$dark};
+ --e-color-primary: #{$primary};
+ --e-color-secondary: #{$secondary};
+ --e-color-accent: #{$accent};
+ --e-color-positive: #{$positive};
+ --e-color-negative: #{$negative};
+ --e-color-info: #{$info};
+ --e-color-warning: #{$warning};
+ --e-color-dark: #{$dark};
 }
 .text-dark {
   color: $dark !important;
-  color: var(q-color-dark) !important;
+  color: var(--e-color-dark) !important;
 }
 .bg-dark {
   background: $dark !important;
-  background: var(q-color-dark) !important;
+  background: var(--e-color-dark) !important;
 }
 .text-primary {
   color: $primary !important;
-  color: var(q-color-primary) !important;
+  color: var(--e-color-primary) !important;
 }
 .bg-primary {
   background: $primary !important;
-  background: var(q-color-primary) !important;
+  background: var(--e-color-primary) !important;
 }
 .text-secondary {
   color: $secondary !important;
-  color: var(q-color-secondary) !important;
+  color: var(--e-color-secondary) !important;
 }
 .bg-secondary {
   background: $secondary !important;
-  background: var(q-color-secondary) !important;
+  background: var(--e-color-secondary) !important;
 }
 .text-accent {
   color: $accent !important;
-  color: var(q-color-accent) !important;
+  color: var(--e-color-accent) !important;
 }
 .bg-accent {
   background: $accent !important;
-  background: var(q-color-accent) !important;
+  background: var(--e-color-accent) !important;
 }
 .text-positive {
   color: $positive !important;
-  color: var(q-color-positive) !important;
+  color: var(--e-color-positive) !important;
 }
 .bg-positive {
   background: $positive !important;
-  background: var(q-color-positive) !important;
+  background: var(--e-color-positive) !important;
 }
 .text-negative {
   color: $negative !important;
-  color: var(q-color-negative) !important;
+  color: var(--e-color-negative) !important;
 }
 .bg-negative {
   background: $negative !important;
-  background: var(q-color-negative) !important;
+  background: var(--e-color-negative) !important;
 }
 .text-info {
   color: $info !important;
-  color: var(q-color-info) !important;
+  color: var(--e-color-info) !important;
 }
 .bg-info {
   background: $info !important;
-  background: var(q-color-info) !important;
+  background: var(--e-color-info) !important;
 }
 .text-warning {
   color: $warning !important;
-  color: var(q-color-warning) !important;
+  color: var(--e-color-warning) !important;
 }
 .bg-warning {
   background: $warning !important;
-  background: var(q-color-warning) !important;
+  background: var(--e-color-warning) !important;
 }
 .text-white {
   color: #fff !important;
