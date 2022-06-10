@@ -6,30 +6,21 @@ import sass from 'sass'
 const dirname = resolve();
 
 let viteConfig: ResolvedConfig;
-const injectPath = resolve(dirname, './src/scss/index.scss');
-const InjectCss: string = fs.readFileSync(injectPath, 'utf-8');
 
 // TODO: 目前只支持sass。
-const fileRegex = /.(scss|less|css)(\?used)?$/;
 const replaceReg = /import(.*).(scss|less|css)('|")/;
 const injectPathReg = /(?<=\s("|')).*?(?=("|'))/
 const pathReg = /(?<=src).*/
 
-/**
- * Returns a sass `importer` list:
- * @see https://sass-lang.com/documentation/js-api#importer
- */
 
-const compileToCSS = async function (css: string, path: string) {
+const compileToCSS = async function (path: string) {
   try {
     const res = sass.compile(path, {
       loadPaths: [dirname + '/src/scss/*'],
     });
 
     const outputDir = viteConfig.inlineConfig.build.rollupOptions.output as any[]
-
     const resolvePath = resolve(path, '../')
-
     outputDir.forEach((item) => {
       const output = dirname + '/' + item.dir + resolvePath.match(pathReg)[0]
       if (!fs.existsSync(output)) {
@@ -54,8 +45,7 @@ export default function viteCssPlugin(): Plugin {
       if (id.endsWith('.tsx') && replaceReg.test(code)) {
         const stylePath = code.match(replaceReg)[0].match(injectPathReg)[0];
         const path = resolve(id, '../', stylePath);
-        const css = fs.readFileSync(path, 'utf-8');
-        compileToCSS(css, path)
+        compileToCSS(path)
         return {
           code: code.replace(replaceReg, ''),
           map: null // 如果可行将提供 source map

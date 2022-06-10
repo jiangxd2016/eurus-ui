@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-
     "sourceMap": false,
     "useDefineForClassFields": false,
     "allowJs": false,
@@ -23,7 +22,7 @@
     "rootDir": "src",
     "outDir": "./dist",
     "paths": {
-      "eurus-ui": ["src"]
+      "~": ["src"]
     },
   },
   "typeAcquisition": {
