@@ -22,8 +22,8 @@
     "rootDir": "src",
     "outDir": "./dist",
     "paths": {
-      "~": ["src"]
-    },
+      "~/*": ["src/*"]
+    }
   },
   "typeAcquisition": {
     "include": ["vue"]

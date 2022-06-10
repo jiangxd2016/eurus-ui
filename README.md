@@ -1,2 +1,2 @@
 
-# eurus-ui
+# Eurus UI
