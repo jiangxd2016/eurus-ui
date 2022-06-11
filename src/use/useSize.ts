@@ -1,2 +1,1 @@
-const useSize = 2
-export default useSize
+export const useSize = 2
