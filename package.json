@@ -18,7 +18,7 @@
     "build-types-cjs": "vue-tsc -p ./src/tsconfig.cjs.json --declaration --emitDeclarationOnly",
     "build-types-esm": "vue-tsc -p ./src/tsconfig.esm.json --declaration --emitDeclarationOnly",
     "gen-version": "esno ./scripts/gen-version.ts",
-    "docs:dev": "pnpm -C dev docs",
+    "docs:dev": "pnpm -C docs dev",
     "docs:build": "pnpm -C docs build",
     "docs:serve": "pnpm -C docs serve",
     "changelog": "esno scripts/changelog.ts",
@@ -88,6 +88,7 @@
     "vite": "^3.0.0-alpha.9",
     "vitest": "^0.13.1",
     "vue": "^3.2.37",
-    "vue-tsc": "^0.35.2"
+    "vue-tsc": "^0.35.2",
+    "vue-types": "^4.1.1"
   }
 }
