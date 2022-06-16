@@ -2,11 +2,10 @@
   "name": "eurus-ui",
   "version": "0.0.0",
   "description": "",
-  "type": "module",
   "private": true,
   "packageManager": "pnpm@7.1.7",
   "engines": {
-    "node": ">= 14"
+    "node": ">= 16"
   },
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
@@ -23,9 +22,11 @@
     "docs:serve": "pnpm -C docs serve",
     "changelog": "esno scripts/changelog.ts",
     "clean": "rimraf dist",
+    "cz": "git cz",
     "lint-change": "lcf --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
     "test": "vitest",
+    "postinstall": "commitizen init cz-git --pnpm --dev --exact --force",
     "coverage": "vitest run --coverage"
   },
   "repository": {
@@ -46,14 +47,14 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-git"
+      "path": "node_modules/cz-git"
     }
   },
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty && npx git-cz --hook"
+      "prepare-commit-msg": "exec < /dev/tty &&cz-git --hook"
     }
   },
   "lint-staged": {
@@ -74,10 +75,11 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "@vue/test-utils": "^2.0.1",
-    "c8": "^7.11.3",
     "chokidar": "^3.5.3",
+    "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
     "cypress": "^9.7.0",
+    "cz-git": "^1.3.4",
     "eslint": "^8.17.0",
     "esno": "^0.16.3",
     "pnpm": "7.1.7",

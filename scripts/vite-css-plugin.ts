@@ -12,7 +12,6 @@ const replaceReg = /import(.*).(scss|less|css)('|")/;
 const injectPathReg = /(?<=\s("|')).*?(?=("|'))/
 const pathReg = /(?<=src).*/
 
-
 const compileToCSS = async function (path: string) {
   try {
     const res = sass.compile(path, {
