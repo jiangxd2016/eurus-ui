@@ -1,24 +1,12 @@
-/** @type {import('cz-git').UserConfig} */
 
-const fs  =   require('fs');
-const path = require('path');
+const fs   =   require('fs');
+const path =   require('path');
 
 const packages = fs.readdirSync(path.resolve(__dirname, 'src/packages'))
 
-const { execSync } = require('child_process');
-// precomputed scope
-const scopeComplete = execSync('git status --porcelain || true')
-  .toString()
-  .trim()
-  .split('\n')
-  .find((r) => ~r.indexOf('M  src'))
-  ?.replace(/(\/)/g, '%%')
-  ?.match(/src%%((\w|-)*)/)?.[1];
 
 module.exports = {
-  rules: {
-    "scope-enum": [2, "always", [ ...packages ]]
-  },
+
   prompt: {
     messages: {
       type: "选择你要提交的类型 :",
@@ -60,9 +48,7 @@ module.exports = {
     ],
     useEmoji: true,
     themeColorCode: "",
-  // scopes: [...packages] ,
-  defaultScope: scopeComplete,
-  customScopesAlign: !scopeComplete ? 'top-bottom' : 'bottom',
+    scopes: [...packages] ,
     allowCustomScopes: true,
     allowEmptyScopes: true,
     customScopesAlign: "bottom",
