@@ -26,7 +26,7 @@
     "lint-change": "lcf --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
     "test": "vitest",
-    "postinstall": "commitizen init cz-git --pnpm --dev --exact --force",
+    "postinstall": "./node_modules/.bin/commitizen init cz-git --dev --exact --force",
     "coverage": "vitest run --coverage"
   },
   "repository": {
@@ -54,7 +54,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty &&cz-git --hook"
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
     }
   },
   "lint-staged": {
