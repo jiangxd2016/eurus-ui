@@ -54,7 +54,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+      "commit-msg": "exec < /dev/tty && npx cz --hook || true"
     }
   },
   "lint-staged": {
