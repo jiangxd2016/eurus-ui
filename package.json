@@ -45,11 +45,10 @@
   "bugs": {
     "url": "https://github.com/jiangxd2016/eurus-ui/issues"
   },
-
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
   "gitHooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "esno scripts/verifyCommit.ts"
+    "pre-commit": "lint-staged",
+    "commit-msg": "esno scripts/verifyCommit.ts"
   },
   "lint-staged": {
     "**/*.{js,ts,vue}": [
