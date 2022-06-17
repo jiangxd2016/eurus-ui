@@ -26,6 +26,7 @@
     "lint-change": "lcf --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
     "test": "vitest",
+    "prepare": "husky install",
     "coverage": "vitest run --coverage"
   },
   "repository": {
@@ -46,11 +47,9 @@
   },
 
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
-  "husky": {
-    "hooks": {
+  "gitHooks": {
       "pre-commit": "lint-staged",
       "commit-msg": "esno scripts/verifyCommit.ts"
-    }
   },
   "lint-staged": {
     "**/*.{js,ts,vue}": [
