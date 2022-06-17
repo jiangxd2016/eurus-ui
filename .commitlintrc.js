@@ -1,8 +1,23 @@
-// .commitlintrc.js
 /** @type {import('cz-git').UserConfig} */
+
+const fs  =   require('fs');
+const path = require('path');
+
+const packages = fs.readdirSync(path.resolve(__dirname, 'src/packages'))
+
+const { execSync } = require('child_process');
+// precomputed scope
+const scopeComplete = execSync('git status --porcelain || true')
+  .toString()
+  .trim()
+  .split('\n')
+  .find((r) => ~r.indexOf('M  src'))
+  ?.replace(/(\/)/g, '%%')
+  ?.match(/src%%((\w|-)*)/)?.[1];
+
 module.exports = {
   rules: {
-    // @see: https://commitlint.js.org/#/reference-rules
+    "scope-enum": [2, "always", [ ...packages ]]
   },
   prompt: {
     messages: {
@@ -35,17 +50,19 @@ module.exports = {
       { value: "fix",     name: "fix:      🐛    修复缺陷 | A bug fix", emoji: ":bug:" },
       { value: "docs",    name: "docs:     📝    文档更新 | Documentation only changes", emoji: ":memo:" },
       { value: "style",   name: "style:    💄    代码格式 | Changes that do not affect the meaning of the code", emoji: ":lipstick:" },
+      { value: 'chore',   name: "chore:    ⏪️     其他修改 | everts a previous commit", emoji: ":rewind:" },
       { value: "refactor",name: "refactor: ♻️    代码重构 | A code change that neither fixes a bug nor adds a feature", emoji: ":recycle:" },
       { value: "perf",    name: "perf:     ⚡️    性能提升 | A code change that improves performance", emoji: ":zap:" },
       { value: "test",    name: "test:     ✅    测试相关 | Adding missing tests or correcting existing tests", emoji: ":white_check_mark:" },
       { value: "build",   name: "build:    📦️    构建相关 | Changes that affect the build system or external dependencies", emoji: ":package:" },
       { value: "ci",      name: "ci:       🎡    持续集成 | Changes to our CI configuration files and scripts", emoji: ":ferris_wheel:" },
-      { value: "chore",   name: "chore:    🔨    回退代码 | Other changes that don't modify src or test files", emoji: ":hammer:" },
-      { value: "revert",  name: "revert:   ⏪️    其他修改 | everts a previous commit", emoji: ":rewind:" }
+      { value: 'revert',  name: "revert:   🔨    回退代码 | Other changes that don't modify src or test files", emoji: ":hammer:" },
     ],
     useEmoji: true,
     themeColorCode: "",
-    scopes: [],
+  // scopes: [...packages] ,
+  defaultScope: scopeComplete,
+  customScopesAlign: !scopeComplete ? 'top-bottom' : 'bottom',
     allowCustomScopes: true,
     allowEmptyScopes: true,
     customScopesAlign: "bottom",

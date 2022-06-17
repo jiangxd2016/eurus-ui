@@ -26,7 +26,7 @@
     "lint-change": "lcf --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
     "test": "vitest",
-    "postinstall": "./node_modules/.bin/commitizen init cz-git --dev --exact --force",
+    "postinstall": "./node_modules/.bin/commitizen init cz-git --dev --exact",
     "coverage": "vitest run --coverage"
   },
   "repository": {
@@ -82,6 +82,7 @@
     "cz-git": "^1.3.4",
     "eslint": "^8.17.0",
     "esno": "^0.16.3",
+    "husky": "^8.0.1",
     "pnpm": "7.1.7",
     "rimraf": "^3.0.2",
     "sass": "^1.52.3",
