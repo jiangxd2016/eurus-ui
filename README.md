@@ -14,5 +14,5 @@
   │       └─⫸ Commit Scope:   components|utils|other
   │
   │
-  └─⫸ Commit Type: chore|build|ci|docs|feat|fix|perf|refactor|test|play|script
+  └─⫸ Commit Type: feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release
 ```
