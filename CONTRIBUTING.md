@@ -85,7 +85,6 @@ git merge upstream/develop
 
 每次提交会自动触发提交验证
 
-- 使用工具 commitizen 协助规范 git commit 信息
 - fix & feat 的提交会被用来生成 changelog
 - 提交会触发 git pre-commit 检查，修复提示的 eslint 错误，
 
