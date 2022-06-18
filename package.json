@@ -27,7 +27,6 @@
     "lint-change": "lcf --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
     "test": "vitest",
-    "prepare": "husky install",
     "coverage": "vitest run --coverage"
   },
   "repository": {
@@ -47,11 +46,9 @@
     "url": "https://github.com/jiangxd2016/eurus-ui/issues"
   },
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "node scripts/verifyCommit.js"
-    }
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
   },
   "lint-staged": {
     "**/*.{js,ts,vue}": [
@@ -75,7 +72,6 @@
     "cypress": "^9.7.0",
     "eslint": "^8.18.0",
     "esno": "^0.16.3",
-    "husky": "^8.0.1",
     "pnpm": "7.1.7",
     "rimraf": "^3.0.2",
     "sass": "^1.52.3",
@@ -85,6 +81,7 @@
     "vitest": "^0.13.1",
     "vue": "^3.2.37",
     "vue-tsc": "^0.35.2",
-    "vue-types": "^4.1.1"
+    "vue-types": "^4.1.1",
+    "yorkie": "^2.0.0"
   }
 }
