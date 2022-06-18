@@ -6,6 +6,8 @@ const msgPath = process.env.GIT_PARAMS
 const msg = fs.readFileSync(msgPath, 'utf-8')
   .trim()
 
+console.log(chalk.green('Verifying commit message...', msg));
+
 const commitRE = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?: .{1,50}/
 
 if (!commitRE.test(msg)) {
