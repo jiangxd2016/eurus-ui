@@ -64,7 +64,7 @@ importers:
       unocss: ^0.33.5
       vite: ^2.9.12
       vite-plugin-pwa: ^0.12.0
-      vitepress: ^1.0.0-draft.8
+      vitepress: ^1.0.0-alpha.2
       vue: ^3.2.37
       vue-running: ^0.3.4
       workbox-window: ^6.5.3
