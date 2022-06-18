@@ -1,11 +1,4 @@
-/*
- * @Author: jiangxd
- * @Date: 2022-06-04 14:56:12
- * @LastEditTime: 2022-06-04 23:33:09
- * @LastEditors: jiangxd
- * @Description:
- * @FilePath: /eurus-ui/docs/vite.config.ts
- */
+
 import { resolve } from 'path'
 import Unocss from 'unocss/vite'
 import {presetIcons, presetUno, presetWind } from 'unocss'

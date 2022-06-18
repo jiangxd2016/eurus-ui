@@ -19,7 +19,7 @@ function updateVersion() {
       if (!input) {
         newVersion = _version.replace(/(\d+\.\d+\.)(\d+)/, (version, $1, $2) => $1 + (Number($2) + 1));
       } else if (!VERSION_REG.test(input)) {
-        console.log('\u001B[31m%s\u001B[0m', '\n⚡ 不要搞事年轻人，请输入正确版本号格式!\n');
+        console.log('\u001B[31m%s\u001B[0m', '\n⚡ 请输入正确版本号格式!\n');
         rl.prompt();
         return;
       } else {
@@ -42,7 +42,7 @@ function getLastChangeLogCommit() {
     encoding: 'utf-8',
   }).split('\n');
 
-  return changeLogCommits.find(cmt => VERSION_REG.test(cmt))?.slice(0, 8) ?? "";
+  return changeLogCommits.find(cmt => VERSION_REG.test(cmt))?.slice(0, 8) ?? '';
 }
 
 function getGitCommitMap(lastCommit) {
