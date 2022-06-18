@@ -3,6 +3,7 @@
 import fs from 'fs'
 import chalk from 'chalk'
 const msgPath = process.env.GIT_PARAMS
+console.log({ msgPath });
 const msg = fs.readFileSync(msgPath, 'utf-8')
   .trim()
 
