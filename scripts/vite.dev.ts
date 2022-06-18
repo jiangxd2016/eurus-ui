@@ -4,7 +4,6 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import viteCssPlugin from './vite-css-plugin';
 
-const dirname = resolve()
 const config: InlineConfig = {
   mode: 'development',
   resolve: {
