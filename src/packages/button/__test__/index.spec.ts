@@ -6,6 +6,8 @@ describe('Button.vue', () => {
     const wrapper = shallowMount(Button, {
       props: {},
     })
+
+    expect(wrapper.html()).toMatchSnapshot()
     expect(wrapper.classes()).toContain('e-button')
   })
 })

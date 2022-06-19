@@ -1,0 +1,8 @@
+// Vitest Snapshot v1
+
+exports[`Button.vue > render 1`] = `
+"<button class=\\"e-button e-button--default bg-default text-black e-button--md\\" disabled=\\"false\\">
+  <!---->
+  <!---->
+</button>"
+`;

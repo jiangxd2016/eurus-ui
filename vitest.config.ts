@@ -7,6 +7,9 @@ export default defineConfig({
     transformMode: {
       web: [/\.[jt]sx$/],
     },
+    coverage: {
+      exclude: ['index.ts']
+    },
     globals: true,
     environment: 'happy-dom',
 

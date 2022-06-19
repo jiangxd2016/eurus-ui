@@ -9,4 +9,5 @@ dist-ssr
 
 
 .temp
+coverage
 .husky
