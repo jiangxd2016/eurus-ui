@@ -1,11 +1,11 @@
-import { mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Button from '..'
 
 describe('Button.vue', () => {
   test('render', () => {
-    const wrapper = mount(Button, {
+    const wrapper = shallowMount(Button, {
       props: {},
     })
-    expect(wrapper.classes()).toContain('button')
+    expect(wrapper.classes()).toContain('e-button')
   })
 })

@@ -18,6 +18,7 @@
       "esnext",
       "DOM"
     ],
+
     "declaration": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
@@ -26,7 +27,8 @@
     "outDir": "./dist",
     "paths": {
       "~/*": ["src/*"]
-    }
+    },
+    "types": ["vitest/globals"]
   },
   "typeAcquisition": {
     "include": [
