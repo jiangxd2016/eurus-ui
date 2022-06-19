@@ -1,13 +1,79 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import Button from '..'
 
-describe('Button.vue', () => {
-  test('render', () => {
-    const wrapper = shallowMount(Button, {
+describe('button', () => {
+
+  test('button snapshot', () => {
+    const wrapper = mount(Button)
+    expect(wrapper.html()).toMatchSnapshot()
+    wrapper.unmount()
+  })
+  test('button props type', () => {
+
+    const propsType = [undefined, 'default',
+      'text',
+      'primary',
+      'info',
+      'success',
+      'warning',
+      'error',
+      'purple']
+
+    const wrapper = mount(Button, {
       props: {},
     })
-
-    expect(wrapper.html()).toMatchSnapshot()
-    expect(wrapper.classes()).toContain('e-button')
+    propsType.forEach((type) => {
+      wrapper.setProps({ type })
+      expect(wrapper.classes()).toContain('e-button--' + type)
+    })
+    wrapper.unmount()
   })
+
+  test('button type', () => {
+    const wrapper = mount(Button, {
+      props: {}
+    })
+
+    expect(wrapper.classes()).toContain('e-primary')
+    wrapper.unmount()
+  })
+  test('button size', () => {
+    const wrapper = mount(Button, {
+      props: {
+        size: 'small'
+      }
+    })
+
+    expect(wrapper.classes()).toContain('e-button--small')
+  })
+
+  test('button disabled', () => {
+    const wrapper = mount(Button, {
+      props: {
+        disabled: true
+      }
+    })
+
+    expect(wrapper.classes()).toContain('e-button--disabled')
+  }
+  )
+  test('button loading', () => {
+    const wrapper = mount(Button, {
+      props: {
+        loading: true
+      }
+    })
+
+    expect(wrapper.classes()).toContain('e-button--loading')
+  }
+  )
+  test('button icon', () => {
+    const wrapper = mount(Button, {
+      props: {
+        icon: 'el-icon-search'
+      }
+    })
+
+  })
+
 })
