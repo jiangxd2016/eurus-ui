@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 
-import { computed,  ref } from 'vue';
+import { computed, ref } from 'vue';
 import VueRunning from 'vue-running'
 import type { depLibsType } from 'vue-running'
 import 'vue-running/dist/style.css'
@@ -16,14 +16,12 @@ interface demoProps {
   description?: string;
   showCode?: boolean;
 }
-const props = defineProps<{ src: string,source:string }>()
+const props = defineProps<{ src: string;source: string }>()
 
 const clipSuccess = ref(false)
 
 const libJs = new URL(LibraryJs, import.meta.url).href;
 const libCss = new URL(LibraryCss, import.meta.url).href;
-
-
 
 const depLibs: depLibsType[] = [{
   name: 'eurus-ui',
@@ -35,11 +33,19 @@ const depLibs: depLibsType[] = [{
   type: 'css',
 },
 ]
-
+const demoInfo = computed<demoProps | any>(()=>{
+  return {
+    title: '',
+    showCode: false,
+    code: decodeURIComponent(props.source),
+    describe: '',
+    description: ''
+  }
+})
 const copyHandler = () => {
   clipSuccess.value = false;
   const { copy, isSupported } = useClipboard({
-    source: decodeURIComponent(demoInfo.code.replaceAll('&', '\'')),
+    source: decodeURIComponent(demoInfo.value.code.replaceAll('&', '\'')),
   })
 
   isSupported && copy().then(()=>{
@@ -57,17 +63,6 @@ const codeMirrorOption = {
   scrollbarStyle: null,
   cursorBlinkRate: -1
 }
-
-const demoInfo= computed<demoProps|any>(()=>{
-  return {
-    title:"",
-    showCode:false,
-    code:decodeURIComponent(props.source),
-    describe:"",
-    description:""
-  }
-})
-
 </script>
 
 <template>
@@ -94,7 +89,7 @@ const demoInfo= computed<demoProps|any>(()=>{
         </div>
         <!-- demo -->
         <div class="demo-component ">
-          <VueRunning  layout="vertical" :show-code="demoInfo.showCode" :dep-libs="depLibs" :code="demoInfo.code" :code-mirror-option="codeMirrorOption" />
+          <VueRunning layout="vertical" :show-code="demoInfo.showCode" :dep-libs="depLibs" :code="demoInfo.code" :code-mirror-option="codeMirrorOption" />
         </div>
 
         <div v-if="demoInfo.showCode" class="example-code language-vue relative">

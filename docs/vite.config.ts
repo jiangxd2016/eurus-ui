@@ -1,7 +1,6 @@
-
 import { resolve } from 'path'
 import Unocss from 'unocss/vite'
-import {presetIcons, presetUno, presetWind } from 'unocss'
+import { presetIcons, presetUno, presetWind } from 'unocss'
 import { packagesDir } from './.vitepress/constants'
 import { MarkdownTransform } from './.vitepress/plugins/md-transform'
 export default {

@@ -3,8 +3,8 @@ export const docsDescription = 'A Vue3 component library'
 // demo dir
 export const packagesDir = '../src/packages'
 // library js
-export const LibraryJs = '../../../test-dist/eurus-ui.esm.js'
-export const LibraryCss = '../../../test-dist/eurus-ui.esm.css'
+export const LibraryJs = '../../../dist/eurus-ui.mjs'
+export const LibraryCss = '../../../dist/style.css'
 export const sidebarUS = [
 
   {

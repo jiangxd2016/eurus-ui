@@ -13,7 +13,7 @@ Vue.creatApp().use(Button.name, Button)
 
 ## 案例
 <code-demo
-  src="./src/packages/button/demo/demo0.vue"
+  src="button/demo/demo0.vue"
 />
 
 ## props
