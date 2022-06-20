@@ -18,7 +18,7 @@ const compileToCSS = async function (path: string) {
       loadPaths: [dirname + '/src/scss/*'],
     });
 
-    const outputDir = viteConfig.inlineConfig.build.rollupOptions.output as any[]
+    const outputDir = viteConfig.inlineConfig?.build?.rollupOptions?.output as any[]
     const resolvePath = resolve(path, '../')
     outputDir.forEach((item) => {
       const output = dirname + '/' + item.dir + resolvePath.match(pathReg)[0]

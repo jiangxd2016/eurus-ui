@@ -10,7 +10,7 @@ describe('button', () => {
   })
   test('button props type', () => {
 
-    const propsType = [undefined, 'default',
+    const propsType = ['default',
       'text',
       'primary',
       'info',
@@ -19,14 +19,16 @@ describe('button', () => {
       'error',
       'purple']
 
-    const wrapper = mount(Button, {
-      props: {},
-    })
     propsType.forEach((type) => {
-      wrapper.setProps({ type })
+      const wrapper = mount(Button, {
+        props: {
+          type
+        }
+      })
       expect(wrapper.classes()).toContain('e-button--' + type)
+      wrapper.unmount()
+
     })
-    wrapper.unmount()
   })
 
   test('button type', () => {
@@ -34,16 +36,15 @@ describe('button', () => {
       props: {}
     })
 
-    expect(wrapper.classes()).toContain('e-primary')
+    expect(wrapper.classes()).toContain('e-button')
     wrapper.unmount()
   })
   test('button size', () => {
     const wrapper = mount(Button, {
       props: {
-        size: 'small'
+        disabled: true
       }
     })
-
     expect(wrapper.classes()).toContain('e-button--small')
   })
 
