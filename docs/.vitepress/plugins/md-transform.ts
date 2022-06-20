@@ -4,7 +4,9 @@ import klawSync from 'klaw-sync'
 import type { Plugin } from 'vite'
 import { packagesDir } from '../constants';
 
-const PACKAGES_PATH = path.resolve(__dirname, '../../', packagesDir)
+const dirname = path.resolve('../')
+
+const PACKAGES_PATH = path.resolve(dirname, packagesDir)
 
 const components = klawSync(PACKAGES_PATH, {
   nofile: true,
@@ -24,11 +26,12 @@ export function MarkdownTransform(): Plugin {
       if (!components.includes(componentId)) { return }
       const src = code.match(/(?<=src=").*?(?=")/g)![0];
 
-      const source = fs.readFileSync( path.resolve(path.resolve(), '../src/packages', src), 'utf-8');
+      const source = fs.readFileSync( path.resolve(PACKAGES_PATH, src), 'utf-8');
       const codeSplit = code.split('code-demo')
+      const distPath = dirname + '/dist/'
 
       return {
-        code: codeSplit[0] + `code-demo source="${encodeURIComponent(source)}" ` + codeSplit[1],
+        code: codeSplit[0] + `code-demo source="${encodeURIComponent(source)}" distPath="${distPath}"` + codeSplit[1],
       }
     },
   }

@@ -1,10 +1,10 @@
 export const docsName = 'Eurus UI'
 export const docsDescription = 'A Vue3 component library'
 // demo dir
-export const packagesDir = '../src/packages'
+export const packagesDir = 'src/packages'
 // library js
-export const LibraryJs = '../../../dist/eurus-ui.mjs'
-export const LibraryCss = '../../../dist/style.css'
+export const LibraryJs = 'eurus-ui.mjs'
+export const LibraryCss = 'style.css'
 export const sidebarUS = [
 
   {
