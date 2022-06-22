@@ -41,7 +41,7 @@ module.exports = defineConfig({
 
     sidebar: {
       '/en-US/guider': sidebarUS,
-      "/en-US/components":sidebarUS,
+      '/en-US/components': sidebarUS,
       '/zh-CN/guider': sidebarCN,
       '/zh-CN/components': sidebarCN
     },
