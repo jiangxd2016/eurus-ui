@@ -16,20 +16,17 @@ interface demoProps {
   description?: string;
   showCode?: boolean;
 }
-const props = defineProps<{ src: string;source: string; distPath: string }>()
+const props = defineProps<{ src: string;source: string; distCss: string; distJs: string }>()
 
 const clipSuccess = ref(false)
 
-const libJs = new URL( LibraryJs, import.meta.url).href;
-const libCss = new URL( LibraryCss, import.meta.url).href;
-
 const depLibs: depLibsType[] = [{
   name: 'eurus-ui',
-  url: libJs,
+  code: decodeURIComponent(props.distJs),
   type: 'js',
 }, {
   name: 'eurus-ui-css',
-  url: libCss,
+  code: decodeURIComponent(props.distCss),
   type: 'css',
 },
 ]

@@ -5,42 +5,13 @@ export const packagesDir = 'src/packages'
 // library js
 export const LibraryJs = 'eurus-ui.mjs'
 export const LibraryCss = 'style.css'
-export const sidebarUS = [
 
-  {
-    text: 'Changelog',
-    link: '/en-US/changelog',
-  },
-  {
-    text: 'QuickStart',
-    link: '/en-US/quick-start',
-  },
+export const releases = 'https://github.com/jiangxd2016/eurus-ui/releases'
 
-  {
-    text: 'Base Components',
-    link: '/en-US/components/base',
-  },
-  {
-    text: 'Common Components',
-    link: '/en-US/components/common',
-  }, {
-    text: 'Form Components',
-    link: '/en-US/components/form',
-  },
-  {
-    text: 'navigation Components',
-    link: '/en-US/components/navigation',
-  },
-  {
-    text: 'Message Components',
-    link: '/en-US/components/message',
-  },
-
-]
 export const sidebarCN = [
   {
     text: '使用',
-    // collapsible: true,
+    collapsible: true,
     items: [
 
       {
@@ -56,6 +27,7 @@ export const sidebarCN = [
   },
   {
     text: '组件',
+    collapsible: true,
     items: [
       {
         text: '基础组件测试',
@@ -81,3 +53,44 @@ export const sidebarCN = [
   }
 ]
 
+export const sidebarUS = [
+  {
+    text: 'How to use',
+    collapsible: true,
+    items: [
+      {
+        text: 'Changelog',
+        link: '/en-US/guider/changelog',
+      },
+      {
+        text: 'QuickStart',
+        link: '/en-US/guider/changelog',
+      },
+    ],
+  },
+  {
+    text: 'Components',
+    collapsible: true,
+    items: [
+      {
+        text: 'Base Components',
+        link: '/en-US/guider/changelog',
+      },
+      {
+        text: 'Common Components',
+        link: '/en-US/components/common',
+      }, {
+        text: 'Form Components',
+        link: '/en-US/components/form',
+      },
+      {
+        text: 'navigation Components',
+        link: '/en-US/components/navigation',
+      },
+      {
+        text: 'Message Components',
+        link: '/en-US/components/message',
+      },
+    ],
+  },
+]

@@ -37,7 +37,6 @@
   },
   "include": [
     "src",
-    "typings/**/*.d.ts"
   ],
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true

@@ -8,10 +8,12 @@ class: 'button-doc'
 ```javascript
 import { Button } from 'eurus-ui';
 
-Vue.creatApp().use(Button.name, Button)
+Vue.createApp().use(Button.name, Button)
 ```
 
 ## 案例
+
+
 <code-demo
   src="button/demo/demo0.vue"
 />

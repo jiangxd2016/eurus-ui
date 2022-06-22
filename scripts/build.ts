@@ -12,7 +12,7 @@ import genVersion from './gen-version';
 const nodeEnv = process.env.NODE_ENV;
 console.log(`[eurus-ui env] ${nodeEnv}`);
 
-const config: InlineConfig[] = [configProd, nodeEnv === 'all' && configAll].filter(Boolean);
+const config = [configProd, nodeEnv === 'all' && configAll].filter(Boolean) as InlineConfig[];
 
 async function run() {
   await genVersion();
@@ -23,7 +23,7 @@ async function run() {
     exec('npm run build-types')
   } else {
 
-    await build(configDev);
+    await Promise.all([configDev, configAll].map(item => build(item)));
     exec('npm run build-types-esm')
     console.log('[eurus-ui dev] start watch change ...');
 
@@ -32,8 +32,8 @@ async function run() {
       persistent: true,
       interval: 1000,
     });
-    watcher.on('change', () => {
-      build(configDev);
+    watcher.on('change', async () => {
+      await Promise.all([configDev, configAll].map(item => build(item)));
       exec('npm run build-types-esm')
     })
   }

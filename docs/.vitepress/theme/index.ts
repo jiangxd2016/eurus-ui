@@ -1,21 +1,19 @@
-import Theme from 'vitepress/theme'
+
+
+import DefaultTheme from 'vitepress/theme'
+
+
+import 'uno.css'
+import '@unocss/reset/tailwind.css'
 
 import '../style/main.css'
 import '../style/vars.css'
 
-async function getTheme() {
-  const CodeDemo = typeof window === 'undefined'
-    ? await import('../components/ssrDemo.vue')
-    : await import('../components/CodeDemo.vue')
+import CodeDemo from '../components/ClientOnly.vue'
 
-  return {
-    ...Theme,
-    enhanceApp({ app }: { app: any }) {
-      app.component('CodeDemo', CodeDemo.default)
-    },
+export default {
+  ...DefaultTheme,
+  enhanceApp({ app }) {
+    app.component('CodeDemo', CodeDemo)
   }
 }
-
-const theme = await getTheme()
-
-export default theme

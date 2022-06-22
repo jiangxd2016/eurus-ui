@@ -1,15 +1,15 @@
 import { resolve } from 'path'
 import Unocss from 'unocss/vite'
 import { presetIcons, presetUno, presetWind } from 'unocss'
+import ViteRestart from 'vite-plugin-restart'
 import { MarkdownTransform } from './.vitepress/plugins/md-transform'
+
 export default {
   resolve: {
     alias: {
       'eurus-ui/': `${resolve(__dirname, '../dist/es')}/`,
-      'dist/': `${resolve(__dirname, '../dist')}/`,
     },
   },
-
   plugins: [
     Unocss({
       shortcuts: [
@@ -26,7 +26,11 @@ export default {
         }),
       ],
     }),
-
+    ViteRestart({
+      restart: [
+        '../dist/*',
+      ],
+    }),
     MarkdownTransform()
   ],
 }

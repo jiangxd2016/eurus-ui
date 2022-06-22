@@ -25,6 +25,7 @@ const config: InlineConfig = {
     }
   },
   build: {
+    minify: false,
     emptyOutDir: false,
     rollupOptions: {
       output: {

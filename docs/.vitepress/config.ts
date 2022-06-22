@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
-import { docsName, docsDescription, sidebarCN, sidebarUS } from './constants'
-
+import { version } from '../../package.json'
+import { docsName, docsDescription, sidebarCN, sidebarUS, releases } from './constants'
 module.exports = defineConfig({
   title: 'Eurus UI',
   description: docsDescription,
@@ -20,53 +20,30 @@ module.exports = defineConfig({
       },
     ],
   ],
+  lastUpdated: true,
   lang: 'en-US',
   themeConfig: {
     logo: '/logo.png',
-    nav: [{ text: '组件', link: '/zh-CN/components/' }],
+    nav: [
+      { text: '组件', link: '/zh-CN/components/button' },
+      { text: '导航', link: '/zh-CN/guider/quick-start' },
+      {
+        text: `v${version}`,
+        items: [
+          {
+            text: 'Release Notes',
+            link: releases,
+          },
+
+        ],
+      },
+    ],
 
     sidebar: {
-      // '/en-US/components/': [
-      //   {
-      //     text: 'How to use',
-      //     // collapsible: true,
-      //     items: [
-      //       {
-      //         text: 'Changelog',
-      //         link: '/en-US/components/',
-      //       },
-      //       {
-      //         text: 'QuickStart',
-      //         link: '/en-US/quick-start',
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     text: 'Components',
-      //     items: [
-      //       {
-      //         text: 'Base Components',
-      //         link: '/en-US/components/base',
-      //       },
-      //       {
-      //         text: 'Common Components',
-      //         link: '/en-US/components/common',
-      //       }, {
-      //         text: 'Form Components',
-      //         link: '/en-US/components/form',
-      //       },
-      //       {
-      //         text: 'navigation Components',
-      //         link: '/en-US/components/navigation',
-      //       },
-      //       {
-      //         text: 'Message Components',
-      //         link: '/en-US/components/message',
-      //       },
-      //     ],
-      //   },
-      // ],
-      '/zh-CN/components/': sidebarCN
+      '/en-US/guider': sidebarUS,
+      "/en-US/components":sidebarUS,
+      '/zh-CN/guider': sidebarCN,
+      '/zh-CN/components': sidebarCN
     },
     algolia: {
       appId: 'NQCTTUSYFJ',
@@ -74,15 +51,13 @@ module.exports = defineConfig({
       indexName: 'eurus-ui',
     },
     editLink: {
-      repo: 'iangxd2016/eurus-ui',
-      branch: 'master',
-      dir: 'docs',
+      pattern: 'iangxd2016/eurus-ui',
       text: 'Edit this page on GitHub',
     },
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/iangxd2016/eurus-ui',
+        link: 'https://github.com/jiangxd2016/eurus-ui',
       },
     ],
 
