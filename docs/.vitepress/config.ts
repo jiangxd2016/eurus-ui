@@ -60,7 +60,13 @@ module.exports = defineConfig({
         link: 'https://github.com/jiangxd2016/eurus-ui',
       },
     ],
-
+    localeLinks: {
+      text: '',
+      items: [
+        { text: 'English', link: '/en-US/' },
+        { text: '简体中文', link: '/zh-CN/' },
+      ],
+    },
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2019-present jiangxd',
