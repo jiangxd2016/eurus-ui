@@ -61,12 +61,16 @@
     --vp-home-hero-image-filter: blur(56px);
   }
 }
-/*
+
 .image-container{
+
   animation: imagerotate 9s linear infinite;
 }
-
-@keyframes imagerotate  {
+.image-container .image-src{
+  width:100%;
+  height:100%;
+}
+/* @keyframes imagerotate  {
 	0%{
 		transform: rotate(0deg)
 	}
