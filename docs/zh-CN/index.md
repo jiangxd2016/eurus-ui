@@ -25,7 +25,7 @@ features:
   - title: 🎆 Customize friendly
     details: DIY everything.
   - title: 🍭 Rich scripts
-    details: inspired by esbuild-plugin-vue & vue-dts-gen.
+    details: inspired by esbuild-plugin-vue & vue-tsc.
   - title: 😋 Type friendly
     details: easy to use
 ---
