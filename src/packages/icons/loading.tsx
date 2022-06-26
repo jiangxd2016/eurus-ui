@@ -1,5 +1,5 @@
-import { defineComponent } from 'vue'
-import './style.scss'
+import { defineComponent } from 'vue';
+import './style.scss';
 export default defineComponent({
   name: 'LoadingIcon',
   render() {
@@ -19,6 +19,6 @@ export default defineComponent({
             type="rotate"></animateTransform>
         </path>
       </svg>
-    )
+    );
   },
-})
+});

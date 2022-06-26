@@ -1,10 +1,10 @@
-import type { ButtonHTMLAttributes, PropType } from 'vue'
-import { defineComponent, reactive } from 'vue'
-import { LoadingIcon } from '../../icons'
-import './style.scss'
+import type { ButtonHTMLAttributes, PropType } from 'vue';
+import { defineComponent, reactive } from 'vue';
+import { LoadingIcon } from '../../icons';
+import './style.scss';
 
-export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type Type =
   | 'default'
   | 'text'
@@ -14,7 +14,7 @@ export type Type =
   | 'warning'
   | 'error'
   | 'purple'
-  | undefined
+  | undefined;
 
 const padding: { [key in Padding]: number } = {
   none: 0,
@@ -23,7 +23,7 @@ const padding: { [key in Padding]: number } = {
   md: 16,
   lg: 24,
   xl: 32,
-}
+};
 
 const defaultSizes: { [key in Size]: number } = {
   xs: 8,
@@ -31,7 +31,7 @@ const defaultSizes: { [key in Size]: number } = {
   md: 14,
   lg: 20,
   xl: 24,
-}
+};
 
 const BtnProps = {
   type: {
@@ -69,7 +69,7 @@ const BtnProps = {
     type: Object as PropType<ButtonHTMLAttributes>,
     default: {},
   },
-}
+};
 
 export default defineComponent({
   name: 'EButton',
@@ -81,13 +81,13 @@ export default defineComponent({
       circle: props.circle,
       round: props.round,
       [`e-button--${props.size}`]: props.size
-    })
+    });
 
     const handleClick = (e: Event) => {
-      if (props.disabled || props.loading) { return false }
+      if (props.disabled || props.loading) { return false; }
 
-      emit('click', e)
-    }
+      emit('click', e);
+    };
     return () => (
       <button
         class={[
@@ -106,6 +106,6 @@ export default defineComponent({
         )}
         {slots?.default && <span>{slots?.default?.()}</span>}
       </button>
-    )
+    );
   },
-})
+});

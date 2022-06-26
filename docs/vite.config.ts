@@ -1,8 +1,8 @@
-import { resolve } from 'path'
-import Unocss from 'unocss/vite'
-import { presetIcons, presetUno, presetWind } from 'unocss'
-import ViteRestart from 'vite-plugin-restart'
-import { MarkdownTransform } from './.vitepress/plugins/md-transform'
+import { resolve } from 'path';
+import Unocss from 'unocss/vite';
+import { presetIcons, presetUno, presetWind } from 'unocss';
+import ViteRestart from 'vite-plugin-restart';
+import { MarkdownTransform } from './.vitepress/plugins/md-transform';
 
 export default {
   resolve: {
@@ -33,5 +33,5 @@ export default {
     }),
     MarkdownTransform()
   ],
-}
+};
 

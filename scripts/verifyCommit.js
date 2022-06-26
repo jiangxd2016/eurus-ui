@@ -1,18 +1,18 @@
 // Invoked on the commit-msg git hook by yorkie.
 
-import fs from 'fs'
-import chalk from 'chalk'
-const msgPath = process.env.GIT_PARAMS
+import fs from 'fs';
+import chalk from 'chalk';
+const msgPath = process.env.GIT_PARAMS;
 console.log({ msgPath });
 const msg = fs.readFileSync(msgPath, 'utf-8')
-  .trim()
+  .trim();
 
 console.log(chalk.green('Verifying commit message...', msg));
 
-const commitRE = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?: .{1,50}/
+const commitRE = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?: .{1,50}/;
 
 if (!commitRE.test(msg)) {
-  console.log()
+  console.log();
   console.error(
     `  ${chalk.bgRed.white(' ERROR ')} ${chalk.red(
       'invalid commit message format.'
@@ -25,6 +25,6 @@ if (!commitRE.test(msg)) {
         'fix(v-model): handle events on blur (close #28)'
       )}\n\n`
       + chalk.red('  See .github/commit-convention.md for more details.\n')
-  )
-  process.exit(1)
+  );
+  process.exit(1);
 }

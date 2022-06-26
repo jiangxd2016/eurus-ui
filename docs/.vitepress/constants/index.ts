@@ -1,12 +1,12 @@
-export const docsName = 'Eurus UI'
-export const docsDescription = 'A Vue3 component library'
+export const docsName = 'Eurus UI';
+export const docsDescription = 'A Vue3 component library';
 // demo dir
-export const packagesDir = 'src/packages'
+export const packagesDir = 'src/packages';
 // library js
-export const LibraryJs = 'eurus-ui.mjs'
-export const LibraryCss = 'style.css'
+export const LibraryJs = 'eurus-ui.mjs';
+export const LibraryCss = 'style.css';
 
-export const releases = 'https://github.com/jiangxd2016/eurus-ui/releases'
+export const releases = 'https://github.com/jiangxd2016/eurus-ui/releases';
 
 export const sidebarCN = [
   {
@@ -51,7 +51,7 @@ export const sidebarCN = [
 
     ]
   }
-]
+];
 
 export const sidebarUS = [
   {
@@ -93,4 +93,4 @@ export const sidebarUS = [
       },
     ],
   },
-]
+];

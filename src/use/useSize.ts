@@ -1,1 +1,1 @@
-export const useSize = 2
+export const useSize = 2;

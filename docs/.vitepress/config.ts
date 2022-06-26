@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitepress'
-import { version } from '../../package.json'
-import { docsName, docsDescription, sidebarCN, sidebarUS, releases } from './constants'
+import { defineConfig } from 'vitepress';
+import { version } from '../../package.json';
+import { docsName, docsDescription, sidebarCN, sidebarUS, releases } from './constants';
 module.exports = defineConfig({
   title: 'Eurus UI',
   description: docsDescription,
@@ -73,4 +73,4 @@ module.exports = defineConfig({
     },
   },
 
-})
+});

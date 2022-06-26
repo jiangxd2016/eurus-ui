@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useClipboard } from '@vueuse/core'
+import { useClipboard } from '@vueuse/core';
 
 import { computed, ref } from 'vue';
-import VueRunning from 'vue-running'
-import type { depLibsType } from 'vue-running'
-import 'vue-running/dist/style.css'
+import VueRunning from 'vue-running';
+import type { depLibsType } from 'vue-running';
+import 'vue-running/dist/style.css';
 import { LibraryJs, LibraryCss } from '../constants';
 
 interface demoProps {
@@ -16,9 +16,9 @@ interface demoProps {
   description?: string;
   showCode?: boolean;
 }
-const props = defineProps<{ src: string;source: string; distCss: string; distJs: string }>()
+const props = defineProps<{ src: string;source: string; distCss: string; distJs: string }>();
 
-const clipSuccess = ref(false)
+const clipSuccess = ref(false);
 
 const depLibs: depLibsType[] = [{
   name: 'eurus-ui',
@@ -29,7 +29,7 @@ const depLibs: depLibsType[] = [{
   code: decodeURIComponent(props.distCss),
   type: 'css',
 },
-]
+];
 const demoInfo = computed<demoProps | any>(()=>{
   return {
     title: '',
@@ -37,29 +37,29 @@ const demoInfo = computed<demoProps | any>(()=>{
     code: decodeURIComponent(props.source),
     describe: '',
     description: ''
-  }
-})
+  };
+});
 const copyHandler = () => {
   clipSuccess.value = false;
   const { copy, isSupported } = useClipboard({
     source: decodeURIComponent(demoInfo.value.code.replaceAll('&', '\'')),
-  })
+  });
 
   isSupported && copy().then(()=>{
     clipSuccess.value = true;
     setTimeout(() => {
-      clipSuccess.value = false
+      clipSuccess.value = false;
     }, 2000);
-  })
+  });
 
-}
+};
 
 const codeMirrorOption = {
   readOnly: true,
   lineNumbers: false,
   scrollbarStyle: null,
   cursorBlinkRate: -1
-}
+};
 </script>
 
 <template>

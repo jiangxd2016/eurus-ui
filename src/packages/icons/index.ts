@@ -1,1 +1,1 @@
-export { default as LoadingIcon } from './loading'
+export { default as LoadingIcon } from './loading';

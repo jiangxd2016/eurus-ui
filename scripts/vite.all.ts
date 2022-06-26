@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
 import viteDeletePurePlugin from './vite-delete-pure';
-const dirname = resolve()
+const dirname = resolve();
 /*
 * esm not support minify
 * @see https://github.com/vuejs/core/issues/2860
@@ -38,7 +38,7 @@ const config: InlineConfig = {
       entry: 'src/index.ts',
       formats: ['es', 'cjs'],
       fileName: (module) => {
-        return `eurus-ui.${module === 'es' ? 'm' : 'c'}js`
+        return `eurus-ui.${module === 'es' ? 'm' : 'c'}js`;
       }
     },
   },

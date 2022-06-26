@@ -7,10 +7,10 @@
 </template>
 
 <script lang="ts">
-import { EButton } from 'eurus-ui'
+import { EButton } from 'eurus-ui';
 export default {
   name: 'ButtonDemo',
   title: 'size',
   describe: '基本用法',
-}
+};
 </script>
