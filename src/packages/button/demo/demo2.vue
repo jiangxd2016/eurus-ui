@@ -1,7 +1,7 @@
 <template>
   <e-button
     type="primary" :loading="true" size="sx"
-    :native-props="{ type: 'submit' }"
+    :native="{ type: 'submit' }"
   >
     123
   </e-button>

@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
-import { defineComponent, reactive } from 'vue';
+import { renderSlot, defineComponent, reactive } from 'vue';
 import { LoadingIcon } from '../../icons';
 import './style.scss';
 
@@ -104,6 +104,7 @@ export default defineComponent({
             <LoadingIcon></LoadingIcon>
           </span>
         )}
+        {slots?.icons && renderSlot(slots, 'icon')}
         {slots?.default && <span>{slots?.default?.()}</span>}
       </button>
     );
