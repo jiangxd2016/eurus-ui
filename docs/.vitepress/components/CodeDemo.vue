@@ -16,7 +16,7 @@ interface demoProps {
   description?: string;
   showCode?: boolean;
 }
-const props = defineProps<{ src: string;source: string; distCss: string; distJs: string }>();
+const props = defineProps<{ source: string; distCss: string; distJs: string }>();
 
 const clipSuccess = ref(false);
 
@@ -67,7 +67,7 @@ const codeMirrorOption = {
     <div
       class="eurus-demo flex flex-col mb-8"
     >
-      <h2 :id="demoInfo.title" tabindex="-1">{{ demoInfo.title }} <a class="header-anchor" :href="`#${demoInfo.title}`" aria-hidden="true">#</a></h2>
+      <!-- <h2 :id="demoInfo.title" tabindex="-1">{{ demoInfo.title }} <a class="header-anchor" :href="`#${demoInfo.title}`" aria-hidden="true">#</a></h2> -->
 
       <div class="demo-wrapper b-color-hex-DDDDDD b-1 rd">
         <div

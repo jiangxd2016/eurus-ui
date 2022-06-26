@@ -11,11 +11,23 @@ import { Button } from 'eurus-ui';
 Vue.createApp().use(Button.name, Button)
 ```
 
-## 案例
+## type
 
-
-<code-demo
+<CodeDemo
   src="button/demo/demo0.vue"
+/>
+
+
+## size
+
+<CodeDemo
+  src="button/demo/demo1.vue"
+/>
+
+## loading
+
+<CodeDemo
+  src="button/demo/demo2.vue"
 />
 
 ## props

@@ -9,6 +9,9 @@ const dirname = path.resolve('../');
 const PACKAGES_PATH = path.resolve(dirname, packagesDir);
 const DIST_PATH = path.resolve(dirname, './dist/');
 
+const distJs = fs.readFileSync(path.resolve(DIST_PATH, LibraryJs), 'utf-8');
+const distCss = fs.readFileSync(path.resolve(DIST_PATH, LibraryCss), 'utf-8');
+
 const components = klawSync(PACKAGES_PATH, {
   nofile: true,
   depthLimit: 0,
@@ -27,18 +30,21 @@ export function MarkdownTransform(): Plugin {
       const componentId = path.basename(id, '.md');
 
       if (!components.includes(componentId)) { return; }
-      const srcArr = code.match(/(?<=src=").*?(?=")/g);
-      if (!srcArr || srcArr.length === 0) {
-        return;
-      }
 
-      const source = fs.readFileSync(path.resolve(PACKAGES_PATH, srcArr[0]), 'utf-8');
-      const distJs = fs.readFileSync(path.resolve(DIST_PATH, LibraryJs), 'utf-8');
-      const distCss = fs.readFileSync(path.resolve(DIST_PATH, LibraryCss), 'utf-8');
-      const codeSplit = code.split('code-demo');
+      const codeReplace = code.replaceAll(/(?<=<CodeDemo)[\S\s]*?(?=\/>)/g, (str)=>{
 
+        const srcArr = str.match(/(?<=src=").*?(?=")/g);
+        if (!srcArr || srcArr.length === 0) {
+          return;
+        }
+
+        const source = fs.readFileSync(path.resolve(PACKAGES_PATH, srcArr[0]), 'utf-8');
+
+        return ` source="${encodeURIComponent(source)}" distJs="${encodeURIComponent(distJs)}" distCss="${encodeURIComponent(distCss)}"`;
+
+      });
       return {
-        code: codeSplit[0] + `code-demo source="${encodeURIComponent(source)}" distJs="${encodeURIComponent(distJs)}" distCss="${encodeURIComponent(distCss)}"` + codeSplit[1],
+        code: codeReplace
       };
     },
   };

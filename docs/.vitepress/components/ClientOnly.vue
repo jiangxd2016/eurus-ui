@@ -6,11 +6,14 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, shallowRef } from 'vue';
 
-const dynamicComponent = ref<any>(null);
+const dynamicComponent = shallowRef<any>(null);
 onMounted(()=>{
   import('./CodeDemo.vue').then((module) => {
+
+    console.log(module.default);
+
     dynamicComponent.value = module.default;
   });
 });
