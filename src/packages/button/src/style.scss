@@ -44,11 +44,15 @@
   opacity: 0.7 !important;
   cursor: not-allowed !important;
   outline: 0 !important;
+  box-shadow: none;
 }
 
+
+
 .e-button.plain {
-  background: #fff;
-  color: #222;
+  background: #fff !important;
+  color: #222 !important;
+  box-shadow: none;
 }
 
 .e-button.round {

@@ -16,15 +16,6 @@ export type Type =
   | 'purple'
   | undefined;
 
-const padding: { [key in Padding]: number } = {
-  none: 0,
-  xs: 4,
-  sm: 8,
-  md: 16,
-  lg: 24,
-  xl: 32,
-};
-
 const defaultSizes: { [key in Size]: number } = {
   xs: 8,
   sm: 10,

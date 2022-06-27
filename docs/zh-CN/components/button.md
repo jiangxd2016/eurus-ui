@@ -30,6 +30,13 @@ Vue.createApp().use(Button.name, Button)
   src="button/demo/demo2.vue"
 />
 
+
+## other
+
+<CodeDemo
+  src="button/demo/demo3.vue"
+/>
+
 ## props
 
 ## event
