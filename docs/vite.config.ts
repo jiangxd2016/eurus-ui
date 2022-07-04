@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import Unocss from 'unocss/vite';
-import { presetIcons, presetUno, presetWind } from 'unocss';
+import { presetAttributify, presetIcons, presetUno, presetWind } from 'unocss';
 import ViteRestart from 'vite-plugin-restart';
 import { MarkdownTransform } from './.vitepress/plugins/md-transform';
 
@@ -20,9 +20,11 @@ export default {
         presetUno({
           dark: 'media',
         }),
+        presetAttributify(),
         presetWind(),
         presetIcons({
           scale: 1.2,
+          warn: true,
         }),
       ],
     }),
