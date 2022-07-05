@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
+import { template } from '@estjs/tools';
+
 const args = process.argv.splice(2);
 const componentPrefix = 'E';
 console.log(args);
