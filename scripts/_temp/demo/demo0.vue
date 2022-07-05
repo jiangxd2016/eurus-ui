@@ -1,7 +1,5 @@
-<template>
-
-</template>
+<template />
 
 <script  setup>
-import {  } from 'eurus-ui';
+import { } from 'eurus-ui';
 </script>

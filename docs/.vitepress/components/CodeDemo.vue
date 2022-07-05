@@ -19,7 +19,7 @@ interface demoProps {
 const props = defineProps<{ source: string; distCss: string; distJs: string }>();
 
 const clipSuccess = ref(false);
-
+const showCode = ref(false);
 const depLibs: depLibsType[] = [{
   name: 'eurus-ui',
   code: decodeURIComponent(props.distJs),
@@ -33,7 +33,6 @@ const depLibs: depLibsType[] = [{
 const demoInfo = computed<demoProps | any>(()=>{
   return {
     title: '',
-    showCode: false,
     code: decodeURIComponent(props.source),
     describe: '',
     description: ''
@@ -53,7 +52,9 @@ const copyHandler = () => {
   });
 
 };
-
+const onSHowCodeClick = ()=>{
+  showCode.value = !showCode.value;
+};
 const codeMirrorOption = {
   readOnly: true,
   lineNumbers: false,
@@ -79,17 +80,17 @@ const codeMirrorOption = {
             <div
               i-ph-code
               class="text-md cursor-pointer ml-4 <sm:text-sm"
-              :class="[demoInfo.showCode ? 'active-code' : '']"
-              @click="demoInfo.showCode = !demoInfo.showCode"
+              :class="[showCode ? 'active-code' : '']"
+              @click="onSHowCodeClick"
             />
           </div>
         </div>
         <!-- demo -->
         <div class="demo-component ">
-          <VueRunning layout="vertical" :show-code="demoInfo.showCode" :dep-libs="depLibs" :code="demoInfo.code" :code-mirror-option="codeMirrorOption" />
+          <VueRunning layout="vertical" :show-code="showCode" :dep-libs="depLibs" :code="demoInfo.code" :code-mirror-option="codeMirrorOption" />
         </div>
 
-        <div v-if="demoInfo.showCode" class="example-code language-vue relative">
+        <div v-if="showCode" class="example-code language-vue relative">
           <div
             i-ph-copy-thin
             class="absolute top-2 right-2 z-10 text-cool-gray-400 text-md cursor-pointer <sm:text-sm"

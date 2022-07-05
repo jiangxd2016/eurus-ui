@@ -25,7 +25,7 @@
     "clean": "rimraf dist",
     "cz": "git cz",
     "lint:change": "lcf --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue}\"",
-    "lint": "eslint --fix \"{src,do cs,scripts}/**/*.{ts,tsx,js,vue}\"",
+    "lint": "eslint --fix \"{src,docs,scripts,examples}/**/*.{ts,tsx,js,vue}\"",
     "test": "vitest",
     "create:compts": "esno ./scripts/create-compt.ts",
     "coverage": "vitest run --coverage"

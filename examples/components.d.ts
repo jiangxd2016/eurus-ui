@@ -4,9 +4,9 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Button: typeof import('eurus-ui')['e-Button']
-    EButton: typeof import('eurus-ui')['Button']
+    Button: typeof import('eurus-ui')['e-Button'];
+    EButton: typeof import('eurus-ui')['Button'];
   }
 }
 
-export { }
+export { };
