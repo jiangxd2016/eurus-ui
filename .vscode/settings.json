@@ -1,0 +1,21 @@
+{
+  "prettier.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.fixAll.eslint": true, 
+    "source.organizeImports": false
+  },
+  "cSpell.userWords": [
+    "esbuild",
+    "esno",
+    "estjs",
+    "iconify",
+    "unocss",
+    "unplugin",
+    "vite",
+    "vitejs",
+    "vitepress",
+    "vitest",
+    "vueuse",
+  ],
+}

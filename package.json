@@ -29,7 +29,7 @@
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
     "coverage": "vitest run --coverage",
-    "prepare": "husky install"
+    "preinstall": "node ./scripts/preinstall.js"
   },
   "repository": {
     "type": "git",
@@ -48,11 +48,9 @@
     "url": "https://github.com/jiangxd2016/eurus-ui/issues"
   },
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged",
-      "commit-msg": "echo $1 && node scripts/verifyCommit.js -c $1"
-    }
+  "gitHooks": {
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "echo $1 && node scripts/verifyCommit.js -c $1"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,vue}": "eslint --cache --fix"
@@ -72,23 +70,23 @@
     "c8": "^7.11.3",
     "chalk": "^5.0.1",
     "chokidar": "^3.5.3",
+    "enquirer": "^2.3.2",
     "eslint": "^8.19.0",
     "esno": "^0.16.3",
+    "execa": "^4.0.2",
     "happy-dom": "^5.4.0",
-    "husky": "^8.0.0",
     "minimist": "^1.2.6",
     "pnpm": "7.3.0",
     "rimraf": "^3.0.2",
-    "semver": "^7.3.2",
-    "enquirer": "^2.3.2",
     "sass": "^1.53.0",
+    "semver": "^7.3.2",
     "standard-changelog": "^2.0.27",
     "typescript": "^4.7.4",
     "vite": "^3.0.0-beta.6",
     "vitest": "^0.16.0",
     "vue": "^3.2.37",
-    "execa": "^4.0.2",
     "vue-tsc": "^0.38.2",
-    "vue-types": "^4.1.1"
+    "vue-types": "^4.1.1",
+    "yorkie": "^2.0.0"
   }
 }
