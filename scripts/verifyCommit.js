@@ -2,8 +2,8 @@
 
 import fs from 'fs';
 import chalk from 'chalk';
-const msgPath = process.env.GIT_PARAMS;
-console.log({ msgPath });
+const args = require('minimist')(process.argv.slice(2));
+console.log(args);
 const msg = fs.readFileSync(msgPath, 'utf-8')
   .trim();
 

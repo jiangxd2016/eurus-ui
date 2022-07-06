@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "description": "",
   "private": true,
-  "type": "module",
   "packageManager": "pnpm@7.3.0",
   "engines": {
     "node": ">= 16"
@@ -12,8 +11,8 @@
   "module": "dist/es/index.js",
   "scripts": {
     "dev": "esno scripts/build.ts",
-    "build:compts": "cross-env NODE_ENV=compts esno scripts/build.ts",
-    "build:all": "cross-env NODE_ENV=all esno scripts/build.ts",
+    "build:compts": "esno scripts/build.ts -m compts",
+    "build:all": "esno scripts/build.ts -m all",
     "build:types": "pnpm run build:types-cjs && pnpm run build:types-esm",
     "build:types-cjs": "vue-tsc -p ./src/tsconfig.cjs.json --declaration --emitDeclarationOnly",
     "build:types-esm": "vue-tsc -p ./src/tsconfig.esm.json --declaration --emitDeclarationOnly",
@@ -49,19 +48,14 @@
     "url": "https://github.com/jiangxd2016/eurus-ui/issues"
   },
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husk":{
-    "hooks":{
+  "husk": {
+    "hooks": {
       "pre-commit": "lint-staged",
-      "commit-msg": "echo $HUSKY_GIT_PARAMS && node scripts/verifyCommit.js $HUSKY_GIT_PARAMS"
+      "commit-msg": "echo $1 && node scripts/verifyCommit.js -c $1"
     }
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx,vue}": ["eslint --cache --fix"]
+    "**/*.{js,ts,tsx,vue}": "eslint --cache --fix"
   },
   "peerDependencies": {
     "async-validator": "^4.1.1",
@@ -78,20 +72,22 @@
     "c8": "^7.11.3",
     "chalk": "^5.0.1",
     "chokidar": "^3.5.3",
-    "cross-env": "^7.0.3",
     "eslint": "^8.19.0",
     "esno": "^0.16.3",
     "happy-dom": "^5.4.0",
+    "husky": "^8.0.0",
+    "minimist": "^1.2.6",
     "pnpm": "7.3.0",
     "rimraf": "^3.0.2",
+    "semver": "^7.3.2",
+    "enquirer": "^2.3.2",
     "sass": "^1.53.0",
-    "commitizen": "^4.2.4",
-    "cz-conventional-changelog": "^3.3.0",
+    "standard-changelog": "^2.0.27",
     "typescript": "^4.7.4",
     "vite": "^3.0.0-beta.6",
     "vitest": "^0.16.0",
     "vue": "^3.2.37",
-    "husky": "^8.0.0",
+    "execa": "^4.0.2",
     "vue-tsc": "^0.38.2",
     "vue-types": "^4.1.1"
   }
