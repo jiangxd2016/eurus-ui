@@ -23,14 +23,14 @@
     "docs:serve": "pnpm -C docs serve",
     "changelog": "esno scripts/changelog.ts",
     "clean": "rimraf dist",
-    "cz": "git commit",
     "lint:change": "lcf --fix \"{src,build,scripts,examples}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
     "test": "vitest",
     "release": "esno ./scripts/release.ts",
-    "typecheck":"vue-tsc -p ./src/tsconfig.esm.json --noEmit",
+    "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -49,9 +49,16 @@
     "url": "https://github.com/jiangxd2016/eurus-ui/issues"
   },
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
-  "gitHooks": {
-    "pre-commit": "lint-staged",
-    "commit-msg": "echo $GIT_PARAMS && node scripts/verifyCommit.js $GIT_PARAMS"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "echo $GIT_PARAMS && node scripts/verifyCommit.js $GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "lint-staged": {
     "**/*.{js,ts,vue}": [
@@ -80,13 +87,14 @@
     "pnpm": "7.3.0",
     "rimraf": "^3.0.2",
     "sass": "^1.53.0",
-    "standard-changelog": "^2.0.27",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
     "typescript": "^4.7.4",
     "vite": "^3.0.0-beta.6",
     "vitest": "^0.16.0",
     "vue": "^3.2.37",
+    "husky": "^8.0.0",
     "vue-tsc": "^0.38.2",
-    "vue-types": "^4.1.1",
-    "yorkie": "^2.0.0"
+    "vue-types": "^4.1.1"
   }
 }
