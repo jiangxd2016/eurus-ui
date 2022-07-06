@@ -7,8 +7,6 @@ dist
 dist-ssr
 *.local
 
-
 .temp
 coverage
-.husky
 .eslintcache
