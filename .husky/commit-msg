@@ -3,4 +3,3 @@
 
 echo $1
 node ./scripts/verifyCommit.js $1
-npm test
