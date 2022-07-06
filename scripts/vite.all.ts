@@ -42,7 +42,6 @@ const config: InlineConfig = {
       }
     },
   },
-
   plugins: [viteDeletePurePlugin(), vue(), vueJsx()],
 };
 
