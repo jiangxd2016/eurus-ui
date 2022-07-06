@@ -51,7 +51,7 @@
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit":"echo \"git commit trigger husky pre-commit hook\" ",
       "commit-msg": "echo $GIT_PARAMS && node scripts/verifyCommit.js $GIT_PARAMS"
     }
   },
