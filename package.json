@@ -28,7 +28,8 @@
     "release": "esno ./scripts/release.ts",
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -48,7 +49,7 @@
   },
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
   "husky": {
-    "gitHooks": {
+    "hooks": {
       "pre-commit": "npx lint-staged",
       "commit-msg": "echo $1 && node scripts/verifyCommit.js -c $1"
     }
