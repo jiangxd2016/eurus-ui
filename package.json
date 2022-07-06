@@ -55,7 +55,7 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,ts,vue}": "eslint --cache --fix"
+    "**/*.{js,ts,tsx,vue}": "eslint --cache --fix"
   },
   "peerDependencies": {
     "async-validator": "^4.1.1",
