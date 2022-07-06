@@ -1,23 +1,14 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 /**
  * modified from https://github.com/vuejs/vue-next/blob/master/scripts/release.js
  */
-import path from 'path';
 import fs from 'fs';
 import execa from 'execa';
 import semver from 'semver';
 import chalk from 'chalk';
 import { prompt } from 'enquirer';
 import minimist from 'minimist';
+import pkg from '../package.json';
 const args = minimist(process.argv.slice(2));
-const pkgDir = process.cwd();
-const pkgPath = path.resolve(pkgDir, 'package.json');
-
-/**
- * @type {{ name: string, version: string }}
- */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const pkg = require(pkgPath);
 
 const pkgName = pkg.name;
 const currentVersion = pkg.version;
