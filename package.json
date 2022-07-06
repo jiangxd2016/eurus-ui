@@ -57,7 +57,7 @@
   "husk":{
     "hooks":{
       "pre-commit": "lint-staged",
-      "commit-msg": "echo $GIT_PARAMS && node scripts/verifyCommit.js $GIT_PARAMS"
+      "commit-msg": "echo $HUSKY_GIT_PARAMS && node scripts/verifyCommit.js $HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
