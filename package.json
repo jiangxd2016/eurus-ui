@@ -23,10 +23,11 @@
     "docs:serve": "pnpm -C docs serve",
     "changelog": "esno scripts/changelog.ts",
     "clean": "rimraf dist",
-    "cz": "git cz",
-    "lint:change": "lcf --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue}\"",
+    "cz": "git commit",
+    "lint:change": "lcf --fix \"{src,build,scripts,examples}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
     "test": "vitest",
+    "release": "esno ./scripts/release.ts",
     "typecheck":"vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
     "coverage": "vitest run --coverage"
