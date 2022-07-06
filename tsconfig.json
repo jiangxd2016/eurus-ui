@@ -7,7 +7,6 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "removeComments": false,
-    "emitDeclarationOnly": true,
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",

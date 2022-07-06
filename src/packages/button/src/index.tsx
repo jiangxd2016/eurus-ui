@@ -16,13 +16,13 @@ export type Type =
   | 'purple'
   | undefined;
 
-const defaultSizes: { [key in Size]: number } = {
-  xs: 8,
-  sm: 10,
-  md: 14,
-  lg: 20,
-  xl: 24,
-};
+// const defaultSizes: { [key in Size]: number } = {
+//   xs: 8,
+//   sm: 10,
+//   md: 14,
+//   lg: 20,
+//   xl: 24,
+// };
 
 const BtnProps = {
   type: {

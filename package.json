@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@7.1.7",
+  "packageManager": "pnpm@7.3.0",
   "engines": {
     "node": ">= 16"
   },
@@ -27,6 +27,7 @@
     "lint:change": "lcf --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,docs,scripts,examples}/**/*.{ts,tsx,js,vue}\"",
     "test": "vitest",
+    "typecheck":"vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
     "coverage": "vitest run --coverage"
   },
@@ -64,7 +65,7 @@
   "devDependencies": {
     "@estjs/eslint-config": "^0.3.2",
     "@estjs/tools": "^0.0.16",
-    "@types/node": "^18.0.1",
+    "@types/node": "^18.0.2",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vitejs/plugin-vue-jsx": "^1.3.10",
     "@vue/test-utils": "^2.0.2",
