@@ -12,5 +12,5 @@
 </template>
 
 <script  setup>
-import { EButton } from 'eurus-ui';
+ import { EButton } from 'eurus-ui';
 </script>
