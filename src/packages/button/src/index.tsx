@@ -16,6 +16,11 @@ export type Type =
   | 'purple'
   | undefined;
 
+
+
+
+
+
 // const defaultSizes: { [key in Size]: number } = {
 //   xs: 8,
 //   sm: 10,
