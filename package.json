@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@7.3.0",
   "engines": {
     "node": ">= 16"
@@ -11,8 +12,8 @@
   "module": "dist/es/index.js",
   "scripts": {
     "dev": "esno scripts/build.ts",
-    "build:compts": "esno scripts/build.ts -m compts",
-    "build:all": "esno scripts/build.ts -m all",
+    "build:compts": "esno scripts/build.ts compts",
+    "build:all": "esno scripts/build.ts all",
     "build:types": "pnpm run build:types-cjs && pnpm run build:types-esm",
     "build:types-cjs": "vue-tsc -p ./src/tsconfig.cjs.json --declaration --emitDeclarationOnly",
     "build:types-esm": "vue-tsc -p ./src/tsconfig.esm.json --declaration --emitDeclarationOnly",
@@ -29,7 +30,7 @@
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
     "coverage": "vitest run --coverage",
-    "preinstall": "node ./scripts/preinstall.js"
+    "preinstall": "node ./scripts/preinstall.js && husky install"
   },
   "repository": {
     "type": "git",
@@ -70,24 +71,23 @@
     "c8": "^7.11.3",
     "chalk": "^5.0.1",
     "chokidar": "^3.5.3",
+    "enquirer": "^2.3.2",
     "eslint": "^8.19.0",
     "esno": "^0.16.3",
+    "execa": "^4.0.2",
     "happy-dom": "^5.4.0",
-    "minimist": "^1.2.6",
+    "husky": "^8.0.1",
+    "lint-staged": "^10.2.10",
     "pnpm": "7.3.0",
     "rimraf": "^3.0.2",
-    "semver": "^7.3.2",
-    "enquirer": "^2.3.2",
     "sass": "^1.53.0",
+    "semver": "^7.3.2",
     "standard-changelog": "^2.0.27",
     "typescript": "^4.7.4",
     "vite": "^3.0.0-beta.6",
     "vitest": "^0.16.0",
     "vue": "^3.2.37",
-    "lint-staged": "^10.2.10",
-    "execa": "^4.0.2",
     "vue-tsc": "^0.38.2",
-    "vue-types": "^4.1.1",
-    "yorkie": "^2.0.0"
+    "vue-types": "^4.1.1"
   }
 }

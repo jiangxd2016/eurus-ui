@@ -2,9 +2,8 @@
 
 import fs from 'fs';
 import chalk from 'chalk';
-const args = require('minimist')(process.argv.slice(2));
-console.log(args);
-const msg = fs.readFileSync(msgPath, 'utf-8')
+const args = process.argv.slice(2);
+const msg = fs.readFileSync(args[0], 'utf-8')
   .trim();
 
 console.log(chalk.green('Verifying commit message...', msg));
