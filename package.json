@@ -49,12 +49,6 @@
     "url": "https://github.com/jiangxd2016/eurus-ui/issues"
   },
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
-  "husky": {
-    "hooks": {
-      "pre-commit":"echo \"git commit trigger husky pre-commit hook\" ",
-      "commit-msg": "echo $GIT_PARAMS && node scripts/verifyCommit.js $GIT_PARAMS"
-    }
-  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
@@ -62,7 +56,7 @@
   },
   "lint-staged": {
     "**/*.{js,ts,vue}": [
-      "eslint --fix"
+      "eslint --cache  --fix"
     ]
   },
   "peerDependencies": {
