@@ -48,9 +48,9 @@
     "url": "https://github.com/jiangxd2016/eurus-ui/issues"
   },
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
-  "husk": {
+  "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "npx lint-staged",
       "commit-msg": "echo $1 && node scripts/verifyCommit.js -c $1"
     }
   },
