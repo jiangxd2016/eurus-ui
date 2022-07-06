@@ -54,8 +54,14 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "husk":{
+    "hooks":{
+      "pre-commit": "lint-staged",
+      "commit-msg": "echo $GIT_PARAMS && node scripts/verifyCommit.js $GIT_PARAMS"
+    }
+  },
   "lint-staged": {
-    "**/*.{js,ts,tsx,vue}": "eslint --cache --fix"
+    "**/*.{js,ts,tsx,vue}": ["eslint --cache --fix",	"git add"]
   },
   "peerDependencies": {
     "async-validator": "^4.1.1",
