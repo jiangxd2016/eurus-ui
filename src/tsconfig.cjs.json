@@ -6,5 +6,11 @@
     "module": "CommonJS",
     "target": "ES6"
   },
-  "exclude": ["**/*.spec.ts","**/demo/*"]
+  "include": [
+    "package.json",
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/demo/*"
+  ]
 }
