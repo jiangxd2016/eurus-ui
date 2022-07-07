@@ -28,13 +28,13 @@
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
     "coverage": "vitest run --coverage",
-    "preinstall": "esno ./scripts/preinstall.js && husky install",
+    "preinstall": "esno ./scripts/preinstall.ts && husky install",
     "prepublishOnly": "pnpm run typecheck &&pnpm run test && pnpm run build && pnpm run changelog",
     "release": "bumpp --commit --tag --push && pnpm publish --access public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jiangxd2016/eurus-ui.git"
+    "url": "git+https://github.com/jiangxd2016/eurus-ui.git"
   },
   "keywords": [
     "ui",
@@ -52,6 +52,9 @@
   "lint-staged": {
     "**/*.{js,ts,tsx,vue}": "eslint --cache --fix"
   },
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "async-validator": "^4.1.1",
     "dayjs": "^1.11.3",
@@ -68,9 +71,11 @@
     "c8": "^7.11.3",
     "chalk": "^5.0.1",
     "chokidar": "^3.5.3",
+    "element-plus": "^2.2.4",
     "enquirer": "^2.3.2",
     "eslint": "^8.19.0",
     "esno": "^0.16.3",
+    "eurus-ui": "workspace:^0.0.20",
     "happy-dom": "^5.4.0",
     "husky": "^8.0.1",
     "lint-staged": "^10.2.10",
