@@ -5,6 +5,28 @@ toc: false
 docClass: timeline
 ---
 
+## 0.0.1 `2022-07-07`
+
+
+### Bug Fixes
+
+* **playground:** fix icon ([0efb90b](https://github.com/jiangxd2016/eurus-ui/commit/0efb90b5e349693e8cb983de8f98f7ec8f2df8b7))
+
+
+### Features
+
+* **1:** :sparkles: 2 ([1a3959f](https://github.com/jiangxd2016/eurus-ui/commit/1a3959f22417636dde8cf1723440d8d938eb91fd))
+* docs theme ([fd2df4f](https://github.com/jiangxd2016/eurus-ui/commit/fd2df4ffe16b325d49f13f0fc653e8c74a55816e))
+* **script:** [WIP] gen template ([ea75ff1](https://github.com/jiangxd2016/eurus-ui/commit/ea75ff16e3a0e93303133de4a6bb638b30c2042d))
+
+
+### BREAKING CHANGES
+
+* **1:** 4
+
+
+
+
 
 
 

@@ -12,6 +12,8 @@
     "estjs",
     "iconify",
     "unocss",
+    "bumpp",
+    "pnpm",
     "unplugin",
     "vite",
     "vitejs",

@@ -9,7 +9,8 @@ import configAll from './vite.all';
 
 import genVersion from './gen-version';
 
-const nodeEnv = process.env.NODE_ENV;
+const args = process.argv.slice(2);
+const nodeEnv = args[0];
 console.log(`[eurus-ui env] ${nodeEnv}`);
 
 const config = [configProd, nodeEnv === 'all' && configAll].filter(Boolean) as InlineConfig[];
@@ -20,9 +21,8 @@ async function run() {
     await Promise.all(config.map(item => build(item)));
     console.log('[eurus-ui build]: start build type');
     // genrate type
-    exec('npm run build-types');
+    exec('npm run build:types');
   } else {
-
     await Promise.all([configDev, configAll].map(item => build(item)));
     exec('npm run build-types-esm');
     console.log('[eurus-ui dev] start watch change ...');
@@ -34,7 +34,7 @@ async function run() {
     });
     watcher.on('change', async () => {
       await Promise.all([configDev, configAll].map(item => build(item)));
-      exec('npm run build-types-esm');
+      exec('npm run build:types-esm');
     });
   }
 }
