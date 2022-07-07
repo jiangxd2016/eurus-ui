@@ -11,7 +11,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "jsx": "preserve",
     "lib": [
       "esnext",
