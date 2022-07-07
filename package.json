@@ -1,6 +1,6 @@
 {
   "name": "eurus-ui",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "private": true,
   "type": "module",
@@ -17,7 +17,6 @@
     "build:types": "pnpm run build:types-cjs && pnpm run build:types-esm",
     "build:types-cjs": "vue-tsc -p ./src/tsconfig.cjs.json --declaration --emitDeclarationOnly",
     "build:types-esm": "vue-tsc -p ./src/tsconfig.esm.json --declaration --emitDeclarationOnly",
-    "gen:version": "esno ./scripts/gen-version.ts",
     "docs:dev": "pnpm -C docs dev",
     "docs:build": "pnpm -C docs build",
     "docs:serve": "pnpm -C docs serve",
@@ -32,7 +31,7 @@
     "coverage": "vitest run --coverage",
     "preinstall": "esno ./scripts/preinstall.js && husky install",
     "prepublishOnly": "pnpm run typecheck &&pnpm run test && pnpm run build && pnpm run changelog",
-    "release": "bumpp --commit --tag --push && pnpm publish"
+    "release": "bumpp --commit --tag --push && pnpm publish --access public"
   },
   "repository": {
     "type": "git",

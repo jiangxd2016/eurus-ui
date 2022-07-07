@@ -7,8 +7,6 @@ import configDev from './vite.dev';
 import configProd from './vite.prod';
 import configAll from './vite.all';
 
-import genVersion from './gen-version';
-
 const args = process.argv.slice(2);
 const nodeEnv = args[0];
 console.log(`[eurus-ui env] ${nodeEnv}`);
@@ -16,7 +14,6 @@ console.log(`[eurus-ui env] ${nodeEnv}`);
 const config = [configProd, nodeEnv === 'all' && configAll].filter(Boolean) as InlineConfig[];
 
 async function run() {
-  await genVersion();
   if (nodeEnv) {
     await Promise.all(config.map(item => build(item)));
     console.log('[eurus-ui build]: start build type');
