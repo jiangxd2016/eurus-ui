@@ -22,7 +22,7 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "outDir": "./dist",
     "paths": {
       "~/*": ["src/*"]
