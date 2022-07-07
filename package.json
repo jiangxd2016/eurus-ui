@@ -25,6 +25,7 @@
     "clean": "rimraf dist",
     "lint:change": "lcf --fix \"{src,build,scripts,examples}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
+    "test:watch": "vitest --watch",
     "test": "vitest",
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
