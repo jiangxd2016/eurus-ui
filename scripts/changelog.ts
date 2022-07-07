@@ -22,12 +22,11 @@ function getGitCommitMap(lastCommit) {
 }
 
 async function updateChangeLog() {
-  console.log('\u001B[32m%s\u001B[0m', '当前 package.json 版本号为: ${_version}\n');
-
+  console.log('\u001B[32m%s\u001B[0m', `当前 package.json 版本号为: ${_version}\n`);
   console.log('\u001B[32m%s\u001B[0m', '正在生成 changeLog... \n');
 
   const lastCommit = getLastChangeLogCommit();
-  const initialChangelogStr = readFileSync('CHANGELOG.md', 'utf8');
+  const initialChangelogStr = readFileSync('CHANGELOG.md', 'utf8') || '';
 
   const pageDataStr = `${initialChangelogStr.match(/---[\S\s]+---/)[0]}\n`;
   const data = initialChangelogStr.split(/---[\S\s]+---/);
