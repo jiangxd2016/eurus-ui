@@ -20,10 +20,6 @@
 - :yum: Type friendly
 - :truck: `ESM` & `CJS` product
 
-## How to use
-
-[Generate a repository by vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed/generate)
-
 
 ### Install
 
