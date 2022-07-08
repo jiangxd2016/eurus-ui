@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils';
-import Button from '..';
+import EButton from '..';
 
 describe('button', () => {
 
   test('button snapshot', () => {
-    const wrapper = mount(Button);
+    const wrapper = mount(EButton);
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
   });
@@ -13,7 +13,7 @@ describe('button', () => {
     const propsTypes = ['default', 'text', 'primary', 'info', 'success', 'warning', 'error', 'purple'] as const;
 
     propsTypes.forEach((type: string) => {
-      const wrapper = mount(Button, {
+      const wrapper = mount(EButton, {
         props: {
           type
         }
@@ -28,7 +28,7 @@ describe('button', () => {
     const sizeList = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
     sizeList.forEach((size: string) => {
-      const wrapper = mount(Button, {
+      const wrapper = mount(EButton, {
         props: {
           size,
         }
@@ -41,7 +41,7 @@ describe('button', () => {
   test('button disabled', async () => {
 
     const onClick = vitest.fn();
-    const wrapper = mount(Button, {
+    const wrapper = mount(EButton, {
       props: {
         disabled: true,
         onClick,
@@ -56,7 +56,7 @@ describe('button', () => {
   );
   test('button loading', async () => {
     const onClick = vitest.fn();
-    const wrapper = mount(Button, {
+    const wrapper = mount(EButton, {
       props: {
         loading: true
       }
@@ -69,7 +69,7 @@ describe('button', () => {
   }
   );
   test('button native props', () => {
-    const wrapper = mount(Button, {
+    const wrapper = mount(EButton, {
       props: {
         native: {
           type: 'submit'

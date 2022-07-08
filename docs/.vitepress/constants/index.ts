@@ -30,8 +30,12 @@ export const sidebarCN = [
     collapsible: true,
     items: [
       {
-        text: '基础组件测试',
+        text: '按钮 button',
         link: '/zh-CN/components/button',
+      },
+      {
+        text: '图标 icon',
+        link: '/zh-CN/components/icons',
       },
       // {
       //   text: '通用组件',
