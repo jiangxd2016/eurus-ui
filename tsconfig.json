@@ -21,7 +21,7 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "rootDir": ".",
+    "rootDir": "./src",
     "outDir": "./dist",
     "paths": {
       "~/*": [
@@ -40,6 +40,7 @@
   "include": [
     "src",
   ],
+
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true
   }

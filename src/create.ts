@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import { version } from '../package.json';
+import version from './version';
 
 type ComponentType = any;
 
