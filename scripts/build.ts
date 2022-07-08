@@ -15,7 +15,7 @@ const srcPath = path.join(path.resolve(), 'src');
 
 async function genVersion() {
   const version = pkg.version;
-  await fs.writeFileSync(path.resolve(srcPath, 'version.ts'), `export default '${version}'\n`);
+  await fs.writeFileSync(path.resolve(srcPath, 'version.ts'), `export default '${version};'\n`);
 }
 
 const args = process.argv.slice(2);
