@@ -20,9 +20,7 @@
 
 ## 怎样使用
 
-```
-npm install eurus-ui # or yarn add eurus-ui
-```
-
+``` bash
+npm install eurus-ui # or pnpm add eurus-ui
 ```
 

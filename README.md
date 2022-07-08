@@ -2,17 +2,33 @@
 # Eurus UI
 
 
-### commit message
+[中文文档](https://github.com/jiangxd2016/eurus-ui/blob/main/README.zh-CN.md)
+
+
+- :rocket: dev with `Vite`
+- :airplane: build with `esbuild`
+- :helicopter: generate types with `vue-tsc`
+
+## Docs [WIP]
+- [doc example](https://eurus-ui.vercel.app/)
+
+## Feature
+
+- :rainbow: Speedy dev & build
+- :fireworks: Customize friendly
+- :pencil: More beautiful doc, use vitepress. Support `Dark Mode` by [vueuse](https://github.com/vueuse/vueuse)
+- :yum: Type friendly
+- :truck: `ESM` & `CJS` product
+
+## How to use
+
+[Generate a repository by vue-components-lib-seed](https://github.com/zouhangwithsweet/vue-components-lib-seed/generate)
+
+
+### Install
+
+```bash
+npm install eurus-ui # or pnpm insstall eurus-ui
 ```
-<type>(<scope>):<component> <short summary>
-  │       │          |       │
-  │       │          |       |
-  │       │          |       └─⫸ Summary in present tense. Not capitalized. No period at the end.
-  │       |          |
-  │       |          └─⫸ Commit Component: src packages component name | ""
-  │       |
-  │       └─⫸ Commit Scope:   components|utils|other
-  │
-  │
-  └─⫸ Commit Type: feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release
-```
+
+

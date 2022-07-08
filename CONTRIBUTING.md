@@ -88,3 +88,17 @@ git merge upstream/develop
 - fix & feat 的提交会被用来生成 changelog
 - 提交会触发 git pre-commit 检查，修复提示的 eslint 错误，
 
+### commit message
+```
+<type>(<scope>):<component> <short summary>
+  │       │          |       │
+  │       │          |       |
+  │       │          |       └─⫸ Summary in present tense. Not capitalized. No period at the end.
+  │       |          |
+  │       |          └─⫸ Commit Component: src packages component name | ""
+  │       |
+  │       └─⫸ Commit Scope:   components|utils|other
+  │
+  │
+  └─⫸ Commit Type: feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release
+```
