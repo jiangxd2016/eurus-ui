@@ -96,7 +96,7 @@ export default defineComponent({
         on-click={handleClick}>
         {props.loading && (
           <span class="loading">
-            <EIcon name='Loading'></EIcon>
+            <EIcon name='loading'></EIcon>
           </span>
         )}
         {slots?.icons && renderSlot(slots, 'icon')}

@@ -1,14 +1,12 @@
 import { mount } from '@vue/test-utils';
-const pkg = await import('..');
+import EIcon from '..';
 describe('icon snapshots ', () => {
 
-  it('all icon snapshots', () => {
-    Object.keys(pkg).forEach((key) => {
-      // key must be in pkg
-      // @ts-expect-error
-      const wrapper = mount((pkg[key]));
-      expect(wrapper.html()).toMatchSnapshot();
-      wrapper.unmount();
+  it('icon snapshots', () => {
+    const wrapper = mount(EIcon, {
+      name: 'loading'
     });
+    expect(wrapper.html()).toMatchSnapshot();
+    wrapper.unmount();
   });
 });

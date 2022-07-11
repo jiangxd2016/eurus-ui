@@ -2,7 +2,7 @@ import type { PropType } from 'vue';
 import { renderSlot, h, computed, defineComponent } from 'vue';
 
 import IconList from './iconList';
-import { useSize } from '@/use/useSize';
+import { useSize } from '@/packages/_shared/useSize';
 
 const IconProps = {
   size: Number,
@@ -23,7 +23,7 @@ export default defineComponent({
     let element: string | null = null;
 
     if (props.name && Object.keys(IconList).includes(props.name)) {
-      element = IconList[props.name].svg;
+      element = IconList[props.name];
     }
 
     // support iconfont

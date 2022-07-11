@@ -1,4 +1,4 @@
-import { isNumber, isStr } from '@estjs/tools';
+import { isNumber, isString } from './isType';
 
 export function useSize(size: number | string | undefined) {
   if (!size) {
@@ -7,7 +7,7 @@ export function useSize(size: number | string | undefined) {
   if (isNumber(size)) {
     return `${size}px`;
   }
-  if (isStr(size)) {
+  if (isString(size)) {
     if ((size as string).endsWith('px')) {
       return size;
     } else {
