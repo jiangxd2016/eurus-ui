@@ -1,6 +1,5 @@
 import type { PropType } from 'vue';
 import { h, computed, defineComponent } from 'vue';
-import iconList from './iconList';
 
 import IconList from './iconList';
 
@@ -23,7 +22,7 @@ export default defineComponent({
     let svgElement: string | null = null;
     if (props.name && Object.keys(IconList).includes(props.name)) {
 
-      svgElement = iconList[props.name].svg;
+      svgElement = IconList[props.name].svg;
 
     }
 
