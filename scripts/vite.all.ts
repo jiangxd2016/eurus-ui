@@ -42,7 +42,7 @@ const config: InlineConfig = {
       }
     },
   },
-  plugins: [viteDeletePurePlugin(), vue(), vueJsx()],
+  plugins: [viteDeletePurePlugin(), vue(), vueJsx({ optimize: true })],
 };
 
 export default config;

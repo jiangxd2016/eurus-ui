@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { h, computed, defineComponent } from 'vue';
+import { computed, defineComponent, h } from 'vue';
 import iconList from './iconList';
 
 import IconList from './iconList';
@@ -27,10 +27,8 @@ export default defineComponent({
 
     }
 
-    return () => h('div', {
-      style: { ...mergeStyles.value },
-      domProps: { innerHTML: svgElement }
-    });
+    return () => <div style={mergeStyles.value} dangerouslySetInnerHTML={svgElement}>
+    </div>;
 
   },
 });

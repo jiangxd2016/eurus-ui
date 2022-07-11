@@ -1,19 +1,9 @@
-export { default as ArrowDown } from './src/ArrowDown';
-export { default as ArrowLeft } from './src/ArrowLeft';
-export { default as ArrowRight } from './src/ArrowRight';
-export { default as ArrowUp } from './src/ArrowUp';
-export { default as CaretDown } from './src/CaretDown';
-export { default as CaretLeft } from './src/CaretLeft';
-export { default as CaretRight } from './src/CaretRight';
-export { default as CaretSort } from './src/CaretSort';
-export { default as CaretUp } from './src/CaretUp';
-export { default as ChevronDown } from './src/ChevronDown';
-export { default as ChevronLeft } from './src/ChevronLeft';
-export { default as ChevronRight } from './src/ChevronRight';
-export { default as ChevronSort } from './src/ChevronSort';
-export { default as ChevronUp } from './src/ChevronUp';
-export { default as Close } from './src/Close';
-export { default as ErrorFilled } from './src/ErrorFilled';
-export { default as ErrorOutline } from './src/ErrorOutline';
-export { default as Loading } from './src/Loading';
-export { default as Misuse } from './src/Misuse';
+import type { App } from 'vue';
+import EIcon from './src';
+
+EIcon.install = (app: App) => {
+  app.component(EIcon.name, EIcon);
+};
+
+export { EIcon };
+export default EIcon;

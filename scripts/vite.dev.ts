@@ -36,7 +36,8 @@ const config: InlineConfig = {
   plugins: [
     viteCssPlugin(),
     vue(),
-    vueJsx()],
+    vueJsx({ optimize: true })
+  ],
 };
 
 export default config;

@@ -1,8 +1,8 @@
 <template>
-  <Loading />
+  <EIcon name="Loading" />
 </template>
 
-<script  setup>
-import { Loading } from 'eurus-ui';
+<script  setup >
+import { EIcon } from 'eurus-ui';
 </script>
 

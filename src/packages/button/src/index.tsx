@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
 import { renderSlot, defineComponent, reactive } from 'vue';
-import { Loading } from '../../icons';
+import { EIcon } from '../../icons';
 import './style.scss';
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -96,7 +96,7 @@ export default defineComponent({
         on-click={handleClick}>
         {props.loading && (
           <span class="loading">
-            <Loading></Loading>
+            <EIcon name='Loading'></EIcon>
           </span>
         )}
         {slots?.icons && renderSlot(slots, 'icon')}
