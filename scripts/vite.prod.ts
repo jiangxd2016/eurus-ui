@@ -42,7 +42,11 @@ const config: InlineConfig = {
       formats: ['es'],
     },
   },
-  plugins: [viteCssPlugin(), vue(), vueJsx({ optimize: true })],
+  plugins: [
+    viteCssPlugin(),
+    vue(),
+    vueJsx({ optimize: true })
+  ],
 };
 
 export default config;
