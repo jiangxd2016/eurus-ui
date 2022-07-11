@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { h, computed, defineComponent } from 'vue';
+import { renderSlot, h, computed, defineComponent } from 'vue';
 
 import IconList from './iconList';
 import { useSize } from '@/use/useSize';
@@ -13,25 +13,27 @@ const IconProps = {
 export default defineComponent({
   name: 'Icon',
   props: IconProps,
-  setup(props) {
+  setup(props, { slots }) {
     const mergeStyles = computed(() => {
       return {
         fontSize: useSize(props.size),
         color: props.color
       };
     });
-    let svgElement: string | null = null;
+    let element: string | null = null;
 
     if (props.name && Object.keys(IconList).includes(props.name)) {
+      element = IconList[props.name].svg;
+    }
 
-      svgElement = IconList[props.name].svg;
-
+    // support iconfont
+    if (!element && !slots.default) {
+      element = `<i class=${'iconfont' + props.name} />`;
     }
 
     return () => h('div', {
       style: mergeStyles.value,
-      innerHTML: svgElement
-    });
-
+      innerHTML: element
+    }, [slots.default && renderSlot(slots, 'icon-slot')]);
   },
 });

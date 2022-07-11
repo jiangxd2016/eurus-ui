@@ -174,7 +174,6 @@ export const Misuse = {
         ></path>
       </svg>`,
 };
-
 const list = {
   ArrowDown, ArrowLeft, ArrowRight, ArrowUp, CaretDown, CaretLeft, CaretRight, CaretSort, CaretUp, ChevronDown, ChevronLeft, ChevronRight, ChevronSort, ChevronUp, Close, ErrorFilled, ErrorOutline, Loading, Misuse
 };
