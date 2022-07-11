@@ -14,7 +14,7 @@ const config: InlineConfig = {
   mode: 'production',
   resolve: {
     alias: {
-      '~/': `${resolve(dirname, 'src')}/`,
+      '@/': `${resolve(dirname, 'src')}/`,
     },
   },
   css: {

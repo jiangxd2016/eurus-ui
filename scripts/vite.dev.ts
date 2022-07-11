@@ -8,7 +8,7 @@ const config: InlineConfig = {
   mode: 'development',
   resolve: {
     alias: {
-      '~/': `${resolve(resolve(), 'src')}/`,
+      '@/': `${resolve(resolve(), 'src')}/`,
     },
   },
 

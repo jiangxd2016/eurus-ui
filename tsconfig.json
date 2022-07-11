@@ -24,8 +24,11 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "paths": {
-      "~/*": [
-        "src/*"
+      "@/*": [
+        "*"
+      ],
+      "eurus-ui":[
+        "index.ts"
       ]
     },
     "types": [

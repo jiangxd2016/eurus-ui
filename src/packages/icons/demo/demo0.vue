@@ -1,8 +1,16 @@
 <template>
-  <EIcon name="Loading" />
+  <EIcon name="Loading" size="40" color="red" />
+  <EIcon name="A" size="40" color="red" />
+  <EIcon name="Loading" size="40" color="red" />
+  <EIcon name="Loading" size="40" color="red" />
+  <EIcon name="Loading" size="40" color="red" />
+  <EIcon name="Loading" size="40" color="red" />
+  <EIcon name="Loading" size="40" color="red" />
+  <EIcon name="Loading" size="40" color="red" />
+  <EIcon name="Loading" size="40" color="red" />
 </template>
 
-<script  setup >
+<script  setup  lang="ts">
 import { EIcon } from 'eurus-ui';
 </script>
 

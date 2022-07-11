@@ -1,3 +1,18 @@
-export const useSize = 2;
+import { isNumber, isStr } from '@estjs/tools';
 
-export const useType = 1;
+export function useSize(size: number | string | undefined) {
+  if (!size) {
+    return size;
+  }
+  if (isNumber(size)) {
+    return `${size}px`;
+  }
+  if (isStr(size)) {
+    if ((size as string).endsWith('px')) {
+      return size;
+    } else {
+      return `${size}px`;
+    }
+  }
+  return size;
+}
