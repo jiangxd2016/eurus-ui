@@ -34,13 +34,15 @@ export function MarkdownTransform(): Plugin {
       const codeReplace = code.replaceAll(/(?<=<CodeDemo)[\S\s]*?(?=\/>)/g, (str)=>{
 
         const srcArr = str.match(/(?<=src=").*?(?=")/g);
+        const code = str.match(/(?<=code=").*?(?=")/g);
         if (!srcArr || srcArr.length === 0) {
           return;
         }
 
         const source = fs.readFileSync(path.resolve(PACKAGES_PATH, srcArr[0]), 'utf-8');
+        const showCode = code && code.length > 0 ? code[0] === 'false' ? false : true : false;
 
-        return ` source="${encodeURIComponent(source)}" distJs="${encodeURIComponent(distJs)}" distCss="${encodeURIComponent(distCss)}"`;
+        return ` :code=${showCode} source="${encodeURIComponent(source)}" distJs="${encodeURIComponent(distJs)}" distCss="${encodeURIComponent(distCss)}"`;
 
       });
       return {

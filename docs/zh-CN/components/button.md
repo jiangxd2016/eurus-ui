@@ -1,7 +1,7 @@
 ---
 class: 'button-doc'
 ---
-# Button 按钮
+# 按钮 Button
 
 ## 引入
 

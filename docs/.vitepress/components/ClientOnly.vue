@@ -12,8 +12,6 @@ const dynamicComponent = shallowRef<any>(null);
 onMounted(()=>{
   import('./CodeDemo.vue').then((module) => {
 
-    console.log(module.default);
-
     dynamicComponent.value = module.default;
   });
 });

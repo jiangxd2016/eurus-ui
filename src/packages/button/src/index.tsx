@@ -3,7 +3,7 @@ import { renderSlot, defineComponent, reactive } from 'vue';
 import { EIcon } from '../../icons';
 import './style.scss';
 
-export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type Size = 'sx' | 'sm' | 'md' | 'lg' | 'xl';
 export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type Type =
   | 'default'
@@ -16,13 +16,13 @@ export type Type =
   | 'purple'
   | undefined;
 
-// const defaultSizes: { [key in Size]: number } = {
-//   xs: 8,
-//   sm: 10,
-//   md: 14,
-//   lg: 20,
-//   xl: 24,
-// };
+const defineIconSize: { [key in Size]: number } = {
+  sx: 16,
+  sm: 18,
+  md: 20,
+  lg: 22,
+  xl: 24,
+};
 
 const BtnProps = {
   type: {
@@ -96,7 +96,7 @@ export default defineComponent({
         on-click={handleClick}>
         {props.loading && (
           <span class="loading">
-            <EIcon name='loading'></EIcon>
+            <EIcon name='loading' size={defineIconSize[props.size]}></EIcon>
           </span>
         )}
         {slots?.icons && renderSlot(slots, 'icon')}

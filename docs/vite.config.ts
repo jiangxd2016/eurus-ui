@@ -31,6 +31,7 @@ export default {
     ViteRestart({
       restart: [
         '../dist/*',
+        '../src/packages/**/*.vue'
       ],
     }),
     MarkdownTransform()

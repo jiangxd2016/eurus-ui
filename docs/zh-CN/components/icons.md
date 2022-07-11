@@ -1,32 +1,35 @@
 ---
-class: 'button-doc'
+class: 'Icon-doc'
 ---
-# Button 按钮
+# 图标 Icon
 
 ## 引入
 
 ```javascript
-import { EButton } from 'eurus-ui';
+import { EIcon } from 'eurus-ui';
 
-Vue.createApp().use(EButton.name, EButton)
+Vue.createApp().use(EIcon.name, EIcon)
 ```
 
 ## type
 
 <CodeDemo
   src="icons/demo/demo0.vue"
+  code="false"
 />
 
 
-### Button Props
+### Icon Props
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
+| size | string \| number | 24 | 图标大小 |
+| color | string | - | 图标颜色 |
 
-### Button Slots
+
+### Icon Slots
 
 | 名称    | 参数 | 说明       |
 | ------- | ---- | ---------- |
-| default | -    | 按钮的内容 |
-| icon    | -    | 按钮的图标 |
+| default | -    |  自定义图标 |
 

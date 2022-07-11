@@ -16,7 +16,7 @@ interface demoProps {
   description?: string;
   showCode?: boolean;
 }
-const props = defineProps<{ source: string; distCss: string; distJs: string }>();
+const props = defineProps<{ source: string; distCss: string; distJs: string; code: boolean }>();
 
 const clipSuccess = ref(false);
 const showCode = ref(false);
@@ -78,6 +78,7 @@ const codeMirrorOption = {
           <!-- operation -->
           <div class="relative flex px-2 text-center justify-center">
             <div
+              v-if="props.code"
               i-ph-code
               class="text-md cursor-pointer ml-4 <sm:text-sm"
               :class="[showCode ? 'active-code' : '']"
