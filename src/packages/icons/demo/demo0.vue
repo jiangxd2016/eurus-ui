@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div ref="wrapper" class="wrapper">
     <div class="item">
       <EIcon name="arrowDown" size="40" color="#df8d39" />
       <p>arrowDown</p>
@@ -116,6 +116,11 @@ import { EIcon } from 'eurus-ui';
     flex-direction: column;
 
     margin-bottom: 18px;
-    margin-right: 18px;
+    margin-right: 8px;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
 </style>

@@ -7,6 +7,7 @@
 
 <script lang="ts" setup>
 import { onMounted, shallowRef } from 'vue';
+import {} from 'vueuse';
 
 const dynamicComponent = shallowRef<any>(null);
 onMounted(()=>{
