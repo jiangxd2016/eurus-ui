@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useClipboard } from '@vueuse/core';
-
 import { computed, ref } from 'vue';
 import VueRunning from 'vue-running';
 import type { depLibsType } from 'vue-running';
