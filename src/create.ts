@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import version from './version';
-
+export const globaleComponentPrefix = 'E';
 type ComponentType = any;
 
 export interface UiInstance {
@@ -14,7 +14,7 @@ interface UiCreateOptions {
   componentPrefix?: string;
 }
 
-function create({ componentPrefix = 'E', components = [] }: UiCreateOptions = {}): UiInstance {
+function create({ componentPrefix = globaleComponentPrefix, components = [] }: UiCreateOptions = {}): UiInstance {
   const installTargets: App[] = [];
   function registerComponent( app: App,
     name: string,

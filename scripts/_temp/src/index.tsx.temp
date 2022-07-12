@@ -1,7 +1,7 @@
 import { defineComponent, reactive } from 'vue';
 import './style.scss';
 
-const BtnProps = {
+const <%= name %>Props = {
   type: {
     type: Boolean,
     default: false,
@@ -9,8 +9,8 @@ const BtnProps = {
 };
 
 export default defineComponent({
-  name: 'EButton',
-  props: BtnProps,
+  name: '<%= name %>',
+  props: <%= name %>Props,
   setup(props, { slots, emit }) {
 
     return () => (

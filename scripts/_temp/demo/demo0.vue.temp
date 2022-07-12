@@ -1,10 +1,7 @@
 <template >
 
-
-
-
 </template>
 
 <script  setup>
-import { } from 'eurus-ui';
+import { <%= name %> } from 'eurus-ui';
 </script>

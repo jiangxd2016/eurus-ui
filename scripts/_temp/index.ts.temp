@@ -1,9 +1,9 @@
 import type { App } from 'vue';
-import EButton from './src';
+import <%= name %> from './src';
 
-EButton.install = (app: App) => {
-  app.component(EButton.name, EButton);
+<%= name %>.install = (app: App) => {
+  app.component(<%= name %>.name, <%= name %>);
 };
 
-export { EButton };
-export default EButton;
+export { <%= name %> };
+export default <%= name %>;
