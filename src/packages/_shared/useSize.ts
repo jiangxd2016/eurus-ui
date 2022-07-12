@@ -4,6 +4,7 @@ export function useSize(size: number | string | undefined) {
   if (!size) {
     return size;
   }
+
   if (isNumber(size)) {
     return `${size > 12 ? size : 12}px`;
   }

@@ -3,7 +3,7 @@ import <%= name %> from '../';
 
 describe('<%= name %>', () => {
 
-  test('<%= name %> snapshot', () => {
+ it('<%= name %> snapshot', () => {
     const wrapper = mount(<%= name %>);
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();

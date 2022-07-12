@@ -26,8 +26,12 @@ export default defineComponent({
     if (props.name && Object.keys(IconList).includes(props.name)) {
       element = IconList[props.name];
       // support iconfont
-    } else if (!element && !slots.default) {
+    } else if (!slots.default && props.name) {
       element = `<i class=${'iconfont' + props.name} />`;
+    }
+    if (!element && !slots.default) {
+      console.error('[eurus-ui] : not found icon , please check you enter');
+
     }
 
     return () => h('div', {

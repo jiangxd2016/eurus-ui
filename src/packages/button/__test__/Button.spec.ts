@@ -3,12 +3,12 @@ import EButton from '..';
 
 describe('button', () => {
 
-  test('button snapshot', () => {
+  it('button snapshot', () => {
     const wrapper = mount(EButton);
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
   });
-  test('button props type', () => {
+  it('button props type', () => {
 
     const propsTypes = ['default', 'text', 'primary', 'info', 'success', 'warning', 'error', 'purple'] as const;
 
@@ -24,7 +24,7 @@ describe('button', () => {
     });
   });
 
-  test('button size', () => {
+  it('button size', () => {
     const sizeList = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
     sizeList.forEach((size: string) => {
@@ -38,7 +38,7 @@ describe('button', () => {
     });
   });
 
-  test('button disabled', async () => {
+  it('button disabled', async () => {
 
     const onClick = vitest.fn();
     const wrapper = mount(EButton, {
@@ -54,7 +54,7 @@ describe('button', () => {
     wrapper.unmount();
   }
   );
-  test('button loading', async () => {
+  it('button loading', async () => {
     const onClick = vitest.fn();
     const wrapper = mount(EButton, {
       props: {
@@ -68,7 +68,7 @@ describe('button', () => {
     wrapper.unmount();
   }
   );
-  test('button native props', () => {
+  it('button native props', () => {
     const wrapper = mount(EButton, {
       props: {
         native: {
