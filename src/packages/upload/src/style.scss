@@ -1,0 +1,50 @@
+.e-upload{
+  position: relative;
+  display: inline-block;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  .e-upload-content{
+      .file{
+      position: absolute;
+      width: 110px;
+      height: 36px;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      filter: alpha(opacity=0);
+      cursor: pointer;
+    }
+  }
+
+  .e-upload-list{
+    .e-upload-list-item{
+      margin-top: 10px;
+      vertical-align:middle;
+      width: 300px;
+      background: #FFFFFF;
+      font-family: PingFangSC-Regular;
+      font-size: 14px;
+      color: #575757;
+      img{
+        padding: 7px 0 7px 10px;
+        vertical-align:middle;
+      }
+      .e-upload-list-item-title{
+        padding: 5px;
+        line-height: 20px;
+        a{
+          text-decoration:none;
+          color: #575757;
+        }
+      }
+      .e-upload-close{
+        position: absolute;
+        right:10px;
+      }
+    }
+    :hover{
+      background: #F7F7FA;
+    }
+  }
+}

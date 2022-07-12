@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`EInput > EInput snapshot 1`] = `"<input type=\\"text\\" placeholder=\\"\\" class=\\"e-input e-input-md\\">"`;

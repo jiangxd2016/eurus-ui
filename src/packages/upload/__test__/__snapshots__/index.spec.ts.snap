@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`EUpload > EUpload snapshot 1`] = `
+"<div class=\\"e-upload\\">
+  <div class=\\"e-upload-content\\">
+    <!----><input type=\\"file\\" class=\\"file\\" title=\\"\\">
+  </div>
+  <div class=\\"e-upload-list\\"></div>
+</div>"
+`;
