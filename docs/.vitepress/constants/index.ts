@@ -37,6 +37,10 @@ export const sidebarCN = [
         text: '图标 icon',
         link: '/zh-CN/components/icons',
       },
+      {
+        text: '加载中 loading',
+        link: '/zh-CN/components/loading',
+      },
       // {
       //   text: '通用组件',
       //   link: '/zh-CN/common',

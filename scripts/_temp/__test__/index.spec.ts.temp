@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import <%= name %> from '../';
+import <%= name %> from '..';
 
 describe('<%= name %>', () => {
 

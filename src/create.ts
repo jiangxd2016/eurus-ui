@@ -16,11 +16,11 @@ interface UiCreateOptions {
 
 function create({ componentPrefix = globaleComponentPrefix, components = [] }: UiCreateOptions = {}): UiInstance {
   const installTargets: App[] = [];
-  function registerComponent( app: App,
-    name: string,
-    component: ComponentType) {
+  function registerComponent( app: App, name: string, component: ComponentType) {
     const registered = app.component(componentPrefix + name);
-    if (!registered) { app.component(componentPrefix + name, component); }
+    if (!registered) {
+      app.component(componentPrefix + name, component);
+    }
   }
   function install (app: App): void {
     if (installTargets.includes(app)) { return; }
