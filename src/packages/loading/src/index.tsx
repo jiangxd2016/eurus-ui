@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { Fragment, getCurrentInstance, h, defineComponent, toRefs, Teleport } from 'vue';
+import { defineComponent, toRefs, Teleport } from 'vue';
 import classNames from '@/composables/useClassName';
 import './style.scss';
 
@@ -70,7 +70,7 @@ export default defineComponent({
       ...sizeStyle(),
       borderTopColor: color.value,
     };
-    const WrapperElement = to.value ? Teleport : 'div';
+    const WrapperElement = to.value ? Teleport : 'span';
     return () => (
       modelValue && <WrapperElement to={to.value} class="loading">
         <div style={{ ...loadingStyle }} />
