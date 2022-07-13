@@ -99,5 +99,5 @@ jobs:
 
       - run: pnpm install
 
-      - name: coverage
+      - name: Coverage
       - run: npm run coverage
