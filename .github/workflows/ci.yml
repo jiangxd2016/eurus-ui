@@ -100,4 +100,4 @@ jobs:
       - run: pnpm install
 
       - name: Coverage
-      - run: npm run coverage
+      - run: pnpm run coverage
