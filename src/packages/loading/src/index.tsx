@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { h, defineComponent, toRefs, Teleport } from 'vue';
+import { Fragment, getCurrentInstance, h, defineComponent, toRefs, Teleport } from 'vue';
 import classNames from '@/composables/useClassName';
 import './style.scss';
 
@@ -70,17 +70,13 @@ export default defineComponent({
       ...sizeStyle(),
       borderTopColor: color.value,
     };
+    const WrapperElement = to.value ? Teleport : 'div';
     return () => (
-      // h not have Teleport|string type
-      modelValue && h(to.value ? (Teleport as unknown as string) : 'div', {
-        class: 'loading',
-        to: to.value,
-      }, [
-        h('div', { style: loadingStyle, class: 'loading-spinner' }),
-        loadingText.value && h('span', {
-          class: spanClass(),
-        }, loadingText.value)
-      ])
+      modelValue && <WrapperElement to={to.value} class="loading">
+        <div style={{ ...loadingStyle }} />
+        <span class={spanClass()}>{loadingText.value}</span>
+      </WrapperElement>
+
     );
   }
 });
