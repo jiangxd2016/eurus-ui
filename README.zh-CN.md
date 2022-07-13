@@ -21,6 +21,6 @@
 ## 怎样使用
 
 ``` bash
-npm install eurus-ui # or pnpm add eurus-ui
+npm install eurus-ui # or pnpm install eurus-ui
 ```
 

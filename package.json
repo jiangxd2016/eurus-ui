@@ -1,6 +1,6 @@
 {
   "name": "eurus-ui",
-  "version": "0.0.3",
+  "version": "0.0.0",
   "description": "",
   "type": "module",
   "packageManager": "pnpm@7.3.0",
@@ -28,8 +28,8 @@
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
     "coverage": "vitest run --coverage",
-    "preinstall": "esno ./scripts/preinstall.ts && husky install",
-    "prepublishOnly": "pnpm run clean && pnpm run typecheck &&pnpm run test && pnpm run build && pnpm run changelog",
+    "preinstall": "node ./scripts/preinstall.js && husky install",
+    "prepublishOnly": "pnpm run clean && pnpm run typecheck && pnpm run test && pnpm run build && pnpm run changelog",
     "release": "bumpp --commit --tag --push && pnpm publish --access public"
   },
   "repository": {

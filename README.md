@@ -24,7 +24,7 @@
 ### Install
 
 ```bash
-npm install eurus-ui # or pnpm insstall eurus-ui
+npm install eurus-ui # or pnpm install eurus-ui
 ```
 
 

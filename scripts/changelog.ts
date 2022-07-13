@@ -28,7 +28,7 @@ async function updateChangeLog() {
   const lastCommit = getLastChangeLogCommit();
   const initialChangelogStr = readFileSync('CHANGELOG.md', 'utf8') || '';
 
-  const pageDataStr = `${initialChangelogStr.match(/---[\S\s]+---/)[0]}\n`;
+  const pageDataStr = `${initialChangelogStr.match(/---[\S\s]+---/)![0]}\n`;
   const data = initialChangelogStr.split(/---[\S\s]+---/);
   data.unshift(pageDataStr);
 
