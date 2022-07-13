@@ -1,18 +1,18 @@
 <template>
   <ELoading
-    v-model:show="show"
+    v-model="show"
     size="xs"
   />
   <ELoading
-    v-model:show="show"
+    v-model="show"
     size="sm"
   />
   <ELoading
-    v-model:show="show"
+    v-model="show"
     size="md"
   />
   <ELoading
-    v-model:show="show"
+    v-model="show"
     size="lg"
   />
 </template>

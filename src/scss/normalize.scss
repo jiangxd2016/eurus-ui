@@ -11,12 +11,12 @@
 }
 html,
 body,
-#q-app {
+#app {
   width: 100%;
   direction: ltr;
 }// https://stackoverflow.com/a/23083463
 body.platform-ios.within-iframe,
-body.platform-ios.within-iframe #q-app {
+body.platform-ios.within-iframe #app {
   width: 100px;
   min-width: 100%;
 }

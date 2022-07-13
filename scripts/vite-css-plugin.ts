@@ -21,7 +21,7 @@ const compileToCSS = async function (path: string) {
     const outputDir = viteConfig.inlineConfig?.build?.rollupOptions?.output as any[];
     const resolvePath = resolve(path, '../');
     outputDir.forEach((item) => {
-      const output = dirname + '/' + item.dir + resolvePath.match(pathReg)[0];
+      const output = dirname + '/' + item.dir + resolvePath.match(pathReg)![0];
       if (!fs.existsSync(output)) {
         fs.mkdirSync(output, { recursive: true });
       }

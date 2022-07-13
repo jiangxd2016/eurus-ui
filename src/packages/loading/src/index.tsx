@@ -1,14 +1,14 @@
 import type { PropType } from 'vue';
-import { defineComponent, toRefs } from 'vue';
+import { h, defineComponent, toRefs, Teleport } from 'vue';
 import classNames from '@/composables/useClassName';
 import './style.scss';
 
 const LoaderProps = {
-  show: {
+  modelValue: {
     type: Boolean as PropType<true>,
     default: false
   },
-  loaddingText: {
+  loadingText: {
     type: String as PropType<string>,
     default: ''
   },
@@ -19,14 +19,18 @@ const LoaderProps = {
   color: {
     type: String as PropType<string>,
     default: '#A6A6A6'
-  }
+  },
+  to: {
+    type: String as PropType<string>,
+    default: null
+  },
 };
 
 export default defineComponent({
   name: 'ELoading',
   props: LoaderProps,
-  setup (props) {
-    const { show, loaddingText, size, color } = toRefs(props);
+  setup(props) {
+    const { modelValue, loadingText, size, color, to } = toRefs(props);
 
     const sizeStyle = () => {
       switch (size.value) {
@@ -59,19 +63,24 @@ export default defineComponent({
     };
 
     const spanClass = () => {
-      return classNames(['loadding-text', `${size.value}-text`]);
+      return classNames(['loading-text', `${size.value}-text`]);
     };
 
-    const loaddingStyle: any = {
+    const loadingStyle: any = {
       ...sizeStyle(),
       borderTopColor: color.value,
     };
-
     return () => (
-      show && <span class="loadding">
-        <div style={{ ...loaddingStyle }} />
-        <span class={spanClass()}>{loaddingText.value}</span>
-      </span>
+      // h not have Teleport|string type
+      modelValue && h(to.value ? (Teleport as unknown as string) : 'div', {
+        class: 'loading',
+        to: to.value,
+      }, [
+        h('div', { style: loadingStyle, class: 'loading-spinner' }),
+        loadingText.value && h('span', {
+          class: spanClass(),
+        }, loadingText.value)
+      ])
     );
   }
 });

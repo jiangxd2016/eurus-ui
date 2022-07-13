@@ -8,4 +8,12 @@ describe('ELoading', () => {
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
   });
+
+  it('should Teleport to work', ()=>{
+
+    const wrapper = mount(ELoading, {
+      to: 'body'
+    });
+    wrapper.unmount();
+  });
 });

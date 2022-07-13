@@ -1,5 +1,5 @@
 <template>
-  <ELoading v-model:show="show" />
+  <ELoading v-model="show" />
 </template>
 
 <script  setup>
