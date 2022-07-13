@@ -10,7 +10,7 @@
 - :helicopter: generate types with `vue-tsc`
 
 ## Docs [WIP]
-- [doc example](https://eurus-ui.vercel.app/)
+- [doc](https://eurus-ui.vercel.app/)
 
 ## Feature
 

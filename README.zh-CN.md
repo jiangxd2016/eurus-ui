@@ -8,7 +8,7 @@
 
 ## 文档
 
-- [文档示例](https://eurus-ui.vercel.app/)
+- [文档](https://eurus-ui.vercel.app/)
 
 ## 特点
 
