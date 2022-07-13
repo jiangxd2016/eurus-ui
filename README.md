@@ -1,5 +1,8 @@
 
 # Eurus UI
+![ci](https://img.shields.io/github/workflow/status/jiangxd2016/eurus-ui/ci?label=ci&logo=github)
+![nycrc config on GitHub](https://img.shields.io/nycrc/bcoe/c8)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://www.conventionalcommits.org/)
 
 
 [中文文档](https://github.com/jiangxd2016/eurus-ui/blob/main/README.zh-CN.md)

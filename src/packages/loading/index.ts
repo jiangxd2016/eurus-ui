@@ -10,7 +10,6 @@ ELoading.install = (app: App) => {
   //     console.log(el, binding);
 
   //   },
-
   // });
 };
 
