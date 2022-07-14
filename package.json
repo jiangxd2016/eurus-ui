@@ -73,7 +73,7 @@
     "chokidar": "^3.5.3",
     "eslint": "^8.19.0",
     "esno": "^0.16.3",
-    "happy-dom": "^5.4.0",
+    "happy-dom": "^6.0.3",
     "husky": "^8.0.1",
     "klaw-sync": "^6.0.0",
     "lint-staged": "^10.5.4",
