@@ -1,7 +1,7 @@
 
 # Eurus UI
 ![ci](https://img.shields.io/github/workflow/status/jiangxd2016/eurus-ui/CI)
-![codecov.io](https://codecov.io/github/jiangxd2016/eurus-ui/coverage.svg?branch=main)
+[![codecov](https://codecov.io/gh/jiangxd2016/eurus-ui/branch/main/graph/badge.svg?token=H8NB5UXXVA)](https://codecov.io/gh/jiangxd2016/eurus-ui)
 
 [中文文档](https://github.com/jiangxd2016/eurus-ui/blob/main/README.zh-CN.md)
 
