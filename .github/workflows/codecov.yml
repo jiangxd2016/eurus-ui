@@ -35,7 +35,7 @@ jobs:
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           directory: ./coverage/
-          env_vars: OS,PYTHON
+          env_vars: OS,NODE
           fail_ci_if_error: true
           file: ./coverage/coverage-final.json
           flags: unittests
