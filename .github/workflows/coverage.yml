@@ -1,40 +1,44 @@
-name: Coverage
-on: [push]
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  run:
-    runs-on: ${{ matrix.os }}
-        strategy:
-          matrix:
-            node-version: [14.x, 16.x]
-            os: [ubuntu-latest]
-          fail-fast: false
-   steps:
-     - uses: actions/checkout@v2
-     - name: Install pnpm
-       uses: pnpm/action-setup@v2.2.1
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-     - name: Use Node.js ${{ matrix.node-version }}
-       uses: actions/setup-node@v2
-       with:
-         node-version: ${{ matrix.node-version }}
-         registry-url: https://registry.npmjs.org/
-         cache: pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.1
 
-     - run: pnpm i --frozen-lockfile
+      - name: Set node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: pnpm
 
-     - name: Coverage
-       run: pnpm run coveragea
+      - name: Install
+      - run: pnpm i --frozen-lockfile
 
-     - name: Upload coverage to Codecov
-       uses: codecov/codecov-action@v3
-       with:
-         token: ${{ secrets.CODECOV_TOKEN }}
-         directory: ./coverage/
-         env_vars: OS,PYTHON
-         fail_ci_if_error: true
-         file: ./coverage/coverage-final.json
-         flags: unittests
-         name: codecov-umbrella
-         path_to_write_report: ./coverage/codecov_report.txt
-         verbose: true
+      - name: Coverage
+        run: pnpm run coveragea
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          directory: ./coverage/
+          env_vars: OS,PYTHON
+          fail_ci_if_error: true
+          file: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella
+          path_to_write_report: ./coverage/codecov_report.txt
+          verbose: true
