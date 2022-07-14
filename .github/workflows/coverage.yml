@@ -3,32 +3,38 @@ on: [push]
 jobs:
   run:
     runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    env:
-      OS: ${{ matrix.os }}
-      PYTHON: '3.7'
-    steps:
-    - uses: actions/checkout@master
-    - name: Setup Python
-      uses: actions/setup-python@master
-      with:
-        python-version: 3.7
-    - name: Generate coverage report
-      run: |
-        pip install pytest
-        pip install pytest-cov
-        pytest --cov=./ --cov-report=xml
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        directory: ./coverage/reports/
-        env_vars: OS,PYTHON
-        fail_ci_if_error: true
-        file: ./coverage/coverage-final.json
-        flags: unittests
-        name: codecov-umbrella
-        path_to_write_report: ./coverage/codecov_report.txt
-        verbose: true
+
+        strategy:
+          matrix:
+            node-version: [14.x, 16.x]
+            os: [ubuntu-latest]
+          fail-fast: false
+
+        steps:
+          - uses: actions/checkout@v2
+          - name: Install pnpm
+            uses: pnpm/action-setup@v2.2.1
+
+          - name: Use Node.js ${{ matrix.node-version }}
+            uses: actions/setup-node@v2
+            with:
+              node-version: ${{ matrix.node-version }}
+              registry-url: https://registry.npmjs.org/
+              cache: pnpm
+
+          - run: pnpm i --frozen-lockfile
+
+          - name: Coverage
+            run: pnpm run coverage
+          - name: Upload coverage to Codecov
+            uses: codecov/codecov-action@v3
+            with:
+              token: ${{ secrets.CODECOV_TOKEN }}
+              directory: ./coverage/
+              env_vars: OS,PYTHON
+              fail_ci_if_error: true
+              file: ./coverage/coverage-final.json
+              flags: unittests
+              name: codecov-umbrella
+              path_to_write_report: ./coverage/codecov_report.txt
+              verbose: true
