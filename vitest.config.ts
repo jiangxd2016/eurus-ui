@@ -15,7 +15,8 @@ export default defineConfig({
       web: [/\.[jt]sx$/],
     },
     coverage: {
-      exclude: ['index.ts']
+      exclude: ['index.ts'],
+      reporter: ['text', 'json', 'html'],
     },
     globals: true,
     environment: 'happy-dom',
