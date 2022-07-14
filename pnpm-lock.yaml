@@ -7031,7 +7031,7 @@ packages:
       local-pkg: 0.4.1
       magic-string: 0.26.2
       unimport: 0.4.4_vite@2.9.14
-      unplugin: 0.7.0_vite@2.9.14
+      unplugin: 0.7.2_vite@2.9.14
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -7058,7 +7058,7 @@ packages:
       magic-string: 0.26.2
       minimatch: 5.1.0
       resolve: 1.22.1
-      unplugin: 0.7.0_vite@2.9.14
+      unplugin: 0.7.2_vite@2.9.14
       vue: 3.2.37
     transitivePeerDependencies:
       - esbuild
@@ -7066,30 +7066,6 @@ packages:
       - supports-color
       - vite
       - webpack
-    dev: true
-
-  /unplugin/0.7.0_vite@2.9.14:
-    resolution: {integrity: sha512-OsiFrgybmqm5bGuaodvbLYhqUrvGuRHRMZDhddKEXTDbuQ1x+hR7M1WpQguXj03whVYjEYChhFo738cZH5RNig==}
-    peerDependencies:
-      esbuild: '>=0.13'
-      rollup: ^2.50.0
-      vite: ^2.3.0
-      webpack: 4 || 5
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-    dependencies:
-      acorn: 8.7.1
-      chokidar: 3.5.3
-      vite: 2.9.14_sass@1.53.0
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.4.4
     dev: true
 
   /unplugin/0.7.2_vite@2.9.14:
