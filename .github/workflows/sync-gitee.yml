@@ -6,15 +6,18 @@ on:
     branches:
       - main
 
-steps:
-  mirror:
-  - name: Mirror the Github organization repos to Gitee.
-    uses: Yikun/hub-mirror-action@master
-    with:
-      src: github/jiangxd2016
-      dst: gitee/jiangxd2016
-      dst_key: ${{ secrets.GITEE_ACCESS_TOKEN }}
-      dst_token: ${{ secrets.ACCESS_TOKEN }}
-      account_type: user # 账户类型 or estjs
-      static_list: 'eurus-ui'
-      clone_style: 'https'
+jobs:
+  run:
+    name: Sync-GitHub-to-Gitee
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror the Github organization repos to Gitee.
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/jiangxd2016
+          dst: gitee/jiangxd2016
+          dst_key: ${{ secrets.GITEE_ACCESS_TOKEN }}
+          dst_token: ${{ secrets.ACCESS_TOKEN }}
+          account_type: user # 账户类型 or estjs
+          static_list: 'eurus-ui'
+          clone_style: 'https'
