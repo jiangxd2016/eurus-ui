@@ -22,7 +22,7 @@ jobs:
         dst: gitee/jiangxd2016
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token: ${{ secrets.GITEE_ACCESS_TOKEN }}
-        white_list: "eurus-ui"
+        white_list: 'eurus-ui'
         account_type: user
         force_update: true
         clone_style: https
