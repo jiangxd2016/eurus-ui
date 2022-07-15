@@ -15,6 +15,6 @@ steps:
       dst: gitee/jiangxd2016
       dst_key: ${{ secrets.GITEE_ACCESS_TOKEN }}
       dst_token: ${{ secrets.ACCESS_TOKEN }}
-      account_type: org # 账户类型 or estjs
+      account_type: user # 账户类型 or estjs
       static_list: 'eurus-ui'
       clone_style: 'https'
