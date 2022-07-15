@@ -46,13 +46,16 @@ async function updateChangeLog() {
     const writeStream = createWriteStream('CHANGELOG.md', 'utf8');
     writeStream.write(data.join('\n'));
     writeStream.end();
-    console.log('changelog 生成完毕');
+    console.log('changelog 生成完毕，开始提交changelog。');
 
     const gitCommand = 'git add CHANGELOG.md ;git commit -m "feat: update changelog";git push;';
     execSync(gitCommand, {
       cwd: process.cwd(),
       encoding: 'utf-8',
     }).split('\n');
+
+    console.log('changelog提交完成。');
+
   });
 }
 
