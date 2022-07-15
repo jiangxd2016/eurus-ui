@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ELoading } from 'eurus-ui';
 const name = $ref('');
 let loading = $ref(true);
 const router = useRouter();
@@ -15,8 +14,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <ELoading v-model="loading" to="body" />
-  <div>
+  <div v-loading="loading">
     <div i-carbon-campsite text-4xl inline-block />
     <p>
       <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">

@@ -1,11 +1,11 @@
 import type { PropType } from 'vue';
 import { defineComponent, toRefs, Teleport } from 'vue';
+import { EIcon } from '../../icons';
 import classNames from '@/composables/useClassName';
 import './style.scss';
-
 const LoaderProps = {
   modelValue: {
-    type: Boolean as PropType<true>,
+    type: Boolean as PropType<Boolean>,
     default: false
   },
   loadingText: {
@@ -31,7 +31,6 @@ export default defineComponent({
   props: LoaderProps,
   setup(props) {
     const { modelValue, loadingText, size, color, to } = toRefs(props);
-
     const sizeStyle = () => {
       switch (size.value) {
         case 'xs':
@@ -73,7 +72,7 @@ export default defineComponent({
     const WrapperElement = to.value ? Teleport : 'span';
     return () => (
       modelValue && <WrapperElement to={to.value} class="loading">
-        <div style={{ ...loadingStyle }} />
+        <EIcon name="loading" style={{ ...loadingStyle }} />
         <span class={spanClass()}>{loadingText.value}</span>
       </WrapperElement>
 
