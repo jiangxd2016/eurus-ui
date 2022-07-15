@@ -5,9 +5,8 @@ on:
   push:
     branches:
       - main
-  create:
 
-jobs:
+steps:
   mirror:
   - name: Mirror the Github organization repos to Gitee.
     uses: Yikun/hub-mirror-action@master
