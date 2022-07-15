@@ -1,5 +1,6 @@
 const globalNodes: Element[] = [];
 
+// @ts-expect-error
 let target = import.meta.env.SSR
   ? null
   : document.body;
