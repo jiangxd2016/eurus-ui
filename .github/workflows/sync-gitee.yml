@@ -1,28 +1,22 @@
-
-name: Sync-GitHub-to-Gitee
+name: 🔀 Sync mirror to Gitee
 
 on:
   push:
     branches:
       - main
+  create:
 
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    # UTC 17:00 -> CST (China) 1:00, see https://datetime360.com/cn/utc-cst-china-time/
-    - cron: '0 17 * * *'
 jobs:
-  run:
-    name: Sync-GitHub-to-Gitee
+  mirror:
     runs-on: ubuntu-latest
+    if: github.repository == 'jiangxd2016/eurus-ui'
     steps:
-    - name: Mirror the Github repos to Gitee.
-      uses: Yikun/hub-mirror-action@master
-      with:
-        src: github/jiangxd2016
-        dst: gitee/jiangxd2016
-        dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-        dst_token: ${{ secrets.GITEE_ACCESS_TOKEN }}
-        white_list: 'eurus-ui'
-        account_type: user
-        force_update: true
-        clone_style: https
+      - name: mirror
+        continue-on-error: true
+        if: github.event_name == 'push' || (github.event_name == 'create' && github.event.ref_type == 'tag')
+        uses: wearerequired/git-mirror-action@v1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+        with:
+          source-repo: 'git@github.com:jiangxd2016/eurus-ui.git'
+          destination-repo: 'git@gitee.com:jiangxd2016/eurus-ui.git'
