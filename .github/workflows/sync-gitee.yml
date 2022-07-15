@@ -21,7 +21,7 @@ jobs:
         src: github/jiangxd2016
         dst: gitee/jiangxd2016
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-        dst_token: ${{ secrets.ACCESS_TOKEN }}
+        dst_token: ${{ secrets.GITEE_ACCESS_TOKEN }}
         mappings: ".github=>github"
         static_list: "eurus-ui"  # 静态同步列表，在此填写需要同步的仓库名称，可填写多个
         force_update: true
