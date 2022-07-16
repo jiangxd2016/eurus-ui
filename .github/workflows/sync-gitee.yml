@@ -1,8 +1,14 @@
 name: syncToGitee
+
 on:
   push:
     branches:
-      - gh-pages
+      - main
+
+  pull_request:
+    branches:
+      - main
+
 jobs:
   repo-sync:
     runs-on: ubuntu-latest
