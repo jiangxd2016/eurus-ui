@@ -28,7 +28,7 @@
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "create:compts": "esno ./scripts/create-compt.ts",
     "coverage": "vitest run --coverage",
-    "preinstall": "node ./scripts/preinstall.js && husky install",
+    "preinstall": "husky install",
     "prepublishOnly": "pnpm run clean && pnpm run typecheck && pnpm run test && pnpm run build && pnpm run changelog",
     "release": "bumpp --commit --tag --push && pnpm publish --access public"
   },
