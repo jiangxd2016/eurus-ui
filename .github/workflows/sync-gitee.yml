@@ -18,5 +18,5 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
         with:
-          source-repo: 'git@github.com:jiangxd2016/eurus-ui.git'
-          destination-repo: 'git@gitee.com:jiangxd2016/eurus-ui.git'
+          source-repo: "git@github.com:jiangxd2016/eurus-ui.git"
+          destination-repo: "git@gitee.com:jiangxd2016/eurus-ui.git"
