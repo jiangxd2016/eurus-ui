@@ -1,5 +1,6 @@
 const globalNodes: Element[] = [];
 
+// TODO: complite replace
 // @ts-expect-error
 let target = import.meta.env.SSR
   ? null
