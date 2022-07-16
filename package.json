@@ -55,9 +55,11 @@
   "files": [
     "dist"
   ],
-  "peerDependencies": {
+  "dependencies": {
     "async-validator": "^4.1.1",
-    "dayjs": "^1.11.3",
+    "dayjs": "^1.11.3"
+  },
+  "peerDependencies": {
     "vue": "^3.2.26"
   },
   "devDependencies": {
