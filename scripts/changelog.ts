@@ -22,7 +22,7 @@ function getGitCommitMap(lastCommit) {
 }
 
 async function updateChangeLog() {
-  console.log(`当前 package.json 版本号为: ${_version}\n`);
+  console.log(` package.json version: ${_version}\n`);
 
   const lastCommit = getLastChangeLogCommit();
   const initialChangelogStr = readFileSync('CHANGELOG.md', 'utf8') || '';
@@ -46,15 +46,7 @@ async function updateChangeLog() {
     const writeStream = createWriteStream('CHANGELOG.md', 'utf8');
     writeStream.write(data.join('\n'));
     writeStream.end();
-    console.log('changelog 生成完毕，开始提交changelog。');
-
-    const gitCommand = 'git add CHANGELOG.md ;git commit -m "feat: update changelog";git push;';
-    execSync(gitCommand, {
-      cwd: process.cwd(),
-      encoding: 'utf-8',
-    }).split('\n');
-
-    console.log('changelog提交完成。');
+    console.log('generate changelog done.');
 
   });
 }
