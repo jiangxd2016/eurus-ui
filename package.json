@@ -3,7 +3,7 @@
   "version": "0.0.21",
   "description": "",
   "type": "module",
-  "packageManager": "pnpm@7.3.0",
+  "packageManager": "pnpm@7.5.2",
   "engines": {
     "node": ">= 16"
   },
@@ -63,8 +63,8 @@
   "devDependencies": {
     "@estjs/eslint-config": "^0.3.3",
     "@estjs/tools": "^0.0.21",
-    "@types/node": "^18.0.4",
-    "@vitejs/plugin-vue": "^2.3.3",
+    "@types/node": "^18.0.5",
+    "@vitejs/plugin-vue": "^3.0.0",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
     "@vue/test-utils": "^2.0.2",
     "bumpp": "^8.2.1",
@@ -73,17 +73,17 @@
     "chokidar": "^3.5.3",
     "eslint": "^8.19.0",
     "esno": "^0.16.3",
-    "happy-dom": "^5.4.0",
+    "happy-dom": "^6.0.3",
     "husky": "^8.0.1",
     "klaw-sync": "^6.0.0",
     "lint-staged": "^13.0.3",
-    "pnpm": "7.3.0",
+    "pnpm": "7.5.2",
     "rimraf": "^3.0.2",
     "sass": "^1.53.0",
     "standard-changelog": "^2.0.27",
     "typescript": "^4.7.4",
     "vite": "^3.0.0",
-    "vitest": "^0.16.0",
+    "vitest": "^0.18.0",
     "vue-tsc": "^0.38.5"
   }
 }
