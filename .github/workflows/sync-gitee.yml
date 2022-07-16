@@ -21,3 +21,4 @@ jobs:
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token:  ${{ secrets.GITEE_ACCESS_TOKEN }}
           static_list: 'eurus-ui'
+          force_update: true
