@@ -1,22 +1,19 @@
-name: 🔀 Sync mirror to Gitee
-
+name: syncToGitee
 on:
   push:
     branches:
-      - main
-  create:
-
+      - gh-pages
 jobs:
-  mirror:
+  repo-sync:
     runs-on: ubuntu-latest
-    if: github.repository == 'jiangxd2016/eurus-ui'
     steps:
-      - name: mirror
-        continue-on-error: true
-        if: github.event_name == 'push' || (github.event_name == 'create' && github.event.ref_type == 'tag')
-        uses: wearerequired/git-mirror-action@v1
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE_PRIVATE_KEY }}
+      - name: Mirror the Github organization repos to Gitee.
+        uses: Yikun/hub-mirror-action@master
         with:
-          source-repo: "git@github.com:jiangxd2016/eurus-ui.git"
-          destination-repo: "git@gitee.com:jiangxd2016/eurus-ui.git"
+          src: 'github/jiangxd2016'
+          dst: 'gitee/jiangxd2016'
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token:  ${{ secrets.GITEE_ACCESS_TOKEN }}
+          static_list: "eurus-ui"
+          force_update: true
+			    debug: true
