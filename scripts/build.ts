@@ -25,7 +25,6 @@ console.log(`[eurus-ui env] ${nodeEnv}`);
 const config = [configProd, nodeEnv === 'all' && configAll].filter(Boolean) as InlineConfig[];
 
 async function run() {
-
   await genVersion();
   if (nodeEnv) {
     await Promise.all(config.map(item => build(item)));
