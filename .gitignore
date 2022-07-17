@@ -11,4 +11,4 @@ coverage
 .eslintcache
 .gitlogmap
 
-./src/version.ts
+src/version.ts
