@@ -29,8 +29,8 @@
     "create:compts": "esno ./scripts/create-compt.ts",
     "coverage": "vitest run --coverage",
     "preinstall": "husky install",
-    "prepublishOnly": "pnpm run clean && pnpm run typecheck && pnpm run test && pnpm run build && pnpm run changelog",
-    "release": "bumpp --commit --tag --push"
+    "prerelease": "pnpm run clean && pnpm run typecheck && pnpm run test && pnpm run build && pnpm run changelog",
+    "release": "pnpm run prerelease && bumpp --commit --tag --push"
   },
   "repository": {
     "type": "git",
