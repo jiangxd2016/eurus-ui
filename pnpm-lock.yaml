@@ -10,10 +10,12 @@ importers:
       '@vitejs/plugin-vue': ^3.0.0
       '@vitejs/plugin-vue-jsx': ^2.0.0
       '@vue/test-utils': ^2.0.2
+      async-validator: ^4.1.1
       bumpp: ^8.2.1
       c8: ^7.11.3
       chalk: ^5.0.1
       chokidar: ^3.5.3
+      dayjs: ^1.11.3
       eslint: ^8.19.0
       esno: ^0.16.3
       happy-dom: ^6.0.3
@@ -28,6 +30,9 @@ importers:
       vite: ^3.0.0
       vitest: ^0.18.0
       vue-tsc: ^0.38.5
+    dependencies:
+      async-validator: 4.1.1
+      dayjs: 1.11.3
     devDependencies:
       '@estjs/eslint-config': 0.3.3_eslint@8.19.0+typescript@4.7.4
       '@estjs/tools': 0.0.21
@@ -2867,6 +2872,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /async-validator/4.1.1:
+    resolution: {integrity: sha512-p4DO/JXwjs8klJyJL8Q2oM4ks5fUTze/h5k10oPPKMiLe1fj3G1QMzPHNmN1Py4ycOk7WlO2DcGXv1qiESJCZA==}
+    dev: false
+
   /async/3.2.4:
     resolution: {integrity: sha512-iAB+JbDEGXhyIUavoDl9WP/Jj106Kz9DEn1DPgYw5ruDn0e3Wgi3sKFm55sASdGBNOQB8F59d9qQ7deqrHA8wQ==}
     dev: true
@@ -3401,6 +3410,10 @@ packages:
   /dateformat/3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}
     dev: true
+
+  /dayjs/1.11.3:
+    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
