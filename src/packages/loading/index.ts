@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import { getCurrentInstance, h, createApp } from 'vue';
+import { h, createApp } from 'vue';
 import ELoading from './src';
 import { createGlobalNode } from '@/composables/useGlobalNode';
 
@@ -9,7 +9,7 @@ ELoading.install = (app: App) => {
 
     created(el, binding, vNode, prevVNode) {
 
-      console.log(el, binding, vNode, prevVNode);
+      // console.log(el, binding, vNode, prevVNode);
 
       if (!ELoading.instrace) {
         const loadingElement = createGlobalNode('e-loading', el);
