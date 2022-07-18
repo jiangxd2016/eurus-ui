@@ -41,7 +41,6 @@ export default function viteCssPlugin(): Plugin {
       viteConfig = resolvedConfig;
     },
     transform(code, id) {
-
       if (id.endsWith('.tsx') && replaceReg.test(code)) {
         const stylePath = code.match(replaceReg)![0].match(injectPathReg)![0];
         const path = resolve(id, '../', stylePath);

@@ -2,18 +2,18 @@ const globalNodes: Element[] = [];
 
 // TODO: complite replace
 // @ts-expect-error
-let target = import.meta.env.SSR
+let globalTarget = import.meta.env.SSR
   ? null
   : document.body;
 
-export function createGlobalNode(id: string) {
+export function createGlobalNode(id: string, target: HTMLElement | null = null) {
   const el = document.createElement('div');
 
   if (id) {
     el.id = id;
   }
 
-  target!.append(el);
+  (target || globalTarget)?.append(el);
   globalNodes.push(el);
 
   return el;
@@ -25,12 +25,12 @@ export function removeGlobalNode(el: HTMLElement) {
 }
 
 export function changeGlobalNodesTarget(el: HTMLElement) {
-  if (el !== target) {
-    target = el;
+  if (el !== globalTarget) {
+    globalTarget = el;
 
     globalNodes.forEach((el) => {
-      if (el.contains(target) === false) {
-        target!.append(el);
+      if (el.contains(globalTarget) === false) {
+        globalTarget!.append(el);
       }
     });
   }

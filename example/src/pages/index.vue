@@ -14,7 +14,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <div v-loading="loading">
+  <div >
     <div i-carbon-campsite text-4xl inline-block />
     <p>
       <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">

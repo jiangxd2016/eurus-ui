@@ -8,7 +8,7 @@ const LoaderProps = {
     type: Boolean as PropType<Boolean>,
     default: false
   },
-  loadingText: {
+  text: {
     type: String as PropType<string>,
     default: ''
   },
@@ -30,7 +30,7 @@ export default defineComponent({
   name: 'ELoading',
   props: LoaderProps,
   setup(props) {
-    const { modelValue, loadingText, size, color, to } = toRefs(props);
+    const { modelValue, text, size, color, to } = toRefs(props);
     const sizeStyle = () => {
       switch (size.value) {
         case 'xs':
@@ -71,9 +71,9 @@ export default defineComponent({
     };
     const WrapperElement = to.value ? Teleport : 'span';
     return () => (
-      modelValue && <WrapperElement to={to.value} class="loading">
+      modelValue && <WrapperElement to={to.value} class="loading flex  flex-center">
         <EIcon name="loading" style={{ ...loadingStyle }} />
-        <span class={spanClass()}>{loadingText.value}</span>
+        <span class={spanClass()}>{text.value}</span>
       </WrapperElement>
 
     );

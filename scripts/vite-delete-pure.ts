@@ -13,6 +13,7 @@ export default function viteDeletePurePlugin(): Plugin {
       viteConfig = resolvedConfig;
     },
     closeBundle() {
+
       // read file，reg replace，write file
       const outputDir = viteConfig.build.outDir;
       const output = dirname + '/' + outputDir + '/eurus-ui.mjs';

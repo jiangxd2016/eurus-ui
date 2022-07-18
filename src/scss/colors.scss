@@ -9,96 +9,96 @@
  --e-color-dark: #{$dark};
 }
 .text-dark {
-  color: $dark !important;
-  color: var(--e-color-dark) !important;
+  color: $dark;
+  color: var(--e-color-dark);
 }
 .bg-dark {
-  background: $dark !important;
-  background: var(--e-color-dark) !important;
+  background: $dark;
+  background: var(--e-color-dark);
 }
 .text-primary {
-  color: $primary !important;
-  color: var(--e-color-primary) !important;
+  color: $primary;
+  color: var(--e-color-primary);
 }
 .bg-primary {
-  background: $primary !important;
-  background: var(--e-color-primary) !important;
+  background: $primary;
+  background: var(--e-color-primary);
 }
 .text-secondary {
-  color: $secondary !important;
-  color: var(--e-color-secondary) !important;
+  color: $secondary;
+  color: var(--e-color-secondary);
 }
 .bg-secondary {
-  background: $secondary !important;
-  background: var(--e-color-secondary) !important;
+  background: $secondary;
+  background: var(--e-color-secondary);
 }
 .text-accent {
-  color: $accent !important;
-  color: var(--e-color-accent) !important;
+  color: $accent;
+  color: var(--e-color-accent);
 }
 .bg-accent {
-  background: $accent !important;
-  background: var(--e-color-accent) !important;
+  background: $accent;
+  background: var(--e-color-accent);
 }
 .text-positive {
-  color: $positive !important;
-  color: var(--e-color-positive) !important;
+  color: $positive;
+  color: var(--e-color-positive);
 }
 .bg-positive {
-  background: $positive !important;
-  background: var(--e-color-positive) !important;
+  background: $positive;
+  background: var(--e-color-positive);
 }
 .text-negative {
-  color: $negative !important;
-  color: var(--e-color-negative) !important;
+  color: $negative;
+  color: var(--e-color-negative);
 }
 .bg-negative {
-  background: $negative !important;
-  background: var(--e-color-negative) !important;
+  background: $negative;
+  background: var(--e-color-negative);
 }
 .text-info {
-  color: $info !important;
-  color: var(--e-color-info) !important;
+  color: $info;
+  color: var(--e-color-info);
 }
 .bg-info {
-  background: $info !important;
-  background: var(--e-color-info) !important;
+  background: $info;
+  background: var(--e-color-info);
 }
 .text-warning {
-  color: $warning !important;
-  color: var(--e-color-warning) !important;
+  color: $warning;
+  color: var(--e-color-warning);
 }
 .bg-warning {
-  background: $warning !important;
-  background: var(--e-color-warning) !important;
+  background: $warning;
+  background: var(--e-color-warning);
 }
 .text-white {
-  color: #fff !important;
+  color: #fff;
 }
 .bg-white {
-  background: #fff !important;
+  background: #fff;
 }
 .text-black {
-  color: #000 !important;
+  color: #000;
 }
 .bg-black {
-  background: #000 !important;
+  background: #000;
 }
 .text-transparent {
-  color: transparent !important;
+  color: transparent;
 }
 .bg-transparent {
-  background: transparent !important;
+  background: transparent;
 }
 .text-separator {
-  color: $separator-color !important;
+  color: $separator-color;
 }
 .bg-separator {
-  background: $separator-color !important;
+  background: $separator-color;
 }
 .text-dark-separator {
-  color: $separator-dark-color !important;
+  color: $separator-dark-color;
 }
 .bg-dark-separator {
-  background: $separator-dark-color !important;
+  background: $separator-dark-color;
 }

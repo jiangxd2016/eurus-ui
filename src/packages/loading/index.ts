@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import { h, createApp } from 'vue';
+import { getCurrentInstance, h, createApp } from 'vue';
 import ELoading from './src';
 import { createGlobalNode } from '@/composables/useGlobalNode';
 
@@ -7,30 +7,25 @@ ELoading.install = (app: App) => {
   app.component(ELoading.name, ELoading);
   app.directive('loading', {
 
-    created(el, binding, vNode) {
+    created(el, binding, vNode, prevVNode) {
+
+      console.log(el, binding, vNode, prevVNode);
 
       if (!ELoading.instrace) {
-        const el = createGlobalNode('e-loading');
+        const loadingElement = createGlobalNode('e-loading', el);
         app = createApp({
           name: 'ELoading',
           render() {
             return h(ELoading, {
               props: {
+                text: '123',
                 modelValue: true,
               },
-              // style: `    width: 100%;
-              // height: 100%;
-              // position: absolute;
-              // top: 0;
-              // left: 0;
-              // display: flex;
-              // align-items: center;
-              // justify-content: center;
-              // background: rgba(0,0,0,0.3);`
             });
           }
         });
-        app.mount(el);
+        el.style.position = 'relative';
+        app.mount(loadingElement);
       }
     },
   });
