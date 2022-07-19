@@ -49,7 +49,6 @@ async function copyDir(src, dist) {
 
   klawSync(distPath, { nodir: true }).forEach((item) => {
     const outPath = path.dirname(item.path);
-    console.log(outPath);
 
     const fileName = path.basename(item.path);
     const file = fs.readFileSync(item.path, 'utf-8');

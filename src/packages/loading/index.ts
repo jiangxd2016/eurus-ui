@@ -1,36 +1,38 @@
-import type { App } from 'vue';
+import type { App, DirectiveBinding } from 'vue';
 import { h, createApp } from 'vue';
 import ELoading from './src';
 import { createGlobalNode } from '@/composables/useGlobalNode';
 
-ELoading.install = (app: App) => {
-  app.component(ELoading.name, ELoading);
-  app.directive('loading', {
+const vLoading = {
 
-    created(el, binding, vNode, prevVNode) {
+  created(el: any, binding: DirectiveBinding<any> ) {
 
-      // console.log(el, binding, vNode, prevVNode);
+    // console.log(el, binding, vNode, prevVNode);
 
-      if (!ELoading.instrace) {
-        const loadingElement = createGlobalNode('e-loading', el);
-        app = createApp({
-          name: 'ELoading',
-          render() {
-            return h(ELoading, {
-              props: {
-                text: '123',
-                modelValue: true,
-              },
-            });
-          }
-        });
-        el.style.position = 'relative';
-        app.mount(loadingElement);
-      }
-    },
-  });
+    if (!ELoading.instrace) {
+      const loadingElement = createGlobalNode('e-loading', el);
+      const app = createApp({
+        name: 'ELoading',
+        render() {
+          return h(ELoading, {
+            props: {
+              text: '123',
+              modelValue: binding.value,
+            },
+          });
+        }
+      });
+      el.style.position = 'relative';
+      app.mount(loadingElement);
+    }
+  },
 };
 
-export { ELoading };
+ELoading.install = (app: App) => {
+  app.component(ELoading.name, ELoading);
+  app.directive('loading', vLoading);
+};
+
+export { ELoading, vLoading };
 export default ELoading;
 

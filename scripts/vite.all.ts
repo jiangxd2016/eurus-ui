@@ -13,13 +13,13 @@ const config: InlineConfig = {
       '@/': `${resolve(dirname, 'src')}/`,
     },
   },
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: `@import "${dirname}/src/scss/index";`,
-  //     },
-  //   }
-  // },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "${dirname}/src/scss/base";`,
+      },
+    }
+  },
   build: {
     minify: false,
     emptyOutDir: false,

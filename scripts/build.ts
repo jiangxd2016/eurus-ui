@@ -11,6 +11,8 @@ import configDev from './vite.dev';
 import configProd from './vite.prod';
 import configAll from './vite.all';
 
+import complieSass from './compile-sass';
+
 const srcPath = path.join(path.resolve(), 'src');
 
 async function genVersion() {
@@ -28,11 +30,14 @@ async function run() {
   await genVersion();
   if (nodeEnv) {
     await Promise.all(config.map(item => build(item)));
+    console.log('[eurus-ui build]: start build css');
+    complieSass();
     console.log('[eurus-ui build]: start build type');
     // genrate type
     exec('npm run build:types');
   } else {
     await Promise.all([configDev, configAll].map(item => build(item)));
+    complieSass();
     exec('npm run build:types-esm');
     console.log('[eurus-ui dev] start watch change ...');
 
@@ -43,6 +48,7 @@ async function run() {
     });
     watcher.on('change', async () => {
       await Promise.all([configDev, configAll].map(item => build(item)));
+      complieSass();
       exec('npm run build:types-esm');
     });
   }

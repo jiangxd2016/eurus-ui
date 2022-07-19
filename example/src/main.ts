@@ -2,8 +2,6 @@ import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import routes from 'virtual:generated-pages';
 
-import { ELoading } from 'eurus-ui';
-
 import App from './App.vue';
 
 import '@unocss/reset/tailwind.css';
@@ -16,5 +14,4 @@ const router = createRouter({
   routes,
 });
 app.use(router);
-app.use(ELoading);
 app.mount('#app');

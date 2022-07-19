@@ -21,7 +21,7 @@
     "docs:serve": "pnpm -C docs serve",
     "changelog": "esno scripts/changelog.ts",
     "clean": "rimraf dist",
-    "lint:change": "lcf --fix \"{src,build,scripts,examples}/**/*.{ts,tsx,js,vue}\"",
+    "lint:change": "lcf --fix \"{src,build,scripts,example}/**/*.{ts,tsx,js,vue}\"",
     "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
     "test:watch": "vitest --watch",
     "test": "vitest",

@@ -119,6 +119,7 @@ importers:
       unplugin-auto-import: ^0.9.3
       unplugin-vue-components: ^0.20.1
       vite: ^2.9.14
+      vite-plugin-inspect: ^0.6.0
       vite-plugin-pages: ^0.25.0
       vitest: ^0.16.0
       vue: ^3.2.37
@@ -145,6 +146,7 @@ importers:
       unplugin-auto-import: 0.9.3_@vueuse+core@8.9.3+vite@2.9.14
       unplugin-vue-components: 0.20.1_vite@2.9.14+vue@3.2.37
       vite: 2.9.14_sass@1.53.0
+      vite-plugin-inspect: 0.6.0_vite@2.9.14
       vite-plugin-pages: 0.25.0_vite@2.9.14
       vitest: 0.16.0_6e58bbb59f1ef7f633a132516ae6a734
       vue-tsc: 0.38.5_typescript@4.7.4
@@ -6896,6 +6898,10 @@ packages:
     resolution: {integrity: sha512-/+BmBDe8GvlB2nIflWasLLAInjYG0bC9HRnfEpNi4sw77J2AJNnEVnTDReVrehoh825+Q/evF3THXTAweyam2g==}
     dev: true
 
+  /ufo/0.8.5:
+    resolution: {integrity: sha512-e4+UtA5IRO+ha6hYklwj6r7BjiGMxS0O+UaSg9HbaTefg4kMkzj4tXzEBajRR+wkxf+golgAWKzLbytCUDMJAA==}
+    dev: true
+
   /uglify-js/3.16.2:
     resolution: {integrity: sha512-AaQNokTNgExWrkEYA24BTNMSjyqEXPSfhqoS0AxmHkCJ4U+Dyy5AvbGV/sqxuxficEfGGoX3zWw9R7QpLFfEsg==}
     engines: {node: '>=0.8.0'}
@@ -7170,6 +7176,22 @@ packages:
     dependencies:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
+    dev: true
+
+  /vite-plugin-inspect/0.6.0_vite@2.9.14:
+    resolution: {integrity: sha512-p2Ti5z+AscXx7JAW1nkU4bgiyKWW3O6D9UbaOEk+yz0v6R2E452OSukYhbs1zhqRnHL0W6ZsmG/lwz8aSQpSjg==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      vite: ^3.0.0
+    dependencies:
+      '@rollup/pluginutils': 4.2.1
+      debug: 4.3.4
+      kolorist: 1.5.1
+      sirv: 2.0.2
+      ufo: 0.8.5
+      vite: 2.9.14_sass@1.53.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /vite-plugin-pages/0.25.0_vite@2.9.14:

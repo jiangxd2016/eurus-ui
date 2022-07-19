@@ -7,6 +7,8 @@ import Pages from 'vite-plugin-pages';
 import Components from 'unplugin-vue-components/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Unocss from 'unocss/vite';
+import Inspect from 'vite-plugin-inspect';
+import autoImport from './autoImport';
 
 export default defineConfig({
   resolve: {
@@ -38,22 +40,16 @@ export default defineConfig({
     }),
 
     Components({
+      // allow auto load markdown components under `./src/components/`
+      extensions: ['vue', 'md'],
+      // allow auto import and register components used in markdown
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       resolvers: [
-        (componentName) => {
-          if (componentName.startsWith('e')) {
-            const names = componentName.slice(1);
-
-            return {
-              name: names,
-              from: 'eurus-ui',
-              sideEffects: `eurus-ui/dist/es/packages/${names.toLowerCase()}/index.css`,
-            };
-          }
-        },
+        autoImport()
       ],
       dts: true,
     }),
-
+    Inspect(), // only applies in dev mode
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
     Unocss(),

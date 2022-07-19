@@ -9,6 +9,7 @@
   "exclude": [
     "**/*.spec.ts",
     "**/demo/*",
+    "example",
     "node_modules"
   ]
 }
