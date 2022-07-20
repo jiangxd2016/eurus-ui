@@ -1,6 +1,6 @@
 {
   "name": "eurus-ui",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "",
   "type": "module",
   "packageManager": "pnpm@7.5.2",
