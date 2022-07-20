@@ -8,7 +8,7 @@ import Components from 'unplugin-vue-components/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Unocss from 'unocss/vite';
 import Inspect from 'vite-plugin-inspect';
-import autoImport from './autoImport';
+import { EurusUIReslove } from './autoImport';
 
 export default defineConfig({
   resolve: {
@@ -41,16 +41,18 @@ export default defineConfig({
       vueTemplate: true,
     }),
 
-    // Components({
-    //   // allow auto load markdown components under `./src/components/`
-    //   extensions: ['vue', 'md'],
-    //   // allow auto import and register components used in markdown
-    //   include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-    //   resolvers: [
-    //     autoImport()
-    //   ],
-    //   dts: true,
-    // }),
+    Components({
+      // allow auto load markdown components under `./src/components/`
+      extensions: ['vue', 'md'],
+      // allow auto import and register components used in markdown
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      resolvers: [
+        EurusUIReslove()
+      ],
+      dts: true,
+    }),
+
+    Inspect(),
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
     Unocss()
