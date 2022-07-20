@@ -71,7 +71,7 @@ export default defineComponent({
     };
     const WrapperElement = to.value ? Teleport : 'span';
     return () => (
-      modelValue && <WrapperElement to={to.value} class="loading flex  flex-center">
+      modelValue && <WrapperElement to={to.value} class="loading flex flex-center">
         <EIcon name="loading" style={{ ...loadingStyle }} />
         <span class={spanClass()}>{text.value}</span>
       </WrapperElement>

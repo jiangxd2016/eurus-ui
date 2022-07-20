@@ -1,5 +1,7 @@
 import type { App } from 'vue';
 import version from './version';
+
+// TODO:
 export const globaleComponentPrefix = 'E';
 type ComponentType = any;
 
@@ -19,7 +21,7 @@ function create({ componentPrefix = globaleComponentPrefix, components = [] }: U
   function registerComponent( app: App, name: string, component: ComponentType) {
     const registered = app.component(componentPrefix + name);
     if (!registered) {
-      app.component(componentPrefix + name, component);
+      component.install(app);
     }
   }
   function install (app: App): void {

@@ -4,8 +4,8 @@ import {
   presetIcons,
   presetUno,
   presetWebFonts,
-  // transformerDirectives,
-  // transformerVariantGroup,
+  transformerDirectives,
+  transformerVariantGroup,
 } from 'unocss';
 
 export default defineConfig({
@@ -28,8 +28,10 @@ export default defineConfig({
       },
     }),
   ],
-  // transformers: [
-  //   transformerDirectives(),
-  //   transformerVariantGroup(),
-  // ],
+  transformers: [
+    transformerDirectives(),
+    transformerVariantGroup(),
+  ],
+
+  include: [/.*\.mjs(.*)?$/, /\.vue$/, /\.vue\?vue/],
 });

@@ -18,7 +18,9 @@ export default defineConfig({
   },
   plugins: [
     Vue({
-      reactivityTransform: true,
+      script: {
+        refSugar: true,
+      },
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages
@@ -39,24 +41,24 @@ export default defineConfig({
       vueTemplate: true,
     }),
 
-    Components({
-      // allow auto load markdown components under `./src/components/`
-      extensions: ['vue', 'md'],
-      // allow auto import and register components used in markdown
-      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      resolvers: [
-        autoImport()
-      ],
-      dts: true,
-    }),
-    Inspect(), // only applies in dev mode
+    // Components({
+    //   // allow auto load markdown components under `./src/components/`
+    //   extensions: ['vue', 'md'],
+    //   // allow auto import and register components used in markdown
+    //   include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+    //   resolvers: [
+    //     autoImport()
+    //   ],
+    //   dts: true,
+    // }),
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
-    Unocss(),
+    Unocss()
   ],
 
   // https://github.com/vitest-dev/vitest
   test: {
     environment: 'jsdom',
   },
+
 });
