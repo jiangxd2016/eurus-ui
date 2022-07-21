@@ -47,8 +47,10 @@ jobs:
       - name: Install
         run: pnpm install
 
-      - name: Typecheck
+      - name: genVersion
         run: pnpm run gen:version
+
+      - name: Typecheck
         run: pnpm run typecheck
 
   test:
