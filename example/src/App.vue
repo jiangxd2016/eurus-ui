@@ -30,6 +30,7 @@
       <p>Some contents...</p>
     </EDrawer>
     <e-input />
+    <e-divider direction="horizontal" />
     <e-switch :checked="switchValue" />
     <ERate :value="3" />
 

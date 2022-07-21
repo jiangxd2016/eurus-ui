@@ -9,11 +9,10 @@ declare module '@vue/runtime-core' {
     EButton: typeof import('eurus-ui')['EButton'];
     ECheckbox: typeof import('eurus-ui')['ECheckbox'];
     EDialog: typeof import('eurus-ui')['EDialog'];
+    EDivider: typeof import('eurus-ui')['EDivider'];
     EDrawer: typeof import('eurus-ui')['EDrawer'];
     EInput: typeof import('eurus-ui')['EInput'];
     ERate: typeof import('eurus-ui')['ERate'];
-    EStep: typeof import('eurus-ui')['EStep'];
-    ESteps: typeof import('eurus-ui')['ESteps'];
     ESwitch: typeof import('eurus-ui')['ESwitch'];
     EUpload: typeof import('eurus-ui')['EUpload'];
     Footer: typeof import('./src/components/Footer.vue')['default'];
