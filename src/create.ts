@@ -1,4 +1,6 @@
 import type { App } from 'vue';
+
+// @ts-expect-error
 import version from './version';
 
 // TODO:

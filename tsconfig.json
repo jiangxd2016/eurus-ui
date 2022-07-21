@@ -41,7 +41,7 @@
       "vue"
     ]
   },
-  "exclude": ["docs","example","scripts"],
+  "exclude": ["docs","example","scripts","./src/version.ts"],
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true
   }
