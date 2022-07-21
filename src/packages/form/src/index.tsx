@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import './style.scss';
 
-const <%= name %>Props = {
+const EFormProps = {
   type: {
     type: Boolean,
     default: false,
@@ -9,8 +9,8 @@ const <%= name %>Props = {
 };
 
 export default defineComponent({
-  name: '<%= name %>',
-  props: <%= name %>Props,
+  name: 'EForm',
+  props: EFormProps,
   setup(props, { slots, emit }) {
 
     return () => (

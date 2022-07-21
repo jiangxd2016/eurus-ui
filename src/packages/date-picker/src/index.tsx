@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 import './style.scss';
 
-const <%= name %>Props = {
+const EDatePickerProps = {
   type: {
     type: Boolean,
     default: false,
@@ -9,8 +9,8 @@ const <%= name %>Props = {
 };
 
 export default defineComponent({
-  name: '<%= name %>',
-  props: <%= name %>Props,
+  name: 'EDatePicker',
+  props: EDatePickerProps,
   setup(props, { slots, emit }) {
 
     return () => (
