@@ -5,11 +5,11 @@ import EButton from '../../button';
 
 const DrawerProps = {
   show: {
-    type: Boolean as PropType<false>,
+    type: Boolean as PropType<boolean>,
     default: false
   },
   title: {
-    type: String as PropType<''>,
+    type: String as PropType<string>,
     default: 'md'
   },
   confirm: {

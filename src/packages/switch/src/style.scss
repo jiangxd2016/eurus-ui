@@ -1,59 +1,48 @@
-$color-blue: #3498ff;
-$color-grey: #d9d9d9;
-$color-hover-blue: #2589f5;
-$color-hover-grey: #c5c6c7;
-$color-disable-blue: #cce9ff;
-$color-disable-grey: #f7f7fa;
-$button-width: 44px;
-$button-height: 24px;
-$toggle-diameter: 18px;
-$buttoe-switch-offset: 3px;
-$toggle-border-radius: 18px;
+
 
 .e-switch {
   display: inline-block;
-  width: $button-width;
-  height: $button-height;
+  width: 44px;
+  height: 24px;
 }
 .e-switch-body {
   display: inline-block;
-  width: $button-width;
-  height: $button-height;
-  background-color: $color-grey;
-  border-radius: $toggle-border-radius;
+  width: 44px;
+  height: 24px;
+  background-color: #d9d9d9;
+  border-radius: 18px;
   position: relative;
-  cursor:pointer;
+  cursor: pointer;
+  transition: 0.1s all ease-in-out;
   &::after {
-    content: '';
+    content: "";
     display: inline-block;
-    width: $toggle-diameter;
-    height: $toggle-diameter;
+    width: 18px;
+    height: 18px;
     background-color: #ffffff;
-    border-radius: calc($toggle-diameter / 2);
+    border-radius: 9px;
     position: absolute;
-    top: $buttoe-switch-offset;
-    transform: translateX($buttoe-switch-offset);
+    top: 3px;
+    transform: translateX(1px);
     transition: 0.1s all ease-in-out;
   }
   transition: 0.1s all ease-in-out;
   &:hover {
-    background-color: $color-hover-grey;
+    background-color: #c5c6c7;
   }
   &.disabled {
-    background-color: $color-disable-grey;
+    background-color: #f7f7fa;
   }
 }
-#switch[type='checkbox']:checked + span {
-  background-color: $color-blue;
+.switch[type='checkbox']:checked + span {
+  background-color: #3498ff;
   &::after {
-    transform: translateX(
-      $button-width - $toggle-diameter - $buttoe-switch-offset
-    );
+    transform: translateX(-18px);
   }
   &:hover {
-    background-color: $color-hover-blue;
+    background-color: #3498ff;
   }
   &.disabled {
-    background-color: $color-disable-blue;
+    background-color: #cce9ff;
   }
 }

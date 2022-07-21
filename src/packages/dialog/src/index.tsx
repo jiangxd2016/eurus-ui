@@ -6,15 +6,15 @@ import classNames from '@/composables/useClassName';
 
 const ModalProps = {
   show: {
-    type: Boolean as PropType<false>,
+    type: Boolean as PropType<boolean>,
     default: false
   },
   size: {
-    type: String as PropType<''>,
+    type: String as PropType<string>,
     default: 'md'
   },
   title: {
-    type: String as PropType<''>,
+    type: String as PropType<string>,
     default: 'md'
   },
   confirm: {
@@ -66,7 +66,7 @@ export default defineComponent({
               </div>
               {slots.default && slots.default()}
               <div class="e-dialog-footer">
-                <EButton type="primary" onClick={confirm}>确认</EButton>
+                <EButton type="primary" class="confirm" onClick={confirm}>确认</EButton>
                 <EButton onClick={cancel}>取消</EButton>
               </div>
             </div>

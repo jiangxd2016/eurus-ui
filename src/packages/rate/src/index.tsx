@@ -1,7 +1,7 @@
 import type { HTMLAttributes, SetupContext } from 'vue';
 import { defineComponent } from 'vue';
 import './style.scss';
-import EIcon from '@/packages/icons';
+import EIcon from '../../icons';
 
 const initDefaultProps = {
   value: 0,
@@ -26,9 +26,9 @@ export default defineComponent({
       }
       return arr.map((o) => {
         if ((o + 1) > value) {
-          return <EIcon name='star'></EIcon>;
+          return <EIcon name='star' color="#c6d1de"></EIcon>;
         } else {
-          return <EIcon name='starFilled'></EIcon>;
+          return <EIcon name='starFilled' color="#f7ba2a"></EIcon>;
         }
       });
     };

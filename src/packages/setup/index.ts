@@ -1,9 +1,14 @@
 import type { App } from 'vue';
-import ESetup from './src';
+import EStep from './src';
+import EStepItem from './src/stepItem';
 
-ESetup.install = (app: App) => {
-  app.component(ESetup.name, ESetup);
+EStep.install = (app: App) => {
+  app.component(EStep.name, EStep);
 };
 
-export { ESetup };
-export default ESetup;
+EStepItem.install = (app: App) => {
+  app.component(EStepItem.name, EStepItem);
+};
+
+export { EStep, EStepItem };
+export default EStep;

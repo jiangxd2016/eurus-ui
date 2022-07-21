@@ -4,7 +4,7 @@ import './style.scss';
 
 const dividerProps = {
   dashed: {
-    type: Boolean as PropType<true>,
+    type: Boolean as PropType<boolean>,
     default: false
   },
   vertical: {

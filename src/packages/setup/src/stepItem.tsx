@@ -1,4 +1,3 @@
-import type { App } from 'vue';
 import { defineComponent } from 'vue';
 import classNames from '@/composables/useClassName';
 
@@ -11,8 +10,8 @@ interface stepProps {
   active?: boolean;
 }
 
-const NStep = defineComponent({
-  name: 'NStep',
+export default defineComponent({
+  name: 'EStepItem',
   setup (_: stepProps, { slots, attrs }) {
     const { active, vertical, index, isLatest, title, description } = attrs as stepProps;
 
@@ -43,9 +42,3 @@ const NStep = defineComponent({
   }
 });
 
-NStep.install = function (app: App) {
-  app.component(NStep.name, NStep);
-  return app;
-};
-
-export default NStep;

@@ -33,5 +33,5 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
 
-  include: [/\.vue$/, /\.vue\?vue/, /.*\/eurus-ui(.*)?$/],
+  // include: [/\.vue$/, /\.vue\?vue/, /.*\/eurus-ui(.*)?$/],
 });

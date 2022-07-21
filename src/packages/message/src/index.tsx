@@ -1,34 +1,54 @@
-import type { HTMLAttributes, SetupContext } from 'vue';
+import type { HTMLAttributes, PropType, SetupContext } from 'vue';
 import { defineComponent, Transition, reactive } from 'vue';
 import './style.scss';
 import EIcon from '../../icons';
 import classNames from '@/composables/useClassName';
 
-const initDefaultProps = {
-  duration: 0,
-  message: '',
-  type: '',
-  messageTitle: '',
-  hasTitle: false
-};
+type MessageType = 'info' | 'success' | 'warning' | 'error';
 
-export interface MessageProps extends HTMLAttributes {
+const MessageTypeIcon = {
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  error: 'misuse'
+} as const;
+
+export interface MessagePropsType extends HTMLAttributes {
   duration?: number;
   message?: string;
-  type?: string;
-  messageTitle?: string;
-  hasTitle?: boolean;
+  type?: MessageType;
+  title?: string;
 }
+
+export const MessageProps = {
+  duration: {
+    type: Number as PropType<number>,
+    default: 0
+  },
+  message: {
+    type: String as PropType<string>,
+    default: ''
+  },
+  title: {
+    type: String as PropType<string>,
+    default: ''
+  },
+  type: {
+    type: String as PropType<MessageType>,
+    default: 'info'
+  },
+};
 
 export default defineComponent({
   name: 'EMessage',
-  setup (_: MessageProps, { attrs }: SetupContext) {
-    const props = attrs as MessageProps;
+  props: MessageProps,
+  setup(props, { attrs }: SetupContext) {
     const data = reactive<{ show: boolean; timer: NodeJS.Timeout | string | number | null }>({
       show: true,
       timer: null
     });
-    const { type, messageTitle, hasTitle, message, duration } = { ...initDefaultProps, ...props };
+
+    const { type, title, message, duration } = { ...props, ...(attrs.props as MessagePropsType) };
     const messageClassList = classNames(['base-message', type]);
     const closeMessage = () => {
       data.show = false;
@@ -48,18 +68,15 @@ export default defineComponent({
           <div class={messageClassList}>
             <div class="e-message-content">
               <div class="content-cell">
-                <EIcon name='loading' />
+                <EIcon name={MessageTypeIcon[type]} />
               </div>
               <div class="content-cell u-full">
-                {hasTitle && <span class="message-title">{messageTitle}</span>}
+                {title && <span class="message-title">{title}</span>}
                 <p>{message}</p>
-                {type !== 'info'
-                  && <EIcon name='loading'
-                  />}
               </div>
             </div>
           </div>
-      </Transition>
+        </Transition>
         : null
     );
   }

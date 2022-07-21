@@ -56,8 +56,8 @@
     "dist"
   ],
   "dependencies": {
-    "async-validator": "^4.1.1",
-    "dayjs": "^1.11.3"
+    "async-validator": "^4.2.5",
+    "dayjs": "^1.11.4"
   },
   "peerDependencies": {
     "vue": "^3.2.26"
@@ -65,17 +65,17 @@
   "devDependencies": {
     "@estjs/eslint-config": "^0.3.3",
     "@estjs/tools": "^0.0.21",
-    "@types/node": "^18.0.5",
-    "@vitejs/plugin-vue": "^3.0.0",
+    "@types/node": "^18.0.6",
+    "@vitejs/plugin-vue": "^3.0.1",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
     "@vue/test-utils": "^2.0.2",
     "bumpp": "^8.2.1",
-    "c8": "^7.11.3",
+    "c8": "^7.12.0",
     "chalk": "^5.0.1",
     "chokidar": "^3.5.3",
-    "eslint": "^8.19.0",
+    "eslint": "^8.20.0",
     "esno": "^0.16.3",
-    "happy-dom": "^6.0.3",
+    "happy-dom": "^6.0.4",
     "husky": "^8.0.1",
     "klaw-sync": "^6.0.0",
     "lint-staged": "^13.0.3",
@@ -84,8 +84,8 @@
     "sass": "^1.53.0",
     "standard-changelog": "^2.0.27",
     "typescript": "^4.7.4",
-    "vite": "^3.0.0",
-    "vitest": "^0.18.0",
-    "vue-tsc": "^0.38.5"
+    "vite": "^3.0.2",
+    "vitest": "^0.18.1",
+    "vue-tsc": "^0.38.9"
   }
 }

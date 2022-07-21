@@ -1,7 +1,7 @@
 import type { SetupContext } from 'vue';
 import { defineComponent, toRef } from 'vue';
 import './style.scss';
-import EIcon from '@/packages/icons';
+import EIcon from '../../icons';
 
 const uploadProps = {
   url: {

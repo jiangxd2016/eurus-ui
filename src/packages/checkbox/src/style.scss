@@ -21,7 +21,7 @@
     width: 16px;
     height: 16px;
     border-radius: 3px;
-    border: 1px solid #34c3ff;
+    border: 1px solid var( --e-color-primary);
     position: absolute;
     cursor: pointer;
   }
@@ -45,7 +45,7 @@
       opacity: 0;
   }
   input:checked+label {
-      background: #34c3ff;
+      background: var( --e-color-primary);
   }
   input:checked+label.e-checkbox-disable{
     background: rgba(245, 245, 245,1);

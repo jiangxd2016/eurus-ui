@@ -25,7 +25,7 @@ export default defineComponent({
       <div class="e-switch">
         <label>
           <input
-            id="switch"
+            class="switch"
             checked={props.checked}
             type="checkbox"
             style="display: none;"

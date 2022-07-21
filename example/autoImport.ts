@@ -51,13 +51,16 @@ export function EurusUIReslove(options: EurusUIResolverOptions = {}) {
     {
       type: 'component',
       resolve: (name: string) => {
+
         if (name.match(/^(E[A-Z]|n-[a-z])/)) {
           const names = name.slice(1);
-
+          if (name === 'step') {
+            return;
+          }
           return {
-            name: names,
+            name,
             from: 'eurus-ui',
-            sideEffects: getSideEffectsLegacy(names, options),
+            sideEffects: getSideEffectsLegacy(names.toLowerCase(), options),
           };
         }
       },

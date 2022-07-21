@@ -1,7 +1,7 @@
-import type { App, HTMLAttributes, SetupContext, VNode } from 'vue';
+import type { HTMLAttributes, SetupContext, VNode } from 'vue';
 import { defineComponent } from 'vue';
 import './style.scss';
-import NStep from './step';
+import NStep from './stepItem';
 import classNames from '@/composables/useClassName';
 
 export interface StepsProps extends HTMLAttributes {
@@ -9,8 +9,8 @@ export interface StepsProps extends HTMLAttributes {
   active?: number;
 }
 
-const NSteps = defineComponent({
-  name: 'NSteps',
+export default defineComponent({
+  name: 'NStep',
   setup(_: StepsProps, { slots, attrs }: SetupContext) {
     const { vertical, active = 1 } = attrs as StepsProps;
     const renderChild = (child: VNode, index: number) => {
@@ -41,9 +41,3 @@ const NSteps = defineComponent({
   }
 });
 
-NSteps.install = function (app: App) {
-  app.component(NSteps.name, NSteps);
-  return app;
-};
-
-export default NSteps;
