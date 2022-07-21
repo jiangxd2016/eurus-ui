@@ -7,7 +7,7 @@ const dividerProps = {
     type: Boolean as PropType<boolean>,
     default: false
   },
-  vertical: {
+  direction: {
     type: String as PropType<string>,
     default: 'vertical'
   },
@@ -18,18 +18,45 @@ const dividerProps = {
   color: {
     type: String as PropType<string>,
     default: '#A6A6A6'
-  }
+  },
+  /**
+     * @zh 分割线文字的位置
+     * @en The position of the dividing line text
+     */
+  orientation: {
+    type: String as PropType<'left' | 'center' | 'right'>,
+    default: 'center',
+  },
 };
 
 export default defineComponent({
   name: 'EDivider',
   props: dividerProps,
-  setup(props) {
+  setup(props, { emit, slots }) {
 
-    return () => (
-      <span class="loadding">
+    return () => {
+      const children = slots.default?.();
+      const classNames = [
+        `e-divider-${props.direction}`,
+        {
+          ['e-divider-with-text']: children,
+        },
+      ];
 
-      </span>
-    );
+      return (
+        <div role="separator" class={classNames}>
+          {children && props.direction === 'horizontal' && (
+            <span
+              class={[
+                'e-divider-text',
+                `e-divider-text-${props.orientation}`,
+              ]}
+            >
+              {children}
+            </span>
+          )}
+        </div>
+      );
+    };
   }
 });
