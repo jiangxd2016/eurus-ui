@@ -5,15 +5,20 @@ describe('ELoading', () => {
 
   it('ELoading snapshot', () => {
     const wrapper = mount(ELoading);
-    // expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
   });
+  it('ELoading props', () => {
 
-  // it('should Teleport to work', ()=>{
+    const wrapper = mount(ELoading, {
+      props: {
+        text: '123',
+        modelValue: true,
+      },
+    });
+    expect(wrapper.html()).toMatchSnapshot();
+    wrapper.unmount();
+  }
+  );
 
-  //   const wrapper = mount(ELoading, {
-  //     to: 'body'
-  //   });
-  //   wrapper.unmount();
-  // });
 });

@@ -1,0 +1,19 @@
+// Vitest Snapshot v1
+
+exports[`ELoading > ELoading props 1`] = `
+"<div class=\\"loading flex flex-center\\">
+  <div class=\\"loading-spinner\\" style=\\"border-top-color: #A6A6A6;\\"></div><span class=\\"loading-text md-text\\">123</span>
+</div>"
+`;
+
+exports[`ELoading > ELoading snapshot 1`] = `
+"<div class=\\"loading flex flex-center\\">
+  <div class=\\"loading-spinner\\" style=\\"border-top-color: #A6A6A6;\\"></div><span class=\\"loading-text md-text\\"></span>
+</div>"
+`;
+
+exports[`ELoading > loading hide 1`] = `
+"<div class=\\"loading flex flex-center\\">
+  <div class=\\"loading-spinner\\" style=\\"border-top-color: #A6A6A6;\\"></div><span class=\\"loading-text md-text\\">123</span>
+</div>"
+`;

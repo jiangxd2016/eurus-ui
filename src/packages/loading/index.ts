@@ -6,8 +6,7 @@ import { createGlobalNode, removeGlobalNode } from '@/composables/useGlobalNode'
 const vLoading = {
 
   created(el: any, binding: DirectiveBinding<boolean> ) {
-
-    if (!ELoading.instrace) {
+    if (!ELoading.instrace && binding.value) {
       const loadingElement = createGlobalNode('e-loading', el);
       const app: App = createApp({
         name: 'ELoading',
@@ -26,10 +25,17 @@ const vLoading = {
     }
   },
   updated(el: HTMLElement, binding: DirectiveBinding<boolean>) {
-    const ele = el.querySelector('#e-loading') as HTMLElement;
-    ele.style.display = binding.value === false ? 'none' : 'block';
+    if (ELoading.instrace) {
+      const ele = el.querySelector('#e-loading') as HTMLElement;
+      ele.style.display = binding.value === false ? 'none' : 'flex';
+    } else if (binding.value) {
+      vLoading.created(el, binding);
+    }
   },
   unmounted(el: HTMLElement) {
+    if (!ELoading.instrace) {
+      return;
+    }
     (ELoading.instrace as App).unmount();
     const ele = el.querySelector('#e-loading') as HTMLElement;
     removeGlobalNode(ele);
