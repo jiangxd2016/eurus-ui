@@ -1,6 +1,5 @@
 <template>
-  <main v-loading="loading" font-sans p="x-4 y-10" text="center gray-700 dark:gray-200">
-    <router-view />
+  <div v-loading="loading" relative font-sans h-screen w-screen p="t2" text="center gray-700 dark:gray-200">
     <!-- <ESteps :active="1">
       <EStep title="步骤1" description="步骤1描述" />
       <EStep title="步骤2" description="步骤2描述" />
@@ -42,7 +41,9 @@
     <EButton @click="onDrawerClick">open drawer</EButton>
     <EButton @click="onswitchrClick">open drawer</EButton>
     <EButton @click="link">link</EButton>
-  </main>
+
+    <Footer />
+  </div>
 </template>
 
 <script setup lang="ts">
