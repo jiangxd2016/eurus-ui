@@ -1,5 +1,4 @@
 import { isArray, isObject } from '@vue/shared';
-import type { Dayjs } from 'dayjs';
 
 export {
   isArray,
