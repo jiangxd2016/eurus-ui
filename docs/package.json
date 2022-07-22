@@ -30,7 +30,7 @@
     "vite": "^2.9.14",
     "vite-plugin-pwa": "^0.12.3",
     "vite-plugin-restart": "^0.1.1",
-    "vitepress": "^1.0.0-draft.8",
+    "vitepress": "^1.0.0-alpha.4",
     "vue-running": "^0.3.5",
     "workbox-window": "^6.5.3"
   },

@@ -2,7 +2,7 @@ import type { HTMLAttributes, SetupContext, VNode } from 'vue';
 import { defineComponent } from 'vue';
 import './style.scss';
 import NStep from './stepItem';
-import classNames from '@/composables/useClassName';
+import classNames from '@/hooks/useClassName';
 
 export interface StepsProps extends HTMLAttributes {
   vertical?: boolean;

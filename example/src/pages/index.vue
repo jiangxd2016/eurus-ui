@@ -1,55 +1,76 @@
-<script setup lang="ts">
-const name = $ref('');
-let loading = $ref(true);
-const router = useRouter();
-const go = () => {
-  if (name) { router.push(`/hi/${encodeURIComponent(name)}`); }
-};
-
-onMounted(()=>{
-  setTimeout(()=>{
-    loading = false;
-  }, 100000);
-});
-</script>
-
 <template>
-  <div >
-    <div i-carbon-campsite text-4xl inline-block />
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
-        Vitesse Lite
-      </a>
-    </p>
-    <p>
-      <em text-sm op75>Opinionated Vite Starter Template</em>
-    </p>
+  <main v-loading="loading" font-sans p="x-4 y-10" text="center gray-700 dark:gray-200">
+    <router-view />
+    <!-- <ESteps :active="1">
+      <EStep title="步骤1" description="步骤1描述" />
+      <EStep title="步骤2" description="步骤2描述" />
+      <EStep title="步骤3" description="步骤3描述" />
+      <EStep title="步骤4" description="步骤4描述" />
+    </ESteps> -->
+    <EDialog
+      :show="modalShow"
+      :title="modalTitle"
+      @close="onDialogClose"
+    >
+      <div>
+        <p>Some contents...</p>
+        <ECheckbox v-model="checkbox">123</ECheckbox>
 
-    <div py-4 />
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </div>
+    </EDialog>
 
-    <input
-      id="input"
-      v-model="name"
-      placeholder="What's your name?"
-      type="text"
-      autocomplete="false"
-      p="x-4 y-2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    />
+    <EDrawer
+      :show="drawerShow"
+      :title="modalTitle"
+      @close="onDrawerClick"
+    >
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+    </EDrawer>
+    <e-input />
+    <e-divider direction="horizontal" />
+    <e-switch :checked="switchValue" />
+    <ERate :value="3" />
 
-    <div>
-      <button
-        class="m-3 text-sm btn"
-        :disabled="!name"
-        @click="go"
-      >
-        Go
-      </button>
-    </div>
-  </div>
+    <EUpload>
+      <e-button>点击上传</e-button>
+    </EUpload>
+    <EButton @click="onDialogClick">open dialog</EButton>
+    <EButton @click="onDrawerClick">open drawer</EButton>
+    <EButton @click="onswitchrClick">open drawer</EButton>
+    <EButton @click="link">link</EButton>
+  </main>
 </template>
+
+<script setup lang="ts">
+import { EMessage } from 'eurus-ui';
+
+const router = useRouter();
+let loading = $ref(false);
+let modalShow = $ref(false);
+let drawerShow = $ref(false);
+const modalTitle = $ref('title');
+const checkbox = $ref(false);
+let switchValue = $ref(false);
+const onDialogClose = ()=>modalShow = false;
+const onDialogClick = ()=>modalShow = true;
+const onDrawerClick = ()=>drawerShow = !drawerShow;
+const onswitchrClick = ()=>switchValue = !switchValue;
+EMessage.msg({ type: 'info', message: 'this is  message', duration: 2000 });
+const link = ()=>{
+  router.push(`/hi/${encodeURIComponent(1)}`);
+};
+setTimeout(() => {
+  loading = false;
+
+  setTimeout(() => {
+    loading = true;
+    setTimeout(() => {
+      loading = false;
+    }, 1000);
+  }, 1000);
+}, 2000);
+</script>
