@@ -1,4 +1,5 @@
 import { isArray, isObject } from '@vue/shared';
+import type { Dayjs } from 'dayjs';
 
 export {
   isArray,
@@ -31,4 +32,16 @@ export const isElement = (e: unknown): e is Element => {
 
 export function isStringNumber(o: any): boolean {
   return !Number.isNaN(Number(o));
+}
+export function isDayjs(time: any): boolean {
+  return (
+    isObject(time)
+    && '$y' in time
+    && '$M' in time
+    && '$D' in time
+    && '$d' in time
+    && '$H' in time
+    && '$m' in time
+    && '$s' in time
+  );
 }
