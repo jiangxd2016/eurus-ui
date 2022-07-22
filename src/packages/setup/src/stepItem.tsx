@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import classNames from '@/composables/useClassName';
+import classNames from '@/hooks/useClassName';
 
 interface stepProps {
   title?: string;

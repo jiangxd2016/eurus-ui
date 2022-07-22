@@ -27,7 +27,7 @@ const config: InlineConfig = {
       output: {
         exports: 'named',
       },
-      external: ['vue']
+      external: ['vue', '@vue/shared'],
     },
 
     lib: {

@@ -2,7 +2,7 @@ import type { HTMLAttributes, PropType, SetupContext } from 'vue';
 import { defineComponent, Transition, reactive } from 'vue';
 import './style.scss';
 import EIcon from '../../icons';
-import classNames from '@/composables/useClassName';
+import classNames from '@/hooks/useClassName';
 
 type MessageType = 'info' | 'success' | 'warning' | 'error';
 

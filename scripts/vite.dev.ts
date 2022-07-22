@@ -26,7 +26,7 @@ const config: InlineConfig = {
           preserveModules: true,
         },
       ],
-      external: ['vue'],
+      external: ['vue', '@vue/shared'],
     },
     lib: {
       entry: 'src/index.ts',

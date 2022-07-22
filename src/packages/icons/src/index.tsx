@@ -2,7 +2,7 @@ import type { PropType } from 'vue';
 import { renderSlot, h, computed, defineComponent } from 'vue';
 
 import IconList from './iconList';
-import { useSize } from '@/composables/useSize';
+import { useSize } from '@/hooks/useSize';
 
 const IconProps = {
   size: [Number, String],

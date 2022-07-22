@@ -1,7 +1,7 @@
 import type { App, DirectiveBinding } from 'vue';
 import { h, createApp } from 'vue';
 import ELoading from './src';
-import { createGlobalNode, removeGlobalNode } from '@/composables/useGlobalNode';
+import { createGlobalNode, removeGlobalNode } from '@/hooks/useGlobalNode';
 
 const vLoading = {
 
