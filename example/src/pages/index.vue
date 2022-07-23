@@ -25,9 +25,9 @@
       :title="modalTitle"
       @close="onDrawerClick"
     >
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      <p class="color-$e-color-primary">Some contents...</p>
+      <p class="color-$e-color-primary">Some contents...</p>
+      <p class="color-$e-color-primary">Some contents...</p>
     </EDrawer>
     <e-input />
     <e-divider direction="horizontal" />
