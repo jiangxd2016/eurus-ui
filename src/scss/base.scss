@@ -3,3 +3,10 @@
 @import './colors.scss';
 @import './dark.scss';
 @import "./normalize.scss";
+
+
+body {
+  font-size: $font-size-body;
+  font-family: $font-family;
+
+}

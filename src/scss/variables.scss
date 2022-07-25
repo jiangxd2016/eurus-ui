@@ -1,4 +1,13 @@
 
+
+$prefix: eurus;
+
+$font-family: Inter, "-apple-system", BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "noto sans", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$code-family: Consolas, Menlo;
+
+$font-size-body: 14px;
+
 $space-base: 16px !default;
 $space-x-base: $space-base !default;
 $space-y-base: $space-base !default;
@@ -465,7 +474,6 @@ $shadows-up: ($shadow-up-1, $shadow-up-2, $shadow-up-3, $shadow-up-4, $shadow-up
 
 $generic-border-radius: 4px !default;
 $generic-hover-transition: .3s cubic-bezier(.25, .8, .5, 1) !default;
-$typography-font-family: 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
 $min-line-height: 1.12 !default;
 
 $button-border-radius: 3px !default;

@@ -8,6 +8,8 @@
   },
   "exclude": [
     "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.md",
     "**/demo/*",
     "example",
     "node_modules"
