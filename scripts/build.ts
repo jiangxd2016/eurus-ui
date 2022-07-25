@@ -9,7 +9,7 @@ import configProd from './vite.prod';
 import configAll from './vite.all';
 
 import complieSass from './compile-sass';
-import './gen-version';
+import genVersion from './gen-version';
 
 const execPromise = promisify(exec);
 
@@ -21,6 +21,7 @@ const configList = [configProd, configAll].filter(Boolean) as InlineConfig[];
 
 // complie
 async function buildConfig() {
+  genVersion();
   await Promise.all(configList.map(item => build(item)));
   console.log('[eurus-ui build]: start build css');
   complieSass();
