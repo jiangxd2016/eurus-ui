@@ -1,3 +1,5 @@
+import { hyphenate } from '@estjs/tools';
+
 export interface EurusUIResolverOptions {
   /**
    * import style along with components
@@ -21,7 +23,6 @@ export interface EurusUIResolverOptions {
   atomic?: boolean;
 
 }
-
 function getSideEffectsLegacy(
   names: string,
   options: EurusUIResolverOptions,
@@ -53,7 +54,7 @@ export function EurusUIReslove(options: EurusUIResolverOptions = {}) {
       resolve: (name: string) => {
 
         if (name.match(/^(E[A-Z]|n-[a-z])/)) {
-          const names = name.slice(1);
+          const names = hyphenate(name.slice(1));
           if (name === 'step') {
             return;
           }

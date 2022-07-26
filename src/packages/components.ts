@@ -11,3 +11,4 @@ export * from './rate';
 export * from './setup';
 export * from './switch';
 export * from './upload';
+export * from './input-number';

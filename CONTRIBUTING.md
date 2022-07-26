@@ -20,7 +20,7 @@ npm run dev
 ├── docs // 组件文档与 demos
 ├── script // 构建代码
 ├── src // 组件代码
-├── test // 测试文件
+├── example // 示例文件
 ```
 
 
@@ -34,11 +34,6 @@ npm run dev
 [demo 描述（可不填）]
 :::
 ```
-
-
-### 单元测试 & e2e 测试文档
-
-[组件测试文档](./test.md)
 
 
 ## git

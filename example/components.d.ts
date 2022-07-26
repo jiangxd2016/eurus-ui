@@ -3,6 +3,8 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 import '@vue/runtime-core';
 
+export {};
+
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./src/components/Counter.vue')['default'];
@@ -12,6 +14,7 @@ declare module '@vue/runtime-core' {
     EDivider: typeof import('eurus-ui')['EDivider'];
     EDrawer: typeof import('eurus-ui')['EDrawer'];
     EInput: typeof import('eurus-ui')['EInput'];
+    EInputNumber: typeof import('eurus-ui')['EInputNumber'];
     ERate: typeof import('eurus-ui')['ERate'];
     ESwitch: typeof import('eurus-ui')['ESwitch'];
     EUpload: typeof import('eurus-ui')['EUpload'];
@@ -21,6 +24,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink'];
     RouterView: typeof import('vue-router')['RouterView'];
   }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('eurus-ui')['vLoading'];
+  }
 }
-
-export {};

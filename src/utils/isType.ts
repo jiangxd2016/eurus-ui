@@ -44,3 +44,7 @@ export function isDayjs(time: any): boolean {
     && '$s' in time
   );
 }
+
+export function toPrecision (num: number, numPrecision = 2) {
+  return Number.parseFloat(num.toFixed(numPrecision));
+}
