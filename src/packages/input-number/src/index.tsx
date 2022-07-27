@@ -1,11 +1,45 @@
 import { defineComponent, ref, toRefs } from 'vue';
-import type { SetupContext } from 'vue';
-import type { InputNumberProps } from './input-number-types';
-import { inputNumberProps } from './input-number-types';
-import { IncIcon, DecIcon } from './input-number-icons';
+import type { SetupContext, PropType, ExtractPropTypes } from 'vue';
+
 import './style.scss';
 import { getPrefixCls } from '@/utils/global-config';
 import { isNumber } from '@/utils';
+
+export type ISize = 'lg' | 'md' | 'sm';
+
+export const inputNumberProps = {
+  placeholder: {
+    type: String,
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  step: {
+    type: Number,
+    default: 1,
+  },
+  max: {
+    type: Number,
+    default: Number.POSITIVE_INFINITY,
+  },
+  min: {
+    type: Number,
+    default: Number.NEGATIVE_INFINITY,
+  },
+  size: {
+    type: String as PropType<ISize>,
+    default: '',
+  },
+  modelValue: {
+    type: Number,
+  },
+  precision: {
+    type: Number,
+  },
+} as const;
+
+export type InputNumberProps = ExtractPropTypes<typeof inputNumberProps>;
 
 export default defineComponent({
   name: 'EInputNumber',
@@ -34,14 +68,6 @@ export default defineComponent({
 
     return () => (
       <div class={prefix}>
-        <div >
-          <span class={['control-button control-inc', { disabled: disabled.value }]} >
-            <IncIcon />
-          </span>
-          <span class={['control-button control-dec', { disabled: disabled.value }]}>
-            <DecIcon />
-          </span>
-        </div>
         <div >
           <input
             ref="inputNumberRef"

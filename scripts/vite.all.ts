@@ -13,13 +13,6 @@ const config: InlineConfig = {
       '@/': `${resolve(dirname, 'src')}/`,
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "${dirname}/src/scss/base";`,
-      },
-    }
-  },
   build: {
     minify: false,
     emptyOutDir: false,
@@ -39,7 +32,7 @@ const config: InlineConfig = {
     },
   },
   plugins: [
-    viteDeletePurePlugin(),
+    // viteDeletePurePlugin(),
     vue(),
     vueJsx({ optimize: true })
   ],

@@ -12,8 +12,17 @@ export default function viteDeletePurePlugin(): Plugin {
     configResolved(resolvedConfig) {
       viteConfig = resolvedConfig;
     },
+    transform(code, id) {
+      if (id.endsWith('.vue')) {
+        const filePath = resolve(dirname, id);
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        const pureContent = fileContent.replace(/<\/?Pure[^>]*>/g, '');
+        if (pureContent !== fileContent) {
+          fs.writeFileSync(filePath, pureContent);
+        }
+      }
+    },
     closeBundle() {
-
       // read file，reg replace，write file
       const outputDir = viteConfig.build.outDir;
       const output = dirname + '/' + outputDir + '/eurus-ui.mjs';
