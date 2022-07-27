@@ -1,7 +1,6 @@
-@import "../../../scss/variables.scss";
+@import '../../../scss/variables';
 
-$number-prefix-cls: $prefix+-input-number;
-
+$number-prefix-cls: $prefix + -input-number;
 
 .#{$number-prefix-cls} {
   position: relative;
@@ -52,8 +51,8 @@ $number-prefix-cls: $prefix+-input-number;
     height: 28px;
     display: block;
     cursor: text;
-    -moz-appearance: textfield;
-    transition: border-color .3s cubic-bezier(.645, .045, .355, 1);
+    appearance: textfield;
+    transition: border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     &:not(.disabled) {
       background-color: #ffffff;
@@ -62,11 +61,11 @@ $number-prefix-cls: $prefix+-input-number;
     }
 
     &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
+      appearance: none;
     }
 
     &::-webkit-outer-spin-button {
-      -webkit-appearance: none;
+      appearance: none;
     }
   }
 
@@ -91,7 +90,7 @@ $number-prefix-cls: $prefix+-input-number;
       height: 50%;
       line-height: 50%;
       border-width: 0 1px;
-      transition: border-color .3s cubic-bezier(.645, .045, .355, 1);
+      transition: border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       display: flex;
       justify-content: center;
       align-items: center;

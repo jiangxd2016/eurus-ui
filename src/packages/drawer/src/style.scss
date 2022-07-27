@@ -6,6 +6,7 @@
   bottom: 0;
   right: 0;
   left: 0;
+
   .e-drawer-backdrop {
     position: fixed;
     top: 0;
@@ -15,6 +16,7 @@
     background-color: #272c36;
     opacity: 0.3;
   }
+
   .e-drawer {
     background: #ffffff;
     opacity: 1;
@@ -26,43 +28,51 @@
     right: 0;
     top: 0;
     z-index: 1050;
+
     .e-drawer-header {
       padding: 10px;
       display: flex;
       color: #575757;
+
       .title {
         font-size: 16px;
         width: 95%;
       }
+
       .close {
         text-align: center;
         cursor: pointer;
         width: 5%;
+
         .icon-close {
           position: relative;
-          background-color: rgba(169, 169, 169, 0.2);
+          background-color: rgb(169 169 169 / 20%);
           border-radius: 50%;
           right: 0;
         }
+
         .icon-close::before,
         .icon-close::after {
-          content: "";
+          content: '';
           position: absolute;
-          background-color: #888;
+          background-color: #888888;
           height: 15px;
           width: 2px;
           right: 0;
           top: 50%;
           left: 50%;
         }
+
         .icon-close::before {
           transform: rotate(45deg);
         }
+
         .icon-close::after {
           transform: rotate(-45deg);
         }
       }
     }
+
     .e-drawer-footer {
       position: absolute;
       right: 10px;
@@ -70,16 +80,19 @@
     }
   }
 }
+
 .e-drawer-enter-active,
 .e-drawer-leave-active {
   transition: all 0.2s linear;
   transform: translateX(0);
 }
+
 .e-drawer-enter,
 .e-drawer-leave {
   transition: all 0.2s linear;
   transform: translateX(100%);
 }
+
 .e-drawer-leave-to {
   transition: all 0.2s linear;
   transform: translateX(100%);

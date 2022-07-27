@@ -1,10 +1,9 @@
-
-
 .e-switch {
   display: inline-block;
   width: 44px;
   height: 24px;
 }
+
 .e-switch-body {
   display: inline-block;
   width: 44px;
@@ -14,8 +13,9 @@
   position: relative;
   cursor: pointer;
   transition: 0.1s all ease-in-out;
+
   &::after {
-    content: "";
+    content: '';
     display: inline-block;
     width: 18px;
     height: 18px;
@@ -25,22 +25,29 @@
     top: 3px;
     transition: 0.1s all ease-in-out;
   }
+
   transition: 0.1s all ease-in-out;
+
   &:hover {
     background-color: #c5c6c7;
   }
+
   &.disabled {
     background-color: #f7f7fa;
   }
 }
+
 .switch[type='checkbox']:checked + span {
   background-color: #3498ff;
+
   &::after {
     transform: translateX(-18px);
   }
+
   &:hover {
     background-color: #3498ff;
   }
+
   &.disabled {
     background-color: #cce9ff;
   }

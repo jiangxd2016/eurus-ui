@@ -1,54 +1,63 @@
-.e-step{
+.e-step {
   display: flex;
   margin: 0 0 0 5px;
-  color: #8E8E93;
-  .icon{
+  color: #8e8e93;
+
+  .icon {
     text-align: center;
     line-height: 30px;
     height: 30px;
     width: 30px;
-    border: 1px solid #8E8E93;
+    border: 1px solid #8e8e93;
     border-radius: 50%;
   }
+
   .active {
-    border: 1px solid #3498FF;
+    border: 1px solid #3498ff;
   }
-  .content{
+
+  .content {
     margin-left: 10px;
-    .title{
+
+    .title {
       font-size: 16px;
       line-height: 30px;
     }
-    .description{
 
+    .description {
       font-size: 14px;
       line-height: 20px;
     }
   }
-  .line{
+
+  .line {
     width: 120px;
     height: 1px;
-    background: #3498FF;
+    background: #3498ff;
   }
-  .vertical-line{
+
+  .vertical-line {
     margin: 10px auto;
     width: 1px;
     height: 62px;
-    background: #3498FF;
+    background: #3498ff;
     display: flex;
     flex-direction: column;
   }
 }
+
 .active {
-  color: #3498FF;
+  color: #3498ff;
 }
-.e-step-center{
+
+.e-step-center {
   align-items: center;
 }
 
-.e-steps{
-  display: flex
+.e-steps {
+  display: flex;
 }
-.vertical{
+
+.vertical {
   flex-direction: column;
 }

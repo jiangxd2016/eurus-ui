@@ -1,47 +1,56 @@
 .e-input,
-  .e-input-md{
-    font-size: 16px;
-    color:  #575757;
-    line-height: 20px;
-    padding: 8px 12px;
-    width: 300px;
-    background: #FFFFFF;
-    border: 1px solid #E5E5EA;
-    border-radius: 6px;
-    &:hover{
-      cursor:pointer;
-      border: 1px solid #34C3FF;
-    }
-    &:focus {
-      border: 1px solid #34C3FF;
-      outline: none;
-    }
+.e-input-md {
+  font-size: 16px;
+  color: #575757;
+  line-height: 20px;
+  padding: 8px 12px;
+  width: 300px;
+  background: #ffffff;
+  border: 1px solid #e5e5ea;
+  border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid #34c3ff;
   }
-  .e-input-lg{
-    font-size: 16px;
-    padding: 10px 12px;
+
+  &:focus {
+    border: 1px solid #34c3ff;
+    outline: none;
   }
-  .e-input-sm{
-    padding: 5px 12px;
+}
+
+.e-input-lg {
+  font-size: 16px;
+  padding: 10px 12px;
+}
+
+.e-input-sm {
+  padding: 5px 12px;
+}
+
+.e-input-xs {
+  font-size: 12px;
+  padding: 2px 12px;
+}
+
+.e-input-disabled {
+  background: #f7f7fa;
+  border: 1px solid #e5e5ea;
+  border-radius: 6px;
+
+  &:hover {
+    border: 1px solid #e5e5ea;
+    cursor: not-allowed;
   }
-  .e-input-xs{
-    font-size: 12px;
-    padding: 2px 12px;
+
+  &:focus {
+    border: 1px solid #e5e5ea;
+    outline: none;
+    cursor: not-allowed;
   }
-  .e-input-disabled{
-    background: #F7F7FA;
-    border: 1px solid #E5E5EA;
-    border-radius: 6px;
-    &:hover{
-      border: 1px solid #E5E5EA;
-      cursor: not-allowed;
-    }
-    &:focus {
-      border: 1px solid #E5E5EA;
-      outline: none;
-      cursor: not-allowed;
-    }
-  }
-  .e-input::placeholder{
-    color: #8E8E93;
-  }
+}
+
+.e-input::placeholder {
+  color: #8e8e93;
+}

@@ -1,4 +1,4 @@
-@import "../../../scss/variables.scss";
+@import '../../../scss/variables';
 
 $button-prefix-cls: $prefix + -button;
 
@@ -34,7 +34,7 @@ $button-prefix-cls: $prefix + -button;
   border-radius: inherit;
   bottom: 0;
   box-shadow: $shadow-2;
-  content: "";
+  content: '';
   display: block;
   left: 0;
   position: absolute;
@@ -49,11 +49,9 @@ $button-prefix-cls: $prefix + -button;
   box-shadow: none;
 }
 
-
-
 .#{$button-prefix-cls}.plain {
-  background: #fff !important;
-  color: #222 !important;
+  background: #ffffff !important;
+  color: #222222 !important;
   box-shadow: none;
 }
 
@@ -68,7 +66,6 @@ $button-prefix-cls: $prefix + -button;
 .#{$button-prefix-cls} .loading {
   display: flex;
   align-items: center;
-
   width: 1.2em;
   margin-right: 4px;
   margin-top: -2px;
@@ -96,20 +93,20 @@ $button-prefix-cls: $prefix + -button;
 
 .#{$button-prefix-cls}--info {
   background: #00a2fe;
-  color: #fff;
+  color: #ffffff;
 }
 
 .#{$button-prefix-cls}--warning {
   background: #e2d849;
-  color: #fff;
+  color: #ffffff;
 }
 
 .#{$button-prefix-cls}--error {
   background: #ee3f4d;
-  color: #fff;
+  color: #ffffff;
 }
 
 .#{$button-prefix-cls}--purple {
   background: #733df9;
-  color: #fff;
+  color: #ffffff;
 }
