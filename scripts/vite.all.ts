@@ -32,7 +32,7 @@ const config: InlineConfig = {
     },
   },
   plugins: [
-    // viteDeletePurePlugin(),
+    viteDeletePurePlugin(),
     vue(),
     vueJsx({ optimize: true })
   ],

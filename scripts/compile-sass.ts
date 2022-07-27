@@ -17,10 +17,16 @@ export default function complieSass() {
   if (!fs.existsSync(outDir)) {
     fs.mkdirSync(outDir, { recursive: true });
   }
+  const styleCss = fs.readFileSync('dist/style.css', 'utf8');
+
   fs.writeFileSync(outDir + '/base.css', base.css.toString());
   fs.writeFileSync(outDir + '/atomic.css', atomic.css.toString());
 
-  klawSync(inputPath, { nodir: true }).forEach((item)=>{
+  // base.css和vite生产的style.css合并
+  fs.writeFileSync('dist/style.css', base.css.toString() + '\n' + atomic.css.toString() + '\n' + styleCss);
+
+  // 复制scss 文件
+  klawSync(inputPath, { nodir: true }).forEach((item) => {
     if (!fs.existsSync(scssOutPath)) {
       fs.mkdirSync(scssOutPath, { recursive: true });
     }
