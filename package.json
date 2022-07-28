@@ -60,13 +60,13 @@
   ],
   "dependencies": {
     "async-validator": "^4.2.5",
-    "dayjs": "^1.11.4",
-    "stylelint": "^14.9.1"
+    "dayjs": "^1.11.4"
   },
   "peerDependencies": {
     "vue": "^3.2.26"
   },
   "devDependencies": {
+    "@estjs/stylelint-config": "^0.0.8",
     "@estjs/eslint-config": "^0.3.3",
     "@estjs/tools": "^0.0.21",
     "@types/node": "^18.6.1",
@@ -86,14 +86,9 @@
     "rimraf": "^3.0.2",
     "sass": "^1.54.0",
     "standard-changelog": "^2.0.27",
-    "typescript": "^4.7.4",
-    "vite": "^3.0.2",
     "stylelint": "^14.9.1",
-		"stylelint-config-recommended-scss": "^7.0.0",
-		"stylelint-config-recommended-vue": "^1.4.0",
-		"stylelint-config-standard": "^26.0.0",
-		"stylelint-scss": "^4.3.0",
-    "vitest": "^0.19.0",
-    "vue-tsc": "^0.39.0"
+    "typescript": "^4.7.4",
+    "vite": "^3.0.3",
+    "vitest": "^0.19.1"
   }
 }

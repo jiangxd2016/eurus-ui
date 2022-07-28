@@ -27,12 +27,12 @@
     "klaw-sync": "^6.0.0",
     "typescript": "^4.7.4",
     "unocss": "^0.44.7",
-    "vite": "^3.0.2",
+    "vite": "^3.0.3",
     "vite-plugin-pwa": "^0.12.3",
     "vite-plugin-restart": "^0.2.0",
     "vitepress": "^1.0.0-alpha.4",
     "vue-running": "^0.3.5",
-    "workbox-window": "^6.5.3"
+    "workbox-window": "^6.5.4"
   },
   "pnpm": {
     "peerDependencyRules": {
