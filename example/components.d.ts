@@ -10,16 +10,15 @@ declare module '@vue/runtime-core' {
     Counter: typeof import('./src/components/Counter.vue')['default'];
     EButton: typeof import('eurus-ui')['EButton'];
     ECheckbox: typeof import('eurus-ui')['ECheckbox'];
+    EDatePicker: typeof import('eurus-ui')['EDatePicker'];
     EDialog: typeof import('eurus-ui')['EDialog'];
     EDivider: typeof import('eurus-ui')['EDivider'];
     EDrawer: typeof import('eurus-ui')['EDrawer'];
     EInput: typeof import('eurus-ui')['EInput'];
-    EInputNumber: typeof import('eurus-ui')['EInputNumber'];
     ERate: typeof import('eurus-ui')['ERate'];
     ESwitch: typeof import('eurus-ui')['ESwitch'];
     EUpload: typeof import('eurus-ui')['EUpload'];
     Footer: typeof import('./src/components/Footer.vue')['default'];
-    Loading: typeof import('eurus-ui')['vLoading'];
     README: typeof import('./src/components/README.md')['default'];
     RouterLink: typeof import('vue-router')['RouterLink'];
     RouterView: typeof import('vue-router')['RouterView'];

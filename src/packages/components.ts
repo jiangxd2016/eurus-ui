@@ -12,3 +12,4 @@ export * from './setup';
 export * from './switch';
 export * from './upload';
 export * from './input-number';
+export * from './date-picker';

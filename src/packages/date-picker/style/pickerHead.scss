@@ -1,0 +1,14 @@
+.date-picker-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+
+  .last-year,
+  .next-month {
+    margin-right: 15px;
+  }
+
+  .arrow {
+    cursor: pointer;
+  }
+}

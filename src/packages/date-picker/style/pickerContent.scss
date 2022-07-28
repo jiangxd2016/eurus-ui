@@ -1,0 +1,29 @@
+.date-picker-day-content {
+  td {
+    width: 40px;
+    height: 40px;
+    color: #606266;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .disble-item {
+    cursor: not-allowed;
+    color: #c0c4cc;
+  }
+
+  .day-item.active {
+    color: #008c8c;
+    font-weight: bold;
+  }
+
+  .day-item.active-click {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #ffffff;
+    background-color: #008c8c;
+  }
+}

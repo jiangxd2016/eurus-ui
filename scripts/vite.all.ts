@@ -20,7 +20,7 @@ const config: InlineConfig = {
       output: {
         exports: 'named',
       },
-      external: ['vue', '@vue/shared'],
+      external: ['vue', '@vue/shared', 'dayjs', 'async-validator'],
     },
 
     lib: {

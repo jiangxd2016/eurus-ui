@@ -26,7 +26,7 @@ const config: InlineConfig = {
           preserveModules: true,
         },
       ],
-      external: ['vue', '@vue/shared'],
+      external: ['vue', '@vue/shared', 'dayjs', 'async-validator'],
     },
     lib: {
       entry: 'src/index.ts',
