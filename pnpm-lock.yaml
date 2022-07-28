@@ -30,7 +30,6 @@ importers:
       typescript: ^4.7.4
       vite: ^3.0.3
       vitest: ^0.19.1
-      vue-tsc: ^0.39.2
     dependencies:
       async-validator: 4.2.5
       dayjs: 1.11.4
@@ -59,7 +58,6 @@ importers:
       typescript: 4.7.4
       vite: 3.0.3_sass@1.54.0
       vitest: 0.19.1_3b2zs3y7mlz7tqjuqsakkszct4
-      vue-tsc: 0.39.2_typescript@4.7.4
 
   docs:
     specifiers:
