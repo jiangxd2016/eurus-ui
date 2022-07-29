@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-
+import Icon from '../../icons';
 const pickerHeadProps = {
   // 时间
   date: {
@@ -14,19 +14,20 @@ export default defineComponent({
   name: 'DatePickerHead',
   props: pickerHeadProps,
   setup(props, { emit }) {
-    const toogleDate = (type: any) => {
+    const toggleDate = (type: any) => {
       emit('dateRangeChange', type);
     };
     return () => (
       <div class="date-picker-head">
         <div class="arrow-left">
-          <span class="last-year arrow" onClick={()=>toogleDate('lastYear')}>&lt;&lt;&lt;</span>
-          <span class="last-month arrow" onClick={()=>toogleDate('lastMonth')}>&lt;&lt;</span>
+          <Icon name="doubleLeft" size="16" class="arrow" onClick={()=>toggleDate('lastYear')}></Icon>
+          <Icon name="chevronLeft" size="16" class="arrow" onClick={()=>toggleDate('lastMonth')}></Icon>
         </div>
-        <div class="date-content">{props.date[0] + '年' + props.date[1] + '月'}</div>
+        <div class="date-content">{props.date[0] + '-' + props.date[1] }</div>
         <div class="arrow-right">
-          <span class="next-month arrow" onClick={()=>toogleDate('nextMonth')}>&gt;</span>
-          <span class="next-year arrow" onClick={()=>toogleDate('nextYear')}>&lt;&lt;</span>
+          <Icon name="chevronRight" size="16" class="arrow" onClick={()=>toggleDate('nextYear')}></Icon>
+        <Icon name="doubleRight" size="16" class="arrow" onClick={()=>toggleDate('nextMonth')}></Icon>
+
         </div>
       </div>
     );

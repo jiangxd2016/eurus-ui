@@ -1,4 +1,4 @@
-import { defineComponent, inject, ref } from 'vue';
+import { defineComponent, ref, toRefs } from 'vue';
 
 const Props = {
   list: {
@@ -13,7 +13,8 @@ export default defineComponent({
   name: 'DatePickerDayContent',
   props: Props,
   setup(props, { emit }) {
-    const list: any = inject('list');
+    const { list } = toRefs(props);
+
     const currentDay = ref(-1);
     // 处理天的表格点击，触发关闭时间控件面板，设置时间input的值
     const handleDayClick = (item: any) => {
@@ -25,15 +26,23 @@ export default defineComponent({
     return () => (
       <tbody class="date-picker-day-content">
         {
-         list.map((item: any, index: number) => {
-           return <tr key={index}>
+          list.value.map((item: any, index: number) => {
+            return <tr key={index}>
               {
                 item.map((subItem: any, index: number) => {
-                  return <td key={index} class={`${subItem.currentDay === subItem.index ? 'current-day' : ''}`} onClick={() => handleDayClick(subItem)}>{subItem.day}</td>;
+                  return <td
+                    key={index} class={[
+                      subItem.disbled ? 'disble-item' : 'day-item',
+                      subItem.active ? 'active' : '',
+                      subItem.index === currentDay.value ? 'active-click' : '',
+                    ]}
+                    onClick={() => handleDayClick(subItem)}>
+                    {subItem.value}
+                  </td>;
                 })
               }
             </tr>;
-         })
+          })
         }
       </tbody>
     );

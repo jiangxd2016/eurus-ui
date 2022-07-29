@@ -1,6 +1,5 @@
-import { defineComponent, onMounted, provide, reactive, ref, watchEffect } from 'vue';
+import { defineComponent, onMounted, reactive, ref, Transition } from 'vue';
 import './style.scss';
-import useLocaleTransform from '../hooks/locale-transform';
 import { genarateDayData } from './utils';
 import DatePickerHead from './DatePickerHead';
 import DateTable from './DateTable';
@@ -26,10 +25,9 @@ export default defineComponent({
   name: 'EDatePicker',
   props: EDatePickerProps,
   setup(props, { slots, emit }) {
-    const t = useLocaleTransform();
 
     // 用于控制面包显示与隐藏
-    const showDatePannel = ref(false);
+    const showDatePanel = ref(false);
     // 表格数据
     let list: any = reactive([]);
     // 处理props时间为数组格式[年，月]
@@ -38,16 +36,18 @@ export default defineComponent({
     const currentDate = ref<string | Date>('');
     // 通过props传递的时间，组装成长度为42的数组,具体看utils文件下下面的这个方法
     const getDateList = () => {
-      list = genarateDayData(curDate);
+      list = reactive(genarateDayData(curDate));
+
     };
     // 监听每个td时间项点击
     const dateChange = (date: Date) => {
       emit('dateChange', date);
-      showDatePannel.value = false;
+      showDatePanel.value = false;
       currentDate.value = date;
     };
     // 头部年月切换
-    const dateRangeChange = (type: any) => {
+    const dateRangeChange = (type: string) => {
+
       switch (type) {
         // 上一年点击
         case 'lastYear':
@@ -81,20 +81,15 @@ export default defineComponent({
 
     const onInputClick = () => {
 
-      showDatePannel.value = true;
+      showDatePanel.value = true;
     };
-
-    watchEffect(() => {
-      provide('list', list);
-    });
 
     return () => (
       <div>
-        {t('date-picker.today')}
 
         <div class="date-picker-wrap">
 
-          <div class="date-eidtor" onClick={onInputClick}>
+          <div class="date-editor" onClick={onInputClick}>
             <input
               v-model={currentDate.value}
               type="text"
@@ -103,18 +98,18 @@ export default defineComponent({
               class="date-edit-input"
             />
           </div>
-          <transition name="date-picker">{
-            showDatePannel.value && (
-              <div class="date-pocker-panel">
+          <Transition name="date-picker">{
+            showDatePanel.value && (
+              <div class="date-picker-panel">
                 <DatePickerHead
                   date={curDate}
                   onDateRangeChange={dateRangeChange}
                 />
-                <DateTable onDateChange={dateChange} />
+                <DateTable list={list} onDateChange={dateChange} />
               </div>
             )
           }
-          </transition>
+          </Transition>
         </div>
       </div>
 

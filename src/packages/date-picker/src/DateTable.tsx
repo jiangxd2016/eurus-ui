@@ -24,6 +24,7 @@ export default defineComponent({
         <table>
           <DatePickerWeekBar />
           <DatePickerDayContent
+          list={props.list}
             onDateChange={dateChange}
           />
         </table>

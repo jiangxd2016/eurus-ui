@@ -8,7 +8,12 @@
     margin-right: 15px;
   }
 
+  .arrow-right,.arrow-left {
+    display: flex;
+  }
   .arrow {
+    display: flex;
+    align-items: center;
     cursor: pointer;
   }
 }

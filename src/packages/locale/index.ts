@@ -52,7 +52,7 @@ export const useI18n = () => {
   const i18nMessage = computed<EurusLang>(
     () => configProvider?.locale ?? I18N_MESSAGES[LOCALE.value]
   );
-  const locale = computed(() => i18nMessage.value.locale);
+  const locale = computed<string>(() => i18nMessage.value.locale);
 
   const transform = (key: string, ...args: any[]): string => {
     const keyArray = key.split('.');
@@ -66,7 +66,7 @@ export const useI18n = () => {
     }
     if (isString(temp)) {
       if (args.length > 0) {
-        return temp.replace(/{(\d+)}/g, (sub, index) => args[index] ?? sub);
+        return temp.replace(/{(\d+)}/g, (sub: string, index: number) => args[index] ?? sub);
       }
 
       return temp;

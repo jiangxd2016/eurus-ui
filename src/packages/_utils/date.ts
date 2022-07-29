@@ -6,7 +6,7 @@ import weekOfYear from 'dayjs/plugin/weekOfYear';
 import AdvancedFormat from 'dayjs/plugin/advancedFormat';
 import weekYear from 'dayjs/plugin/weekYear';
 import QuarterOfYear from 'dayjs/plugin/quarterOfYear';
-import { isDayjs, isArray } from './isType';
+import { isDayjs } from './isType';
 import 'dayjs/locale/zh-cn';
 
 const overwriteIsDayjs = (_: any, Dayjs: any, dayjs: any) => {
@@ -76,117 +76,4 @@ export function getNow() {
 
 export function getSortedDayjsArray(values: Dayjs[]) {
   return [...values].sort((a, b) => a.valueOf() - b.valueOf());
-}
-
-export function isValueChange(
-  prevValue: Dayjs | (Dayjs | undefined)[] | undefined,
-  currentValue: Dayjs | (Dayjs | undefined)[] | undefined
-) {
-  const isDifference = (
-    value1: Dayjs | undefined,
-    value2: Dayjs | undefined
-  ) => {
-    if (value1 === undefined && value2 === undefined) {
-      return false;
-    }
-
-    if ((value1 && !value2) || (!value1 && value2)) {
-      return true;
-    }
-
-    return value1?.valueOf() !== value2?.valueOf();
-  };
-
-  if (currentValue === undefined && prevValue === undefined) {
-    return false;
-  }
-
-  if (isArray(currentValue) && isArray(prevValue)) {
-    return (
-      isDifference(currentValue[0], prevValue[0])
-      || isDifference(currentValue[1], prevValue[1])
-    );
-  }
-
-  if (!isArray(currentValue) && !isArray(prevValue)) {
-    return isDifference(currentValue, prevValue);
-  }
-
-  return true;
-}
-
-type DateValue = Date | string | number;
-
-export function getDayjsValue(time: DateValue, format: string): Dayjs;
-export function getDayjsValue(
-  time: DateValue | undefined,
-  format: string
-): Dayjs | undefined;
-export function getDayjsValue(time: DateValue[], format: string): Dayjs[];
-export function getDayjsValue(
-  time: DateValue[] | undefined,
-  format: string
-): Dayjs[] | undefined;
-export function getDayjsValue(
-  time: (DateValue | undefined)[],
-  format: string
-): (Dayjs | undefined)[];
-export function getDayjsValue(
-  time: (DateValue | undefined)[] | undefined,
-  format: string
-): (Dayjs | undefined)[] | undefined;
-export function getDayjsValue(
-  time: DateValue | (DateValue | undefined)[] | undefined,
-  format: string
-): Dayjs | (Dayjs | undefined)[] | undefined;
-export function getDayjsValue(
-  time: DateValue | DateValue[] | (DateValue | undefined)[] | undefined,
-  format: string
-) {
-  const formatValue = (value: Date | string | number | undefined) => {
-    if (!value) { return undefined; }
-
-    if (typeof value === 'string') {
-      return dayjs(value, format);
-    }
-
-    return dayjs(value);
-  };
-
-  if (isArray(time)) {
-    return time.map(element => formatValue(element));
-  }
-
-  return formatValue(time);
-}
-
-export function getDateValue(value: Dayjs): Date;
-export function getDateValue(value: Dayjs | undefined): Date | undefined;
-export function getDateValue(value: Dayjs[]): Date[];
-export function getDateValue(
-  value: (Dayjs | undefined)[]
-): (Date | undefined)[];
-export function getDateValue(
-  value: (Dayjs | undefined)[] | undefined
-): (Date | undefined)[] | undefined;
-export function getDateValue(
-  value: Dayjs | (Dayjs | undefined)[]
-): Date | (Date | undefined)[];
-export function getDateValue(
-  value: Dayjs | (Dayjs | undefined)[] | undefined
-): Date | (Date | undefined)[] | undefined;
-export function getDateValue(
-  value: Dayjs | Dayjs[] | (Dayjs | undefined)[] | undefined
-) {
-  const formatValue = (t: Dayjs | undefined) => (t ? t.toDate() : undefined);
-
-  if (isArray(value)) {
-    return value.map(element => formatValue(element));
-  }
-
-  return formatValue(value);
-}
-
-export function initializeDateLocale(localeName: string, weekStart: number) {
-  dayjs.locale({ ...dayjs.Ls[localeName.toLocaleLowerCase()], weekStart });
 }

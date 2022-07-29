@@ -36,7 +36,7 @@ const config: InlineConfig = {
         },
       ],
 
-      external: ['vue', '@vue/shared', 'dayjs', 'async-validator'],
+      external: ['vue', 'dayjs', 'async-validator'],
     },
     lib: {
       entry: 'src/index.ts',

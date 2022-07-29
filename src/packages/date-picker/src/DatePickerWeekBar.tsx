@@ -11,7 +11,7 @@ export default defineComponent({
           {
             weekList.value.map((item) => {
 
-              return <th v-for="item in weekList" key={item}>{item}</th>;
+              return <th key={item}>{item}</th>;
             })
           }
         </tr>
