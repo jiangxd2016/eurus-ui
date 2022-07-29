@@ -21,7 +21,6 @@
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "rootDir": "./src",
     "outDir": "./dist",
     "paths": {
       "@/*": [

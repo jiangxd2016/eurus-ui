@@ -3,6 +3,7 @@ import type { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import viteCssPlugin from './vite-css-plugin';
+import external from './vite-plugin-external';
 
 const config: InlineConfig = {
   mode: 'production',
@@ -43,6 +44,7 @@ const config: InlineConfig = {
     },
   },
   plugins: [
+    external(),
     viteCssPlugin(),
     vue(),
     vueJsx({ optimize: true })

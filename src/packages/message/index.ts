@@ -1,8 +1,8 @@
 import type { App } from 'vue';
 import { createApp, h } from 'vue';
+import { createGlobalNode } from '../_hooks/useGlobalNode';
 import EMessage from './src';
 import type { MessageProps } from './src';
-import { createGlobalNode } from '@/hooks/useGlobalNode';
 
 function Mesage(options: typeof MessageProps) {
   const Element = createGlobalNode('e-message');

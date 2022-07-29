@@ -1,6 +1,6 @@
 import type { SetupContext } from 'vue';
 import { defineComponent, toRefs, reactive } from 'vue';
-import classNames from '@/hooks/useClassName';
+import classNames from '../../_hooks/useClassName';
 import './style.scss';
 
 const InputProps = {

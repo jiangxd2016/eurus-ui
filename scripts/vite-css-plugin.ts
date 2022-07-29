@@ -36,7 +36,7 @@ const compileToCSS = async function (path: string) {
 
 export default function viteCssPlugin(): Plugin {
   return {
-    name: 'vite-css-plugin',
+    name: 'vite:css-plugin',
     configResolved(resolvedConfig) {
       viteConfig = resolvedConfig;
     },

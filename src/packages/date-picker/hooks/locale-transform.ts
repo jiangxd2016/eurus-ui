@@ -1,4 +1,4 @@
-import { dayjs } from '@/utils/date';
+import { dayjs } from '../../_utils/date';
 import { useI18n } from '@/packages/locale';
 
 export default function useLocaleTransform() {

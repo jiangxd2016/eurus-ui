@@ -1,4 +1,4 @@
-import { isNumber, isString, isStringNumber } from '@/utils';
+import { isNumber, isString, isStringNumber } from '../_utils';
 
 export function useSize(size: number | string | undefined) {
   if (!size) {

@@ -1,6 +1,6 @@
 import { defineComponent, onMounted, provide, reactive, ref, watchEffect } from 'vue';
-// import useLocaleTransform from '../hooks/locale-transform';
 import './style.scss';
+import useLocaleTransform from '../hooks/locale-transform';
 import { genarateDayData } from './utils';
 import DatePickerHead from './DatePickerHead';
 import DateTable from './DateTable';
@@ -26,7 +26,7 @@ export default defineComponent({
   name: 'EDatePicker',
   props: EDatePickerProps,
   setup(props, { slots, emit }) {
-    // const t = useLocaleTransform();
+    const t = useLocaleTransform();
 
     // 用于控制面包显示与隐藏
     const showDatePannel = ref(false);
@@ -90,7 +90,7 @@ export default defineComponent({
 
     return () => (
       <div>
-        {/* {t('date-picker.today')} */}
+        {t('date-picker.today')}
 
         <div class="date-picker-wrap">
 

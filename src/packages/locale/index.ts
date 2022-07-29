@@ -1,8 +1,8 @@
 import { ref, reactive, inject, computed } from 'vue';
+import { isString } from '../_utils/isType';
+import { configProviderInjectionKey } from '../_utils/global-config';
 import type { EurusI18nMessages, EurusLang } from './interface';
 import zhCN from './lang/zh-cn';
-import { isString } from '@/utils/isType';
-import { configProviderInjectionKey } from '@/utils/global-config';
 
 const LOCALE = ref('zh-CN');
 const I18N_MESSAGES = reactive<EurusI18nMessages>({

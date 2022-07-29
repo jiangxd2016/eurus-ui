@@ -8,7 +8,7 @@ let viteConfig: ResolvedConfig;
 
 export default function viteDeletePurePlugin(): Plugin {
   return {
-    name: 'vite-delete-pure-plugin',
+    name: 'vite:delete-pure-plugin',
     configResolved(resolvedConfig) {
       viteConfig = resolvedConfig;
     },
