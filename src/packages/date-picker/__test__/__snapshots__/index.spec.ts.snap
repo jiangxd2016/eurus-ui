@@ -1,9 +1,12 @@
 // Vitest Snapshot v1
 
 exports[`EDate-picker > EDate-picker snapshot 1`] = `
-"<div>date-picker.today<div class=\\"date-picker-wrap\\">
+"<div>
+  <div class=\\"date-picker-wrap\\">
     <div class=\\"date-editor\\"><input type=\\"text\\" disabled=\\"\\" placeholder=\\"placeholder\\" class=\\"date-edit-input\\"></div>
-    <transition-stub name=\\"date-picker\\"></transition-stub>
+    <transition-stub>
+      <!---->
+    </transition-stub>
   </div>
 </div>"
 `;
