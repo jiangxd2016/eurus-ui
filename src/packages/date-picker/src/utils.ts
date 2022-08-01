@@ -7,7 +7,6 @@ export function getFirstMonthDayWeek([year, month]: any) {
 }
 
 export function genarateDayData([year, month]: any) {
-
   // 获取上月天数
   let lastMonthCount = getCurrentMonthCount([year, month - 1]);
   // 获取当月天数

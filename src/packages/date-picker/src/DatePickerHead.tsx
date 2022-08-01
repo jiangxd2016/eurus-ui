@@ -1,9 +1,9 @@
+import type { PropType } from 'vue';
 import { defineComponent } from 'vue';
 import Icon from '../../icons';
 const pickerHeadProps = {
-  // 时间
   date: {
-    type: Array,
+    type: Array as PropType<number[]>,
     default() {
       return [new Date().getFullYear(), new Date().getMonth() + 1];
     },
@@ -25,8 +25,8 @@ export default defineComponent({
         </div>
         <div class="date-content">{props.date[0] + '-' + props.date[1] }</div>
         <div class="arrow-right">
-          <Icon name="chevronRight" size="16" class="arrow" onClick={()=>toggleDate('nextYear')}></Icon>
-        <Icon name="doubleRight" size="16" class="arrow" onClick={()=>toggleDate('nextMonth')}></Icon>
+          <Icon name="chevronRight" size="16" class="arrow" onClick={()=>toggleDate('nextMonth')}></Icon>
+        <Icon name="doubleRight" size="16" class="arrow" onClick={()=>toggleDate('nextYear')}></Icon>
 
         </div>
       </div>
