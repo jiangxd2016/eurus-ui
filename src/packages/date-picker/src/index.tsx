@@ -1,8 +1,11 @@
-import { defineComponent, onMounted, ref, Transition } from 'vue';
+import { defineComponent, onMounted, ref, Transition, } from 'vue';
 import './style.scss';
+import type { datePickerItem } from './utils';
 import { genarateDayData } from './utils';
 import DatePickerHead from './DatePickerHead';
 import DateTable from './DateTable';
+import DatePickerFooter from './DatePickerFooter';
+import { dayjs } from '@/packages/_utils/date';
 
 const EDatePickerProps = {
   type: {
@@ -33,17 +36,31 @@ export default defineComponent({
     // 处理props时间为数组格式[年，月]
     const curDate = ref([props.date.getFullYear(), props.date.getMonth() + 1]);
     // 用户input显示时间
-    const currentDate = ref<string | Date>('');
+    const currentDate = ref<string>('');
     // 通过props传递的时间，组装成长度为42的数组,具体看utils文件下下面的这个方法
     const getDateList = () => {
       list.value = genarateDayData(curDate.value);
     };
+
+    const setDateListActive = (date: string) => {
+      list.value = list.value.map((i: datePickerItem[]) => {
+        return i.map((j: datePickerItem) => {
+          j.active = j.date === date;
+          return j;
+        });
+      });
+    };
     // 监听每个td时间项点击
-    const dateChange = (date: Date) => {
+    const dateChange = (date: string) => {
       emit('dateChange', date);
       showDatePanel.value = false;
+
       currentDate.value = date;
+
+      setDateListActive(currentDate.value);
+
     };
+
     // 头部年月切换
     const dateRangeChange = (type: string) => {
 
@@ -70,6 +87,10 @@ export default defineComponent({
             month + 1 > 12 ? year + 1 : year,
             month + 1 > 12 ? 1 : month + 1,
           ];
+          break;
+        case 'today':
+          curDate.value = [new Date().getFullYear(), new Date().getMonth() + 1];
+          dateChange(dayjs().format('YYYY-MM-DD'));
           break;
       }
       getDateList();
@@ -105,7 +126,8 @@ export default defineComponent({
                   date={curDate.value}
                   onDateRangeChange={dateRangeChange}
                 />
-                <DateTable list={list} onDateChange={dateChange} />
+                <DateTable list={list.value} onDateChange={dateChange} />
+                <DatePickerFooter onDateRangeChange={dateRangeChange}></DatePickerFooter>
               </div>
             )
           }

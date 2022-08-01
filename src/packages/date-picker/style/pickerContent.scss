@@ -1,3 +1,5 @@
+@import '../../../scss//variables.scss';
+
 .date-picker-day-content {
   td {
     width: 40px;
@@ -8,14 +10,26 @@
     cursor: pointer;
   }
 
-  .disble-item {
+  .disable-item {
     cursor: not-allowed;
     color: #c0c4cc;
   }
 
   .day-item.active {
-    color: #008c8c;
-    font-weight: bold;
+    .item-value {
+      color: #ffffff;
+      min-width: 24px;
+      height: 24px;
+      width: 24px;
+      font-size: 14px;
+      line-height: 24px;
+      margin: 0 auto;
+      text-align: center;
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: $bg-color-primary;
+      transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
+    }
   }
 
   .day-item.active-click {

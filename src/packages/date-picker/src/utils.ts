@@ -1,21 +1,35 @@
-export function getCurrentMonthCount([year, month]: any) {
-  return new Date(year, month, 0).getDate();
+import { dayjs } from '@/packages/_utils/date';
+
+export function getCurrentMonthCount(month: string) {
+
+  return dayjs(month).daysInMonth();
 }
 
-export function getFirstMonthDayWeek([year, month]: any) {
-  return new Date(year, month - 1, 1).getDay();
+export function getFirstMonthDayWeek(month: string) {
+  return dayjs(month).day();
 }
 
-export function genarateDayData([year, month]: any) {
+export interface datePickerItem {
+  value: number;
+  disbled: boolean;
+  date: string;
+  active?: boolean;
+  index: number;
+}
+
+export function genarateDayData([year, month]: number[]): datePickerItem[][] {
+  const listMonth = `${year}-${month - 1}-1`;
+  const currentMonth = `${year}-${month}-1`;
   // 获取上月天数
-  let lastMonthCount = getCurrentMonthCount([year, month - 1]);
+  let lastMonthCount = getCurrentMonthCount(listMonth);
   // 获取当月天数
-  const currentMonthCount = getCurrentMonthCount([year, month]);
+  const currentMonthCount = getCurrentMonthCount(currentMonth);
   // 获取当月1号星期
-  const currentMonthFirstDayWeek = getFirstMonthDayWeek([year, month]);
+  const currentMonthFirstDayWeek = getFirstMonthDayWeek(currentMonth);
+
   const dayList = [];
   let lastMonthPointer = 1;
-  let currentMonthPoiner = 1;
+  let currentMonthPointer = 1;
   let nextMonthPointer = 1;
   // 根据日期组件的天数布局，共计42天，包含上月剩余天数+当月天数+下月初始天数
   for (let i = 0; i < 42; i++) {
@@ -29,16 +43,16 @@ export function genarateDayData([year, month]: any) {
         index: i,
       });
       lastMonthPointer++;
-    } else if (currentMonthPoiner <= currentMonthCount) {
+    } else if (currentMonthPointer <= currentMonthCount) {
       // 当月
       dayList.push({
-        value: currentMonthPoiner++,
+        value: currentMonthPointer++,
         disbled: false,
         active:
           new Date().getFullYear() === year
           && new Date().getMonth() + 1 === month
-          && currentMonthPoiner - 1 === new Date().getDate(),
-        date: year + '-' + month + '-' + (currentMonthPoiner - 1),
+          && currentMonthPointer - 1 === new Date().getDate(),
+        date: year + '-' + month + '-' + (currentMonthPointer - 1),
         index: i,
       });
     } else {
@@ -66,5 +80,4 @@ export function genarateDayData([year, month]: any) {
   }
   return result;
 }
-// 用于保存组建的常量，静态数据，比如表头的星期
 export const weekList = ['日', '一', '二', '三', '四', '五', '六'];

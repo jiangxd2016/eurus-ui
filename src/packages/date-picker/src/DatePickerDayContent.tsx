@@ -1,8 +1,9 @@
+import type { PropType } from 'vue';
 import { defineComponent, ref, toRefs } from 'vue';
 
 const Props = {
   list: {
-    type: Array,
+    type: Array as PropType<string[][]>,
     default() {
       return [];
     },
@@ -32,12 +33,14 @@ export default defineComponent({
                 item.map((subItem: any, index: number) => {
                   return <td
                     key={index} class={[
-                      subItem.disbled ? 'disble-item' : 'day-item',
+                      subItem.disbled ? 'disable-item' : 'day-item',
                       subItem.active ? 'active' : '',
-                      subItem.index === currentDay.value ? 'active-click' : '',
+                      subItem.index === currentDay.value ? 'active' : '',
                     ]}
                     onClick={() => handleDayClick(subItem)}>
-                    {subItem.value}
+                      <div class="item-value">
+                      {subItem.value}
+                      </div>
                   </td>;
                 })
               }

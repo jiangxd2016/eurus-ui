@@ -10,7 +10,6 @@ export default defineComponent({
         <tr>
           {
             weekList.value.map((item) => {
-
               return <th key={item}>{item}</th>;
             })
           }
