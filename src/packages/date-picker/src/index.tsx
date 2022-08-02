@@ -1,3 +1,4 @@
+import type { PropType } from 'vue';
 import { defineComponent, onMounted, ref, Transition, } from 'vue';
 import './style.scss';
 import type { datePickerItem } from './utils';
@@ -6,13 +7,21 @@ import DatePickerHead from './DatePickerHead';
 import DateTable from './DateTable';
 import DatePickerFooter from './DatePickerFooter';
 import { dayjs } from '@/packages/_utils/date';
-
+import EInput from '@/packages/input';
 const EDatePickerProps = {
   type: {
-    type: Boolean,
-    default: false,
+    type: String as PropType<'date' | 'month' | 'year' | 'daterange'>,
+    default: 'false',
   },
   placeholder: {
+    type: String,
+    default: '',
+  },
+  startPlaceholder: {
+    type: String,
+    default: '',
+  },
+  endPlaceholder: {
     type: String,
     default: '',
   },
@@ -22,6 +31,17 @@ const EDatePickerProps = {
       return new Date();
     },
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  disabledDate: {
+    type: Function as PropType<(date: string) => boolean>,
+    default() {
+      return () => { };
+    }
+  },
+
 };
 
 export default defineComponent({
@@ -39,7 +59,7 @@ export default defineComponent({
     const currentDate = ref<string>('');
     // 通过props传递的时间，组装成长度为42的数组,具体看utils文件下下面的这个方法
     const getDateList = () => {
-      list.value = genarateDayData(curDate.value);
+      list.value = genarateDayData(curDate.value, props.disabledDate);
     };
 
     const setDateListActive = (date: string) => {
@@ -101,7 +121,7 @@ export default defineComponent({
     });
 
     const onInputClick = () => {
-
+      if (props.disabled) { return; }
       showDatePanel.value = true;
     };
 
@@ -111,10 +131,10 @@ export default defineComponent({
         <div class="date-picker-wrap">
 
           <div class="date-editor" onClick={onInputClick}>
-            <input
+            <EInput
               v-model={currentDate.value}
               type="text"
-              disabled
+              disabled={props.disabled}
               placeholder="placeholder"
               class="date-edit-input"
             />

@@ -17,7 +17,7 @@ export interface datePickerItem {
   index: number;
 }
 
-export function genarateDayData([year, month]: number[]): datePickerItem[][] {
+export function genarateDayData([year, month]: number[], disabled: Function): datePickerItem[][] {
   const listMonth = `${year}-${month - 1}-1`;
   const currentMonth = `${year}-${month}-1`;
   // 获取上月天数
@@ -39,20 +39,21 @@ export function genarateDayData([year, month]: number[]): datePickerItem[][] {
       dayList.unshift({
         value: lastMonthCount--,
         disbled: true,
-        date: year + '-' + (month - 1) + '-' + (lastMonthCount + 1),
+        date: dayjs(year + '-' + (month - 1) + '-' + (lastMonthCount + 1)).format('YYYY-MM-DD'),
         index: i,
       });
       lastMonthPointer++;
     } else if (currentMonthPointer <= currentMonthCount) {
       // 当月
+      const date = dayjs(year + '-' + month + '-' + (currentMonthPointer - 1)).format('YYYY-MM-DD');
       dayList.push({
         value: currentMonthPointer++,
-        disbled: false,
+        disbled: !disabled(date),
         active:
           new Date().getFullYear() === year
           && new Date().getMonth() + 1 === month
           && currentMonthPointer - 1 === new Date().getDate(),
-        date: year + '-' + month + '-' + (currentMonthPointer - 1),
+        date,
         index: i,
       });
     } else {
@@ -60,7 +61,7 @@ export function genarateDayData([year, month]: number[]): datePickerItem[][] {
       dayList.push({
         value: nextMonthPointer++,
         disbled: true,
-        date: year + '-' + (month + 1) + '-' + (nextMonthPointer - 1),
+        date: dayjs(year + '-' + (month + 1) + '-' + (nextMonthPointer - 1)).format('YYYY-MM-DD'),
         index: i,
       });
     }
@@ -80,4 +81,3 @@ export function genarateDayData([year, month]: number[]): datePickerItem[][] {
   }
   return result;
 }
-export const weekList = ['日', '一', '二', '三', '四', '五', '六'];
