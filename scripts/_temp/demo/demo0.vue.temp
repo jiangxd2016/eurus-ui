@@ -1,5 +1,5 @@
 <template >
-
+<<%= name %>></<%= name %>>
 </template>
 
 <script  setup>

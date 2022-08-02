@@ -8,6 +8,7 @@ export {};
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./src/components/Counter.vue')['default'];
+    EAvatar: typeof import('eurus-ui')['EAvatar'];
     EButton: typeof import('eurus-ui')['EButton'];
     ECheckbox: typeof import('eurus-ui')['ECheckbox'];
     EDatePicker: typeof import('eurus-ui')['EDatePicker'];

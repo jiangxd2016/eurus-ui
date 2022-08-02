@@ -1,9 +1,12 @@
+import type { PropType } from 'vue';
 import { defineComponent } from 'vue';
 import './style.scss';
 
+export type Size = 'sm' | 'md' | 'lg' | 'xl';
+
 const EAvatarProps = {
   size: {
-    type: Boolean,
+    type: String as PropType<Size>,
     default: false,
   },
   color: {
@@ -14,10 +17,18 @@ const EAvatarProps = {
     type: Boolean,
     default: false,
   },
+  online: {
+    type: Boolean,
+    default: false,
+  },
   notice: {
     type: Boolean,
     default: false,
   },
+  count: {
+    type: Number,
+    default: 0,
+  }
 };
 
 export default defineComponent({
@@ -26,9 +37,12 @@ export default defineComponent({
   setup(props, { slots, emit }) {
 
     return () => (
-      <div class={['avatar', props.size, props.offline && 'offline', props.notice && 'notice']} >
+      <div class={['avatar', props.size, props.offline && 'offline', props.online && 'online', props.notice && 'notice']} >
         {slots.default && slots.default()}
-    </div>
+        {(props.offline || props.online) && <div class="dot" />}
+        {props.notice && <div class="reddot" date-count={props.count} />}
+
+      </div>
 
     );
   },
