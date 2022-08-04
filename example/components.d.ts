@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     EButton: typeof import('eurus-ui')['EButton'];
     ECheckbox: typeof import('eurus-ui')['ECheckbox'];
     EDatePicker: typeof import('eurus-ui')['EDatePicker'];
+    EDateRangePicker: typeof import('eurus-ui')['EDateRangePicker'];
     EDialog: typeof import('eurus-ui')['EDialog'];
     EDivider: typeof import('eurus-ui')['EDivider'];
     EDrawer: typeof import('eurus-ui')['EDrawer'];

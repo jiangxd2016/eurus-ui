@@ -44,7 +44,8 @@
       <p class="color-$e-color-primary">Some contents...</p>
     </EDrawer>
     <e-input />
-    <e-date-picker :disabled-date="disabledDate" />
+    <e-date-picker type="daterange" :disabled-date="disabledDate" />
+
     <e-divider direction="horizontal" />
     <e-switch :checked="switchValue" />
     <ERate :value="3" />

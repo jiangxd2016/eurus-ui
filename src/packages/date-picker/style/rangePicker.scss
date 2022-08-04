@@ -1,0 +1,26 @@
+.range-picker {
+  .date-editor {
+    width: 400px;
+    border: 1px solid #e5e5ea;
+    border-radius: 6px;
+    cursor: text;
+  }
+
+  .range-picker-input {
+    width: 200px;
+    border: none;
+    border-radius: 0;
+    background: #ffffff;
+    &:hover {
+      border: none;
+      cursor: text;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  .date--range-picker-panel{
+
+  }
+}

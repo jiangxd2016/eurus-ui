@@ -65,7 +65,6 @@ export function EurusUIReslove(options: EurusUIResolverOptions = {}) {
     {
       type: 'directive',
       resolve: (name: string) => {
-
         const directive = directives[name];
         if (!directive) { return; }
         return {

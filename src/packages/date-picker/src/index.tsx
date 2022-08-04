@@ -6,8 +6,11 @@ import { genarateDayData } from './utils';
 import DatePickerHead from './DatePickerHead';
 import DateTable from './DateTable';
 import DatePickerFooter from './DatePickerFooter';
+import DateRangePicker from './dateRangePicker';
 import { dayjs } from '@/packages/_utils/date';
 import EInput from '@/packages/input';
+
+export type dateValuePropsType = string | Date | number;
 const EDatePickerProps = {
   type: {
     type: String as PropType<'date' | 'month' | 'year' | 'daterange'>,
@@ -26,7 +29,7 @@ const EDatePickerProps = {
     default: '',
   },
   date: {
-    type: Date,
+    type: Date as PropType<dateValuePropsType>,
     default() {
       return new Date();
     },
@@ -54,7 +57,7 @@ export default defineComponent({
     // 表格数据
     const list = ref<any>([]);
     // 处理props时间为数组格式[年，月]
-    const curDate = ref([props.date.getFullYear(), props.date.getMonth() + 1]);
+    const curDate = ref([dayjs(props.date).year(), dayjs(props.date).month() + 1]);
     // 用户input显示时间
     const currentDate = ref<string>('');
     // 通过props传递的时间，组装成长度为42的数组,具体看utils文件下下面的这个方法
@@ -126,34 +129,33 @@ export default defineComponent({
     };
 
     return () => (
-      <div>
-
-        <div class="date-picker-wrap">
-
-          <div class="date-editor" onClick={onInputClick}>
-            <EInput
-              v-model={currentDate.value}
-              type="text"
-              disabled={props.disabled}
-              placeholder="placeholder"
-              class="date-edit-input"
-            />
-          </div>
-          <Transition name="date-picker">{
-            showDatePanel.value && (
-              <div class="date-picker-panel">
-                <DatePickerHead
-                  date={curDate.value}
-                  onDateRangeChange={dateRangeChange}
-                />
-                <DateTable list={list.value} onDateChange={dateChange} />
-                <DatePickerFooter onDateRangeChange={dateRangeChange}></DatePickerFooter>
-              </div>
-            )
-          }
-          </Transition>
-        </div>
-      </div>
+      <>
+        {props.type === 'daterange' ? <DateRangePicker />
+          : <div class="date-picker-wrap">
+            <div class="date-editor" onClick={onInputClick}>
+              <EInput
+                v-model={currentDate.value}
+                type="text"
+                disabled={props.disabled}
+                placeholder="placeholder"
+                class="date-edit-input"
+              />
+            </div>
+            <Transition name="date-picker">{
+              showDatePanel.value && (
+                <div class="date-picker-panel">
+                  <DatePickerHead
+                    date={curDate.value}
+                    onDateRangeChange={dateRangeChange}
+                  />
+                  <DateTable list={list.value} onDateChange={dateChange} />
+                  <DatePickerFooter onDateRangeChange={dateRangeChange}></DatePickerFooter>
+                </div>
+              )
+            }
+            </Transition>
+          </div>}
+      </>
 
     );
   },
