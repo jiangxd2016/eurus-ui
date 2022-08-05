@@ -1,7 +1,10 @@
-import type { PropType } from 'vue';
+import type { PropType, Ref } from 'vue';
 import { defineComponent, onMounted, ref, Transition, } from 'vue';
 import './style.scss';
+import dayjs from 'dayjs';
 import EInput from '../../input';
+import EDivider from '../../divider';
+import type { datePickerItem } from './utils';
 import { genarateDayData } from './utils';
 import DatePickerHead from './DatePickerHead';
 import DateTable from './DateTable';
@@ -22,12 +25,6 @@ const EDatePickerProps = {
   endPlaceholder: {
     type: String,
     default: '',
-  },
-  date: {
-    type: Date,
-    default() {
-      return new Date();
-    },
   },
   modelValue: {
     type: Array as PropType<dateValuePropsType[]>,
@@ -54,45 +51,54 @@ export default defineComponent({
     // 用于控制面包显示与隐藏
     const showDatePanel = ref(false);
     // 表格数据
-    const list = ref<any>([]);
+    const startDateList = ref<any>([]);
+    const endDateList = ref<any>([]);
     // 处理props时间为数组格式[年，月]
-    const curDate = ref([props.date.getFullYear(), props.date.getMonth() + 1]);
+    const [startDate, endDate] = props.modelValue?.length ? props.modelValue : [dayjs().format('YYYY-MM'), dayjs().year() + '' + (dayjs().month() + 2) + ''];
+    const startDateFormatter = ref([dayjs(startDate).year(), dayjs(startDate).month() + 1]);
+    const endDateFormatter = ref([dayjs(endDate).year(), dayjs(endDate).month() + 1]);
     // 用户input显示时间
     const currentDate = ref<string[]>([]);
     // 通过props传递的时间，组装成长度为42的数组,具体看utils文件下下面的这个方法
     const getDateList = () => {
-      list.value = genarateDayData(curDate.value, props.disabledDate);
+      startDateList.value = genarateDayData(startDateFormatter.value, props.disabledDate);
+      endDateList.value = genarateDayData(endDateFormatter.value, props.disabledDate);
     };
 
-    // const setDateListActive = (date: string) => {
-    //   list.value = list.value.map((i: datePickerItem[]) => {
-    //     return i.map((j: datePickerItem) => {
-    //       j.active = j.date === date;
-    //       return j;
-    //     });
-    //   });
-    // };
+    const pickerFocus = ref(false);
+    const setDateListActive = (date: string, list: Ref<any[]>) => {
+      list.value = list.value.map((i: datePickerItem[]) => {
+        return i.map((j: datePickerItem) => {
+          j.active = j.date === date;
+          return j;
+        });
+      });
+    };
+    const setDateListHover = (date: string, list: Ref<any[]>) => {
+      list.value = list.value.map((i: datePickerItem[]) => {
+        return i.map((j: datePickerItem) => {
+          j.hover = dayjs(j.date).isBetween(dayjs(date), dayjs(date).add(1, 'day'));
+          return j;
+        });
+      });
+
+    };
     // 监听每个td时间项点击
     const dateStartChange = (date: string) => {
       emit('dateChange', date);
-      showDatePanel.value = false;
-
       currentDate.value[0] = date;
-
-      // setDateListActive(currentDate.value);
+      setDateListActive(date, startDateList);
 
     };
     const dateEndChange = (date: string) => {
       emit('dateChange', date);
-      showDatePanel.value = false;
-
       currentDate.value[1] = date;
 
-      // setDateListActive(currentDate.value);
+      setDateListActive(date, endDateList);
 
     };
     // 头部年月切换
-    const dateRangeChange = (type: string) => {
+    const dateRangeChange = (type: string, curDate: Ref<number[]>) => {
 
       const [year, month] = curDate.value;
       switch (type) {
@@ -131,16 +137,40 @@ export default defineComponent({
       showDatePanel.value = true;
     };
 
+    const onInputFocus = () => {
+      pickerFocus.value = true;
+    };
+    const onInputBlur = () => {
+      pickerFocus.value = false;
+      // showDatePanel.value = false;
+    };
+
+    // currentDate 是否只选择了，且只选择了一个
+    const isSelectDateOne = () => {
+      const [start, end] = currentDate.value;
+      return (start || end) && !(start && end);
+    };
+
+    const onDateHover = (date: string) => {
+      // console.log('currentDate.value', currentDate.value);
+      // console.log(isSelectDateOne());
+
+      if (isSelectDateOne()) {
+        setDateListHover(date, startDateList);
+      }
+    };
     return () => (
       <div>
 
         <div class="range-picker">
 
-          <div class="date-editor flex" onClick={onInputClick}>
+          <div class={['date-editor flex', pickerFocus.value && 'range-picker-focus']} onClick={onInputClick}>
             <EInput
               v-model={currentDate.value[0]}
               type="text"
-              disabled
+              onFocus={onInputFocus}
+              onBlur={onInputBlur}
+              disabled={props.disabled}
               placeholder="placeholder"
               class="range-picker-input"
             />
@@ -148,29 +178,29 @@ export default defineComponent({
             <EInput
               v-model={currentDate.value[1]}
               type="text"
-              disabled
+              disabled={props.disabled}
               placeholder="placeholder"
               class="range-picker-input"
             />
           </div>
           <Transition name="date-range-picker">{
             showDatePanel.value && (
-              <div class="date-range-picker-panel">
+              <div class="date-range-picker-panel ">
                 <div class="flex">
                   <div class="date-picker-panel">
                     <DatePickerHead
-                      date={curDate.value}
+                      date={startDateFormatter.value}
                       onDateRangeChange={dateRangeChange}
                     />
-                    <DateTable list={list.value} onDateChange={dateStartChange} />
+                    <DateTable list={startDateList.value} onDateHover={onDateHover} onDateChange={dateStartChange} />
                   </div>
+                  <EDivider EDivider color='#eee'></EDivider>
                   <div class="date-picker-panel">
                     <DatePickerHead
-                      date={curDate.value}
+                      date={endDateFormatter.value}
                       onDateRangeChange={dateRangeChange}
                     />
-                    <DateTable list={list.value} onDateChange={dateEndChange} />
-
+                    <DateTable list={endDateList.value} onDateHover={onDateHover} onDateChange={dateEndChange} />
                   </div>
                 </div>
               </div>

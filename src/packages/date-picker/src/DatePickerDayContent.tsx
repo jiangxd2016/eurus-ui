@@ -24,6 +24,11 @@ export default defineComponent({
       emit('dateChange', item.date);
     };
 
+    const handleDayHover = (item: any) => {
+      if (item.currentDay === item.index) { return; }
+      emit('dateHover', item.date);
+    };
+
     return () => (
       <tbody class="date-picker-day-content">
         {
@@ -37,6 +42,7 @@ export default defineComponent({
                       subItem.active ? 'active' : '',
                       subItem.index === currentDay.value ? 'active' : '',
                     ]}
+                    onmouseenter={() => handleDayHover(subItem)}
                     onClick={() => handleDayClick(subItem)}>
                       <div class="item-value">
                       {subItem.value}

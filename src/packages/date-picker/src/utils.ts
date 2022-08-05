@@ -15,6 +15,7 @@ export interface datePickerItem {
   date: string;
   active?: boolean;
   index: number;
+  hover: boolean;
 }
 
 export function genarateDayData([year, month]: number[], disabled: Function): datePickerItem[][] {
@@ -39,6 +40,7 @@ export function genarateDayData([year, month]: number[], disabled: Function): da
       dayList.unshift({
         value: lastMonthCount--,
         disbled: true,
+        hover: false,
         date: dayjs(year + '-' + (month - 1) + '-' + (lastMonthCount + 1)).format('YYYY-MM-DD'),
         index: i,
       });
@@ -54,6 +56,7 @@ export function genarateDayData([year, month]: number[], disabled: Function): da
           && new Date().getMonth() + 1 === month
           && currentMonthPointer - 1 === new Date().getDate(),
         date,
+        hover: false,
         index: i,
       });
     } else {
@@ -61,6 +64,7 @@ export function genarateDayData([year, month]: number[], disabled: Function): da
       dayList.push({
         value: nextMonthPointer++,
         disbled: true,
+        hover: false,
         date: dayjs(year + '-' + (month + 1) + '-' + (nextMonthPointer - 1)).format('YYYY-MM-DD'),
         index: i,
       });

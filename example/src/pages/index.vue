@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading" relative font-sans h-screen w-screen p="t2" text="center gray-700 dark:gray-200">
+  <div v-loading="loading" relative font-sans h-screen p2 text="center gray-700 dark:gray-200">
     <!-- <ESteps :active="1">
       <EStep title="步骤1" description="步骤1描述" />
       <EStep title="步骤2" description="步骤2描述" />
@@ -45,6 +45,7 @@
     </EDrawer>
     <e-input />
     <e-date-picker type="daterange" :disabled-date="disabledDate" />
+    <e-date-picker :disabled-date="disabledDate" />
 
     <e-divider direction="horizontal" />
     <e-switch :checked="switchValue" />

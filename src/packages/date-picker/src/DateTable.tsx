@@ -20,15 +20,19 @@ export default defineComponent({
     const dateChange = (date: any) => {
       emit('dateChange', date);
     };
+    const dateHover = (date: any) => {
+      emit('dateHover', date);
+    };
     return () => (
       <div class="date-table">
         <table>
           <DatePickerWeekBar />
           <DatePickerDayContent
             list={props.list}
+            onDateHover={dateHover}
             onDateChange={dateChange}
           />
-          
+
         </table>
       </div>
     );
