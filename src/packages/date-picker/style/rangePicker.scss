@@ -11,6 +11,7 @@
     border: none;
     border-radius: 0;
     background: #ffffff;
+
     &:hover {
       border: none;
       cursor: text;
@@ -20,7 +21,13 @@
       outline: none;
     }
   }
-  .date--range-picker-panel{
 
+  .e-range-separator {
+    display: flex;
+    align-items: center;
+  }
+
+  .date-range-picker-panel {
+    display: flex;
   }
 }

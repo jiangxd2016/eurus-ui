@@ -1,11 +1,11 @@
 import type { PropType } from 'vue';
 import { defineComponent, onMounted, ref, Transition, } from 'vue';
 import './style.scss';
+import EInput from '../../input';
 import { genarateDayData } from './utils';
 import DatePickerHead from './DatePickerHead';
 import DateTable from './DateTable';
 import type { dateValuePropsType } from '.';
-import EInput from '@/packages/input';
 const EDatePickerProps = {
   type: {
     type: String as PropType<'date' | 'month' | 'year' | 'daterange'>,
@@ -144,7 +144,7 @@ export default defineComponent({
               placeholder="placeholder"
               class="range-picker-input"
             />
-            {slots.suffix ? slots.suffix() : <span class="text-center">至</span>}
+            {slots.suffix ? slots.suffix() : <span class="e-range-separator">至</span>}
             <EInput
               v-model={currentDate.value[1]}
               type="text"
@@ -155,14 +155,23 @@ export default defineComponent({
           </div>
           <Transition name="date-range-picker">{
             showDatePanel.value && (
-              <div class="date--range-picker-panel">
-                <DatePickerHead
-                  date={curDate.value}
-                  onDateRangeChange={dateRangeChange}
-                />
+              <div class="date-range-picker-panel">
                 <div class="flex">
-                  <DateTable list={list.value} onDateChange={dateStartChange} />
-                  <DateTable list={list.value} onDateChange={dateEndChange} />
+                  <div class="date-picker-panel">
+                    <DatePickerHead
+                      date={curDate.value}
+                      onDateRangeChange={dateRangeChange}
+                    />
+                    <DateTable list={list.value} onDateChange={dateStartChange} />
+                  </div>
+                  <div class="date-picker-panel">
+                    <DatePickerHead
+                      date={curDate.value}
+                      onDateRangeChange={dateRangeChange}
+                    />
+                    <DateTable list={list.value} onDateChange={dateEndChange} />
+
+                  </div>
                 </div>
               </div>
             )
