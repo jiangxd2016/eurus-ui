@@ -1,5 +1,5 @@
-import type { PropType } from 'vue';
 import { defineComponent, ref, toRefs } from 'vue';
+import type { PropType } from 'vue';
 
 const Props = {
   list: {
@@ -40,6 +40,7 @@ export default defineComponent({
                     key={index} class={[
                       subItem.disbled ? 'disable-item' : 'day-item',
                       subItem.active ? 'active' : '',
+                      subItem.hover ? 'date-hover' : '',
                       subItem.index === currentDay.value ? 'active' : '',
                     ]}
                     onmouseenter={() => handleDayHover(subItem)}

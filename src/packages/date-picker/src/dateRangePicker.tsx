@@ -1,5 +1,5 @@
 import type { PropType, Ref } from 'vue';
-import { defineComponent, onMounted, ref, Transition, } from 'vue';
+import { nextTick, defineComponent, onMounted, ref, Transition, } from 'vue';
 import './style.scss';
 import dayjs from 'dayjs';
 import EInput from '../../input';
@@ -77,26 +77,43 @@ export default defineComponent({
     const setDateListHover = (date: string, list: Ref<any[]>) => {
       list.value = list.value.map((i: datePickerItem[]) => {
         return i.map((j: datePickerItem) => {
-          j.hover = dayjs(j.date).isBetween(dayjs(date), dayjs(date).add(1, 'day'));
+          // .add(1, 'day')
+          j.hover = dayjs(j.date).isBetween(dayjs(currentDate.value[0]), dayjs(date));
           return j;
         });
       });
 
     };
+    const isSelectTwo = () => {
+      // console.log(currentDate);
+
+      if (currentDate.value[0] && currentDate.value[1]) {
+        showDatePanel.value = false;
+      }
+    };
+
     // 监听每个td时间项点击
     const dateStartChange = (date: string) => {
       emit('dateChange', date);
       currentDate.value[0] = date;
       setDateListActive(date, startDateList);
 
+      nextTick(() => {
+        isSelectTwo();
+
+      });
     };
     const dateEndChange = (date: string) => {
       emit('dateChange', date);
       currentDate.value[1] = date;
-
       setDateListActive(date, endDateList);
+      nextTick(() => {
+        isSelectTwo();
+
+      });
 
     };
+
     // 头部年月切换
     const dateRangeChange = (type: string, curDate: Ref<number[]>) => {
 
@@ -152,11 +169,9 @@ export default defineComponent({
     };
 
     const onDateHover = (date: string) => {
-      // console.log('currentDate.value', currentDate.value);
-      // console.log(isSelectDateOne());
-
       if (isSelectDateOne()) {
         setDateListHover(date, startDateList);
+        setDateListHover(date, endDateList);
       }
     };
     return () => (

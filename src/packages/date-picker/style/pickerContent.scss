@@ -8,11 +8,13 @@
     font-weight: 400;
     text-align: center;
     cursor: pointer;
+    border: 0;
   }
 
   .disable-item {
     cursor: not-allowed;
     color: #c0c4cc;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .day-item.active {
@@ -39,5 +41,14 @@
     line-height: 30px;
     color: #ffffff;
     background-color: #008c8c;
+  }
+
+  .day-item.date-hover {
+    .item-value {
+      height: 30px;
+      line-height: 30px;
+      color: #ffffff;
+      background-color: rgb(0 140 140 / 10%);
+    }
   }
 }
