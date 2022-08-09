@@ -28,7 +28,10 @@ function getSideEffectsLegacy(
   options: EurusUIResolverOptions,
 ) {
   const { importStyle = 'css', atomic = true } = options;
-
+  // TODO: datePicker和rangePicker css文件名不一致，需要修改
+  if (names === 'dateRangePicker' || names === 'date-range-picker') {
+    names = 'date-picker';
+  }
   if (importStyle === 'sass') {
     return [
       'eurus-ui/dist/css/base.scss',

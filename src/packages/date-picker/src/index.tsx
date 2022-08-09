@@ -6,7 +6,6 @@ import { genarateDayData } from './utils';
 import DatePickerHead from './DatePickerHead';
 import DateTable from './DateTable';
 import DatePickerFooter from './DatePickerFooter';
-import DateRangePicker from './dateRangePicker';
 import { dayjs } from '@/packages/_utils/date';
 import EInput from '@/packages/input';
 
@@ -50,6 +49,7 @@ const EDatePickerProps = {
 export default defineComponent({
   name: 'EDatePicker',
   props: EDatePickerProps,
+  emits: ['change'],
   setup(props, { slots, emit }) {
 
     // 用于控制面包显示与隐藏
@@ -75,7 +75,7 @@ export default defineComponent({
     };
     // 监听每个td时间项点击
     const dateChange = (date: string) => {
-      emit('dateChange', date);
+      emit('change', date);
       showDatePanel.value = false;
 
       currentDate.value = date;
@@ -129,33 +129,30 @@ export default defineComponent({
     };
 
     return () => (
-      <>
-        {props.type === 'daterange' ? <DateRangePicker />
-          : <div class="date-picker-wrap">
-            <div class="date-editor" onClick={onInputClick}>
-              <EInput
-                v-model={currentDate.value}
-                type="text"
-                disabled={props.disabled}
-                placeholder="placeholder"
-                class="date-edit-input"
+      <div class="date-picker-wrap">
+        <div class="date-editor" onClick={onInputClick}>
+          <EInput
+            v-model={currentDate.value}
+            type="text"
+            disabled={props.disabled}
+            placeholder="placeholder"
+            class="date-edit-input"
+          />
+        </div>
+        <Transition name="date-picker">{
+          showDatePanel.value && (
+            <div class="date-picker-panel">
+              <DatePickerHead
+                date={curDate.value}
+                onDateRangeChange={dateRangeChange}
               />
+              <DateTable list={list.value} onDateChange={dateChange} />
+              <DatePickerFooter onDateRangeChange={dateRangeChange}></DatePickerFooter>
             </div>
-            <Transition name="date-picker">{
-              showDatePanel.value && (
-                <div class="date-picker-panel">
-                  <DatePickerHead
-                    date={curDate.value}
-                    onDateRangeChange={dateRangeChange}
-                  />
-                  <DateTable list={list.value} onDateChange={dateChange} />
-                  <DatePickerFooter onDateRangeChange={dateRangeChange}></DatePickerFooter>
-                </div>
-              )
-            }
-            </Transition>
-          </div>}
-      </>
+          )
+        }
+        </Transition>
+      </div>
 
     );
   },

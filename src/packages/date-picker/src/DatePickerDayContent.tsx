@@ -40,7 +40,8 @@ export default defineComponent({
                     key={index} class={[
                       subItem.disbled ? 'disable-item' : 'day-item',
                       subItem.active ? 'active' : '',
-                      subItem.hover ? 'date-hover' : '',
+                      subItem.dot ? 'dot' : '',
+                      subItem.hover && !subItem.active ? 'date-hover' : '',
                       subItem.index === currentDay.value ? 'active' : '',
                     ]}
                     onmouseenter={() => handleDayHover(subItem)}

@@ -15,6 +15,7 @@ export interface datePickerItem {
   date: string;
   active?: boolean;
   index: number;
+  dot: boolean;
   hover: boolean;
 }
 
@@ -25,7 +26,7 @@ export function genarateDayData([year, month]: number[], disabled: Function): da
   let lastMonthCount = getCurrentMonthCount(listMonth);
   // 获取当月天数
   const currentMonthCount = getCurrentMonthCount(currentMonth);
-  // 获取当月1号星期
+  // 获取当月1号星期几
   const currentMonthFirstDayWeek = getFirstMonthDayWeek(currentMonth);
 
   const dayList = [];
@@ -35,27 +36,30 @@ export function genarateDayData([year, month]: number[], disabled: Function): da
   // 根据日期组件的天数布局，共计42天，包含上月剩余天数+当月天数+下月初始天数
   for (let i = 0; i < 42; i++) {
     // 上个月需要渲染的td个数，以及对应的值
-    if (lastMonthPointer <= currentMonthFirstDayWeek) {
+    if (lastMonthPointer < currentMonthFirstDayWeek) {
       // 上月
       dayList.unshift({
         value: lastMonthCount--,
         disbled: true,
         hover: false,
+        dot: false,
         date: dayjs(year + '-' + (month - 1) + '-' + (lastMonthCount + 1)).format('YYYY-MM-DD'),
         index: i,
       });
       lastMonthPointer++;
     } else if (currentMonthPointer <= currentMonthCount) {
       // 当月
-      const date = dayjs(year + '-' + month + '-' + (currentMonthPointer - 1)).format('YYYY-MM-DD');
+      const date = dayjs(year + '-' + month + '-' + (currentMonthPointer)).format('YYYY-MM-DD');
+
       dayList.push({
         value: currentMonthPointer++,
         disbled: !disabled(date),
-        active:
-          new Date().getFullYear() === year
-          && new Date().getMonth() + 1 === month
-          && currentMonthPointer - 1 === new Date().getDate(),
+        active: false,
         date,
+        dot:
+        new Date().getFullYear() === year
+        && new Date().getMonth() + 1 === month
+        && currentMonthPointer - 1 === new Date().getDate(),
         hover: false,
         index: i,
       });
@@ -65,6 +69,7 @@ export function genarateDayData([year, month]: number[], disabled: Function): da
         value: nextMonthPointer++,
         disbled: true,
         hover: false,
+        dot: false,
         date: dayjs(year + '-' + (month + 1) + '-' + (nextMonthPointer - 1)).format('YYYY-MM-DD'),
         index: i,
       });

@@ -6,28 +6,30 @@
       <EStep title="步骤3" description="步骤3描述" />
       <EStep title="步骤4" description="步骤4描述" />
     </ESteps> -->
+    <p flex flex-center>
+      <EAvatar size="sm">
+        <img
+          src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          alt=""
+        />
+      </EAvatar>
+      <EAvatar size="md" notice>
+        <img
+          src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          alt=""
+        />
+      </EAvatar>
+      <EAvatar size="lg" online>
+        <img
+          src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          alt=""
+        />
+      </EAvatar>
+      <EAvatar offline size="xl">
+        <span>E</span>
+      </EAvatar>
+    </p>
 
-    <EAvatar size="sm">
-      <img
-        src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-        alt=""
-      />
-    </EAvatar>
-    <EAvatar size="md" notice>
-      <img
-        src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-        alt=""
-      />
-    </EAvatar>
-    <EAvatar size="lg" online>
-      <img
-        src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-        alt=""
-      />
-    </EAvatar>
-    <EAvatar offline size="xl">
-      <span>E</span>
-    </EAvatar>
     <EDialog :show="modalShow" :title="modalTitle" @close="onDialogClose">
       <div>
         <p>Some contents...</p>
@@ -44,8 +46,8 @@
       <p class="color-$e-color-primary">Some contents...</p>
     </EDrawer>
     <e-input />
-    <e-date-picker type="daterange" :disabled-date="disabledDate" />
-    <e-date-picker :disabled-date="disabledDate" />
+    <e-date-range-picker v-model="dateRangeList" type="daterange" :disabled-date="disabledDate" @change="onDateRangeChange" />
+    <e-date-picker />
 
     <e-divider direction="horizontal" />
     <e-switch :checked="switchValue" />
@@ -64,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { EMessage } from 'eurus-ui';
+// import { EMessage } from 'eurus-ui';
 // setTimeout(() => {
 //   loading = false;
 
@@ -88,15 +90,21 @@ const onDialogClose = () => modalShow = false;
 const onDialogClick = () => modalShow = true;
 const onDrawerClick = () => drawerShow = !drawerShow;
 const onswitchrClick = () => switchValue = !switchValue;
-EMessage.msg({ type: 'info', message: 'this is  message', duration: 2000 });
+// EMessage.msg({ type: 'info', message: 'this is  message', duration: 2000 });
 const link = () => {
   router.push(`/hi/${encodeURIComponent(1)}`);
 };
 const disabledDate = (time: string) => {
 
-  if (dayjs(time).isBefore(dayjs().subtract(1, 'day'))) {
-    return false;
-  }
+  // if (dayjs(time).isBefore(dayjs().add(-1, 'day').subtract(1, 'day'))) {
+  //   return false;
+  // }
   return true;
+};
+
+const dateRangeList = ref<string[]>(['2022.08.09', '2222.08.09']);
+
+const onDateRangeChange = (dateList: string[]) => {
+  dateRangeList.value = dateList;
 };
 </script>

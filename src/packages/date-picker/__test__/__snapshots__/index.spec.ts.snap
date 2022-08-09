@@ -1,12 +1,10 @@
 // Vitest Snapshot v1
 
 exports[`EDate-picker > EDate-picker snapshot 1`] = `
-"<div>
-  <div class=\\"date-picker-wrap\\">
-    <div class=\\"date-editor\\"><input type=\\"text\\" placeholder=\\"placeholder\\" class=\\"e-input e-input-md date-edit-input\\"></div>
-    <transition-stub>
-      <!---->
-    </transition-stub>
-  </div>
+"<div class=\\"date-picker-wrap\\">
+  <div class=\\"date-editor\\"><input type=\\"text\\" placeholder=\\"placeholder\\" class=\\"e-input e-input-md date-edit-input\\"></div>
+  <transition-stub>
+    <!---->
+  </transition-stub>
 </div>"
 `;

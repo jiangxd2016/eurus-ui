@@ -14,6 +14,7 @@ const config: InlineConfig = {
     },
   },
   build: {
+    sourcemap: true,
     minify: false,
     emptyOutDir: false,
     rollupOptions: {
