@@ -10,7 +10,7 @@
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
   "scripts": {
-    "dev": "pnpm run gen:version &&  pnpm run stylelint:fix && esno scripts/build.ts",
+    "dev": "pnpm run gen:version && esno scripts/build.ts",
     "build:compts": "pnpm run gen:version &&  pnpm run stylelint:fix && esno scripts/build.ts compts",
     "build": "pnpm run clean && pnpm run gen:version &&  pnpm run stylelint:fix && esno scripts/build.ts all",
     "build:types": "pnpm run build:types-cjs && pnpm run build:types-esm",
@@ -66,10 +66,10 @@
     "vue": "^3.2.26"
   },
   "devDependencies": {
-    "@estjs/eslint-config": "^0.3.3",
+    "@estjs/eslint-config": "^0.3.4",
     "@estjs/stylelint-config": "^0.0.8",
-    "@estjs/tools": "^0.0.22",
-    "@types/node": "^18.6.4",
+    "@estjs/tools": "^0.0.27",
+    "@types/node": "^18.7.1",
     "@vitejs/plugin-vue": "^3.0.1",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
     "@vue/test-utils": "^2.0.2",
@@ -84,12 +84,12 @@
     "lint-staged": "^13.0.3",
     "pnpm": "7.9.0",
     "rimraf": "^3.0.2",
-    "sass": "^1.54.3",
+    "sass": "^1.54.4",
     "standard-changelog": "^2.0.27",
-    "stylelint": "^14.9.1",
+    "stylelint": "^14.10.0",
     "typescript": "^4.7.4",
-    "vite": "^3.0.4",
-    "vitest": "^0.21.0",
-    "vue-tsc": "^0.39.5"
+    "vite": "^3.0.5",
+    "vitest": "^0.21.1",
+    "vue-tsc": "^0.40.1"
   }
 }

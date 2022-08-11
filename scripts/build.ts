@@ -25,7 +25,7 @@ async function buildConfig() {
   complieSass();
   console.log('[eurus-ui build]: start build type');
   // genrate type
-  await execPromise('npm run build:types');
+  // await execPromise('npm run build:types');
   console.log('[eurus-ui build]: ✨ build done');
 }
 

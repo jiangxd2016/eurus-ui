@@ -8,5 +8,4 @@ describe('ECarousel', () => {
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
   });
-  
 });

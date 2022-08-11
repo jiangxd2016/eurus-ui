@@ -16,20 +16,24 @@
   padding: 5px 0;
   font-size: 16px;
 }
+
 .z-tree-node:hover {
-  background: rgb(195, 195, 234);
+  background: rgb(195 195 234);
 }
-.z-tree-node__expand-icon {
+
+.z-tree-node-expand-icon {
   display: inline-block;
   vertical-align: middle;
   transform: rotate(0deg);
   transition: transform 0.2s ease-in;
   cursor: pointer;
 }
-.z-tree-node__expand-icon.expanded {
+
+.z-tree-node-expand-icon.expanded {
   transform: rotate(90deg);
 }
-.z-tree-node__expand-icon.is-leaf {
+
+.z-tree-node-expand-icon.is-leaf {
   fill: transparent;
   cursor: default;
 }
