@@ -62,7 +62,6 @@ import {
 import type {
   ICarouselItem,
   ICarouselProvide,
-  TCarouselProps,
   TClickType
 } from './carousel';
 import {
@@ -109,7 +108,7 @@ export default defineComponent({
     },
   },
   emits: ['raChange'],
-  setup(props: TCarouselProps, { emit }) {
+  setup(props, { emit }) {
     // ref
     const itemReact = reactive<ICarouselItem[]>([]);
     const root = ref<HTMLDivElement>();

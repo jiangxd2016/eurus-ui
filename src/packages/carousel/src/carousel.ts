@@ -30,7 +30,7 @@ export const CarouselItemConfig = {
     translate: 'translateY',
     offset: 'offsetHeight',
   },
-};
+} as const;
 
 export interface ICarouselItemProps {
   raName: string;

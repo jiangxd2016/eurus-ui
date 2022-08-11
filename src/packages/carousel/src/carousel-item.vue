@@ -76,7 +76,7 @@ export default defineComponent({
     function addCarouseItem() {
       CAROUSEL_PROVIDE.itemReact.push({
         transformItem,
-        uid: instance.uid,
+        uid: instance!.uid,
       });
     }
 
