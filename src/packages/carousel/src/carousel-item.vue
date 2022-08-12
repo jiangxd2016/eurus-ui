@@ -136,5 +136,3 @@ export default defineComponent({
 });
 </script>
 
-<style src="./carousel-item.scss">
-</style>

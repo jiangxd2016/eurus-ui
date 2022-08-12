@@ -10,6 +10,8 @@ declare module '@vue/runtime-core' {
     Counter: typeof import('./src/components/Counter.vue')['default'];
     EAvatar: typeof import('eurus-ui')['EAvatar'];
     EButton: typeof import('eurus-ui')['EButton'];
+    ECarousel: typeof import('eurus-ui')['ECarousel'];
+    ECarouselItem: typeof import('eurus-ui')['ECarouselItem'];
     ECheckbox: typeof import('eurus-ui')['ECheckbox'];
     EDatePicker: typeof import('eurus-ui')['EDatePicker'];
     EDateRangePicker: typeof import('eurus-ui')['EDateRangePicker'];

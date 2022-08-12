@@ -61,6 +61,29 @@
     <EButton @click="onswitchrClick">open drawer</EButton>
     <EButton @click="link">link</EButton>
 
+    <p>
+      2222
+      <ECarousel class="h-300px">
+        <ECarouselItem>
+          <img
+            src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            alt=""
+          />
+        </ECarouselItem>
+        <ECarouselItem>
+          <img
+            src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            alt=""
+          />
+        </ECarouselItem>
+        <ECarouselItem>
+          <img
+            src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            alt=""
+          />
+        </ECarouselItem>
+      </ECarousel>
+    </p>
     <Footer />
   </div>
 </template>

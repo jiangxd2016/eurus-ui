@@ -32,6 +32,9 @@ function getSideEffectsLegacy(
   if (names === 'dateRangePicker' || names === 'date-range-picker') {
     names = 'date-picker';
   }
+  if (names === 'carousel-item') {
+    return [];
+  }
   if (importStyle === 'sass') {
     return [
       'eurus-ui/dist/css/base.scss',

@@ -1,0 +1,102 @@
+.ra-carousel__carousel-item {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ra-carousel__carousel-item.is-animating {
+  transition: transform 0.4s ease-in-out;
+}
+
+.ra-carousel {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden
+}
+
+.ra-carousel__arrow {
+  z-index: 2;
+  outline: 0;
+  border: none;
+  position: absolute;
+  top: 50%;
+  font-size: 12px;
+  background-color: rgba(31, 45, 61, .11);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  transition: all .3s ease-in-out
+}
+
+.ra-carousel__arrow--left {
+  left: 16px;
+}
+
+.ra-carousel__arrow--right {
+  right: 16px
+}
+
+.ra-carousel__indicator {
+  position: absolute;
+  display: flex;
+  cursor: pointer
+}
+
+.ra-carousel__indicator--horizontal {
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%)
+}
+
+.ra-carousel__indicator--vertical {
+  right: 6px;
+  top: 50%;
+  transform-origin: 100% 50%;
+  transform: rotate(90deg) translateX(50%)
+}
+
+.ra-carousel__item {
+  display: inline-flex;
+  padding: 5px
+}
+
+.ra-carousel__button {
+  border: none;
+  background-color: rgba(31, 45, 61, .23);
+  height: 2px
+}
+
+.ra-carousel__button--horizontal {
+  width: 30px
+}
+
+.ra-carousel__button--vertical {
+  width: 10px
+}
+
+.ra-carousel__button.is-active {
+  transform-origin: 0 50%;
+  transition: transform .3s ease-in-out;
+  transform: scale(1.2);
+  background-color: #fff
+}
+
+.carousel-arrow-left-enter-from,
+.carousel-arrow-left-leave-active {
+  transform: translateY(-50%) translateX(-10px);
+  opacity: 0
+}
+
+.carousel-arrow-right-enter-from,
+.carousel-arrow-right-leave-active {
+  transform: translateY(-50%) translateX(10px);
+  opacity: 0
+}
