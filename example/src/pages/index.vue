@@ -9,7 +9,7 @@
     <p flex flex-center>
       <EAvatar size="sm">
         <img
-          src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          src="https://images.unsplash.com/photo-1660460164639-a263c54c0ab0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80  "
           alt=""
         />
       </EAvatar>
@@ -21,7 +21,7 @@
       </EAvatar>
       <EAvatar size="lg" online>
         <img
-          src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          src="https://images.unsplash.com/photo--871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
           alt=""
         />
       </EAvatar>
@@ -62,17 +62,16 @@
     <EButton @click="link">link</EButton>
 
     <p>
-      2222
-      <ECarousel class="h-300px">
+      <ECarousel class="h-300px" :autoplay="true">
         <ECarouselItem>
           <img
-            src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            src="https://images.unsplash.com/photo-1660497334766-70c58b3d391e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
             alt=""
           />
         </ECarouselItem>
         <ECarouselItem>
           <img
-            src="https://images.unsplash.com/photo-1619911510676-871fecb744f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            src="https://images.unsplash.com/photo-1660260066283-6a1692feb743?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80"
             alt=""
           />
         </ECarouselItem>

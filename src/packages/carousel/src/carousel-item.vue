@@ -1,5 +1,5 @@
 <template>
-  <div class="ra-carousel__carousel-item" :style="{ transform: itemStyle }" :class="{ 'is-animating': data.animating }">
+  <div class="e-carousel__carousel-item" :style="{ transform: itemStyle }" :class="{ 'is-animating': data.animating }">
     <slot />
   </div>
 </template>

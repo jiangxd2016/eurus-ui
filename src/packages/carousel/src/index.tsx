@@ -24,39 +24,32 @@ import {
 import EIcon from '@/packages/icons';
 
 const ECarouselProps = {
-  raHeight: {
+  height: {
     type: String,
     default: '',
   },
-  raInitialIndex: {
+  initialIndex: {
     type: Number,
     default: 0,
   },
-  raAutoplay: {
+  autoplay: {
     type: Boolean,
     default: false,
   },
-  raInterval: {
+  interval: {
     type: Number,
     default: 1000,
   },
-  // raArrow: {
-  //   type: String,
-  //   default: 'always',
-  // },
-  // raType: {
-  //   type: String,
-  //   default: undefined,
-  // },
-  raLoop: {
+
+  loop: {
     type: Boolean,
     default: true,
   },
-  raDirection: {
+  direction: {
     type: String,
     default: 'horizontal',
   },
-  raPauseOnHover: {
+  pauseOnHover: {
     type: Boolean,
     default: false,
   },
@@ -86,7 +79,7 @@ export default defineComponent({
 
     // mounted
     onMounted(() => {
-      activeIndex.value = props.raInitialIndex;
+      activeIndex.value = props.initialIndex;
       autoplay();
       setTheOffset();
       nextTick(() => {
@@ -95,7 +88,6 @@ export default defineComponent({
       data.itemReactLength = itemReact.length;
     });
 
-    // ondestroy
     onUnmounted(() => {
       clearInterval(timerSign.value);
     });
@@ -109,7 +101,7 @@ export default defineComponent({
 
     function setTheOffset() {
 
-      props.raDirection === 'horizontal'
+      props.direction === 'horizontal'
         ? (offsetWidth.value = rootRef!.value!.offsetWidth)
         : (offsetHeight.value = rootRef!.value!.offsetHeight);
     }
@@ -154,12 +146,12 @@ export default defineComponent({
     }
 
     function autoplay() {
-      if (!props.raAutoplay) { return; }
+      if (!props.autoplay) { return; }
       timerSign.value = setInterval(() => {
         setTheOldActiveIndex();
         activeIndex.value++;
         processActiveIndex();
-      }, props.raInterval);
+      }, props.interval);
     }
 
     function setTheOldActiveIndex() {
@@ -187,44 +179,42 @@ export default defineComponent({
       itemReact,
       offsetWidth,
       oldActiveIndex,
-      isLoop: toRefs(props).raLoop,
+      isLoop: toRefs(props).loop,
     });
 
     return () => (
       <div
-        ref={rootRef} class="ra-carousel" style={{ height: props.raHeight }} onMouseenter={handleMouseEnter}
+        ref={rootRef} class="e-carousel" style={{ height: props.height }} onMouseenter={handleMouseEnter}
         onMouseleave={handleMouseLeave}
       >
 
         <Transition name="carousel-arrow-left">
-          {props.raDirection === 'horizontal' && data.hover
-            && <button
-              class="ra-carousel__arrow ra-carousel__arrow--left"
-              onClick={thottledArrowClick('left')}
+          { <button
+              class="e-carousel__arrow e-carousel__arrow--left"
+              onClick={()=>thottledArrowClick('left')}
             >
-             < EIcon name='chevronLeft' size={30}></EIcon>
+             < EIcon name='chevronLeft' size={30} color="#fff"></EIcon>
             </button>
           }
 
         </Transition>
 
         <Transition name="carousel-arrow-right">
-          {props.raDirection === 'horizontal' && data.hover
-            && <button
-              class="ra-carousel__arrow ra-carousel__arrow--right"
-              onClick={thottledArrowClick('right')}
+          { <button
+              class="e-carousel__arrow e-carousel__arrow--right"
+              onClick={()=>thottledArrowClick('right')}
             >
-          < EIcon name='chevronRight' size={30}></EIcon>
+          < EIcon name='chevronRight' size={30} color="#fff"></EIcon>
             </button>
           }
         </Transition>
         {slots.default ? slots.default() : null}
         <div
-          class={['ra-carousel__indicator',
-            props.raDirection === 'horizontal'
-              ? 'ra-carousel__indicator--horizontal'
-              : props.raDirection === 'vertical'
-                ? 'ra-carousel__indicator--vertical'
+          class={['e-carousel__indicator',
+            props.direction === 'horizontal'
+              ? 'e-carousel__indicator--horizontal'
+              : props.direction === 'vertical'
+                ? 'e-carousel__indicator--vertical'
                 : '',
           ]}
         >
@@ -232,15 +222,15 @@ export default defineComponent({
 
             Array.from({ length: data.itemReactLength }).map((item, index) => {
               return <div
-                key={index} class="ra-carousel__item"
+                key={index} class="e-carousel__item"
                 onClick={() => indicatorClick(index)}
               >
                 <button
                   class={{
-                    'ra-carousel__button': true,
+                    'e-carousel__button': true,
                     'is-active': index === activeIndex.value,
-                    'ra-carousel__button--horizontal': props.raDirection === 'horizontal',
-                    'ra-carousel__button--vertical': props.raDirection === 'vertical',
+                    'e-carousel__button--horizontal': props.direction === 'horizontal',
+                    'e-carousel__button--vertical': props.direction === 'vertical',
                   }}
                 />
               </div>;

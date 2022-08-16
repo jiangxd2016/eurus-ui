@@ -72,7 +72,6 @@ export default defineComponent({
   name: 'EButton',
   props: BtnProps,
   setup(props, { slots, emit }) {
-
     const prefix = getPrefixCls('button');
     const classNames = reactive({
       disabled: props.disabled || props.loading,
