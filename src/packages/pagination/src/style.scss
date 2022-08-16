@@ -1,1 +1,107 @@
 @import '../../../scss/variables';
+/*
+** Breakpoints
+*/
+$xs: '375px';
+$sm: '600px';
+$sm: '600px';
+$md: '960px';
+$lg: '1264px';
+$xl: '1904px';
+
+/*
+** Black
+*/
+$black_00: #000000;
+$black_01: #333333;
+$black_02: #666666;
+
+/*
+** Grey
+*/
+$grey_01: #BBBBBB;
+$grey_02: #DEDEDE;
+
+/*
+** Colors
+*/
+$active_color: #DCEDFF;
+
+.Page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: 0 2px;
+  color: $black_02;
+  background-color: transparent;
+  font-size: 14px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  border-color: transparent;
+  cursor: pointer;
+  outline: 0;
+  user-select: none;
+
+  &:hover {
+    border: 1px solid $grey_02;
+  }
+
+  &-active {
+    color: $black_01;
+    border: 1px solid $grey_02;
+  }
+}
+
+.DotsHolder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: 0 2px;
+  box-sizing: border-box;
+}
+
+.Dots {
+  width: 8px;
+  height: 4px;
+  fill: $grey_01;
+}
+
+
+.Pagination {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.PaginationControl {
+  display: flex;
+  align-items: center;
+}
+
+.Control {
+  position: relative;
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 0 2px;
+  fill: $grey_01;
+
+  &-active {
+    fill: $black_01;
+    cursor: pointer;
+    transition: fill 0.2s ease-in-out;
+
+    &:hover {
+      fill: $black_00;
+      transition: fill 0.2s ease-in-out;
+    }
+  }
+}

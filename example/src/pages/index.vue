@@ -6,6 +6,15 @@
       <EStep title="步骤3" description="步骤3描述" />
       <EStep title="步骤4" description="步骤4描述" />
     </ESteps> -->
+    <p>
+      <EPagination
+        v-model="page"
+        :pages="100"
+        :range-size="1"
+        active-color="#DCEDFF"
+        @update:modelValue="updateHandler"
+      />
+    </p>
     <p flex flex-center>
       <EAvatar size="sm">
         <img
@@ -83,6 +92,7 @@
         </ECarouselItem>
       </ECarousel>
     </p>
+
     <Footer />
   </div>
 </template>
@@ -128,5 +138,11 @@ const dateRangeList = ref<string[]>(['2022.08.09', '2222.08.09']);
 
 const onDateRangeChange = (dateList: string[]) => {
   dateRangeList.value = dateList;
+};
+
+// page
+const page = ref(1);
+const updateHandler = (currentPage: number) => {
+  page.value = currentPage;
 };
 </script>
