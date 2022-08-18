@@ -15,7 +15,7 @@ function firstUpcase(str: string) {
   if (typeof str !== 'string') {
     return str;
   }
-  return str.replace(/^\S/, s => s.toUpperCase());
+  return str.replace(/^\S/, s => s?.toUpperCase());
 }
 
 function renderTemplate(template, data) {

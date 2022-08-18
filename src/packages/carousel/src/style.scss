@@ -1,3 +1,7 @@
+@import '../../../scss/variables';
+$button-prefix-cls: $prefix + -button;
+
+
 .e-carousel__carousel-item {
   left: 0;
   top: 0;

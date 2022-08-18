@@ -59,12 +59,12 @@ export function EurusUIReslove(options: EurusUIResolverOptions = {}): any {
     {
       type: 'component',
       resolve: (name: string) => {
-
+        if (!name || name === 'step' ) {
+          return;
+        }
         if (name.match(/^(E[A-Z]|n-[a-z])/)) {
           const names = hyphenate(name.slice(1));
-          if (name === 'step') {
-            return;
-          }
+
           return {
             name,
             from: 'eurus-ui',
