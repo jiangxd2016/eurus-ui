@@ -53,7 +53,8 @@ const directives: Record<string, { importName: string; styleName: string }> = {
   Loading: { importName: 'vLoading', styleName: 'loading' },
 };
 
-export function EurusUIReslove(options: EurusUIResolverOptions = {}) {
+// TODO: 需要返回 autoImport 所需类型,暂时用any
+export function EurusUIReslove(options: EurusUIResolverOptions = {}): any {
   return [
     {
       type: 'component',
