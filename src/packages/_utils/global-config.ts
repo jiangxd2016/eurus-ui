@@ -3,18 +3,16 @@ import { getCurrentInstance, inject } from 'vue';
 import type { Size } from './constants';
 import { CLASS_PREFIX, GLOBAL_CONFIG_NAME, COMPONENT_PREFIX } from './constants';
 import type { EurusOptions } from './types';
-import type { EurusLang } from '@/packages/locale/interface';
 
 export interface ConfigProvider {
   slots: Slots;
   prefixCls?: string;
-  locale?: EurusLang;
+  locale?: string ;
   size?: Size;
-  updateAtScroll?: boolean;
 }
 
 export const configProviderInjectionKey: InjectionKey<ConfigProvider>
-  = Symbol('ArcoConfigProvider');
+  = Symbol('EurusConfigProvider');
 
 export const getComponentPrefix = (options?: EurusOptions) => {
   return options?.componentPrefix ?? COMPONENT_PREFIX;

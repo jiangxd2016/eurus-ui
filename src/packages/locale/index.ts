@@ -4,9 +4,11 @@ import { configProviderInjectionKey } from '../_utils/global-config';
 import type { EurusI18nMessages, EurusLang } from './interface';
 import zhCN from './lang/zh-cn';
 
-const LOCALE = ref('zh-CN');
+export type language = 'zh-cn' | 'en-us';
+
+const LOCALE = ref<language>('zh-cn');
 const I18N_MESSAGES = reactive<EurusI18nMessages>({
-  'zh-CN': zhCN,
+  'zh-cn': zhCN,
 });
 
 /**
@@ -36,7 +38,7 @@ export const useLocale = (locale: string) => {
     console.warn(`use ${locale} failed! Please add ${locale} first`);
     return;
   }
-  LOCALE.value = locale;
+  LOCALE.value = locale as language;
 };
 
 /**

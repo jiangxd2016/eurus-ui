@@ -11,6 +11,7 @@
         v-model="page"
         :pages="100"
         :range-size="1"
+        class="c-yellow"
         active-color="#DCEDFF"
         @update:modelValue="updateHandler"
       />
