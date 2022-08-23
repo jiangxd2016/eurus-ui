@@ -110,7 +110,6 @@
 //     }, 1000);
 //   }, 1000);
 // }, 2000);
-import dayjs from 'dayjs';
 
 const router = useRouter();
 const loading = $ref(false);

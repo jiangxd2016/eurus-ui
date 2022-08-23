@@ -3,10 +3,14 @@ import {
   presetAttributify,
   presetIcons,
   presetUno,
-  presetWebFonts,
-  transformerDirectives,
-  transformerVariantGroup,
+
 } from 'unocss';
+
+/**
+ *   transformerDirectives,
+  transformerVariantGroup,
+ */
+import transformerCompileClass from '@unocss/transformer-compile-class';
 
 export default defineConfig({
   shortcuts: [
@@ -19,19 +23,14 @@ export default defineConfig({
     presetIcons({
       scale: 1.2,
       warn: true,
-    }),
-    presetWebFonts({
-      fonts: {
-        sans: 'DM Sans',
-        serif: 'DM Serif Display',
-        mono: 'DM Mono',
-      },
-    }),
+    })
   ],
   transformers: [
-    transformerDirectives(),
-    transformerVariantGroup(),
+    // transformerDirectives(),
+    // transformerVariantGroup(),
+    transformerCompileClass({
+      layer: 'testt'
+    }),
   ],
-
-  // include: [/\.vue$/, /\.vue\?vue/, /.*\/eurus-ui(.*)?$/],
+  // include: [/.*\/eurus-ui(.*)[.js]/],
 });
