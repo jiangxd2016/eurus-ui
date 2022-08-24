@@ -93,7 +93,6 @@
         </ECarouselItem>
       </ECarousel>
     </p>
-
     <Footer />
   </div>
 </template>
@@ -102,6 +101,8 @@
 // import { EMessage } from 'eurus-ui';
 // setTimeout(() => {
 //   loading = false;
+
+import type { PropType } from 'vue';
 
 //   setTimeout(() => {
 //     loading = true;
