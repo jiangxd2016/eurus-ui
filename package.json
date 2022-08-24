@@ -68,7 +68,7 @@
   "devDependencies": {
     "@estjs/eslint-config": "^0.3.4",
     "@estjs/stylelint-config": "^0.0.8",
-    "@estjs/tools": "^0.0.27",
+    "@estjs/tools": "^0.0.28",
     "@types/node": "^18.7.6",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
