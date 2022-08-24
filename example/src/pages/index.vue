@@ -102,8 +102,6 @@
 // setTimeout(() => {
 //   loading = false;
 
-import type { PropType } from 'vue';
-
 //   setTimeout(() => {
 //     loading = true;
 //     setTimeout(() => {

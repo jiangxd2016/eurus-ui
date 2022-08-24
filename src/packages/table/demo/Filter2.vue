@@ -2,25 +2,25 @@
   <div style="text-align: left">
     <label>SearchBy:</label><input v-model="searchTerm" />
   </div>
-  <table-lite
+  <TableLite
     :is-static-mode="true"
     :is-loading="table.isLoading"
     :columns="table.columns"
     :rows="table.rows"
     :total="table.totalRecordCount"
     :sortable="table.sortable"
-  ></table-lite>
+  />
 </template>
 
 <script>
-import { defineComponent, reactive, ref, computed, watch } from "vue";
-import TableLite from "../components/TableLite.vue";
+import { defineComponent, reactive, ref, computed, watch } from 'vue';
+import TableLite from '../components/TableLite.vue';
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: { TableLite },
   setup() {
-    const searchTerm = ref(""); // Search text
+    const searchTerm = ref(''); // Search text
 
     // Fake data
     const data = reactive({
@@ -35,8 +35,8 @@ export default defineComponent({
       for (let i = 0; i < 126; i++) {
         fakeData.push({
           id: i,
-          name: "TEST" + i,
-          email: "test" + i + "@example.com",
+          name: 'TEST' + i,
+          email: 'test' + i + '@example.com',
         });
       }
       return await new Promise((resolve, reject) => {
@@ -45,15 +45,15 @@ export default defineComponent({
           // Remove setTimeout() and change to your Axios request or AJAX request on here.
           setTimeout(() => {
             table.isLoading = false;
-            let newData = fakeData.filter(
-              (x) =>
-                x.email.toLowerCase().includes(keyword.toLowerCase()) ||
-                x.name.toLowerCase().includes(keyword.toLowerCase())
+            const newData = fakeData.filter(
+              x =>
+                x.email.toLowerCase().includes(keyword.toLowerCase())
+                || x.name.toLowerCase().includes(keyword.toLowerCase())
             );
             resolve(newData);
           }, 2000);
         } catch (error) {
-          console.log("Fetch error", error);
+          console.log('Fetch error', error);
           reject();
         }
       });
@@ -64,22 +64,22 @@ export default defineComponent({
       isLoading: false,
       columns: [
         {
-          label: "ID",
-          field: "id",
-          width: "3%",
+          label: 'ID',
+          field: 'id',
+          width: '3%',
           sortable: true,
           isKey: true,
         },
         {
-          label: "Name",
-          field: "name",
-          width: "10%",
+          label: 'Name',
+          field: 'name',
+          width: '10%',
           sortable: true,
         },
         {
-          label: "Email",
-          field: "email",
-          width: "15%",
+          label: 'Email',
+          field: 'email',
+          width: '15%',
           sortable: true,
         },
       ],
@@ -90,8 +90,8 @@ export default defineComponent({
         return table.rows.length;
       }),
       sortable: {
-        order: "id",
-        sort: "asc",
+        order: 'id',
+        sort: 'asc',
       },
     });
 
@@ -108,7 +108,7 @@ export default defineComponent({
     );
 
     // Get data on first rendering
-    myRequest("").then((newData) => {
+    myRequest('').then((newData) => {
       data.rows = newData;
     });
 

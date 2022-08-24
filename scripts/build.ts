@@ -20,12 +20,16 @@ const configList = [configProd, configAll].filter(Boolean) as InlineConfig[];
 
 // complie
 async function buildConfig() {
+  // style lint
+  // console.log('[eurus-ui build]: start stylelint');
+  // await execPromise('npm run stylelint:fix');
   await Promise.all(configList.map(item => build(item)));
   console.log('[eurus-ui build]: start build css');
   complieSass();
   console.log('[eurus-ui build]: start build type');
   // genrate type
-  // await execPromise('npm run build:types');
+  await execPromise('npm run build:types');
+
   console.log('[eurus-ui build]: ✨ build done');
 }
 

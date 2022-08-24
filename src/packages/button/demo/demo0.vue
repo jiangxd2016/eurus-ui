@@ -1,10 +1,10 @@
 <template>
-  <e-button>default</e-button>
-  <e-button type="primary">primary</e-button>
-  <e-button type="info">info</e-button>
-  <e-button type="warning">warning</e-button>
-  <e-button type="error">error</e-button>
-  <e-button type="purple">purple</e-button>
+  <EButton>default</EButton>
+  <EButton type="primary">primary</EButton>
+  <EButton type="info">info</EButton>
+  <EButton type="warning">warning</EButton>
+  <EButton type="error">error</EButton>
+  <EButton type="purple">purple</EButton>
 </template>
 
 <script  setup>

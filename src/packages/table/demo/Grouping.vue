@@ -1,5 +1,5 @@
 <template>
-  <table-lite
+  <TableLite
     :has-checkbox="true"
     :is-loading="table.isLoading"
     :is-re-search="table.isReSearch"
@@ -8,7 +8,7 @@
     :grouping-display="table.groupingDisplay"
     :columns="table.columns"
     :rows="table.rows"
-    :rowClasses="table.rowClasses"
+    :row-classes="table.rowClasses"
     :total="table.totalRecordCount"
     :sortable="table.sortable"
     :messages="table.messages"
@@ -16,52 +16,52 @@
     @is-finished="tableLoadingFinish"
     @return-checked-rows="updateCheckedRows"
     @row-clicked="rowClicked"
-  ></table-lite>
+  />
 </template>
 
 <script>
-import { defineComponent, reactive } from "vue";
-import TableLite from "../components/TableLite.vue";
+import { defineComponent, reactive } from 'vue';
+import TableLite from '../components/TableLite.vue';
 
 // Fake Data for 'asc' sortable
 const sampleData1 = (offst, limit) => {
   offst = offst + 1;
-  let data = [];
+  const data = [];
   for (let i = offst; i <= limit; i++) {
     data.push({
       id: i,
-      name: "TEST" + i,
-      email: "test" + i + "@example.com",
+      name: 'TEST' + i,
+      email: 'test' + i + '@example.com',
     });
   }
   data.push({
     id: 22,
-    name: "TEST2",
-    email: "testGGG@example.com",
+    name: 'TEST2',
+    email: 'testGGG@example.com',
   });
   return data;
 };
 
 // Fake Data for 'desc' sortable
 const sampleData2 = (offst, limit) => {
-  let data = [];
+  const data = [];
   for (let i = limit; i > offst; i--) {
     data.push({
       id: i,
-      name: "TEST" + i,
-      email: "test" + i + "@example.com",
+      name: 'TEST' + i,
+      email: 'test' + i + '@example.com',
     });
   }
   data.push({
     id: 22,
-    name: "TEST2",
-    email: "testGGG@example.com",
+    name: 'TEST2',
+    email: 'testGGG@example.com',
   });
   return data;
 };
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: { TableLite },
   setup() {
     // Table config
@@ -70,57 +70,57 @@ export default defineComponent({
       isReSearch: false,
       rowClasses: (row) => {
         if (row.id == 1) {
-          return ["aaa", "is-id-one"];
+          return ['aaa', 'is-id-one'];
         }
-        return ["bbb", "other"];
+        return ['bbb', 'other'];
       },
-      groupingKey: "name",
+      groupingKey: 'name',
       hasGroupToggle: true,
-      groupingDisplay: function (key) {
+      groupingDisplay (key) {
         return (
-          '<span style="background: darkgray; padding: 5px; border-radius: 5px;">' +
-          key +
-          "</span>"
+          '<span style="background: darkgray; padding: 5px; border-radius: 5px;">'
+          + key
+          + '</span>'
         );
       },
       columns: [
         {
-          label: "ID",
-          field: "id",
-          width: "3%",
+          label: 'ID',
+          field: 'id',
+          width: '3%',
           sortable: true,
           isKey: true,
         },
         {
-          label: "Name",
-          field: "name",
-          width: "10%",
+          label: 'Name',
+          field: 'name',
+          width: '10%',
           sortable: true,
-          display: function (row) {
+          display (row) {
             return (
-              '<a href="javascript:void(0)" data-id="' +
-              row.id +
-              '" class="is-rows-el name-btn">' +
-              row.name +
-              "</a>"
+              '<a href="javascript:void(0)" data-id="'
+              + row.id
+              + '" class="is-rows-el name-btn">'
+              + row.name
+              + '</a>'
             );
           },
         },
         {
-          label: "Email",
-          field: "email",
-          width: "15%",
+          label: 'Email',
+          field: 'email',
+          width: '15%',
           sortable: true,
         },
         {
-          label: "",
-          field: "quick",
-          width: "10%",
-          display: function (row) {
+          label: '',
+          field: 'quick',
+          width: '10%',
+          display (row) {
             return (
-              '<button type="button" data-id="' +
-              row.id +
-              '" class="is-rows-el quick-btn">Button</button>'
+              '<button type="button" data-id="'
+              + row.id
+              + '" class="is-rows-el quick-btn">Button</button>'
             );
           },
         },
@@ -128,14 +128,14 @@ export default defineComponent({
       rows: [],
       totalRecordCount: 0,
       sortable: {
-        order: "id",
-        sort: "asc",
+        order: 'id',
+        sort: 'asc',
       },
       messages: {
-        pagingInfo: "Showing {0}-{1} of {2}",
-        pageSizeChangeLabel: "Row count:",
-        gotoPageLabel: "Go to page:",
-        noDataAvailable: "No data",
+        pagingInfo: 'Showing {0}-{1} of {2}',
+        pageSizeChangeLabel: 'Row count:',
+        gotoPageLabel: 'Go to page:',
+        noDataAvailable: 'No data',
       },
     });
 
@@ -149,7 +149,7 @@ export default defineComponent({
         if (offset >= 10 || limit >= 20) {
           limit = 20;
         }
-        if (sort == "asc") {
+        if (sort == 'asc') {
           table.rows = sampleData1(offset, limit);
         } else {
           table.rows = sampleData2(offset, limit);
@@ -165,17 +165,17 @@ export default defineComponent({
      */
     const tableLoadingFinish = (elements) => {
       table.isLoading = false;
-      Array.prototype.forEach.call(elements, function (element) {
-        if (element.classList.contains("name-btn")) {
-          element.addEventListener("click", function (event) {
+      Array.prototype.forEach.call(elements, (element) => {
+        if (element.classList.contains('name-btn')) {
+          element.addEventListener('click', function (event) {
             event.stopPropagation(); // prevents further propagation of the current event in the capturing and bubbling phases.
-            console.log(this.dataset.id + " name-btn click!!");
+            console.log(this.dataset.id + ' name-btn click!!');
           });
         }
-        if (element.classList.contains("quick-btn")) {
-          element.addEventListener("click", function (event) {
+        if (element.classList.contains('quick-btn')) {
+          element.addEventListener('click', function (event) {
             event.stopPropagation(); // prevents further propagation of the current event in the capturing and bubbling phases.
-            console.log(this.dataset.id + " quick-btn click!!");
+            console.log(this.dataset.id + ' quick-btn click!!');
           });
         }
       });
@@ -189,13 +189,13 @@ export default defineComponent({
     };
 
     // First get data
-    doSearch(0, 10, "id", "asc");
+    doSearch(0, 10, 'id', 'asc');
 
     /**
      * Row clicked event
      */
     const rowClicked = (row) => {
-      console.log("Row clicked!", row);
+      console.log('Row clicked!', row);
     };
 
     return {

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <table-lite
+    <TableLite
       :is-static-mode="true"
       :is-slot-mode="true"
       :is-loading="table.isLoading"
@@ -10,18 +10,18 @@
       :sortable="table.sortable"
       @rowClicked="rowClicked"
     >
-      <template v-slot:icon="data">
+      <template #icon="data">
         <div>
           <div class="flex-cen right-0 w-3 relative">
             <div
-              @click="data.value.showEdit = !data.value.showEdit"
               :class="[data.value.showEdit ? 'hidden' : 'block right-0']"
+              @click="data.value.showEdit = !data.value.showEdit"
             >
               <a href="javascript:void(0)">...</a>
             </div>
             <div
-              @click="data.value.showEdit = !data.value.showEdit"
               :class="[data.value.showEdit ? 'block' : 'hidden']"
+              @click="data.value.showEdit = !data.value.showEdit"
             >
               <a href="javascript:void(0)">X</a>
             </div>
@@ -29,23 +29,23 @@
               :class="[data.value.showEdit ? 'block' : 'hidden']"
               class="w-240 bg-white py-5 px-8 z-50 absolute md:-left-72 -left-64 flex items-center uppercase font-semibold"
             >
-              <i class="fa-solid fa-pen text-green"></i>
-              <p @click="clickedRow = !clickedRow" class="ml-1 cursor-pointer">
+              <i class="fa-solid fa-pen text-green" />
+              <p class="ml-1 cursor-pointer" @click="clickedRow = !clickedRow">
                 View Info
               </p>
-              <i class="fa-solid fa-trash-can text-green ml-4"></i>
+              <i class="fa-solid fa-trash-can text-green ml-4" />
 
-              <p @click="deleteCurrentRow(data.value)" class="ml-1 cursor-pointer">
+              <p class="ml-1 cursor-pointer" @click="deleteCurrentRow(data.value)">
                 Delete
               </p>
             </div>
           </div>
         </div>
       </template>
-    </table-lite>
+    </TableLite>
     <section v-if="openModel">
       <div>
-        <Model :App="App" :allSubs="allSubs" :marks="marks" @close-modal="onClickAway" />
+        <Model :app="App" :all-subs="allSubs" :marks="marks" @close-modal="onClickAway" />
       </div>
     </section>
   </section>
@@ -61,61 +61,61 @@
  *  @website https://websengineer.me/
  *
  */
-import { reactive, ref, defineComponent, computed } from "vue";
-import TableLite from "../components/TableLite.vue";
-import Model from "./Additional/Model.vue";
+import { reactive, ref, defineComponent, computed } from 'vue';
+import TableLite from '../components/TableLite.vue';
+import Model from './Additional/Model.vue';
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: { TableLite, Model },
   setup() {
     const data = reactive([
       {
-        name: "M Atif",
+        name: 'M Atif',
         showEdit: false,
-        DOB: "12/12/2020",
-        subs: "42",
-        courseType: "Bs SE",
+        DOB: '12/12/2020',
+        subs: '42',
+        courseType: 'Bs SE',
         allData: {
-          App: "M Atif - Bs Software Engineering",
+          App: 'M Atif - Bs Software Engineering',
           allSubjects: [
             {
-              name: "Ai Learning",
-              percentage: "82%",
+              name: 'Ai Learning',
+              percentage: '82%',
             },
             {
-              name: "ML",
-              percentage: "45%",
+              name: 'ML',
+              percentage: '45%',
             },
             {
-              name: "JavaScript",
-              percentage: "99%",
+              name: 'JavaScript',
+              percentage: '99%',
             },
           ],
 
-          marks: "500",
+          marks: '500',
         },
       },
       {
-        name: "John Doe",
+        name: 'John Doe',
         showEdit: false,
-        DOB: "12/12/2022",
-        subs: "36",
-        courseType: "BS CS",
+        DOB: '12/12/2022',
+        subs: '36',
+        courseType: 'BS CS',
         allData: {
-          App: "John Doe - Bs Computer Science",
+          App: 'John Doe - Bs Computer Science',
           allSubjects: [
             {
-              name: "Theory of Automata",
-              percentage: "82%",
+              name: 'Theory of Automata',
+              percentage: '82%',
             },
             {
-              name: "Software Construction",
-              percentage: "45%",
+              name: 'Software Construction',
+              percentage: '45%',
             },
           ],
 
-          marks: "900",
+          marks: '900',
         },
       },
     ]);
@@ -123,32 +123,32 @@ export default defineComponent({
       isLoading: false,
       columns: [
         {
-          label: "Name",
-          field: "name",
-          width: "25%",
+          label: 'Name',
+          field: 'name',
+          width: '25%',
           sortable: true,
         },
         {
-          label: "Study",
-          field: "courseType",
-          width: "25%",
+          label: 'Study',
+          field: 'courseType',
+          width: '25%',
           sortable: true,
         },
         {
-          label: "DOB",
-          field: "DOB",
-          width: "25%",
+          label: 'DOB',
+          field: 'DOB',
+          width: '25%',
           sortable: true,
         },
         {
-          label: "Subjects",
-          field: "subs",
-          width: "25%",
+          label: 'Subjects',
+          field: 'subs',
+          width: '25%',
           sortable: false,
         },
         {
-          label: " ",
-          field: "icon",
+          label: ' ',
+          field: 'icon',
           sortable: false,
         },
       ],
@@ -157,8 +157,8 @@ export default defineComponent({
         return table.rows.length;
       }),
       sortable: {
-        order: "name",
-        sort: "asc",
+        order: 'name',
+        sort: 'asc',
       },
     });
 
@@ -168,11 +168,11 @@ export default defineComponent({
     };
 
     let openModel = ref(false);
-    let App = ref("");
-    let allSubs = ref("");
-    let extSubs = ref("");
-    let marks = ref("");
-    let clickedRow = ref("");
+    const App = ref('');
+    const allSubs = ref('');
+    const extSubs = ref('');
+    const marks = ref('');
+    let clickedRow = ref('');
     const rowClicked = (row) => {
       if (clickedRow.value) {
         row.showEdit = !row.showEdit;
@@ -183,7 +183,7 @@ export default defineComponent({
         marks.value = row.allData.marks;
       }
     };
-    let deleteCurrentRow = (row) => {
+    const deleteCurrentRow = (row) => {
       data.splice(data.indexOf(row), 1);
     };
 
@@ -202,6 +202,7 @@ export default defineComponent({
   },
 });
 </script>
+
 <style scoped>
 .z-50 {
   z-index: 50;

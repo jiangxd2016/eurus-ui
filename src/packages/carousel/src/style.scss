@@ -1,7 +1,6 @@
 @import '../../../scss/variables';
 $button-prefix-cls: $prefix + -button;
 
-
 .e-carousel__carousel-item {
   left: 0;
   top: 0;
@@ -20,28 +19,24 @@ $button-prefix-cls: $prefix + -button;
 .e-carousel {
   position: relative;
   box-sizing: border-box;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .e-carousel__arrow {
-
   position: absolute;
   top: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 12px;
-  background-color: rgba(31, 45, 61, .3);
+  background-color: rgb(31 45 61 / 30%);
   transform: translateY(-50%);
   border-radius: 50%;
   cursor: pointer;
   width: 36px;
   height: 36px;
   flex-shrink: 0;
-  transition: all .3s ease-in-out;
-
+  transition: all 0.3s ease-in-out;
   z-index: 2;
   outline: 0;
   border: none;
@@ -52,62 +47,62 @@ $button-prefix-cls: $prefix + -button;
 }
 
 .e-carousel__arrow--right {
-  right: 16px
+  right: 16px;
 }
 
 .e-carousel__indicator {
   position: absolute;
   display: flex;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .e-carousel__indicator--horizontal {
   bottom: 6px;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
 }
 
 .e-carousel__indicator--vertical {
   right: 6px;
   top: 50%;
   transform-origin: 100% 50%;
-  transform: rotate(90deg) translateX(50%)
+  transform: rotate(90deg) translateX(50%);
 }
 
 .e-carousel__item {
   display: inline-flex;
-  padding: 5px
+  padding: 5px;
 }
 
 .e-carousel__button {
   border: none;
-  background-color: rgba(31, 45, 61, .23);
-  height: 2px
+  background-color: rgb(31 45 61 / 23%);
+  height: 2px;
 }
 
 .e-carousel__button--horizontal {
-  width: 30px
+  width: 30px;
 }
 
 .e-carousel__button--vertical {
-  width: 10px
+  width: 10px;
 }
 
 .e-carousel__button.is-active {
   transform-origin: 0 50%;
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   transform: scale(1.2);
-  background-color: #fff
+  background-color: #ffffff;
 }
 
 .carousel-arrow-left-enter-from,
 .carousel-arrow-left-leave-active {
   transform: translateY(-50%) translateX(-10px);
-  opacity: 0
+  opacity: 0;
 }
 
 .carousel-arrow-right-enter-from,
 .carousel-arrow-right-leave-active {
   transform: translateY(-50%) translateX(10px);
-  opacity: 0
+  opacity: 0;
 }

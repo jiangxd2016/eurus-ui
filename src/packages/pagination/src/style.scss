@@ -1,4 +1,5 @@
 @import '../../../scss/variables';
+
 /*
 ** Breakpoints
 */
@@ -19,13 +20,13 @@ $black_02: #666666;
 /*
 ** Grey
 */
-$grey_01: #BBBBBB;
-$grey_02: #DEDEDE;
+$grey_01: #bbbbbb;
+$grey_02: #dedede;
 
 /*
 ** Colors
 */
-$active_color: #DCEDFF;
+$active_color: #dcedff;
 
 .Page {
   display: flex;
@@ -69,7 +70,6 @@ $active_color: #DCEDFF;
   height: 4px;
   fill: $grey_01;
 }
-
 
 .Pagination {
   display: flex;

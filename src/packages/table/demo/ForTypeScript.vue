@@ -1,11 +1,11 @@
 <template>
-  <table-lite
+  <TableLite
     :has-checkbox="true"
     :is-loading="table.isLoading"
     :is-re-search="table.isReSearch"
     :columns="table.columns"
     :rows="table.rows"
-    :rowClasses="table.rowClasses"
+    :row-classes="table.rowClasses"
     :total="table.totalRecordCount"
     :sortable="table.sortable"
     :messages="table.messages"
@@ -13,22 +13,22 @@
     @do-search="doSearch"
     @is-finished="tableLoadingFinish"
     @return-checked-rows="updateCheckedRows"
-  ></table-lite>
+  />
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
-import TableLite from "../components/TableLiteTs.vue";
+import { defineComponent, reactive } from 'vue';
+import TableLite from '../components/TableLiteTs.vue';
 
 // create fake data1
 const sampleData1 = (offst: number, limit: number): Array<rowData> => {
   offst = offst + 1;
-  let data = [];
+  const data = [];
   for (let i = offst; i <= limit; i++) {
     data.push({
       id: i,
-      name: "TEST" + i,
-      email: "test" + i + "@example.com",
+      name: 'TEST' + i,
+      email: 'test' + i + '@example.com',
     });
   }
   return data;
@@ -36,12 +36,12 @@ const sampleData1 = (offst: number, limit: number): Array<rowData> => {
 
 // create fake data2
 const sampleData2 = (offst: number, limit: number): Array<rowData> => {
-  let data = [];
+  const data = [];
   for (let i = limit; i > offst; i--) {
     data.push({
       id: i,
-      name: "TEST" + i,
-      email: "test" + i + "@example.com",
+      name: 'TEST' + i,
+      email: 'test' + i + '@example.com',
     });
   }
   return data;
@@ -55,7 +55,7 @@ interface rowData {
 }
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: { TableLite },
   setup() {
     // Init Your table settings
@@ -64,48 +64,48 @@ export default defineComponent({
       isReSearch: false,
       rowClasses: (row: rowData) => {
         if (row.id == 1) {
-          return ["aaa", "is-id-one"];
+          return ['aaa', 'is-id-one'];
         }
-        return ["bbb", "other"];
+        return ['bbb', 'other'];
       },
       columns: [
         {
-          label: "ID",
-          field: "id",
-          width: "3%",
+          label: 'ID',
+          field: 'id',
+          width: '3%',
           sortable: true,
           isKey: true,
         },
         {
-          label: "Name",
-          field: "name",
-          width: "10%",
+          label: 'Name',
+          field: 'name',
+          width: '10%',
           sortable: true,
-          display: function (row: rowData) {
+          display (row: rowData) {
             return (
-              '<a href="#" data-id="' +
-              row.id +
-              '" class="is-rows-el name-btn">' +
-              row.name +
-              "</a>"
+              '<a href="#" data-id="'
+              + row.id
+              + '" class="is-rows-el name-btn">'
+              + row.name
+              + '</a>'
             );
           },
         },
         {
-          label: "Email",
-          field: "email",
-          width: "15%",
+          label: 'Email',
+          field: 'email',
+          width: '15%',
           sortable: true,
         },
         {
-          label: "",
-          field: "quick",
-          width: "10%",
-          display: function (row: rowData) {
+          label: '',
+          field: 'quick',
+          width: '10%',
+          display (row: rowData) {
             return (
-              '<button type="button" data-id="' +
-              row.id +
-              '" class="is-rows-el quick-btn">Button</button>'
+              '<button type="button" data-id="'
+              + row.id
+              + '" class="is-rows-el quick-btn">Button</button>'
             );
           },
         },
@@ -113,14 +113,14 @@ export default defineComponent({
       rows: [] as Array<rowData>,
       totalRecordCount: 0,
       sortable: {
-        order: "id",
-        sort: "asc",
+        order: 'id',
+        sort: 'asc',
       },
       messages: {
-        pagingInfo: "Showing {0}-{1} of {2}",
-        pageSizeChangeLabel: "Row count:",
-        gotoPageLabel: "Go to page:",
-        noDataAvailable: "No data",
+        pagingInfo: 'Showing {0}-{1} of {2}',
+        pageSizeChangeLabel: 'Row count:',
+        gotoPageLabel: 'Go to page:',
+        noDataAvailable: 'No data',
       },
       pageOptions: [
         {
@@ -144,7 +144,7 @@ export default defineComponent({
         if (offset >= 10 || limit >= 20) {
           limit = 20;
         }
-        if (sort == "asc") {
+        if (sort == 'asc') {
           table.rows = sampleData1(offset, limit);
         } else {
           table.rows = sampleData2(offset, limit);
@@ -160,15 +160,15 @@ export default defineComponent({
      */
     const tableLoadingFinish = (elements: Array<HTMLElement>) => {
       table.isLoading = false;
-      Array.prototype.forEach.call(elements, function (element: HTMLElement) {
-        if (element.classList.contains("name-btn")) {
-          element.addEventListener("click", function () {
-            console.log(this.dataset.id + " name-btn click!!");
+      Array.prototype.forEach.call(elements, (element: HTMLElement) => {
+        if (element.classList.contains('name-btn')) {
+          element.addEventListener('click', function () {
+            console.log(this.dataset.id + ' name-btn click!!');
           });
         }
-        if (element.classList.contains("quick-btn")) {
-          element.addEventListener("click", function () {
-            console.log(this.dataset.id + " quick-btn click!!");
+        if (element.classList.contains('quick-btn')) {
+          element.addEventListener('click', function () {
+            console.log(this.dataset.id + ' quick-btn click!!');
           });
         }
       });
