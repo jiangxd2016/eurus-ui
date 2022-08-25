@@ -10,7 +10,7 @@ import {
  *   transformerDirectives,
   transformerVariantGroup,
  */
-import transformerCompileClass from '@unocss/transformer-compile-class';
+import transformerCompileClass from './vite-unocss-compile-css';
 
 export default defineConfig({
   shortcuts: [

@@ -1,6 +1,6 @@
 import type { SourceCodeTransformer } from '@unocss/core';
 import { escapeRegExp, expandVariantGroup } from '@unocss/core';
-
+import type { Plugin } from 'vite';
 export interface CompileClassOptions {
   /**
    * Trigger string
@@ -31,8 +31,8 @@ export interface CompileClassOptions {
    */
   layer?: string;
 }
-
-export default function transformerCompileClass(options: CompileClassOptions = {}): SourceCodeTransformer {
+type transformerExportType = SourceCodeTransformer & { handleHotUpdate: Plugin['handleHotUpdate'] };
+export default function transformerCompileClass(options: CompileClassOptions = {}): transformerExportType {
   const {
     trigger = ':uno:',
     classPrefix = 'uno-',
@@ -44,14 +44,17 @@ export default function transformerCompileClass(options: CompileClassOptions = {
   return {
     name: 'compile-class',
     enforce: 'pre',
-    async transform(s, _, { uno, tokens }) {
+    async transform(s, id, { uno, tokens }) {
       const matches = [...s.original.matchAll(regex)];
-      if (matches.length === 0)
-        {return};
+      console.log({ matches });
+
+      if (matches.length === 0) { return; }
 
       for (const match of matches) {
         let body = expandVariantGroup(match[2].trim());
         const start = match.index!;
+        console.log({ body });
+
         const replacements = [];
         if (keepUnknown) {
           const result = await Promise.all(body.split(/\s+/).filter(Boolean).map(async i => [i, !!await uno.parseToken(i)] as const));
@@ -65,14 +68,29 @@ export default function transformerCompileClass(options: CompileClassOptions = {
           const hash = hashFn(body);
           const className = `${classPrefix}${hash}`;
           replacements.unshift(className);
-          if (options.layer)
-            {uno.config.shortcuts.push([className, body, { layer: options.layer }])};
-          else
-            {uno.config.shortcuts.push([className, body])};
+          console.log({ replacements });
+          console.log({ className });
+
+          if (options.layer) {
+            uno.config.shortcuts.push([className, body, { layer: options.layer }]);
+          } else {
+            uno.config.shortcuts.push([className, body]);
+          }
           tokens.add(className);
         }
         s.overwrite(start + 1, start + match[0].length - 1, replacements.join(' '));
       }
+    },
+    handleHotUpdate(ctx) {
+      const { file, server, modules } = ctx;
+      console.log({ file, server, modules });
+
+      const read = ctx.read;
+      ctx.read = async () => {
+        const code = await read();
+        return code + 1;
+
+      };
     },
   };
 }
