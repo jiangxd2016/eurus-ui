@@ -11,7 +11,7 @@ export default defineComponent({
     const tabProvide = inject<ITabsProvide>(TABS_PROVIDE_TOKEN);
     const barStyle = computed(() => {
       const ret = [];
-      ret.push({ left: tabProvide.currentPosition.value + 'px' }, { width: tabProvide.currentWidth.value + 'px' });
+      ret.push({ left: tabProvide?.currentPosition.value + 'px' }, { width: tabProvide?.currentWidth.value + 'px' });
       return ret;
     });
 

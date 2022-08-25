@@ -28,9 +28,7 @@ export default defineConfig({
   transformers: [
     // transformerDirectives(),
     // transformerVariantGroup(),
-    transformerCompileClass({
-      layer: 'testt'
-    }),
+    transformerCompileClass(),
   ],
   // include: [/.*\/eurus-ui(.*)[.js]/],
 });

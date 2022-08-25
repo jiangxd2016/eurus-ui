@@ -15,5 +15,6 @@ const router = createRouter({
   routes,
 });
 
+app.config.globalProperties.$msg = 'hello ';
 app.use(router);
 app.mount('#app');

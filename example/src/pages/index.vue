@@ -109,7 +109,7 @@
 //     }, 1000);
 //   }, 1000);
 // }, 2000);
-
+console.log(this);
 const router = useRouter();
 const loading = $ref(false);
 let modalShow = $ref(false);

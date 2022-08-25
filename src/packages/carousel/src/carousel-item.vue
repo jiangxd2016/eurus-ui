@@ -47,7 +47,7 @@ export default defineComponent({
     let direction: 'horizontal' | 'vertical' = 'horizontal';
 
     watchEffect(() => {
-      direction = CAROUSEL_PROVIDE.offsetWidth.value
+      direction = CAROUSEL_PROVIDE?.offsetWidth.value
         ? 'horizontal'
         : 'vertical';
     });
@@ -58,11 +58,11 @@ export default defineComponent({
       activeIndex: number,
       isAnimate = true,
     ) {
-      if (isAnimate) { isAnimating(index, activeIndex, CAROUSEL_PROVIDE.itemReact.length); }
+      if (isAnimate) { isAnimating(index, activeIndex, CAROUSEL_PROVIDE?.itemReact.length); }
       index = processIndex(
         index,
         activeIndex,
-        CAROUSEL_PROVIDE.itemReact.length,
+        CAROUSEL_PROVIDE?.itemReact.length,
       );
       calcTransform(index, activeIndex);
     }
@@ -70,18 +70,18 @@ export default defineComponent({
     function calcTransform(index: number, activeIndex: number) {
       itemStyle.value = `${CarouselItemConfig[direction].translate}(${(index
         - activeIndex)
-        * CAROUSEL_PROVIDE[CarouselItemConfig[direction].offset].value}px)`;
+        * CAROUSEL_PROVIDE[CarouselItemConfig[direction].offset]?.value}px)`;
     }
 
     function addCarouseItem() {
-      CAROUSEL_PROVIDE.itemReact.push({
+      CAROUSEL_PROVIDE?.itemReact.push({
         transformItem,
         uid: instance!.uid,
       });
     }
 
     function processIndex(index: number, activeIndex: number, length: number) {
-      if (!CAROUSEL_PROVIDE.isLoop.value) {
+      if (!CAROUSEL_PROVIDE?.isLoop.value) {
         return index;
       }
       if (activeIndex === length - 1 && index === 0) {
@@ -95,36 +95,36 @@ export default defineComponent({
     // difficult to resolve
     function isAnimating(index: number, activeIndex: number, length: number) {
       data.animating = false;
-      if (!CAROUSEL_PROVIDE.isLoop.value) {
+      if (!CAROUSEL_PROVIDE?.isLoop.value) {
         data.animating = true;
         return;
       }
       if (
         index === activeIndex
-        || index === CAROUSEL_PROVIDE.oldActiveIndex.value
+        || index === CAROUSEL_PROVIDE?.oldActiveIndex.value
       ) {
         data.animating = true;
       }
 
       if (
         (activeIndex === 0
-          && CAROUSEL_PROVIDE.oldActiveIndex.value === length - 1)
+          && CAROUSEL_PROVIDE?.oldActiveIndex.value === length - 1)
         || (activeIndex === length - 1
-          && CAROUSEL_PROVIDE.oldActiveIndex.value === 0)
+          && CAROUSEL_PROVIDE?.oldActiveIndex.value === 0)
       ) {
         return;
       }
 
-      if (activeIndex > CAROUSEL_PROVIDE.oldActiveIndex.value) {
+      if (activeIndex > CAROUSEL_PROVIDE?.oldActiveIndex.value) {
         if (
           index <= activeIndex
-          && index >= CAROUSEL_PROVIDE.oldActiveIndex.value
+          && index >= CAROUSEL_PROVIDE?.oldActiveIndex.value
         ) {
           data.animating = true;
         }
-      } else if (activeIndex < CAROUSEL_PROVIDE.oldActiveIndex.value
+      } else if (activeIndex < CAROUSEL_PROVIDE?.oldActiveIndex.value
         && index >= activeIndex
-        && index <= CAROUSEL_PROVIDE.oldActiveIndex.value
+        && index <= CAROUSEL_PROVIDE?.oldActiveIndex.value
       ) {
         data.animating = true;
       }
