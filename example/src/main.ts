@@ -8,7 +8,6 @@ import '@unocss/reset/tailwind.css';
 import './styles/main.css';
 import 'uno.css';
 
-import 'eurus-ui/dist/es/packages/message/src/style.css';
 const app = createApp(App);
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

@@ -1,9 +1,8 @@
 import type { App } from 'vue';
+import { globaleComponentPrefix } from './constants';
 
 import version from './version';
 
-// TODO:
-export const globaleComponentPrefix = 'E';
 type ComponentType = any;
 
 export interface UiInstance {

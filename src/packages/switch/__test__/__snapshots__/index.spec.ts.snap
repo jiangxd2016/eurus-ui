@@ -1,3 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`ESwitch > ESwitch snapshot 1`] = `"<div class=\\"e-switch\\"><label><input class=\\"switch\\" type=\\"checkbox\\" style=\\"display: none;\\"><span class=\\"e-switch-body\\"></span></label></div>"`;

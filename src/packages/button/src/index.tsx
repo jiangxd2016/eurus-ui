@@ -2,6 +2,7 @@ import type { ButtonHTMLAttributes, PropType } from 'vue';
 import { renderSlot, defineComponent, reactive } from 'vue';
 import { EIcon } from '../../icons';
 import { getPrefixCls } from '../../_utils/global-config';
+import { getClassNames } from './btn.style';
 import './style.scss';
 
 export type Size = 'sx' | 'sm' | 'md' | 'lg' | 'xl';
@@ -73,14 +74,8 @@ export default defineComponent({
   props: BtnProps,
   setup(props, { slots, emit }) {
     const prefix = getPrefixCls('button');
-    const classNames = reactive({
-      disabled: props.disabled || props.loading,
-      plain: props.plain,
-      circle: props.circle,
-      round: props.round,
-      [`${prefix}--${props.size}`]: props.size
-    });
 
+    const classList = getClassNames(prefix);
     const handleClick = (e: Event) => {
       if (props.disabled || props.loading) { return false; }
 
@@ -89,9 +84,7 @@ export default defineComponent({
     return () => (
       <button
         class={[
-          `${prefix} ${prefix}--${props.type} bg-${props.type} ${props.type === 'default' ? 'text-black' : 'text-white'
-          }`,
-          classNames,
+          classList(props as any)
         ]}
         {...props.native}
         disabled={props.disabled || props.loading}

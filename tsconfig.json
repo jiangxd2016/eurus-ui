@@ -26,7 +26,7 @@
       "@/*": [
         "*"
       ],
-      "eurus-ui":[
+      "eurus-ui": [
         "index.ts"
       ]
     },
@@ -40,7 +40,12 @@
       "vue"
     ]
   },
-  "exclude": ["docs","example","scripts"],
+  "exclude": [
+    "docs",
+    "example",
+    "scripts",
+    "*.cjs",
+  ],
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true
   }
