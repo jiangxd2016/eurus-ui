@@ -15,6 +15,7 @@ export default defineConfig({
       web: [/\.[jt]sx$/],
     },
     coverage: {
+      provider: 'c8',
       exclude: ['index.ts'],
       reporter: ['text', 'json', 'html'],
     },
