@@ -1,11 +1,11 @@
 <template>
   <div
-    ref="tabPanelRef" class="ra-tab-panel" :class="panelClass" @click="tabPanelClick"
+    ref="tabPanelRef" class="eu-tab-panel" :class="panelClass" @click="tabPanelClick"
     @mouseover="!raDisabled && (isHover = true)" @mouseleave="!raDisabled && (isHover = false)"
   >
     <div ref="tabWrapRef" :class="wrapClass">
       {{ raLabel }}
-      <transition name="ra-tab-transform">
+      <transition name="eu-tab-transform">
         <i v-show="isCollpaseShow" :class="closeIconClass" @click.stop="closeIconClick" />
       </transition>
     </div>
@@ -69,13 +69,13 @@ export default defineComponent({
     });
 
     const wrapClass = computed(() => {
-      const ret = ['ra-tab-panel__wrap'];
+      const ret = ['eu-tab-panel__wrap'];
       props.raDisabled && ret.push('is-disabled');
       return ret;
     });
 
     const closeIconClass = computed(() => {
-      const ret = ['ra-icon-close'];
+      const ret = ['eu-icon-close'];
       props.raDisabled && ret.push('is-disabled');
       return ret;
     });

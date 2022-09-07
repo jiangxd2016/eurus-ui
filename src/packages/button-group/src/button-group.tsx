@@ -4,7 +4,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'RaButtonGroup',
   render() {
-    return <div class="ra-button-group">
+    return <div class="eu-button-group">
     {this.$slots?.default && this.$slots.default()}
   </div>;
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="ra-tab-bar" :style="barStyle" />
+  <div class="eu-tab-bar" :style="barStyle" />
 </template>
 
 <script lang="ts">

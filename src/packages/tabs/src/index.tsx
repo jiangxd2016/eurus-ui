@@ -55,7 +55,7 @@ export default defineComponent({
   name: 'ETabs',
   components: { RaTabBar },
   props: ETabsProps,
-  emits: ['ra-tab-click', 'ra-tab-remove', TAB_UPDATE_EVENT],
+  emits: ['eu-tab-click', 'eu-tab-remove', TAB_UPDATE_EVENT],
   setup(props, { emit, slots }) {
     const currentWidth = ref(0);
     const currentPosition = ref(0);
@@ -65,16 +65,16 @@ export default defineComponent({
     const isArrowShow = ref(false);
     const tabPanelItems = reactive<TTabPanel[]>([]) as unknown as TTabPanel[];
     const wrapClass = computed(() => {
-      const ret = ['ra-tabs__wrap'];
+      const ret = ['eu-tabs__wrap'];
       props.raType && ret.push(`is-${props.raType}`);
       return ret;
     });
     const tabRemove = (delValue: number | string) => {
-      emit('ra-tab-remove', delValue);
+      emit('eu-tab-remove', delValue);
     };
     const tabClick = (clickValue: number | string) => {
       let tabPanelTarget: typeof tabPanelItems[0];
-      emit('ra-tab-click', clickValue);
+      emit('eu-tab-click', clickValue);
       if (typeof clickValue === 'number') {
         tabPanelTarget = tabPanelItems[clickValue];
       } else if (typeof clickValue === 'string') {
@@ -107,23 +107,23 @@ export default defineComponent({
       }
     };
     const navClass = computed(() => {
-      const ret = ['ra-tabs__nav'];
+      const ret = ['eu-tabs__nav'];
       props.raType && ret.push(`is-${props.raType}`);
       isArrowShow.value && ret.push('is-scroll');
       return ret;
     });
     const tabClass = computed(() => {
-      const ret = ['ra-tabs'];
+      const ret = ['eu-tabs'];
       props.raType && ret.push(`is-${props.raType}`);
       return ret;
     });
     const contentClass = computed(() => {
-      const ret = ['ra-tabs__content'];
+      const ret = ['eu-tabs__content'];
       props.raType && ret.push(`is-${props.raType}`);
       return ret;
     });
     const scrollClass = computed(() => {
-      const ret = ['ra-tabs__scroll'];
+      const ret = ['eu-tabs__scroll'];
       return ret;
     });
     const contentRef = ref<HTMLElement>();
