@@ -141,7 +141,7 @@ export default defineComponent({
         </li>
         {
           this.pagination.map((page) => {
-            return (<VPage key="`pagination-page-${page}`" page={page} current={this.modelValue}
+            return (<VPage key="`pagination-page-${page}`" page={page as any} current={this.modelValue}
               active-color={this.activeColor} onUpdate={this.updatePageHandler}></VPage>
             );
           })

@@ -52,7 +52,7 @@ export const getLocale = () => {
 export const useI18n = () => {
   const configProvider = inject(configProviderInjectionKey, undefined);
   const i18nMessage = computed<EurusLang>(
-    () => configProvider?.locale ?? I18N_MESSAGES[LOCALE.value]
+    () =>I18N_MESSAGES[ configProvider?.locale ?? LOCALE.value]
   );
   const locale = computed<string>(() => i18nMessage.value.locale);
 

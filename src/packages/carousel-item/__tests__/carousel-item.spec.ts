@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import CarouselItem from '../src/index.vue';
+import CarouselItem from '../../carousel/src/carousel-item.vue';
 
 const AXIOM = 'Rem is the best girl';
 

@@ -55,7 +55,7 @@ export default defineComponent({
       isLoading: false,
       isReSearch: false,
       rowClasses: (row) => {
-        if (row.id == 1) {
+        if (row.id === 1) {
           return ['aaa', 'is-id-one'];
         }
         return ['bbb', 'other'];
@@ -122,11 +122,11 @@ export default defineComponent({
     const doSearch = (offset, limit, order, sort) => {
       table.isLoading = true;
       setTimeout(() => {
-        table.isReSearch = offset == undefined ? true : false;
+        table.isReSearch = offset === undefined ? true : false;
         if (offset >= 10 || limit >= 20) {
           limit = 20;
         }
-        if (sort == 'asc') {
+        if (sort === 'asc') {
           table.rows = sampleData1(offset, limit);
         } else {
           table.rows = sampleData2(offset, limit);

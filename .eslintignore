@@ -5,3 +5,4 @@ node_modules/
 .eslintrc.js
 !.vitepress
 src/version.ts
+**/demo/*.vue

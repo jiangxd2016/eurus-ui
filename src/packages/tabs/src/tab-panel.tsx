@@ -1,18 +1,3 @@
-<template>
-  <div
-    ref="tabPanelRef" class="eu-tab-panel" :class="panelClass" @click="tabPanelClick"
-    @mouseover="!raDisabled && (isHover = true)" @mouseleave="!raDisabled && (isHover = false)"
-  >
-    <div ref="tabWrapRef" :class="wrapClass">
-      {{ raLabel }}
-      <transition name="eu-tab-transform">
-        <i v-show="isCollpaseShow" :class="closeIconClass" @click.stop="closeIconClick" />
-      </transition>
-    </div>
-  </div>
-</template>
-
-<script lang="ts">
 import {
   defineComponent,
   inject,
@@ -25,7 +10,7 @@ import type { ITabsProvide } from './type';
 import { TABS_PROVIDE_TOKEN } from './type';
 
 export default defineComponent({
-  name: 'RaTabPanel',
+  name: 'ETabPanel',
   props: {
     raLabel: {
       type: String,
@@ -44,7 +29,7 @@ export default defineComponent({
     const tabIndex = ref(0);
     const tabWrapRef = ref<HTMLElement>();
     const tabPanelRef = ref<HTMLElement>();
-    const tabPanelProvide = inject<ITabsProvide>(TABS_PROVIDE_TOKEN);
+    const tabPanelProvide = inject<ITabsProvide>(TABS_PROVIDE_TOKEN) as ITabsProvide;
     const isHover = ref(false);
     const isCurrentIndex = computed(() => {
       return tabIndex.value === tabPanelProvide.currentTabIndex.value;
@@ -88,8 +73,8 @@ export default defineComponent({
     // lifecycle
     onMounted(() => {
       tabPanelProvide.tabPanelItems.push({
-        tabPanelRef: tabPanelRef.value,
-        tabWrapRef: tabWrapRef.value,
+        tabPanelRef: tabPanelRef.value!,
+        tabWrapRef: tabWrapRef.value!,
         name: props.raName,
         index: tabIndex.value,
         contentSlots: slots,
@@ -112,18 +97,21 @@ export default defineComponent({
       tabPanelProvide.tabRemove(props.raName || tabIndex.value);
     };
 
-    return {
-      props,
-      isHover,
-      tabWrapRef,
-      tabPanelRef,
-      panelClass,
-      wrapClass,
-      closeIconClass,
-      tabPanelClick,
-      closeIconClick,
-      isCollpaseShow,
-    };
+    return ()=>(
+      <div
+      ref={tabPanelRef} class={[panelClass, 'eu-tab-panel']} onClick={tabPanelClick}
+      onMouseover={()=>{ !props.raDisabled && (isHover.value = true); }} on-mouseleave={()=>!props.raDisabled && (isHover.value = false)}
+    >
+      <div ref="tabWrapRef" class={wrapClass}>
+        { props.raLabel }
+        {
+          isCollpaseShow.value && <transition name="eu-tab-transform">
+          <i class={closeIconClass} on-click={closeIconClick} />
+        </transition>
+        }
+      </div>
+    </div>
+    );
+
   },
 });
-</script>

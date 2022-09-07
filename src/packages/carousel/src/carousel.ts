@@ -38,9 +38,9 @@ export interface ICarouselItemProps {
 }
 
 export interface ICarouselProvide {
-  offsetHeight: Ref<number | undefined>;
-  offsetWidth: Ref<number | undefined>;
-  oldActiveIndex: Ref<number | undefined>;
+  offsetHeight: Ref<number >;
+  offsetWidth: Ref<number >;
+  oldActiveIndex: Ref<number >;
   itemReact: ICarouselItem[];
   isLoop: Ref<boolean>;
 }

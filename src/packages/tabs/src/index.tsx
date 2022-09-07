@@ -1,25 +1,21 @@
 import type {
   PropType,
-  Ref,
-  VNode,
-} from 'vue';
+  Ref } from 'vue';
 import {
   defineComponent,
+
   onMounted,
   provide,
   ref,
   nextTick,
   watch,
-  createVNode,
-  render,
-  computed,
   reactive,
   vShow,
   onUnmounted,
 } from 'vue';
 import Icon from '../../icons';
 
-import RaTabBar from './tab-bar.vue';
+import RaTabBar from './tab-bar';
 import type {
   TTabPosition,
   TTabsType,
@@ -36,7 +32,7 @@ import './tabs.scss';
 const ETabsProps = {
   modelValue: {
     type: String,
-    defalult: '',
+    default: '',
   },
   raType: {
     type: String as PropType<TTabsType>,
@@ -57,18 +53,14 @@ export default defineComponent({
   props: ETabsProps,
   emits: ['eu-tab-click', 'eu-tab-remove', TAB_UPDATE_EVENT],
   setup(props, { emit, slots }) {
-    const currentWidth = ref(0);
-    const currentPosition = ref(0);
+    const currentWidth = ref<number>(0);
+    const currentPosition = ref<number>(0);
     const currentTabIndex = ref<number>(0);
     const contentSlot = ref();
     const scrollRef = ref<HTMLElement>() as unknown as Ref<HTMLElement>;
     const isArrowShow = ref(false);
     const tabPanelItems = reactive<TTabPanel[]>([]) as unknown as TTabPanel[];
-    const wrapClass = computed(() => {
-      const ret = ['eu-tabs__wrap'];
-      props.raType && ret.push(`is-${props.raType}`);
-      return ret;
-    });
+
     const tabRemove = (delValue: number | string) => {
       emit('eu-tab-remove', delValue);
     };
@@ -106,27 +98,7 @@ export default defineComponent({
         });
       }
     };
-    const navClass = computed(() => {
-      const ret = ['eu-tabs__nav'];
-      props.raType && ret.push(`is-${props.raType}`);
-      isArrowShow.value && ret.push('is-scroll');
-      return ret;
-    });
-    const tabClass = computed(() => {
-      const ret = ['eu-tabs'];
-      props.raType && ret.push(`is-${props.raType}`);
-      return ret;
-    });
-    const contentClass = computed(() => {
-      const ret = ['eu-tabs__content'];
-      props.raType && ret.push(`is-${props.raType}`);
-      return ret;
-    });
-    const scrollClass = computed(() => {
-      const ret = ['eu-tabs__scroll'];
-      return ret;
-    });
-    const contentRef = ref<HTMLElement>();
+
     const provideConfig = {
       tabClick,
       tabRemove,
@@ -139,29 +111,7 @@ export default defineComponent({
       isCloseable: ref(props.raCloseable),
     };
 
-    // funs
-    const arrowClick = (direction: 'left' | 'right') => {
-      let scrollOffset = 0;
-      scrollOffset
-        = direction === 'left'
-          ? scrollRef.value.scrollLeft - scrollRef.value.offsetWidth
-          : scrollRef.value.scrollLeft + scrollRef.value.offsetWidth;
-
-      if (
-        scrollRef.value.scrollWidth
-        < scrollRef.value.scrollLeft + scrollOffset
-      ) {
-        // eslint-disable-next-line no-self-assign
-        scrollOffset = scrollOffset;
-      }
-      scrollRef.value.scroll({
-        left: scrollOffset,
-        top: 0,
-        behavior: 'smooth',
-      });
-    };
-
-    const setTheArrow = () => {
+    const setTheArrow = () =>{
       if (scrollRef.value.scrollWidth > scrollRef.value.clientWidth) {
         isArrowShow.value = true;
         scrollRef.value.scrollLeft = scrollRef.value.scrollWidth;
@@ -169,19 +119,31 @@ export default defineComponent({
         isArrowShow.value = false;
       }
     };
+    const handleArrowClick = (direction: 'left' | 'right')=> {
+      const scrollOffset
+        = direction === 'left'
+          ? scrollRef.value.scrollLeft - scrollRef.value.offsetWidth
+          : scrollRef.value.scrollLeft + scrollRef.value.offsetWidth;
+
+      scrollRef.value.scroll({
+        left: scrollOffset,
+        top: 0,
+        behavior: 'smooth',
+      });
+    };
+
     const ro = new ResizeObserver(setTheArrow);
 
-    const updateTheTabBar = () => {
+    const updateTheTabBar = ()=> {
       if (tabPanelItems.length > 0) {
         const currentPanel = tabPanelItems[currentTabIndex.value];
         if (!currentPanel) { return; }
         provideConfig.currentWidth.value = currentPanel.tabWrapRef.offsetWidth;
-        provideConfig.currentPosition.value
-          = currentPanel.tabWrapRef.offsetLeft;
+        provideConfig.currentPosition.value = currentPanel.tabWrapRef.offsetLeft;
       }
     };
 
-    const setTabIndex = () => {
+    const setTabIndex = ()=> {
       tabPanelItems.forEach((tab, index) => {
         if (tab.name === props.modelValue) {
           currentTabIndex.value = index;
@@ -190,29 +152,11 @@ export default defineComponent({
       });
     };
 
-    const setTheContent = () => {
-      const vmList: VNode[] = [];
-      tabPanelItems.forEach((tab, index) => {
-        vmList.push(
-          createVNode(
-            'div',
-            {
-              style: `display:${currentTabIndex.value === index ? 'unset' : 'none'
-                }`,
-            },
-            tab.contentSlots.default ? tab.contentSlots.default() : null,
-          ),
-        );
-      });
-      render(createVNode('div', {}, vmList), contentRef.value as HTMLElement);
-    };
-
     // lifecycle
     onMounted(async () => {
       await nextTick();
       setTabIndex();
       updateTheTabBar();
-      setTheContent();
       ro.observe(scrollRef.value);
     });
 
@@ -227,7 +171,6 @@ export default defineComponent({
         || tabPanelItems[currentTabIndex.value].index,
       );
       updateTheTabBar();
-      setTheContent();
     });
 
     watch(tabPanelItems, () => {
@@ -235,25 +178,32 @@ export default defineComponent({
         currentTabIndex.value = 0;
       }
       setTabIndex();
-      setTheContent();
       updateTheTabBar();
       setTheArrow();
     });
 
     provide<ITabsProvide>(TABS_PROVIDE_TOKEN, provideConfig);
+    const isType = props.raType && `is-${props.raType}`;
 
     return () => (
-      <div class={tabClass.value}>
-        <div class={wrapClass.value} >
-          <div class={scrollClass.value} ref={scrollRef}>
-            <div class={navClass.value}>
+      <div class='eu-tabs'>
+        <div class={['eu-tabs__wrap', isType]} >
+          <div class='eu-tabs__scroll' ref={scrollRef}>
+            <div class={['eu-tabs__nav', isType, isArrowShow.value && 'is-scroll']}>
               {slots?.default && slots.default()}
             </div>
-            <Icon name="arrowRight" onClick={() => { arrowClick('right'); }}>{[vShow, isArrowShow.value]}</Icon>
+            <Icon name="arrowRight" onClick={ ()=> handleArrowClick('right')}>{[vShow, isArrowShow.value]}</Icon>
           </div>
           {props.raType ? null : <RaTabBar />}
         </div>
-        <div class={contentClass.value} ref={contentRef} />
+        <div class={['eu-tabs__content', isType]} >
+          { tabPanelItems.map((tab, index) => {
+            return <div style={`display:${currentTabIndex.value === index ? 'unset' : 'none'}`}>
+              {tab.contentSlots.default ? tab.contentSlots.default() : null}
+            </div>;
+
+          })}
+        </div>
       </div>
     );
   }

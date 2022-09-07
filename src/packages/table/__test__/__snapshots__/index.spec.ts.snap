@@ -1,3 +1,25 @@
 // Vitest Snapshot v1
 
-exports[`ETable > ETable snapshot 1`] = `"<div></div>"`;
+exports[`ETable > ETable snapshot 1`] = `
+"<div class=\\"vtl vtl-card\\" data-v-b676dc45=\\"\\">
+  <!--v-if-->
+  <div class=\\"vtl-card-body\\" data-v-b676dc45=\\"\\">
+    <div class=\\"vtl-row\\" data-v-b676dc45=\\"\\">
+      <div class=\\"col-sm-12\\" data-v-b676dc45=\\"\\">
+        <!--v-if-->
+        <table class=\\"vtl-table vtl-table-hover vtl-table-bordered vtl-table-responsive vtl-table-responsive-sm\\" data-v-b676dc45=\\"\\">
+          <thead class=\\"vtl-thead\\" data-v-b676dc45=\\"\\">
+            <tr class=\\"vtl-thead-tr\\" data-v-b676dc45=\\"\\">
+              <!--v-if-->
+            </tr>
+          </thead>
+          <!--v-if-->
+        </table>
+      </div>
+    </div>
+    <div class=\\"vtl-row\\" data-v-b676dc45=\\"\\">
+      <div class=\\"vtl-empty-msg col-sm-12 text-center\\" data-v-b676dc45=\\"\\">No data</div>
+    </div>
+  </div>
+</div>"
+`;

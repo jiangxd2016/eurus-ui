@@ -18,7 +18,7 @@ describe('button', () => {
           type
         }
       });
-      expect(wrapper.classes()).toContain('e-button--' + type);
+      expect(wrapper.classes()).toContain('eu-button--' + type);
       wrapper.unmount();
 
     });
@@ -33,7 +33,7 @@ describe('button', () => {
           size,
         }
       });
-      expect(wrapper.classes()).toContain('e-button--' + size);
+      expect(wrapper.classes()).toContain('eu-button--' + size);
       wrapper.unmount();
     });
   });

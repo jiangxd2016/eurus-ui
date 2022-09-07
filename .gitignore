@@ -10,5 +10,6 @@ dist-ssr
 coverage
 .eslintcache
 .gitlogmap
+.vite-inspect
 
 src/version.ts

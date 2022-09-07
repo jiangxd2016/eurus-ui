@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import path from 'path';
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import Pages from 'vite-plugin-pages';
@@ -13,12 +13,12 @@ import { EurusUIReslove } from './autoImport';
 export default defineConfig({
   resolve: {
     alias: {
-      '@/': `${path.resolve(__dirname, 'src')}/`,
+      '@/': `${resolve(__dirname, 'src')}/`,
     },
   },
   plugins: [
     Vue({
-      reactivityTransform: true,
+      reactivityTransform: true
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages

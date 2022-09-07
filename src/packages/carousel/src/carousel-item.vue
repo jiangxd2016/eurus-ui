@@ -37,9 +37,9 @@ export default defineComponent({
   setup(props: ICarouselItemProps) {
     const instance = getCurrentInstance();
     const itemStyle = ref<string>('');
-    const CAROUSEL_PROVIDE: ICarouselProvide = inject<ICarouselProvide>(
-      CAROUSEL_ITEM_PROVIDE_TOKEN, {} as ICarouselProvide
-    );
+    const CAROUSEL_PROVIDE = inject<ICarouselProvide>(
+      CAROUSEL_ITEM_PROVIDE_TOKEN
+    ) as ICarouselProvide;
     const data = reactive<{
       active: boolean;
       animating: boolean;
@@ -68,9 +68,10 @@ export default defineComponent({
     }
 
     function calcTransform(index: number, activeIndex: number) {
+      const offset = CarouselItemConfig[direction].offset;
       itemStyle.value = `${CarouselItemConfig[direction].translate}(${(index
         - activeIndex)
-        * CAROUSEL_PROVIDE[CarouselItemConfig[direction].offset]?.value}px)`;
+        * CAROUSEL_PROVIDE[offset].value}px)`;
     }
 
     function addCarouseItem() {

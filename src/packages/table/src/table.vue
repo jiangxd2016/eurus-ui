@@ -63,13 +63,13 @@
               <tbody
                 v-if="isStaticMode"
                 class="vtl-tbody"
-                :set="templateRows = groupingKey == '' ? [localRows] : localRows"
+                :set="templateRows = groupingKey === '' ? [localRows] : localRows"
               >
                 <template
                   v-for="(rows, groupingIndex) in templateRows"
                   :key="groupingIndex"
                 >
-                  <tr v-if="groupingKey != ''" class="vtl-tbody-tr vtl-group-tr">
+                  <tr v-if="groupingKey !== ''" class="vtl-tbody-tr vtl-group-tr">
                     <td
                       :colspan="hasCheckbox ? columns.length + 1 : columns.length"
                       class="vtl-tbody-td vtl-group-td"
@@ -100,7 +100,7 @@
                     :class="
                       typeof rowClasses === 'function' ? rowClasses(row) : rowClasses
                     "
-                    @click="$emit('row-clicked', row)"
+                    @click="emit('row-clicked', row)"
                   >
                     <td v-if="hasCheckbox" class="vtl-tbody-td">
                       <div>
@@ -137,13 +137,13 @@
               </tbody>
               <tbody
                 v-else
-                :set="templateRows = groupingKey == '' ? [rows] : groupingRows"
+                :set="templateRows = groupingKey === '' ? [rows] : groupingRows"
               >
                 <template
                   v-for="(rows, groupingIndex) in templateRows"
                   :key="groupingIndex"
                 >
-                  <tr v-if="groupingKey != ''" class="vtl-tbody-tr vtl-group-tr">
+                  <tr v-if="groupingKey !== ''" class="vtl-tbody-tr vtl-group-tr">
                     <td
                       :colspan="hasCheckbox ? columns.length + 1 : columns.length"
                       class="vtl-tbody-td vtl-group-td"
@@ -174,7 +174,7 @@
                     :class="
                       typeof rowClasses === 'function' ? rowClasses(row) : rowClasses
                     "
-                    @click="$emit('row-clicked', row)"
+                    @click="emit('row-clicked', row)"
                   >
                     <td v-if="hasCheckbox" class="vtl-tbody-td">
                       <div>
@@ -601,6 +601,14 @@ export default defineComponent({
         return ops;
       }),
     });
+    // Call 「is-finished」 Method
+    const callIsFinished = () => {
+      if (localTable.value) {
+        const localElement = localTable.value.querySelectorAll('.is-rows-el');
+        emit('is-finished', localElement);
+      }
+      emit('get-now-page', setting.page);
+    };
 
     // 組件內用資料 (Data rows for local)
     const localRows = computed(() => {
@@ -675,7 +683,7 @@ export default defineComponent({
             if (val) {
               val.checked = state;
               if (val.checked) {
-                if (props.checkedReturnType == 'row') {
+                if (props.checkedReturnType === 'row') {
                   isChecked.push(localRows.value[i]);
                 } else {
                   isChecked.push(val.value);
@@ -732,8 +740,8 @@ export default defineComponent({
      */
     const doSort = (order: string) => {
       let sort = 'asc';
-      if (order == setting.order // 排序中的項目時 (When sorting items)
-        && setting.sort == 'asc') {
+      if (order === setting.order // 排序中的項目時 (When sorting items)
+        && setting.sort === 'asc') {
         sort = 'desc';
       }
       const offset = (setting.page - 1) * setting.pageSize;
@@ -763,7 +771,7 @@ export default defineComponent({
       const sort = setting.sort;
       const offset = (page - 1) * setting.pageSize;
       const limit = setting.pageSize;
-      if (!props.isReSearch || page > 1 || page == prevPage) {
+      if (!props.isReSearch || page > 1 || page === prevPage) {
         // 非重新查詢發生的頁碼變動才執行呼叫查詢 (Call query will only be executed if the page number is changed without re-query)
         emit('do-search', offset, limit, order, sort);
       }
@@ -813,7 +821,7 @@ export default defineComponent({
      * 上一頁 (Previous page)
      */
     const prevPage = () => {
-      if (setting.page == 1) {
+      if (setting.page === 1) {
         // 如果是第一頁，不予執行 (If it is the first page, it will not be executed)
         return false;
       }
@@ -857,17 +865,8 @@ export default defineComponent({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const stringFormat = (template: string, ...args: any[]) => {
       return template.replace(/{(\d+)}/g, (match, number) => {
-        return typeof args[number] != 'undefined' ? args[number] : match;
+        return typeof args[number] !== 'undefined' ? args[number] : match;
       });
-    };
-
-    // Call 「is-finished」 Method
-    const callIsFinished = () => {
-      if (localTable.value) {
-        const localElement = localTable.value.querySelectorAll('.is-rows-el');
-        emit('is-finished', localElement);
-      }
-      emit('get-now-page', setting.page);
     };
 
     // Data rows for grouping (Default-mode only)
@@ -970,7 +969,7 @@ export default defineComponent({
 }
 
 .vtl-asc {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZ0lEQVQ4y2NgGLKgquEuFxBPAGI2ahhWCsS/gDibUoO0gPgxEP8H4ttArEyuQYxAPBdqEAxPBImTY5gjEL9DM+wTENuQahAvEO9DMwiGdwAxOymGJQLxTyD+jgWDxCMZRsEoGAVoAADeemwtPcZI2wAAAABJRU5ErkJggg==);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZ0lEQVQ4y2NgGLKgquEuFxBPAGI2ahhWCsS/gDibUoO0gPgxEP8H4ttArEyuQYxAPBdqEAxPBImTY5gjEL9DM+wTENuQahAvEO9DMwiGdwAxOymGJQLxTyD+jgWDxCMZRsEoGAVoAADeemwtPcZI2wAAAABJRU5ErkJggg===);
 }
 
 .vtl-desc {

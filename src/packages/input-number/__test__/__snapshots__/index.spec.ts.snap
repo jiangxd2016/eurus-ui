@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`EInputNumber > EInputNumber snapshot 1`] = `
-"<div class=\\"e-input-number\\">
+"<div class=\\"eu-input-number\\">
   <div><input type=\\"number\\"></div>
 </div>"
 `;

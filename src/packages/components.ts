@@ -16,6 +16,6 @@ export * from './date-picker';
 export * from './avatar';
 
 export * from './carousel';
-// export * from './table';
 export * from './pagination';
-// export * from './tabs';
+export * from './tabs';
+// export * from './table';

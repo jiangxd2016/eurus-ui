@@ -8,7 +8,7 @@ export interface TreeNode extends Required<TreeOption> {
   rawNode: TreeOption;
   children: TreeNode[];
   isLeaf: boolean;
-  label?: string;
+  label: string | number;
 }
 export interface TreeOption {
   label?: Key;

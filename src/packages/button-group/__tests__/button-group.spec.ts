@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import ButtonGroup from '../src/index.vue';
+import ButtonGroup from '../src/button-group';
 
 const AXIOM = '日后再来';
 

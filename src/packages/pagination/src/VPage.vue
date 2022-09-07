@@ -13,6 +13,7 @@
 </template>
 
 <script lang="ts">
+import type { PropType } from 'vue';
 import { defineComponent, computed } from 'vue';
 import Icon from '../../icons';
 export default defineComponent({
@@ -20,7 +21,7 @@ export default defineComponent({
   components: { Icon },
   props: {
     page: {
-      type: Number,
+      type: Number as PropType<number>,
       default: null,
     },
     current: {

@@ -61,8 +61,8 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const itemReact = reactive<ICarouselItem[]>([]);
     const rootRef = ref<HTMLDivElement>();
-    const offsetWidth = ref<number>();
-    const offsetHeight = ref<number>();
+    const offsetWidth = ref<number>(0);
+    const offsetHeight = ref<number>(0);
     const activeIndex = ref<number>(0);
     const oldActiveIndex = ref<number>(0);
     const timerSign = ref<any>(null);
@@ -158,21 +158,21 @@ export default defineComponent({
       oldActiveIndex.value = activeIndex.value;
     }
 
-    // methods
-    function raSetActiveItem(targetIndex: number) {
-      setTheOldActiveIndex();
-      activeIndex.value = targetIndex;
-    }
+    // // methods
+    // function raSetActiveItem(targetIndex: number) {
+    //   setTheOldActiveIndex();
+    //   activeIndex.value = targetIndex;
+    // }
 
-    function raPrev() {
-      setTheOldActiveIndex();
-      activeIndex.value--;
-    }
+    // function raPrev() {
+    //   setTheOldActiveIndex();
+    //   activeIndex.value--;
+    // }
 
-    function raNext() {
-      setTheOldActiveIndex();
-      activeIndex.value++;
-    }
+    // function raNext() {
+    //   setTheOldActiveIndex();
+    //   activeIndex.value++;
+    // }
 
     provide<ICarouselProvide>(CAROUSEL_ITEM_PROVIDE_TOKEN, {
       offsetHeight,
