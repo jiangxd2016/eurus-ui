@@ -34,7 +34,7 @@
 
 - ✅ 使用 [Vitest](http://vitest.dev/) 进行单元和组件测试
 
-- 🦾 TypeScript, 当然
+- 🦾 TypeScript
 
 - ☁️ 零配置部署 Netlify
 

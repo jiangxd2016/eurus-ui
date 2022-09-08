@@ -1,6 +1,6 @@
 import type { PropType } from 'vue';
 import { provide, toRefs, watch, reactive, defineComponent } from 'vue';
-import TreeNode from './node.vue';
+import TreeNode from './treeNode';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
 import './style.scss';
@@ -103,32 +103,32 @@ export default defineComponent({
     // 格式化数据
     const formatData = (data: any, tid?: string) => {
       data
-          && data.forEach((item: TreeList) => {
-            const newItem = JSON.parse(JSON.stringify(item));
-            delete newItem.children;
-            // 异步加载时，当前项没有设置lazy属性时也为true，
-            const hasChild
-              = (item.children && item.children.length > 0)
-              || (props.lazy && item.hasChild !== false);
-            let checked = {};
-            if (props.showCheckbox) {
-              // 添加选中属性
-              checked = { checked: false, someChecked: false };
-            }
-            // 如果没有id时，根据label自动生成一个
-            if (!newItem.id) {
-              newItem.id = getRandom(item.label);
-            }
-            state.dataList.push(
-              Object.assign({}, checked, newItem, {
-                tid,
-                hasChild
-              })
-            );
-            if (hasChild) {
-              formatData(item.children, newItem.id);
-            }
-          });
+        && data.forEach((item: TreeList) => {
+          const newItem = JSON.parse(JSON.stringify(item));
+          delete newItem.children;
+          // 异步加载时，当前项没有设置lazy属性时也为true，
+          const hasChild
+            = (item.children && item.children.length > 0)
+            || (props.lazy && item.hasChild !== false);
+          let checked = {};
+          if (props.showCheckbox) {
+            // 添加选中属性
+            checked = { checked: false, someChecked: false };
+          }
+          // 如果没有id时，根据label自动生成一个
+          if (!newItem.id) {
+            newItem.id = getRandom(item.label);
+          }
+          state.dataList.push(
+            Object.assign({}, checked, newItem, {
+              tid,
+              hasChild
+            })
+          );
+          if (hasChild) {
+            formatData(item.children, newItem.id);
+          }
+        });
     };
     provide(`${prefixCls}CheckboxChange`, checkboxChange);
     watch(
@@ -200,10 +200,10 @@ export default defineComponent({
     };
     expose({ getValue });
 
-    return ()=>(
+    return () => (
       <div class={`${prefixCls}`}>
-      <TreeNode onToggle={toggle} />
-    </div>
+        <TreeNode onToggle={toggle} />
+      </div>
     );
   }
 });

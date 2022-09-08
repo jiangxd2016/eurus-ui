@@ -143,10 +143,10 @@ const iconList = {
   doubleRight: '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M9.094 4.781L7.688 6.22l9.78 9.78l-9.78 9.781l1.406 1.438L20.313 16zm7 0L14.687 6.22L24.47 16l-9.782 9.781l1.407 1.438L27.312 16z"></path></svg>',
   pageFirst: '<svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M14 16L24 6l1.4 1.4l-8.6 8.6l8.6 8.6L24 26zM8 4h2v24H8z"></path></svg>',
   pageLast: '<svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M18 16L8 26l-1.4-1.4l8.6-8.6l-8.6-8.6L8 6zm4-12h2v24h-2z"></path></svg>',
-  doubleDot:`<svg viewBox="0 0 8 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+  doubleDot: `<svg viewBox="0 0 8 2" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M2.23975 1C2.23975 1.55556 1.7953 2 1.23975 2C0.684191 2 0.239746 1.55556 0.239746 1C0.239746 0.444444 0.684191 0 1.23975 0C1.7953 0 2.23975 0.444444 2.23975 1ZM7.57308 1C7.57308 1.55556 7.12863 2 6.57308 2C6.01752 2 5.57308 1.55556 5.57308 1C5.57308 0.444444 6.01752 0 6.57308 0C7.12863 0 7.57308 0.444444 7.57308 1Z" fill="#BBBBBB"/>
   </svg>
   `,
-  playFilledAlt:'<svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M7 28a1 1 0 0 1-1-1V5a1 1 0 0 1 1.482-.876l20 11a1 1 0 0 1 0 1.752l-20 11A1 1 0 0 1 7 28Z"></path></svg>'
+  triangleRightFill: '<svg width="1em" height="1em" viewBox="0 0 256 256"><path fill="currentColor" d="m181.7 133.7l-80 80A8.3 8.3 0 0 1 96 216a8.5 8.5 0 0 1-3.1-.6A8 8 0 0 1 88 208V48a8 8 0 0 1 4.9-7.4a8.4 8.4 0 0 1 8.8 1.7l80 80a8.1 8.1 0 0 1 0 11.4Z"></path></svg>'
 };
 export default iconList;

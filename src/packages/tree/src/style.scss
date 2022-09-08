@@ -15,7 +15,7 @@
     &.has-child {
       cursor: pointer;
 
-      i {
+      .icon {
         opacity: 1;
         visibility: visible;
       }
@@ -26,7 +26,8 @@
     }
   }
 
-  .icon-down {
+  .icon {
+    opacity: 0;
     transform: rotate(0deg);
     transition: all 0.3s;
 

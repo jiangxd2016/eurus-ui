@@ -1,3 +1,9 @@
-import Transition from './Transition.vue';
+import type { App } from 'vue';
+import ETree from './Transition';
 
-export { Transition };
+ETree.install = (app: App) => {
+  app.component(ETree.name, ETree);
+};
+
+export { ETree };
+export default ETree;

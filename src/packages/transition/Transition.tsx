@@ -1,15 +1,7 @@
-<!-- https://segmentfault.com/q/1010000011359250 -->
-<template>
-  <transition v-bind="collapseTransitionProps">
-    <slot />
-  </transition>
-</template>
-
-<script lang="ts">
 import type { TransitionProps } from 'vue';
-
+import { h, defineComponent, Transition } from 'vue';
 const elTransition
-    = '0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out';
+  = '0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out';
 const collapseTransitionProps: TransitionProps = {
   onBeforeEnter(_el: Element) {
     const el = _el as HTMLElement;
@@ -82,12 +74,8 @@ const collapseTransitionProps: TransitionProps = {
   }
 };
 
-export default {
-  functional: true,
-  setup() {
-    return {
-      collapseTransitionProps
-    };
+export default defineComponent({
+  render(ctx: any) {
+    return h(Transition, collapseTransitionProps, ctx.$slots.default);
   }
-};
-</script>
+});
