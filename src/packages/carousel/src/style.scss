@@ -1,5 +1,8 @@
-@import '../../../scss/variables';
-$button-prefix-cls: $prefix + -button;
+.e-carousel {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
 .e-carousel__carousel-item {
   left: 0;
@@ -10,16 +13,10 @@ $button-prefix-cls: $prefix + -button;
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.e-carousel__carousel-item.is-animating {
-  transition: transform 0.4s ease-in-out;
-}
-
-.e-carousel {
-  position: relative;
-  box-sizing: border-box;
-  overflow: hidden;
+  &.is-animating {
+    transition: transform 0.4s ease-in-out;
+  }
 }
 
 .e-carousel__arrow {
@@ -95,14 +92,12 @@ $button-prefix-cls: $prefix + -button;
   background-color: #ffffff;
 }
 
-.carousel-arrow-left-enter-from,
-.carousel-arrow-left-leave-active {
+.carousel-arrow-left-enter-from, .carousel-arrow-left-leave-active {
   transform: translateY(-50%) translateX(-10px);
   opacity: 0;
 }
 
-.carousel-arrow-right-enter-from,
-.carousel-arrow-right-leave-active {
+.carousel-arrow-right-enter-from, .carousel-arrow-right-leave-active {
   transform: translateY(-50%) translateX(10px);
   opacity: 0;
 }

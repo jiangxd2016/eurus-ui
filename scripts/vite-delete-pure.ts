@@ -16,9 +16,9 @@ export default function viteDeletePurePlugin(): Plugin {
       // read file，reg replace，write file
       const outputDir = viteConfig.build.outDir;
       const output = dirname + '/' + outputDir + '/eurus-ui.mjs';
-      const mjs = fs.readFileSync(output, 'utf-8');
-      const css = mjs.replace(/(<?=\r|\n|).*(@__PURE__).*\\*(?=\\r|\n|)/g, '');
-      fs.writeFileSync(output, css);
+      // const mjs = fs.readFileSync(output, 'utf-8');
+      // const css = mjs.replace(/(<?=\r|\n|).*(@__PURE__).*\\*(?=\\r|\n|)/g, '');
+      // fs.writeFileSync(output, css);
     }
   };
 }
