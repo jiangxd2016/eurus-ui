@@ -1,7 +1,6 @@
 import { defineComponent, inject } from 'vue';
-import './style.scss';
 export default defineComponent({
-  name: 'EuTabPane',
+  name: 'ETabPane',
   props: {
     className: String,
     label: String,

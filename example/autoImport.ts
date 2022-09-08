@@ -32,7 +32,7 @@ function getSideEffectsLegacy(
   if (names === 'dateRangePicker' || names === 'date-range-picker') {
     names = 'date-picker';
   }
-  if (names === 'carousel-item') {
+  if (names === 'carousel-item' || names === 'tabs-pane') {
     return [];
   }
   if (importStyle === 'sass') {

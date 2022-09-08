@@ -1,6 +1,4 @@
-import type {
-  PropType
-} from 'vue';
+import type { PropType } from 'vue';
 import {
   defineComponent,
   ref,
@@ -12,6 +10,7 @@ import {
   watch
 } from 'vue';
 import RenderSlot from './renderSlot';
+import './style.scss';
 
 const tabspProps = {
   modelValue: {
@@ -33,7 +32,7 @@ const tabspProps = {
   } // 显示关闭标签
 };
 /**
- *     (e: ', index: string): void;
+ * (e: ', index: string): void;
   (e: 'change', props: string, index: number): void;
  */
 export default defineComponent({
@@ -89,8 +88,8 @@ export default defineComponent({
     const scrollInit = () => {
       nextTick(() => {
         if (['top', 'bottom'].includes(props.tabPosition)) {
-          const width = tabsEl.value.offsetWidth; // 可视宽
-          const width2 = tabsTabEl.value.offsetWidth; // 实际宽
+          const width = tabsEl.value?.offsetWidth; // 可视宽
+          const width2 = tabsTabEl.value?.offsetWidth; // 实际宽
           isScroll.value = width <= width2;
           tabsWidth.value = width;
         }
@@ -98,9 +97,9 @@ export default defineComponent({
     };
     const prevNext = (type: number) => {
       if (['top', 'bottom'].includes(props.tabPosition)) {
-        const scrollWidth = tabsScrollEl.value.offsetWidth;
+        const scrollWidth = tabsScrollEl.value?.offsetWidth;
         const sw = Math.abs(scrollWidth - 100); // 每次滚动的距离为可见宽减100左右
-        const width2 = tabsTabEl.value.offsetWidth; // 实际宽
+        const width2 = tabsTabEl.value?.offsetWidth; // 实际宽
         let w = 0;
         if (type) {
           if (nextDisabled.value) {
