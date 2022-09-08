@@ -3,37 +3,21 @@
     <ul>
       <li v-for="item in dataTree" :key="item.id">
         <span
-          class="tree-box"
-          :class="{ 'has-child': item.hasChild, 'selected': selected(item) }"
+          class="tree-box" :class="{ 'has-child': item.hasChild, 'selected': selected(item) }"
           @click.stop="slideToggle(item)"
         >
-          <i
-            :class="{ 'open-child': item.open, [`${prefixCls}-icon`]: true }"
-            class="icon-down"
-          />
+          <Icon size="14" class="icon-down" :class="{ 'open-child': item.open, [`${prefixCls}-icon`]: true }" name="playFilledAlt" />
           <ECheckbox
-            v-if="state.showCheckbox"
-            v-model="item.checked"
-            :class="{ 'some-select': item.someChecked }"
-            @click.stop=""
-            @change="checkboxChange(item)"
+            v-if="state.showCheckbox" v-model="item.checked" :class="{ 'some-select': item.someChecked }"
+            @click.stop="" @change="checkboxChange(item)"
           />
           <span class="tree-label">{{ item.label }}</span>
           <span v-if="state.lazy && item.hasChild" class="lazy-loading">
-            <Loading
-              :key="item.id"
-              :model-value="item.id === state.loadingId"
-            />
+            <Loading :key="item.id" :model-value="item.id === state.loadingId" />
           </span>
           <NodeContent :data="item" />
         </span>
-        <tree-node
-          v-if="item.hasChild"
-          v-show="item.open"
-          :key="item.id"
-          :tid="item.id"
-          @toggle="slideToggleChild"
-        />
+        <node v-if="item.hasChild" v-show="item.open" :key="item.id" :tid="item.id" @toggle="slideToggleChild" />
       </li>
     </ul>
   </v-transition>
@@ -44,7 +28,8 @@ import { inject, computed, reactive, nextTick } from 'vue';
 import vTransition from '../../transition/Transition.vue';
 import Loading from '../../loading';
 import { ECheckbox } from '../../checkbox';
-import NodeContent from './nodeContent.vue';
+import NodeContent from './content';
+import Icon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 interface TreeList {
   id: string;

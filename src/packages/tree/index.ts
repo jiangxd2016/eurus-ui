@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import ETree from './src/Tree.vue';
+import ETree from './src/tree';
 
 ETree.install = (app: App) => {
   app.component(ETree.name, ETree);

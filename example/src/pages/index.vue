@@ -7,32 +7,35 @@
       <ETabsPane label="定时任务补偿">同是天涯沦落人，相逢何必曾相识</ETabsPane>
     </ETabs>
 
-    <ETree :data="data" />
+    <ETree v-model="value" :data="data" />
   </div>
 </template>
 
 <script setup lang="ts">
 const tabsIndex = ref('tab-4');
 
+const value = ref('gd');
 const data = [
   {
+    id: 'gd',
     label: '广东',
     children: [
       {
+        id: 'gz',
         label: '广州',
         children: [
-          { label: '天河区' },
-          { label: '白云区' },
-          { label: '越秀区' },
-          { label: '海珠区' }
+          { id: 'th', label: '天河区' },
+          { id: 'by', label: '白云区' },
+          { id: 'yx', label: '越秀区' },
+          { id: 'hz', label: '海珠区' }
         ]
       },
-      { label: '深圳' },
-      { label: '东莞' },
-      { label: '佛山' }
+      { id: 'sz', label: '深圳' },
+      { id: 'dg', label: '东莞' },
+      { id: 'fs', label: '佛山' }
     ]
   },
-  { label: '广西' },
-  { label: '北京' }
+  { id: 'gx', label: '广西' },
+  { id: 'bj', label: '北京' }
 ];
 </script>

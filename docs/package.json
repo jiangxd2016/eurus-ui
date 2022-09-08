@@ -13,13 +13,13 @@
     "lint": "eslint --fix \"*.{ts,tsx,js,vue}\""
   },
   "dependencies": {
-    "vue": "^3.2.38"
+    "vue": "^3.2.39"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.7",
     "@iconify-json/ph": "^1.1.2",
     "@types/klaw-sync": "^6.0.1",
-    "@types/node": "^18.7.15",
+    "@types/node": "^18.7.16",
     "@unocss/reset": "^0.45.18",
     "@vitejs/plugin-vue": "^3.1.0",
     "eslint": "^8.23.0",

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="vtl vtl-card">
     <div v-if="title" class="vtl-card-title">{{ title }}</div>
     <div class="vtl-card-body">
@@ -1203,4 +1203,4 @@ tr {
 .ml-2 {
   margin-left: 0.5rem;
 }
-</style>
+</style> -->

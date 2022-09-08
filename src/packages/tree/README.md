@@ -8,28 +8,29 @@
 <template>
   <ak-tree :data="data" />
 </template>
+
 <script setup>
-  const data = [
-    {
-      label: '广东',
-      children: [
-        {
-          label: '广州',
-          children: [
-            { label: '天河区' },
-            { label: '白云区' },
-            { label: '越秀区' },
-            { label: '海珠区' }
-          ]
-        },
-        { label: '深圳' },
-        { label: '东莞' },
-        { label: '佛山' }
-      ]
-    },
-    { label: '广西' },
-    { label: '北京' }
-  ]
+const data = [
+  {
+    label: '广东',
+    children: [
+      {
+        label: '广州',
+        children: [
+          { label: '天河区' },
+          { label: '白云区' },
+          { label: '越秀区' },
+          { label: '海珠区' }
+        ]
+      },
+      { label: '深圳' },
+      { label: '东莞' },
+      { label: '佛山' }
+    ]
+  },
+  { label: '广西' },
+  { label: '北京' }
+];
 </script>
 
 ```
@@ -42,29 +43,30 @@
 <template>
   <ak-tree :data="data" />
 </template>
+
 <script setup>
-  const data = [
-    {
-      label: '广东',
-      open: true,
-      children: [
-        {
-          label: '广州',
-          children: [
-            { label: '天河区' },
-            { label: '白云区' },
-            { label: '越秀区' },
-            { label: '海珠区' }
-          ]
-        },
-        { label: '深圳' },
-        { label: '东莞' },
-        { label: '佛山' }
-      ]
-    },
-    { label: '广西' },
-    { label: '北京' }
-  ]
+const data = [
+  {
+    label: '广东',
+    open: true,
+    children: [
+      {
+        label: '广州',
+        children: [
+          { label: '天河区' },
+          { label: '白云区' },
+          { label: '越秀区' },
+          { label: '海珠区' }
+        ]
+      },
+      { label: '深圳' },
+      { label: '东莞' },
+      { label: '佛山' }
+    ]
+  },
+  { label: '广西' },
+  { label: '北京' }
+];
 </script>
 
 ```
@@ -75,37 +77,38 @@
 
 ```vue demo
 <template>
-  <p
-    >当前选中值：{{ value }}
-    <ak-tree :data="data" v-model="value" />
+  <p>
+    当前选中值：{{ value }}
+    <ak-tree v-model="value" :data="data" />
   </p>
 </template>
+
 <script setup>
-  import { ref } from 'vue'
-  const value = ref('gd')
-  const data = [
-    {
-      id: 'gd',
-      label: '广东',
-      children: [
-        {
-          id: 'gz',
-          label: '广州',
-          children: [
-            { id: 'th', label: '天河区' },
-            { id: 'by', label: '白云区' },
-            { id: 'yx', label: '越秀区' },
-            { id: 'hz', label: '海珠区' }
-          ]
-        },
-        { id: 'sz', label: '深圳' },
-        { id: 'dg', label: '东莞' },
-        { id: 'fs', label: '佛山' }
-      ]
-    },
-    { id: 'gx', label: '广西' },
-    { id: 'bj', label: '北京' }
-  ]
+import { ref } from 'vue';
+const value = ref('gd');
+const data = [
+  {
+    id: 'gd',
+    label: '广东',
+    children: [
+      {
+        id: 'gz',
+        label: '广州',
+        children: [
+          { id: 'th', label: '天河区' },
+          { id: 'by', label: '白云区' },
+          { id: 'yx', label: '越秀区' },
+          { id: 'hz', label: '海珠区' }
+        ]
+      },
+      { id: 'sz', label: '深圳' },
+      { id: 'dg', label: '东莞' },
+      { id: 'fs', label: '佛山' }
+    ]
+  },
+  { id: 'gx', label: '广西' },
+  { id: 'bj', label: '北京' }
+];
 </script>
 
 ```
@@ -117,47 +120,48 @@
 ```vue demo
 <template>
   <p>
-    <ak-tree :data="data" @click="click" :lazy="true" />
+    <ak-tree :data="data" :lazy="true" @click="click" />
   </p>
 </template>
+
 <script setup>
-  const data = [
-    { id: 'gd', label: '广东' },
-    { id: 'gx', label: '广西' },
-    { id: 'bj', label: '北京' },
-    { id: 'sh', label: '上海', hasChild: false } // hasChild=false表示没有下级可加载
-  ]
-  const click = (item, resolve) => {
-    if (!item.isLoad) {
-      // false表示还没展开加载过
-      let newData = []
-      if (item.id === 'gd') {
-        // 根据当前项的相关参数请求下一级
-        newData = [
-          { label: '天河区', hasChild: false },
-          { label: '白云区', hasChild: false }
-        ]
-      }
-      if (item.id === 'gx') {
-        // 根据当前项的相关参数请求下一级
-        newData = [
-          { label: '桂林市', hasChild: false },
-          { label: '南宁市', hasChild: false }
-        ]
-      }
-      if (item.id === 'bj') {
-        // 根据当前项的相关参数请求下一级
-        newData = [
-          { label: '朝阳区', hasChild: false },
-          { label: '东城区', hasChild: false }
-        ]
-      }
-      // 模拟请求数据
-      setTimeout(() => {
-        resolve && resolve(newData)
-      }, 5000)
+const data = [
+  { id: 'gd', label: '广东' },
+  { id: 'gx', label: '广西' },
+  { id: 'bj', label: '北京' },
+  { id: 'sh', label: '上海', hasChild: false } // hasChild=false表示没有下级可加载
+];
+const click = (item, resolve) => {
+  if (!item.isLoad) {
+    // false表示还没展开加载过
+    let newData = [];
+    if (item.id === 'gd') {
+      // 根据当前项的相关参数请求下一级
+      newData = [
+        { label: '天河区', hasChild: false },
+        { label: '白云区', hasChild: false }
+      ];
     }
+    if (item.id === 'gx') {
+      // 根据当前项的相关参数请求下一级
+      newData = [
+        { label: '桂林市', hasChild: false },
+        { label: '南宁市', hasChild: false }
+      ];
+    }
+    if (item.id === 'bj') {
+      // 根据当前项的相关参数请求下一级
+      newData = [
+        { label: '朝阳区', hasChild: false },
+        { label: '东城区', hasChild: false }
+      ];
+    }
+    // 模拟请求数据
+    setTimeout(() => {
+      resolve && resolve(newData);
+    }, 5000);
   }
+};
 </script>
 
 ```
@@ -168,35 +172,35 @@
 
 ```vue demo
 <template>
-  <ak-tree :data="data" :showCheckbox="true" @change="change" />
+  <ak-tree :data="data" :show-checkbox="true" @change="change" />
 </template>
-<script setup>
-  const data = [
-    {
-      label: '广东',
-      children: [
-        {
-          label: '广州',
-          children: [
-            { label: '天河区' },
-            { label: '白云区' },
-            { label: '越秀区' },
-            { label: '海珠区' }
-          ]
-        },
-        { label: '深圳' },
-        { label: '东莞' },
-        { label: '佛山' }
-      ]
-    },
-    { label: '广西' },
-    { label: '北京' }
-  ]
-  const change = (obj) => {
-    alert(JSON.stringify(obj))
-  }
-</script>
 
+<script setup>
+const data = [
+  {
+    label: '广东',
+    children: [
+      {
+        label: '广州',
+        children: [
+          { label: '天河区' },
+          { label: '白云区' },
+          { label: '越秀区' },
+          { label: '海珠区' }
+        ]
+      },
+      { label: '深圳' },
+      { label: '东莞' },
+      { label: '佛山' }
+    ]
+  },
+  { label: '广西' },
+  { label: '北京' }
+];
+const change = (obj) => {
+  alert(JSON.stringify(obj));
+};
+</script>
 
 ```
 
@@ -214,31 +218,32 @@
     </template>
   </ak-tree>
 </template>
+
 <script setup>
-  const data = [
-    {
-      label: '广东',
-      children: [
-        {
-          label: '广州',
-          children: [
-            { label: '天河区' },
-            { label: '白云区' },
-            { label: '越秀区' },
-            { label: '海珠区' }
-          ]
-        },
-        { label: '深圳' },
-        { label: '东莞' },
-        { label: '佛山' }
-      ]
-    },
-    { label: '广西' },
-    { label: '北京' }
-  ]
-  const click = (obj) => {
-    alert(JSON.stringify(obj))
-  }
+const data = [
+  {
+    label: '广东',
+    children: [
+      {
+        label: '广州',
+        children: [
+          { label: '天河区' },
+          { label: '白云区' },
+          { label: '越秀区' },
+          { label: '海珠区' }
+        ]
+      },
+      { label: '深圳' },
+      { label: '东莞' },
+      { label: '佛山' }
+    ]
+  },
+  { label: '广西' },
+  { label: '北京' }
+];
+const click = (obj) => {
+  alert(JSON.stringify(obj));
+};
 </script>
 
 ```
@@ -248,7 +253,7 @@
 ```vue demo
 <template>
   <div>
-    <ak-tree :data="data" :showCheckbox="true" ref="treeEl">
+    <ak-tree ref="treeEl" :data="data" :show-checkbox="true">
       <template #default="slot">
         <ak-button-group style="margin-left: 5px">
           <ak-button type="text" @click.stop="click(slot)">添加</ak-button>
@@ -257,46 +262,46 @@
         </ak-button-group>
       </template>
     </ak-tree>
-    <p></p>
+    <p />
     <ak-button-group>
       <ak-button @click="getValue()">取值</ak-button>
       <ak-button @click="getValue(true)">取值(label)</ak-button>
     </ak-button-group>
   </div>
 </template>
+
 <script setup>
-  import { ref } from 'vue'
+import { ref } from 'vue';
 
-  const treeEl = ref()
-  const data = [
-    {
-      label: '广东',
-      children: [
-        {
-          label: '广州',
-          children: [
-            { label: '天河区' },
-            { label: '白云区' },
-            { label: '越秀区' },
-            { label: '海珠区' }
-          ]
-        },
-        { label: '深圳' },
-        { label: '东莞' },
-        { label: '佛山' }
-      ]
-    },
-    { label: '广西' },
-    { label: '北京' }
-  ]
-  const click = (obj) => {
-    alert(JSON.stringify(obj))
-  }
-  const getValue = (bool) => {
-    console.log(treeEl.value.getValue(bool))
-  }
+const treeEl = ref();
+const data = [
+  {
+    label: '广东',
+    children: [
+      {
+        label: '广州',
+        children: [
+          { label: '天河区' },
+          { label: '白云区' },
+          { label: '越秀区' },
+          { label: '海珠区' }
+        ]
+      },
+      { label: '深圳' },
+      { label: '东莞' },
+      { label: '佛山' }
+    ]
+  },
+  { label: '广西' },
+  { label: '北京' }
+];
+const click = (obj) => {
+  alert(JSON.stringify(obj));
+};
+const getValue = (bool) => {
+  console.log(treeEl.value.getValue(bool));
+};
 </script>
-
 
 ```
 
