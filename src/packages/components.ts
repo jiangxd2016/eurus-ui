@@ -18,4 +18,5 @@ export * from './avatar';
 export * from './carousel';
 export * from './pagination';
 export * from './tabs';
+export * from './tree';
 // export * from './table';

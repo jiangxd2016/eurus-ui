@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import ETabs from './src/tabs';
-import ETabsPane from './src/tabPane';
+import ETabsPane from './src/tabPanes';
 
 ETabs.install = (app: App) => {
   app.component(ETabs.name, ETabs);

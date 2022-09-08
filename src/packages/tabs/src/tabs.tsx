@@ -164,7 +164,7 @@ export default defineComponent({
           {
             isScroll.value && <a
               class={['tabs-prev icon-arrow', prevDisabled.value && 'disabled']}
-              on-click={prevNext(0)}
+              onClick={()=>prevNext(0)}
             />
           }
 
@@ -178,7 +178,7 @@ export default defineComponent({
                     'disabled': item.disabled,
                     'active': getShow(item, index),
                   }}
-                  on-click={tabsClick(item, index)}
+                  onClick={()=>tabsClick(item, index)}
                 >
                   {item.label ? <span>
                     {item.label}
@@ -186,7 +186,7 @@ export default defineComponent({
                       (item.closable || props.closable)
                       && <i
                         class="icon-close"
-                        on-click={delClick(index, item.closable || props.closable)}
+                        onClick={()=>delClick(index, item.closable || props.closable)}
                       />
                     }
                   </span> : item.slots?.label && <span >
@@ -198,7 +198,7 @@ export default defineComponent({
             </div>
           </div>
           {
-            isScroll.value && <a class={['tabs-next icon-arrow', nextDisabled.value && 'disabled']} on-click={prevNext(1)}
+            isScroll.value && <a class={['tabs-next icon-arrow', nextDisabled.value && 'disabled']} onClick={()=>prevNext(1)}
             />
           }
 
