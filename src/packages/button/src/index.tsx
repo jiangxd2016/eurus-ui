@@ -1,9 +1,8 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
-import { renderSlot, defineComponent, reactive } from 'vue';
+import { renderSlot, defineComponent } from 'vue';
 import { EIcon } from '../../icons';
 import { getPrefixCls } from '../../_utils/global-config';
 import { getClassNames } from './btn.style';
-import './style.scss';
 
 export type Size = 'sx' | 'sm' | 'md' | 'lg' | 'xl';
 export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';

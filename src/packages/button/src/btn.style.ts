@@ -47,10 +47,10 @@ export function getClassNames(prefix: string) {
   return ({ color, size, state, shape }: { color: keyof typeof btn.color; size: keyof typeof btn.size; state: keyof typeof btn.state; shape: keyof typeof btn.shape })=>({
     [prefix]: btn.default,
     ...toRefs({
-      color: btn.color[color] || '',
-      size: btn.size[size] || '',
-      state: btn.state[state] || '',
-      shape: btn.shape[shape] || '',
+      [prefix + '.' + color]: btn.color[color] || '',
+      [prefix + '--' + size]: btn.size[size] || '',
+      [prefix + '.' + state]: btn.state[state] || '',
+      [prefix + '.' + shape]: btn.shape[shape] || '',
     })
   });
 

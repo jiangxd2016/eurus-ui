@@ -1,7 +1,7 @@
 <template>
   <div relative font-sans h-screen p2 text="center gray-700 dark:gray-200">
-    <EButton @click="onDialogClick">open dialog</EButton>
-    <EButton @click="onDrawerClick">open drawer</EButton>
+    <EButton color="primary" size="xl" @click="onDialogClick">open dialog</EButton>
+    <EButton color="warning" size="lg" @click="onDrawerClick">open drawer</EButton>
     <EButton @click="onswitchrClick">open drawer</EButton>
     <EButton @click="link">link</EButton>
 
