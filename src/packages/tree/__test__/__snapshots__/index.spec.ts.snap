@@ -1,3 +1,9 @@
 // Vitest Snapshot v1
 
-exports[`ETree > ETree snapshot 1`] = `"<div></div>"`;
+exports[`ETree > ETree snapshot 1`] = `
+"<div class=\\"eu-tree\\">
+  <transition-stub>
+    <ul></ul>
+  </transition-stub>
+</div>"
+`;

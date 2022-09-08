@@ -1,18 +1,19 @@
 // Vitest Snapshot v1
 
 exports[`ETabs > ETabs snapshot 1`] = `
-"<div class=\\"eu-tabs\\">
-  <div class=\\"eu-tabs__wrap\\">
-    <div class=\\"eu-tabs__scroll\\">
-      <div class=\\"eu-tabs__nav\\">
-        <!---->
-      </div>
-      <div style=\\"font-size: 24px; display: flex;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\" width=\\"1em\\" height=\\"1em\\" viewBox=\\"0 0 32 32\\">
-          <path fill=\\"currentColor\\" d=\\"m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z\\"></path>
-        </svg></div>
+"<div class=\\"eu-tabs top\\">
+  <!---->
+  <div class=\\"tabs-nav\\">
+    <slot name=\\"leftExtra\\"></slot>
+    <!---->
+    <!---->
+    <div class=\\"tabs-scroll\\">
+      <div class=\\"tabs-tab\\" style=\\"transform: translateX(-0px);\\"></div>
     </div>
-    <div class=\\"eu-tab-bar\\"></div>
+    <!---->
+    <!---->
   </div>
-  <div class=\\"eu-tabs__content\\"></div>
+  <!---->
+  <div class=\\"tabs-content\\"></div>
 </div>"
 `;
