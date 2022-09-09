@@ -20,6 +20,8 @@ declare module '@vue/runtime-core' {
     EDrawer: typeof import('eurus-ui')['EDrawer'];
     EInput: typeof import('eurus-ui')['EInput'];
     EPagination: typeof import('eurus-ui')['EPagination'];
+    ERadio: typeof import('eurus-ui')['ERadio'];
+    ERadioGroup: typeof import('eurus-ui')['ERadioGroup'];
     ERate: typeof import('eurus-ui')['ERate'];
     ESwitch: typeof import('eurus-ui')['ESwitch'];
     ETab: typeof import('eurus-ui')['ETab'];

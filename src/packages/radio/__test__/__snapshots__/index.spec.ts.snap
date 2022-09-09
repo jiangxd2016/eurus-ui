@@ -1,3 +1,8 @@
 // Vitest Snapshot v1
 
-exports[`ERadio > ERadio snapshot 1`] = `"<div></div>"`;
+exports[`ERadio > ERadio snapshot 1`] = `
+"<label class=\\"eu-radio\\"><span><span class=\\"radio-inner\\"></span>
+  <!---->
+  <!----></span>
+</label>"
+`;

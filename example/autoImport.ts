@@ -32,6 +32,9 @@ function getSideEffectsLegacy(
   if (names === 'dateRangePicker' || names === 'date-range-picker') {
     names = 'date-picker';
   }
+  if (names === 'radio-group') {
+    names = 'radio';
+  }
   if (names === 'carousel-item' || names === 'tabs-pane') {
     return [];
   }
@@ -59,7 +62,7 @@ export function EurusUIReslove(options: EurusUIResolverOptions = {}): any {
     {
       type: 'component',
       resolve: (name: string) => {
-        if (!name || name === 'step' ) {
+        if (!name || name === 'step') {
           return;
         }
         if (name.match(/^(E[A-Z]|n-[a-z])/)) {
