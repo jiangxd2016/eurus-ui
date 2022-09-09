@@ -6,7 +6,7 @@
 
 ```vue demo
 <template>
-  <ak-tree :data="data" />
+  <e-tree :data="data" />
 </template>
 
 <script setup>
@@ -41,7 +41,7 @@ const data = [
 
 ```vue demo
 <template>
-  <ak-tree :data="data" />
+  <e-tree :data="data" />
 </template>
 
 <script setup>
@@ -79,7 +79,7 @@ const data = [
 <template>
   <p>
     当前选中值：{{ value }}
-    <ak-tree v-model="value" :data="data" />
+    <e-tree v-model="value" :data="data" />
   </p>
 </template>
 
@@ -120,7 +120,7 @@ const data = [
 ```vue demo
 <template>
   <p>
-    <ak-tree :data="data" :lazy="true" @click="click" />
+    <e-tree :data="data" :lazy="true" @click="click" />
   </p>
 </template>
 
@@ -172,7 +172,7 @@ const click = (item, resolve) => {
 
 ```vue demo
 <template>
-  <ak-tree :data="data" :show-checkbox="true" @change="change" />
+  <e-tree :data="data" :show-checkbox="true" @change="change" />
 </template>
 
 <script setup>
@@ -208,15 +208,15 @@ const change = (obj) => {
 
 ```vue demo
 <template>
-  <ak-tree :data="data">
+  <e-tree :data="data">
     <template #default="slot">
-      <ak-button-group style="margin-left: 5px">
-        <ak-button type="text" @click.stop="click(slot)">添加</ak-button>
-        <ak-button type="text" @click.stop="click(slot)">修改</ak-button>
-        <ak-button type="text" @click.stop="click(slot)">删除</ak-button>
-      </ak-button-group>
+      <e-button-group style="margin-left: 5px">
+        <e-button type="text" @click.stop="click(slot)">添加</e-button>
+        <e-button type="text" @click.stop="click(slot)">修改</e-button>
+        <e-button type="text" @click.stop="click(slot)">删除</e-button>
+      </e-button-group>
     </template>
-  </ak-tree>
+  </e-tree>
 </template>
 
 <script setup>
@@ -253,20 +253,20 @@ const click = (obj) => {
 ```vue demo
 <template>
   <div>
-    <ak-tree ref="treeEl" :data="data" :show-checkbox="true">
+    <e-tree ref="treeEl" :data="data" :show-checkbox="true">
       <template #default="slot">
-        <ak-button-group style="margin-left: 5px">
-          <ak-button type="text" @click.stop="click(slot)">添加</ak-button>
-          <ak-button type="text" @click.stop="click(slot)">修改</ak-button>
-          <ak-button type="text" @click.stop="click(slot)">删除</ak-button>
-        </ak-button-group>
+        <e-button-group style="margin-left: 5px">
+          <e-button type="text" @click.stop="click(slot)">添加</e-button>
+          <e-button type="text" @click.stop="click(slot)">修改</e-button>
+          <e-button type="text" @click.stop="click(slot)">删除</e-button>
+        </e-button-group>
       </template>
-    </ak-tree>
+    </e-tree>
     <p />
-    <ak-button-group>
-      <ak-button @click="getValue()">取值</ak-button>
-      <ak-button @click="getValue(true)">取值(label)</ak-button>
-    </ak-button-group>
+    <e-button-group>
+      <e-button @click="getValue()">取值</e-button>
+      <e-button @click="getValue(true)">取值(label)</e-button>
+    </e-button-group>
   </div>
 </template>
 

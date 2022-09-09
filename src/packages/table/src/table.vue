@@ -1003,7 +1003,7 @@ export default defineComponent({
   -ms-flex-direction: column;
   flex-direction: column;
   min-width: 0;
-  word-wrap: break-word;
+  word-wrap: bree-word;
   background-color: #fff;
   background-clip: border-box;
 }

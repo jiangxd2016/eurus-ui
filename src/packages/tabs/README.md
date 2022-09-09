@@ -6,12 +6,12 @@
 
 ```vue demo
 <template>
-  <ak-tabs>
-    <ak-tab-pane label="用户管理">人生若只如初见，何事秋风悲画扇</ak-tab-pane>
-    <ak-tab-pane label="配置管理">众里寻他千百度，蓦然回首，那人却在，灯火阑珊处</ak-tab-pane>
-    <ak-tab-pane label="角色管理">问世间情为何物，直教生死相许</ak-tab-pane>
-    <ak-tab-pane label="定时任务补偿">同是天涯沦落人，相逢何必曾相识</ak-tab-pane>
-  </ak-tabs>
+  <e-tabs>
+    <e-tab-pane label="用户管理">人生若只如初见，何事秋风悲画扇</e-tab-pane>
+    <e-tab-pane label="配置管理">众里寻他千百度，蓦然回首，那人却在，灯火阑珊处</e-tab-pane>
+    <e-tab-pane label="角色管理">问世间情为何物，直教生死相许</e-tab-pane>
+    <e-tab-pane label="定时任务补偿">同是天涯沦落人，相逢何必曾相识</e-tab-pane>
+  </e-tabs>
 </template>
 ```
 
@@ -22,10 +22,10 @@
 ```vue demo
 <template>
   <akTabs>
-    <ak-tab-pane label="用户管理">人生若只如初见，何事秋风悲画扇</ak-tab-pane>
-    <ak-tab-pane label="配置管理" :disabled="true">众里寻他千百度，蓦然回首，那人却在，灯火阑珊处</ak-tab-pane>
-    <ak-tab-pane label="角色管理">问世间情为何物，直教生死相许</ak-tab-pane>
-    <ak-tab-pane label="定时任务补偿">同是天涯沦落人，相逢何必曾相识</ak-tab-pane>
+    <e-tab-pane label="用户管理">人生若只如初见，何事秋风悲画扇</e-tab-pane>
+    <e-tab-pane label="配置管理" :disabled="true">众里寻他千百度，蓦然回首，那人却在，灯火阑珊处</e-tab-pane>
+    <e-tab-pane label="角色管理">问世间情为何物，直教生死相许</e-tab-pane>
+    <e-tab-pane label="定时任务补偿">同是天涯沦落人，相逢何必曾相识</e-tab-pane>
   </akTabs>
 </template>
 ```
@@ -37,13 +37,13 @@
 ```vue demo
 <template>
   <akTabs>
-    <ak-tab-pane>
-     <template #label><i class="icon-user"></i> 用户管理</template>
-    用户管理内容
-    </ak-tab-pane>
-    <ak-tab-pane label="配置管理">配置管理</ak-tab-pane>
-    <ak-tab-pane label="角色管理">角色管理</ak-tab-pane>
-    <ak-tab-pane label="定时任务补偿">定时任务补偿</ak-tab-pane>
+    <e-tab-pane>
+      <template #label><i class="icon-user" /> 用户管理</template>
+      用户管理内容
+    </e-tab-pane>
+    <e-tab-pane label="配置管理">配置管理</e-tab-pane>
+    <e-tab-pane label="角色管理">角色管理</e-tab-pane>
+    <e-tab-pane label="定时任务补偿">定时任务补偿</e-tab-pane>
   </akTabs>
 </template>
 ```
@@ -55,25 +55,26 @@
 ```vue demo
 <template>
   <div>
-    <ak-tabs v-model="tab2">
-      <ak-tab-pane label="用户管理" name="tab1">用户管理</ak-tab-pane>
-      <ak-tab-pane label="配置管理" name="tab2">配置管理</ak-tab-pane>
-      <ak-tab-pane label="角色管理" name="tab3">角色管理</ak-tab-pane>
-      <ak-tab-pane label="定时任务补偿" name="tab4">定时任务补偿</ak-tab-pane>
-    </ak-tabs>
+    <e-tabs v-model="tab2">
+      <e-tab-pane label="用户管理" name="tab1">用户管理</e-tab-pane>
+      <e-tab-pane label="配置管理" name="tab2">配置管理</e-tab-pane>
+      <e-tab-pane label="角色管理" name="tab3">角色管理</e-tab-pane>
+      <e-tab-pane label="定时任务补偿" name="tab4">定时任务补偿</e-tab-pane>
+    </e-tabs>
     <p>只设置value值</p>
-    <ak-tabs v-model="tab3">
-      <ak-tab-pane label="用户管理">用户管理</ak-tab-pane>
-      <ak-tab-pane label="配置管理">配置管理</ak-tab-pane>
-      <ak-tab-pane label="角色管理">角色管理</ak-tab-pane>
-      <ak-tab-pane label="定时任务补偿">定时任务补偿</ak-tab-pane>
-    </ak-tabs>
+    <e-tabs v-model="tab3">
+      <e-tab-pane label="用户管理">用户管理</e-tab-pane>
+      <e-tab-pane label="配置管理">配置管理</e-tab-pane>
+      <e-tab-pane label="角色管理">角色管理</e-tab-pane>
+      <e-tab-pane label="定时任务补偿">定时任务补偿</e-tab-pane>
+    </e-tabs>
   </div>
 </template>
+
 <script setup>
-  import { ref } from 'vue'
-  const tab2 = ref('tab2')
-  const tab3 = ref('tab-2')
+import { ref } from 'vue';
+const tab2 = ref('tab2');
+const tab3 = ref('tab-2');
 </script>
 
 ```
@@ -85,10 +86,10 @@
 ```vue demo
 <template>
   <akTabs>
-    <ak-tab-pane label="用户管理">用户管理</ak-tab-pane>
-    <ak-tab-pane label="配置管理">配置管理</ak-tab-pane>
-    <ak-tab-pane label="角色管理">角色管理</ak-tab-pane>
-    <ak-tab-pane label="定时任务补偿">定时任务补偿</ak-tab-pane>
+    <e-tab-pane label="用户管理">用户管理</e-tab-pane>
+    <e-tab-pane label="配置管理">配置管理</e-tab-pane>
+    <e-tab-pane label="角色管理">角色管理</e-tab-pane>
+    <e-tab-pane label="定时任务补偿">定时任务补偿</e-tab-pane>
     <template #content>这里可以加其他内容</template>
   </akTabs>
 </template>
@@ -101,30 +102,31 @@
 ```vue demo
 <template>
   <div>
-    <ak-tabs :show-content="false" @change="change">
-      <ak-tab-pane label="用户管理" name="user" />
-      <ak-tab-pane label="配置管理" />
-      <ak-tab-pane label="角色管理" name="role"
-        >角色管理，这里不需要有内容</ak-tab-pane
-      >
-      <ak-tab-pane label="定时任务补偿">定时任务补偿</ak-tab-pane>
-    </ak-tabs>
+    <e-tabs :show-content="false" @change="change">
+      <e-tab-pane label="用户管理" name="user" />
+      <e-tab-pane label="配置管理" />
+      <e-tab-pane label="角色管理" name="role">
+        角色管理，这里不需要有内容
+      </e-tab-pane>
+      <e-tab-pane label="定时任务补偿">定时任务补偿</e-tab-pane>
+    </e-tabs>
     <div class="ajax-content">
       ajax content
       <p>{{ content }}</p>
     </div>
   </div>
 </template>
-<script setup>
-  import { ref } from 'vue'
 
-  const content = ref('')
-  const change = (obj, index) => {
-    console.log(obj)
-    content.value = `当前点击选项的name值：${obj.name || ''}；label为：${
+<script setup>
+import { ref } from 'vue';
+
+const content = ref('');
+const change = (obj, index) => {
+  console.log(obj);
+  content.value = `当前点击选项的name值：${obj.name || ''}；label为：${
       obj.label
-    }`
-  }
+    }`;
+};
 </script>
 
 ```
@@ -136,19 +138,20 @@
 ```vue demo
 <template>
   <div>
-    <ak-tabs :beforeLeave="beforeLeave">
-      <ak-tab-pane label="用户管理">用户管理</ak-tab-pane>
-      <ak-tab-pane label="配置管理">配置管理</ak-tab-pane>
-      <ak-tab-pane label="角色管理">角色管理</ak-tab-pane>
-      <ak-tab-pane label="定时任务补偿">定时任务补偿</ak-tab-pane>
-    </ak-tabs>
+    <e-tabs :before-leave="beforeLeave">
+      <e-tab-pane label="用户管理">用户管理</e-tab-pane>
+      <e-tab-pane label="配置管理">配置管理</e-tab-pane>
+      <e-tab-pane label="角色管理">角色管理</e-tab-pane>
+      <e-tab-pane label="定时任务补偿">定时任务补偿</e-tab-pane>
+    </e-tabs>
   </div>
 </template>
+
 <script setup>
-  const beforeLeave = (item) => {
-    console.log(item)
-    return false
-  }
+const beforeLeave = (item) => {
+  console.log(item);
+  return false;
+};
 </script>
 
 ```
@@ -157,26 +160,26 @@
 ```vue demo
 <template>
   <div>
-    <ak-radio-group v-model="position" :options="options" />
-    <ak-tabs :tab-position="position">
-      <ak-tab-pane label="用户管理">用户管理</ak-tab-pane>
-      <ak-tab-pane label="配置管理">配置管理</ak-tab-pane>
-      <ak-tab-pane label="角色管理">角色管理</ak-tab-pane>
-      <ak-tab-pane label="定时任务补偿">定时任务补偿</ak-tab-pane>
-    </ak-tabs>
+    <e-radio-group v-model="position" :options="options" />
+    <e-tabs :tab-position="position">
+      <e-tab-pane label="用户管理">用户管理</e-tab-pane>
+      <e-tab-pane label="配置管理">配置管理</e-tab-pane>
+      <e-tab-pane label="角色管理">角色管理</e-tab-pane>
+      <e-tab-pane label="定时任务补偿">定时任务补偿</e-tab-pane>
+    </e-tabs>
   </div>
 </template>
-<script setup lang="ts">
-  import { ref } from 'vue'
-  const position = ref('top')
-  const options = [
-    { label: 'top', value: 'top' },
-    { label: 'bottom', value: 'bottom' },
-    { label: 'left', value: 'left' },
-    { label: 'right', value: 'right' }
-  ]
-</script>
 
+<script setup lang="ts">
+import { ref } from 'vue';
+const position = ref('top');
+const options = [
+  { label: 'top', value: 'top' },
+  { label: 'bottom', value: 'bottom' },
+  { label: 'left', value: 'left' },
+  { label: 'right', value: 'right' }
+];
+</script>
 
 ```
 
@@ -186,20 +189,21 @@
 ```vue demo
 <template>
   <div style="width:500px">
-    <ak-tabs>
-      <ak-tab-pane label="用户管理">用户管理</ak-tab-pane>
-      <ak-tab-pane label="配置管理">配置管理</ak-tab-pane>
-      <ak-tab-pane label="角色管理">角色管理</ak-tab-pane>
-      <ak-tab-pane label="定时任务补偿">定时任务补偿</ak-tab-pane>
-      <ak-tab-pane label="用户管理2">用户管理2</ak-tab-pane>
-      <ak-tab-pane label="配置管理2">配置管理2</ak-tab-pane>
-      <ak-tab-pane label="角色管理2">角色管理2</ak-tab-pane>
-      <ak-tab-pane label="定时任务补偿2">定时任务补偿2</ak-tab-pane>
-    </ak-tabs>
+    <e-tabs>
+      <e-tab-pane label="用户管理">用户管理</e-tab-pane>
+      <e-tab-pane label="配置管理">配置管理</e-tab-pane>
+      <e-tab-pane label="角色管理">角色管理</e-tab-pane>
+      <e-tab-pane label="定时任务补偿">定时任务补偿</e-tab-pane>
+      <e-tab-pane label="用户管理2">用户管理2</e-tab-pane>
+      <e-tab-pane label="配置管理2">配置管理2</e-tab-pane>
+      <e-tab-pane label="角色管理2">角色管理2</e-tab-pane>
+      <e-tab-pane label="定时任务补偿2">定时任务补偿2</e-tab-pane>
+    </e-tabs>
   </div>
 </template>
+
 <script setup>
-  
+
 </script>
 
 ```
@@ -208,14 +212,15 @@
 ```vue demo
 <template>
   <div>
-    <ak-tabs :closable="true">
-      <ak-tab-pane label="用户管理">用户管理</ak-tab-pane>
-      <ak-tab-pane label="配置管理">配置管理</ak-tab-pane>
-      <ak-tab-pane label="角色管理">角色管理</ak-tab-pane>
-      <ak-tab-pane label="定时任务补偿">定时任务补偿</ak-tab-pane>
-    </ak-tabs>
+    <e-tabs :closable="true">
+      <e-tab-pane label="用户管理">用户管理</e-tab-pane>
+      <e-tab-pane label="配置管理">配置管理</e-tab-pane>
+      <e-tab-pane label="角色管理">角色管理</e-tab-pane>
+      <e-tab-pane label="定时任务补偿">定时任务补偿</e-tab-pane>
+    </e-tabs>
   </div>
 </template>
+
 <script setup>
 
 </script>

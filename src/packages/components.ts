@@ -19,4 +19,5 @@ export * from './carousel';
 export * from './pagination';
 export * from './tabs';
 export * from './tree';
+export * from './tooltip';
 // export * from './table';

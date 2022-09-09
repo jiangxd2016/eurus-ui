@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     ETabPane: typeof import('eurus-ui')['ETabPane'];
     ETabs: typeof import('eurus-ui')['ETabs'];
     ETabsPane: typeof import('eurus-ui')['ETabsPane'];
+    ETooltip: typeof import('eurus-ui')['ETooltip'];
     ETree: typeof import('eurus-ui')['ETree'];
     EUpload: typeof import('eurus-ui')['EUpload'];
     Footer: typeof import('./src/components/Footer.vue')['default'];
