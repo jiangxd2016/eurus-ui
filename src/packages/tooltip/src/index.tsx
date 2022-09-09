@@ -9,8 +9,8 @@ import {
   Transition
 } from 'vue';
 import './style.scss';
-import { getPrefixCls } from '@/packages/_utils/global-config';
 import { getOffset, getWindow } from '@/packages/_utils/dom';
+import { getPrefixCls } from '@/packages/_utils/global-config';
 const prefixCls = getPrefixCls('tooltip');
 
 interface CssStyle {
@@ -21,35 +21,36 @@ interface CssStyle {
   top?: string;
   right?: string;
 }
+
+const props = {
+  content: { type: String, default: null },
+  direction: { default: 'top-left', type: String },
+  maxWidth: { default: 500, type: Number },
+  delay: { default: 0, type: Number },
+  always: { type: Boolean, default: false },
+  appendToBody: { type: Boolean, default: true },
+  transition: { default: 'fade', type: String },
+  x: { default: 0, type: Number },
+  y: { default: 0, type: Number },
+  className: { type: String, default: null },
+  trigger: { default: 'hover', type: String },
+  style: { type: Object, default: () => { } },
+  disabled: { type: Boolean, default: false }
+};
 export default defineComponent({
   name: 'ETooltip',
-  props: {
-    content: { type: String, default: null },
-    direction: { default: 'top-left', type: String },
-    maxWidth: { default: 500, type: Number },
-    delay: { default: 0, type: Number },
-    always: { type: Boolean, default: false },
-    appendToBody: { type: Boolean, default: true },
-    transition: { default: 'fade', type: String },
-    x: { default: 0, type: Number },
-    y: { default: 0, type: Number },
-    className: { type: String, default: null },
-    trigger: { default: 'hover', type: String },
-    style: { type: Object, default: ()=>{} },
-    disabled: { type: Boolean, default: false }
-  },
+  props,
   emits: ['click'],
   setup(props, { slots, emit, expose }) {
-
+    const el = ref();
     const tooltipEl = ref();
+    const hasAppendToBody = ref(false);
+
     const state = reactive({
       clearTime: 0,
       visible: false,
       tooltipStyle: {}
     });
-    const el = ref();
-    const hasAppendToBody = ref(false);
-    // const instance = getCurrentInstance()
     const translate = (px: number) => {
       // 通过transform平移标签时，如平移的单位为非偶数，会出现字体模糊，这里强制取偶
       if (px % 2 === 0) {
@@ -59,7 +60,6 @@ export default defineComponent({
         return px + 1;
       }
     };
-
     const setPosition = () => {
       const space = props.y + 8; // 当前标签与提示语之间的距离
       const style: CssStyle = {
@@ -117,7 +117,6 @@ export default defineComponent({
       }
       state.tooltipStyle = Object.assign({}, props.style, style);
     };
-
     const mouseLeave = () => {
       state.clearTime = window.setTimeout(() => {
         state.visible = false;
@@ -128,9 +127,6 @@ export default defineComponent({
     };
     const toolTipLeave = () => {
       mouseLeave();
-      // 同时移除事件
-      tooltipEl.value.removeEventListener('mouseenter', toolTipEnter, false);
-      tooltipEl.value.removeEventListener('mouseleave', toolTipLeave, false);
     };
     const mouseClick = (e: MouseEvent) => {
       if (!props.always) {
@@ -143,7 +139,6 @@ export default defineComponent({
       }
       emit('click', state.visible);
     };
-
     const mouseEnter = () => {
       if (props.disabled) {
         return;
@@ -152,11 +147,6 @@ export default defineComponent({
         setPosition();
         window.clearTimeout(state.clearTime);
         state.visible = true;
-        // 提示内容上添加鼠标事件
-        if (props.delay && tooltipEl.value) {
-          tooltipEl.value.addEventListener('mouseenter', toolTipEnter, false);
-          tooltipEl.value.addEventListener('mouseleave', toolTipLeave, false);
-        }
       }
     };
 
@@ -185,9 +175,6 @@ export default defineComponent({
         }
         if (props.trigger === 'click') {
           document.addEventListener('click', mouseClick, false);
-        } else {
-          el.value.addEventListener('mouseenter', mouseEnter, false);
-          el.value.addEventListener('mouseleave', mouseLeave, false);
         }
         if (props.appendToBody && tooltipEl.value) {
           document.body.append(tooltipEl.value);
@@ -198,29 +185,25 @@ export default defineComponent({
     onBeforeUnmount(() => {
       if (props.trigger === 'click') {
         document.removeEventListener('click', mouseClick, false);
-      } else {
-        el.value.removeEventListener('mouseenter', mouseEnter, false);
-        el.value.removeEventListener('mouseleave', mouseLeave, false);
       }
       if (props.appendToBody && tooltipEl.value) {
         tooltipEl.value.remove();
       }
     });
-    const getIf = (slot: any) => {
+    const getIf = (slot: any): boolean => {
       if (props.disabled) {
         // 不可用状态
         return false;
       }
       return props.content || slot.content;
     };
-
     // 提供一个关闭的方法
     const close = () => {
       state.visible = false;
     };
     expose({ close });
     return () => (
-      <span ref={el} class={`${prefixCls}-box`}>
+      <span ref={el} class={`${prefixCls}-box`} onMouseenter={mouseEnter} onMouseleave={mouseLeave}>
         {slots?.default && slots.default()}
         <Transition name={`tooltip-${props.transition}`}>
           {
@@ -229,13 +212,12 @@ export default defineComponent({
               ref={tooltipEl}
               class={[`${prefixCls}`, props.direction, props.className]}
               style={state.tooltipStyle}
+              onMouseenter={toolTipEnter}
+              onMouseleave={toolTipLeave}
               onClick={e => e.stopPropagation()}
             >
               <i class="arrow" />
-
-              {props.content
-                ? <span v-html={props.content} />
-                : (slots?.content && slots.content())}
+              {props.content ? <span v-html={props.content} /> : (slots?.content && slots.content())}
             </div>
           }
         </Transition>

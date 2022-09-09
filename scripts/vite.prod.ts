@@ -16,6 +16,7 @@ const config: InlineConfig = {
     sourcemap: true,
     target: 'modules',
     emptyOutDir: false,
+    minify: false,
     rollupOptions: {
       input: ['src/index.ts'],
       output: [

@@ -1,3 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`ETooltip > ETooltip snapshot 1`] = `"<span class=\\"eu-tooltip-box\\"><!----><transition-stub><!----></transition-stub></span>"`;
+exports[`ETooltip > ETooltip snapshot 1`] = `
+"<span class=\\"eu-tooltip-box\\"><!----><transition-stub><div class=\\"eu-tooltip top-left\\" style=\\"display: none;\\"><i class=\\"arrow\\"></i><span>fXXK </span></div>
+</transition-stub></span>"
+`;
