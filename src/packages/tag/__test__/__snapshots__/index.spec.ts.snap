@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`ETag > ETag snapshot 1`] = `"<span class=\\"eu-tag\\"><!----><!----></span>"`;

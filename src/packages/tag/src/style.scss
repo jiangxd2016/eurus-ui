@@ -1,0 +1,68 @@
+.eu-tag {
+  border: 1px solid #afd6fd;
+  background-color: #ebf5ff;
+  color: #1989fa;
+  display: inline-block;
+  height: 28px;
+  padding: 0 10px;
+  line-height: 26px;
+  font-size: 12px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  + .eu-tag {
+    margin-left: 10px;
+  }
+
+  .icon-close {
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-left: 10px;
+    transform: scale(0.8);
+    vertical-align: middle;
+    line-height: 16px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &.tag-success {
+    border: 1px solid #67faad;
+    background-color: #f1fff8;
+    color: #07c160;
+  }
+
+  &.tag-warning {
+    border: 1px solid #ffbb9d;
+    background-color: #fff4ef;
+    color: #ff976a;
+  }
+
+  &.tag-danger {
+    border: 1px solid #fb96a2;
+    background-color: #fee5e8;
+    color: #ee0a24;
+  }
+
+  &.tag-large {
+    height: 32px;
+    line-height: 30px;
+  }
+
+  &.tag-small {
+    height: 24px;
+    line-height: 22px;
+    padding: 0 8px;
+  }
+
+  &.tag-mini {
+    height: 20px;
+    line-height: 18px;
+    padding: 0 5px;
+  }
+}

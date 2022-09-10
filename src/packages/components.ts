@@ -24,3 +24,5 @@ export * from './upload';
 export * from './input-number';
 export * from './date-picker';
 export * from './radio';
+export * from  "./select-down"
+export * from "./tag"
