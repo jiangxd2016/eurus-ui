@@ -2,6 +2,7 @@ import type { ButtonHTMLAttributes, PropType } from 'vue';
 import { renderSlot, defineComponent, reactive } from 'vue';
 import { EIcon } from '../../icons';
 import { getPrefixCls } from '../../_utils/global-config';
+import { isEmpty } from '@/packages/_utils';
 import './style.scss';
 
 export type Size = 'sx' | 'sm' | 'md' | 'lg' | 'xl';
@@ -86,8 +87,9 @@ export default defineComponent({
 
       emit('click', e);
     };
+    const ComponentType = isEmpty(props.native) ? 'a' : 'button' ;
     return () => (
-      <button
+      <ComponentType
         class={[
           `${prefix} ${prefix}--${props.type} bg-${props.type} ${props.type === 'default' ? 'text-black' : 'text-white'
           }`,
@@ -103,7 +105,7 @@ export default defineComponent({
         )}
         {slots?.icons && renderSlot(slots, 'icon')}
         {slots?.default && <span>{slots?.default?.()}</span>}
-      </button>
+      </ComponentType>
     );
   },
 });

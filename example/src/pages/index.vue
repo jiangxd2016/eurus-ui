@@ -29,6 +29,10 @@
     <div>
       <e-textarea v-model="textarea1" placeholder="placeholder" />
     </div>
+
+    <e-upload :action="action" @success="success">
+      <e-button type="primary">图片上传</e-button>
+    </e-upload>
   </div>
 </template>
 
@@ -67,4 +71,11 @@ const value1 = ref(1);
 const value2 = ref('2');
 const value3 = ref('');
 const value4 = ref(value2.value);
+
+const action = 'http://localhost/upload/upload.php';
+
+// 更新上传的文件地址为服务器返回的地址，同时更新状态2＝上传成功
+const success = (res: any, callback: any) => {
+  callback(res.data, 2);
+};
 </script>
