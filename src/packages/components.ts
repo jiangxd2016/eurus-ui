@@ -28,3 +28,5 @@ export * from './select-down';
 export * from './select';
 export * from './tag';
 export * from './textarea';
+
+export * from './breadcrumb';
