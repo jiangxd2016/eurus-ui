@@ -6,16 +6,29 @@
       <e-radio-group v-model="state.radio1" :options="state.data1" @change="changeGroup" />
     </p>
     <div>
-    <e-tag>标签一</e-tag>
-    <e-tag type="success">标签二</e-tag>
-    <e-tag type="warning">标签三</e-tag>
-    <e-tag type="danger">标签四</e-tag>
-    <e-tag type="danger" color="#fff" bgColor="#c642e7" borderColor="#c642e7">自定样式</e-tag>
-  </div>
-  <e-select-down multiple v-model="modelValue" placeholder="placeholder">
-    <p>21311</p>
-    <p>基础用法</p>
-  </e-select-down>
+      <e-tag>标签一</e-tag>
+      <e-tag type="success">标签二</e-tag>
+      <e-tag type="warning">标签三</e-tag>
+      <e-tag type="danger">标签四</e-tag>
+      <e-tag type="danger" color="#fff" bg-color="#c642e7" border-color="#c642e7">自定样式</e-tag>
+    </div>
+    <e-select-down v-model="modelValue" multiple placeholder="placeholder">
+      <p>21311</p>
+      <p>基础用法</p>
+    </e-select-down>
+
+    <p>
+      <e-select v-model="value1" placeholder="请选择" :options="options" />
+    </p>
+    <p>
+      <e-select v-model="value2" placeholder="请选择" :options="options" />
+    </p>
+    <p>
+      <e-select v-model="value3" placeholder="禁用状态不能选择" :options="options" :disabled="true" />
+    </p>
+    <div>
+      <e-textarea v-model="textarea1" placeholder="placeholder" />
+    </div>
   </div>
 </template>
 
@@ -32,10 +45,26 @@ const state = reactive({
     { label: '禁用', value: 'a5', disabled: true }
   ]
 });
-const changeGroup = (value: any, item: any)=>{
+const changeGroup = (value: any, item: any) => {
 
 };
 
-
-const modelValue = ref([])
+const modelValue = ref([]);
+const textarea1 = ref('');
+const options = ref([
+  { label: '选项1', value: 1 },
+  { label: '选项2', value: '2' },
+  { label: '选项3', value: '3' },
+  { label: '选项4', value: '4', disabled: true },
+  { label: '选项5', value: '5' },
+  { label: '6' },
+  { label: '选项7', value: '7' },
+  { label: '选项8', value: '8' },
+  { label: '选项9', value: '9' },
+  { label: '选项10', value: '10', class: 'red' }
+]);
+const value1 = ref(1);
+const value2 = ref('2');
+const value3 = ref('');
+const value4 = ref(value2.value);
 </script>

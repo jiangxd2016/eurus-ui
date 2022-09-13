@@ -1,110 +1,87 @@
-import { defineComponent, ref, reactive, watch, computed, onMounted, nextTick, onBeforeUnmount, StyleValue, normalizeClass, unref } from "vue";
-import Tag from '@/packages/tag'
-import { getOffset, getWindow } from "@/packages/_utils/dom"
-import { getPrefixCls } from '@/packages/_utils/global-config'
-const prefixCls = getPrefixCls("select-down")
+import type { PropType, StyleValue } from 'vue';
+import { Transition, isRef, defineComponent, ref, reactive, watch, computed, onMounted, nextTick, onBeforeUnmount, normalizeClass, unref } from 'vue';
+import Tag from '@/packages/tag';
+import { getOffset, getWindow } from '@/packages/_utils/dom';
+import { getPrefixCls } from '@/packages/_utils/global-config';
 
 import './style.scss';
+import type { MaybeRef } from '@/packages/_utils';
+const prefixCls = getPrefixCls('select-down');
 
 export default defineComponent({
   name: 'ESelectDown',
   props: {
-    modelValue: null,
-    width: null,
+    modelValue: {
+      type: Array as PropType<MaybeRef<string[] | number[]>>,
+      default: () => []
+    },
+    width: String,
     multiple: { type: Boolean, default: false },
     collapseTags: { type: Boolean, default: false },
     clear: { type: Boolean, default: false },
     filterable: { type: Boolean, default: false },
-    size: null,
-    placeholder: null,
+    size: {
+      type: String as PropType<string>,
+      default: ''
+    },
+    placeholder: String,
     disabled: { type: Boolean, default: false },
     direction: { default: 0 },
-    downClass: { default: "" },
-    downStyle: null,
+    downClass: { default: '' },
+    downStyle: Object,
     appendToBody: { type: Boolean, default: false },
     downHeight: { default: 0 },
-    icon: { default: "arrow" },
+    icon: { default: 'arrow' },
     fixedIcon: { type: Boolean },
     isRange: { type: Boolean, default: false },
-    rangeSeparator: { default: "To" },
-    endPlaceholder: null
+    rangeSeparator: { default: 'To' },
+    endPlaceholder: String
   },
-  emits: ["update:modelValue", "blur", "toggleClick", "clear", "delete", "input", "focus"],
-  setup(__props, { slots, expose, emit: emits }) {
-    const props = __props;
+  emits: ['update:modelValue', 'blur', 'toggleClick', 'clear', 'delete', 'input', 'focus'],
+  setup(props, { slots, expose, emit: emits }) {
     const el = ref();
     const selectDown = ref();
+    const modelValue = ref(isRef(props.modelValue) ? props.modelValue.value : props.modelValue);
     const state = reactive({
-      valueLabel: ref(JSON.parse(JSON.stringify(props.modelValue || []))),
+      valueLabel: ref(modelValue),
       visible: false,
       appendStyle: {
-        top: "",
-        minWidth: "",
-        bottom: "",
-        left: ""
+        top: '',
+        minWidth: '',
+        bottom: '',
+        left: ''
       },
       direction2: props.direction,
       stopPropagation: false,
-      searchValueM: ""
+      searchValueM: ''
     });
     watch(() => props.modelValue, (val) => {
       state.valueLabel = JSON.parse(JSON.stringify(val));
     });
     const disabledOk = computed(() => {
       // return getFormDisabled(props.disabled);
-      return false
+      return false;
     });
     const inputCls = computed(() => {
       const cls = [`${prefixCls}-input-control`];
-      if (props.size) {
+      if (+props.size > 0) {
         cls.push(props.size);
       }
       if (disabledOk.value) {
-        cls.push("disabled");
+        cls.push('disabled');
       }
-      return cls.join(" ");
+      return cls.join(' ');
     });
-    const downToggle = (evt: any) => {
-      if (disabledOk.value) {
-        return;
-      }
-      state.visible = true;
-      nextTick(() => {
-        setPosition(evt);
-        setAppendToBodyStyle();
-      });
-      emits("toggleClick", state.visible, evt);
-      state.stopPropagation = true;
-      setTimeout(() => {
-        state.stopPropagation = false;
-      }, 50);
-    };
-    const selectControlClick = (evt: { stopPropagation: () => void; }) => {
-      if (state.visible && !props.filterable) {
-        slideUp(evt);
-        evt.stopPropagation();
-      }
-    };
-    const deleteText = (index: number) => {
-      state.valueLabel.splice(index, 1);
-      updateModel();
-      emits("delete", index);
-    };
-    const clearClick = (evt: { stopPropagation: () => void; }) => {
-      state.valueLabel = [];
-      updateModel();
-      emits("clear");
-      evt.stopPropagation();
-    };
+
     const slideUp = (evt: any) => {
       if (state.visible && !state.stopPropagation) {
-        evt && emits("toggleClick", false, evt);
+        evt && emits('toggleClick', false, evt);
         state.visible = false;
-        state.searchValueM = "";
+        state.searchValueM = '';
       }
     };
     const updateModel = () => {
-      emits("update:modelValue", state.valueLabel);
+      emits('update:modelValue', state.valueLabel);
     };
     const mouseEvent = (evt: Event, type: any, index: any) => {
       if (props.filterable) {
@@ -119,43 +96,43 @@ export default defineComponent({
       }
     };
     const inputInput = (e: Event, index?: number) => {
-      mouseEvent(e, "input", index);
+      mouseEvent(e, 'input', index);
     };
     const inputBlur = (e: Event, index?: number) => {
-      mouseEvent(e, "blur", index);
+      mouseEvent(e, 'blur', index);
     };
     const inputFocus = (e: Event, index?: number) => {
-      mouseEvent(e, "focus", index);
+      mouseEvent(e, 'focus', index);
     };
     const setAppendToBodyStyle = () => {
       const offset = getOffset(el.value);
       if (props.appendToBody) {
         const ww = getWindow();
         state.appendStyle = {
-          bottom: "auto",
-          minWidth: offset.width + "px",
-          left: offset.left + "px",
-          top: offset.top + offset.height + 8 + "px"
+          bottom: 'auto',
+          minWidth: offset.width + 'px',
+          left: offset.left + 'px',
+          top: offset.top + offset.height + 8 + 'px'
         };
         if (state.direction2 === 2) {
-          state.appendStyle.top = "auto";
-          state.appendStyle.bottom = ww.height - offset.top + "px";
+          state.appendStyle.top = 'auto';
+          state.appendStyle.bottom = ww.height - offset.top + 'px';
         }
       } else {
-        state.appendStyle.top = offset.height + 8 + "px";
-        state.appendStyle.bottom = "auto";
+        state.appendStyle.top = offset.height + 8 + 'px';
+        state.appendStyle.bottom = 'auto';
         if (state.direction2 === 2) {
-          state.appendStyle.top = "auto";
-          state.appendStyle.bottom = offset.height + 8 + "px";
+          state.appendStyle.top = 'auto';
+          state.appendStyle.bottom = offset.height + 8 + 'px';
         }
       }
     };
-    const setPosition = (evt: { clientY: any; }) => {
+    const setPosition = (evt: { clientY: any }) => {
       if (props.direction === 0) {
         state.direction2 = props.direction;
         const wh = document.documentElement.clientHeight || document.body.clientHeight;
         const clientY = evt.clientY;
-        let downMaxHeight = props.downHeight || selectDown.value.offsetHeight || 0;
+        const downMaxHeight = props.downHeight || selectDown.value.offsetHeight || 0;
         if (downMaxHeight > wh - clientY && clientY > downMaxHeight) {
           state.direction2 = 2;
         }
@@ -164,8 +141,8 @@ export default defineComponent({
     const downHeightStyle = computed(() => {
       if (props.downHeight) {
         return {
-          "max-height": props.downHeight + "px",
-          "overflow-y": "auto"
+          'max-height': props.downHeight + 'px',
+          'overflow-y': 'auto'
         };
       }
       return {};
@@ -175,18 +152,51 @@ export default defineComponent({
     });
     onMounted(() => {
       nextTick(() => {
-        document.addEventListener("click", slideUp);
+        document.addEventListener('click', slideUp);
         if (props.appendToBody) {
-          document.body.appendChild(selectDown.value);
+          document.body.append(selectDown.value);
         }
       });
     });
     onBeforeUnmount(() => {
-      document.removeEventListener("click", slideUp);
+      document.removeEventListener('click', slideUp);
       if (props.appendToBody && selectDown.value) {
-        document.body.removeChild(selectDown.value);
+        selectDown.value.remove();
       }
     });
+
+    const downToggle = (evt: any) => {
+      if (disabledOk.value) {
+        return;
+      }
+      state.visible = true;
+      nextTick(() => {
+        setPosition(evt);
+        setAppendToBodyStyle();
+      });
+      emits('toggleClick', state.visible, evt);
+      state.stopPropagation = true;
+      setTimeout(() => {
+        state.stopPropagation = false;
+      }, 50);
+    };
+    const selectControlClick = (evt: { stopPropagation: () => void }) => {
+      if (state.visible && !props.filterable) {
+        slideUp(evt);
+        evt.stopPropagation();
+      }
+    };
+    const deleteText = (index: number) => {
+      state.valueLabel.splice(index, 1);
+      updateModel();
+      emits('delete', index);
+    };
+    const clearClick = (evt: { stopPropagation: () => void }) => {
+      state.valueLabel = [];
+      updateModel();
+      emits('clear');
+      evt.stopPropagation();
+    };
     const setValue = (val: any) => {
       state.valueLabel = JSON.parse(JSON.stringify(val));
     };
@@ -197,13 +207,13 @@ export default defineComponent({
         class={{
           'is-down': state.visible,
           [prefixCls]: true,
-          disabled: disabledOk
+          'disabled': disabledOk
         }}
         style={{ width: props.width }}
         onClick={downToggle}
       >
         <div class="select-control" onClick={selectControlClick}>
-          {props.isRange && <div class={normalizeClass(["select-range", unref(inputCls)])}>
+          {props.isRange && <div class={normalizeClass(['select-range', unref(inputCls)])}>
             <input
               v-model={state.valueLabel[0]}
               readonly={!props.filterable}
@@ -225,14 +235,13 @@ export default defineComponent({
             />
           </div>}
           {
-            props.multiple ? <div class={normalizeClass([unref(inputCls), "multiple-text"])}>
+            props.multiple ? <div class={normalizeClass([unref(inputCls), 'multiple-text'])}>
               <ul placeholder={props.placeholder}>
                 {props.collapseTags ? [
                   state.valueLabel.length > 0 && <li >
                     <span v-text={state.valueLabel[0]}></span>
                     <i class="icon-error" on-click={() => deleteText(0)}></i>
-                  </li>
-                  ,
+                  </li>,
                   state.valueLabel.length > 1 && <li >
                     <Tag size="mini" type="info"> +{state.valueLabel.length}</Tag>
                   </li>
@@ -240,7 +249,7 @@ export default defineComponent({
                   return <li key={index}>
                     <span v-text={item}></span>
                     <i class="icon-error" on-click={() => deleteText(index)}></i>
-                  </li>
+                  </li>;
                 })}
 
                 {props.filterable && <li class="input">
@@ -256,8 +265,8 @@ export default defineComponent({
                 </li>}
 
               </ul>
-            </div> :
-              <input
+            </div>
+              : <input
                 v-model={state.valueLabel[0]}
                 readonly={!props.filterable}
                 placeholder="placeholder"
@@ -269,7 +278,7 @@ export default defineComponent({
               />
           }
           <span class="group-icon">
-            {props.clear && props.modelValue.length > 0 && <i
+            {props.clear && modelValue.value.length > 0 && <i
               class="icon-close"
               title="清空"
               onClick={clearClick}
@@ -279,7 +288,7 @@ export default defineComponent({
               class={{ down: state.visible && !props.fixedIcon, [`icon-${props.icon}`]: true }}></i >
           </span >
         </div >
-        <transition
+        <Transition
           name={state.direction2 === 2 ? 'slide-toggle-top' : 'slide-toggle'}
         >
           {state.visible && <div
@@ -298,8 +307,8 @@ export default defineComponent({
             <span class={{ 'is-range': props.isRange, 'down-arrow': true }}></span>
           </div >}
 
-        </transition >
-      </div >
+        </Transition >
+      </div >;
     };
   }
 });

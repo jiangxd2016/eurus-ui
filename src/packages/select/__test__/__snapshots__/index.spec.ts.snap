@@ -1,3 +1,12 @@
 // Vitest Snapshot v1
 
-exports[`ESelect > ESelect snapshot 1`] = `"<div></div>"`;
+exports[`ESelect > ESelect snapshot 1`] = `
+"<div class=\\"eu-select-down disabled\\" options=\\"\\" optionskey=\\"[object Object]\\" async=\\"false\\" emptytext=\\"无数据\\">
+  <div class=\\"select-control\\">
+    <!----><input readonly=\\"\\" placeholder=\\"placeholder\\" class=\\"eu-select-down-input-control\\"><span class=\\"group-icon\\"><!----><i class=\\"icon-arrow\\"></i></span>
+  </div>
+  <transition-stub>
+    <!---->
+  </transition-stub>
+</div>"
+`;
