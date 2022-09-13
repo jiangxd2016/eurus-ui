@@ -1,107 +1,95 @@
-@import '../../../scss/variables';
-
-/*
-** Breakpoints
-*/
-$xs: '375px';
-$sm: '600px';
-$sm: '600px';
-$md: '960px';
-$lg: '1264px';
-$xl: '1904px';
-
-/*
-** Black
-*/
-$black_00: #000000;
-$black_01: #333333;
-$black_02: #666666;
-
-/*
-** Grey
-*/
-$grey_01: #bbbbbb;
-$grey_02: #dedede;
-
-/*
-** Colors
-*/
-$active_color: #dcedff;
-
-.Page {
+.eu-page {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
-  margin: 0 2px;
-  color: $black_02;
-  background-color: transparent;
-  font-size: 14px;
-  border-radius: 3px;
-  box-sizing: border-box;
-  border-color: transparent;
-  cursor: pointer;
-  outline: 0;
-  user-select: none;
 
-  &:hover {
-    border: 1px solid $grey_02;
+  > div {
+    margin-right: 10px;
   }
 
-  &-active {
-    color: $black_01;
-    border: 1px solid $grey_02;
+  .page-list ul {
+    display: flex;
+
+    li {
+      padding: 0;
+      display: block;
+      height: 32px;
+      min-width: 32px;
+      line-height: 30px;
+      margin: 0 4px 0 0;
+      cursor: pointer;
+
+      a {
+        display: block;
+        border: 1px solid #dcdee0;
+        border-radius: 4px;
+        transition: all 0.5s;
+        text-align: center;
+
+        &:hover {
+          border-color: #1989fa;
+          color: #2d8cf0;
+        }
+
+        &.active {
+          border-color: #1989fa;
+          color: #fff;
+          background: #1989fa;
+        }
+
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        &.jump-prev {
+          font-size: 10px;
+
+          &:before {
+            content: "•••";
+          }
+
+          &:hover:before {
+            content: "<<";
+          }
+        }
+
+        &.jump-next {
+          font-size: 10px;
+
+          &:before {
+            content: "•••";
+          }
+
+          &:hover:before {
+            content: ">>";
+          }
+        }
+      }
+    }
   }
-}
 
-.DotsHolder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  margin: 0 2px;
-  box-sizing: border-box;
-}
+  .eu-input-control {
+    text-align: center;
+    width: 50px;
+    height: 32px;
+    line-height: 32px;
+    box-sizing: border-box;
+  }
 
-.Dots {
-  width: 8px;
-  height: 4px;
-  fill: $grey_01;
-}
+  .eu-select {
+    min-width: inherit;
 
-.Pagination {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
+    .eu-input-control {
+      width: 100px;
+    }
+  }
 
-.PaginationControl {
-  display: flex;
-  align-items: center;
-}
+  .total {
+    line-height: 32px;
 
-.Control {
-  position: relative;
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin: 0 2px;
-  fill: $grey_01;
-
-  &-active {
-    fill: $black_01;
-    cursor: pointer;
-    transition: fill 0.2s ease-in-out;
-
-    &:hover {
-      fill: $black_00;
-      transition: fill 0.2s ease-in-out;
+    span {
+      color: #1989fa;
     }
   }
 }

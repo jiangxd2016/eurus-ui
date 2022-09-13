@@ -3,7 +3,7 @@ import ESelect from '..';
 
 describe('ESelect', () => {
 
- it('ESelect snapshot', () => {
+  it('ESelect snapshot', () => {
     const wrapper = mount(ESelect);
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();

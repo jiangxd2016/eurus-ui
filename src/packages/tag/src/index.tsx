@@ -1,33 +1,33 @@
-import { defineComponent, ref, } from "vue";
-import { getPrefixCls } from '@/packages/_utils/global-config'
+import { defineComponent, ref, } from 'vue';
+import { getPrefixCls } from '@/packages/_utils/global-config';
+import './style.scss';
 const prefixCls = getPrefixCls('tag');
-import "./style.scss"
 export default defineComponent({
-  name:"ETag",
+  name: 'ETag',
   props: {
-    type: { default: "" },
+    type: { default: '' },
     closable: { type: Boolean, default: false },
-    color: { default: "" },
-    borderColor: { default: "" },
-    bgColor: { default: "" },
-    size: { default: "" }
+    color: { default: '' },
+    borderColor: { default: '' },
+    bgColor: { default: '' },
+    size: { default: '' }
   },
-  emits: ["click", "close"],
+  emits: ['click', 'close'],
   setup(props, { slots, emit: emits }) {
     const visible = ref(true);
     const closeClick = () => {
       visible.value = false;
-      emits("close");
+      emits('close');
     };
     const click = () => {
-      emits("click");
+      emits('click');
     };
     return () => <span
       v-show={visible.value}
       class={{
         [`${prefixCls}`]: true,
-        [`tag-` + props.type]: props.type,
-        [`tag-` + props.size]: props.size
+        ['tag-' + props.type]: props.type,
+        ['tag-' + props.size]: props.size
       }}
       style={{ background: props.bgColor, borderColor: props.borderColor, color: props.color }}
       onClick={click}
@@ -35,6 +35,6 @@ export default defineComponent({
       {slots?.default && slots.default()}
       {props.closable && <i class="icon-close" onClick={closeClick}></i>}
 
-    </span>
+    </span>;
   }
 });
