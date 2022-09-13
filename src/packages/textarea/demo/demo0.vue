@@ -1,5 +1,5 @@
 <template >
-  <e-textarea v-model="textarea1" placeholder="placeholder" />
+  <ETextarea v-model="textarea1" placeholder="placeholder" />
 </template>
 
 <script  setup>
