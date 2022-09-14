@@ -38,7 +38,7 @@ const ECarouselProps = {
   },
   interval: {
     type: Number,
-    default: 1000,
+    default: 3000,
   },
 
   loop: {

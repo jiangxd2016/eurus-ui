@@ -7,7 +7,15 @@
       <EStep title="步骤4" description="步骤4描述" />
     </ESteps> -->
     <p>
-      <e-pagination :total="50" :current="page1" />
+      <e-pagination
+        :total="50"
+        :current="page1"
+        :show-jumper="true"
+        :page-sizes="pageSizes"
+        :page-size="10"
+        :show-total="true"
+        @change-page-sizes="changePageSizes"
+      />
     </p>
     <p flex flex-center>
       <EAvatar size="sm">
@@ -102,6 +110,7 @@
 //     }, 1000);
 //   }, 1000);
 // }, 2000);
+
 import { ref } from 'vue';
 const router = useRouter();
 const loading = $ref(false);
@@ -133,4 +142,8 @@ const onDateRangeChange = (dateList: string[]) => {
 };
 
 const page1 = ref(1);
+const pageSizes = ref([10, 20, 30, 50]);
+const changePageSizes = (page) => {
+  // console.log(page);
+};
 </script>

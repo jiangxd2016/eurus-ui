@@ -1,13 +1,19 @@
 .e-input,
 .e-input-md {
+  height: 36px;
+  line-height: 36px;
+  border: 1px solid #dcdee0;
+  border-radius: 3px;
+  background: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 14px;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  transition: all 0.3s;
   font-size: 16px;
   color: #575757;
-  line-height: 20px;
-  padding: 8px 12px;
-  width: 300px;
-  background: #ffffff;
-  border: 1px solid #e5e5ea;
-  border-radius: 6px;
 
   &:hover {
     cursor: pointer;

@@ -1,3 +1,4 @@
+import type { PropType } from 'vue';
 import { defineComponent, computed, reactive, watch } from 'vue';
 
 import { EInput } from '@/packages/input';
@@ -13,7 +14,7 @@ const EPaginationProps = {
   pageSize: { default: 20 },
   showJumper: { type: Boolean },
   pagerCount: { default: 5 },
-  pageSizes: { default: () => [] },
+  pageSizes: { type: Array as PropType<number[]>, default: () => [] },
   showTotal: { type: Boolean },
   hideSinglePage: { type: Boolean },
   format: { type: Boolean }
@@ -139,7 +140,7 @@ export default defineComponent({
     return () => (
       <div v-show={!hidePage.value} class={[prefixCls]}>
         {
-          props.showTotal && <div class="total">共<span>{{ formatValue }}</span>条</div>
+          props.showTotal && <div class="total">共<span>{ formatValue.value }</span>条</div>
         }
         {
           props.pageSizes.length > 0 && <ESelect v-model={state.selectChange} options={selectOptions.value} />
@@ -194,7 +195,7 @@ export default defineComponent({
                 title={pageCount.value + ''}
                 class={{ active: state.active === pageCount.value }}
                 onClick={() => goTo(pageCount.value, state.active === pageCount.value)}
-              >{pageCount}</a >
+              >{pageCount.value}</a >
             </li>}
 
             <li>

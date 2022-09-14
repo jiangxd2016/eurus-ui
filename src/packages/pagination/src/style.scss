@@ -92,4 +92,17 @@
       color: #1989fa;
     }
   }
+
+
+  .show-jumper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    input{
+      width: 60px;
+      margin: 0 4px;
+    }
+
+  }
 }
