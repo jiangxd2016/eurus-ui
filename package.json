@@ -61,7 +61,7 @@
   "dependencies": {
     "async-validator": "^4.2.5",
     "dayjs": "^1.11.5",
-    "axios": "^0.26.1"
+    "axios": "^0.27.2"
   },
   "peerDependencies": {
     "vue": "^3.2.26"
