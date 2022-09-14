@@ -20,6 +20,10 @@ declare module '@vue/runtime-core' {
     EDialog: typeof import('eurus-ui')['EDialog'];
     EDivider: typeof import('eurus-ui')['EDivider'];
     EDrawer: typeof import('eurus-ui')['EDrawer'];
+    EForm: typeof import('eurus-ui')['EForm'];
+    EFormField: typeof import('eurus-ui')['EFormField'];
+    EFormItem: typeof import('eurus-ui')['EFormItem'];
+    EI: typeof import('eurus-ui')['EI'];
     EInput: typeof import('eurus-ui')['EInput'];
     EPagination: typeof import('eurus-ui')['EPagination'];
     ERadio: typeof import('eurus-ui')['ERadio'];

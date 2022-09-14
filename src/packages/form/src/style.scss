@@ -1,1 +1,7 @@
-@import '../../../scss/variables';
+.eu-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.eu-form__inline>.eu-form-item {
+  display: inline-flex;
+}

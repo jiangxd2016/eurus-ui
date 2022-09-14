@@ -28,6 +28,8 @@ export * from './select-down';
 export * from './select';
 export * from './tag';
 export * from './textarea';
+export * from './form';
+export * from './form-item';
 
 export * from './breadcrumb';
 export * from './back-top';

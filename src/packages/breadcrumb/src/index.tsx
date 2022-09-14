@@ -5,7 +5,7 @@ import './style.scss';
 
 export interface BreadcrumbItem {
   title: string;
-  href: string;
+  href?: string;
 }
 
 const EBreadcrumbProps = {

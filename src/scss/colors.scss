@@ -1,105 +1,119 @@
 :root {
- --e-color-primary: #{$primary};
- --e-color-secondary: #{$secondary};
- --e-color-accent: #{$accent};
- --e-color-positive: #{$positive};
- --e-color-negative: #{$negative};
- --e-color-info: #{$info};
- --e-color-warning: #{$warning};
- --e-color-dark: #{$dark};
- --e-color-grey:#{$grey};
+  --e-color-primary: #{$primary};
+  --e-color-secondary: #{$secondary};
+  --e-color-accent: #{$accent};
+  --e-color-positive: #{$positive};
+  --e-color-negative: #{$negative};
+  --e-color-info: #{$info};
+  --e-color-warning: #{$warning};
+  --e-color-dark: #{$dark};
+  --e-color-grey:#{$grey};
 }
+
 .text-dark {
-  color: $dark;
   color: var(--e-color-dark);
 }
+
 .bg-dark {
-  background: $dark;
-  background: var(--e-color-dark);
+  background: var(--e-color-dark) !important;
 }
+
 .text-primary {
-  color: $primary;
-  color: var(--e-color-primary);
+  color: var(--e-color-primary) !important;
 }
+
 .bg-primary {
-  background: $primary;
-  background: var(--e-color-primary);
+  background: var(--e-color-primary) !important;
 }
+
 .text-secondary {
-  color: $secondary;
-  color: var(--e-color-secondary);
+  color: var(--e-color-secondary) !important;
 }
+
 .bg-secondary {
-  background: $secondary;
-  background: var(--e-color-secondary);
+  background: var(--e-color-secondary) !important;
 }
+
 .text-accent {
-  color: $accent;
-  color: var(--e-color-accent);
+  color: var(--e-color-accent) !important;
 }
+
 .bg-accent {
-  background: $accent;
-  background: var(--e-color-accent);
+  background: var(--e-color-accent) !important;
 }
+
 .text-positive {
-  color: $positive;
-  color: var(--e-color-positive);
+  color: var(--e-color-positive) !important;
 }
+
 .bg-positive {
-  background: $positive;
-  background: var(--e-color-positive);
+  background: var(--e-color-positive) !important;
 }
+
 .text-negative {
-  color: $negative;
-  color: var(--e-color-negative);
+  color: var(--e-color-negative) !important;
 }
+
 .bg-negative {
-  background: $negative;
-  background: var(--e-color-negative);
+  background: var(--e-color-negative) !important;
 }
+
 .text-info {
   color: $info;
   color: var(--e-color-info);
 }
+
 .bg-info {
   background: $info;
   background: var(--e-color-info);
 }
+
 .text-warning {
   color: $warning;
   color: var(--e-color-warning);
 }
+
 .bg-warning {
   background: $warning;
   background: var(--e-color-warning);
 }
+
 .text-white {
   color: #fff;
 }
+
 .bg-white {
   background: #fff;
 }
+
 .text-black {
   color: #000;
 }
+
 .bg-black {
   background: #000;
 }
+
 .text-transparent {
   color: transparent;
 }
+
 .bg-transparent {
   background: transparent;
 }
+
 .text-separator {
   color: $separator-color;
 }
+
 .bg-separator {
   background: $separator-color;
 }
+
 .text-dark-separator {
   color: $separator-dark-color;
 }
+
 .bg-dark-separator {
   background: $separator-dark-color;
 }
