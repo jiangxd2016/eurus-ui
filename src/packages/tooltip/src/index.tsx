@@ -11,7 +11,6 @@ import {
 import './style.scss';
 import { getOffset, getWindow } from '@/packages/_utils/dom';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-const prefixCls = getPrefixCls('tooltip');
 
 interface CssStyle {
   maxWidth: string;
@@ -42,6 +41,9 @@ export default defineComponent({
   props,
   emits: ['click'],
   setup(props, { slots, emit, expose }) {
+
+    const prefixCls = getPrefixCls('tooltip');
+
     const el = ref();
     const tooltipEl = ref();
     const hasAppendToBody = ref(false);

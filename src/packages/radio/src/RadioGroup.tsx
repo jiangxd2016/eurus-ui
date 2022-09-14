@@ -30,7 +30,7 @@ export default defineComponent({
               v-model={groupValue.value}
               value={item[props.optionsKey.value]}
               disabled={props.disabled || item.disabled}
-              on-change={(e: [string | number]) => change(e, item)}
+              onChange={(e: [string | number]) => change(e, item)}
             >
               {item[props.optionsKey.label]}
             </Radio>;

@@ -89,7 +89,7 @@ const TreeNode = defineComponent({
                   {state.showCheckbox && <ECheckbox
                     v-model={item.checked
                     } class={{ 'some-select': item.someChecked }}
-                    on-click={(e: Event) => e.stopPropagation()} onChange={() => checkboxChange(item)}
+                   onClick={(e: Event) => e.stopPropagation()} onChange={() => checkboxChange(item)}
                   />}
                   <span class="tree-label">{item.label}</span>
                   {state.lazy && item.hasChild && <span class="lazy-loading">

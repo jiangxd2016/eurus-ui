@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./src/components/Counter.vue')['default'];
     EAvatar: typeof import('eurus-ui')['EAvatar'];
+    EBackTop: typeof import('eurus-ui')['EBackTop'];
     EBreadcrumb: typeof import('eurus-ui')['EBreadcrumb'];
     EButton: typeof import('eurus-ui')['EButton'];
     ECarousel: typeof import('eurus-ui')['ECarousel'];

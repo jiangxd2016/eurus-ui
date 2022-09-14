@@ -6,7 +6,6 @@ import { getPrefixCls } from '@/packages/_utils/global-config';
 
 import './style.scss';
 import type { MaybeRef } from '@/packages/_utils';
-const prefixCls = getPrefixCls('select-down');
 
 export default defineComponent({
   name: 'ESelectDown',
@@ -39,6 +38,9 @@ export default defineComponent({
   },
   emits: ['update:modelValue', 'blur', 'toggleClick', 'clear', 'delete', 'input', 'focus'],
   setup(props, { slots, expose, emit: emits }) {
+
+    const prefixCls = getPrefixCls('select-down');
+
     const el = ref();
     const selectDown = ref();
     const modelValue = ref(isRef(props.modelValue) ? props.modelValue.value : props.modelValue);
@@ -240,7 +242,7 @@ export default defineComponent({
                 {props.collapseTags ? [
                   state.valueLabel.length > 0 && <li >
                     <span v-text={state.valueLabel[0]}></span>
-                    <i class="icon-error" on-click={() => deleteText(0)}></i>
+                    <i class="icon-error"onClick={() => deleteText(0)}></i>
                   </li>,
                   state.valueLabel.length > 1 && <li >
                     <Tag size="mini" type="info"> +{state.valueLabel.length}</Tag>
@@ -248,7 +250,7 @@ export default defineComponent({
                 ] : state.valueLabel.map((item: any, index: number) => {
                   return <li key={index}>
                     <span v-text={item}></span>
-                    <i class="icon-error" on-click={() => deleteText(index)}></i>
+                    <i class="icon-error"onClick={() => deleteText(index)}></i>
                   </li>;
                 })}
 
@@ -272,9 +274,9 @@ export default defineComponent({
                 placeholder="placeholder"
                 class={inputCls.value}
                 disabled={disabledOk.value}
-                on-input={inputInput}
-                on-focus={inputFocus}
-                on-blur={inputBlur}
+                onInput={inputInput}
+                onFocus={inputFocus}
+                onBlur={inputBlur}
               />
           }
           <span class="group-icon">

@@ -3,7 +3,6 @@ import './style.scss';
 import SelectDown from '@/packages/select-down';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
-const prefixCls = getPrefixCls('select');
 interface StateType {
   checked: any;
   keywords: string;
@@ -52,6 +51,9 @@ export default defineComponent({
   props: ESelectProps,
   emits: ['update:modelValue', 'change', 'limitChange', 'clear', 'delete', 'input', 'focus', 'blur', 'toggleClick'],
   setup(props, { slots, expose, emit: emits }) {
+
+    const prefixCls = getPrefixCls('select');
+
     const selectDownEl = ref();
     const state = reactive<StateType>({
       checked: [], // 所有已选择的集合
@@ -303,10 +305,10 @@ export default defineComponent({
         ref={selectDownEl}
         v-model={showLabel.value}
         onClear={clearClick}
-        on-delete={deleteClick}
-        on-input={inputChange}
-        on-blur={inputBlur}
-        on-toggle-click={toggleClick}
+        onDelete={deleteClick}
+        onDnput={inputChange}
+        onBlur={inputBlur}
+        onToggleClick={toggleClick}
       >
         <ul class={[prefixCls]}>
           {

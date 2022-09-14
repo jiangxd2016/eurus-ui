@@ -1,7 +1,6 @@
 import { defineComponent, inject, onMounted } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
 
-const prefixCls = getPrefixCls('select-option');
 export default defineComponent({
   props: {
     value: String,
@@ -10,6 +9,8 @@ export default defineComponent({
     className: String
   },
   setup(props) {
+    const prefixCls = getPrefixCls('select-option');
+
     const GetChildOption = inject(`${prefixCls}GetChildOption`, (...args: any) => { });
     onMounted(() => {
       GetChildOption && GetChildOption({

@@ -1,7 +1,6 @@
 import { defineComponent, ref, } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import './style.scss';
-const prefixCls = getPrefixCls('tag');
 export default defineComponent({
   name: 'ETag',
   props: {
@@ -14,6 +13,8 @@ export default defineComponent({
   },
   emits: ['click', 'close'],
   setup(props, { slots, emit: emits }) {
+
+    const prefixCls = getPrefixCls('tag');
     const visible = ref(true);
     const closeClick = () => {
       visible.value = false;

@@ -2,7 +2,6 @@ import { defineComponent, reactive, ref } from 'vue';
 import './style.scss';
 import { axiosUpload, getObjectURL } from './comm';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-const prefixCls = getPrefixCls('upload');
 export default defineComponent({
   name: 'EUpload',
   props: {
@@ -25,6 +24,7 @@ export default defineComponent({
   },
   emits: ['update:modelValue', 'change', 'error', 'success', 'remove'],
   setup(props, { slots, emit: emits, expose }) {
+    const prefixCls = getPrefixCls('upload');
 
     const isObject
       = Object.prototype.toString.call(props.modelValue) === '[object Object]';

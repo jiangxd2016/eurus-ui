@@ -19,7 +19,7 @@
     "@iconify-json/carbon": "^1.1.7",
     "@iconify-json/ph": "^1.1.2",
     "@types/klaw-sync": "^6.0.1",
-    "@types/node": "^18.7.17",
+    "@types/node": "^18.7.18",
     "@unocss/reset": "^0.45.21",
     "@vitejs/plugin-vue": "^3.1.0",
     "eslint": "^8.23.1",
@@ -30,7 +30,7 @@
     "vite": "^3.1.0",
     "vite-plugin-pwa": "^0.12.7",
     "vite-plugin-restart": "^0.2.0",
-    "vitepress": "^1.0.0-alpha.13",
+    "vitepress": "^1.0.0-alpha.14",
     "vue-running": "^0.3.5",
     "workbox-window": "^6.5.4"
   },

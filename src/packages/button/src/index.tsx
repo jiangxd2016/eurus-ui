@@ -72,6 +72,7 @@ const BtnProps = {
 export default defineComponent({
   name: 'EButton',
   props: BtnProps,
+  emits: ['click'],
   setup(props, { slots, emit }) {
     const prefix = getPrefixCls('button');
     const classNames = reactive({
@@ -83,8 +84,7 @@ export default defineComponent({
     });
 
     const handleClick = (e: Event) => {
-      if (props.disabled || props.loading) { return false; }
-
+      if (props.disabled || props.loading) { return; }
       emit('click', e);
     };
     const ComponentType = isEmpty(props.native) ? 'a' : 'button' ;
@@ -96,8 +96,7 @@ export default defineComponent({
           classNames,
         ]}
         {...props.native}
-        disabled={props.disabled || props.loading}
-        on-click={handleClick}>
+       onClick={handleClick}>
         {props.loading && (
           <span class="loading">
             <EIcon name='loading' size={defineIconSize[props.size]}></EIcon>

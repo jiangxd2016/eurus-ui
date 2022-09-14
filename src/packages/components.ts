@@ -30,3 +30,4 @@ export * from './tag';
 export * from './textarea';
 
 export * from './breadcrumb';
+export * from './back-top';

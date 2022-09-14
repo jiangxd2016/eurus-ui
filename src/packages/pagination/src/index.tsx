@@ -6,8 +6,6 @@ import { ESelect } from '@/packages/select';
 import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
-const prefixCls = getPrefixCls('page');
-
 const EPaginationProps = {
   current: { default: 1 },
   total: { type: Number, default: 0 },
@@ -35,7 +33,7 @@ export default defineComponent({
   props: EPaginationProps,
   emits: ['update:current', 'change', 'changePageSizes'],
   setup(props, { emit: emits }) {
-    // pagination
+    const prefixCls = getPrefixCls('page');
 
     const state = reactive({
       active: props.current, // 当前页
