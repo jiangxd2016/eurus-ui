@@ -3,6 +3,7 @@ import { defineComponent, Transition, reactive } from 'vue';
 import './style.scss';
 import EIcon from '../../icons';
 import classNames from '../../_hooks/useClassName';
+import { getPrefixCls } from '@/packages/_utils/global-config';
 
 type MessageType = 'info' | 'success' | 'warning' | 'error';
 
@@ -43,13 +44,15 @@ export default defineComponent({
   name: 'EMessage',
   props: MessageProps,
   setup(props, { attrs }: SetupContext) {
+
+    const clsPrefix = getPrefixCls('message');
     const data = reactive<{ show: boolean; timer: NodeJS.Timeout | string | number | null }>({
       show: true,
       timer: null
     });
 
     const { type, title, message, duration } = { ...props, ...(attrs.props as MessagePropsType) };
-    const messageClassList = classNames(['base-message', type]);
+    const messageClassList = classNames([clsPrefix, type]);
     const closeMessage = () => {
       data.show = false;
       data.timer = null;

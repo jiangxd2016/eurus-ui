@@ -1,4 +1,4 @@
-.base-message {
+.eu-message {
   position: fixed;
   left: 0;
   right: 0;
@@ -10,7 +10,7 @@
   border-radius: 6px;
   display: flex;
   align-items: center;
-}
+
 
 .info {
   background: #e9f5fe;
@@ -95,4 +95,6 @@
 .message-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
 }
