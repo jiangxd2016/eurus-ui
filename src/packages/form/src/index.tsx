@@ -1,8 +1,8 @@
-import { defineComponent, onMounted, provide, reactive, } from 'vue';
+import { defineComponent, onMounted, provide, reactive, toRefs, } from 'vue';
 import type { PropType } from 'vue';
 import './style.scss';
-import { getPrefixCls } from '@/packages/_utils/global-config';
-const EFormProps = {
+import { formCtxProviderInjectionKey, getPrefixCls } from '@/packages/_utils/global-config';
+export const EFormProps = {
   model: {
     type: Object,
     default: () => ({}),
@@ -44,10 +44,7 @@ export default defineComponent({
       defaultValue: '' // 用于保存所有表单元素初始值
     });
     const formItemFields: any = []; // 所有formItem
-    provide(`${prefixCls}FormProps`, props);
-    provide(`${prefixCls}GetFormItemFields`, (formItem: any) => {
-      formItemFields.push(formItem);
-    });
+
     const setValue = (obj: any, type?: string) => {
       if (type !== 'reset') {
         state.defaultValue = JSON.stringify(obj);
@@ -112,6 +109,15 @@ export default defineComponent({
     onMounted(() => {
       setValue(props.model);
     });
+
+    const addFormItemFIeld = (field: any) => {
+      formItemFields.push(field);
+    };
+    provide(formCtxProviderInjectionKey, reactive({
+      ...toRefs(props),
+
+      addFormItemFIeld,
+    }));
     expose({ validate, clearValidate, resetForm });
     return () => (
       <form class={`${prefixCls}${props.inline ? `${prefixCls}__inline` : ''}`}>

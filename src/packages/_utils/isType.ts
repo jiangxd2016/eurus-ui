@@ -1,5 +1,5 @@
 export const _toString = Object.prototype.toString;
-
+export const _hasOwnProperty = Object.prototype.hasOwnProperty;
 export function isArray(o: any): boolean {
   return Array.isArray(o);
 }

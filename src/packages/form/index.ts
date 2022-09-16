@@ -1,9 +1,8 @@
 import type { App } from 'vue';
-import EForm from './src';
-
+import EForm, { EFormProps } from './src';
 EForm.install = (app: App) => {
   app.component(EForm.name, EForm);
 };
 
-export { EForm };
+export { EForm, EFormProps };
 export default EForm;

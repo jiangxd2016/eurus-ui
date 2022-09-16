@@ -1,9 +1,11 @@
+import type { ExtractPropTypes } from 'vue';
 import { computed, defineComponent, inject, onMounted, provide, reactive, toRaw } from 'vue';
 import Schema from 'async-validator';
 
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { formCtxProviderInjectionKey, formItemProviderInjectionKey, getPrefixCls } from '@/packages/_utils/global-config';
 import './style.scss';
-
+import { _hasOwnProperty } from '@/packages/_utils/isType';
+import { getValue } from '@/packages/_utils/common';
 const EFormItemProps = {
   label: {
     type: String,
@@ -21,19 +23,25 @@ const EFormItemProps = {
     type: String,
     default: ''
   },
+  showMessage: {
+    type: Boolean,
+    default: true,
+  },
   required: {
     type: Boolean,
     default: false,
   },
 };
+export type FormItemPropsTypes = ExtractPropTypes<typeof EFormItemProps>;
 
 export default defineComponent({
   name: 'EFormItem',
   props: EFormItemProps,
   setup(props, { slots, emit, expose }) {
-    const fromPrefixCls = getPrefixCls('form');
     const clsPrefix = getPrefixCls('form-item');
-    const formProps: any = inject(`${fromPrefixCls}FormProps`, {});
+    const formProps = inject(formCtxProviderInjectionKey, undefined);
+
+    const triggerList: string[] = [];
     let formRules;
     if (formProps?.rules && props.prop && formProps.rules[props.prop]) {
       formRules = formProps.rules[props.prop];
@@ -49,47 +57,17 @@ export default defineComponent({
         message: `${props.prop}  is required`,
       });
     }
-    // formItem设置值时使用formItem的，否则使用form的
-    const getFormProps = (params: string, defaultValue: any) => {
-      const itemProps = (props as any)[params];
-      if (itemProps === defaultValue // formItem没有设置，返回form的
-        && formProps && Object.keys(formProps).length > 0) {
-        return formProps[params];
-      }
-      return itemProps;
-    };
+
     const state = reactive<any>({
       errorTips: '', // 有值时表示校验没通过有错误信息
       iconType: '', // 提示类型，
       rules,
-      trigger: getFormProps('trigger', 'change'),
-      messageShow: getFormProps('showMessage', true),
-      controlValue: '', // 组件的值，改变事件时*/
+      messageShow: props.showMessage,
     });
-    // // 手动自定义错误设置
-    // const setError = (error: string) => {
-    //   if (error) {
-    //     state.errorTips = error;
-    //     state.iconType = 'icon-failure';
-    //   }
-    // };
 
-    // const isRequired = computed(() => {
-    //   let bool = false;
-    //   const required = getFormProps('required', true);
-    //   if (required && state.rules && state.rules.length > 0) {
-    //     state.rules.forEach((item: any) => {
-    //       if (item.type === 'required') {
-    //         bool = true;
-    //         return false;
-    //       }
-    //     });
-    //   }
-    //   return bool;
-    // });
     // 如果form组件设置了label的宽
     const labelStyle = computed<any>(() => {
-      const width = getFormProps('labelWidth', undefined);
+      const width = formProps?.labelWidth;
       if (width) {
         return {
           width
@@ -98,11 +76,20 @@ export default defineComponent({
         return null;
       }
     }, {});
+    const fieldValue = computed(() => {
+      const model = formProps?.model;
+      if (!model || !props.prop) {
+        return;
+      }
+      return getValue(model, props.prop);
+    });
+
     function doValidate(value: any, rules: any) {
 
       const rawRules = toRaw(rules);
       rawRules.forEach((rule: any) => {
         if (rule.trigger) {
+          triggerList.push(rule.trigger);
           delete rule.trigger;
         }
       });
@@ -118,8 +105,8 @@ export default defineComponent({
     }
 
     const validate = (value: any) => {
-      value = value || state.controlValue;
 
+      value = value || fieldValue.value;
       return new Promise((resolve, reject) => {
         if (state.rules) {
           doValidate(value, state.rules).then((result) => {
@@ -127,7 +114,7 @@ export default defineComponent({
               // 通过
               state.errorTips = '';
               state.iconType = 'icon-success';
-              resolve(state.controlValue);
+              resolve(value);
             }
           }, (err) => {
             // 默认取第一个信息
@@ -139,7 +126,7 @@ export default defineComponent({
 
         } else {
           // 没有校验规则
-          resolve(state.controlValue);
+          resolve(value);
         }
       });
     };
@@ -161,10 +148,10 @@ export default defineComponent({
       state.errorTips = '';
       state.iconType = '';
     };
-    const getFormItemFields: any = inject(`${fromPrefixCls}GetFormItemFields`, '');
+    const addFormItemFIeld: any = formProps?.addFormItemFIeld;
     const getAllFormItemFields = () => {
-      if ( getFormItemFields) {
-        getFormItemFields({
+      if (addFormItemFIeld) {
+        addFormItemFIeld({
           validate,
           clear: clearTips,
           reset,
@@ -172,7 +159,11 @@ export default defineComponent({
         });
       }
     };
-    provide(`${fromPrefixCls}ControlChange`, (val: any, type: string) => {
+    /**
+ *
+ *
+ *
+ * (val: any, type: string) => {
       // if (props.type) {
       //   emits('update:modelValue', val);
       // }
@@ -195,14 +186,25 @@ export default defineComponent({
           // console.log(res);
         });
       }
-    });
+    }
+ */
+    provide(formItemProviderInjectionKey, reactive({
+      validate,
+      clear: clearTips,
+      focusTips,
+      reset,
+
+      triggerList
+    }));
     onMounted(() => {
       getAllFormItemFields();
     });
 
     function reset() {
-      const modelValue = getFormProps('model', undefined);
-      modelValue[props.prop] = '';
+      const modelValue = formProps?.model;
+      if (modelValue) {
+        modelValue[props.prop] = '';
+      }
     }
     expose({ validate, clearTips });
     return () => (

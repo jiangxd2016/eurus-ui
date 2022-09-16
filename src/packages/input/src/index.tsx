@@ -1,7 +1,6 @@
-import type { SetupContext } from 'vue';
-import { onMounted, inject, defineComponent, toRefs } from 'vue';
+import { inject, defineComponent, toRefs } from 'vue';
 import classNames from '../../_hooks/useClassName';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { formItemProviderInjectionKey, getPrefixCls } from '@/packages/_utils/global-config';
 import './style.scss';
 const InputProps = {
   modelValue: {
@@ -29,13 +28,15 @@ const InputProps = {
 export default defineComponent({
   name: 'EInput',
   props: InputProps,
-  setup (props, { emit }: SetupContext) {
-    const formPrefix = getPrefixCls('form');
+  emits: ['update:modelValue', 'change', 'focus', 'blur'],
+  setup (props, { emit }) {
     const clsPrefix = getPrefixCls('input');
     // formItem
-    const controlChange: any = inject(`${formPrefix}ControlChange`, '');
-    const controlChangeEvent = (val: any, type?: string) => {
-      controlChange && controlChange(val, type);
+    const formItemFields: any = inject(formItemProviderInjectionKey, undefined);
+    const controlChangeEvent = (val: unknown, type = 'change') => {
+      if (formItemFields.triggerList.includes(type)) {
+        formItemFields.validate(val);
+      }
     };
     const { size, disabled, type, placeholder, modelValue } = toRefs(props);
     const inputClass = () => {
@@ -62,10 +63,6 @@ export default defineComponent({
       const { value } = e.target as HTMLInputElement;
       controlChangeEvent(value, 'focus');
     };
-
-    onMounted(() => {
-      controlChangeEvent(props.modelValue, 'mounted');
-    });
 
     return () => (
       <input
