@@ -1,3 +1,6 @@
 // Vitest Snapshot v1
 
-exports[`EBackTop > EBackTop snapshot 1`] = `"<div class=\\"eu-back-top\\" style=\\"right: 30px; bottom: 30px; visibility: hidden;\\"><a href=\\"javascript:;\\" class=\\"icon-top\\">返回顶部</a></div>"`;
+exports[`EBackTop > EBackTop snapshot 1`] = `
+"<!--teleport start-->
+<!--teleport end-->"
+`;

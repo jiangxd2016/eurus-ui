@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { defineComponent, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
+import { defineComponent, nextTick, onBeforeUnmount, onMounted, ref, Teleport } from 'vue';
 import { scrollTop } from '@/packages/_utils/dom';
 import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
@@ -25,43 +25,34 @@ export default defineComponent({
     const prefixCls = getPrefixCls('back-top');
 
     const show = ref(false);
-    // const element = ref<HTMLInputElement>()
     const element = ref();
-    let stop: any = null;
     const elClick = () => {
-      smoothscroll();
-      function smoothscroll() {
-        const currentScroll = scrollTop();
-        if (currentScroll > 0) {
-          stop = window.requestAnimationFrame(smoothscroll);
-          window.scrollTo({ left: 0, top: 0, behavior: props.behavior });
-        }
+
+      const currentScroll = scrollTop();
+      if (currentScroll > 0) {
+        window.scrollTo({ left: 0, top: 0, behavior: props.behavior });
       }
 
       emit('click');
     };
-    const documentClick = () => {
-      stop && window.cancelAnimationFrame(stop); // 可以取消该次动画
-    };
+
     const windowScroll = () => {
       show.value = scrollTop() > props.height;
     };
     onMounted(() => {
       nextTick(() => {
-        document.body.append(element.value);
         window.addEventListener('scroll', windowScroll);
-        document.addEventListener('click', documentClick);
       });
     });
     onBeforeUnmount(() => {
       window.removeEventListener('scroll', windowScroll);
-      document.removeEventListener('click', documentClick);
       if (element.value && element.value.parentNode) {
         element.value.remove();
       }
     });
 
     return () => (
+      <Teleport to="body">
       <div ref={element} class={[prefixCls]} onClick={elClick} style={{
         right: props.right + 'px',
         bottom: props.bottom + 'px',
@@ -72,7 +63,7 @@ export default defineComponent({
           slots?.default ? slots.default() : <a href="javascript:;" class="icon-top" v-text={props.text}></a>
         }
       </div>
-
+</Teleport>
     );
   },
 });
