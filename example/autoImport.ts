@@ -35,7 +35,7 @@ function getSideEffectsLegacy(
   if (names === 'radio-group') {
     names = 'radio';
   }
-  if (names === 'carousel-item' || names === 'tabs-pane') {
+  if (names === 'carousel-item' || names === 'tabs-pane' || names === 'virtual-list' ) {
     return [];
   }
   if (importStyle === 'sass') {

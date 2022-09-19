@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import ETable from './src/table.vue';
+import ETable from './src/';
 
 ETable.install = (app: App) => {
   app.component(ETable.name, ETable);

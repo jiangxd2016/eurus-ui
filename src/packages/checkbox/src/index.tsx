@@ -29,7 +29,6 @@ export default defineComponent({
     };
     return () => (
       <div class="e-checkbox" onClick={updateValue}>
-        {props.modelValue}
         <input class={[props.disabled ? 'e-checkbox-disable' : '']} disabled={props.disabled} type="checkbox" checked={props.modelValue} />
         <label class={[props.disabled ? 'e-checkbox-disable' : '']} />
         <div class="slot-text">

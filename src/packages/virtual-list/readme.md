@@ -1,13 +1,16 @@
+```
 <script lang="ts">
-import { reactive, defineComponent, onMounted } from 'vue';
+import vList from "./components/VirtualList.vue";
+import { reactive, defineComponent, onMounted } from "vue";
 
 export default defineComponent({
+  components: { "v-list": vList },
   data() {
     return {
-      items: Array.from({ length: 1000 }).fill(1).map((v, i) => ({
-        text: 'Item ' + i,
-        lineHeight: 20 + (i % 20) + 'px',
-        width: 100 + (i % 30) + 'px',
+      items: new Array(1000).fill(1).map((v, i) => ({
+        text: "Item " + i,
+        lineHeight: 20 + (i % 20) + "px",
+        width: 100 + (i % 30) + "px",
       })),
     };
   },
@@ -19,7 +22,7 @@ export default defineComponent({
   <div>
     <!-- horizontal -->
     <h1>horizontal</h1>
-    <EVirtualList
+    <v-list
       ref="list"
       :items="items"
       :first-render="10"
@@ -28,15 +31,15 @@ export default defineComponent({
     >
       <template #default="{ item, index }">
         <h2 style="border: 1px solid #ccc" :style="{ width: item.width }">
-          ITEM: {{ index }} - {{ item.text }}
+          ITEM: {{ index }} - {{ item["text"] }}
         </h2>
       </template>
-    </EVirtualList>
+    </v-list>
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px">
       <div>
         <!-- vertical -->
         <h1>vertical</h1>
-        <EVirtualList
+        <v-list
           ref="list"
           :items="items"
           :first-render="10"
@@ -47,34 +50,34 @@ export default defineComponent({
               style="border: 1px solid #ccc"
               :style="{ lineHeight: item.lineHeight }"
             >
-              ITEM: {{ index }} - {{ item.text }}
+              ITEM: {{ index }} - {{ item["text"] }}
             </h2>
           </template>
-        </EVirtualList>
+        </v-list>
       </div>
       <div>
         <h1>vertical with key</h1>
-        <EVirtualList
+        <v-list
           ref="list"
           :items="items"
           :first-render="10"
           style="height: 600px"
-          item-key="index"
+          itemKey="index"
         >
           <template #default="{ item, index }">
             <h2
               style="border: 1px solid #ccc"
               :style="{ lineHeight: item.lineHeight }"
             >
-              ITEM: {{ index }} - {{ item.text }}
+              ITEM: {{ index }} - {{ item["text"] }}
               <input />
             </h2>
           </template>
-        </EVirtualList>
+        </v-list>
       </div>
       <div>
         <h1>table</h1>
-        <EVirtualList
+        <v-list
           ref="list"
           :items="items"
           :first-render="10"
@@ -93,10 +96,10 @@ export default defineComponent({
           <template #default="{ item, index }">
             <tr>
               <td>{{ index }}</td>
-              <td>ITEM: {{ index }} - {{ item.text }}</td>
+              <td>ITEM: {{ index }} - {{ item["text"] }}</td>
             </tr>
           </template>
-        </EVirtualList>
+        </v-list>
       </div>
     </div>
   </div>
@@ -113,3 +116,4 @@ export default defineComponent({
   width: 100%;
 }
 </style>
+```

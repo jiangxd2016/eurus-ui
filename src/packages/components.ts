@@ -15,7 +15,7 @@ export * from './pagination';
 export * from './tabs';
 export * from './tree';
 export * from './tooltip';
-// export * from './table';
+export * from './table';
 
 export * from './checkbox';
 export * from './input';
@@ -31,5 +31,6 @@ export * from './textarea';
 export * from './form';
 export * from './form-item';
 
+export * from './virtual-list';
 export * from './breadcrumb';
 export * from './back-top';

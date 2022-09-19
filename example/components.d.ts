@@ -33,6 +33,7 @@ declare module '@vue/runtime-core' {
     ESelectDown: typeof import('eurus-ui')['ESelectDown'];
     ESwitch: typeof import('eurus-ui')['ESwitch'];
     ETab: typeof import('eurus-ui')['ETab'];
+    ETable: typeof import('eurus-ui')['ETable'];
     ETabPane: typeof import('eurus-ui')['ETabPane'];
     ETabs: typeof import('eurus-ui')['ETabs'];
     ETabsPane: typeof import('eurus-ui')['ETabsPane'];
@@ -41,6 +42,7 @@ declare module '@vue/runtime-core' {
     ETooltip: typeof import('eurus-ui')['ETooltip'];
     ETree: typeof import('eurus-ui')['ETree'];
     EUpload: typeof import('eurus-ui')['EUpload'];
+    EVirtualList: typeof import('eurus-ui')['EVirtualList'];
     Footer: typeof import('./src/components/Footer.vue')['default'];
     README: typeof import('./src/components/README.md')['default'];
     RouterLink: typeof import('vue-router')['RouterLink'];
