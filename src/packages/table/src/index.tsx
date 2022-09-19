@@ -124,8 +124,8 @@ export default defineComponent({
   emits: ['selectClick', 'sortChange', 'rowClick', 'cellClick', 'dragChange', 'scroll'],
   setup(props, { slots, emit: emits, expose }) {
     const prefixCls = getPrefixCls('table');
-    const el = ref();
-    const tableEl = ref();
+    const el = ref<HTMLElement>();
+    const tableEl = ref<HTMLElement>();
     const tableHeadEl = ref();
     const columnsData = ref<any>([]);
     const state = reactive<any>({
@@ -286,10 +286,14 @@ export default defineComponent({
     };
     // 拖动时的垂直线
     const setTableDragLine = (event: MouseEvent) => {
+
       nextTick(() => {
         // 当前表格偏移位置
+        if (!el.value) {
+          return;
+        }
         const tableOffset = getOffset(el.value);
-        const dragLine = el.value.querySelector('.table-drag-line');
+        const dragLine = el.value.querySelector('.table-drag-line') as HTMLElement;
         if (dragLine) {
           dragLine.style.left = event.pageX - tableOffset.left + 'px';
           dragLine.style.height = tableOffset.height + 'px';
@@ -302,7 +306,7 @@ export default defineComponent({
       }
       const th = el.value && el.value.querySelectorAll('th');
       state.colWidth = [];
-      th.forEach((item: HTMLElement) => {
+      th?.forEach((item: HTMLElement) => {
         state.colWidth.push(item.offsetWidth + 'px');
       });
     };
@@ -409,8 +413,11 @@ export default defineComponent({
       }
     };
     const fixedRight = (scrollLeft: number) => {
-      const fixedRight = el.value.querySelectorAll('.right');
-      const tableWidth = el.value.querySelector('table').offsetWidth;
+      if (!el.value) {
+        return;
+      }
+      const fixedRight = Array.from(el.value.querySelectorAll('.right')) as HTMLElement[];
+      const tableWidth = el.value.querySelector('table')?.offsetWidth ?? 0;
       // 可移动的最大宽
       // div可见宽
       const moveMaxWidth = scrollLeft - (tableWidth - el.value.clientWidth);
@@ -426,11 +433,14 @@ export default defineComponent({
       }
     };
     const scrollHandle = () => {
+      if (!el.value) {
+        return;
+      }
       const scrollTop = el.value.scrollTop;
       const scrollLeft = el.value.scrollLeft;
       tableHeadEl.value.scrollTop(scrollTop);
       // 左右滚动固定
-      const fixedLeft = el.value.querySelectorAll('.left');
+      const fixedLeft = Array.from(el.value.querySelectorAll('.left') ) as HTMLElement[];
       if (fixedLeft.length > 0) {
         // left
         if (scrollLeft > 0) {
@@ -454,7 +464,7 @@ export default defineComponent({
     const fixedHead = () => {
       // 如果有高和表头，则固定表头
       if (props.height && props.showHeader && el) {
-        el.value.addEventListener('scroll', scrollHandle, false);
+        el.value?.addEventListener('scroll', scrollHandle, false);
       }
       // 目前初始时获取到的表格宽(tableWidth)有问题，需滚动下才能获取实际的宽，加个setTimeout处理
       setTimeout(() => {
@@ -468,6 +478,9 @@ export default defineComponent({
     };
     // 监听表格滚到
     const watchScroll = () => {
+      if (!el.value) {
+        return;
+      }
       const scrollTop = el.value.scrollTop; // 滚到条的位置
       const tableHeight = el.value.clientHeight; // 窗口高度
       const scrollHeight = el.value.scrollHeight; // 文档高度
@@ -481,7 +494,7 @@ export default defineComponent({
     };
     // 固定底部滚动条
     const scrollFixedBottom = () => {
-      if (!props.fixedBottomScroll) {
+      if (!props.fixedBottomScroll || !el.value || !tableEl.value) {
         return;
       }
       const tableBodyWrapDom = el.value;
@@ -524,7 +537,7 @@ export default defineComponent({
         document.addEventListener('mouseup', headMouseUp);
       }
       if (props.height) {
-        el.value.addEventListener('scroll', watchScroll);
+        el.value?.addEventListener('scroll', watchScroll);
       }
       // 固定表头和列初始
       nextTick(() => {
