@@ -1,18 +1,9 @@
-<script lang="ts">
-import { reactive, defineComponent, onMounted } from 'vue';
-
-export default defineComponent({
-  data() {
-    return {
-      items: Array.from({ length: 1000 }).fill(1).map((v, i) => ({
-        text: 'Item ' + i,
-        lineHeight: 20 + (i % 20) + 'px',
-        width: 100 + (i % 30) + 'px',
-      })),
-    };
-  },
-  mounted() {},
-});
+<script lang="ts" setup>
+const items = Array.from({ length: 1000 }).fill(1).map((v, i) => ({
+  text: 'Item ' + i,
+  lineHeight: 20 + (i % 20) + 'px',
+  width: 100 + (i % 30) + 'px',
+}));
 </script>
 
 <template>

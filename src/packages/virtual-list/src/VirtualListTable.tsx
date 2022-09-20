@@ -10,16 +10,16 @@ export default defineComponent({
   setup(props, { slots }) {
     return () => (
       props.table ? <table>
-        {slots.prepend && slots.prepend()}
+        {slots?.prepend && slots.prepend()}
         <tbody>
-          {slots.default && slots.default()}
+          {slots?.default && slots.default()}
         </tbody>
-        {slots.append && slots.append()}
+        {slots?.append && slots.append()}
       </table>
         : <div>
-          {slots.prepend && slots.prepend()}
-          {slots.default && slots.default()}
-          {slots.append && slots.append()}
+          {slots?.prepend && slots.prepend()}
+          {slots?.default && slots.default()}
+          {slots?.append && slots.append()}
         </div>
     );
   }

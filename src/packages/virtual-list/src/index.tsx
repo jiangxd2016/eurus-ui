@@ -3,7 +3,6 @@ import type {
 } from 'vue';
 import {
   onUnmounted,
-  renderSlot,
   ref,
   computed,
   onMounted,
@@ -11,7 +10,6 @@ import {
   defineComponent,
   reactive,
   watch,
-  h
 } from 'vue';
 import { Accumulate, arrayLast, binarySearch, css, hasClass, notGreaterThan } from './utils';
 import VirtualListTable from './VirtualListTable';
@@ -153,6 +151,7 @@ export default defineComponent({
     const listInnerRef = ref();
     onMounted(async () => {
       update();
+      listElRef.value?.addEventListener('scroll', onscroll, { passive: true });
       try {
         createResizeObserver();
       } catch {
@@ -364,39 +363,26 @@ export default defineComponent({
         }
       }
     }
-
-    onMounted(() => {
-      listElRef.value?.addEventListener('scroll', onscroll, { passive: true });
-    });
     onUnmounted(() => {
       listElRef.value?.removeEventListener('scroll', onscroll);
     });
+
+    const customerSlots = {
+      prepend: () => slots?.prepend && slots.prepend(),
+
+      append: () => slots?.append && slots.append(),
+
+      default: () => {
+        return ((props.disabled ? props.items : visibleItemsInfo.value) || []).map((item, index) => {
+          return <div key={getItemKey(item, index)}>
+            {slots?.default && slots.default({ item, index })}
+          </div>;
+        });
+      }
+    };
     return () => (
-      <div class="vtlist" ref={listElRef} style={listStyle.value} >
-
-        {h(VirtualListTable, {
-          class: 'vtlist-inner',
-          ref: listInnerRef,
-          style: listInnerStyle.value,
-          table: props.table,
-        }, {
-          prepend: () => [
-            slots.prepend?.(),
-          ],
-          append: () => [
-            slots.append?.(),
-          ],
-          default: () => {
-            return ((props.disabled ? props.items : visibleItemsInfo.value) || []).map((item, index) => {
-              return renderSlot(slots, 'default', {
-                key: getItemKey(item, index),
-                item,
-                index
-              });
-            });
-          }
-        })}
-
+      <div ref={listElRef} style={listStyle.value} >
+        <VirtualListTable ref={listInnerRef} style={listInnerStyle.value} table={props.table} v-slots={customerSlots}></VirtualListTable>
       </div>
 
     );
