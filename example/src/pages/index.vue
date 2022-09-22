@@ -44,7 +44,7 @@
 <script lang="ts" setup>
 import getRandomData from '../composables/useData';
 
-import Item from './Item.vue';
+import Item from './item';
 
 let items = getRandomData();
 
