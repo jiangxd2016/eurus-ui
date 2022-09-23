@@ -1,0 +1,135 @@
+
+.eu-progress {
+  display: inline-block;
+
+  &.success {
+    .progress-bar {
+      background: #07c160;
+    }
+
+    .circle-circle {
+      .circle-left, .circle-right {
+        border-color: #07c160;
+      }
+    }
+  }
+
+  &.warning {
+    .progress-bar {
+      background: #ff976a;
+    }
+
+    .circle-circle {
+      .circle-left, .circle-right {
+        border-color: #07c160;
+      }
+    }
+  }
+
+  &.danger {
+    .progress-bar {
+      background: #ee0a24;
+    }
+
+    .circle-circle {
+      .circle-left, .circle-right {
+        border-color: #07c160;
+      }
+    }
+  }
+}
+
+.eu-progress-circle {
+  position: relative;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border-color: #dcdee0;
+  border-style: solid;
+
+  /*progress用作底背景色，*/
+  /*进度文字*/
+  /*自定义文字*/
+
+  .circle-circle {
+    display: block;
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: absolute;
+    overflow: hidden;
+
+    /*显示右半边，进度大小50%显示全部-*/
+    /*circle-left左半环，裁切显示左半边*/
+    /*circle-right右半环，裁切显示右半边，只有进度大于50%才显示*/
+
+    .circle-left {
+      position: absolute;
+      display: block;
+      box-sizing: border-box;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      border-style: solid;
+      border-color: #1989fa;
+    }
+
+    .circle-right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border-style: solid;
+      border-color: #1989fa;
+    }
+  }
+
+  .progress-text {
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    position: absolute;
+    font-size: 20px;
+  }
+
+  .custom-content {
+    position: absolute;
+    text-align: center;
+    top: 15px;
+    width: 60%;
+    left: 20%;
+    line-height: 18px;
+  }
+}
+
+/*直线进度*/
+
+.eu-progress-line {
+  position: relative;
+  border-radius: 5px;
+  background: #dcdee0;
+  min-height: 15px;
+  width: 400px;
+
+  .progress-bar {
+    position: absolute;
+    width: 0;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+    background: #1989fa;
+    height: 15px;
+    line-height: 15px;
+    text-align: right;
+    font-size: 12px;
+    color: #fff;
+  }
+
+  .progress-fixed-text {
+    position: absolute;
+    right: -40px;
+    top: -3px;
+  }
+}

@@ -34,3 +34,4 @@ export * from './form-item';
 export * from './virtual-list';
 export * from './breadcrumb';
 export * from './back-top';
+export * from './progress';

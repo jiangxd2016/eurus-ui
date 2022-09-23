@@ -1,18 +1,21 @@
 <template>
   <div>
-    <e-virtual-list
-      ref="vsl" style=" height: 300px; overflow:auto;" class="list-page scroll-touch"
-      data-key="id" :data-sources="items" :data-component="Item" :estimate-size="135" item-class="list-item-page"
-      :page-mode="true"
-    />
+    <p>设置宽高</p>
+    <p>
+      <e-progress :model-value="50" :radius="300" :border="10" />
+    </p>
+    <p>设置背景和进度颜色</p>
+    <p>
+      <e-progress :model-value="30" color="#D9E5F1FF" border-color="#9907C1FF" />
+    </p>
+    <p>进度文字固定位置</p>
+    <p>
+      <e-progress :model-value="80" :follow-text="false" />
+    </p>
   </div>
 </template>
 
 <script lang="ts" setup>
-import getRandomData from '../composables/useData';
 
-import Item from './item';
-
-const items = getRandomData();
 </script>
 
