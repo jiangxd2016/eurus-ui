@@ -19,10 +19,10 @@ export default defineComponent({
   props: ItemProps,
   setup(props) {
     return () => (
-      <div class="inner" style="height:100px">
-        <span class="index">{props.index}</span>
-        <span class="source">{props.source.text}</span>
-        <span class="other">{props.otherProp}</span>
+      <div class="inner" style="height:60px">
+        <p class="index">{props.index}</p>
+        <span>{props.source.name}</span>
+        {props.source.desc && <span>{props.source.desc}</span>}
       </div>
     );
   },
