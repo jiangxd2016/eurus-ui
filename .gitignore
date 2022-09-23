@@ -12,8 +12,8 @@ coverage
 .gitlogmap
 .vite-inspect
 
-autoImport.d.ts
-auto-imports.d.ts
-components.d.ts
+example/autoImport.d.ts
+example/auto-imports.d.ts
+example/components.d.ts
 
 src/version.ts

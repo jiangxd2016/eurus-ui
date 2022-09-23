@@ -1,12 +1,3 @@
-/*
- * @Author: jiangxd
- * @Date: 2022-09-22 13:34:22
- * @LastEditTime: 2022-09-22 17:22:07
- * @LastEditors: jiangxd
- * @Description:
- * @FilePath: /eurus-ui/src/packages/virtual-list/__tests__/util.ts
- */
-
 import fs from 'fs';
 import jsonData from './data.json';
 export function getDatas(counts: number) {

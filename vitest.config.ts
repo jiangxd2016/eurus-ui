@@ -1,11 +1,3 @@
-/*
- * @Author: jiangxd
- * @Date: 2022-09-08 13:44:54
- * @LastEditTime: 2022-09-22 17:15:53
- * @LastEditors: jiangxd
- * @Description:
- * @FilePath: /eurus-ui/vitest.config.ts
- */
 import { resolve } from 'path';
 import { defineConfig } from 'vitest/config';
 import Vue from '@vitejs/plugin-vue';
