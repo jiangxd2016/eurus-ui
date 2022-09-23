@@ -16,6 +16,16 @@
 </template>
 
 <script lang="ts" setup>
+import { EMessage } from 'eurus-ui';
+let loading = $ref(false);
 
+setTimeout(() => {
+  loading = true;
+  setTimeout(() => {
+    loading = false;
+  }, 1000);
+}, 1000);
+
+EMessage.msg({ type: 'info', message: 'this is  message', duration: 2000 });
 </script>
 
