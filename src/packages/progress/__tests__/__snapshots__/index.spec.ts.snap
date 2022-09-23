@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`EProgress > EProgress snapshot 1`] = `
+"<div class=\\"eu-progress\\">
+  <div class=\\"eu-progress-line\\">
+    <!----><span class=\\"progress-bar\\" style=\\"width: 0%; transition: all 1s;\\"><span class=\\"progress-text\\"><b>0</b>%</span></span>
+    <!---->
+  </div>
+</div>"
+`;
