@@ -4,7 +4,7 @@ import { defineComponent, computed, reactive, watch } from 'vue';
 import { EInput } from '@/packages/input';
 import { ESelect } from '@/packages/select';
 import './style.scss';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 
 const EPaginationProps = {
   current: { default: 1 },

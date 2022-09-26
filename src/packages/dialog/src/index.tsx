@@ -2,7 +2,7 @@ import type { SetupContext, PropType } from 'vue';
 import { defineComponent, Transition } from 'vue';
 import './style.scss';
 import EButton from '../../button';
-import classNames from '../../_hooks/useClassName';
+import classNames from '../../_hooks/use-classname';
 
 const ModalProps = {
   show: {

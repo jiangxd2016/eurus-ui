@@ -1,7 +1,7 @@
 import { computed, defineComponent, inject, onMounted, provide, reactive, ref, toRefs, watch } from 'vue';
 import './style.scss';
 import SelectDown from '@/packages/select-down';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 
 interface StateType {
   checked: any;

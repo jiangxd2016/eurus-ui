@@ -2,7 +2,7 @@ import type { PropType } from 'vue';
 import { defineComponent, nextTick, onBeforeUnmount, onMounted, ref, Teleport } from 'vue';
 import { scrollTop } from '@/packages/_utils/dom';
 import './style.scss';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 const EBackTopProps = {
   text: {
     type: String,

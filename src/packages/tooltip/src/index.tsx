@@ -10,7 +10,7 @@ import {
 } from 'vue';
 import './style.scss';
 import { getOffset, getWindow } from '@/packages/_utils/dom';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 
 interface CssStyle {
   maxWidth: string;

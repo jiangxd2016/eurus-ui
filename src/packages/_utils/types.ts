@@ -1,4 +1,4 @@
-import type { Ref } from 'vue';
+import type { Ref, RenderFunction } from 'vue';
 import type { ReactiveVariable } from 'vue/macros';
 /**
  * Maybe it's a ref, or a plain value
@@ -34,3 +34,4 @@ export interface EurusOptions {
   classPrefix?: string;
   componentPrefix?: string;
 }
+export type RenderContent = string | RenderFunction;

@@ -1,7 +1,5 @@
-import type { Slots } from 'vue';
-
-import type { EurusLang } from '@/packages/locale/interface';
-
+export const MESSAGE_TYPES = ['info', 'success', 'warning', 'error'] as const;
+export type MessageType = typeof MESSAGE_TYPES[number];
 export const EVENT_CODE = {
   tab: 'Tab',
   enter: 'Enter',
@@ -27,10 +25,3 @@ export const GLOBAL_CONFIG_NAME = '$eurus';
 export const SIZES = ['mini', 'small', 'medium', 'large'] as const;
 export type Size = typeof SIZES[number];
 
-export interface ConfigProvider {
-  slots: Slots;
-  prefixCls?: string;
-  locale?: EurusLang;
-  size?: Size;
-  updateAtScroll?: boolean;
-}

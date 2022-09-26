@@ -1,6 +1,6 @@
 import { ref, reactive, inject, computed } from 'vue';
 import { isString } from '../_utils/isType';
-import { configProviderInjectionKey } from '../_utils/global-config';
+import { configProviderInjectionKey } from '../_hooks/use-global-config';
 import type { EurusI18nMessages, EurusLang } from './interface';
 import zhCN from './lang/zh-cn';
 

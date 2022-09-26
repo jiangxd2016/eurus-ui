@@ -1,7 +1,7 @@
 import { debounce } from '@estjs/tools';
 import type { PropType } from 'vue';
 import { computed, inject, onMounted, ref, watch, defineComponent } from 'vue';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 import './style.scss';
 const prefixCls = getPrefixCls('textarea');
 

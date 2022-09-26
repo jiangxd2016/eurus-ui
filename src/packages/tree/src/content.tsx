@@ -1,5 +1,5 @@
 import { defineComponent, inject } from 'vue';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 export default defineComponent({
   name: 'NodeContent',
   props: {

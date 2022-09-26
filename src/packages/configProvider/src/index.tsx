@@ -1,7 +1,7 @@
 import type { PropType } from 'vue';
 import { renderSlot, getCurrentInstance, provide, reactive, toRefs, defineComponent } from 'vue';
 import type { language } from '@/packages/locale';
-import { configProviderInjectionKey } from '@/packages/_utils/global-config';
+import { configProviderInjectionKey } from '@/packages/_hooks/use-global-config';
 import type { Size } from '@/packages/_utils';
 
 const EConfigProviderProps = {
@@ -18,6 +18,7 @@ const EConfigProviderProps = {
      */
   size: {
     type: String as PropType<Size>,
+    default: 'medium',
   },
   /**
      * 是否全局生效

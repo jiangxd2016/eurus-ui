@@ -73,7 +73,9 @@ export const isElement = (e: unknown): e is Element => {
   if (typeof Element === 'undefined') { return false; }
   return e instanceof Element;
 };
-
+export function isFunction(obj: any): obj is (...args: any[]) => any {
+  return typeof obj === 'function';
+}
 export function isStringNumber(o: any): boolean {
   return !Number.isNaN(Number(o));
 }

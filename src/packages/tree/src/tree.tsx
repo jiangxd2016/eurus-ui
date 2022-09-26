@@ -1,7 +1,7 @@
 import type { PropType } from 'vue';
 import { provide, toRefs, watch, reactive, defineComponent } from 'vue';
 import TreeNode from './treeNode';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 
 import './style.scss';
 const props = {

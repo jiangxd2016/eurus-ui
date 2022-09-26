@@ -2,7 +2,7 @@ import type { PropType, StyleValue } from 'vue';
 import { Transition, isRef, defineComponent, ref, reactive, watch, computed, onMounted, nextTick, onBeforeUnmount, normalizeClass, unref } from 'vue';
 import Tag from '@/packages/tag';
 import { getOffset, getWindow } from '@/packages/_utils/dom';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 
 import './style.scss';
 import type { MaybeRef } from '@/packages/_utils';

@@ -1,6 +1,6 @@
 import { inject, defineComponent, toRefs } from 'vue';
-import classNames from '../../_hooks/useClassName';
-import { formItemProviderInjectionKey, getPrefixCls } from '@/packages/_utils/global-config';
+import classNames from '../../_hooks/use-classname';
+import { formItemProviderInjectionKey, getPrefixCls } from '@/packages/_hooks/use-global-config';
 import './style.scss';
 const InputProps = {
   modelValue: {

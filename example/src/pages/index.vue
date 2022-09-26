@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { EMessage } from 'eurus-ui';
+import { ENotify } from 'eurus-ui';
 let loading = $ref(false);
 
 setTimeout(() => {
@@ -24,8 +24,7 @@ setTimeout(() => {
   setTimeout(() => {
     loading = false;
   }, 1000);
-}, 1000);
-
-EMessage.msg({ type: 'info', message: 'this is  message', duration: 2000 });
+});
+ENotify.info({ content: 'this is notify', duration: 2000000000 });
 </script>
 

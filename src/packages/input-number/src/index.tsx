@@ -2,7 +2,7 @@ import { defineComponent, ref, toRefs } from 'vue';
 import type { SetupContext, PropType, ExtractPropTypes } from 'vue';
 
 import './style.scss';
-import { getPrefixCls } from '../../_utils/global-config';
+import { getPrefixCls } from '../../_hooks/use-global-config';
 import { isNumber } from '../../_utils';
 
 export type ISize = 'lg' | 'md' | 'sm';

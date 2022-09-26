@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
 import { renderSlot, defineComponent, reactive } from 'vue';
 import { EIcon } from '../../icons';
-import { getPrefixCls } from '../../_utils/global-config';
+import { getPrefixCls } from '../../_hooks/use-global-config';
 import { isEmpty } from '@/packages/_utils';
 import './style.scss';
 

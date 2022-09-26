@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import { createApp, h } from 'vue';
-import { createGlobalNode } from '../_hooks/useGlobalNode';
+import { createGlobalNode } from '../_hooks/use-global-node';
 import EMessage from './src';
 import type { MessageProps } from './src';
 

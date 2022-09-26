@@ -1,6 +1,6 @@
 import type { PropType } from 'vue';
 import { defineComponent, toRefs } from 'vue';
-import classNames from '../../_hooks/useClassName';
+import classNames from '../../_hooks/use-classname';
 import './style.scss';
 const LoaderProps = {
   modelValue: {

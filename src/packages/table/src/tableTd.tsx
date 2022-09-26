@@ -2,7 +2,7 @@ import { h, defineComponent, ref, computed, inject, watch } from 'vue';
 import { ECheckbox } from '@/packages/checkbox';
 import { ETooltip } from '@/packages/tooltip';
 import { ETag } from '@/packages/tag';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 
 export default defineComponent({
   name: 'TableTd',

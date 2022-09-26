@@ -4,6 +4,18 @@ interface Offset {
   left: number;
   top: number;
 }
+export const OVERLAY_TYPES = [
+  'modal',
+  'message',
+  'notify',
+  'drawer',
+] as const;
+
+const getOverlay = (type: typeof OVERLAY_TYPES[number]) => {
+  const popper = document.createElement('div');
+  popper.setAttribute('class', `eu-overlay eu-overlay-${type}`);
+  return popper;
+};
 
 const scrollTop = () => {
   // 滚动条的位置
@@ -76,5 +88,6 @@ export {
   getScrollbarWidth,
   hasClass,
   addClass,
-  removeClass
+  removeClass,
+  getOverlay
 };

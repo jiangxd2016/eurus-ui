@@ -1,7 +1,7 @@
 import { reactive, inject, computed, ref, defineComponent, h, unref } from 'vue';
 import TableTd from './tableTd';
 import type { RowColSpan } from './types';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 /**
  * const props = withDefaults(
     defineProps<{

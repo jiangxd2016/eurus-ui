@@ -1,15 +1,16 @@
 import type { InjectionKey, Slots, ExtractPropTypes } from 'vue';
 import { getCurrentInstance, inject } from 'vue';
-import type { Size } from './constants';
-import { CLASS_PREFIX, GLOBAL_CONFIG_NAME, COMPONENT_PREFIX } from './constants';
-import type { EurusOptions } from './types';
+import type { Size } from '../_utils/constants';
+import { CLASS_PREFIX, GLOBAL_CONFIG_NAME, COMPONENT_PREFIX } from '../_utils/constants';
+import type { EurusOptions } from '../_utils/types';
+import type { language } from '../locale';
 import type { EFormProps } from '@/packages/form/';
 
 export interface ConfigProvider {
   slots: Slots;
-  prefixCls?: string;
-  locale?: string;
   size?: Size;
+  prefixCls?: string;
+  locale?: language;
 }
 
 export const configProviderInjectionKey: InjectionKey<ConfigProvider>

@@ -1,7 +1,7 @@
 import type { HTMLAttributes, SetupContext, VNode } from 'vue';
 import { defineComponent } from 'vue';
 import './style.scss';
-import classNames from '../../_hooks/useClassName';
+import classNames from '../../_hooks/use-classname';
 import NStep from './stepItem';
 
 export interface StepsProps extends HTMLAttributes {

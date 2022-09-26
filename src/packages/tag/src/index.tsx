@@ -1,5 +1,5 @@
 import { defineComponent, ref, } from 'vue';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 import './style.scss';
 export default defineComponent({
   name: 'ETag',

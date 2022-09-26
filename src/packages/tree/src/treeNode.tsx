@@ -4,7 +4,7 @@ import Loading from '../../loading';
 import { ECheckbox } from '../../checkbox';
 import NodeContent from './content';
 import Icon from '@/packages/icons';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 interface TreeList {
   id: string;
   label: string;

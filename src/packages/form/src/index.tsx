@@ -1,7 +1,7 @@
 import { defineComponent, onMounted, provide, reactive, toRefs, } from 'vue';
 import type { PropType } from 'vue';
 import './style.scss';
-import { formCtxProviderInjectionKey, getPrefixCls } from '@/packages/_utils/global-config';
+import { formCtxProviderInjectionKey, getPrefixCls } from '@/packages/_hooks/use-global-config';
 export const EFormProps = {
   model: {
     type: Object,

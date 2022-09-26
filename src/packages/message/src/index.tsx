@@ -2,8 +2,8 @@ import type { HTMLAttributes, PropType, SetupContext } from 'vue';
 import { defineComponent, Transition, reactive } from 'vue';
 import './style.scss';
 import EIcon from '../../icons';
-import classNames from '../../_hooks/useClassName';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import classNames from '../../_hooks/use-classname';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 
 type MessageType = 'info' | 'success' | 'warning' | 'error';
 

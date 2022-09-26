@@ -21,7 +21,7 @@ import type { RowColSpan, Columns } from './types';
 import tableHeader from './tableHeader';
 import { getOffset } from '@/packages/_utils/dom';
 import { EPagination } from '@/packages/pagination';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 const ETableProps = {
   data: { type: Array as PropType<string[]>, default: () => [] },
   height: null,

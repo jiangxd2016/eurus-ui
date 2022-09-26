@@ -1,4 +1,4 @@
-import { getPrefixCls } from '../../_utils/global-config';
+import { getPrefixCls } from '../../_hooks/use-global-config';
 
 const prefix = getPrefixCls('input-number');
 

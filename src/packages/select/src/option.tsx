@@ -1,5 +1,5 @@
 import { defineComponent, inject, onMounted } from 'vue';
-import { getPrefixCls } from '../../_utils/global-config';
+import { getPrefixCls } from '../../_hooks/use-global-config';
 
 export default defineComponent({
   props: {

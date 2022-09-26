@@ -1,7 +1,7 @@
 import { reactive, inject, watch, ref, defineComponent } from 'vue';
 import TableHeader from './headerSlot';
 import { ECheckbox } from '@/packages/checkbox';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 import { numberToArr } from '@/packages/_utils/common';
 
 export default defineComponent({

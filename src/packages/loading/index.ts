@@ -1,11 +1,11 @@
 import type { App, DirectiveBinding } from 'vue';
 import { h, createApp } from 'vue';
-import { createGlobalNode, removeGlobalNode } from '../_hooks/useGlobalNode';
+import { createGlobalNode, removeGlobalNode } from '../_hooks/use-global-node';
 import ELoading from './src';
 
 const vLoading = {
 
-  created(el: any, binding: DirectiveBinding<boolean> ) {
+  created(el: any, binding: DirectiveBinding<boolean>) {
     if (!ELoading.instrace && binding.value) {
       const loadingElement = createGlobalNode('e-loading', el);
       const app: App = createApp({
@@ -26,7 +26,7 @@ const vLoading = {
   },
   updated(el: HTMLElement, binding: DirectiveBinding<boolean>) {
     if (ELoading.instrace) {
-      const ele = el.querySelector('#e-loading') as HTMLElement;
+      const ele: HTMLElement = el.querySelector<HTMLElement>('#e-loading')!;
       ele.style.display = binding.value === false ? 'none' : 'flex';
     } else if (binding.value) {
       vLoading.created(el, binding);
@@ -37,7 +37,7 @@ const vLoading = {
       return;
     }
     (ELoading.instrace as App).unmount();
-    const ele = el.querySelector('#e-loading') as HTMLElement;
+    const ele = el.querySelector<HTMLElement>('#e-loading');
     removeGlobalNode(ele);
   },
 };

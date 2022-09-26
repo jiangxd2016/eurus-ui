@@ -2,7 +2,7 @@ import type { ExtractPropTypes } from 'vue';
 import { computed, defineComponent, inject, onMounted, provide, reactive, toRaw } from 'vue';
 import Schema from 'async-validator';
 
-import { formCtxProviderInjectionKey, formItemProviderInjectionKey, getPrefixCls } from '@/packages/_utils/global-config';
+import { formCtxProviderInjectionKey, formItemProviderInjectionKey, getPrefixCls } from '@/packages/_hooks/use-global-config';
 import './style.scss';
 import { _hasOwnProperty } from '@/packages/_utils/isType';
 import { getValue } from '@/packages/_utils/common';

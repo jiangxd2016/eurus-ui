@@ -1,7 +1,7 @@
 import type { PropType } from 'vue';
 import { renderSlot, h, computed, defineComponent } from 'vue';
 
-import { useSize } from '../../_hooks/useSize';
+import { useSize } from '../../_hooks/use-size';
 import IconList from './iconList';
 
 const IconProps = {

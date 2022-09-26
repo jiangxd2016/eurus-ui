@@ -19,7 +19,10 @@ export function createGlobalNode(id: string, target: HTMLElement | null = null) 
   return el;
 }
 
-export function removeGlobalNode(el: HTMLElement) {
+export function removeGlobalNode(el: HTMLElement | null) {
+  if (!el) {
+    return;
+  }
   globalNodes.splice(globalNodes.indexOf(el), 1);
   el.remove();
 }
