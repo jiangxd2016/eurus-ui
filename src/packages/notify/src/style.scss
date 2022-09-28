@@ -1,6 +1,9 @@
 .eu-notify-list {
   position: fixed;
   z-index: 1003;
+  height: 100%;
+  padding-bottom: 40px;
+  overflow-y: auto;
 }
 
 .eu-notify-list-top-left {
@@ -10,7 +13,7 @@
 
 .eu-notify-list-top-right {
   top: 20px;
-  right: 20px;
+  right: 10px;
 
   .eu-notify {
     margin-left: auto;
