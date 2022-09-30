@@ -35,3 +35,5 @@ export interface EurusOptions {
   componentPrefix?: string;
 }
 export type RenderContent = string | RenderFunction;
+
+export type Data = Record<string, any>;
