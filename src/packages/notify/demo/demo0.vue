@@ -1,7 +1,7 @@
 <template >
-<ENotification></ENotification>
+<ENotify></ENotify>
 </template>
 
 <script  setup lang="ts">
-import { ENotification } from 'eurus-ui';
+import { ENotify } from 'eurus-ui';
 </script>

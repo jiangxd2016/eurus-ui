@@ -13,12 +13,17 @@ Vue.createApp().use(EButton.name, EButton)
 
 ## type
 
-<CodeDemo
-  src="button/demo/demo0.vue"
-/>
+::::card Light
 
+You can use `variant="light"` to create button with light background _(Background with opacity)_.
 
-## size
+:::code buttontype
+<<< ../src/packages/button/demo/type.vue
+:::
+
+::::
+
+<!-- ## size
 
 <CodeDemo
   src="button/demo/demo1.vue"
@@ -35,7 +40,7 @@ Vue.createApp().use(EButton.name, EButton)
 
 <CodeDemo
   src="button/demo/demo3.vue"
-/>
+/> -->
 
 ### Button Props
 

@@ -31,3 +31,6 @@ img.resizable-img {
 }
 
 
+.vp-doc a {
+  color: unset !important
+}

@@ -1,6 +1,9 @@
 import { defineConfig } from 'vitepress';
 import { version } from '../../package.json';
 import { docsName, docsDescription, sidebarCN, sidebarUS, releases } from './constants';
+
+import { mdPlugin } from './plugins/demo';
+
 module.exports = defineConfig({
   title: 'Eurus UI',
   description: docsDescription,
@@ -72,5 +75,7 @@ module.exports = defineConfig({
       copyright: 'Copyright © 2019-present jiangxd',
     },
   },
-
+  markdown: {
+    config: md => mdPlugin(md),
+  },
 });

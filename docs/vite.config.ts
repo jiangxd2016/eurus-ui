@@ -2,12 +2,13 @@ import { resolve } from 'path';
 import UnoCSS from 'unocss/vite';
 import { presetAttributify, presetIcons, presetUno, presetWind } from 'unocss';
 import ViteRestart from 'vite-plugin-restart';
-import { MarkdownTransform } from './.vitepress/plugins/md-transform';
 
 export default {
   resolve: {
     alias: {
+      '@/': `${resolve(__dirname, '../src/packages')}/`,
       'eurus-ui/': `${resolve(__dirname, '../dist/es')}/`,
+      'eurus-ui-dist/': `${resolve(__dirname, '../dist')}/`,
     },
   },
   plugins: [
@@ -34,7 +35,6 @@ export default {
         '../src/packages/**/*.vue'
       ],
     }),
-    MarkdownTransform()
   ],
 };
 

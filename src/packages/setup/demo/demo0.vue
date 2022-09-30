@@ -1,7 +1,7 @@
 <template>
-  <ESetup />
+  <EStep />
 </template>
 
 <script  setup lang="ts">
-import { ESetup } from 'eurus-ui';
+import { EStep } from 'eurus-ui';
 </script>

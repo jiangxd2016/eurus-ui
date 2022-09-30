@@ -2,7 +2,7 @@ import type { HTMLAttributes, SetupContext, VNode } from 'vue';
 import { defineComponent } from 'vue';
 import './style.scss';
 import classNames from '../../_hooks/use-classname';
-import NStep from './stepItem';
+import EStepItem from './stepItem';
 
 export interface StepsProps extends HTMLAttributes {
   vertical?: boolean;
@@ -10,7 +10,7 @@ export interface StepsProps extends HTMLAttributes {
 }
 
 export default defineComponent({
-  name: 'NStep',
+  name: 'EStep',
   setup(_: StepsProps, { slots, attrs }: SetupContext) {
     const { vertical, active = 1 } = attrs as StepsProps;
     const renderChild = (child: VNode, index: number) => {
@@ -22,7 +22,7 @@ export default defineComponent({
         isLatest: slots.default ? index === slots.default().length - 1 : true
       };
       return (
-        <NStep {...setpProps} />
+        <EStepItem {...setpProps} />
       );
     };
 
