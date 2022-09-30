@@ -2,6 +2,6 @@
   <ESetup />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { ESetup } from 'eurus-ui';
 </script>

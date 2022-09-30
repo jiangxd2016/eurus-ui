@@ -2,6 +2,6 @@
 <ETooltip></ETooltip>
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { ETooltip } from 'eurus-ui';
 </script>

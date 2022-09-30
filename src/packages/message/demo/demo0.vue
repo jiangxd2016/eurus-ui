@@ -2,6 +2,6 @@
   <EMessage />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EMessage } from 'eurus-ui';
 </script>

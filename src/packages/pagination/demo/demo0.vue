@@ -2,6 +2,6 @@
   <EPagination />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EPagination } from 'eurus-ui';
 </script>

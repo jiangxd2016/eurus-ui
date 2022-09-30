@@ -6,6 +6,6 @@
   <EButton type="primary" size="xl">xl</EButton>
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EButton } from 'eurus-ui';
 </script>

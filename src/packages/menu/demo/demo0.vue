@@ -2,6 +2,6 @@
   <EMenu />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EMenu } from 'eurus-ui';
 </script>

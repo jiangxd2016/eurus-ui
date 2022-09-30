@@ -4,6 +4,6 @@
   <ETag type="warning">标签三</ETag>
   <ETag type="danger">标签四</ETag>
 </template>
-<script  setup>
+<script  setup lang="ts">
 import { ETag } from 'eurus-ui';
 </script>

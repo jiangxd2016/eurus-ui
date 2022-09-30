@@ -2,6 +2,6 @@
   <EDivider />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EDivider } from 'eurus-ui';
 </script>

@@ -9,6 +9,6 @@
 </template>
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { ETabs } from 'eurus-ui';
 </script>

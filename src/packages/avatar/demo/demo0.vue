@@ -13,6 +13,6 @@
   </EAvatar>
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EAvatar } from 'eurus-ui';
 </script>

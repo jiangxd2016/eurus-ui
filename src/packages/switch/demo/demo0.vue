@@ -2,6 +2,6 @@
   <ESwitch />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { ESwitch } from 'eurus-ui';
 </script>

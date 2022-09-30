@@ -4,6 +4,6 @@
   <EButton type="primary" circle size="lg">123</EButton>
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EButton } from 'eurus-ui';
 </script>

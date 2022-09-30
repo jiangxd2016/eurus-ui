@@ -2,6 +2,6 @@
 <EFormItem></EFormItem>
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EFormItem } from 'eurus-ui';
 </script>

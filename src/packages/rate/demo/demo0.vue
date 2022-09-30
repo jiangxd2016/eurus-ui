@@ -2,6 +2,6 @@
   <ERate />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { ERate } from 'eurus-ui';
 </script>

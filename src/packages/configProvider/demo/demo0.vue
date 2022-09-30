@@ -4,6 +4,6 @@
   </EConfigProvider>
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EConfigProvider } from 'eurus-ui';
 </script>

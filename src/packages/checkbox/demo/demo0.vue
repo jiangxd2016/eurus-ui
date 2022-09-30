@@ -2,6 +2,6 @@
   <ECheckbox />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { ECheckbox } from 'eurus-ui';
 </script>

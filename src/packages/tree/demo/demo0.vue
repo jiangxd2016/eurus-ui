@@ -2,6 +2,6 @@
   <ETree />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { ETree } from 'eurus-ui';
 </script>

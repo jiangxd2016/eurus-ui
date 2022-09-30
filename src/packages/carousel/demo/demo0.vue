@@ -2,6 +2,6 @@
   <ECarousel />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { ECarousel } from 'eurus-ui';
 </script>

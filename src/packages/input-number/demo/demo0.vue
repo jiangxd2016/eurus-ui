@@ -2,6 +2,6 @@
   <EInputNumber />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EInputNumber } from 'eurus-ui';
 </script>

@@ -5,6 +5,6 @@
   </ESelectDown>
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { ESelectDown } from 'eurus-ui';
 </script>

@@ -2,6 +2,6 @@
   <EDatePicker />
 </template>
 
-<script  setup>
+<script  setup lang="ts">
 import { EDatePicker } from 'eurus-ui';
 </script>
