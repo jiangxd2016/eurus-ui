@@ -28,6 +28,7 @@
     "typescript": "^4.8.3",
     "unocss": "^0.45.23",
     "vite": "^3.1.3",
+    "eurus-ui": "workspace:*",
     "vite-plugin-pwa": "^0.13.1",
     "vite-plugin-restart": "^0.2.0",
     "vitepress": "^1.0.0-alpha.16",

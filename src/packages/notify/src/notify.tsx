@@ -21,7 +21,7 @@ export default defineComponent({
     },
     duration: {
       type: Number,
-      default: 30000000000,
+      default: 300,
     },
     resetOnUpdate: {
       type: Boolean,
@@ -72,7 +72,7 @@ export default defineComponent({
         <div class={`${prefixCls}-left`}>
           {props.showIcon
             && <div class={`${prefixCls}-icon`}>
-              {slots.icon ? slots.icon() : <Icon type={props.type} />}
+              {/* {slots.icon ? slots.icon() : <Icon name={props.type} />} */}
             </div>
           }
         </div>
@@ -90,7 +90,7 @@ export default defineComponent({
         </div>
         {
           props.closable && <div class={`${prefixCls}-close`} onClick={handleClose}>
-            <Icon type="close" />
+            <Icon name="close" />
           </div>
         }
       </li>
