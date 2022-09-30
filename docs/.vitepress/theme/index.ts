@@ -1,3 +1,4 @@
+import type { App } from 'vue';
 import DefaultTheme from 'vitepress/theme';
 
 import 'uno.css';
@@ -10,7 +11,7 @@ import CodeDemo from '../components/ClientOnly.vue';
 
 export default {
   ...DefaultTheme,
-  enhanceApp({ app }) {
+  enhanceApp({ app }: { app: App }) {
     app.component('CodeDemo', CodeDemo);
   }
 };

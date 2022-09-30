@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import VueRunning from 'vue-running';
-import type { depLibsType } from 'vue-running';
-import 'vue-running/dist/style.css';
-import { LibraryJs, LibraryCss } from '../constants';
-
+import { useClipboard } from '@vueuse/core';
 interface demoProps {
   options?: any;
   key: string;
@@ -18,16 +14,7 @@ const props = defineProps<{ source: string; distCss: string; distJs: string; cod
 
 const clipSuccess = ref(false);
 const showCode = ref(false);
-const depLibs: depLibsType[] = [{
-  name: 'eurus-ui',
-  code: decodeURIComponent(props.distJs),
-  type: 'js',
-}, {
-  name: 'eurus-ui-css',
-  code: decodeURIComponent(props.distCss),
-  type: 'css',
-},
-];
+
 const demoInfo = computed<demoProps | any>(()=>{
   return {
     title: '',
@@ -52,12 +39,6 @@ const copyHandler = () => {
 };
 const onSHowCodeClick = ()=>{
   showCode.value = !showCode.value;
-};
-const codeMirrorOption = {
-  readOnly: true,
-  lineNumbers: false,
-  scrollbarStyle: null,
-  cursorBlinkRate: -1
 };
 </script>
 
@@ -86,7 +67,8 @@ const codeMirrorOption = {
         </div>
         <!-- demo -->
         <div class="demo-component ">
-          <VueRunning layout="vertical" :show-code="showCode" :dep-libs="depLibs" :code="demoInfo.code" :code-mirror-option="codeMirrorOption" />
+          <!-- <component :is="defineAsyncComponent(demoInfo.code)" /> -->
+          <!-- <VueRunning layout="vertical" :show-code="showCode" :dep-libs="depLibs" :code="demoInfo.code" :code-mirror-option="codeMirrorOption" /> -->
         </div>
 
         <div v-if="showCode" class="example-code language-vue relative">

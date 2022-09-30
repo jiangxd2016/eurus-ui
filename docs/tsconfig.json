@@ -3,7 +3,10 @@
     "baseUrl": ".",
     "module": "ESNext",
     "target": "es2016",
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "strict": true,
     "jsx": "preserve",
     "esModuleInterop": true,
@@ -16,11 +19,21 @@
     "forceConsistentCasingInFileNames": true,
     "types": [
       "vite/client",
-      "vite-plugin-pages/client"
+      "vite-plugin-pages/client",
     ],
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": [
+        "src/*"
+      ]
     }
   },
-  "exclude": ["dist", "node_modules"]
+  "include": [
+    "types",
+    ".vitepress/**/*.ts",
+    ".vitepress/**/*.vue"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }
