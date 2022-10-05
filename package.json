@@ -60,7 +60,7 @@
   ],
   "dependencies": {
     "async-validator": "^4.2.5",
-    "axios": "^0.27.2",
+    "axios": "^1.0.0",
     "dayjs": "^1.11.5"
   },
   "peerDependencies": {
