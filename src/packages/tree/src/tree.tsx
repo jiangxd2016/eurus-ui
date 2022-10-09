@@ -170,7 +170,7 @@ export default defineComponent({
       }
       // 更新v-model
       if (typeof props.modelValue === 'object') {
-        const temp = (modelValue && modelValue.value) as string[];
+        const temp = (modelValue.value && modelValue.value) as string[];
         const index = temp.indexOf(item.id);
         if (index !== -1) {
           // 表示存在，则删除

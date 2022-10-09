@@ -34,7 +34,7 @@ export default defineComponent({
       borderTopColor: color.value,
     };
     return () => (
-      modelValue && <div class="loading flex flex-center">
+      modelValue.value && <div class="loading flex flex-center">
         <div class="loading-spinner" style={{ ...loadingStyle }} />
         <span class={spanClass()}>{text.value}</span>
       </div>

@@ -9,7 +9,8 @@ import {
   watch,
 } from 'vue';
 import Virtual from './virtual';
-import { Item, Slot } from './item';
+import Item from './item';
+import Slot from './slot';
 import { VirtualProps } from './props';
 
 enum EVENT_TYPE {

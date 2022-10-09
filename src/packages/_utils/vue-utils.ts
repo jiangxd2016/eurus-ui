@@ -209,7 +209,7 @@ export const getFirstComponent = (
         if (result) { return result; }
       }
     } else if (isArray(child)) {
-      const result = getFirstComponent(child);
+      const result = getFirstComponent(child as unknown as VNode[]);
       if (result) { return result; }
     }
   }
@@ -261,6 +261,15 @@ export const isEmptyChildren = (children?: VNode[]) => {
   }
 
   return true;
+};
+export const getChildrenArray = (vn: VNode): VNode[] | undefined => {
+  if (isArrayChildren(vn, vn.children)) {
+    return vn.children;
+  }
+  if (isArray(vn)) {
+    return vn as unknown as VNode[];
+  }
+  return undefined;
 };
 
 export const getChildrenComponents = (
@@ -314,17 +323,15 @@ export const mergeFirstChild = (
   }
   return false;
 };
+export const getFirstElementFromTemplateRef = (
+  target: HTMLElement | ComponentPublicInstance | undefined
+) => {
+  if (isComponentInstance(target)) {
 
-export const getChildrenArray = (vn: VNode): VNode[] | undefined => {
-  if (isArrayChildren(vn, vn.children)) {
-    return vn.children;
+    return getFirstElementFromVNode(target.$.subTree);
   }
-  if (isArray(vn)) {
-    return vn;
-  }
-  return undefined;
+  return target;
 };
-
 export const getFirstElementFromVNode = (
   vn: VNode
 ): HTMLElement | undefined => {
@@ -341,18 +348,10 @@ export const getFirstElementFromVNode = (
     }
   } else {
     const children = getChildrenArray(vn);
+
     return getFirstElementFromChildren(children);
   }
   return undefined;
-};
-
-export const getFirstElementFromTemplateRef = (
-  target: HTMLElement | ComponentPublicInstance | undefined
-) => {
-  if (isComponentInstance(target)) {
-    return getFirstElementFromVNode(target.$.subTree);
-  }
-  return target;
 };
 
 export const getFirstElementFromChildren = (
@@ -399,7 +398,7 @@ export const getAllElements = (
     } else if (isSlotsChildren(item, item.children)) {
       results.push(...getAllElements(item.children.default?.(), includeText));
     } else if (isArray(item)) {
-      results.push(...getAllElements(item, includeText));
+      results.push(...getAllElements(item as unknown as VNode[], includeText));
     }
   }
   return results;
@@ -423,7 +422,7 @@ export function unFragment(nodeList: VNode[]) {
           unFragmentNodeList.push(...loop(node.children));
         } else if (isString(node.children)) {
           // string
-          unFragmentNodeList.push(node.children);
+          unFragmentNodeList.push(node.children as string);
         }
       } else {
         unFragmentNodeList.push(node);
@@ -455,31 +454,6 @@ export const resolveProps = (vn: VNode) => {
     props[camelKey] = resolveValue;
   }
   return props;
-};
-
-export const getFirstElement = (vn: VNode | VNode[]): HTMLElement | null => {
-  if (isArray(vn)) {
-    for (const child of vn) {
-      const result = getFirstElement(child);
-      if (result) { return result; }
-    }
-  } else if (isElement(vn)) {
-    return vn.el as HTMLElement;
-  } else if (isComponent(vn)) {
-    if ((vn.el as Node).nodeType === 1) {
-      return vn.el as HTMLElement;
-    }
-    if (vn.component) {
-      const result = getFirstElement(vn.component.subTree);
-      if (result) { return result; }
-    }
-  } else if (isArrayChildren(vn, vn.children)) {
-    for (const child of vn.children) {
-      const result = getFirstElement(child);
-      if (result) { return result; }
-    }
-  }
-  return null;
 };
 
 export const getSlotFunction = (param: RenderContent | undefined) => {

@@ -1,5 +1,4 @@
-import type {
-  Ref } from 'vue';
+import type { Ref } from 'vue';
 import {
   h,
   computed,
@@ -9,9 +8,9 @@ import {
   onUpdated,
   ref
 } from 'vue';
-import { ItemProps, SlotProps } from './props';
+import { ItemProps } from './props';
 
-const useResizeChange = (
+export const useResizeChange = (
   props: any,
   rootRef: Ref<HTMLElement | null>,
   emit: any,
@@ -51,7 +50,7 @@ const useResizeChange = (
   });
 };
 
-export const Item = defineComponent({
+export default defineComponent({
   name: 'VirtualListItem',
   props: ItemProps,
   emits: ['itemResize'],
@@ -85,26 +84,6 @@ export const Item = defineComponent({
         </TagElement>
         );
       }
-    };
-  },
-});
-
-export const Slot = defineComponent({
-  name: 'VirtualListSlot',
-  props: SlotProps,
-  emits: ['slotResize'],
-  setup(props, { slots, emit }) {
-    const rootRef = ref<HTMLElement | null>(null);
-    useResizeChange(props, rootRef, emit);
-
-    return () => {
-      const { tag: Tag, uniqueKey } = props;
-
-      return (
-        <Tag ref={rootRef} key={uniqueKey}>
-          {slots.default?.()}
-        </Tag>
-      );
     };
   },
 });
