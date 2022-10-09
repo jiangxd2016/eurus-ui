@@ -21,8 +21,7 @@
     "docs:serve": "pnpm -C docs serve",
     "changelog": "esno scripts/changelog.ts",
     "clean": "rimraf dist",
-    "lint:change": "lcf --fix \"{src,build,scripts,example}/**/*.{ts,tsx,js,vue}\"",
-    "lint": "eslint --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
+    "lint": "eslint --cache --fix \"{src,scripts}/**/*.{ts,tsx,js,vue}\"",
     "stylelint": "stylelint \"src/packages/**/{*.scss,*.css}\"",
     "stylelint:fix": "stylelint --fix \"src/packages/**/{*.scss,*.css}\"",
     "test:watch": "vitest --watch",
@@ -60,26 +59,26 @@
   ],
   "dependencies": {
     "async-validator": "^4.2.5",
-    "axios": "^1.0.0",
+    "axios": "^1.1.2",
     "dayjs": "^1.11.5"
   },
   "peerDependencies": {
     "vue": "^3.2.26"
   },
   "devDependencies": {
-    "@estjs/eslint-config": "^0.3.5",
+    "@estjs/eslint-config": "^0.3.6",
     "@estjs/stylelint-config": "^0.0.8",
     "@estjs/tools": "^0.0.28",
-    "@types/node": "^18.8.2",
+    "@types/node": "^18.8.3",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
-    "@vitest/coverage-c8": "^0.23.4",
+    "@vitest/coverage-c8": "^0.24.0",
     "@vue/test-utils": "^2.1.0",
     "bumpp": "^8.2.1",
     "chokidar": "^3.5.3",
-    "eslint": "^8.24.0",
+    "eslint": "^8.25.0",
     "esno": "^0.16.3",
-    "happy-dom": "^7.0.2",
+    "happy-dom": "^7.4.0",
     "husky": "^8.0.1",
     "klaw-sync": "^6.0.0",
     "lint-staged": "^13.0.3",
@@ -89,8 +88,8 @@
     "standard-changelog": "^2.0.27",
     "stylelint": "^14.13.0",
     "typescript": "^4.8.4",
-    "vite": "^3.1.5",
-    "vitest": "^0.23.4",
-    "vue-tsc": "^0.40.13"
+    "vite": "^3.1.6",
+    "vitest": "^0.24.0",
+    "vue-tsc": "^1.0.1"
   }
 }
