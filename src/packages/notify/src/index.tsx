@@ -50,7 +50,7 @@ class NotifyManger {
 
   add = (config: _NotifyConfig) => {
     this.notificationCount++;
-    const id = config.id ?? `__arco_notification_${this.notificationCount}`;
+    const id = config.id ?? `__eu_notification_${this.notificationCount}`;
     if (this.notificationIds.has(id)) {
       return this.update(id, config);
     }

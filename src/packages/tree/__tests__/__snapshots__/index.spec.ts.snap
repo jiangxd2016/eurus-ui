@@ -2,7 +2,7 @@
 
 exports[`ETree > ETree snapshot 1`] = `
 "<div class=\\"eu-tree\\">
-  <transition-stub>
+  <transition-stub appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <ul></ul>
   </transition-stub>
 </div>"

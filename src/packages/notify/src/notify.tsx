@@ -5,7 +5,6 @@ import { getPrefixCls } from '@/packages/_hooks/use-global-config';
 import Icon from '@/packages/icons';
 export default defineComponent({
   name: 'Notify',
-
   props: {
     type: {
       type: String as PropType<MessageType>,
@@ -21,7 +20,7 @@ export default defineComponent({
     },
     duration: {
       type: Number,
-      default: 300,
+      default: 3000,
     },
     resetOnUpdate: {
       type: Boolean,

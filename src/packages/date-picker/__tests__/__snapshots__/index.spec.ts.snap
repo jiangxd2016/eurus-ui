@@ -3,7 +3,7 @@
 exports[`EDate-picker > EDate-picker snapshot 1`] = `
 "<div class=\\"date-picker-wrap\\">
   <div class=\\"date-editor\\"><input type=\\"text\\" placeholder=\\"placeholder\\" class=\\"eu-input eu-input-md date-edit-input\\"></div>
-  <transition-stub>
+  <transition-stub name=\\"date-picker\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <!---->
   </transition-stub>
 </div>"

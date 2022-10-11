@@ -208,8 +208,8 @@ export const getFirstComponent = (
         const result = getFirstComponent(children);
         if (result) { return result; }
       }
-    } else if (isArray(child)) {
-      const result = getFirstComponent(child as unknown as VNode[]);
+    } else if (isArray<VNode>(child)) {
+      const result = getFirstComponent(child);
       if (result) { return result; }
     }
   }
@@ -266,8 +266,8 @@ export const getChildrenArray = (vn: VNode): VNode[] | undefined => {
   if (isArrayChildren(vn, vn.children)) {
     return vn.children;
   }
-  if (isArray(vn)) {
-    return vn as unknown as VNode[];
+  if (isArray<VNode>(vn)) {
+    return vn;
   }
   return undefined;
 };
@@ -397,8 +397,8 @@ export const getAllElements = (
       results.push(...getAllElements(item.children, includeText));
     } else if (isSlotsChildren(item, item.children)) {
       results.push(...getAllElements(item.children.default?.(), includeText));
-    } else if (isArray(item)) {
-      results.push(...getAllElements(item as unknown as VNode[], includeText));
+    } else if (isArray<VNode>(item)) {
+      results.push(...getAllElements(item, includeText));
     }
   }
   return results;

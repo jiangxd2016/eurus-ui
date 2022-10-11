@@ -2,7 +2,8 @@ import type { PropType } from 'vue';
 import { defineComponent, TransitionGroup } from 'vue';
 import type {
   NotifyItem,
-  NotifyPosition } from './types';
+  NotifyPosition
+} from './types';
 import {
   NOTIFICATION_POSITION
 } from './types';
@@ -35,32 +36,35 @@ export default defineComponent({
     const isRight = props.position.includes('Right');
 
     return () => (
-      <TransitionGroup
-        class={[prefixCls, `${prefixCls}-${kebabPosition}`]}
-        style={{ zIndex: zIndex.value }}
-        name={`slide-${isRight ? 'right' : 'left'}-notify`}
-        onAfterLeave={() => context.emit('afterClose')}
-        tag="ul"
-      >
-        {props.notifications.map((item) => {
-          const slots = {
-            default: getSlotFunction(item.title),
-            content: getSlotFunction(item.content),
-            icon: getSlotFunction(item.icon),
-            footer: getSlotFunction(item.footer),
-          };
-          return (
-            <Notify
-              key={item.id}
-              type={item.type}
-              duration={item.duration}
-              closable={item.closable}
-              v-slots={slots}
-              onClose={() => context.emit('close', item.id)}
-            />
-          );
-        })}
-      </TransitionGroup>
+      <div class={`${prefixCls} ${prefixCls}-${kebabPosition}`} style={{ zIndex: zIndex.value }}>
+
+        <TransitionGroup
+
+          name={`slide-${isRight ? 'right' : 'left'}-notify`}
+          onAfterLeave={() => context.emit('afterClose')}
+          tag="ul"
+        >
+          {props.notifications.map((item) => {
+            const slots = {
+              default: getSlotFunction(item.title),
+              content: getSlotFunction(item.content),
+              icon: getSlotFunction(item.icon),
+              footer: getSlotFunction(item.footer),
+            };
+            return (
+              <Notify
+                key={item.id}
+                type={item.type}
+                duration={item.duration}
+                closable={item.closable}
+                v-slots={slots}
+                onClose={() => context.emit('close', item.id)}
+              />
+            );
+          })}
+        </TransitionGroup>
+      </div>
+
     );
   },
 });

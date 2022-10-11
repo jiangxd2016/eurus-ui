@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`EDialog > EDialog snapshot 1`] = `
-"<transition-stub>
+"<transition-stub name=\\"EDialog\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
   <!---->
 </transition-stub>"
 `;

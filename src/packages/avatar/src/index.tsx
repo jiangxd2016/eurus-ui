@@ -7,7 +7,7 @@ export type Size = 'sm' | 'md' | 'lg' | 'xl';
 const EAvatarProps = {
   size: {
     type: String as PropType<Size>,
-    default: false,
+    default: 'md',
   },
   color: {
     type: String,

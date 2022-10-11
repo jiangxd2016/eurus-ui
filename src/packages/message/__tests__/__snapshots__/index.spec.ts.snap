@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`EMessage > EMessage snapshot 1`] = `
-"<transition-stub>
+"<transition-stub name=\\"EMessage\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
   <div class=\\"eu-message info\\">
     <div class=\\"e-message-content\\">
       <div class=\\"content-cell\\">

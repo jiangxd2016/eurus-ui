@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`EAvatar > EAvatar snapshot 1`] = `
-"<div class=\\"avatar\\">
+"<div class=\\"avatar md\\">
   <!---->
   <!---->
   <!---->

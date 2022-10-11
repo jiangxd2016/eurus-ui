@@ -1,6 +1,6 @@
 export const _toString = Object.prototype.toString;
 export const _hasOwnProperty = Object.prototype.hasOwnProperty;
-export function isArray(o: any): boolean {
+export function isArray<T>(o: any): o is Array<T> {
   return Array.isArray(o);
 }
 export function isBlob(o: any): boolean {

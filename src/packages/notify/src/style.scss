@@ -1,7 +1,6 @@
 .eu-notify-list {
   position: fixed;
   z-index: 1003;
-  height: 100%;
   padding-bottom: 40px;
   overflow-y: auto;
 }
@@ -155,7 +154,7 @@
   }
 }
 
-.eu-notify .arco-icon-hover.eu-notify-icon-hover::before {
+.eu-notify .eu-icon-hover.eu-notify-icon-hover::before {
   width: 20px;
   height: 20px;
 }

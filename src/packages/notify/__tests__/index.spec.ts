@@ -1,33 +1,117 @@
-import { nextTick } from 'vue';
+import { mount } from '@vue/test-utils';
 import ENotify from '..';
+import ENotifyList from '../src/notifyList';
 import sleep from '@/test-utils/sleep';
 
 describe('ENotification', () => {
+  test('should render notification', () => {
+    const wrapper = mount(ENotifyList, {
+      props: {
+        notifications: [
+          {
+            id: 0,
+            content: 'Info Message',
+            type: 'info',
+          },
+          {
+            id: 1,
+            content: 'Success Message',
+            type: 'success',
+          },
+          {
+            id: 2,
+            content: 'Warning Message',
+            type: 'warning',
+          },
+          {
+            id: 3,
+            content: 'Error Message',
+            type: 'error',
+          },
+        ],
+      },
+    });
 
-  it('ENotify snapshot', async () => {
-    ENotify.info({ content: 'this is notify', duration: 2000 });
-
-    await nextTick();
-
-    expect(document.body.querySelector<HTMLElement>('.eu-overlay-notify')).toMatchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
-  it('should be render content', async () => {
 
-    ENotify.info({ content: 'this is notify', duration: 2000 });
+  test('should show & remove notification', async () => {
+    const wrapper = mount({
+      template:
+        '<button id="add" @click="handleAdd">Add</button>'
+        + '<button id="clear" @click="handleClear">Clear</button>',
+      methods: {
+        handleAdd() {
+          ENotify.info({
+            content: 'Info Message',
+            closable: true,
+            duration: 200000
+          });
+        },
+        handleClear() {
+          ENotify.clear();
+        },
+      },
+    });
 
-    await nextTick();
+    const addBtn = wrapper.find('#add');
+    await addBtn.trigger('click');
+    await addBtn.trigger('click');
 
-    expect(document.body.querySelector<HTMLElement>('.eu-notify-content')?.innerHTML).toMatchInlineSnapshot('"this is notify"');
+    await sleep(3030);
+    console.log('document.querySelectorAll(\'.eu-notify\')', document.querySelectorAll('.eu-notify'));
+
+    expect(document.querySelectorAll('.eu-notify')).toHaveLength(2);
+    (
+      document.querySelector('.eu-notify-close-btn') as HTMLElement
+    )?.click();
+
+    await wrapper.find('#clear').trigger('click');
+    expect(document.querySelectorAll('.eu-notify')).toHaveLength(0);
   });
-  it('should be duration', async () => {
-    ENotify.info({ content: 'this is notify', duration: 2000 });
 
-    await nextTick();
+  test('should emit close event', async () => {
+    const wrapper = mount(ENotifyList, {
+      props: {
+        notifications: [
+          {
+            id: 0,
+            content: 'Info Message',
+            type: 'info',
+            closable: true,
+          },
+        ],
+      },
+    });
 
-    // destroy after 2000ms + 20ms
-    await sleep(2020);
+    await wrapper.find('.eu-notify-close-btn')?.trigger('click');
+    expect(wrapper.emitted('close')).toHaveLength(1);
+  });
 
-    expect(document.body.querySelector<HTMLElement>('.eu-overlay-notify')).toMatchInlineSnapshot('null');
+  test('should update notification content', async () => {
+    let count = 0;
 
+    const wrapper = mount({
+      template: `
+        <button @click="handleClick">Click</button>`,
+      methods: {
+        handleClick() {
+          ENotify.info({
+            id: '1',
+            content: `Info Message ${++count}`,
+          });
+        },
+      },
+    });
+
+    const button = wrapper.find('button');
+    await button.trigger('click');
+    expect(document.querySelector('.eu-notify')?.textContent).toBe(
+      'Info Message 1'
+    );
+    await button.trigger('click');
+    expect(document.querySelector('.eu-notify')?.textContent).toBe(
+      'Info Message 2'
+    );
   });
 });
