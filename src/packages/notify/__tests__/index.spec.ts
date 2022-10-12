@@ -45,7 +45,7 @@ describe('ENotification', () => {
           ENotify.info({
             content: 'Info Message',
             closable: true,
-            duration: 200000
+            duration: 2000
           });
         },
         handleClear() {
@@ -57,9 +57,6 @@ describe('ENotification', () => {
     const addBtn = wrapper.find('#add');
     await addBtn.trigger('click');
     await addBtn.trigger('click');
-
-    await sleep(3030);
-    console.log('document.querySelectorAll(\'.eu-notify\')', document.querySelectorAll('.eu-notify'));
 
     expect(document.querySelectorAll('.eu-notify')).toHaveLength(2);
     (
@@ -84,7 +81,7 @@ describe('ENotification', () => {
       },
     });
 
-    await wrapper.find('.eu-notify-close-btn')?.trigger('click');
+    await wrapper.find('.eu-notify-close')?.trigger('click');
     expect(wrapper.emitted('close')).toHaveLength(1);
   });
 
@@ -106,12 +103,12 @@ describe('ENotification', () => {
 
     const button = wrapper.find('button');
     await button.trigger('click');
-    expect(document.querySelector('.eu-notify')?.textContent).toBe(
-      'Info Message 1'
+    expect(document.querySelector('.eu-notify')?.textContent).toMatchInlineSnapshot(
+      '"Info Message 1"'
     );
     await button.trigger('click');
-    expect(document.querySelector('.eu-notify')?.textContent).toBe(
-      'Info Message 2'
+    expect(document.querySelector('.eu-notify')?.textContent).toMatchInlineSnapshot(
+      '"Info Message 2"'
     );
   });
 });

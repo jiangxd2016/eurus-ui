@@ -34,16 +34,14 @@ const EAvatarProps = {
 export default defineComponent({
   name: 'EAvatar',
   props: EAvatarProps,
-  setup(props, { slots, emit }) {
+  setup(props, { slots }) {
 
     return () => (
       <div class={['avatar', props.size, props.offline && 'offline', props.online && 'online', props.notice && 'notice']} >
         {slots.default && slots.default()}
         {(props.offline || props.online) && <div class="dot" />}
         {props.notice && <div class="reddot" date-count={props.count} />}
-
       </div>
-
     );
   },
 });

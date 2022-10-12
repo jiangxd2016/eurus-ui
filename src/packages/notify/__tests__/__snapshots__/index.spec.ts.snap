@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`ENotification > should render notification 1`] = `
-"<div class=\\"eu-notify-list eu-notify-list-top-right\\">
+"<div class=\\"eu-notify-list eu-notify-list-top-right\\" style=\\"z-index: 0;\\">
   <transition-group-stub name=\\"slide-right-notify\\" tag=\\"ul\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <li role=\\"alert\\" class=\\"eu-notify eu-notify-info\\">
       <div class=\\"eu-notify-left\\">

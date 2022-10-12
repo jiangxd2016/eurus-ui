@@ -26,7 +26,9 @@ setTimeout(() => {
     console.log('loading');
 
     // ENotify.success({ content: 'this is notify', position: 'bottomLeft' });
-    ENotify.info({ content: 'this is notify', position: 'bottomRight', duration: 2000 });
+    ENotify.info({
+      content: 'this is notify', position: 'bottomRight', duration: 200000000, closable: true,
+    });
     // ENotify.info({ content: 'this is notify', position: 'topLeft', duration: 2000 });
     // ENotify.info({ content: 'this is notify', position: 'topRight', duration: 2000 });
   }, 1000);
