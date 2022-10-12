@@ -2,6 +2,7 @@ import type { App } from 'vue';
 
 import version from './version';
 
+import * as AllComponents from './packages/components';
 // TODO:
 export const globaleComponentPrefix = 'E';
 type ComponentType = any;
@@ -17,7 +18,7 @@ interface UiCreateOptions {
   componentPrefix?: string;
 }
 
-function create({ componentPrefix = globaleComponentPrefix, components = [] }: UiCreateOptions = {}): UiInstance {
+function create({ componentPrefix = globaleComponentPrefix, components = Object.values(AllComponents) }: UiCreateOptions = {}): UiInstance {
   const installTargets: App[] = [];
   function registerComponent( app: App, name: string, component: ComponentType) {
     const registered = app.component(componentPrefix + name);

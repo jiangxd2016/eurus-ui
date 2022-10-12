@@ -38,6 +38,7 @@ export * from './progress';
 export * from './notify';
 export * from './menu';
 export * from './setup';
+export * from './space';
 
 export * from './_utils';
 export * from './_hooks';

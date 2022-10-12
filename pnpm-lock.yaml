@@ -75,6 +75,7 @@ importers:
       '@vitejs/plugin-vue': ^3.1.2
       '@vueuse/core': ^9.3.0
       eslint: ^8.25.0
+      eurus-ui: workspace:*
       fast-glob: ^3.2.12
       klaw-sync: ^6.0.0
       markdown-it: ^13.0.1
@@ -100,6 +101,7 @@ importers:
       '@vitejs/plugin-vue': 3.1.2_vite@3.1.7+vue@3.2.40
       '@vueuse/core': 9.3.0_vue@3.2.40
       eslint: 8.25.0
+      eurus-ui: link:..
       fast-glob: 3.2.12
       klaw-sync: 6.0.0
       markdown-it: 13.0.1

@@ -8,12 +8,11 @@ import '../style/main.css';
 import '../style/vars.css';
 
 import 'eurus-ui-dist/style.css';
-
 import Demo from '../components/Demo.vue';
 import { extractFileNameFromPath } from '../../utils';
 export default {
   ...DefaultTheme,
-  enhanceApp({ app }: { app: App }) {
+  async enhanceApp({ app }: { app: App }) {
 
     const demos = import.meta.glob('../../../src/packages/**/demo/*.vue', { eager: true });
 
@@ -23,5 +22,11 @@ export default {
     }
 
     app.component('Demo', Demo);
+
+    if (typeof process === 'undefined') {
+      await import('eurus-ui').then((m) => {
+        m.default.create().install(app);
+      });
+    }
   }
 };
