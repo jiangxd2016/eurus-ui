@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`EInputNumber > EInputNumber snapshot 1`] = `
-"<div class=\\"eu-input-number\\">
-  <div><input type=\\"number\\"></div>
-</div>"
-`;

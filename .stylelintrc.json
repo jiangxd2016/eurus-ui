@@ -1,5 +1,0 @@
-{
-  "extends": [
-    "@estjs/stylelint-config"
-  ]
-}

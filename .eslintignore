@@ -1,8 +1,0 @@
-node_modules/
-**/*.json
-**/*.styl
-**/*.html
-.eslintrc.js
-!.vitepress
-src/version.ts
-**/demo/*.vue

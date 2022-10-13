@@ -20,6 +20,7 @@
     "vitejs",
     "vitepress",
     "vitest",
+    "jsdelivr",
     "vueuse",
     "klaw"
   ],

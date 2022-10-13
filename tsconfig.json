@@ -34,18 +34,5 @@
       "vite/client",
       "vitest/globals"
     ]
-  },
-  "typeAcquisition": {
-    "include": [
-      "vue"
-    ]
-  },
-  "exclude": [
-    "docs",
-    "example",
-    "scripts"
-  ],
-  "vueCompilerOptions": {
-    "experimentalDisableTemplateSupport": true
   }
 }
