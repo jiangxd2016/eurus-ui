@@ -35,7 +35,7 @@
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "simple-git-hooks",
+    "postinstall": "npx simple-git-hooks",
     "dev": "esno scripts/build.ts",
     "lint": "eslint --cache --fix \"./**/*.{ts,tsx,js,vue}\"",
     "test": "vitest"
