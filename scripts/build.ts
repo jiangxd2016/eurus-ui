@@ -1,0 +1,27 @@
+import { exec } from 'node:child_process';
+import { promisify } from 'node:util';
+import { build } from 'vite';
+import viteDev from './vite.dev';
+import configProd from './vite.prod';
+import configAll from './vite.all';
+const execPromise = promisify(exec);
+
+const args = process.argv.slice(2);
+const nodeEnv = args[0];
+console.log(`[eurus-ui env] ${nodeEnv}`);
+
+// complie
+(async () => {
+  if (nodeEnv === 'dev') {
+    await build(viteDev);
+  } else {
+    await build(configProd);
+    await build(configAll);
+  }
+  // console.log('[eurus-ui build]: start build css');
+  console.log('[eurus-ui build]: start build type');
+  // genrate type
+  await execPromise('npm run build:types');
+
+  console.log('[eurus-ui build]: ✨ build done');
+})();

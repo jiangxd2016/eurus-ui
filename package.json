@@ -21,7 +21,6 @@
     "ui framework",
     "component library"
   ],
-
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
   "unpkg": "dist/index.js",
@@ -36,17 +35,26 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "npx simple-git-hooks",
-    "dev": "esno scripts/build.ts",
+    "dev": "tsx scripts/build.ts dev",
+    "build": "pnpm run clean && pnpm run gen:version && tsx scripts/build.ts all",
+    "clean": "rimraf dist",
+    "gen:version": "tsx ./scripts/gen-version.ts",
     "lint": "eslint --cache --fix \"./**/*.{ts,tsx,js,vue}\"",
+    "build:types": "pnpm run build:types-cjs && pnpm run build:types-esm",
+    "build:types-cjs": "vue-tsc -p ./src/tsconfig.cjs.json --declaration --emitDeclarationOnly",
+    "build:types-esm": "vue-tsc -p ./src/tsconfig.esm.json --declaration --emitDeclarationOnly",
     "test": "vitest"
   },
   "peerDependencies": {
     "vue": "^3.2.26"
   },
   "dependencies": {
+    "-": "^0.0.1",
+    "D": "^1.0.0",
     "async-validator": "^4.2.5",
     "axios": "^1.1.2",
-    "dayjs": "^1.11.5"
+    "dayjs": "^1.11.5",
+    "sass": "^1.55.0"
   },
   "devDependencies": {
     "@estjs/eslint-config": "^0.3.6",
