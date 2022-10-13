@@ -77,16 +77,15 @@ export default defineComponent({
       if (props.disabled || props.loading) { return; }
       emit('click', e);
     };
-    const ComponentType = props.native ? 'a' : 'button' ;
+    const ComponentType = props.native ? 'a' : 'button';
     return () => (
       <ComponentType
         class={[
-          `${prefix} ${prefix}--${props.type} bg-${props.type} ${props.type === 'default' ? 'text-black' : 'text-white'
-          }`,
+          `${prefix} ${prefix}--${props.type} bg-${props.type}`,
           classNames,
         ]}
         {...props.native}
-       onClick={handleClick}>
+        onClick={handleClick}>
         {slots?.icons && renderSlot(slots, 'icon')}
         {slots?.default && <span>{slots?.default?.()}</span>}
       </ComponentType>
