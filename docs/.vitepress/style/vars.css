@@ -1,0 +1,94 @@
+/**
+ * Colors
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-c-accent: #2c9678;
+  --vp-c-brand: #2c9678;
+  --vp-c-brand-light: #2c9678;
+  --vp-c-brand-lighter: #2c9678;
+  --vp-c-brand-dark: #2c9678;
+  --vp-c-brand-darker: #2c9678;
+  --vp-c-text-code: #5d6f5d;
+  --vp-code-block-bg: #292d3e;
+  --vp-custom-block-tip-text: rgb(18, 181, 157);
+  --vp-custom-block-tip-border: rgba(18, 181, 157, 0.5);
+  --vp-custom-block-tip-bg: rgba(18, 181, 157, 0.1);
+}
+
+.dark {
+  --vp-code-block-bg: #1a1a1a;
+  --vp-c-text-code: #c0cec0;
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-border: var(--vp-c-brand-light);
+  --vp-button-brand-text: var(--vp-c-text-dark-1);
+  --vp-button-brand-bg: var(--vp-c-brand);
+  --vp-button-brand-hover-border: var(--vp-c-brand-light);
+  --vp-button-brand-hover-text: var(--vp-c-text-dark-1);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-light);
+  --vp-button-brand-active-border: var(--vp-c-brand-light);
+  --vp-button-brand-active-text: var(--vp-c-text-dark-1);
+  --vp-button-brand-active-bg: var(--vp-button-brand-bg);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+ :root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #A7E60B 30%,
+    #2c9678
+  );
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #A7E60B 30%,
+    #2c9678
+  );
+  --vp-home-hero-image-filter: blur(30px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+.image-container{
+
+  animation: imagerotate 9s linear infinite;
+}
+.image-container .image-src{
+  width:100%;
+  height:100%;
+}
+/* @keyframes imagerotate  {
+	0%{
+		transform: rotate(0deg)
+	}
+	100%{
+		transform:rotate(360deg);
+	}
+}
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(72px);
+  }
+} */
+
+
+/**
+ * Component: Algolia
+ * -------------------------------------------------------------------------- */
+
+.DocSearch {
+  --docsearch-primary-color: var(--vp-c-brand) !important;
+}
