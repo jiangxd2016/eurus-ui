@@ -1,0 +1,21 @@
+name:  🔀 Sync mirror to Gitee
+
+on:
+  push:
+    branches:
+      - main
+      - docs
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror the Github repos to Gitee.
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: 'github/jiangxd2016'
+          dst: 'gitee/jiangxd2016'
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token:  ${{ secrets.GITEE_ACCESS_TOKEN }}
+          static_list: 'eurus-ui'
+          force_update: true
