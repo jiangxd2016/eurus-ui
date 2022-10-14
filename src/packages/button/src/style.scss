@@ -1,4 +1,8 @@
-.eu-button {
+@import '../../../scss/variables';
+
+$button-prefix-cls: $prefix + -button;
+
+.#{$button-prefix-cls} {
   position: relative;
   display: inline-flex;
   align-items: stretch;
@@ -17,20 +21,20 @@
   border-radius: 4px;
 }
 
-.eu-button:hover {
+.#{$button-prefix-cls}:hover {
   opacity: 0.6;
 }
 
-.eu-button:active {
+.#{$button-prefix-cls}:active {
   opacity: 0.6;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px rgba(0, 0, 0, 0.141), 0 1px 14px rgba(0, 0, 0, 0.122);
+  box-shadow: $shadow-5;
 }
 
-.eu-button::before {
+.#{$button-prefix-cls}::before {
   border-radius: inherit;
   bottom: 0;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.141), 0 3px 1px -2px rgba(0, 0, 0, 0.122);
-  content: "";
+  box-shadow: $shadow-2;
+  content: '';
   display: block;
   left: 0;
   position: absolute;
@@ -38,28 +42,28 @@
   top: 0;
 }
 
-.eu-button.disabled {
+.#{$button-prefix-cls}.disabled {
   opacity: 0.7 !important;
   cursor: not-allowed !important;
   outline: 0 !important;
   box-shadow: none;
 }
 
-.eu-button.plain {
+.#{$button-prefix-cls}.plain {
   background: #ffffff !important;
   color: #222222 !important;
   box-shadow: none;
 }
 
-.eu-button.round {
+.#{$button-prefix-cls}.round {
   border-radius: 10px;
 }
 
-.eu-button.circle {
+.#{$button-prefix-cls}.circle {
   border-radius: 50%;
 }
 
-.eu-button .loading {
+.#{$button-prefix-cls} .loading {
   display: flex;
   align-items: center;
   width: 1.2em;
@@ -67,42 +71,42 @@
   margin-top: -2px;
 }
 
-.eu-button--sx {
+.#{$button-prefix-cls}--sx {
   font-size: 12px;
 }
 
-.eu-button--sm {
+.#{$button-prefix-cls}--sm {
   font-size: 14px;
 }
 
-.eu-button--md {
+.#{$button-prefix-cls}--md {
   font-size: 16px;
 }
 
-.eu-button--lg {
+.#{$button-prefix-cls}--lg {
   font-size: 18px;
 }
 
-.eu-button--xl {
+.#{$button-prefix-cls}--xl {
   font-size: 20px;
 }
 
-.eu-button--info {
+.#{$button-prefix-cls}--info {
   background: #00a2fe;
   color: #ffffff;
 }
 
-.eu-button--warning {
+.#{$button-prefix-cls}--warning {
   background: #e2d849;
   color: #ffffff;
 }
 
-.eu-button--error {
+.#{$button-prefix-cls}--error {
   background: #ee3f4d;
   color: #ffffff;
 }
 
-.eu-button--purple {
+.#{$button-prefix-cls}--purple {
   background: #733df9;
   color: #ffffff;
 }
