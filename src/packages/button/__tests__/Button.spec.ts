@@ -8,7 +8,7 @@ describe('button', () => {
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
   });
-  it('button props type', () => {
+  it('should be render button props type', () => {
 
     const propsTypes = ['default', 'text', 'primary', 'info', 'success', 'warning', 'error', 'purple'] as const;
 
@@ -24,7 +24,7 @@ describe('button', () => {
     });
   });
 
-  it('button size', () => {
+  it('should be render button size', () => {
     const sizeList = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
     sizeList.forEach((size: string) => {
@@ -38,7 +38,7 @@ describe('button', () => {
     });
   });
 
-  it('button disabled', async () => {
+  it('should button disabled', async () => {
 
     const onClick = vitest.fn();
     const wrapper = mount(EButton, {
@@ -54,7 +54,7 @@ describe('button', () => {
     wrapper.unmount();
   }
   );
-  it('button loading', async () => {
+  it('should button loading', async () => {
     const onClick = vitest.fn();
     const wrapper = mount(EButton, {
       props: {
@@ -68,7 +68,7 @@ describe('button', () => {
     wrapper.unmount();
   }
   );
-  it('button native props', () => {
+  it('should be render button native props', () => {
     const wrapper = mount(EButton, {
       props: {
         native: {

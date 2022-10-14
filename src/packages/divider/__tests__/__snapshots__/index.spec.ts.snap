@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`EDivider > EDivider snapshot 1`] = `
-"<div role=\\"separator\\" class=\\"e-divider-vertical\\">
-  <!---->
-</div>"
-`;

@@ -1,8 +1,6 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
 import { renderSlot, defineComponent, reactive } from 'vue';
-import { EIcon } from '../../icons';
-import { getPrefixCls } from '../../_hooks/use-global-config';
-import { isEmpty } from '@/packages/_utils';
+
 import './style.scss';
 
 export type Size = 'sx' | 'sm' | 'md' | 'lg' | 'xl';
@@ -17,14 +15,6 @@ export type Type =
   | 'error'
   | 'purple'
   | undefined;
-
-const defineIconSize: { [key in Size]: number } = {
-  sx: 16,
-  sm: 18,
-  md: 20,
-  lg: 22,
-  xl: 24,
-};
 
 const BtnProps = {
   type: {
@@ -74,7 +64,7 @@ export default defineComponent({
   props: BtnProps,
   emits: ['click'],
   setup(props, { slots, emit }) {
-    const prefix = getPrefixCls('button');
+    const prefix = 'eu-button';
     const classNames = reactive({
       disabled: props.disabled || props.loading,
       plain: props.plain,
@@ -87,7 +77,7 @@ export default defineComponent({
       if (props.disabled || props.loading) { return; }
       emit('click', e);
     };
-    const ComponentType = isEmpty(props.native) ? 'a' : 'button' ;
+    const ComponentType = props.native ? 'a' : 'button' ;
     return () => (
       <ComponentType
         class={[
@@ -97,11 +87,6 @@ export default defineComponent({
         ]}
         {...props.native}
        onClick={handleClick}>
-        {props.loading && (
-          <span class="loading">
-            <EIcon name='loading' size={defineIconSize[props.size]}></EIcon>
-          </span>
-        )}
         {slots?.icons && renderSlot(slots, 'icon')}
         {slots?.default && <span>{slots?.default?.()}</span>}
       </ComponentType>

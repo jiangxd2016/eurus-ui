@@ -1,7 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`EForm > EForm snapshot 1`] = `
-"<form class=\\"eu-form\\">
-  <!---->
-</form>"
-`;

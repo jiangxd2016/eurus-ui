@@ -1,9 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`ECheckbox > ECheckbox snapshot 1`] = `
-"<div class=\\"e-checkbox\\"><input class=\\"\\" type=\\"checkbox\\"><label class=\\"\\"></label>
-  <div class=\\"slot-text\\">
-    <!---->
-  </div>
-</div>"
-`;

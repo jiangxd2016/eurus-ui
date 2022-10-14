@@ -3,7 +3,6 @@ import type { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
-import viteDeletePurePlugin from './vite-delete-pure';
 const dirname = resolve();
 
 const config: InlineConfig = {
@@ -33,7 +32,6 @@ const config: InlineConfig = {
     },
   },
   plugins: [
-    viteDeletePurePlugin(),
     vue(),
     vueJsx()
   ],

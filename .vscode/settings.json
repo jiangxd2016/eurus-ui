@@ -10,7 +10,6 @@
     "esbuild",
     "esno",
     "estjs",
-    "iconify",
     "unocss",
     "bumpp",
     "pnpm",
@@ -20,8 +19,8 @@
     "vitejs",
     "vitepress",
     "vitest",
-    "vueuse",
-    "klaw"
+    "jsdelivr",
+    "vueuse"
   ],
-  "testing.automaticallyOpenPeekView": "never",
+  "testing.automaticallyOpenPeekView": "never"
 }

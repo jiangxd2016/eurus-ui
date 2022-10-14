@@ -1,6 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`ETooltip > ETooltip snapshot 1`] = `
-"<span class=\\"eu-tooltip-box\\"><!----><transition-stub name=\\"tooltip-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><div class=\\"eu-tooltip top-left\\" style=\\"display: none;\\"><i class=\\"arrow\\"></i><span>fXXK </span></div>
-</transition-stub></span>"
-`;

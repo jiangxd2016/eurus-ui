@@ -2,7 +2,6 @@ import { resolve } from 'path';
 import type { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import viteCssPlugin from './vite-css-plugin';
 
 const config: InlineConfig = {
   mode: 'development',
@@ -13,6 +12,7 @@ const config: InlineConfig = {
   },
 
   build: {
+    watch: {},
     minify: false,
     emptyOutDir: false,
     rollupOptions: {
@@ -34,7 +34,6 @@ const config: InlineConfig = {
     },
   },
   plugins: [
-    viteCssPlugin(),
     vue(),
     vueJsx()
   ],
