@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
 import { renderSlot, defineComponent, reactive } from 'vue';
 
-import './style.css';
+import './style.scss';
 
 export type Size = 'sx' | 'sm' | 'md' | 'lg' | 'xl';
 export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
