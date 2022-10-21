@@ -30,8 +30,8 @@ module.exports = defineConfig({
       '/zh-CN/components': sidebarCN
     },
     algolia: {
-      appId: 'NQCTTUSYFJ',
-      apiKey: '4008ce505653f334b96e8360c7849d8c',
+      appId: '50TTAEFR5V',
+      apiKey: 'c0c3101b6a4ea819d26f3200382646a7',
       indexName: 'eurus-ui',
     },
     editLink: {
