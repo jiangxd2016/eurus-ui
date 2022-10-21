@@ -48,7 +48,7 @@
     "docs:dev": "pnpm run changelog && tsx scripts/gen-docs.ts && pnpm -C docs dev",
     "docs:build": "pnpm run changelog && tsx scripts/gen-docs.ts && pnpm -C docs build",
     "docs:serve": "pnpm run changelog && tsx scripts/gen-docs.ts && pnpm -C docs serve",
-    "changelog": "esno scripts/changelog.ts",
+    "changelog": "tsx scripts/changelog.ts",
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "coverage": "vitest run --coverage",
     "prerelease": "pnpm run clean && pnpm run gen:version && pnpm run typecheck && pnpm run test && pnpm run build && pnpm run changelog",

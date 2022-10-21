@@ -8,6 +8,16 @@ docClass: timeline
 ## 0.0.1-alpha.1 `2022-10-21`
 
 
+### Features
+
+* update docs seach key ([2960f45](https://github.com/jiangxd2016/eurus-ui/commit/2960f4502e3de405ca900557016c3c248ff65fba))
+
+
+
+
+## 0.0.1-alpha.1 `2022-10-21`
+
+
 ### Bug Fixes
 
 * **back-top:** fix back-top test case error ([3789368](https://github.com/jiangxd2016/eurus-ui/commit/37893682e074a9e01bb2a86cf3d83c6a0a38b058))
