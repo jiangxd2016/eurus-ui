@@ -1,13 +1,11 @@
-export const docsName = 'Eurus UI';
-export const docsDescription = 'A Vue3 component library';
+export const DOCS_NAME = 'Eurus UI';
+export const DOCSDESCRIPTION = 'A Vue3 component library';
 // demo dir
-export const packagesDir = 'src/packages';
-// library js
-export const LibraryJs = 'eurus-ui.mjs';
-export const LibraryCss = 'style.css';
+export const PACKAGE_PATH = 'src/packages';
 
-export const releases = 'https://github.com/jiangxd2016/eurus-ui/releases';
+export const RELEASES = 'https://github.com/jiangxd2016/eurus-ui/releases';
 
+export const COMPONENTS_PATH = 'src/components';
 export const sidebarCN = [
   {
     text: '使用',
@@ -33,14 +31,14 @@ export const sidebarCN = [
         text: '按钮 button',
         link: '/zh-CN/components/button',
       },
-      {
-        text: '图标 icon',
-        link: '/zh-CN/components/icons',
-      },
-      {
-        text: '加载中 loading',
-        link: '/zh-CN/components/loading',
-      },
+      // {
+      //   text: '图标 icon',
+      //   link: '/zh-CN/components/icons',
+      // },
+      // {
+      //   text: '加载中 loading',
+      //   link: '/zh-CN/components/loading',
+      // },
       // {
       //   text: '通用组件',
       //   link: '/zh-CN/common',

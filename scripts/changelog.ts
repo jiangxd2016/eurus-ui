@@ -25,6 +25,10 @@ async function updateChangeLog() {
   console.log(` package.json version: ${_version}\n`);
 
   const lastCommit = getLastChangeLogCommit();
+  if (lastCommit === '00000000') {
+    console.log('no commit found, skip changelog update');
+    return;
+  }
   const initialChangelogStr = readFileSync('CHANGELOG.md', 'utf8') || '';
 
   const pageDataStr = `${initialChangelogStr.match(/---[\S\s]+---/)![0]}\n`;

@@ -1,45 +1,28 @@
 import { defineConfig } from 'vitepress';
 import { version } from '../../package.json';
-import { docsName, docsDescription, sidebarCN, sidebarUS, releases } from './constants';
+import { DOCS_NAME, DOCSDESCRIPTION, sidebarCN, sidebarUS, RELEASES } from './constants';
 
 module.exports = defineConfig({
   title: 'Eurus UI',
-  description: docsDescription,
+  description: DOCSDESCRIPTION,
   head: [
     ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
     ['meta', { name: 'author', content: 'eurus-ui' }],
-    ['meta', { property: 'og:title', content: docsName }],
-    ['meta', { property: 'og:image', content: docsDescription }],
+    ['meta', { property: 'og:title', content: DOCS_NAME }],
+    ['meta', { property: 'og:image', content: DOCSDESCRIPTION }],
     ['meta', { property: 'og:description', content: 'Vue UI Components' }],
     ['link', { rel: 'dns-prefetch', href: 'https://fonts.gstatic.com' }],
-    [
-      'link',
-      {
-        rel: 'preconnect',
-        crossorigin: 'anonymous',
-        href: 'https://fonts.gstatic.com',
-      },
-    ],
+    ['link', { rel: 'preconnect', crossorigin: 'anonymous', href: 'https://fonts.gstatic.com' }],
   ],
   lastUpdated: true,
-  lang: 'en-US',
+  lang: 'zh-CN',
   themeConfig: {
     logo: '/logo.png',
     nav: [
       { text: '组件', link: '/zh-CN/components/button' },
       { text: '导航', link: '/zh-CN/guider/quick-start' },
-      {
-        text: `v${version}`,
-        items: [
-          {
-            text: 'Release Notes',
-            link: releases,
-          },
-
-        ],
-      },
+      { text: `v${version}`, items: [{ text: 'Release Notes', link: RELEASES, }] },
     ],
-
     sidebar: {
       '/en-US/guider': sidebarUS,
       '/en-US/components': sidebarUS,
