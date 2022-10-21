@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: /en-US/guider/quick-start.html
+      link: /zh-CN/guider/quick-start.html
     - theme: alt
       text: 了解更多
       link: https://github.com/jiangxd2016/eurus-ui
