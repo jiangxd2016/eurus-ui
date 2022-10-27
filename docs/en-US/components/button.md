@@ -11,31 +11,9 @@ import { EButton } from 'eurus-ui';
 Vue.createApp().use(EButton.name, EButton)
 ```
 
-## type
-
-<CodeDemo
-  src="button/demo/demo0.vue"
-/>
-
-
-## size
-
-<CodeDemo
-  src="button/demo/demo1.vue"
-/>
-
-## loading
-
-<CodeDemo
-  src="button/demo/demo2.vue"
-/>
-
-
-## other
-
-<CodeDemo
-  src="button/demo/demo3.vue"
-/>
+:::Demo
+src/packages/button/demo/demo0.vue
+:::
 
 ### Button Props
 
