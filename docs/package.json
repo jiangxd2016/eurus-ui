@@ -16,7 +16,6 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.9",
-    "@iconify-json/ph": "^1.1.2",
     "@types/klaw-sync": "^6.0.0",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-container": "^2.0.5",

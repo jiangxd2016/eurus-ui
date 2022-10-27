@@ -5,7 +5,6 @@ import Unocss from 'unocss/vite';
 import { presetAttributify, presetIcons, presetUno, presetWind } from 'unocss';
 import ViteRestart from 'vite-plugin-restart';
 import Inspect from 'vite-plugin-inspect';
-import { MarkdownTransform } from './.vitepress/plugins/md-transform';
 export default defineConfig({
   resolve: {
     alias: {
@@ -47,6 +46,5 @@ export default defineConfig({
       ],
     }),
     Inspect(),
-    MarkdownTransform()
   ]
 });

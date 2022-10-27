@@ -11,7 +11,7 @@ import { EButton } from 'eurus-ui';
 Vue.createApp().use(EButton.name, EButton)
 ```
 
-:::Demo
+:::buttonloading
 src/packages/button/demo/demo0.vue
 :::
 

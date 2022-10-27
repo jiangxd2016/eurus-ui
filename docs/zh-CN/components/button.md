@@ -12,12 +12,15 @@ import { Button } from 'my-lib'
 Vue.createApp().use(Button.name, Button)
 ```
 
-## 案例
+::::card button
 
-:::demo
-src/packages/button/demo/demo0.vue
+按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+
+:::code buttontype
+<<< ../src/packages/button/demo/type.vue
 :::
 
+::::
 ## props
 
 ## event
