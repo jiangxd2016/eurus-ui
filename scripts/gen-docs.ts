@@ -42,7 +42,6 @@ function genDocs(lang = 'zh-CN') {
     path.resolve(descDir, 'guider/quick-start.md')
   );
   componentEntry.forEach((item) => {
-    console.log(item);
 
     fs.existsSync(
       path.resolve(

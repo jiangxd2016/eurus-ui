@@ -12,7 +12,8 @@ html:not(.dark) [img-dark] {
   transform: scale(0.9);
 }
 
-.vp-doc th, .vp-doc td {
+.vp-doc th,
+.vp-doc td {
   padding: 6px 10px;
   border: 1px solid #8882;
 }
@@ -30,7 +31,6 @@ img.resizable-img {
   height: unset;
 }
 
-
-.vp-doc a {
-  color: unset !important
+.vp-doc div[class*='language-'] {
+  margin: 0 !important;
 }

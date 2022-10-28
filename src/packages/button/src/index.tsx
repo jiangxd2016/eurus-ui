@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
 import { renderSlot, defineComponent, reactive } from 'vue';
+import { isEmpty } from '@/packages/_utils';
 
 import './style.scss';
 
@@ -77,9 +78,9 @@ export default defineComponent({
       if (props.disabled || props.loading) { return; }
       emit('click', e);
     };
-    const ComponentType = props.native ? 'a' : 'button' ;
+    const ButtonElement = isEmpty( props.native) ? 'a' : 'button' ;
     return () => (
-      <ComponentType
+      <ButtonElement
         class={[
           `${prefix} ${prefix}--${props.type} bg-${props.type} ${props.type === 'default' ? 'text-black' : 'text-white'
           }`,
@@ -89,7 +90,7 @@ export default defineComponent({
        onClick={handleClick}>
         {slots?.icons && renderSlot(slots, 'icon')}
         {slots?.default && <span>{slots?.default?.()}</span>}
-      </ComponentType>
+      </ButtonElement>
     );
   },
 });
