@@ -21,11 +21,19 @@
     "ui framework",
     "component library"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/es/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/lib/index.js"
+    },
+    "./dist/*": "./dist/*"
+  },
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
   "unpkg": "dist/index.js",
   "jsdelivr": "dist/index.js",
-  "types": "es/index.d.ts",
+  "types": "dist/es/index.d.ts",
   "files": [
     "dist"
   ],
@@ -72,7 +80,6 @@
     "bumpp": "^8.2.1",
     "eslint": "^8.25.0",
     "happy-dom": "^7.6.0",
-    "klaw-sync": "^6.0.0",
     "lint-staged": "^13.0.3",
     "pnpm": "7.13.6",
     "rimraf": "^3.0.2",
@@ -89,10 +96,7 @@
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
-        "@algolia/client-search",
-        "react",
-        "react-dom",
-        "@types/react"
+        "@algolia/client-search"
       ]
     }
   },
