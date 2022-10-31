@@ -14,14 +14,17 @@ console.log(`[eurus-ui env] ${nodeEnv}`);
 (async () => {
   if (nodeEnv === 'dev') {
     await build(viteDev);
+    console.log('[eurus-ui build]: start build type');
+    await execPromise('npm run build:types-esm');
+
   } else {
     await build(configProd);
     await build(configAll);
+    console.log('[eurus-ui build]: start build type');
+    await execPromise('npm run build:types');
+
   }
   // console.log('[eurus-ui build]: start build css');
-  console.log('[eurus-ui build]: start build type');
-  // genrate type
-  await execPromise('npm run build:types');
 
   console.log('[eurus-ui build]: ✨ build done');
 })();

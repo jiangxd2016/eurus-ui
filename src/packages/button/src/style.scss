@@ -1,4 +1,4 @@
-@import '../../../scss/variables';
+@import '../../../scss/base';
 
 $button-prefix-cls: $prefix + -button;
 
@@ -8,7 +8,7 @@ $button-prefix-cls: $prefix + -button;
   align-items: stretch;
   width: auto;
   height: auto;
-  padding: 4px 16px;
+  padding: 2px 16px;
   font-size: 14px;
   line-height: 1.715em;
   cursor: pointer;
@@ -21,11 +21,11 @@ $button-prefix-cls: $prefix + -button;
 }
 
 .#{$button-prefix-cls}:hover {
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .#{$button-prefix-cls}:active {
-  opacity: 0.6;
+  opacity: 0.8;
   box-shadow: $shadow-5;
 }
 
@@ -89,7 +89,10 @@ $button-prefix-cls: $prefix + -button;
 .#{$button-prefix-cls}--xl {
   font-size: 20px;
 }
-
+.#{$button-prefix-cls}--primary {
+  background: #1976d2;
+  color: #ffffff;
+}
 .#{$button-prefix-cls}--info {
   background: #00a2fe;
   color: #ffffff;

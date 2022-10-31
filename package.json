@@ -56,6 +56,7 @@
     "docs:dev": "pnpm run changelog && tsx scripts/gen-docs.ts && pnpm -C docs dev",
     "docs:build": "pnpm run changelog && tsx scripts/gen-docs.ts && pnpm -C docs build",
     "docs:serve": "pnpm run changelog && tsx scripts/gen-docs.ts && pnpm -C docs serve",
+    "create:compts": "tsx ./scripts/create-compt.ts",
     "changelog": "tsx scripts/changelog.ts",
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "coverage": "vitest run --coverage",
@@ -72,6 +73,7 @@
   },
   "devDependencies": {
     "@estjs/eslint-config": "^0.3.6",
+    "@estjs/tools": "^0.0.31",
     "@types/node": "18.11.3",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vitejs/plugin-vue-jsx": "^2.0.1",

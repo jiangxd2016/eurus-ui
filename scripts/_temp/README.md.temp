@@ -1,0 +1,24 @@
+---
+class: '<%= name %>-doc'
+---
+# <%= name %> [WIP]
+
+## use
+
+```javascript
+import { <%= name %> } from 'eurus-ui';
+
+Vue.createApp().use(<%= name %>.name, <%= name %>)
+```
+<!--
+:::buttonloading
+src/packages/button/demo/demo0.vue
+:::
+ -->
+
+### <%= name %> Props
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+
+

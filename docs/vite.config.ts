@@ -9,7 +9,6 @@ export default defineConfig({
   resolve: {
     alias: {
       'eurus-ui/': `${resolve(__dirname, '../dist/es')}/`,
-      'eurus/': `${resolve(__dirname, '../dist')}/`,
     },
   },
   server: {
@@ -41,8 +40,7 @@ export default defineConfig({
     }),
     ViteRestart({
       restart: [
-        '../dist/*',
-        '../src/packages/**/*.vue'
+        '../dist/es/*',
       ],
     }),
     Inspect(),

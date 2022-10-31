@@ -18,7 +18,7 @@ import '../style/vp-doc.css';
 
 import 'uno.css';
 import '@unocss/reset/tailwind.css';
-import 'eurus/style.css';
+import 'eurus-ui/style.css';
 import Demo from '../components/Demo.vue';
 import { extractFileNameFromPath } from '../utils';
 export default {

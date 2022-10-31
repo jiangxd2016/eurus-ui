@@ -1,7 +1,7 @@
 export const _toString = Object.prototype.toString;
 export const _hasOwnProperty = Object.prototype.hasOwnProperty;
 
-export function isArray(value: unknown): value is Array<any> {
+export function isArray<T>(value: unknown): value is Array<T> {
   return Array.isArray(value);
 }
 export function isBoolean(value: unknown): value is boolean {
@@ -23,7 +23,7 @@ export function isString(value: unknown): value is string {
   return typeof value === 'string';
 }
 
-export function isPromise(value: unknown): value is Promise<any> {
+export function isPromise<T>(value: unknown): value is Promise<T> {
   return _toString.call(value) === '[object Promise]';
 }
 export function isUndefined(value: unknown): value is undefined {

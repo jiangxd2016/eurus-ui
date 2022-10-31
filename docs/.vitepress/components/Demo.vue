@@ -8,7 +8,7 @@ const showCode = ref(false);
     <slot />
 
     <div class="b-1px b-#ccc b-rd-8px">
-      <div class="vp-raw  flex justify-center  space-x-4 p-x-2 p-y-3">
+      <div class="vp-raw center  wrap space-x-4 p-x-2 p-y-3">
         <slot name="demo" />
       </div>
 

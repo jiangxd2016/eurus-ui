@@ -1,0 +1,23 @@
+import { defineComponent } from 'vue';
+import './style.scss';
+
+const <%= name %>Props = {
+  type: {
+    type: Boolean,
+    default: false,
+  },
+};
+
+export default defineComponent({
+  name: '<%= name %>',
+  props: <%= name %>Props,
+  setup(props, { slots, emit }) {
+
+    return () => (
+      <div>
+
+      </div>
+
+    );
+  },
+});

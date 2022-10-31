@@ -1,0 +1,30 @@
+---
+class: '<%= name %>-doc'
+---
+# <%= name %> [WIP]
+
+## 引入
+
+```javascript
+import { <%= name %> } from 'eurus-ui';
+
+Vue.createApp().use(<%= name %>.name, <%= name %>)
+```
+<!--
+:::buttonloading
+src/packages/button/demo/demo0.vue
+:::
+ -->
+### <%= name %> Props
+
+| 名称 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+
+
+
+###  <%= name %> Slots
+
+| 名称    | 参数 | 说明       |
+| ------- | ---- | ---------- |
+| default | -    | 按钮的内容 |
+| icon    | -    | 按钮的图标 |
