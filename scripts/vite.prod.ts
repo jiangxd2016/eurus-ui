@@ -13,7 +13,7 @@ const config: InlineConfig = {
   },
   build: {
     sourcemap: true,
-    target: 'modules',
+    // target: 'modules',
     emptyOutDir: false,
     minify: false,
     rollupOptions: {
