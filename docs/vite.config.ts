@@ -9,6 +9,7 @@ export default defineConfig({
   resolve: {
     alias: {
       'eurus-ui/': `${resolve(__dirname, '../dist/es')}/`,
+      'dist/': `${resolve(__dirname, '../dist/')}/`,
     },
   },
   server: {
