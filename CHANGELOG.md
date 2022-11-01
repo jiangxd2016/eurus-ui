@@ -8,116 +8,6 @@ docClass: timeline
 ## 0.0.1-alpha.1 `2022-11-01`
 
 
-
-
-## 0.0.1-alpha.1 `2022-10-31`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-28`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-28`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-27`
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-21`
-
-
-### Bug Fixes
-
-* fix docs link ([31170eb](https://github.com/jiangxd2016/eurus-ui/commit/31170eb8e207cc0c7d510bf847ed182bedf2ce6f))
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-21`
-
-
-### Features
-
-* update docs seach key ([2960f45](https://github.com/jiangxd2016/eurus-ui/commit/2960f4502e3de405ca900557016c3c248ff65fba))
-
-
-
-
-## 0.0.1-alpha.1 `2022-10-21`
-
-
 ### Bug Fixes
 
 * **back-top:** fix back-top test case error ([3789368](https://github.com/jiangxd2016/eurus-ui/commit/37893682e074a9e01bb2a86cf3d83c6a0a38b058))
@@ -129,6 +19,7 @@ docClass: timeline
 * **date-pciker:** fix date-pciker ([ed704e2](https://github.com/jiangxd2016/eurus-ui/commit/ed704e2efd8c5d67290cb0d698f00e73b1106895))
 * fix all on event ([8d7528a](https://github.com/jiangxd2016/eurus-ui/commit/8d7528a422b3f7018ecc4b03088b7b8f56528b9e))
 * fix build & icon ([cb09b21](https://github.com/jiangxd2016/eurus-ui/commit/cb09b21a4ef76433f993037cd0eb120f2f0dfeba))
+* fix changelog script run commend ([ba77b06](https://github.com/jiangxd2016/eurus-ui/commit/ba77b06a2664d06b1346533df49a856ea6a46787))
 * fix commit msg verify ([448f056](https://github.com/jiangxd2016/eurus-ui/commit/448f05644af3be841fd61f649545e3985768ecc6))
 * fix commit msg verify ([1222e14](https://github.com/jiangxd2016/eurus-ui/commit/1222e14db97b22f2ecec6fc8e6110cc2cea691f4))
 * fix commit msg verify ([51b9fed](https://github.com/jiangxd2016/eurus-ui/commit/51b9fedc0fd855275a45c4283bf34d198d015428))
@@ -139,6 +30,7 @@ docClass: timeline
 * fix compolie ([c83311a](https://github.com/jiangxd2016/eurus-ui/commit/c83311a59d7e407d8c754de96b6732570c04047c))
 * fix compolie ([657c984](https://github.com/jiangxd2016/eurus-ui/commit/657c984fb06616a6df376cfc23a5562b61f72b6a))
 * fix date-picker snapshots ([12a4a16](https://github.com/jiangxd2016/eurus-ui/commit/12a4a16f5d7146d7c93a97a71cbc615efbd963a6))
+* fix docs link ([31170eb](https://github.com/jiangxd2016/eurus-ui/commit/31170eb8e207cc0c7d510bf847ed182bedf2ce6f))
 * fix error ([84e16b1](https://github.com/jiangxd2016/eurus-ui/commit/84e16b1c381a0c850b49be3320ecfc865b2e7831))
 * fix notify test case ([75ff716](https://github.com/jiangxd2016/eurus-ui/commit/75ff716b8c94f35fae43182edf0e49b53ca0ae5a))
 * fix table element maybe undefind ([4decf74](https://github.com/jiangxd2016/eurus-ui/commit/4decf746db8cb6bd579b96ca2fe59c5934404887))
@@ -154,6 +46,7 @@ docClass: timeline
 
 ### Features
 
+* [icon] [WIP] new icon component ([5d09ff9](https://github.com/jiangxd2016/eurus-ui/commit/5d09ff9936305aed9f7c146cefa70d1dbd1d989f))
 * [WIP] form ([f589e4f](https://github.com/jiangxd2016/eurus-ui/commit/f589e4f5801b136407bcd7a768d6d30bdc259cba))
 * **1:** :sparkles: 2 ([1a3959f](https://github.com/jiangxd2016/eurus-ui/commit/1a3959f22417636dde8cf1723440d8d938eb91fd))
 * **component:** [icon] fix icon type ([62a4efc](https://github.com/jiangxd2016/eurus-ui/commit/62a4efc1ac2213253ef34f3aa1cbbbf5bd0f98d2))
@@ -179,6 +72,8 @@ docClass: timeline
 * update changelog ([d5e5494](https://github.com/jiangxd2016/eurus-ui/commit/d5e5494ff1fc9073a73b2c8d653ef896b6f81066))
 * update changelog ([aa78afe](https://github.com/jiangxd2016/eurus-ui/commit/aa78afe86b2f3bc7f5f18831dd3a4c68b7e7e37f))
 * update changelog ([0e74f34](https://github.com/jiangxd2016/eurus-ui/commit/0e74f345101b4579f34c7baafea5d610c2a07ce7))
+* update docs ([4204b3b](https://github.com/jiangxd2016/eurus-ui/commit/4204b3b5ef0b9fc6891613945848d7bf64f1b763))
+* update docs seach key ([2960f45](https://github.com/jiangxd2016/eurus-ui/commit/2960f4502e3de405ca900557016c3c248ff65fba))
 * update github issue template ([e079e0b](https://github.com/jiangxd2016/eurus-ui/commit/e079e0b03fa9ec8ca2540f431aeae65885656cfc))
 * update github issue template ([cf5a6a5](https://github.com/jiangxd2016/eurus-ui/commit/cf5a6a578f43da14db8fb52e01cc183811ecde7b))
 * update issue template ([55cdeb0](https://github.com/jiangxd2016/eurus-ui/commit/55cdeb02191dc5da3e8d413637d6c81768f1a0b1))
@@ -189,6 +84,11 @@ docClass: timeline
 ### BREAKING CHANGES
 
 * **1:** 4
+
+
+
+
+
 
 
 

@@ -17,7 +17,6 @@ importers:
       dayjs: ^1.11.6
       eslint: ^8.25.0
       happy-dom: ^7.6.0
-      klaw-sync: ^6.0.0
       lint-staged: ^13.0.3
       pnpm: 7.13.6
       rimraf: ^3.0.2
@@ -45,7 +44,6 @@ importers:
       bumpp: 8.2.1
       eslint: 8.26.0
       happy-dom: 7.6.6
-      klaw-sync: 6.0.0
       lint-staged: 13.0.3
       pnpm: 7.13.6
       rimraf: 3.0.2
@@ -2229,7 +2227,7 @@ packages:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.1
+      vite: 3.2.1_sass@1.55.0
       vue: 3.2.41
     dev: true
 
