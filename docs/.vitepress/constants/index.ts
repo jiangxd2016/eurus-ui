@@ -31,10 +31,10 @@ export const sidebarCN = [
         text: '按钮 button',
         link: '/zh-CN/components/button',
       },
-      // {
-      //   text: '图标 icon',
-      //   link: '/zh-CN/components/icons',
-      // },
+      {
+        text: '图标 icon',
+        link: '/zh-CN/components/icons',
+      },
       // {
       //   text: '加载中 loading',
       //   link: '/zh-CN/components/loading',

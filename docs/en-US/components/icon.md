@@ -10,11 +10,11 @@ import { EIcon } from 'eurus-ui';
 
 Vue.createApp().use(EIcon.name, EIcon)
 ```
-<!--
-:::buttonloading
-src/packages/button/demo/demo0.vue
+
+:::buttondemo0
+src/packages/icon/demo/demo0.vue
 :::
- -->
+
 
 ### EIcon Props
 

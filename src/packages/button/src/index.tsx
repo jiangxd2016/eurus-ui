@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
 import { renderSlot, defineComponent, reactive } from 'vue';
-import { isEmpty } from '@/packages/_utils';
+import { isEmpty } from '@/packages/_utils/is';
 
 import './style.scss';
 

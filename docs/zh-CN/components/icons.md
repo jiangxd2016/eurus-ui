@@ -10,11 +10,16 @@ import { EIcon } from 'eurus-ui';
 
 Vue.createApp().use(EIcon.name, EIcon)
 ```
-<!--
-:::buttonloading
-src/packages/button/demo/demo0.vue
+
+::::card button 类型
+
+按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+
+:::code iconsAllIcon
+<<< ../src/packages/icons/demo/AllIcon.vue
 :::
- -->
+
+
 ### EIcon Props
 
 | 名称 | 类型 | 默认值 | 说明 |

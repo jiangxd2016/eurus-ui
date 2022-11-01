@@ -46,3 +46,6 @@ export function isObject(value: unknown): value is Record<string, any> {
   return _toString.call(value) === '[object Object]';
 }
 
+export function isStringNumber(value: unknown): value is number {
+  return !Number.isNaN(Number(value));
+}
