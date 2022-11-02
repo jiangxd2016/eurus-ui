@@ -3,6 +3,7 @@ import { renderSlot, defineComponent, reactive } from 'vue';
 import { isEmpty } from '@/packages/_utils/is';
 
 import './style.scss';
+import EIcon from '@/packages/icons';
 
 export type Size = 'sx' | 'sm' | 'md' | 'lg' | 'xl';
 export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -78,7 +79,7 @@ export default defineComponent({
       if (props.disabled || props.loading) { return; }
       emit('click', e);
     };
-    const ButtonElement = isEmpty( props.native) ? 'a' : 'button' ;
+    const ButtonElement = isEmpty(props.native) ? 'a' : 'button';
     return () => (
       <ButtonElement
         class={[
@@ -87,7 +88,12 @@ export default defineComponent({
           classNames,
         ]}
         {...props.native}
-       onClick={handleClick}>
+        onClick={handleClick}>
+        {props.loading && (
+          <span class="loading">
+            <EIcon name='loading' ></EIcon>
+          </span>
+        )}
         {slots?.icons && renderSlot(slots, 'icon')}
         {slots?.default && <span>{slots?.default?.()}</span>}
       </ButtonElement>
