@@ -50,9 +50,12 @@ $button-prefix-cls: $prefix + -button;
 }
 
 .#{$button-prefix-cls}.plain {
-  background: #ffffff !important;
-  color: #222222 !important;
-  box-shadow: none;
+  background: none !important;
+  color:var(--e-color-primary) !important;
+
+  &::before {
+    box-shadow: none;
+  }
 }
 
 .#{$button-prefix-cls}.round {
@@ -63,7 +66,7 @@ $button-prefix-cls: $prefix + -button;
   border-radius: 50%;
 }
 
-.#{$button-prefix-cls} .loading {
+.#{$button-prefix-cls}.loading {
   display: flex;
   align-items: center;
   width: 1.2em;

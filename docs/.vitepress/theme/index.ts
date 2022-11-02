@@ -6,11 +6,13 @@ import '../style/vp-doc.css';
 
 import 'uno.css';
 import '@unocss/reset/tailwind.css';
-import 'dist/style.css';
+
 import Demo from '../components/Demo.vue';
 import { extractFileNameFromPath } from '../utils';
 
 import theme from './theme';
+
+import(import.meta.env.MODE === 'development' ? 'eurus-ui/style.css' : 'dist/style.css');
 
 export default {
   ...theme,
