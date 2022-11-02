@@ -5,7 +5,7 @@ import { isEmpty } from '@/packages/_utils/is';
 import './style.scss';
 import EIcon from '@/packages/icons';
 
-export type Size = 'sx' | 'sm' | 'md' | 'lg' | 'xl';
+export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type Type =
   | 'default'
@@ -15,8 +15,7 @@ export type Type =
   | 'success'
   | 'warning'
   | 'error'
-  | 'purple'
-  | undefined;
+  | 'purple';
 
 const BtnProps = {
   type: {

@@ -3,50 +3,31 @@ import EButton from '..';
 
 describe('button', () => {
 
-  it('button snapshot', () => {
-    const wrapper = mount(EButton);
-    expect(wrapper.html()).toMatchSnapshot();
-    wrapper.unmount();
-  });
-  it('should be render button props type', () => {
+  it('should work with `type` prop', () => {
 
-    const propsTypes = ['default', 'text', 'primary', 'info', 'success', 'warning', 'error', 'purple'] as const;
-
-    propsTypes.forEach((type: string) => {
-      const wrapper = mount(EButton, {
-        props: {
-          type
-        }
-      });
+    (['default', 'text', 'primary', 'info', 'success', 'warning', 'error', 'purple'] as const).forEach((type) => {
+      const wrapper = mount(EButton, { props: { type }, slots: { default: type } });
+      expect(wrapper.html()).toMatchSnapshot();
       expect(wrapper.classes()).toContain('eu-button--' + type);
       wrapper.unmount();
 
     });
   });
 
-  it('should be render button size', () => {
-    const sizeList = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
-
-    sizeList.forEach((size: string) => {
-      const wrapper = mount(EButton, {
-        props: {
-          size,
-        }
-      });
+  it('should work with `size` prop', () => {
+    (['xs', 'sm', 'md', 'lg', 'xl'] as const).forEach((size) => {
+      const wrapper = mount(EButton, { props: { size }, slots: { default: size } });
+      expect(wrapper.html()).toMatchSnapshot();
       expect(wrapper.classes()).toContain('eu-button--' + size);
       wrapper.unmount();
+
     });
   });
 
   it('should button disabled', async () => {
 
     const onClick = vitest.fn();
-    const wrapper = mount(EButton, {
-      props: {
-        disabled: true,
-        onClick,
-      }
-    });
+    const wrapper = mount(EButton, { props: { disabled: true, onClick, } });
 
     expect(wrapper.classes()).toContain('disabled');
     await wrapper.trigger('click');
@@ -56,11 +37,7 @@ describe('button', () => {
   );
   it('should button loading', async () => {
     const onClick = vitest.fn();
-    const wrapper = mount(EButton, {
-      props: {
-        loading: true
-      }
-    });
+    const wrapper = mount(EButton, { props: { loading: true } });
 
     expect(wrapper.classes()).toContain('disabled');
     await wrapper.trigger('click');
@@ -70,12 +47,7 @@ describe('button', () => {
   );
   it('should be render button native props', () => {
     const wrapper = mount(EButton, {
-      props: {
-        native: {
-          type: 'submit'
-        }
-      }
-    });
+      props: { native: { type: 'submit' } } });
 
     expect(wrapper.attributes('type')).toContain('submit');
 
