@@ -5,6 +5,19 @@ toc: false
 docClass: timeline
 ---
 
+## 0.0.1-alpha.1 `2022-11-02`
+
+
+### Bug Fixes
+
+* fix changelog ([66ae747](https://github.com/jiangxd2016/eurus-ui/commit/66ae747c64f9d1599ef849ad169385cd94025971))
+* fix custome vitepress theme text font-size ([60c6211](https://github.com/jiangxd2016/eurus-ui/commit/60c62116ebb4a359daa2a2af047e403a03abce11))
+* fix docs netify build error ([71bf628](https://github.com/jiangxd2016/eurus-ui/commit/71bf6288f953c07dd1f19f7cd936960519b909d7))
+* fix nitify config error ([dc9209c](https://github.com/jiangxd2016/eurus-ui/commit/dc9209c657e5735c21b64fbee53840656d19ff0b))
+
+
+
+
 ## 0.0.1-alpha.1 `2022-11-01`
 
 

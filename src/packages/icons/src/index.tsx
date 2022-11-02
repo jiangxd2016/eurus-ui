@@ -1,6 +1,6 @@
 import type { Component, PropType } from 'vue';
 import { renderSlot, h, computed, defineComponent } from 'vue';
-import * as allIcon from '../components';
+import * as allIcon from '../icons-vue';
 import { isStringNumber } from '@/packages/_utils/is';
 import './style.scss';
 const IconProps = {
@@ -17,7 +17,6 @@ export default defineComponent({
       return {
         'font-size': isStringNumber(props.size) ? `${props.size}px` : props.size,
         'color': props.color,
-        'display': 'flex'
       };
     });
     let IconElement: Component | null = null;
@@ -29,12 +28,12 @@ export default defineComponent({
       // support iconfont
     } else if (!slots.default && props.name) {
       IconElement = h('i', {
-        class: 'iconfont' + props.name,
+        class: props.name,
         style: mergeStyles.value
       });
     }
     if (!IconElement && !slots.default) {
-      console.error('[eurus-ui] : not found icon , please check you enter');
+      console.error(`[eurus-ui] : not found ${props.name} , please check you enter`);
 
     }
     return () => IconElement ? IconElement : renderSlot(slots, 'default');

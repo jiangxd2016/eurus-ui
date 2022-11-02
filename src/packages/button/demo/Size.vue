@@ -1,5 +1,5 @@
 <template>
-  <EButton type="primary" size="sx">sx</EButton>
+  <EButton type="primary" size="xs">xs</EButton>
   <EButton type="primary" size="sm">sm</EButton>
   <EButton type="primary" size="md">md</EButton>
   <EButton type="primary" size="lg">lg</EButton>

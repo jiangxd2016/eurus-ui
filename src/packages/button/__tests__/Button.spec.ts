@@ -24,7 +24,7 @@ describe('button', () => {
     });
   });
 
-  it('should button disabled', async () => {
+  it('should work button disabled', async () => {
 
     const onClick = vitest.fn();
     const wrapper = mount(EButton, { props: { disabled: true, onClick, } });
@@ -35,17 +35,18 @@ describe('button', () => {
     wrapper.unmount();
   }
   );
-  it('should button loading', async () => {
+  it('should work button loading', async () => {
     const onClick = vitest.fn();
     const wrapper = mount(EButton, { props: { loading: true } });
 
     expect(wrapper.classes()).toContain('disabled');
     await wrapper.trigger('click');
     expect(onClick).not.toHaveBeenCalled();
+
     wrapper.unmount();
   }
   );
-  it('should be render button native props', () => {
+  it('should work render button native props', () => {
     const wrapper = mount(EButton, {
       props: { native: { type: 'submit' } } });
 
