@@ -31,6 +31,17 @@ Vue.createApp().use(Button.name, Button)
 :::
 
 ::::
+
+
+::::card button 自定义图标 圆形按钮 圆角按钮
+
+加载中和禁用的点击都无效果
+
+:::code buttonOther
+<<< ../src/packages/button/demo/Other.vue
+:::
+
+::::
 ## props
 
 ## event

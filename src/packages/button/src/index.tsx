@@ -1,11 +1,11 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
-import { renderSlot, defineComponent, reactive } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { isEmpty } from '@/packages/_utils/is';
 
 import './style.scss';
 import EIcon from '@/packages/icons';
+import type { Size } from '@/packages/_utils/size';
 
-export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type Type =
   | 'default'
@@ -66,34 +66,32 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { slots, emit }) {
     const prefix = 'eu-button';
-    const classNames = reactive({
+    const classNames = computed(() => ({
       disabled: props.disabled || props.loading,
       plain: props.plain,
       circle: props.circle,
       round: props.round,
       [`${prefix}--${props.size}`]: props.size
-    });
+    }));
 
     const handleClick = (e: Event) => {
       if (props.disabled || props.loading) { return; }
       emit('click', e);
     };
+
     const ButtonElement = isEmpty(props.native) ? 'a' : 'button';
+
     return () => (
       <ButtonElement
         class={[
-          `${prefix} ${prefix}--${props.type} bg-${props.type} ${props.type === 'default' ? 'text-black' : 'text-white'
-          }`,
-          classNames,
+          `${prefix} ${prefix}--${props.type} bg-${props.type} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
+          classNames.value,
         ]}
-        {...props.native}
-        onClick={handleClick}>
+        {...props.native} onClick={handleClick}>
         {props.loading && (
-          <span class="loading">
-            <EIcon name='loading' ></EIcon>
-          </span>
+          <span class="loading"><EIcon name='loading'></EIcon></span>
         )}
-        {slots?.icons && renderSlot(slots, 'icon')}
+        {slots?.icon && slots.icon()}
         {slots?.default && <span>{slots?.default?.()}</span>}
       </ButtonElement>
     );

@@ -3,6 +3,7 @@ import { renderSlot, h, computed, defineComponent } from 'vue';
 import * as allIcon from '../icons-vue';
 import { isStringNumber } from '@/packages/_utils/is';
 import './style.scss';
+import { warnOnce } from '@/packages/_utils/warn';
 const IconProps = {
   size: [Number, String],
   color: String,
@@ -10,7 +11,7 @@ const IconProps = {
 };
 
 export default defineComponent({
-  name: 'Icon',
+  name: 'EIcon',
   props: IconProps,
   setup(props, { slots }) {
     const mergeStyles = computed(() => {
@@ -33,7 +34,7 @@ export default defineComponent({
       });
     }
     if (!IconElement && !slots.default) {
-      console.error(`[eurus-ui] : not found ${props.name} , please check you enter`);
+      warnOnce('icon', `not found ${props.name} , please check you enter`);
 
     }
     return () => IconElement ? IconElement : renderSlot(slots, 'default');

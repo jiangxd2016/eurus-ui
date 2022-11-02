@@ -60,8 +60,8 @@
     "changelog": "tsx scripts/changelog.ts",
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "coverage": "vitest run --coverage",
-    "prerelease": "pnpm run clean && pnpm run gen:version && pnpm run typecheck && pnpm run test && pnpm run build && pnpm run changelog",
-    "release": "pnpm run prerelease && bumpp --commit --tag --push"
+    "prerelease": "pnpm run clean && pnpm run gen:version && pnpm run typecheck && pnpm run test && pnpm run build",
+    "release": "pnpm run prerelease && pnpm run changelog && bumpp --commit --tag --push"
   },
   "peerDependencies": {
     "vue": "^3.2.26"
