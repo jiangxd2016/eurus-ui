@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@estjs/eslint-config": "^0.3.6",
-    "@estjs/tools": "^0.0.31",
+    "@estjs/tools": "^0.0.32",
     "@types/node": "18.11.3",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
