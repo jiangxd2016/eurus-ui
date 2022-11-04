@@ -19,9 +19,7 @@ src/packages/button/demo/demo0.vue
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| type | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'purple'`| 'default' | button type |
-| strong | `boolean` | `false` | button font size |
-| text | `boolean` | `false` | determine whether it's a text button |
+| type | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'purple'`| button type |
 | circle | `boolean` | `false` | determine whether it's a circle button |
 | disabled | `boolean` | `false` | disable the button |
 | loading | `boolean` | `false` | determine whether it's loading |

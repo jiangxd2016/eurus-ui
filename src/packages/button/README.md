@@ -19,14 +19,14 @@ src/packages/button/demo/demo0.vue
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| type | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'purple'`| 'default' | button type |
-| strong | `boolean` | `false` | button font size |
-| text | `boolean` | `false` | determine whether it's a text button |
-| circle | `boolean` | `false` | determine whether it's a circle button |
-| disabled | `boolean` | `false` | disable the button |
+| type | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'purple'`| button type |
+| size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | 'md' |button size |
 | loading | `boolean` | `false` | determine whether it's loading |
+| disabled | `boolean` | `false` | disable the button |
 | round | `boolean` | `false` | determine whether it's a round button |
-| size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | md |button size |
+| circle | `boolean` | `false` | determine whether it's a circle button |
+| plain | boolean | false |determine whether it's a plain button |
+| native | Object | {} |native button attribute |
 
 
 ### ButtonGroup Props

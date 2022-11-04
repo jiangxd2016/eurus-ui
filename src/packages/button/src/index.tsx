@@ -49,11 +49,6 @@ const BtnProps = {
     type: Boolean,
     default: false,
   },
-  link: {
-    // 是否圆形按钮
-    type: Boolean,
-    default: false,
-  },
   native: {
     type: Object as PropType<ButtonHTMLAttributes>,
     default: {},
