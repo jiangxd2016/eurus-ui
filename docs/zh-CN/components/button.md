@@ -48,11 +48,13 @@ Vue.createApp().use(Button.name, Button)
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | type | `'default' \| 'primary' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'purple'`| 按钮的类型 |
-| circle | `boolean` | `false` | 按钮是否为圆形 |
-| disabled | `boolean` | `false` | 按钮是否禁用 |
-| loading | `boolean` | `false` | 按钮是否处于加载状态 |
-| round | `boolean` | `false` | 按钮是否显示更大的圆角 |
 | size | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | md | 按钮的尺寸 |
+| loading | `boolean` | `false` | 按钮是否处于加载状态 |
+| disabled | `boolean` | `false` | 按钮是否禁用 |
+| round | `boolean` | `false` | 按钮是否显示更大的圆角 |
+| circle | `boolean` | `false` | 按钮是否为圆形 |
+| plain | boolean | false | 按钮是否时朴素按钮 |
+| native | Object | {} | 原生的button属性 |
 
 
 ### ButtonGroup Props

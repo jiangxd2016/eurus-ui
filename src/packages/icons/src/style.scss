@@ -1,4 +1,8 @@
-.eu-icon {
+@import '../../../scss/base';
+
+$icon-prefix-cls: $prefix + -icon;
+
+.#{$icon-prefix-cls} {
   display: inline-block;
   width: 1em;
   height: 1em;

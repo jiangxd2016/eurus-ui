@@ -18,7 +18,7 @@ Vue.createApp().use(EIcon.name, EIcon)
 :::code iconsAllIcon
 <<< ../src/packages/icons/demo/AllIcon.vue
 :::
-
+::::
 
 ### EIcon Props
 
