@@ -6,7 +6,6 @@ import './style.scss';
 import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
 
-export type Padding = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type Type =
   | 'default'
   | 'text'
