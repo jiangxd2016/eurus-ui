@@ -1,19 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { templateCompile } from '@estjs/tools';
+import { templateCompile, toKebabCase } from '@estjs/tools';
 
 const globaleComponentPrefix = 'E';
 
 const resolve = (path2: string) => path.resolve(path.resolve(), path2);
 
 const args = process.argv.splice(2);
-
-function firstUpcase(str: string) {
-  if (typeof str !== 'string') {
-    return str;
-  }
-  return str.replace(/^\S/, s => s?.toUpperCase());
-}
 
 function renderTemplate(template: string, data: object) {
   const temp = new templateCompile(template);
@@ -70,7 +63,7 @@ async function createComponent(name: string, tempPath: string, outPath: string) 
 
   fs.mkdirSync(outPath);
 
-  const comptName = firstUpcase(name);
+  const comptName = toKebabCase(name);
   const tempPath = resolve('./scripts/_temp');
   const distPath = resolve(`./src/packages/${name}`);
 

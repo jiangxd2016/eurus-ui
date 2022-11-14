@@ -1,0 +1,20 @@
+// Vitest Snapshot v1
+
+exports[`EButtonGroup > EButtonGroup snapshot 1`] = `
+"<div class=\\"eu-button-group\\">
+  <!---->
+</div>"
+`;
+
+exports[`EButtonGroup > should work with button group 1`] = `
+"<div class=\\"eu-button-group\\"><button class=\\"eu-button eu-button--primary bg-primary text-white eu-button--md\\">
+    <!---->
+    <!----><span>button1</span>
+  </button><button class=\\"eu-button eu-button--primary bg-primary text-white eu-button--md\\">
+    <!---->
+    <!----><span>button2</span>
+  </button><button class=\\"eu-button eu-button--primary bg-primary text-white eu-button--md\\">
+    <!---->
+    <!----><span>button3</span>
+  </button></div>"
+`;

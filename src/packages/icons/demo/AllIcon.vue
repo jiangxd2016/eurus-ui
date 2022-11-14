@@ -97,10 +97,6 @@
   </div>
 </template>
 
-<script  setup lang="ts">
-import { EIcon } from 'eurus-ui';
-</script>
-
 <style>
   .wrapper{
     padding: 0 10px;

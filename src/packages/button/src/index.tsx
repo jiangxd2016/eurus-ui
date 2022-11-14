@@ -1,10 +1,11 @@
 import type { ButtonHTMLAttributes, PropType } from 'vue';
-import { computed, defineComponent } from 'vue';
-import { isEmpty } from '@/packages/_utils/is';
+import { computed, defineComponent, inject } from 'vue';
 
 import './style.scss';
 import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
+import { getPrefixCls } from '@/packages/_utils/global-config';
+import { buttonGroupProviderTypeInjectionKey } from '@/packages/_utils/constants';
 
 export type Type =
   | 'default'
@@ -59,24 +60,29 @@ export default defineComponent({
   props: BtnProps,
   emits: ['click'],
   setup(props, { slots, emit }) {
-    const prefix = 'eu-button';
+    const prefix = getPrefixCls('button');
+
+    const buttonGroupInject = inject(buttonGroupProviderTypeInjectionKey, {});
+    const { size = props.size } = buttonGroupInject;
     const classNames = computed(() => ({
       disabled: props.disabled || props.loading,
       plain: props.plain,
       circle: props.circle,
       round: props.round,
-      [`${prefix}--${props.size}`]: props.size
+      [`${prefix}--${size}`]: size
     }));
 
     const handleClick = (e: Event) => {
-      if (props.disabled || props.loading) { return; }
+      if (props.disabled || props.loading) {
+        return;
+      }
       emit('click', e);
     };
 
-    const ButtonElement = isEmpty(props.native) ? 'a' : 'button';
+    // const ButtonElement = isEmpty(props.native) ? 'a' : 'button';
 
     return () => (
-      <ButtonElement
+      <button
         class={[
           `${prefix} ${prefix}--${props.type} bg-${props.type} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
           classNames.value,
@@ -87,7 +93,7 @@ export default defineComponent({
         )}
         {slots?.icon && slots.icon()}
         {slots?.default && <span>{slots?.default?.()}</span>}
-      </ButtonElement>
+      </button>
     );
   },
 });

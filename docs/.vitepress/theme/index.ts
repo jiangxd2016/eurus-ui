@@ -24,5 +24,11 @@ export default {
       app.component(extractFileNameFromPath(path), (demos[path] as any).default);
     }
     app.component('Demo', Demo);
+
+    if (typeof process === 'undefined') {
+      await import('eurus-ui').then((m: any) => {
+        m.create().install(app);
+      });
+    }
   }
 };

@@ -1,13 +1,5 @@
-import type { InjectionKey } from 'vue';
 import { getCurrentInstance, inject } from 'vue';
-import { CLASS_PREFIX, GLOBAL_CONFIG_NAME } from './constants';
-
-export interface ConfigProvider {
-  prefixCls?: string;
-}
-
-export const configProviderInjectionKey: InjectionKey<ConfigProvider>
-  = Symbol('EurusConfigProvider');
+import { CLASS_PREFIX, configProviderInjectionKey, GLOBAL_CONFIG_NAME } from './constants';
 
 export const getPrefixCls = (componentName?: string): string => {
   const instance = getCurrentInstance();

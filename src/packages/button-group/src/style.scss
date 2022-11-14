@@ -1,0 +1,52 @@
+@import '../../../scss/base';
+
+$button-group-prefix-cls: $prefix + -button-group;
+$button-prefix-cls: $prefix + -button;
+
+.#{$button-group-prefix-cls} {
+  flex-wrap: nowrap;
+  display: inline-flex;
+  position: relative;
+
+
+  &.vertical {
+    flex-direction: column;
+    .#{$button-prefix-cls}:first-child {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+     .#{$button-prefix-cls}:last-child {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+     .#{$button-prefix-cls}:not(:first-child, :last-child) {
+      border-radius: 0;
+      border-bottom: 0;
+      border-top: 0;
+    }
+  }
+
+  &:not(.vertical) {
+
+    flex-direction: row;
+
+    .#{$button-prefix-cls}:first-child {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .#{$button-prefix-cls}:last-child {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    .#{$button-prefix-cls}:not(:first-child, :last-child) {
+      border-radius: 0;
+      border-right: 0;
+      border-left: 0;
+    }
+  }
+
+}

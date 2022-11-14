@@ -9,6 +9,3 @@
   </EButton>
 </template>
 
-<script  setup lang="ts">
-import { EButton, EIcon } from 'eurus-ui';
-</script>

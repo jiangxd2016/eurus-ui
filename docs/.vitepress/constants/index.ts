@@ -32,6 +32,10 @@ export const sidebarCN = [
         link: '/zh-CN/components/button',
       },
       {
+        text: '按钮组 button-group',
+        link: '/zh-CN/components/button-group',
+      },
+      {
         text: '图标 icon',
         link: '/zh-CN/components/icons',
       },
