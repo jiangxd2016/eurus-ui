@@ -52,4 +52,6 @@ function create({
   };
 }
 
+export const EurusUI = create();
+
 export default create;

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { templateCompile, toKebabCase } from '@estjs/tools';
+import { templateCompile, toKebabCase, toPascalCase } from '@estjs/tools';
 
 const globaleComponentPrefix = 'E';
 
@@ -32,8 +32,8 @@ async function createComponent(name: string, tempPath: string, outPath: string) 
         if (isFile) {
           const file = fs.readFileSync(filedir, 'utf-8');
           const fileName = path.basename(filedir);
-          const template = renderTemplate(file, { name: globaleComponentPrefix + name });
-
+          const template = renderTemplate(file, { name: globaleComponentPrefix + toPascalCase(name) });
+          console.log(outPath, 'outPath');
           fs.writeFileSync(outPath + '/' + fileName.split('.temp')[0], template);
 
         }

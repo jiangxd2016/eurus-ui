@@ -1,0 +1,146 @@
+@import '../../../scss/base.scss';
+
+$avatar-prefix-cls: $prefix + -avatar;
+.#{$avatar-prefix-cls} {
+  width: $avatar-size-md;
+  height: $avatar-size-md;
+  border-radius: 50%;
+  position: relative;
+  background-color: #d6d6d6;
+  box-shadow: 1px 3px 12px -4px rgb(0 0 0 / 40%);
+  font-size: $avatar-size-md;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+
+  &.xs {
+    width: $avatar-size-xs;
+    height: $avatar-size-xs;
+    font-size: $avatar-size-xs;
+
+    img {
+      border-radius: $avatar-size-xs;
+    }
+  }
+
+  &.sm {
+    width: $avatar-size-sm;
+    height: $avatar-size-sm;
+    font-size: $avatar-size-sm;
+
+    img {
+      border-radius: $avatar-size-sm;
+    }
+  }
+
+  &.lg {
+    width: $avatar-size-lg;
+    height: $avatar-size-lg;
+    font-size: $avatar-size-lg;
+
+    img {
+      border-radius: $avatar-size-lg;
+    }
+  }
+
+  &.xl {
+    width: $avatar-size-xl;
+    height: $avatar-size-xl;
+    font-size: $avatar-size-xl;
+
+    img {
+      border-radius: $avatar-size-xl;
+    }
+  }
+
+
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: $avatar-size-md;
+    object-fit: cover;
+  }
+
+  span {
+    color: #ffffff;
+    font-size: 0.5em;
+  }
+
+  &:empty {
+    background: #d6d6d6 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M20 22h-2v-2a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v2H4v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2zm-8-9a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="rgba(137,137,137,1)"/></svg>') center no-repeat;
+    background-size: 52% auto;
+  }
+
+  &.online {
+    .dot {
+      background: linear-gradient(134.57deg, rgb(4 201 63 / 100%) 0%, rgb(3 166 52 / 100%) 100%);
+    }
+  }
+
+  &.offline {
+    .dot {
+      background: linear-gradient(137.1deg, rgb(191 191 191 / 100%) 0%, rgb(156 156 156 / 100%) 100%);
+    }
+
+    img {
+      filter: saturate(0.3);
+      opacity: 0.8;
+    }
+  }
+
+  &.notice {
+    .reddot {
+      right: 0;
+      top: 0;
+      background-color: #f22727;
+
+      &::after {
+        content: attr(data-count);
+        width: 100%;
+        height: 100%;
+        font-size: calc(0.5 * 0.3em);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .checked {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $positive;
+    position: absolute;
+    right: -2px;
+    bottom: -4px;
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  &.checked {
+    &::before {
+      content: '';
+      width: 110%;
+      height: 110%;
+      border-radius: 50%;
+      position: absolute;
+      border: 2px solid $positive;
+    }
+  }
+
+  & .reddot, & .dot {
+    width: calc(1em * 0.3);
+    height: calc(1em * 0.3);
+    border-radius: calc(1em * 0.3);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+}

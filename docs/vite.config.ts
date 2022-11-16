@@ -17,6 +17,7 @@ export default defineConfig({
       allow: ['..']
     },
   },
+
   plugins: [
     VitePWA({
       manifest: {},
@@ -40,7 +41,7 @@ export default defineConfig({
       ],
     }),
     ViteRestart({
-      restart: [
+      reload: [
         '../dist/es/*',
       ],
     }),

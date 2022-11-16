@@ -39,6 +39,10 @@ export const sidebarCN = [
         text: '图标 icon',
         link: '/zh-CN/components/icons',
       },
+      {
+        text: '头像 avatar',
+        link: '/zh-CN/components/avatar',
+      },
       // {
       //   text: '加载中 loading',
       //   link: '/zh-CN/components/loading',

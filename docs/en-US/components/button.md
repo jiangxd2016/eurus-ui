@@ -29,11 +29,7 @@ src/packages/button/demo/demo0.vue
 | native | Object | {} |native button attribute |
 
 
-### ButtonGroup Props
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| vertical | `boolean` | `false` | arrangement of buttons |
 
 ### Button Slots
 
@@ -42,8 +38,3 @@ src/packages/button/demo/demo0.vue
 | default | -    | customize default content |
 | icon    | -    | customize icon component |
 
-### ButtonGroup Slots
-
-| 名称    | 参数 | 说明         |
-| ------- | ---- | ------------ |
-| default | -    | customize button group content|

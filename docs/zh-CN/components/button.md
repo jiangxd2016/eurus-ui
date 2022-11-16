@@ -57,11 +57,7 @@ Vue.createApp().use(Button.name, Button)
 | native | Object | {} | 原生的button属性 |
 
 
-### ButtonGroup Props
 
-| 名称 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| vertical | `boolean` | `false` | 组内按钮的排列方式 |
 
 ### Button Slots
 
@@ -70,8 +66,3 @@ Vue.createApp().use(Button.name, Button)
 | default | -    | 按钮的内容 |
 | icon    | -    | 按钮的图标 |
 
-### ButtonGroup Slots
-
-| 名称    | 参数 | 说明         |
-| ------- | ---- | ------------ |
-| default | -    | 按钮组的内容 |

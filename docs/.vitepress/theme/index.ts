@@ -1,5 +1,3 @@
-import type { App } from 'vue';
-
 import '../style/main.css';
 import '../style/vars.css';
 import '../style/vp-doc.css';
@@ -7,6 +5,8 @@ import '../style/vp-doc.css';
 import 'uno.css';
 import '@unocss/reset/tailwind.css';
 
+import DefaultTheme from 'vitepress/theme';
+import type { EnhanceAppContext } from 'vitepress/dist/client';
 import Demo from '../components/Demo.vue';
 import { extractFileNameFromPath } from '../utils';
 
@@ -16,8 +16,9 @@ import(import.meta.env.MODE === 'development' ? 'eurus-ui/style.css' : 'dist/sty
 
 export default {
   ...theme,
-  async enhanceApp({ app }: { app: App }) {
-
+  async enhanceApp(ctx: EnhanceAppContext) {
+    DefaultTheme.enhanceApp(ctx);
+    const { app } = ctx;
     const demos = import.meta.glob('../../../src/packages/**/demo/*.vue', { eager: true });
 
     for (const path in demos) {
@@ -26,9 +27,9 @@ export default {
     app.component('Demo', Demo);
 
     if (typeof process === 'undefined') {
-      await import('eurus-ui').then((m: any) => {
-        m.create().install(app);
-      });
+      const EurusUI = await import('eurus-ui');
+      // @ts-expect-error
+      app.use(EurusUI.default);
     }
   }
 };

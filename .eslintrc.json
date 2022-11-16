@@ -9,12 +9,5 @@
   "rules": {
     "no-unused-vars": 0,
     "import/no-named-as-default": 0
-  },
-  "settings": {
-    "jsx-a11y": {
-      "components": {
-        "ButtonElement": "button"
-      }
-    }
   }
 }

@@ -1,7 +1,7 @@
 ---
 class: 'EIcon-doc'
 ---
-# EIcon 按钮
+# EIcon 图标
 
 ## 引入
 
@@ -11,10 +11,7 @@ import { EIcon } from 'eurus-ui';
 Vue.createApp().use(EIcon.name, EIcon)
 ```
 
-::::card button 类型
-
-按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
-
+::::card
 :::code iconsAllIcon
 <<< ../src/packages/icons/demo/AllIcon.vue
 :::

@@ -1,14 +1,14 @@
 ---
-class: '<%= name %>-doc'
+class: 'EAvatar-doc'
 ---
-# <%= name %> [WIP]
+# EAvatar [WIP]
 
 ## use
 
 ```javascript
-import { <%= name %> } from 'eurus-ui';
+import { EAvatar } from 'eurus-ui';
 
-Vue.createApp().use(<%= name %>.name, <%= name %>)
+Vue.createApp().use(EAvatar.name, EAvatar)
 ```
 <!--
 ::::card button 类型
@@ -18,10 +18,10 @@ Vue.createApp().use(<%= name %>.name, <%= name %>)
 :::code buttonType
 <<< ../src/packages/button/demo/Type.vue
 :::
-::::
+
  -->
 
-### <%= name %> Props
+### EAvatar Props
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
