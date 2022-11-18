@@ -43,6 +43,10 @@ export const sidebarCN = [
         text: '头像 avatar',
         link: '/zh-CN/components/avatar',
       },
+      {
+        text: '回到顶部  back-top',
+        link: '/zh-CN/components/back-top',
+      },
       // {
       //   text: '加载中 loading',
       //   link: '/zh-CN/components/loading',

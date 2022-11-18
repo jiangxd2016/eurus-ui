@@ -1,0 +1,20 @@
+@import '../../../scss/base';
+
+
+$back-top-prefix-cls: $prefix + -back-top;
+
+.#{$back-top-prefix-cls} {
+  position: fixed;
+  z-index: 99;
+  transition: all 0.5s;
+
+  .#{$back-top-prefix-cls}-text {
+    display: block;
+    padding:6px 10px;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    background: $primary;
+    cursor: pointer;
+  }
+}
