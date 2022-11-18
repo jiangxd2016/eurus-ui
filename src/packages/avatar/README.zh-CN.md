@@ -12,7 +12,7 @@ Vue.createApp().use(EAvatar.name, EAvatar)
 ```
 ::::card avatar size
 
-按钮的 size 分别为 
+按钮的 size 分别为
 
 :::code avatarDemo0
 <<< ../src/packages/avatar/demo/Demo0.vue
