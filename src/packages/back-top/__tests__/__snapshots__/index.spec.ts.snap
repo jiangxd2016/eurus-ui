@@ -1,0 +1,6 @@
+// Vitest Snapshot v1
+
+exports[`EBackTop > EBackTop snapshot 1`] = `
+"<!--teleport start-->
+<!--teleport end-->"
+`;

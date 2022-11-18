@@ -10,9 +10,9 @@ import { EAvatar } from 'eurus-ui';
 
 Vue.createApp().use(EAvatar.name, EAvatar)
 ```
-::::card button 类型
+::::card avatar size
 
-按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+按钮的 size 分别为 
 
 :::code avatarDemo0
 <<< ../src/packages/avatar/demo/Demo0.vue

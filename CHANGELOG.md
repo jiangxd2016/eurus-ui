@@ -5,6 +5,20 @@ toc: false
 docClass: timeline
 ---
 
+## 0.0.1-alpha.1 `2022-11-18`
+
+
+### Features
+
+* [btn] update btn demo ([bb7b0dd](https://github.com/jiangxd2016/eurus-ui/commit/bb7b0dd3ef9078aaa5f99fe370862461c4f7c287))
+* [btn] update btn plain ([7db0be9](https://github.com/jiangxd2016/eurus-ui/commit/7db0be92ec3da3a8f8eeea23ade7610f59b484cd))
+* **compoment:** [avatar] update new component ([757fa46](https://github.com/jiangxd2016/eurus-ui/commit/757fa469d86589f9e7d894b86193ee9a6f3b4dac))
+* **component:** [back-top] [WIP] new component ([dcd0cd3](https://github.com/jiangxd2016/eurus-ui/commit/dcd0cd323494fc4c4b9bcf8dae9862597e4282a9))
+* **component:** [button-group] update button-group components ([1cd2dca](https://github.com/jiangxd2016/eurus-ui/commit/1cd2dca4fc3b5525bada5b64d2173278e7c7bd33))
+
+
+
+
 ## 0.0.1-alpha.1 `2022-11-02`
 
 

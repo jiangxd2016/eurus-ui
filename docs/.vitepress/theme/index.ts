@@ -28,7 +28,6 @@ export default {
 
     if (typeof process === 'undefined') {
       const EurusUI = await import('eurus-ui');
-      // @ts-expect-error
       app.use(EurusUI.default);
     }
   }
