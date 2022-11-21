@@ -1,7 +1,7 @@
 ---
 class: 'EBackTop-doc'
 ---
-# EBackTop
+# EBackTop 回到顶部
 
 ## 引入
 
@@ -21,6 +21,11 @@ Vue.createApp().use(EBackTop.name, EBackTop)
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
+| text | string | '返回顶部' | 回到顶部的内容 |
+| to | 'string \| HTMLElement' | 'body' | BackTop 渲染的容器节点 |
+| height | number | 200 | 滚动多长显示回到顶部 |
+| bottom | number | 30 | 回到顶部距离底部的距离 |
+| right | number | 30 | 回到顶部距离右侧的距离 |
 
 
 
@@ -28,5 +33,4 @@ Vue.createApp().use(EBackTop.name, EBackTop)
 
 | 名称    | 参数 | 说明       |
 | ------- | ---- | ---------- |
-| default | -    | 按钮的内容 |
-| icon    | -    | 按钮的图标 |
+| default | -    | 回到顶部的内容 |

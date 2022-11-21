@@ -26,4 +26,5 @@ Vue.createApp().use(EAvatar.name, EAvatar)
 | color | string | #fff | 头像背景色 |
 | offline | boolean | false | 是否是离线 |
 | online | boolean | false | 是否是在线 |
-| notice |  |  |  |
+| notice | boolean | false | 通知 |
+| count | number | - | 通知的数量，notice为true时生效 |
