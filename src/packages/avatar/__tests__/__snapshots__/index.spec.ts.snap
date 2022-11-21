@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`EAvatar > EAvatar snapshot 1`] = `
-"<div class=\\"eu-avatar md\\">
+"<div class=\\"eu-avatar md\\" style=\\"background-color: #fff;\\">
   <!---->
   <!---->
   <!---->
@@ -9,7 +9,7 @@ exports[`EAvatar > EAvatar snapshot 1`] = `
 `;
 
 exports[`EAvatar > should work with \`props\` 1`] = `
-"<div class=\\"eu-avatar md\\">EAvatar
+"<div class=\\"eu-avatar md\\" style=\\"background-color: #fff;\\">EAvatar
   <!---->
   <!---->
 </div>"
