@@ -1,3 +1,4 @@
+import { isStringNumber } from '@/packages/_utils/is';
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export const sizeToPx = (size: Size): number => {
@@ -15,4 +16,11 @@ export const sizeToPx = (size: Size): number => {
     default:
       return 16;
   }
+};
+
+export const getSize = (size: Size | number): string => {
+  if (typeof size === 'number' || isStringNumber(size)) {
+    return `${size}px`;
+  }
+  return `${sizeToPx(size)}px`;
 };

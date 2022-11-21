@@ -1,7 +1,7 @@
 ---
 class: 'EAvatar-doc'
 ---
-# EAvatar [WIP]
+# EAvatar 头像
 
 ## 引入
 
@@ -12,7 +12,7 @@ Vue.createApp().use(EAvatar.name, EAvatar)
 ```
 ::::card avatar size
 
-按钮的 size 分别为
+像的 size 分别为
 
 :::code avatarDemo0
 <<< ../src/packages/avatar/demo/Demo0.vue
@@ -22,12 +22,9 @@ Vue.createApp().use(EAvatar.name, EAvatar)
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-
-
-
-###  EAvatar Slots
-
-| 名称    | 参数 | 说明       |
-| ------- | ---- | ---------- |
-| default | -    | 按钮的内容 |
-| icon    | -    | 按钮的图标 |
+| size | `'xs' \|'sm' \|'md' \|'lg' \|'xl'` | 'md' | 头像大小 |
+| color | string | #fff | 头像背景色 |
+| offline | boolean | false | 是否是离线 |
+| online | boolean | false | 是否是在线 |
+| notice | boolean | false | 通知 |
+| count | number | - | 通知的数量，notice为true时生效 |

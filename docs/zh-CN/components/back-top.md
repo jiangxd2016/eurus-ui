@@ -1,7 +1,7 @@
 ---
 class: 'EBackTop-doc'
 ---
-# EBackTop [WIP]
+# EBackTop
 
 ## 引入
 

@@ -21,12 +21,9 @@ Vue.createApp().use(EIcon.name, EIcon)
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
+| name | string | - | icon name |
+| color | string | - | icon color |
+| size | `'xs' \|'sm' \|'md' \|'lg' \|'xl'`｜number |  | icon size |
 
+​
 
-
-###  EIcon Slots
-
-| 名称    | 参数 | 说明       |
-| ------- | ---- | ---------- |
-| default | -    | 按钮的内容 |
-| icon    | -    | 按钮的图标 |

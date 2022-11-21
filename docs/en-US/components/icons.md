@@ -18,7 +18,11 @@ src/packages/icon/demo/demo0.vue
 
 ### EIcon Props
 
-| Name | Type | Default | Description |
+| 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
+| name | string | - | icon name |
+| color | string | - | icon color |
+| size | `'xs' \|'sm' \|'md' \|'lg' \|'xl'`｜number |  | icon size |
 
+​
 

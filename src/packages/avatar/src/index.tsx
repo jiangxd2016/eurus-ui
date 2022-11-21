@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { defineComponent, reactive } from 'vue';
+import { computed, defineComponent, reactive } from 'vue';
 import './style.scss';
 
 import type { Size } from '@/packages/_utils/size';
@@ -37,16 +37,22 @@ export default defineComponent({
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('avatar');
 
+    const mergeStyles = computed(() => {
+      return {
+        'background-color': props.color,
+      };
+    });
+
     const clsName = reactive({
       offline: props.offline,
       online: props.online,
       notice: props.notice,
     });
     return () => (
-      <div class={[prefixCls, props.size, clsName]}>
+      <div class={[prefixCls, props.size, clsName]} style={mergeStyles.value}>
         {slots.default && slots.default()}
         {(props.offline || props.online) && <div class="dot" />}
-        {props.notice && <div class="reddot" date-count={props.count} />}
+        {props.notice && <div class="reddot" data-count={props.count} />}
       </div>
 
     );

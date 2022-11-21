@@ -1,11 +1,15 @@
 import type { Component, PropType } from 'vue';
 import { renderSlot, h, computed, defineComponent } from 'vue';
 import * as allIcon from '../icons-vue';
-import { isStringNumber } from '@/packages/_utils/is';
 import './style.scss';
 import { warnOnce } from '@/packages/_utils/warn';
+import type { Size } from '@/packages/_utils/size';
+import { getSize } from '@/packages/_utils/size';
 const IconProps = {
-  size: [Number, String],
+  size: {
+    type: [String, Number] as PropType<Size | number>,
+    default: 'md',
+  },
   color: String,
   name: String as PropType<keyof typeof allIcon | string | undefined>,
 };
@@ -16,7 +20,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const mergeStyles = computed(() => {
       return {
-        'font-size': isStringNumber(props.size) ? `${props.size}px` : props.size,
+        'font-size': getSize(props.size),
         'color': props.color,
       };
     });
