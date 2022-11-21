@@ -1,4 +1,4 @@
-export const scrollTop = () => {
-  // 滚动条的位置
-  return document.documentElement.scrollTop || document.body.scrollTop;
+export const scrollTop = (element?: HTMLElement) => {
+  const el = element || document.documentElement || document.body;
+  return el.scrollTop;
 };
