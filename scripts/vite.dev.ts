@@ -10,6 +10,9 @@ const config: InlineConfig = {
       '@/': `${resolve(resolve(), 'src')}/`,
     },
   },
+  define: {
+    __DEV__: true,
+  },
 
   build: {
     watch: {},

@@ -11,6 +11,10 @@ const config: InlineConfig = {
       '@/': `${resolve(resolve(), 'src')}/`,
     },
   },
+  define: {
+    __PROD__: true,
+  },
+
   build: {
     sourcemap: true,
     // target: 'modules',

@@ -9,6 +9,9 @@ export default defineConfig({
       '@/': `${resolve(dirname, 'src')}/`,
     },
   },
+  define: {
+    __DEV__: true,
+  },
   plugins: [Vue(), Jsx()],
   test: {
     include: ['**/__tests__/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],

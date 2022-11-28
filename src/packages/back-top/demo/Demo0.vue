@@ -1,6 +1,10 @@
 <template>
-  <EBackTop />
-
-  <EBackTop bottom="100" height="30" text="click me" />
+  <div id="back-top-test" style="height:200px;width:100%;overflow: auto;">
+    <div style="height:500px">
+      <EBackTop target="#back-top-test" height="10" />
+    </div>
+  </div>
+  <!-- vitepress滚动的元素是html -->
+  <EBackTop bottom="100" height="60" text="click me" target="html" />
 </template>
 

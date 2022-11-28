@@ -14,7 +14,7 @@ describe('EBackTop', () => {
       <div class="target" style="height: 100px; overflow: auto">
         <div style="height: 10000px; width: 100%">
           <EBackTop
-            to=".target"
+            target=".target"
             height={2000}
             right={100}
             bottom={200}

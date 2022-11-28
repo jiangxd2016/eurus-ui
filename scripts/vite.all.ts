@@ -12,6 +12,10 @@ const config: InlineConfig = {
       '@/': `${resolve(dirname, 'src')}/`,
     },
   },
+  define: {
+    __PROD__: true,
+  },
+
   build: {
     sourcemap: true,
     minify: false,

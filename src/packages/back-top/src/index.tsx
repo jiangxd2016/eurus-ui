@@ -1,15 +1,15 @@
 import type { PropType } from 'vue';
-import { shallowRef, defineComponent, onBeforeUnmount, onMounted, ref, Transition } from 'vue';
+import { defineComponent, onBeforeUnmount, onMounted, ref, Transition } from 'vue';
 import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { scrollTop } from '@/packages/_utils/dom';
-import { easeInOutCubic } from '@/packages/_utils/animation';
+import { isDocument, scrollTop } from '@/packages/_utils/dom';
+import { warn } from '@/packages/_utils/warn';
 const EBackTopProps = {
   text: {
     type: String,
     default: '返回顶部',
   },
-  to: {
+  target: {
     type: [String, Object] as PropType<HTMLElement | string>,
     default: 'body'
   },
@@ -25,60 +25,56 @@ export default defineComponent({
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('back-top');
 
-    const container = shallowRef<HTMLElement>();
-
-    const backTop = ref<HTMLElement>();
     const backTopVisible = ref(false);
-    const windowScroll = () => {
-      backTopVisible.value = scrollTop(container.value) > props.height;
+
+    let scrollListenerRegistered: boolean;
+    let scrollElement: HTMLElement | Document;
+
+    const handleScroll = () => {
+      backTopVisible.value = scrollTop(scrollElement) > props.height;
     };
     const scrollToTop = () => {
-
-      if (!container.value) { return; }
-      const beginTime = Date.now();
-      const beginValue = container.value.scrollTop;
-      const frameFunc = () => {
-        if (!container.value) { return; }
-        const progress = (Date.now() - beginTime) / 500;
-        if (progress < 1) {
-          container.value.scrollTop = beginValue * (1 - easeInOutCubic(progress));
-          requestAnimationFrame(frameFunc);
-        } else {
-          container.value.scrollTop = 0;
-        }
-      };
-      requestAnimationFrame(frameFunc);
+      ( isDocument(scrollElement)
+        ? document.documentElement
+        : scrollElement
+      ).scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     };
     const backTopClick = () => {
-
-      const currentScroll = scrollTop(container.value);
+      const currentScroll = scrollTop(scrollElement);
       if (currentScroll > 0) {
         scrollToTop();
       }
-
       emit('click');
     };
 
     onMounted(() => {
 
-      const { to } = props;
-      container.value = typeof to === 'string' ? document.querySelector(to) as HTMLElement | undefined : to;
-      container.value?.addEventListener('scroll', windowScroll);
+      if (scrollListenerRegistered) { return; }
+      scrollListenerRegistered = true;
+      const { target } = props;
+      const targetElement: HTMLElement | Document = typeof target === 'string' ? document.querySelector(target) as HTMLElement : target;
+      if (__DEV__ && !targetElement) {
+        warn('back-top', 'Target is not found.');
+      }
+      scrollElement = (targetElement === document.documentElement) ? document : targetElement;
+      scrollElement.addEventListener('scroll', handleScroll);
 
     });
 
     onBeforeUnmount(() => {
-      container.value?.removeEventListener('scroll', windowScroll);
+      scrollElement.removeEventListener('scroll', handleScroll);
     });
 
     return () => (
       <Transition name="fade-in">
-        <div class={[prefixCls]} ref={backTop} role="button" aria-hidden='true' onClick={backTopClick} style={{
+        <div class={[prefixCls]} role="button" aria-hidden='true' onClick={backTopClick} style={{
           right: props.right + 'px',
           bottom: props.bottom + 'px',
           visibility: backTopVisible.value ? 'visible' : 'hidden'
         }}>
-
           {
             slots?.default ? slots.default() : <span class={[prefixCls + '-text']} v-text={props.text}></span>
           }

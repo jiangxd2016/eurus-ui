@@ -1,9 +1,9 @@
 <template>
-  <EButton type="primary" size="xs">loading...</EButton>
-  <EButton type="primary" size="sm"> loading...</EButton>
-  <EButton type="primary" size="md"> loading...</EButton>
-  <EButton type="primary" size="lg"> loading...</EButton>
-  <EButton type="primary" size="xl"> loading...</EButton>
+  <EButton type="primary" size="xs" loading>loading...</EButton>
+  <EButton type="primary" size="sm" loading> loading...</EButton>
+  <EButton type="primary" size="md" loading> loading...</EButton>
+  <EButton type="primary" size="lg" loading> loading...</EButton>
+  <EButton type="primary" size="xl" loading> loading...</EButton>
 
   <EButton type="primary" disabled size="xs">
     disabled

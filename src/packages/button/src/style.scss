@@ -19,6 +19,13 @@ $button-prefix-cls: $prefix + -button;
   outline: 0;
   border: 0;
   border-radius: 4px;
+
+  .loading {
+    display: flex;
+    align-items: center;
+    padding-right: 0.2rem;
+  }
+
 }
 
 .#{$button-prefix-cls}:hover {
