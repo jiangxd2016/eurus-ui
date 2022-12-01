@@ -1,4 +1,5 @@
-import type { InjectionKey } from 'vue';
+import type { ExtractPropTypes, InjectionKey } from 'vue';
+import type { EFormProps } from '../form/src';
 import type { Size } from '@/packages/_utils/size';
 
 export const COMPONENT_PREFIX = 'E';
@@ -19,3 +20,12 @@ export interface buttonGroupProviderType {
 export const buttonGroupProviderTypeInjectionKey: InjectionKey<buttonGroupProviderType>
   = Symbol('buttonGroupProvider');
 
+export type FormProps = ExtractPropTypes<typeof EFormProps>;
+
+export type FormCtx = FormProps & {
+  addFormItemFIeld: (field: any ) => void;
+};
+
+export const formCtxProviderInjectionKey: InjectionKey<FormCtx> = Symbol('EurusFormConfigProvider');
+export const formItemProviderInjectionKey: InjectionKey<any>
+  = Symbol('EurusFormItemContextProvider');

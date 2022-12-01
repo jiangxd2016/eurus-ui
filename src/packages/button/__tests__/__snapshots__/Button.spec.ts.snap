@@ -1,91 +1,91 @@
 // Vitest Snapshot v1
 
 exports[`button > should work with \`size\` prop 1`] = `
-"<button class=\\"eu-button eu-button--default bg-default text-black eu-button--xs\\">
+"<button class=\\"eu-button eu-button--default bg-default eu-button--xs text-black\\">
   <!---->
   <!----><span>xs</span>
 </button>"
 `;
 
 exports[`button > should work with \`size\` prop 2`] = `
-"<button class=\\"eu-button eu-button--default bg-default text-black eu-button--sm\\">
+"<button class=\\"eu-button eu-button--default bg-default eu-button--sm text-black\\">
   <!---->
   <!----><span>sm</span>
 </button>"
 `;
 
 exports[`button > should work with \`size\` prop 3`] = `
-"<button class=\\"eu-button eu-button--default bg-default text-black eu-button--md\\">
+"<button class=\\"eu-button eu-button--default bg-default eu-button--md text-black\\">
   <!---->
   <!----><span>md</span>
 </button>"
 `;
 
 exports[`button > should work with \`size\` prop 4`] = `
-"<button class=\\"eu-button eu-button--default bg-default text-black eu-button--lg\\">
+"<button class=\\"eu-button eu-button--default bg-default eu-button--lg text-black\\">
   <!---->
   <!----><span>lg</span>
 </button>"
 `;
 
 exports[`button > should work with \`size\` prop 5`] = `
-"<button class=\\"eu-button eu-button--default bg-default text-black eu-button--xl\\">
+"<button class=\\"eu-button eu-button--default bg-default eu-button--xl text-black\\">
   <!---->
   <!----><span>xl</span>
 </button>"
 `;
 
 exports[`button > should work with \`type\` prop 1`] = `
-"<button class=\\"eu-button eu-button--default bg-default text-black eu-button--md\\">
+"<button class=\\"eu-button eu-button--default bg-default eu-button--md text-black\\">
   <!---->
   <!----><span>default</span>
 </button>"
 `;
 
 exports[`button > should work with \`type\` prop 2`] = `
-"<button class=\\"eu-button eu-button--text bg-text text-white eu-button--md\\">
+"<button class=\\"eu-button eu-button--text bg-text eu-button--md text-white\\">
   <!---->
   <!----><span>text</span>
 </button>"
 `;
 
 exports[`button > should work with \`type\` prop 3`] = `
-"<button class=\\"eu-button eu-button--primary bg-primary text-white eu-button--md\\">
+"<button class=\\"eu-button eu-button--primary bg-primary eu-button--md text-white\\">
   <!---->
   <!----><span>primary</span>
 </button>"
 `;
 
 exports[`button > should work with \`type\` prop 4`] = `
-"<button class=\\"eu-button eu-button--info bg-info text-white eu-button--md\\">
+"<button class=\\"eu-button eu-button--info bg-info eu-button--md text-white\\">
   <!---->
   <!----><span>info</span>
 </button>"
 `;
 
 exports[`button > should work with \`type\` prop 5`] = `
-"<button class=\\"eu-button eu-button--success bg-success text-white eu-button--md\\">
+"<button class=\\"eu-button eu-button--success bg-success eu-button--md text-white\\">
   <!---->
   <!----><span>success</span>
 </button>"
 `;
 
 exports[`button > should work with \`type\` prop 6`] = `
-"<button class=\\"eu-button eu-button--warning bg-warning text-white eu-button--md\\">
+"<button class=\\"eu-button eu-button--warning bg-warning eu-button--md text-white\\">
   <!---->
   <!----><span>warning</span>
 </button>"
 `;
 
 exports[`button > should work with \`type\` prop 7`] = `
-"<button class=\\"eu-button eu-button--error bg-error text-white eu-button--md\\">
+"<button class=\\"eu-button eu-button--error bg-error eu-button--md text-white\\">
   <!---->
   <!----><span>error</span>
 </button>"
 `;
 
 exports[`button > should work with \`type\` prop 8`] = `
-"<button class=\\"eu-button eu-button--purple bg-purple text-white eu-button--md\\">
+"<button class=\\"eu-button eu-button--purple bg-purple eu-button--md text-white\\">
   <!---->
   <!----><span>purple</span>
 </button>"

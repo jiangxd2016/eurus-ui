@@ -17,6 +17,7 @@ const IconProps = {
 export default defineComponent({
   name: 'EIcon',
   props: IconProps,
+  emits: ['click'],
   setup(props, { slots }) {
     const mergeStyles = computed(() => {
       return {

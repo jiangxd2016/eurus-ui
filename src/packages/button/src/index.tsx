@@ -60,7 +60,7 @@ export default defineComponent({
   props: BtnProps,
   emits: ['click'],
   setup(props, { slots, emit }) {
-    const prefix = getPrefixCls('button');
+    const prefixCls = getPrefixCls('button');
 
     const buttonGroupInject = inject(buttonGroupProviderTypeInjectionKey, {});
     const { size = props.size } = buttonGroupInject;
@@ -69,7 +69,6 @@ export default defineComponent({
       plain: props.plain,
       circle: props.circle,
       round: props.round,
-      [`${prefix}--${size}`]: size
     }));
 
     const handleClick = (e: Event) => {
@@ -79,12 +78,10 @@ export default defineComponent({
       emit('click', e);
     };
 
-    // const ButtonElement = isEmpty(props.native) ? 'a' : 'button';
-
     return () => (
       <button
         class={[
-          `${prefix} ${prefix}--${props.type} bg-${props.type} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
+          `${prefixCls} ${prefixCls}--${props.type} bg-${props.type} ${prefixCls}--${size} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
           classNames.value,
         ]}
         {...props.native} onClick={handleClick}>

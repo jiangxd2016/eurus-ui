@@ -47,6 +47,10 @@ export const sidebarCN = [
         text: '回到顶部  back-top',
         link: '/zh-CN/components/back-top',
       },
+      {
+        text: '输入框 input',
+        link: '/zh-CN/components/input',
+      },
       // {
       //   text: '加载中 loading',
       //   link: '/zh-CN/components/loading',
