@@ -1,0 +1,138 @@
+@import '../../../scss/base';
+
+$input-prefix-cls: $prefix + -input;
+$input-wrapper-prefix-cls: $prefix + -input-wrapper;
+
+.#{$input-wrapper-prefix-cls} {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+
+  line-height: 36px;
+  border: 1px solid #dcdee0;
+  border-radius: 3px;
+  background: none;
+  outline: none;
+  font-size: 14px;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  transition: all 0.3s;
+  font-size: 16px;
+  color: #575757;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid #34c3ff;
+  }
+
+  &:focus {
+    border: 1px solid #34c3ff;
+    outline: none;
+  }
+
+
+
+  .#{$input-prefix-cls}-suffix {
+    padding-right: 10px;
+  }
+
+  .#{$input-prefix-cls}-prefix {
+    padding-left: 10px;
+  }
+
+  .#{$input-prefix-cls}-clearable {
+    margin-right: 10px;
+  }
+
+
+
+  & .#{$input-prefix-cls} {
+    flex: 1;
+    padding: 0 10px;
+    transition: all 0.3s;
+    color: #575757;
+
+  }
+  & .#{$input-prefix-cls}-word-limit {
+    font-size: 12px;
+    color: rgb(118, 124, 130);
+  }
+}
+
+.#{$input-wrapper-prefix-cls}--disabled {
+  background: #f7f7fa;
+  border: 1px solid #e5e5ea;
+  border-radius: 6px;
+
+  &:hover {
+    border: 1px solid #e5e5ea;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    border: 1px solid #e5e5ea;
+    outline: none;
+    cursor: not-allowed;
+  }
+
+}
+
+
+
+
+
+.#{$input-wrapper-prefix-cls}--disabled {
+  background: #f7f7fa;
+  border: 1px solid #e5e5ea;
+  border-radius: 6px;
+
+  &:hover {
+    border: 1px solid #e5e5ea;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    border: 1px solid #e5e5ea;
+    outline: none;
+    cursor: not-allowed;
+  }
+}
+
+.#{$input-wrapper-prefix-cls}--xs {
+  font-size: 12px;
+  line-height: 1.667;
+  padding: 2px 12px;
+}
+
+.#{$input-wrapper-prefix-cls}--sm {
+  font-size: 14px;
+  line-height: 1.5715;
+  padding: 5px 12px;
+}
+
+
+.#{$input-wrapper-prefix-cls}--md {
+  padding: 5px 12px;
+  line-height: 1.5715;
+  font-size: 14px;
+}
+
+.#{$input-wrapper-prefix-cls}--lg {
+  font-size: 18px;
+  line-height: 1.875;
+  padding: 10px 12px;
+}
+
+.#{$input-wrapper-prefix-cls}--xl {
+  font-size: 22px;
+  line-height: 2.142;
+  padding: 10px 12px;
+}
+
+
+
+.#{$input-prefix-cls}::placeholder {
+  color: #8e8e93;
+}
