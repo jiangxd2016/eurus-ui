@@ -1,4 +1,0 @@
-<template >
-<EForm></EForm>
-</template>
-
