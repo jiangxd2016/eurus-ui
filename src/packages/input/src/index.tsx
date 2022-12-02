@@ -2,7 +2,6 @@ import type { PropType } from 'vue';
 import { ref, watch, computed, defineComponent, toRefs } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import './style.scss';
-// import { formItemProviderInjectionKey } from '@/packages/_utils/constants';
 import { isUndefined, isNull } from '@/packages/_utils/is';
 import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
@@ -41,9 +40,7 @@ const EInputProps = {
     default: false
   },
   type: {
-    // 不支持特殊的原生熟悉，如：Date, Time, Month, Week, Datetime, Datetime-local, Color
-    // @see https://html.spec.whatwg.org/multipage/input.html#the-input-element
-    type: String as PropType<'text' | 'search' | 'telephone' | 'url' | 'email' | 'password'>,
+    type: String as PropType<'text' | 'password'>,
     default: 'text'
   }
 };
@@ -56,75 +53,60 @@ export default defineComponent({
     const prefixCls = getPrefixCls('input');
     const wrapperCls = getPrefixCls('input-wrapper');
 
-    const { size, disabled, type, placeholder, modelValue, maxLength } = toRefs(props);
-    // formItem
-    // const formItemFields: any = inject(formItemProviderInjectionKey, undefined);
+    const { size, disabled, type, placeholder, modelValue } = toRefs(props);
 
     const wrapperClassNames = computed(() => {
       return [wrapperCls, `${wrapperCls}--${size.value}`, props.disabled && `${wrapperCls}--disabled`];
     });
 
-    const controlChangeEvent = (type: 'update:modelValue' | 'change' | 'focus' | 'blur' | 'clear' | 'input' = 'change', val: unknown, event: Event) => {
-      emit(type, val, event);
-      // if (formItemFields.triggerList.includes(type)) {
-      //   formItemFields.validate(val);
-      // }
-    };
-
-    // 值相关
     const _value = ref(props.defaultValue);
-    const computedValue = computed(() => props.modelValue ?? _value.value);
+
+    const maxLength = computed(() => {
+      return props.maxLength > 0 ? props.maxLength : undefined;
+    });
+    const computedValue = computed(() => {
+      return props.modelValue ?? _value.value;
+    });
+    const showClearBtn = computed(() => props.clearable && Boolean(computedValue.value));
+
+    let preValue = computedValue.value;
 
     watch(modelValue, (value) => {
       if (isUndefined(value) || isNull(value)) {
         _value.value = '';
       }
     });
-    let preValue = computedValue.value;
-    const showClearBtn = computed(
-      () =>
-        props.clearable
-        && Boolean(computedValue.value)
-    );
-    const updateValue = (value: string) => {
-      if (
-        maxLength.value
-        && value.length > maxLength.value
-      ) {
-        value = value.slice(0, maxLength.value);
-      }
 
+    // update value
+    const updateValue = (value: string) => {
       _value.value = value;
       emit('update:modelValue', value);
     };
-
-    const emitChange = (value: string, event: Event) => {
+    const emitChange = (value: string, ev: Event) => {
       if (value !== preValue) {
         preValue = value;
-        emit('change', value, event);
+        emit('change', value, ev);
       }
     };
 
-    const handleInput = (e: Event) => {
-      const targetValue = (e.target as HTMLInputElement).value;
-      updateValue(targetValue);
-      emitChange(targetValue, e);
-      controlChangeEvent('input', targetValue, e);
-    };
+    const handleInput = (ev: Event) => {
+      const value = (ev.target as HTMLInputElement).value;
 
-    const handleBlur = (e: Event) => {
-      const { value } = e.target as HTMLInputElement;
-      controlChangeEvent('blur', value, e);
+      updateValue(value);
+      emit('input', value, ev);
     };
-
-    const handleFocus = (e: Event) => {
+    const handleBlur = (ev: Event) => {
+      emitChange(computedValue.value, ev);
+      emit('blur', ev);
+    };
+    const handleFocus = (ev: Event) => {
       preValue = computedValue.value;
-      controlChangeEvent('focus', preValue, e);
+      emit('focus', ev);
     };
-    const handleClear = (e: Event) => {
+    const handleClear = (ev: MouseEvent) => {
       updateValue('');
-      emitChange('', e);
-      controlChangeEvent('clear', ' ', e);
+      emitChange('', ev);
+      emit('clear', ev);
     };
 
     return () => (
@@ -137,14 +119,16 @@ export default defineComponent({
           type={type.value}
           placeholder={placeholder.value}
           disabled={disabled.value}
-          class={[prefixCls]}
           maxlength={maxLength.value}
+          class={[prefixCls]}
           onInput={handleInput}
           onBlur={handleBlur}
           onFocus={handleFocus}
         />
         {showClearBtn.value && (
-          <EIcon name="close" onClick={handleClear} size={size.value} class={`${prefixCls}-clearable`}></EIcon>
+          <span onClick={handleClear} aria-hidden="true" class={`${prefixCls}-clearable`}>
+            <EIcon name="close" size={size.value} ></EIcon>
+          </span>
         )}
         {(slots.suffix || (Boolean(props.maxLength) && props.showWordLimit)) && (
           <span class={`${prefixCls}-suffix`}>

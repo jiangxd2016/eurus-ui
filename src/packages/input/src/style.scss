@@ -35,14 +35,16 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
 
 
   .#{$input-prefix-cls}-suffix {
-    padding-right: 10px;
-  }
-
-  .#{$input-prefix-cls}-prefix {
     padding-left: 10px;
   }
 
+  .#{$input-prefix-cls}-prefix {
+    padding-right: 10px;
+  }
+
   .#{$input-prefix-cls}-clearable {
+    display: flex;
+    align-items: center;
     margin-right: 10px;
   }
 
@@ -50,7 +52,6 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
 
   & .#{$input-prefix-cls} {
     flex: 1;
-    padding: 0 10px;
     transition: all 0.3s;
     color: #575757;
 
@@ -103,18 +104,18 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
 .#{$input-wrapper-prefix-cls}--xs {
   font-size: 12px;
   line-height: 1.667;
-  padding: 2px 12px;
+  padding: 2px 6px;
 }
 
 .#{$input-wrapper-prefix-cls}--sm {
   font-size: 14px;
   line-height: 1.5715;
-  padding: 5px 12px;
+  padding: 5px 8px;
 }
 
 
 .#{$input-wrapper-prefix-cls}--md {
-  padding: 5px 12px;
+  padding: 5px 8px;
   line-height: 1.5715;
   font-size: 14px;
 }
@@ -122,13 +123,13 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
 .#{$input-wrapper-prefix-cls}--lg {
   font-size: 18px;
   line-height: 1.875;
-  padding: 10px 12px;
+  padding: 10px 10px;
 }
 
 .#{$input-wrapper-prefix-cls}--xl {
   font-size: 22px;
   line-height: 2.142;
-  padding: 10px 12px;
+  padding: 10px 10px;
 }
 
 

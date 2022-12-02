@@ -1,5 +1,4 @@
 import { mount } from '@vue/test-utils';
-import { ref } from 'vue';
 import EInput from '..';
 
 describe('EInput', () => {
@@ -10,21 +9,37 @@ describe('EInput', () => {
     wrapper.unmount();
   });
 
-  // it('should be emit change event', async () => {
-  //   const fn = vitest.fn();
-  //   const val = ref('test');
-  //   const wrapper = mount(EInput, {
-  //     props: {
-  //       value: val,
-  //       onChange: fn
-  //     }
-  //   });
-  //   val.value = 'test1';
-  //   const input = wrapper.find('input');
-  //   await input.trigger('change');
+  it('should  emit input event', async () => {
+    const fn = vitest.fn();
+    const wrapper = mount(EInput, {
+      props: {
+        value: 'Test',
+        onInput: fn
+      }
+    });
+    const input = wrapper.find('input');
+    input.element.value = 'Test2';
+    await input.trigger('input');
 
-  //   expect(fn).toHaveBeenCalled();
+    expect(fn).toHaveBeenCalled();
 
-  // });
+    wrapper.unmount();
+
+  });
+
+  it('should work with clearable prop', async () => {
+    const fn = vitest.fn();
+    const wrapper = mount(EInput, {
+      props: {
+        'modelValue': 'test',
+        'clearable': true,
+        'onUpdate:modelValue': fn
+      }
+    });
+
+    await wrapper.find('.eu-input-clearable').trigger('click');
+    expect(fn).toHaveBeenCalled();
+    wrapper.unmount();
+  });
 
 });

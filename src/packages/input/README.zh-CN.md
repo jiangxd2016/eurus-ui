@@ -1,7 +1,7 @@
 ---
 class: 'EInput-doc'
 ---
-# EInput [WIP]
+# EInput 输入框 【WIP】
 
 ## 引入
 
