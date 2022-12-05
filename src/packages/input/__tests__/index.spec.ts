@@ -41,5 +41,39 @@ describe('EInput', () => {
     expect(fn).toHaveBeenCalled();
     wrapper.unmount();
   });
+  it('should work with disable prop', () => {
+    const wrapper = mount(EInput, {
+      props: {
+        disabled: true
+      }
+    });
+    expect(wrapper.find('.eu-input-wrapper--disabled').exists()).toBe(true);
+    wrapper.unmount();
+  });
 
+  it('should work with size prop', () => {
+    const size = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+    size.forEach((size) => {
+      const wrapper = mount(EInput, {
+        props: {
+          size
+        }
+      });
+      expect(wrapper.find('.eu-input-wrapper--' + size).exists()).toBe(true);
+      wrapper.unmount();
+    }
+    );
+  });
+  it('should work with showWordLimit and maxLength prop', async () => {
+    const wrapper = mount(EInput, {
+      props: {
+        modelValue: '12345678901',
+        showWordLimit: true,
+        maxLength: 10
+      }
+    });
+
+    expect(wrapper.find('input').attributes('maxlength')).toBe('10');
+    expect(wrapper.find('.eu-input-suffix').find('.eu-input-word-limit').exists()).toBe(true);
+  });
 });

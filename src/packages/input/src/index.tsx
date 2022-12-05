@@ -70,7 +70,6 @@ export default defineComponent({
     const showClearBtn = computed(() => props.clearable && Boolean(computedValue.value));
 
     let preValue = computedValue.value;
-
     watch(modelValue, (value) => {
       if (isUndefined(value) || isNull(value)) {
         _value.value = '';
@@ -79,6 +78,9 @@ export default defineComponent({
 
     // update value
     const updateValue = (value: string) => {
+      if (maxLength.value && value.length > maxLength.value) {
+        value = value.slice(0, maxLength.value);
+      }
       _value.value = value;
       emit('update:modelValue', value);
     };
@@ -104,6 +106,7 @@ export default defineComponent({
       emit('focus', ev);
     };
     const handleClear = (ev: MouseEvent) => {
+      if (disabled.value) { return; }
       updateValue('');
       emitChange('', ev);
       emit('clear', ev);

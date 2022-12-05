@@ -11,19 +11,35 @@ import { EInput } from 'eurus-ui';
 Vue.createApp().use(EInput.name, EInput)
 ```
 
-::::card button 类型
+::::card input基本用法
 
-按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+:::code inputBasic
+<<< ../src/packages/input/demo/Basic.vue
+:::
+::::
 
-:::code inputDemo0
-<<< ../src/packages/input/demo/Demo0.vue
+::::card input 前缀和后缀
+
+插槽的名字为 prefix 和 suffix。
+
+:::code inputSlot
+<<< ../src/packages/input/demo/Slot.vue
+:::
+::::
+
+::::card input 长度限制和清除
+
+通过maxLength属性限制输入的最大长度，通过clearable属性开启清除功能。
+
+:::code inputMax
+<<< ../src/packages/input/demo/Max.vue
 :::
 ::::
 
 
-::::card button 类型
+::::card input 大小
 
-按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+input的 size 分别为 xs、sm、md、lg 和 xl。
 
 :::code inputSize
 <<< ../src/packages/input/demo/Size.vue
