@@ -24,7 +24,7 @@ export const compileToCSS = function (nodeEnv: string) {
     fs.writeFileSync('dist/style.css', css.css.toString() + '\n' + styleCss);
     copyDir(INPUT_PATH, SCSS_OUT_PATH);
 
-    fs.writeFileSync('dist/es/index.css', css.css.toString() + '\n' + styleCss);
+    fs.writeFileSync('dist/es/style.css', css.css.toString() + '\n' + styleCss);
 
   }
 };
