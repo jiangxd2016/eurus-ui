@@ -12,6 +12,8 @@ import { extractFileNameFromPath } from '../utils';
 
 import theme from './theme';
 
+import 'dist/css/index.css';
+
 import(import.meta.env.MODE === 'development' ? 'eurus-ui/style.css' : 'dist/style.css');
 
 export default {
@@ -27,6 +29,7 @@ export default {
     app.component('Demo', Demo);
 
     if (typeof process === 'undefined') {
+      // @ts-expect-error
       const EurusUI = await import('eurus-ui');
       app.use(EurusUI.default);
     }

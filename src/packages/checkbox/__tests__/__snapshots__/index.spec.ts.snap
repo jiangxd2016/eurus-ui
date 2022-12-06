@@ -1,0 +1,9 @@
+// Vitest Snapshot v1
+
+exports[`ECheckbox > ECheckbox snapshot 1`] = `
+"<div class=\\"eu-checkbox\\" aria-hidden=\\"true\\"><label class=\\"\\"><input class=\\"\\" type=\\"checkbox\\">
+    <div class=\\"slot-text\\">
+      <!---->
+    </div>
+  </label></div>"
+`;

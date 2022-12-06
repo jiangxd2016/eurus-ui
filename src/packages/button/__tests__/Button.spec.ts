@@ -8,7 +8,7 @@ describe('button', () => {
     (['default', 'text', 'primary', 'info', 'success', 'warning', 'error', 'purple'] as const).forEach((type) => {
       const wrapper = mount(EButton, { props: { type }, slots: { default: type } });
       expect(wrapper.html()).toMatchSnapshot();
-      expect(wrapper.classes()).toContain('eu-button--' + type);
+      expect(wrapper.classes()).toContain('bg-' + type);
       wrapper.unmount();
 
     });

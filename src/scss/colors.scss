@@ -1,9 +1,9 @@
 :root {
   --e-color-primary: #{$primary};
   --e-color-secondary: #{$secondary};
-  --e-color-accent: #{$accent};
+  --e-color-purple: #{$purple};
   --e-color-positive: #{$positive};
-  --e-color-negative: #{$negative};
+  --e-color-error: #{$error};
   --e-color-info: #{$info};
   --e-color-warning: #{$warning};
   --e-color-dark: #{$dark};
@@ -34,12 +34,12 @@
   background: var(--e-color-secondary) !important;
 }
 
-.text-accent {
-  color: var(--e-color-accent) !important;
+.text-purple {
+  color: var(--e-color-purple) !important;
 }
 
-.bg-accent {
-  background: var(--e-color-accent) !important;
+.bg-purple {
+  background: var(--e-color-purple) !important;
 }
 
 .text-positive {
@@ -50,12 +50,12 @@
   background: var(--e-color-positive) !important;
 }
 
-.text-negative {
-  color: var(--e-color-negative) !important;
+.text-error {
+  color: var(--e-color-error) !important;
 }
 
-.bg-negative {
-  background: var(--e-color-negative) !important;
+.bg-error {
+  background: var(--e-color-error) !important;
 }
 
 .text-info {

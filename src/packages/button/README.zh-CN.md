@@ -7,7 +7,7 @@ sidebarDepth: 2
 ## 引入
 
 ```javascript
-import { Button } from 'my-lib'
+import { Button } from 'eurus-ui'
 
 Vue.createApp().use(Button.name, Button)
 ```

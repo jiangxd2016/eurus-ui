@@ -51,6 +51,11 @@ export const sidebarCN = [
         text: '输入框 input',
         link: '/zh-CN/components/input',
       },
+      {
+        text: '多选框 checkbox',
+        link: '/zh-CN/components/checkbox',
+      },
+
       // {
       //   text: '加载中 loading',
       //   link: '/zh-CN/components/loading',
@@ -62,7 +67,7 @@ export const sidebarCN = [
       //   text: '表单组件',
       //   link: '/zh-CN/components/form',
       // },
-      // {
+      // {®
       //   text: '导航组件',
       //   link: '/zh-CN/components/navigation',
       // },

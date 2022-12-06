@@ -1,0 +1,4 @@
+<template>
+  <ECheckbox />
+</template>
+

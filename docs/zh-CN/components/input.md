@@ -1,7 +1,7 @@
 ---
 class: 'EInput-doc'
 ---
-# EInput 输入框 【WIP】
+# EInput 输入框 
 
 ## 引入
 
@@ -51,12 +51,21 @@ input的 size 分别为 xs、sm、md、lg 和 xl。
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
+| model-value / v-model | string | "" | 绑定的值 |
+| type | string | text | 暂时只支持text和password |
+| defaultValue | string | "" | 默认值 |
+| disabled | boolean | false | 是否禁用 |
+| size                  | `'xs' \|'sm' \|'md' \|'lg' \|'xl'` | md     | 输入框的尺寸 |
+| placeholder           | string                             | ""     | 输入框占位文本 |
+| maxLength             | number                             | 0      | 最大长度 |
+| showWordLimit         | boolean                            | false  | 显示文字长度统计，只有设置maxLength时生效 |
+| clearable             | boolean                            | false  | 是否显示清除按钮 |
 
 
 
 ###  EInput Slots
 
-| 名称    | 参数 | 说明       |
-| ------- | ---- | ---------- |
-| default | -    | 按钮的内容 |
-| icon    | -    | 按钮的图标 |
+| 名称   | 参数 | 说明             |
+| ------ | ---- | ---------------- |
+| prefix | -    | 输入框头部内容   |
+| suffix | -    | 输入框尾部的内容 |

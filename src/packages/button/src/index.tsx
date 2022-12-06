@@ -81,7 +81,7 @@ export default defineComponent({
     return () => (
       <button
         class={[
-          `${prefixCls} ${prefixCls}--${props.type} bg-${props.type} ${prefixCls}--${size} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
+          `${prefixCls}  bg-${props.type} ${prefixCls}--${size} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
           classNames.value,
         ]}
         {...props.native} onClick={handleClick}>

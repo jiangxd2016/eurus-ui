@@ -4,6 +4,7 @@ import { build } from 'vite';
 import viteDev from './vite.dev';
 import configProd from './vite.prod';
 import configAll from './vite.all';
+import { compileToCSS } from './gen-scss';
 const execPromise = promisify(exec);
 
 const args = process.argv.slice(2);
@@ -14,12 +15,16 @@ console.log(`[eurus-ui env] ${nodeEnv}`);
 (async () => {
   if (nodeEnv === 'dev') {
     await build(viteDev);
+    console.log('[eurus-ui build]: start build css');
+    compileToCSS();
     console.log('[eurus-ui build]: start build type');
     await execPromise('npm run build:types-esm');
 
   } else {
     await build(configProd);
     await build(configAll);
+    console.log('[eurus-ui build]: start build css');
+    compileToCSS();
     console.log('[eurus-ui build]: start build type');
     await execPromise('npm run build:types');
 
