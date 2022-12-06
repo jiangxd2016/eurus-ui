@@ -6,7 +6,7 @@ const OUT_PATH = 'dist/css';
 const INPUT_PATH = 'src/scss';
 const SCSS_OUT_PATH = 'dist/scss';
 const DIST_STYLE_PATH = 'dist/style.css';
-export const compileToCSS = async function () {
+export const compileToCSS = function (nodeEnv: string) {
 
   if (!fs.existsSync(SCSS_OUT_PATH)) {
     fs.mkdirSync(SCSS_OUT_PATH, { recursive: true });
@@ -18,12 +18,15 @@ export const compileToCSS = async function () {
   const css = sass.compile(INPUT_PATH + '/index.scss',);
   fs.writeFileSync(OUT_PATH + '/index.css', css.css.toString());
 
-  const styleCss = fs.readFileSync(DIST_STYLE_PATH, 'utf8');
+  if (nodeEnv === 'all') {
+    const styleCss = fs.readFileSync(DIST_STYLE_PATH, 'utf8');
+    // base.css和vite生产的style.css合并
+    fs.writeFileSync('dist/style.css', css.css.toString() + '\n' + styleCss);
+    copyDir(INPUT_PATH, SCSS_OUT_PATH);
 
-  // base.css和vite生产的style.css合并
-  fs.writeFileSync('dist/style.css', css.css.toString() + '\n' + styleCss);
+    fs.writeFileSync('dist/es/index.css', css.css.toString() + '\n' + styleCss);
 
-  copyDir(INPUT_PATH, SCSS_OUT_PATH);
+  }
 };
 
 // 递归复制目录

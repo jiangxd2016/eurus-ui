@@ -68,22 +68,22 @@
   },
   "dependencies": {
     "async-validator": "^4.2.5",
-    "axios": "^1.2.0",
+    "axios": "^1.2.1",
     "dayjs": "^1.11.6"
   },
   "devDependencies": {
     "@estjs/eslint-config": "^0.3.8",
     "@estjs/tools": "^0.0.32",
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.11.11",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vitejs/plugin-vue-jsx": "^2.1.1",
-    "@vitest/coverage-c8": "^0.25.3",
-    "@vue/test-utils": "^2.2.4",
+    "@vitest/coverage-c8": "^0.25.4",
+    "@vue/test-utils": "^2.2.6",
     "bumpp": "^8.2.1",
-    "eslint": "^8.28.0",
+    "eslint": "^8.29.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
-    "happy-dom": "^7.7.0",
-    "lint-staged": "^13.0.4",
+    "happy-dom": "^7.7.2",
+    "lint-staged": "^13.1.0",
     "pnpm": "7.17.1",
     "rimraf": "^3.0.2",
     "sass": "^1.56.1",
@@ -91,10 +91,10 @@
     "standard-changelog": "^2.0.27",
     "tsx": "^3.12.1",
     "typescript": "^4.9.3",
-    "vite": "^3.2.4",
-    "vitest": "^0.25.3",
+    "vite": "^3.2.5",
+    "vitest": "^0.25.4",
     "vue": "^3.2.45",
-    "vue-tsc": "^1.0.9"
+    "vue-tsc": "^1.0.11"
   },
   "pnpm": {
     "peerDependencyRules": {

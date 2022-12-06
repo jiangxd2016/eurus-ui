@@ -13,8 +13,7 @@ import { extractFileNameFromPath } from '../utils';
 import theme from './theme';
 
 import 'dist/css/index.css';
-
-import(import.meta.env.MODE === 'development' ? 'eurus-ui/style.css' : 'dist/style.css');
+import 'eurus-ui/style.css';
 
 export default {
   ...theme,
