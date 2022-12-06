@@ -84,7 +84,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "happy-dom": "^7.7.2",
     "lint-staged": "^13.1.0",
-    "pnpm": "7.17.1",
+    "pnpm": "7.18.0",
     "rimraf": "^3.0.2",
     "sass": "^1.56.1",
     "simple-git-hooks": "^2.8.1",
