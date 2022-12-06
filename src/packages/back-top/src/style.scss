@@ -14,7 +14,7 @@ $back-top-prefix-cls: $prefix + -back-top;
     color: #fff;
     text-align: center;
     border-radius: 4px;
-    background: $primary;
+    background: var(--eu-color-primary);
     cursor: pointer;
   }
 }

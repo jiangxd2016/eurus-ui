@@ -17,6 +17,7 @@ Vue.createApp().use(EAvatar.name, EAvatar)
 :::code avatarDemo0
 <<< ../src/packages/avatar/demo/Demo0.vue
 :::
+::::
 
 ### EAvatar Props
 

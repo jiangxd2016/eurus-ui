@@ -28,7 +28,7 @@ $checkbox-prefix-cls: $prefix + -checkbox;
     width: 16px;
     height: 16px;
     border-radius: 3px;
-    border: 1px solid var(--e-color-primary);
+    border: 1px solid var(--eu-color-primary);
     position: absolute;
     cursor: pointer;
   }
@@ -55,7 +55,7 @@ $checkbox-prefix-cls: $prefix + -checkbox;
   }
 
   input:checked + label {
-    background: var(--e-color-primary);
+    background: var(--eu-color-primary);
   }
 
   input:checked + label.e-checkbox-disable {

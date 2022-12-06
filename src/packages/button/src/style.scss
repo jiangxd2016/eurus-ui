@@ -20,7 +20,7 @@ $button-prefix-cls: $prefix + -button;
   border: 0;
   border-radius: 4px;
 
-  &.loading {
+  & .loading {
     display: flex;
     align-items: center;
     padding-right: 0.2rem;
@@ -55,7 +55,7 @@ $button-prefix-cls: $prefix + -button;
 
   &.plain {
     background: none !important;
-    color:var(--e-color-primary) !important;
+    color:var(--eu-color-primary) !important;
 
     &::before {
       box-shadow: none;

@@ -1,77 +1,77 @@
 :root {
-  --e-color-primary: #{$primary};
-  --e-color-secondary: #{$secondary};
-  --e-color-purple: #{$purple};
-  --e-color-positive: #{$positive};
-  --e-color-error: #{$error};
-  --e-color-info: #{$info};
-  --e-color-warning: #{$warning};
-  --e-color-dark: #{$dark};
-  --e-color-grey:#{$grey};
+  --eu-color-primary: #{$primary};
+  --eu-color-secondary: #{$secondary};
+  --eu-color-purple: #{$purple};
+  --eu-color-positive: #{$positive};
+  --eu-color-error: #{$error};
+  --eu-color-info: #{$info};
+  --eu-color-warning: #{$warning};
+  --eu-color-dark: #{$dark};
+  --eu-color-grey:#{$grey};
 }
 
 .text-dark {
-  color: var(--e-color-dark);
+  color: var(--eu-color-dark);
 }
 
 .bg-dark {
-  background: var(--e-color-dark) !important;
+  background: var(--eu-color-dark) !important;
 }
 
 .text-primary {
-  color: var(--e-color-primary) !important;
+  color: var(--eu-color-primary) !important;
 }
 
 .bg-primary {
-  background: var(--e-color-primary) !important;
+  background: var(--eu-color-primary) !important;
 }
 
 .text-secondary {
-  color: var(--e-color-secondary) !important;
+  color: var(--eu-color-secondary) !important;
 }
 
 .bg-secondary {
-  background: var(--e-color-secondary) !important;
+  background: var(--eu-color-secondary) !important;
 }
 
 .text-purple {
-  color: var(--e-color-purple) !important;
+  color: var(--eu-color-purple) !important;
 }
 
 .bg-purple {
-  background: var(--e-color-purple) !important;
+  background: var(--eu-color-purple) !important;
 }
 
 .text-positive {
-  color: var(--e-color-positive) !important;
+  color: var(--eu-color-positive) !important;
 }
 
 .bg-positive {
-  background: var(--e-color-positive) !important;
+  background: var(--eu-color-positive) !important;
 }
 
 .text-error {
-  color: var(--e-color-error) !important;
+  color: var(--eu-color-error) !important;
 }
 
 .bg-error {
-  background: var(--e-color-error) !important;
+  background: var(--eu-color-error) !important;
 }
 
 .text-info {
-  color: var(--e-color-info);
+  color: var(--eu-color-info);
 }
 
 .bg-info {
-  background: var(--e-color-info);
+  background: var(--eu-color-info);
 }
 
 .text-warning {
-  color: var(--e-color-warning);
+  color: var(--eu-color-warning);
 }
 
 .bg-warning {
-  background: var(--e-color-warning);
+  background: var(--eu-color-warning);
 }
 
 .text-white {

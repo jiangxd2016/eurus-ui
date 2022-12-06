@@ -6,5 +6,11 @@
   </div>
   <!-- vitepress滚动的元素是html -->
   <EBackTop bottom="100" height="60" text="click me" target="html" />
+
+  <EBackTop bottom="140" height="60" text="click me" target="html">
+    <div style="display:flex;justify-content:center;align-items:center;width: 40px;height: 40px;background-color: #F2C037;border-radius: 50%">
+      <EIcon name="arrowUp" color="#fff" size="lg" />
+    </div>
+  </EBackTop>
 </template>
 
