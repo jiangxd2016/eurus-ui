@@ -7,6 +7,10 @@ import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
 
 const EInputProps = {
+  type: {
+    type: String as PropType<'text' | 'password'>,
+    default: 'text'
+  },
   modelValue: {
     type: String,
     default: ''
@@ -39,10 +43,7 @@ const EInputProps = {
     type: Boolean,
     default: false
   },
-  type: {
-    type: String as PropType<'text' | 'password'>,
-    default: 'text'
-  }
+
 };
 export default defineComponent({
   name: 'EInput',
