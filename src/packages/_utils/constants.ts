@@ -9,6 +9,13 @@ export const GLOBAL_CONFIG_NAME = '$eurus';
 export interface ConfigProvider {
   prefixCls?: string;
 }
+export interface CheckboxGroupContext {
+  name: string;
+  value: Array<string | number >;
+  disabled: boolean;
+  handleChange: (value: Array<string | number | boolean>, e: Event) => void;
+}
+export const CheckboxGroupKey: InjectionKey<CheckboxGroupContext> = Symbol('CheckboxGroupKey');
 
 export const configProviderInjectionKey: InjectionKey<ConfigProvider>
   = Symbol('EurusConfigProvider');

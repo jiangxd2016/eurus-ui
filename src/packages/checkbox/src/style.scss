@@ -1,75 +1,63 @@
 @import '../../../scss/variables';
 
 $checkbox-prefix-cls: $prefix + -checkbox;
+$checkbox-group-prefix-cls: $prefix + -checkbox-group;
 
 
 .#{$checkbox-prefix-cls} {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 14px;
   margin: 0;
   padding: 0;
   height: 20px;
   line-height: unset;
-
-  .slot-text {
-    margin: 0 10px 0 25px;
+  &-icon-wrapper{
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid var(--eu-color-primary);
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  &__label {
+    margin: 0 10px 0 10px;
     display: inline-block;
     line-height: unset;
     color: #575757;
   }
 
-  input {
-    width: 0;
-    height: 0;
-  }
-
-  label {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 3px;
-    border: 1px solid var(--eu-color-primary);
-    position: absolute;
-    cursor: pointer;
-  }
-
-  .e-checkbox-disable {
-    cursor: not-allowed;
-    border: 1px solid rgba(118, 118, 118, 0.3);
-  }
-
-  label::before {
-    line-height: 20px;
-    display: inline-block;
-    content: ' ';
-    width: 10px;
-    border: 2px solid #ffffff;
-    height: 4px;
-    border-top: none;
-    border-right: none;
-    transform: rotate(-45deg);
-    top: 3px;
-    left: 2px;
-    position: absolute;
+  &-icon {
     opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transition: fill 0.2s, transform 0.2s, opacity 0.2s, border-color 0.2s;
+    transform: scale(0.5);
+    fill: $white;
+    background-color: var(--eu-color-primary);
   }
-
-  input:checked + label {
-    background: var(--eu-color-primary);
-  }
-
-  input:checked + label.e-checkbox-disable {
-    background: rgb(245, 245, 245);
-  }
-
-  input:checked + label::before {
+  &-checked &-icon {
     opacity: 1;
-    transition: all 0.5s;
+    transform: scale(1);
+  }
+  &-disabled  &-icon-wrapper{
+    cursor: not-allowed;
+    background-color: $disabled-bg-color;
+    border: 1px solid $disabled-border-color;
   }
 
-  input:checked + label.e-checkbox-disable::before {
-    border: 2px solid rgb(185, 185, 185);
-    border-top: none;
-    border-right: none;
+  &-disabled  &-icon {
+    background-color: $disabled-border-color;
+  }
+}
+
+.#{$checkbox-group-prefix-cls} {
+  display: inline-block;
+  .#{$checkbox-prefix-cls} {
+    margin-right: 10px;
   }
 }
