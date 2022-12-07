@@ -27,7 +27,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.ACCESS_TOKEN}}
 
-      - run: pnpm install
+      - run: pnpm install --no-frozen-lockfile
       - run: pnpm run build
       - run: pnpm publish --access public --no-git-checks
         env:
