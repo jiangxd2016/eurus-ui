@@ -29,7 +29,7 @@ Vue.createApp().use(ECheckbox.name, ECheckbox)
 | --- | --- | --- | --- |
 | modelValue | boolean | false | 是否选中 |
 | defaultChecked | boolean | false | 是否默认选中 |
-| value | string｜number | - | 当为多选框组时，选中的值 |
+| value | string｜number | - | 多选框选中的值 |
 | label | string | - | 多选框文本 |
 | disabled | boolean | false | 是否禁用 |
 

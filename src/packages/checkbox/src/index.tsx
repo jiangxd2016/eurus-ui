@@ -1,13 +1,15 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent, inject } from 'vue';
 import './style.scss';
+import { isString } from '@/packages/_utils/is';
 import EIcon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { CheckboxGroupKey } from '@/packages/_utils/constants';
+import { warnOnce } from '@/packages/_utils/warn';
 
 const ECheckboxProps = {
   modelValue: {
-    type: Boolean,
+    type: [Boolean, String] as PropType<string | boolean>,
     default: false
   },
   defaultChecked: {
@@ -39,6 +41,10 @@ export default defineComponent({
       if (checkboxGroupInject) {
         return checkboxGroupInject.value.includes(props.value || '');
       }
+      // 如果传入value
+      if (isString(props.value)) {
+        return props.modelValue === props.value;
+      }
       return props.modelValue || props.defaultChecked;
     });
 
@@ -46,6 +52,7 @@ export default defineComponent({
       if (checkboxGroupInject) {
         return checkboxGroupInject.disabled || props.disabled;
       }
+
       return props.disabled;
     });
 
@@ -61,16 +68,26 @@ export default defineComponent({
       }
       if (isGroup.value && checkboxGroupInject) {
         const value = checkboxGroupInject.value;
+        if (__DEV__ && !props.value) {
+          warnOnce('ECheckbox', 'checkbox-group must set value');
+        }
         const index = value.indexOf(props.value || '');
         if (index === -1) {
           value.push(props.value || '');
         } else {
           value.splice(index, 1);
         }
-        checkboxGroupInject.handleChange(value, e );
+        checkboxGroupInject.handleChange(value, e);
       } else {
-        emit('change', !props.modelValue, e);
-        emit('update:modelValue', !computedChecked.value);
+        let val: string | boolean = '';
+        if (isString(props.value)) {
+          val = props.modelValue === props.value ? '' : props.value;
+        } else {
+          val = !computedChecked.value;
+        }
+        emit('change', val, e);
+        emit('update:modelValue', val);
+
       }
 
     };
