@@ -1,0 +1,21 @@
+// Vitest Snapshot v1
+
+exports[`ERadio > should emit change event 1`] = `
+"<div class=\\"eu-radio eu-radio eu-radio-checked\\" aria-hidden=\\"true\\"><span class=\\"eu-radio-inner\\"></span>
+  <div class=\\"eu-radio__label\\">1</div>
+</div>"
+`;
+
+exports[`ERadio > should work with disabled props 1`] = `
+"<div class=\\"eu-radio eu-radio eu-radio-checked eu-radio-disabled\\" aria-hidden=\\"true\\"><span class=\\"eu-radio-inner\\"></span>
+  <div class=\\"eu-radio__label\\">1</div>
+</div>"
+`;
+
+exports[`ERadio > should work with disabled props 2`] = `
+"<div class=\\"eu-radio-group eu-radio-group-disabled\\">
+  <div class=\\"eu-radio eu-radio eu-radio-checked eu-radio-disabled\\" aria-hidden=\\"true\\"><span class=\\"eu-radio-inner\\"></span>
+    <div class=\\"eu-radio__label\\">1</div>
+  </div>
+</div>"
+`;

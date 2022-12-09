@@ -6,3 +6,4 @@ export * from './back-top';
 
 export * from './input';
 export * from './checkbox';
+export * from './radio';

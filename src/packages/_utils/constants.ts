@@ -17,6 +17,14 @@ export interface CheckboxGroupContext {
 }
 export const CheckboxGroupKey: InjectionKey<CheckboxGroupContext> = Symbol('CheckboxGroupKey');
 
+export interface RadioGroupContext {
+  name: string;
+  value: string | number | boolean ;
+  disabled: boolean;
+  handleChange: (value: string | number | boolean, e: Event) => void;
+}
+export const RadioGroupKey: InjectionKey<RadioGroupContext> = Symbol('RadioGroupKey');
+
 export const configProviderInjectionKey: InjectionKey<ConfigProvider>
   = Symbol('EurusConfigProvider');
 

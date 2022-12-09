@@ -1,0 +1,72 @@
+@import '../../../scss/variables';
+
+$radio-prefix-cls: $prefix + -radio;
+$radio-group-prefix-cls: $prefix + -radio-group;
+.#{$radio-prefix-cls} {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  line-height: unset;
+
+  &-inner {
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid var(--eu-color-primary);
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--eu-color-primary);
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.2s;
+    }
+  }
+
+  &__label {
+    margin: 0 10px 0 10px;
+    display: inline-block;
+    line-height: unset;
+    color: $black
+  }
+
+  &-checked &-inner {
+    &:before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &-disabled &-inner {
+    cursor: not-allowed;
+    background-color: $disabled-bg-color;
+    border: 1px solid $disabled-border-color;
+
+    &:before {
+      background-color: $disabled-border-color;
+    }
+  }
+
+  &-disabled &__label {
+    color: $disabled-text-color;
+  }
+
+}
+.#{$radio-group-prefix-cls} {
+  display: inline-block;
+  line-height: 1;
+  .#{$radio-prefix-cls} {
+    margin-right: 10px;
+  }
+}

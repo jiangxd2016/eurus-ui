@@ -55,7 +55,10 @@ export const sidebarCN = [
         text: '多选框 checkbox',
         link: '/zh-CN/components/checkbox',
       },
-
+      {
+        text: '单选框 radio',
+        link: '/zh-CN/components/radio',
+      },
       // {
       //   text: '加载中 loading',
       //   link: '/zh-CN/components/loading',
