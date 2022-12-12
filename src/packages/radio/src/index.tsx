@@ -49,9 +49,8 @@ export default defineComponent({
 
       return props.disabled;
     });
-    const computedClassNames = computed(() => {
+    const computedCls = computed(() => {
       return {
-        [prefixCls]: true,
         [`${prefixCls}-checked`]: computedChecked.value,
         [`${prefixCls}-disabled`]: computedDisabled.value
       };
@@ -74,7 +73,7 @@ export default defineComponent({
       }
     };
     return () => (
-						<label class={[prefixCls, computedClassNames.value]} aria-hidden="true">
+						<label class={[prefixCls, computedCls.value]} aria-hidden="true">
 								<input
                     type="radio"
                     checked={computedChecked.value}
@@ -85,7 +84,7 @@ export default defineComponent({
                     class={[`${prefixCls}__input`]}
 								/>
 								<span class={`${prefixCls}-inner`}/>
-								<div class={`${prefixCls}__label`}>
+								<div class={[`${prefixCls}__label`, props.disabled && 'disabled']}>
 										{props.label || slots.default && slots.default()}
 								</div>
 						</label>

@@ -44,12 +44,12 @@ $radio-group-prefix-cls: $prefix + -radio-group;
       border-radius: 50%;
       background-color: var(--eu-color-primary);
       transform: translate(-50%, -50%) scale(0);
-      transition: transform 0.2s;
+      transition: transform $transition-duration;
     }
   }
 
   &__label {
-    margin: 0 10px 0 10px;
+    margin: 0 8px 0 0px;
     display: inline-block;
     line-height: unset;
     color: $black

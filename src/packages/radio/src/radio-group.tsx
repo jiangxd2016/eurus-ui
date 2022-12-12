@@ -23,7 +23,7 @@ export default defineComponent({
     const _value = ref(props.defaultValue);
     const computedValue = computed(() => props.modelValue ?? _value.value);
 
-    const computedClassNames = computed(() => {
+    const computedCls = computed(() => {
       return {
         [`${prefixCls}-disabled`]: props.disabled
       };
@@ -44,7 +44,7 @@ export default defineComponent({
     } ));
 
     return () => (
-			<div class={[prefixCls, computedClassNames.value]}>
+			<div class={[prefixCls, computedCls.value]}>
 				{slots.default && slots.default()}
 			</div>
     );
