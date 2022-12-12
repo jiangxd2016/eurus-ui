@@ -1,0 +1,124 @@
+@import '../../../scss/variables';
+
+$switch-prefix-cls: $prefix + -switch;
+.#{$switch-prefix-cls} {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  line-height: 20px;
+  height: 32px;
+  vertical-align: middle;
+
+  &__input {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    opacity: 0;
+    outline: none;
+  }
+
+  &__inner {
+    display: inline-flex;
+    width: 40px;
+    height: 20px;
+    align-items: center;
+    background-color: #d9d9d9;
+    border-radius: 18px;
+    position: relative;
+    cursor: pointer;
+    transition: $transition-duration all ease-in-out;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-color: #ffffff;
+      border-radius: 9px;
+      position: absolute;
+      left: 2px;
+      transition: $transition-duration all ease-in-out;
+    }
+
+    &:hover {
+      background-color: #c5c6c7;
+    }
+
+  }
+
+  &__label-right {
+    color: var(--eu-color-black);
+  }
+
+  &__label-left {
+    color: var(--eu-color-primary);
+  }
+
+
+  &-checked &__label-right {
+    color: var(--eu-color-primary);
+  }
+
+  &-checked &__label-left {
+    color: var(--eu-color-black);
+  }
+
+  &-checked &__inner {
+    background-color: var(--eu-color-primary);
+
+    &::after {
+      transform: translateX(20px);
+    }
+
+    &:hover {
+      background-color: #3498ff;
+    }
+
+    &.disabled {
+      background-color: #cce9ff;
+    }
+
+
+  }
+
+  &-disabled:not(&-checked) &__inner {
+    cursor: not-allowed;
+    background-color: $switch-disabled-bg-color;
+
+    &:hover {
+      background-color: $switch-disabled-bg-color;
+    }
+
+    .#{$switch-prefix-cls}__label-left {
+      color: $disabled-text-color;
+    }
+  }
+
+  &-disabled:is(&-checked) &__inner {
+    cursor: not-allowed;
+    background-color: $switch-checked-disabled-bg-color;
+
+    &:hover {
+      background-color: $switch-checked-disabled-bg-color;
+    }
+
+
+  }
+
+  &__label-left {
+    font-size: 14px;
+    margin-right: 8px;
+  }
+
+  &__label-right {
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+}
+
