@@ -5,7 +5,7 @@ import ERadio, { ERadioGroup } from '..';
 
 describe('ERadio', () => {
 
-  it('should emit change event', () => {
+  it('should emit change event', async () => {
     const fn = vi.fn();
     const wrapper = mount(ERadio, {
       props: {
@@ -16,7 +16,7 @@ describe('ERadio', () => {
       }
     });
 
-    wrapper.trigger('click');
+    await wrapper.find('input').trigger('change');
     expect(wrapper.html()).toMatchSnapshot();
     expect(fn).toHaveBeenCalled();
   });

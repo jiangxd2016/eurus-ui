@@ -12,7 +12,7 @@ describe('ECheckbox', () => {
     wrapper.unmount();
   });
 
-  it('should emit change event', () => {
+  it('should emit change event', async () => {
     const fn = vi.fn();
     const wrapper = mount(ECheckbox, {
       props: {
@@ -22,11 +22,11 @@ describe('ECheckbox', () => {
       }
     }
     );
-    wrapper.trigger('click');
+    await wrapper.find('input').trigger('change');
     expect(fn).toHaveBeenCalled();
   });
 
-  it('shod not emit change event when disabled', () => {
+  it('shod not emit change event when disabled', async () => {
     const fn = vi.fn();
     const wrapper = mount(ECheckbox, {
       props: {
@@ -35,7 +35,7 @@ describe('ECheckbox', () => {
         disabled: true
       }
     });
-    wrapper.trigger('click');
+    await wrapper.find('input').trigger('change');
     expect(fn).not.toHaveBeenCalled();
   });
 
@@ -52,7 +52,7 @@ describe('ECheckbox', () => {
       }
     });
     expect(wrapper.html()).toMatchSnapshot();
-    await wrapper.findComponent(ECheckbox).trigger('click');
+    await wrapper.findComponent(ECheckbox).find('input').trigger('change');
     expect(fn).toHaveBeenCalled();
   });
 

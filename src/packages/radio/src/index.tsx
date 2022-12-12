@@ -56,12 +56,16 @@ export default defineComponent({
         [`${prefixCls}-disabled`]: computedDisabled.value
       };
     });
+    const handleClick = (ev: Event) => {
+      ev.stopPropagation();
+    };
+
     const updateValue = (e: Event) => {
       if (computedDisabled.value) {
         return;
       }
       if (isGroup.value && radioGroupInject) {
-        const value = radioGroupInject.value === props.value ? '' : props.value ;
+        const value = radioGroupInject.value === props.value ? '' : props.value;
         radioGroupInject.handleChange(value, e);
       } else {
         const val = props.modelValue === props.value ? '' : props.value;
@@ -70,12 +74,21 @@ export default defineComponent({
       }
     };
     return () => (
-						<div class={[prefixCls, computedClassNames.value]} onClick={updateValue} aria-hidden="true">
+						<label class={[prefixCls, computedClassNames.value]} aria-hidden="true">
+								<input
+                    type="radio"
+                    checked={computedChecked.value}
+                    value={props.value}
+                    onClick={handleClick}
+                    onChange={updateValue}
+                    disabled={computedDisabled.value}
+                    class={[`${prefixCls}__input`]}
+								/>
 								<span class={`${prefixCls}-inner`}/>
 								<div class={`${prefixCls}__label`}>
 										{props.label || slots.default && slots.default()}
 								</div>
-						</div>
+						</label>
 
     );
   },

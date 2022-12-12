@@ -1,7 +1,7 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent, inject } from 'vue';
 import './style.scss';
-import { isString } from '@/packages/_utils/is';
+import { isBoolean, isString } from '@/packages/_utils/is';
 import EIcon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { CheckboxGroupKey } from '@/packages/_utils/constants';
@@ -45,7 +45,10 @@ export default defineComponent({
       if (isString(props.value)) {
         return props.modelValue === props.value;
       }
-      return props.modelValue || props.defaultChecked;
+      if (isBoolean(props.modelValue)) {
+        return props.modelValue;
+      }
+      return props.defaultChecked;
     });
 
     const computedDisabled = computed(() => {
@@ -91,15 +94,28 @@ export default defineComponent({
       }
 
     };
+    const handleClick = (ev: Event) => {
+      ev.stopPropagation();
+    };
+
     return () => (
-						<div class={[prefixCls, classNames.value]} aria-hidden="true" onClick={updateValue}>
+						<label class={[prefixCls, classNames.value]} aria-hidden="true">
+              <input
+                  type="checkbox"
+                  checked={computedChecked.value}
+                  value={props.value}
+                  onClick={handleClick}
+                  onChange={updateValue}
+                  disabled={computedDisabled.value}
+                  class={[`${prefixCls}__input`]}
+              />
                 <span class={[prefixCls + '-icon-wrapper']}>
 								<EIcon name="checkedFill" class={`${prefixCls}-icon`} size={14}></EIcon>
                 </span>
 								<div class={`${prefixCls}__label`}>
 										{props.label || slots.default && slots.default()}
 								</div>
-						</div>
+						</label>
     );
   },
 });

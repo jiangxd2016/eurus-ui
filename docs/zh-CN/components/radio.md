@@ -31,8 +31,8 @@ Vue.createApp().use(ERadio.name, ERadio)
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| modelValue | boolean | false | 是否选中 |
-| defaultChecked | boolean | false | 是否默认选中 |
+| modelValue | string\|number\|boolean | false | 是否选中 |
+| defaultChecked | string\|number\|boolean | false | 是否默认选中 |
 | value | string｜number | - | 单选框选中的值 |
 | label | string | - | 单选框文本 |
 | disabled | boolean | false | 是否禁用 |
@@ -51,8 +51,8 @@ Vue.createApp().use(ERadio.name, ERadio)
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| modelValue | array | undefined |绑定值|
-| defaultChecked | array | [] |默认选中的值|
+| modelValue | string\|number\|boolean | undefined |绑定值|
+| defaultChecked | string\|number\|boolean | false |默认选中的值|
 | disabled | boolean | false |单选框组是否禁用|
 
 

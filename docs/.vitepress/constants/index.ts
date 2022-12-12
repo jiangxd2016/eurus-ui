@@ -59,6 +59,10 @@ export const sidebarCN = [
         text: '单选框 radio',
         link: '/zh-CN/components/radio',
       },
+      {
+        text: '开关 switch',
+        link: '/zh-CN/components/switch',
+      },
       // {
       //   text: '加载中 loading',
       //   link: '/zh-CN/components/loading',

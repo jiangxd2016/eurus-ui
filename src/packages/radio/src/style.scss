@@ -11,6 +11,19 @@ $radio-group-prefix-cls: $prefix + -radio-group;
   height: 20px;
   line-height: unset;
 
+
+  &__input {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    opacity: 0;
+    outline: none;
+  }
+
   &-inner {
     display: inline-block;
     position: relative;
