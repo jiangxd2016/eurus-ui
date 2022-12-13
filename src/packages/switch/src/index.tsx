@@ -95,16 +95,17 @@ export default defineComponent({
 										onClick={handleClick}
 										disabled={props.disabled}
 										onChange={handleChange}
-								/>{props.checkedLabel && <span class={`${prefixCls}__label-left`}>
-										{props.checkedLabel}
+								/>
+								{props.uncheckedLabel && <span class={`${prefixCls}__label-left`}>
+										{props.uncheckedLabel}
 								</span>}
 
 								<span
 										class={`${prefixCls}__inner`}
 										style={computedStyles.value}
 								/>
-								{props.uncheckedLabel && <span class={`${prefixCls}__label-right`}>
-										{props.uncheckedLabel}
+								{props.checkedLabel && <span class={`${prefixCls}__label-right`}>
+										{props.checkedLabel}
 								</span>}
 						</label>
     );
