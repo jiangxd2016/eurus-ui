@@ -1,0 +1,4 @@
+<template>
+  <EInputNumber />
+</template>
+

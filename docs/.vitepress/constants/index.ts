@@ -52,6 +52,10 @@ export const sidebarCN = [
         link: '/zh-CN/components/input',
       },
       {
+        text: '数字输入框 input-number',
+        link: '/zh-CN/components/input-number',
+      },
+      {
         text: '多选框 checkbox',
         link: '/zh-CN/components/checkbox',
       },
