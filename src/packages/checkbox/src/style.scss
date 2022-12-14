@@ -24,16 +24,21 @@ $checkbox-group-prefix-cls: $prefix + -checkbox-group;
     opacity: 0;
     outline: none;
   }
-  &-icon-wrapper{
+  &-inner{
     display: inline-block;
     position: relative;
     width: 16px;
     height: 16px;
     border-radius: 2px;
-    border: 1px solid var(--eu-color-primary);
+    border: 1px solid var(--eu-color-grey);
     box-sizing: border-box;
     cursor: pointer;
   }
+
+  &:hover &-inner {
+    border: 1px solid var(--eu-color-primary);
+  }
+
   &__label {
     margin: 0 8px 0 8px;
     display: inline-block;
@@ -52,11 +57,14 @@ $checkbox-group-prefix-cls: $prefix + -checkbox-group;
     fill: $white;
     background-color: var(--eu-color-primary);
   }
+  &-checked &-inner{
+    border: 1px solid var(--eu-color-primary);
+  }
   &-checked &-icon {
     opacity: 1;
     transform: scale(1);
   }
-  &-disabled  &-icon-wrapper{
+  &-disabled  &-inner{
     cursor: not-allowed;
     background-color: $disabled-bg-color;
     border: 1px solid $disabled-border-color;

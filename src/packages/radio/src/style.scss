@@ -12,6 +12,10 @@ $radio-group-prefix-cls: $prefix + -radio-group;
   line-height: unset;
 
 
+  &:hover &-inner {
+    border: 1px solid var(--eu-color-primary);
+  }
+
   &__input {
     position: absolute;
     z-index: -1;
@@ -30,9 +34,10 @@ $radio-group-prefix-cls: $prefix + -radio-group;
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 1px solid var(--eu-color-primary);
+    border: 1px solid var(--eu-color-grey);
     box-sizing: border-box;
     cursor: pointer;
+
 
     &:before {
       content: '';
@@ -56,6 +61,7 @@ $radio-group-prefix-cls: $prefix + -radio-group;
   }
 
   &-checked &-inner {
+    border: 1px solid var(--eu-color-primary);
     &:before {
       transform: translate(-50%, -50%) scale(1);
     }

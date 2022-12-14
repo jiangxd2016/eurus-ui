@@ -26,8 +26,7 @@ Vue.createApp().use(ESwitch.name, ESwitch)
 ::::
 
 ::::card switch 自定义颜色
-设置checkValue和uncheckValue来设置选中的值和未选中的值
-设置checkLabel和uncheckLabel来设置选中的文字
+设置activeColor和inactiveColor来设置选中和未选中的颜色
 :::code switchColor
 <<< ../src/packages/switch/demo/Color.vue
 :::

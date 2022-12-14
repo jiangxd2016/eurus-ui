@@ -9,12 +9,12 @@ exports[`EButtonGroup > EButtonGroup snapshot 1`] = `
 exports[`EButtonGroup > should work with button group 1`] = `
 "<div class=\\"eu-button-group\\"><button class=\\"eu-button  bg-primary eu-button--md text-white\\">
     <!---->
-    <!----><span>button1</span>
+    <!----><span class=\\"inner\\">button1</span>
   </button><button class=\\"eu-button  bg-primary eu-button--md text-white\\">
     <!---->
-    <!----><span>button2</span>
+    <!----><span class=\\"inner\\">button2</span>
   </button><button class=\\"eu-button  bg-primary eu-button--md text-white\\">
     <!---->
-    <!----><span>button3</span>
+    <!----><span class=\\"inner\\">button3</span>
   </button></div>"
 `;

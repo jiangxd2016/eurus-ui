@@ -5,6 +5,7 @@ export * from './avatar';
 export * from './back-top';
 
 export * from './input';
+export * from './input-number';
 export * from './checkbox';
 export * from './radio';
 export * from './switch';

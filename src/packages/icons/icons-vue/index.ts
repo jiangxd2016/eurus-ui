@@ -31,3 +31,5 @@ export { default as triangleRightFill } from './triangle-right-fill.vue';
 export { default as upload } from './upload.vue';
 export { default as warning } from './warning.vue';
 export { default as checkedFill } from './checked-fill.vue';
+export { default as plus } from './plus.vue';
+export { default as minus } from './minus.vue';

@@ -8,11 +8,11 @@ import type { Size } from '@/packages/_utils/size';
 
 const EInputProps = {
   type: {
-    type: String as PropType<'text' | 'password'>,
+    type: String as PropType<'text' | 'password' | 'number'>,
     default: 'text'
   },
   modelValue: {
-    type: String,
+    type: [String, Number] as PropType<string | number>,
     default: ''
   },
   defaultValue: {
@@ -66,7 +66,7 @@ export default defineComponent({
       return props.maxLength > 0 ? props.maxLength : undefined;
     });
     const computedValue = computed(() => {
-      return props.modelValue ?? _value.value;
+      return (props.modelValue ?? _value.value) + '';
     });
     const showClearBtn = computed(() => props.clearable && Boolean(computedValue.value));
 
@@ -85,9 +85,9 @@ export default defineComponent({
       _value.value = value;
       emit('update:modelValue', value);
     };
-    const emitChange = (value: string, ev: Event) => {
+    const emitChange = (value: string | number, ev: Event) => {
       if (value !== preValue) {
-        preValue = value;
+        preValue = value + '';
         emit('change', value, ev);
       }
     };

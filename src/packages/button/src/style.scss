@@ -25,6 +25,12 @@ $button-prefix-cls: $prefix + -button;
     align-items: center;
     padding-right: 0.2rem;
   }
+  & .inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 10000 1 0%;
+  }
   &:hover {
     opacity:$button-opacity;
   }
@@ -63,7 +69,10 @@ $button-prefix-cls: $prefix + -button;
   }
 
   &.round {
-    border-radius: 10px;
+    border-radius: 50%;
+    padding: 0;
+    min-width: 3em;
+    min-height: 3em;
   }
 
   &.circle {

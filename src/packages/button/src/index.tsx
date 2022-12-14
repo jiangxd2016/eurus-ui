@@ -88,8 +88,8 @@ export default defineComponent({
         {props.loading && (
           <span class="loading"><EIcon name='loading' size={props.size}></EIcon></span>
         )}
-        {slots?.icon && slots.icon()}
-        {slots?.default && <span>{slots?.default?.()}</span>}
+        {slots?.icon && <span class="inner">{slots.icon?.()}</span>}
+        {slots?.default && <span class="inner">{slots.default?.()}</span>}
       </button>
     );
   },
