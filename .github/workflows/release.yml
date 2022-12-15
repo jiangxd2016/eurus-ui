@@ -22,7 +22,7 @@ jobs:
       - name: Setup
         run: npm i -g pnpm
 
-      - run: npx changelogithub
+      - run: npx standard-changelog
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{secrets.ACCESS_TOKEN}}
