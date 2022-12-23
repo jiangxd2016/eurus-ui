@@ -27,5 +27,5 @@ npm install eurus-ui # or pnpm install eurus-ui
 ## 兼容
 - Chrome >=87
 - Firefox >=78
-- Safari >=13
+- Safari >=14
 - Edge >=88
