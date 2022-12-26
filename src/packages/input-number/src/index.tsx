@@ -1,9 +1,9 @@
+import type { PropType } from 'vue';
 import { defineComponent, ref } from 'vue';
 import './style.scss';
 import EIcon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { isNumber } from '@/packages/_utils/is';
-import EButton from '@/packages/button';
 import EInput from '@/packages/input';
 
 const EInputNumberProps = {
@@ -27,8 +27,8 @@ const EInputNumberProps = {
     default: Number.NEGATIVE_INFINITY,
   },
   modelValue: {
-    type: Number,
-    default: 0,
+    type: Number as PropType<number | undefined>,
+    default: undefined,
   },
   precision: {
     type: Number,
@@ -50,7 +50,7 @@ export default defineComponent({
       const value = (event.target as HTMLInputElement).value;
       _value.value = +value;
     };
-    const emitComm = (val: number) => {
+    const emitComm = (val: number | undefined) => {
       emit('change', val);
       emit('update:modelValue', val);
     };
@@ -79,30 +79,39 @@ export default defineComponent({
           const num = stepString.slice(Math.max(0, stepString.indexOf('.') + 1)).length; // 取几位小数
           val = Number(val.toFixed(num));
         }
+        _value.value = val;
         emitComm(val);
       }
     };
 
     const onChange = (event: Event) => {
       const value = (event.target as HTMLInputElement).value;
-      const newVal = value !== '' ? Number(value) : '';
-      if ((isNumber(newVal) && !Number.isNaN(newVal)) || value === '') {
-        return newVal;
+      const newVal = value !== '' ? Number(value) : undefined;
+      if ((isNumber(newVal) && !Number.isNaN(newVal)) || value === undefined) {
+        emitComm(newVal);
       }
       return undefined;
     };
+
+    const slot = {
+      prefix: () => (
+        props.controls
+        && <span class={`${prefixCls}-minus`} v-slot="suffix" aria-hidden="true" onClick={() => numberControl(-1)}>
+          {
+            slots['minus-icon'] ? slots['minus-icon']() : <EIcon name="minus" />
+          }
+        </span>
+      ),
+      suffix: () => (
+        props.controls
+        && <span class={`${prefixCls}-plus`} aria-hidden="true" onClick={() => numberControl(1)}>
+          {slots['plus-icon'] ? slots['plus-icon']() : <EIcon name="plus" />
+          }
+        </span>
+      )
+    };
     return () => (
       <div class={prefixCls}>
-        {
-          props.controls
-          && <span class={`${prefixCls}-minus`} aria-hidden="true" onClick={() => numberControl(-1)}>
-            {
-              slots['minus-icon']
-                ? slots['minus-icon']()
-                : <EButton><EIcon name="plus" color="#888888" /></EButton>
-            }
-          </span>
-        }
         <EInput
           ref="inputNumberRef"
           type="number"
@@ -111,15 +120,9 @@ export default defineComponent({
           disabled={props.disabled}
           onInput={onInput}
           onChange={onChange}
-        />
-        {
-          props.controls
-          && <span class={`${prefixCls}-plus`} aria-hidden="true" onClick={() => numberControl(1)}>
-            {slots['plus-icon'] ? slots['plus-icon']() : <EButton>
-              <EIcon name="minus" color="#888888" />
-            </EButton>}
-          </span>
-        }
+          v-slots={slot}
+        >
+        </EInput>
       </div>
 
     );
