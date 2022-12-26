@@ -12,5 +12,5 @@ coverage
 .gitlogmap
 .vite-inspect
 
-
+*/.vitepress/cache
 src/version.ts
