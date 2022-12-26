@@ -1,6 +1,6 @@
 
 # Eurus UI
-![ci](https://img.shields.io/github/workflow/status/jiangxd2016/eurus-ui/CI)
+![ci](https://img.shields.io/github/actions/workflow/status/jiangxd2016/eurus-ui/ci.yml?label=CI&logo=GitHub)
 [![codecov](https://codecov.io/gh/jiangxd2016/eurus-ui/branch/main/graph/badge.svg?token=H8NB5UXXVA)](https://codecov.io/gh/jiangxd2016/eurus-ui)
 ![license](https://img.shields.io/github/license/jiangxd2016/eurus-ui)
 ![version](https://img.shields.io/npm/v/eurus-ui)

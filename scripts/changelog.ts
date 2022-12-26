@@ -15,7 +15,7 @@ function getLastChangeLogCommit() {
   return changeLogCommits.find(cmt => VERSION_REG.test(cmt))?.slice(0, 8) ?? '';
 }
 
-function getGitCommitMap(lastCommit) {
+function getGitCommitMap(lastCommit: string) {
   const gitCommand = `git log --pretty=format:"%H:%cn" ${lastCommit}..HEAD`;
   const gitLogMap = execSync(gitCommand, { cwd: process.cwd(), encoding: 'utf-8' }).toString();
   writeFileSync('.gitlogmap', gitLogMap, 'utf8');
