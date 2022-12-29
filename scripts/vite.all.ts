@@ -24,7 +24,7 @@ const config: InlineConfig = {
       output: {
         exports: 'named',
       },
-      external: ['vue', 'dayjs', 'async-validator'],
+      external: ['vue', 'dayjs', 'async-validator', 'number-precision'],
     },
 
     lib: {

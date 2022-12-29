@@ -29,7 +29,7 @@ const config: InlineConfig = {
           preserveModules: true,
         },
       ],
-      external: ['vue', 'dayjs', 'async-validator'],
+      external: ['vue', 'dayjs', 'async-validator', 'number-precision'],
     },
     lib: {
       entry: 'src/index.ts',

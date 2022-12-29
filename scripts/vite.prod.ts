@@ -41,7 +41,7 @@ const config: InlineConfig = {
         },
       ],
 
-      external: ['vue', 'dayjs', 'async-validator'],
+      external: ['vue', 'dayjs', 'async-validator', 'number-precision'],
     },
     lib: {
       entry: 'src/index.ts',

@@ -31,4 +31,18 @@ $number-prefix-cls: $prefix + -input-number;
       border-color:  var(--eu-color-primary);
     }
   }
+
+  &--disabled{
+    color: var(--eu-color-grey);
+    border-color: var(--eu-color-grey);
+    cursor: not-allowed;
+    &:hover{
+      color: var(--eu-color-grey);
+      border-color: var(--eu-color-grey);
+    }
+    &:active{
+      color: var(--eu-color-grey);
+      border-color: var(--eu-color-grey);
+    }
+  }
 }

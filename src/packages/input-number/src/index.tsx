@@ -1,10 +1,13 @@
 import type { PropType } from 'vue';
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref, watch } from 'vue';
 import './style.scss';
+import NP from 'number-precision';
 import EIcon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { isNumber } from '@/packages/_utils/is';
 import EInput from '@/packages/input';
+import { isNumber } from '@/packages/_utils/is';
+
+type NPMethod = 'plus' | 'minus' | 'times' | 'divide' | 'round';
 
 const EInputNumberProps = {
   placeholder: {
@@ -20,21 +23,25 @@ const EInputNumberProps = {
   },
   max: {
     type: Number,
-    default: Number.POSITIVE_INFINITY,
+    default: Number.MAX_SAFE_INTEGER,
   },
   min: {
     type: Number,
-    default: Number.NEGATIVE_INFINITY,
+    default: Number.MIN_SAFE_INTEGER,
   },
   modelValue: {
     type: Number as PropType<number | undefined>,
     default: undefined,
   },
-
+  defaultValue: {
+    type: Number as PropType<number | undefined>,
+    default: undefined,
+  },
   controls: {
     type: Boolean,
     default: true,
-  }
+  },
+  precision: Number,
 };
 
 export default defineComponent({
@@ -43,73 +50,90 @@ export default defineComponent({
   emits: ['update:modelValue', 'change'],
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('input-number');
-    const _value = ref(props.modelValue);
-    const onInput = (event: Event) => {
-      const value = (event.target as HTMLInputElement).value;
-      _value.value = +value;
-    };
-    const emitComm = (val: number | undefined) => {
-      emit('change', val);
-      emit('update:modelValue', val);
-    };
-    const numberControl = (type: number) => {
-      const inputValue = props.modelValue || 0;
-      if (!Number.isNaN(inputValue) && !props.disabled) {
-        let val = 0;
-        if (type > 0) {
-          // add
-          if (props.max && !Number.isNaN(props.max) && inputValue + props.step > props.max) {
-            // 设有最大值时，且没超出设置时
-            val = props.max;
-          } else {
-            // 没有设置最大值，直接相加
-            val = inputValue + props.step;
-          }
-        } else if (props.min && !Number.isNaN(props.min) && inputValue - props.step < props.min) {
-          // 设有最小值时
-          val = props.min;
-        } else {
-          val = inputValue - props.step;
-        }
-        const stepString = props.step + '';
-        if (stepString.includes('.')) {
-          // 表示有小数字点，小数点相加有时精度会丢失 0.2+0.1=0.300000000  或0.29999999999之类的
-          const num = stepString.slice(Math.max(0, stepString.indexOf('.') + 1)).length; // 取几位小数
-          val = Number(val.toFixed(num));
-        }
-        _value.value = val;
-        emitComm(val);
+
+    const computedDisabled = computed(() => {
+      return props.disabled;
+    });
+
+    const computedCls = computed(() => {
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}--disabled`]: computedDisabled.value,
+      };
+    });
+
+    const getStringValue = (number: number | undefined) => {
+      if (!isNumber(number)) {
+        return '';
       }
+
+      return props.precision
+        ? number.toFixed(props.precision)
+        : String(number);
     };
 
-    const onChange = (event: Event) => {
-      const value = (event.target as HTMLInputElement).value;
-      const newVal = value !== '' ? Number(value) : undefined;
-      if ((isNumber(newVal) && !Number.isNaN(newVal)) || value === undefined) {
-        emitComm(newVal);
-      }
-      return undefined;
+    const _value = ref(getStringValue(props.modelValue ?? props.defaultValue));
+
+    const emitEvent = (value: number) => {
+      emit('update:modelValue', value);
+      emit('change', value);
     };
 
-    const slot = {
+    const updateInputValue = (methods: NPMethod = 'round', value?: number) => {
+      if (computedDisabled.value) {
+        return;
+      }
+      const { step, precision, max, min } = props;
+      const _step = step || 1;
+      const _precision = precision || 0;
+      let val = 0;
+
+      if (value) {
+        val = value;
+      } else {
+        val = NP[methods](_value.value, _step);
+      }
+
+      if (val > max) {
+        val = max;
+      }
+      if (val < min) {
+        val = min;
+      }
+
+      _value.value = NP.round(val, _precision).toFixed(_precision);
+      emitEvent(+_value.value);
+
+    };
+
+    const onInput = (value: number) => {
+
+      updateInputValue('round', value);
+    };
+    const onChange = (value: number) => {
+
+      updateInputValue('round', value);
+    };
+
+    watch(() => props.modelValue, (n, o) => {
+      if (n && n !== o && n !== +_value.value) {
+        updateInputValue('round', n);
+      }
+    });
+    const slot = props.controls ? {
       prefix: () => (
-        props.controls
-        && <span class={`${prefixCls}-minus`} v-slot="suffix" aria-hidden="true" onClick={() => numberControl(-1)}>
-          {
-            slots['minus-icon'] ? slots['minus-icon']() : <EIcon name="minus" />
-          }
+        <span class={`${prefixCls}-minus`} aria-hidden="true" onClick={() => updateInputValue('minus')}>
+          {slots['minus-icon'] ? slots['minus-icon']() : <EIcon name="minus" />}
         </span>
       ),
       suffix: () => (
-        props.controls
-        && <span class={`${prefixCls}-plus`} aria-hidden="true" onClick={() => numberControl(1)}>
-          {slots['plus-icon'] ? slots['plus-icon']() : <EIcon name="plus" />
-          }
+        <span class={`${prefixCls}-plus`} aria-hidden="true" onClick={() => updateInputValue('plus')}>
+          {slots['plus-icon'] ? slots['plus-icon']() : <EIcon name="plus" />}
         </span>
       )
-    };
+    } : {};
     return () => (
-      <div class={prefixCls}>
+      <div class={computedCls.value}>
         <EInput
           ref="inputNumberRef"
           type="number"
@@ -118,6 +142,9 @@ export default defineComponent({
           disabled={props.disabled}
           onInput={onInput}
           onChange={onChange}
+          aria-valuemax={props.max}
+          aria-valuemin={props.min}
+          aria-valuenow={_value.value}
           v-slots={slot}
         >
         </EInput>

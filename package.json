@@ -68,8 +68,8 @@
   },
   "dependencies": {
     "async-validator": "^4.2.5",
-    "axios": "^1.2.1",
-    "dayjs": "^1.11.7"
+    "dayjs": "^1.11.7",
+    "number-precision": "^1.6.0"
   },
   "devDependencies": {
     "@estjs/eslint-config": "^0.3.11",
