@@ -69,7 +69,9 @@ $checkbox-group-prefix-cls: $prefix + -checkbox-group;
     background-color: $disabled-bg-color;
     border: 1px solid $disabled-border-color;
   }
-
+  &-disabled:hover &-inner{
+    border: 1px solid $disabled-border-color;
+  }
   &-disabled  &-icon {
     background-color: $disabled-border-color;
   }

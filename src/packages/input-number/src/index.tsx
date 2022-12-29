@@ -30,9 +30,7 @@ const EInputNumberProps = {
     type: Number as PropType<number | undefined>,
     default: undefined,
   },
-  precision: {
-    type: Number,
-  },
+
   controls: {
     type: Boolean,
     default: true,

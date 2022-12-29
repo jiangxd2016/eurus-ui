@@ -76,7 +76,9 @@ $radio-group-prefix-cls: $prefix + -radio-group;
       background-color: $disabled-border-color;
     }
   }
-
+  &-disabled:hover &-inner{
+    border: 1px solid $disabled-border-color;
+  }
   &-disabled &__label {
     color: $disabled-text-color;
   }
