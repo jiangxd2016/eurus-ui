@@ -1,6 +1,5 @@
 import '../style/main.css';
 import '../style/vars.css';
-import '../style/vp-doc.css';
 
 import 'uno.css';
 import '@unocss/reset/tailwind.css';
@@ -10,13 +9,11 @@ import type { EnhanceAppContext } from 'vitepress/dist/client';
 import Demo from '../components/Demo.vue';
 import { extractFileNameFromPath } from '../utils';
 
-import theme from './theme';
-
 import 'dist/css/index.css';
 import 'eurus-ui/style.css';
 
 export default {
-  ...theme,
+  ...DefaultTheme,
   async enhanceApp(ctx: EnhanceAppContext) {
     DefaultTheme.enhanceApp(ctx);
     const { app } = ctx;
