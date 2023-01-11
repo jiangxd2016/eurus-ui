@@ -6,3 +6,4 @@ export const scrollTop = (element: HTMLElement | Document = document.body) => {
 export function isDocument (node: Node): node is Document {
   return node.nodeName === '#document';
 }
+

@@ -1,3 +1,5 @@
+import type { StringNumber } from '@/packages/_utils/type';
+
 export const _toString = Object.prototype.toString;
 export const _hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -46,6 +48,6 @@ export function isObject(value: unknown): value is Record<string, any> {
   return _toString.call(value) === '[object Object]';
 }
 
-export function isStringNumber(value: unknown): value is number {
+export function isStringNumber(value: string): value is StringNumber {
   return !Number.isNaN(Number(value));
 }
