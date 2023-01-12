@@ -49,8 +49,6 @@ describe('eventListener', () => {
     const listener = vitest.fn();
     const events = ['click', 'scroll', 'blur', 'resize'] ;
 
-
-
     it('should add listener for all events', () => {
       events.forEach(event => expect(addSpy).toBeCalledWith(event, listener, options));
     });

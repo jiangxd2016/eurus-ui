@@ -1,6 +1,6 @@
 import useEventListener from '@/packages/_hooks/useEventListener';
 import { warn } from '@/packages/_utils/warn';
-import {noop} from "@/packages/_utils/shared";
+import { noop } from '@/packages/_utils/shared';
 
 /**
  * resize observer hook
@@ -13,7 +13,7 @@ export default function useResize(target: HTMLElement, cb: () => {}, options?: R
   const isSupported = window && 'ResizeObserver' in window;
   if (!target) {
     warn('useResize', 'target is required');
-    return noop
+    return noop;
   }
   if (!isSupported) {
     return useEventListener(target, 'resize', cb, options as AddEventListenerOptions);
