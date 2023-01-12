@@ -28,7 +28,7 @@ const config: InlineConfig = {
     },
 
     lib: {
-      entry: 'src/index.ts',
+      entry: 'packages/ui/index.ts',
       formats: ['es', 'cjs'],
       fileName: (module) => {
         return `eurus-ui.${module === 'es' ? 'm' : 'c'}js`;

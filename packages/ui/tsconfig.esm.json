@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../",
+    "outDir": "../../dist/es",
+    "module": "ES6",
+    "target": "ES6"
+  },
+  "rootDir": "./i",
+  "exclude": [
+    "**/__tests__/*",
+    "**/*.md",
+    "**/demo/*",
+    "example",
+    "node_modules"
+  ]
+}

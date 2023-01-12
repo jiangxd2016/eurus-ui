@@ -1,0 +1,82 @@
+{
+  "name": "eurus-ui",
+  "type": "module",
+  "version": "0.0.35",
+  "packageManager": "pnpm@7.13.4",
+  "description": "A Vue 3 Component Library.Uses TypeScript, Fast, Small, Easy to use.",
+  "author": "jiangxd <jiangxd2016@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiangxd2016/eurus-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jiangxd2016/eurus-ui/issues"
+  },
+  "keywords": [
+    "ui",
+    "vue",
+    "eurus-ui",
+    "ui framework",
+    "component library"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/es/index.d.ts",
+      "import": "./dist/es/index.js",
+      "require": "./dist/lib/index.js"
+    },
+    "./dist/*": "./dist/*"
+  },
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
+  "unpkg": "dist/index.js",
+  "jsdelivr": "dist/index.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">= 16"
+  },
+  "scripts": {
+    "build": " tsx scripts/build.ts all",
+    "lint": "eslint --cache --fix \"./**/*.{ts,tsx,js,vue}\"",
+    "build:types": "pnpm run build:types-cjs && pnpm run build:types-esm",
+    "build:types-cjs": "vue-tsc -p ./tsconfig.cjs.json --declaration --emitDeclarationOnly",
+    "build:types-esm": "vue-tsc -p ./tsconfig.esm.json --declaration --emitDeclarationOnly",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "typecheck": "vue-tsc -p ./tsconfig.esm.json --noEmit",
+    "coverage": "vitest run --coverage"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.26"
+  },
+  "dependencies": {
+    "async-validator": "^4.2.5",
+    "dayjs": "^1.11.7",
+    "number-precision": "^1.6.0"
+  },
+  "devDependencies": {
+    "@estjs/eslint-config": "^0.3.11",
+    "@estjs/tools": "^0.0.32",
+    "@types/node": "^18.11.18",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "@vitest/coverage-c8": "^0.26.3",
+    "@vue/test-utils": "^2.2.7",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.31.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "happy-dom": "^8.1.3",
+    "sass": "^1.57.1",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vitest": "^0.26.3",
+    "vue": "^3.2.45",
+    "vue-tsc": "^1.0.24"
+  }
+
+}

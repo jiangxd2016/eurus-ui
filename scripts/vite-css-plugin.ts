@@ -15,7 +15,7 @@ const pathReg = /(?<=src).*/;
 const compileToCSS = async function (path: string) {
   try {
     const res = sass.compile(path, {
-      loadPaths: [dirname + '/src/scss/*'],
+      loadPaths: [dirname + 'packages/ui/scss/*'],
     });
 
     const outputDir = viteConfig.inlineConfig?.build?.rollupOptions?.output as any[];

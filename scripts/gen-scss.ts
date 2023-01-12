@@ -3,7 +3,7 @@ import * as path from 'path';
 import sass from 'sass';
 
 const OUT_PATH = 'dist/css';
-const INPUT_PATH = 'src/scss';
+const INPUT_PATH = 'packages/ui/scss';
 const SCSS_OUT_PATH = 'dist/scss';
 const DIST_STYLE_PATH = 'dist/style.css';
 export const compileToCSS = function (nodeEnv: string) {

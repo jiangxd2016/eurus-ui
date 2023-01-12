@@ -1,5 +1,5 @@
 {
-  "name": "eurus-ui",
+  "name": "@eurus-ui/monorepo",
   "type": "module",
   "version": "0.0.35",
   "packageManager": "pnpm@7.13.4",
@@ -7,39 +7,9 @@
   "author": "jiangxd <jiangxd2016@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/jiangxd2016/eurus-ui#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jiangxd2016/eurus-ui.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jiangxd2016/eurus-ui/issues"
-  },
-  "keywords": [
-    "ui",
-    "vue",
-    "eurus-ui",
-    "ui framework",
-    "component library"
+  "workspaces": [
+    ""
   ],
-  "exports": {
-    ".": {
-      "types": "./dist/es/index.d.ts",
-      "import": "./dist/es/index.js",
-      "require": "./dist/lib/index.js"
-    },
-    "./dist/*": "./dist/*"
-  },
-  "main": "dist/lib/index.js",
-  "module": "dist/es/index.js",
-  "unpkg": "dist/index.js",
-  "jsdelivr": "dist/index.js",
-  "types": "dist/es/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "engines": {
-    "node": ">= 16"
-  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "postinstall": "npx simple-git-hooks",
@@ -48,8 +18,8 @@
     "gen:version": "tsx ./scripts/gen-version.ts",
     "lint": "eslint --cache --fix \"./**/*.{ts,tsx,js,vue}\"",
     "build:types": "pnpm run build:types-cjs && pnpm run build:types-esm",
-    "build:types-cjs": "vue-tsc -p ./src/tsconfig.cjs.json --declaration --emitDeclarationOnly",
-    "build:types-esm": "vue-tsc -p ./src/tsconfig.esm.json --declaration --emitDeclarationOnly",
+    "build:types-cjs": "vue-tsc -p ./tsconfig.cjs.json --declaration --emitDeclarationOnly",
+    "build:types-esm": "vue-tsc -p ./tsconfig.esm.json --declaration --emitDeclarationOnly",
     "clean": "rimraf dist",
     "test": "vitest",
     "test:watch": "vitest --watch",
@@ -58,20 +28,26 @@
     "docs:serve": "tsx scripts/gen-docs.ts && pnpm -C docs serve",
     "create:compts": "tsx ./scripts/create-compt.ts",
     "changelog": "tsx scripts/changelog.ts",
-    "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
+    "typecheck": "vue-tsc -p ./tsconfig.esm.json --noEmit",
     "coverage": "vitest run --coverage",
     "prerelease": "pnpm run clean && pnpm run gen:version && pnpm run typecheck && pnpm run test && pnpm run build",
     "release": "pnpm run prerelease && pnpm run changelog && bumpp --commit --tag --push"
   },
-  "peerDependencies": {
-    "vue": "^3.2.26"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiangxd2016/eurus-ui.git"
   },
-  "dependencies": {
-    "async-validator": "^4.2.5",
-    "dayjs": "^1.11.7",
-    "number-precision": "^1.6.0"
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/jiangxd2016/eurus-ui/issues"
   },
   "devDependencies": {
+    "lint-staged": "^13.1.0",
+    "pnpm": "7.19.0",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.8.1",
+    "standard-changelog": "^2.0.27",
+    "tsx": "^3.12.2",
     "@estjs/eslint-config": "^0.3.11",
     "@estjs/tools": "^0.0.32",
     "@types/node": "^18.11.18",
@@ -83,13 +59,7 @@
     "eslint": "^8.31.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "happy-dom": "^8.1.3",
-    "lint-staged": "^13.1.0",
-    "pnpm": "7.19.0",
-    "rimraf": "^3.0.2",
     "sass": "^1.57.1",
-    "simple-git-hooks": "^2.8.1",
-    "standard-changelog": "^2.0.27",
-    "tsx": "^3.12.2",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vitest": "^0.26.3",

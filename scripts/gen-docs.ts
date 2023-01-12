@@ -16,7 +16,7 @@ function readDirName (pathUrl: string) {
 
 const PACKAGES_PATH = path.resolve(
   path.resolve(),
-  './src/packages'
+  'packages/ui/components'
 );
 
 export const componentEntry = readDirName(PACKAGES_PATH);

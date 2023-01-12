@@ -21,7 +21,7 @@ const config: InlineConfig = {
     emptyOutDir: false,
     minify: false,
     rollupOptions: {
-      input: ['src/index.ts'],
+      input: ['packages/ui/index.ts'],
       output: [
         {
           format: 'es',
@@ -29,7 +29,7 @@ const config: InlineConfig = {
           exports: 'named',
           entryFileNames: '[name].js',
           preserveModules: true,
-          preserveModulesRoot: 'packages',
+          preserveModulesRoot: 'components',
         },
         {
           format: 'cjs',
@@ -37,14 +37,14 @@ const config: InlineConfig = {
           exports: 'named',
           entryFileNames: '[name].js',
           preserveModules: true,
-          preserveModulesRoot: 'packages',
+          preserveModulesRoot: 'components',
         },
       ],
 
       external: ['vue', 'dayjs', 'async-validator', 'number-precision'],
     },
     lib: {
-      entry: 'src/index.ts',
+      entry: 'packages/ui/index.ts',
       formats: ['es'],
     },
   },

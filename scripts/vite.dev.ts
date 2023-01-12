@@ -19,7 +19,7 @@ const config: InlineConfig = {
     minify: false,
     emptyOutDir: false,
     rollupOptions: {
-      input: ['src/index.ts'],
+      input: ['packages/ui/index.ts'],
       output: [
         {
           format: 'es',
@@ -32,7 +32,7 @@ const config: InlineConfig = {
       external: ['vue', 'dayjs', 'async-validator', 'number-precision'],
     },
     lib: {
-      entry: 'src/index.ts',
+      entry: 'packages/ui/index.ts',
       formats: ['es'],
     },
   },

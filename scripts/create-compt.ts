@@ -54,7 +54,7 @@ async function createComponent(name: string, tempPath: string, outPath: string) 
     console.warn('please enter component name!');
     return;
   }
-  const outPath = path.resolve('src/packages', name);
+  const outPath = path.resolve('src/components', name);
 
   if (fs.existsSync(outPath)) {
     console.warn('dir exist!');
@@ -65,7 +65,7 @@ async function createComponent(name: string, tempPath: string, outPath: string) 
 
   const comptName = toKebabCase(name);
   const tempPath = resolve('./scripts/_temp');
-  const distPath = resolve(`./src/packages/${name}`);
+  const distPath = resolve(`packages/ui/packages/${name}`);
 
   createComponent(comptName, tempPath, distPath);
 

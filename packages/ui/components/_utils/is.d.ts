@@ -1,0 +1,15 @@
+import type { StringNumber } from '@/components/_utils/type';
+export declare const _toString: () => string;
+export declare const _hasOwnProperty: (v: PropertyKey) => boolean;
+export declare function isArray<T>(value: unknown): value is Array<T>;
+export declare function isBoolean(value: unknown): value is boolean;
+export declare function isDate(value: unknown): value is Date;
+export declare function isFunction(value: unknown): value is Function;
+export declare function isNumber(value: unknown): value is number;
+export declare function isString(value: unknown): value is string;
+export declare function isPromise<T>(value: unknown): value is Promise<T>;
+export declare function isUndefined(value: unknown): value is undefined;
+export declare function isNull(value: unknown): value is null;
+export declare function isEmpty(value: unknown): boolean;
+export declare function isObject(value: unknown): value is Record<string, any>;
+export declare function isStringNumber(value: string): value is StringNumber;
