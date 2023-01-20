@@ -1,5 +1,6 @@
 import { execSync } from 'child_process';
 import { writeFileSync, readFileSync, createWriteStream } from 'fs';
+// @ts-expect-error
 import standardChangelog from 'standard-changelog';
 import { version as _version } from '../package.json';
 
@@ -37,7 +38,7 @@ async function updateChangeLog() {
 
   new Promise((resolve) => {
     standardChangelog({}, null, { from: lastCommit, to: 'HEAD' })
-      .on('data', (chunk) => {
+      .on('data', (chunk: any) => {
         let changeLogStr = chunk.toString().trim();
         changeLogStr = changeLogStr.replace(/\(([\d-]+)\)/g, '`$1`');
         changeLogStr = changeLogStr.replace(/^#\s/g, '## ').trim();
