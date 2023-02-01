@@ -2,6 +2,11 @@
 
 exports[`ESelectDown > ESelectDown snapshot 1`] = `
 "<div class=\\"eu-select-down eu-select-down-md\\">
-  <!---->
+  <div class=\\"eu-select-down-control\\"><span class=\\"eu-input-wrapper eu-input-wrapper--md\\"><!----><input type=\\"text\\" placeholder=\\"\\" class=\\"eu-input\\"><!----><!----></span></div>
+  <div class=\\"eu-select-down-dropdown\\">
+    <div class=\\"eu-select-down-dropdown-content\\">
+      <!---->
+    </div>
+  </div>
 </div>"
 `;

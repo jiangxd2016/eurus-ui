@@ -3,7 +3,7 @@
   --eu-color-secondary: #{$secondary};
   --eu-color-purple: #{$purple};
   --eu-color-positive: #{$positive};
-  --eu-color-error: #{$error};
+  --eu-color-danger: #{$danger};
   --eu-color-info: #{$info};
   --eu-color-warning: #{$warning};
   --eu-color-dark: #{$dark};
@@ -52,11 +52,11 @@
 }
 
 .text-error {
-  color: var(--eu-color-error) !important;
+  color: var(--eu-color-danger) !important;
 }
 
 .bg-error {
-  background: var(--eu-color-error) !important;
+  background: var(--eu-color-danger) !important;
 }
 
 .text-info {

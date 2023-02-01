@@ -67,6 +67,14 @@ export const sidebarCN = [
         text: '开关 switch',
         link: '/zh-CN/components/switch',
       },
+      {
+        text: "通用下拉 select-down",
+        link: '/zh-CN/components/select-down',
+      },
+      {
+        text: "标签 tag",
+        link: '/zh-CN/components/tag',
+      },
       // {
       //   text: '加载中 loading',
       //   link: '/zh-CN/components/loading',

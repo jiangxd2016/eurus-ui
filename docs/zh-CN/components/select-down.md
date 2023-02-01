@@ -10,17 +10,15 @@ import { ESelectDown } from 'eurus-ui';
 
 Vue.createApp().use(ESelectDown.name, ESelectDown)
 ```
-<!--
 ::::card button 类型
 
 按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
 
-:::code buttonType
-<<< ../src/packages/button/demo/Type.vue
+:::code select-downDemo0
+<<< ../src/packages/select-down/demo/demo0.vue
 :::
 ::::
 
- -->
 ### ESelectDown Props
 
 | 名称 | 类型 | 默认值 | 说明 |

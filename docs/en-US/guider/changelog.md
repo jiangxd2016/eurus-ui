@@ -5,6 +5,30 @@ toc: false
 docClass: timeline
 ---
 
+## [0.0.35](https://github.com/jiangxd2016/eurus-ui/compare/f9dd1cc2a0604dd2365ef5e3c816bad54cc7a55e...v0.0.35) `2022-12-12`
+
+
+### Bug Fixes
+
+* fix readio-group name ([2b43567](https://github.com/jiangxd2016/eurus-ui/commit/2b435670c4cf75359bc83fe47bc9cc6f006ad6b6))
+
+
+### Features
+
+* **component:** [back-top] update back-top ([f9dd1cc](https://github.com/jiangxd2016/eurus-ui/commit/f9dd1cc2a0604dd2365ef5e3c816bad54cc7a55e))
+* **component:** [checkbox] update checkbox value support ([b0269b5](https://github.com/jiangxd2016/eurus-ui/commit/b0269b58f9dc93bbb7feea340cccaf0c9db4bbbf))
+* **component:** [input] input docs update ([0bed4ad](https://github.com/jiangxd2016/eurus-ui/commit/0bed4adc57e187c98d9725349f75468f93558559))
+* **component:** [input] update input docs & demo ([63a984b](https://github.com/jiangxd2016/eurus-ui/commit/63a984b4180f9978a9259bd568642e9d0791f54f))
+* **component:** [input] update input test case ([7b27f76](https://github.com/jiangxd2016/eurus-ui/commit/7b27f76fd6bf99bc00fdd845225456e404303efb))
+* **component:** [radio] update new component ([e4464b0](https://github.com/jiangxd2016/eurus-ui/commit/e4464b0ffc3b1b6e75c75ea447e4f1ae6207041b))
+* **components:** [input] update new component input ([20eaa69](https://github.com/jiangxd2016/eurus-ui/commit/20eaa698bbed152eca77590577c44a27e248a5f4))
+* **componnet:** [checkbox] update new checkbox componnet ([219d2cc](https://github.com/jiangxd2016/eurus-ui/commit/219d2cc35737149b56a41cb89479051b353a6d81))
+* update form component ([4364d7b](https://github.com/jiangxd2016/eurus-ui/commit/4364d7b33fd9c2d9c49e5d19a60474815924d0cb))
+* 删除未使用的form代码 ([44b2f99](https://github.com/jiangxd2016/eurus-ui/commit/44b2f991ac5b78b530e66ff2146d972939f2b38b))
+
+
+
+
 ## 0.0.1-alpha.1 `2022-11-18`
 
 

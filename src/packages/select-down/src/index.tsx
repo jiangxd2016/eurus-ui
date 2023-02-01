@@ -3,7 +3,7 @@ import { computed, defineComponent } from 'vue';
 import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-
+import EuInput from '@/packages/input';
 const ESelectDownProps = {
   modelValue: {
     type: Array as PropType<string[] | number[]>,
@@ -30,6 +30,10 @@ export default defineComponent({
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('select-down');
 
+    // const computedDisabled = computed(() => {
+    //   return props.disabled;
+    // });
+
     const computedCls = computed(() => {
       return {
         [prefixCls]: true,
@@ -37,17 +41,17 @@ export default defineComponent({
       };
     });
 
-    const computedDisabled = computed(() => {
-      return props.disabled;
-    });
 
     return () => (
       <div class={computedCls.value}>
-        {
-          computedDisabled.value && (
-            slots.default?.()
-          )
-        }
+        <div class={`${prefixCls}-control`}>
+          <EuInput></EuInput>
+        </div>
+        <div class={`${prefixCls}-dropdown`}>
+          <div class={`${prefixCls}-dropdown-content`}>
+            {slots.default?.()}
+          </div>
+        </div>
       </div>
 
     );
