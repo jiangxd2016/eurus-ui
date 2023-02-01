@@ -1,10 +1,16 @@
+import type MarkdownIt from 'markdown-it';
 import { defineConfig } from 'vitepress';
-import { version } from '../../package.json';
-import { DOCS_NAME, DOCSDESCRIPTION, sidebarCN, sidebarUS, RELEASES } from './constants';
 import { mdPlugin } from './utils/demo';
+import locales from './locales';
 
+const DOCS_NAME = 'Eurus UI';
+const DOCSDESCRIPTION = 'A Vue3 component library';
+
+/**
+ * @type {import('vitepress').UserConfig}
+ */
 module.exports = defineConfig({
-  title: 'Eurus UI',
+  title: '',
   description: DOCSDESCRIPTION,
   head: [
     ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
@@ -17,19 +23,13 @@ module.exports = defineConfig({
   ],
   lastUpdated: true,
   lang: 'zh-CN',
+  locales: locales.vitepressConfig,
   themeConfig: {
+    repo: 'jiangxd2016/eurus-u',
     logo: '/logo.png',
-    nav: [
-      { text: '组件', link: '/zh-CN/components/button' },
-      { text: '导航', link: '/zh-CN/guider/quick-start' },
-      { text: `v${version}`, items: [{ text: 'Release Notes', link: RELEASES, }] },
-    ],
-    sidebar: {
-      '/en-US/guider': sidebarUS,
-      '/en-US/components': sidebarUS,
-      '/zh-CN/guider': sidebarCN,
-      '/zh-CN/components': sidebarCN
-    },
+    locales: locales.themeConfig,
+    docsDir: 'docs',
+    editLinks: true,
     algolia: {
       appId: '50TTAEFR5V',
       apiKey: 'c0c3101b6a4ea819d26f3200382646a7',
@@ -45,19 +45,12 @@ module.exports = defineConfig({
         link: 'https://github.com/jiangxd2016/eurus-ui',
       },
     ],
-    localeLinks: {
-      text: '',
-      items: [
-        { text: 'English', link: '/en-US/' },
-        { text: '简体中文', link: '/zh-CN/' },
-      ],
-    },
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2019-present jiangxd',
     },
   },
   markdown: {
-    config: md => mdPlugin(md),
+    config: (md: MarkdownIt) => mdPlugin(md),
   },
 });
