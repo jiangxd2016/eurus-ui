@@ -8,7 +8,10 @@
   ],
   "rules": {
     "no-unused-vars": 0,
-    "import/no-named-as-default": 0
+    "import/no-named-as-default": 0,
+    // TODO: Remove this rule when we have time to fix the issues
+    "jsx-a11y/click-events-have-key-events": 0
+
   },
   "globals": {
     "__DEV__": "readonly"

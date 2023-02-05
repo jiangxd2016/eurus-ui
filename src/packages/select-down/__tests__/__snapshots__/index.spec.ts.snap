@@ -2,11 +2,11 @@
 
 exports[`ESelectDown > ESelectDown snapshot 1`] = `
 "<div class=\\"eu-select-down eu-select-down-md\\">
-  <div class=\\"eu-select-down-control\\"><span class=\\"eu-input-wrapper eu-input-wrapper--md\\"><!----><input type=\\"text\\" placeholder=\\"\\" class=\\"eu-input\\"><!----><!----></span></div>
-  <div class=\\"eu-select-down-dropdown\\">
-    <div class=\\"eu-select-down-dropdown-content\\">
+  <div class=\\"eu-select-down-control\\"><input aria-controls=\\"id\\" aria-autocomplete=\\"list\\" aria-haspopup=\\"listbox\\" aria-expanded=\\"false\\" autocapitalize=\\"off\\" autocomplete=\\"none\\" class=\\"\\" name=\\"name\\" role=\\"combobox\\" spellcheck=\\"false\\" type=\\"text\\"></div>
+  <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+    <ul>
       <!---->
-    </div>
-  </div>
+    </ul>
+  </transition-stub>
 </div>"
 `;
