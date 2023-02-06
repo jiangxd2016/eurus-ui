@@ -6,7 +6,6 @@ $tag-prefix-cls: $prefix + -tag;
 
   display: inline-flex;
   align-items: center;
-  height: 28px;
   padding: 0 10px;
 
   color: #1989fa;
@@ -51,33 +50,28 @@ $tag-prefix-cls: $prefix + -tag;
   }
 
   &.#{$tag-prefix-cls}-xl {
-    height: 38px;
-    line-height: 36px;
+    line-height: 32px;
     font-size: 16px;
   }
 
 
   &.#{$tag-prefix-cls}-lg {
-    height: 36px;
-    line-height: 34px;
+    line-height: 30px;
     font-size: 14px;
   }
 
   &.#{$tag-prefix-cls}-md {
-    height: 32px;
-    line-height: 30px;
-    font-size: 13px;
+    line-height: 28px;
+    font-size: 12px;
   }
 
   &.#{$tag-prefix-cls}-sm {
-    height: 24px;
-    line-height: 22px;
-    font-size: 11px;
+    line-height: 24px;
+    font-size: 10px;
   }
 
   &.#{$tag-prefix-cls}-xs {
-    height: 20px;
-    line-height: 18px;
+    line-height: 20px;
     font-size: 10px;
   }
 
