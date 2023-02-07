@@ -77,7 +77,7 @@ export default defineComponent({
   inheritAttrs: false,
   props: EInputProps,
   emits: ['update:modelValue', 'change', 'focus', 'blur', 'clear', 'input', 'keydown', 'compositionstart', 'compositionupdate', 'compositionend'],
-  setup(props, { slots, emit }) {
+  setup(props, { slots, emit, expose }) {
     const prefixCls = getPrefixCls('input');
     const wrapperCls = getPrefixCls('input-wrapper');
 
@@ -174,6 +174,14 @@ export default defineComponent({
         handleInput(ev);
       }
     };
+    // expose methods
+    const triggerFocus = () => {
+      inputRef.value?.focus();
+    };
+    const triggerBlur = () => {
+      inputRef.value?.blur();
+    };
+    expose({ focus: triggerFocus, blur: triggerBlur });
     return () => (
       <span class={wrapperClassNames.value}>
         {slots.prefix && (
