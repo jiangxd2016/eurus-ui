@@ -7,7 +7,7 @@ class: 'ETag-doc'
 ## 引入
 
 ```javascript
-import {ETag} from 'eurus-ui';
+import { ETag } from 'eurus-ui';
 
 Vue.createApp().use(ETag.name, ETag)
 ```
