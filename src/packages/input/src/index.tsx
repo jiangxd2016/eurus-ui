@@ -2,7 +2,7 @@ import type { PropType } from 'vue';
 import { ref, watch, computed, defineComponent, toRefs } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import './style.scss';
-import { isUndefined, isNull } from '@/packages/_utils/is';
+import { isUndefined, isNull, isKorean } from '@/packages/_utils/is';
 import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
 
@@ -43,24 +43,53 @@ const EInputProps = {
     type: Boolean,
     default: false
   },
+  focus: {
+    type: Boolean,
+    default: false
+  },
+  autocomplete: {
+    type: String as PropType<'none' | 'both' | 'list' | 'inline'>,
+    default: 'none',
+  },
+  readonly: {
+    type: Boolean,
+    default: false
+  },
+  label: {
+    type: String,
+    default: undefined,
+  },
 
+  tabindex: {
+    type: [String, Number],
+    default: 0,
+  },
+  form: {
+    type: String,
+  },
+  id: {
+    type: String,
+    default: undefined,
+  },
 };
 export default defineComponent({
   name: 'EInput',
   inheritAttrs: false,
   props: EInputProps,
-  emits: ['update:modelValue', 'change', 'focus', 'blur', 'clear', 'input'],
+  emits: ['update:modelValue', 'change', 'focus', 'blur', 'clear', 'input', 'keydown', 'compositionstart', 'compositionupdate', 'compositionend'],
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('input');
     const wrapperCls = getPrefixCls('input-wrapper');
 
-    const { size, disabled, type, placeholder, modelValue } = toRefs(props);
+    const { size, disabled, type, placeholder, modelValue, focus } = toRefs(props);
 
     const wrapperClassNames = computed(() => {
       return [wrapperCls, `${wrapperCls}--${size.value}`, props.disabled && `${wrapperCls}--disabled`];
     });
 
     const _value = ref(props.defaultValue);
+    const inputRef = ref<HTMLInputElement | null>(null);
+    const isComposing = ref(false);
 
     const maxLength = computed(() => {
       return props.maxLength > 0 ? props.maxLength : undefined;
@@ -77,6 +106,11 @@ export default defineComponent({
       }
     });
 
+    watch(focus, (value) => {
+      if (value) {
+        inputRef.value?.focus();
+      }
+    });
     // update value
     const updateValue = (value: string) => {
       if (maxLength.value && value.length > maxLength.value) {
@@ -93,6 +127,10 @@ export default defineComponent({
     };
 
     const handleInput = (ev: Event) => {
+
+      if (isComposing.value) {
+        return;
+      }
       const value = (ev.target as HTMLInputElement).value;
 
       updateValue(value);
@@ -107,31 +145,64 @@ export default defineComponent({
       emit('focus', ev);
     };
     const handleClear = (ev: MouseEvent) => {
-      if (disabled.value) { return; }
+      if (disabled.value) {
+        return;
+      }
       updateValue('');
       emitChange('', ev);
       emit('clear', ev);
     };
+    const handleKeydown = (ev: KeyboardEvent) => {
+      emit('keydown', ev);
+    };
 
+    // composition
+    const compositionStart = (ev: Event) => {
+      emit('compositionstart', ev);
+      isComposing.value = true;
+    };
+    const compositionUpdate = (ev: Event) => {
+      emit('compositionupdate', ev);
+      const text = (ev.target as HTMLInputElement)?.value;
+      const lastCharacter = text[text.length - 1] || '';
+      isComposing.value = !isKorean(lastCharacter);
+    };
+    const compositionEnd = (ev: Event) => {
+      emit('compositionend', ev);
+      if (isComposing.value) {
+        isComposing.value = false;
+        handleInput(ev);
+      }
+    };
     return () => (
       <span class={wrapperClassNames.value}>
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}
         <input
+          id={props.id}
+          ref={inputRef}
           value={computedValue.value}
           type={type.value}
+          readonly={props.readonly}
+          aria-label={props.label}
+          tabindex={props.tabindex}
           placeholder={placeholder.value}
+          form={props.form}
           disabled={disabled.value}
           maxlength={maxLength.value}
           class={[prefixCls]}
+          onCompositionstart={compositionStart}
+          onCompositionupdate={compositionUpdate}
+          onCompositionend={compositionEnd}
           onInput={handleInput}
           onBlur={handleBlur}
           onFocus={handleFocus}
+          onKeydown={handleKeydown.bind(this)}
         />
         {showClearBtn.value && (
           <span onClick={handleClear} aria-hidden="true" class={`${prefixCls}-clearable`}>
-            <EIcon name="close" size={size.value} ></EIcon>
+            <EIcon name="close" size={size.value}></EIcon>
           </span>
         )}
         {(slots.suffix || (Boolean(props.maxLength) && props.showWordLimit)) && (
