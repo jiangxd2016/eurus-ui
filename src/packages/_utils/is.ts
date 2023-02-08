@@ -6,9 +6,11 @@ export const _hasOwnProperty = Object.prototype.hasOwnProperty;
 export function isArray<T>(value: unknown): value is Array<T> {
   return Array.isArray(value);
 }
+
 export function isBoolean(value: unknown): value is boolean {
   return typeof value === 'boolean';
 }
+
 export function isDate(value: unknown): value is Date {
   return value instanceof Date;
 }
@@ -28,6 +30,7 @@ export function isString(value: unknown): value is string {
 export function isPromise<T>(value: unknown): value is Promise<T> {
   return _toString.call(value) === '[object Promise]';
 }
+
 export function isUndefined(value: unknown): value is undefined {
   return typeof value === 'undefined';
 }
@@ -37,10 +40,18 @@ export function isNull(value: unknown): value is null {
 }
 
 export function isEmpty(value: unknown): boolean {
-  if (!value && value !== 0) { return true; }
-  if (isString(value)) { return value.length === 0; }
-  if (isArray(value)) { return value.length === 0; }
-  if (isObject(value)) { return Object.keys(value).length === 0; }
+  if (!value && value !== 0) {
+    return true;
+  }
+  if (isString(value)) {
+    return value.length === 0;
+  }
+  if (isArray(value)) {
+    return value.length === 0;
+  }
+  if (isObject(value)) {
+    return Object.keys(value).length === 0;
+  }
   return false;
 }
 
@@ -51,3 +62,8 @@ export function isObject(value: unknown): value is Record<string, any> {
 export function isStringNumber(value: string): value is StringNumber {
   return !Number.isNaN(Number(value));
 }
+
+export const isKorean = (text: string): boolean => {
+  return /([()|\u3130-\u318F\uAC00-\uD7AF])+/gi.test(text);
+};
+

@@ -1,6 +1,6 @@
-import {mount} from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
+import { expect } from 'vitest';
 import ETag from '..';
-import {expect} from "vitest";
 
 describe('ETag', () => {
 
@@ -34,7 +34,7 @@ describe('ETag', () => {
 
     await wrapper.find('.eu-tag-icon').trigger('click');
     expect(wrapper.emitted('close')).toBeTruthy();
-    expect(wrapper.find('.eu-tag').attributes("style")).toBe("display: none;");
+    expect(wrapper.find('.eu-tag').attributes('style')).toBe('display: none;');
     wrapper.unmount();
   });
 });

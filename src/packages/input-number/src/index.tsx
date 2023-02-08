@@ -1,7 +1,7 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent, ref, watch } from 'vue';
 import './style.scss';
-import NP from 'number-precision';
+import NP, { round } from 'number-precision';
 import EIcon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import EInput from '@/packages/input';
@@ -101,7 +101,7 @@ export default defineComponent({
         val = min;
       }
 
-      _value.value = NP.round(val, _precision).toFixed(_precision);
+      _value.value = round(val, _precision).toFixed(_precision);
       emitEvent(+_value.value);
 
     };

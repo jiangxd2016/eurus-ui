@@ -43,10 +43,7 @@ const EInputProps = {
     type: Boolean,
     default: false
   },
-  focus: {
-    type: Boolean,
-    default: false
-  },
+
   autocomplete: {
     type: String as PropType<'none' | 'both' | 'list' | 'inline'>,
     default: 'none',
@@ -81,15 +78,12 @@ export default defineComponent({
     const prefixCls = getPrefixCls('input');
     const wrapperCls = getPrefixCls('input-wrapper');
 
-    const { size, disabled, type, placeholder, modelValue, focus } = toRefs(props);
-
-    const wrapperClassNames = computed(() => {
-      return [wrapperCls, `${wrapperCls}--${size.value}`, props.disabled && `${wrapperCls}--disabled`];
-    });
+    const { size, disabled, type, placeholder, modelValue } = toRefs(props);
 
     const _value = ref(props.defaultValue);
     const inputRef = ref<HTMLInputElement | null>(null);
     const isComposing = ref(false);
+    const isFocus = ref(false);
 
     const maxLength = computed(() => {
       return props.maxLength > 0 ? props.maxLength : undefined;
@@ -97,6 +91,10 @@ export default defineComponent({
     const computedValue = computed(() => {
       return (props.modelValue ?? _value.value) + '';
     });
+    const computedCls = computed(() => {
+      return [wrapperCls, `${wrapperCls}--${size.value}`, props.disabled && `${wrapperCls}--disabled`, isFocus.value && `${wrapperCls}-focus`];
+    });
+
     const showClearBtn = computed(() => props.clearable && Boolean(computedValue.value));
 
     let preValue = computedValue.value;
@@ -106,11 +104,6 @@ export default defineComponent({
       }
     });
 
-    watch(focus, (value) => {
-      if (value) {
-        inputRef.value?.focus();
-      }
-    });
     // update value
     const updateValue = (value: string) => {
       if (maxLength.value && value.length > maxLength.value) {
@@ -138,10 +131,12 @@ export default defineComponent({
     };
     const handleBlur = (ev: Event) => {
       emitChange(computedValue.value, ev);
+      isFocus.value = false;
       emit('blur', ev);
     };
     const handleFocus = (ev: Event) => {
       preValue = computedValue.value;
+      isFocus.value = true;
       emit('focus', ev);
     };
     const handleClear = (ev: MouseEvent) => {
@@ -176,6 +171,7 @@ export default defineComponent({
     };
     // expose methods
     const triggerFocus = () => {
+      isFocus.value = true;
       inputRef.value?.focus();
     };
     const triggerBlur = () => {
@@ -183,7 +179,7 @@ export default defineComponent({
     };
     expose({ focus: triggerFocus, blur: triggerBlur });
     return () => (
-      <span class={wrapperClassNames.value}>
+      <span class={computedCls.value} >
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}

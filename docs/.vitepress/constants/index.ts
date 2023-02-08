@@ -68,11 +68,11 @@ export const sidebarCN = [
         link: '/zh-CN/components/switch',
       },
       {
-        text: "通用下拉 select-down",
+        text: '通用下拉 select-down',
         link: '/zh-CN/components/select-down',
       },
       {
-        text: "标签 tag",
+        text: '标签 tag',
         link: '/zh-CN/components/tag',
       },
       // {

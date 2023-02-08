@@ -10,4 +10,4 @@ export * from './checkbox';
 export * from './radio';
 export * from './switch';
 export * from './select-down';
-export * from "./tag";
+export * from './tag';
