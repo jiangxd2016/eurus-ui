@@ -15,7 +15,6 @@ import 'eurus-ui/style.css';
 export default {
   ...DefaultTheme,
   async enhanceApp(ctx: EnhanceAppContext) {
-    DefaultTheme.enhanceApp(ctx);
     const { app } = ctx;
     const demos = import.meta.glob('../../../src/packages/**/demo/*.vue', { eager: true });
 
@@ -25,9 +24,10 @@ export default {
     app.component('Demo', Demo);
 
     if (typeof process === 'undefined') {
-      // @ts-expect-error
       const EurusUI = await import('eurus-ui');
-      app.use(EurusUI.default);
+      app.use({
+        install: EurusUI.default.install as (app: any, ...options: any[]) => any
+      });
     }
   }
 };
