@@ -5,9 +5,7 @@ $icon-prefix-cls: $prefix + -icon;
 .#{$icon-prefix-cls} {
   display: inline-block;
   width: 1em;
-  height: 1em;
   color: inherit;
   font-style: normal;
   outline: none;
-  transition: all .2s ease;
 }

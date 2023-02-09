@@ -3,12 +3,16 @@ import { computed, defineComponent, ref, Transition } from 'vue';
 import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-// import EuTag from '@/packages/tag's
+import Icon from '@/packages/icons';
+import Input from '@/packages/input';
+import { warn } from '@/packages/_utils/warn';
+import { isArray } from '@/packages/_utils/is';
+import Tag from '@/packages/tag';
 
 const ESelectDownProps = {
   modelValue: {
-    type: Array as PropType<string[] | number[]>,
-    default: () => []
+    type: [Array, String, Number, Boolean, Object],
+    default: undefined,
   },
   width: String,
   size: {
@@ -16,6 +20,10 @@ const ESelectDownProps = {
     default: 'md'
   },
   label: String,
+  filterable: {
+    type: Boolean,
+    default: false
+  },
   autocomplete: {
     type: String as PropType<'none' | 'both' | 'list' | 'inline'>,
     default: 'none',
@@ -25,17 +33,22 @@ const ESelectDownProps = {
     type: Boolean,
     default: false,
   },
-
-}
-  ;
+  clear: {
+    type: Boolean,
+    default: false
+  },
+  multiple: {
+    type: Boolean,
+    default: false
+  }
+};
 
 export default defineComponent({
   name: 'ESelectDown',
   props: ESelectDownProps,
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'clear', 'input', 'delete'],
-  setup(props, { slots }) {
+  setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('select-down');
-    const expanded = ref(false);
 
     const computedDisabled = computed(() => {
       return props.disabled;
@@ -48,9 +61,23 @@ export default defineComponent({
       };
     });
 
+    if (!props.multiple && isArray(props.modelValue)) {
+      warn('ESelectDown', 'modelValue must be a string or number when multiple is false');
+    }
     const paneVisible = ref(false);
+    const selectDownRef = ref(null);
+    const _value = ref(props.modelValue);
 
-    const InputValue = ref('');
+    const computedPlaceholder = computed(() => {
+      if (props.multiple) {
+        return '';
+      }
+      return props.placeholder;
+    });
+
+    const handleControlClick = () => {
+      paneVisible.value = true;
+    };
 
     const handleFocus = () => {
       paneVisible.value = true;
@@ -59,7 +86,7 @@ export default defineComponent({
       paneVisible.value = false;
     };
     const handleInput = (e: any) => {
-      InputValue.value = e.target.value;
+      _value.value = e.target.value;
     };
     const handleKeydown = (e: KeyboardEvent): void => {
       switch (e.code) {
@@ -82,53 +109,69 @@ export default defineComponent({
           break;
       }
     };
-    return () => {
-      const unselectable = expanded.value ? 'on' : undefined;
-      return (
-        <div class={computedCls.value}>
-          <div class={`${prefixCls}-control`}>
 
-            <input
+    const handleClearClick = (ev: Event) => {
+      ev.stopPropagation();
+      _value.value = [];
+      emit('update:modelValue', _value.value);
+    };
+    return () => {
+      const iconSlots = {
+        suffix: ()=>[
+          props.clear && _value.value && <Icon
+            name="close"
+            class="clear-icon"
+            size={20}
+            onClick={e=>handleClearClick(e)}
+          ></Icon>,
+          <Icon name="chevronDown" class={['down-icon', paneVisible.value && 'translate-icon']} size={20}></Icon>]
+      };
+      return (
+        <div class={computedCls.value} ref={selectDownRef}>
+          <div class={`${prefixCls}-control`} role="textbox" tabindex={0} onClick={handleControlClick}>
+            {
+              props.multiple && isArray(_value.value) ? <div class={`${prefixCls}-control-multiple`}>
+
+                  {_value.value.map((item: any) => {
+                    return <Tag size="sm" closable>
+                      {item}
+                    </Tag>;
+                  })}
+                </div>
+                : ''}
+            <Input
+              class={`${prefixCls}-control-input`}
               ref="inputRef"
-              aria-controls="id"
-              aria-autocomplete="list"
-              aria-haspopup="listbox"
-              aria-labelledby={props.label}
-              aria-expanded={expanded.value}
-              autocapitalize="off"
-              autocomplete={props.autocomplete}
-              class=""
+              placeholder={computedPlaceholder.value}
               disabled={computedDisabled.value}
-              name="name"
-              role="combobox"
-              spellcheck="false"
-              type="text"
-              unselectable={unselectable}
-              onFocus={handleFocus.bind(this)}
-              onBlur={handleBlur.bind(this)}
-              onInput={handleInput.bind(this)}
-              onKeydown={handleKeydown.bind(this)}
-            />
+              readonly={!props.filterable}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              onInput={handleInput}
+              onKeydown={handleKeydown}
+              v-slots={iconSlots}
+            >
+            </Input>
           </div>
-          <Transition
-            name="slide-toggle"
-          >
-            <ul>
-            {paneVisible.value && <li
+          <Transition name="slide-toggle">
+            {paneVisible.value && <div
               class={{
                 [prefixCls + '-pane']: true,
               }}
               onFocus={() => {
               }}
-              role="menuitem"
+              role="listbox"
+              tabindex={0}
               onClick={(e: Event) => e.stopPropagation()}
             >
-              <div class="scroll-pane">
-                123
-                {slots.default && slots.default()}
+              <div class={`${prefixCls}-pane-wrapper`}>
+                <div class="scroll-pane">
+                  {slots.default && slots.default()}
+                </div>
+                <span class="down-arrow"></span>
               </div>
-            </li>}
-            </ul>
+
+            </div>}
           </Transition>
         </div>
 

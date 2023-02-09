@@ -19,7 +19,6 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
   box-sizing: border-box;
   width: 100%;
   transition: all 0.3s;
-  font-size: 16px;
   color: #575757;
 
   &:hover {
@@ -33,10 +32,12 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
   }
 
   .#{$input-prefix-cls}-suffix {
+    line-height: 1;
     padding-left: 10px;
   }
 
   .#{$input-prefix-cls}-prefix {
+    line-height: 1;
     padding-right: 10px;
   }
 
