@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, ref, Transition } from 'vue';
+import { computed, defineComponent,ref, Transition, } from 'vue';
 import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
@@ -50,6 +50,14 @@ export default defineComponent({
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('select-down');
 
+    if (!props.multiple && isArray(props.modelValue)) {
+      warn('ESelectDown', 'modelValue must be a string or number when multiple is false');
+    }
+
+    const paneVisible = ref(false);
+    const selectDownRef = ref(null);
+    const _value = ref(props.modelValue);
+
     const computedDisabled = computed(() => {
       return props.disabled;
     });
@@ -61,18 +69,30 @@ export default defineComponent({
       };
     });
 
-    if (!props.multiple && isArray(props.modelValue)) {
-      warn('ESelectDown', 'modelValue must be a string or number when multiple is false');
-    }
-    const paneVisible = ref(false);
-    const selectDownRef = ref(null);
-    const _value = ref(props.modelValue);
-
     const computedPlaceholder = computed(() => {
       if (props.multiple) {
         return '';
       }
       return props.placeholder;
+    });
+
+    const computedCloseVisible = computed(() => {
+      if (!props.clear) {
+        return false;
+      }
+      if (props.multiple) {
+        if (isArray(props.modelValue) && props.modelValue.length === 0) {
+          return false;
+        }
+        if (!isArray(props.modelValue) || !props.modelValue) {
+          return false;
+        }
+      }
+
+      if (!props.multiple && !props.modelValue) {
+        return false;
+      }
+      return true;
     });
 
     const handleControlClick = () => {
@@ -116,16 +136,7 @@ export default defineComponent({
       emit('update:modelValue', _value.value);
     };
     return () => {
-      const iconSlots = {
-        suffix: ()=>[
-          props.clear && _value.value && <Icon
-            name="close"
-            class="clear-icon"
-            size={20}
-            onClick={e=>handleClearClick(e)}
-          ></Icon>,
-          <Icon name="chevronDown" class={['down-icon', paneVisible.value && 'translate-icon']} size={20}></Icon>]
-      };
+
       return (
         <div class={computedCls.value} ref={selectDownRef}>
           <div class={`${prefixCls}-control`} role="textbox" tabindex={0} onClick={handleControlClick}>
@@ -133,7 +144,7 @@ export default defineComponent({
               props.multiple && isArray(_value.value) ? <div class={`${prefixCls}-control-multiple`}>
 
                   {_value.value.map((item: any) => {
-                    return <Tag size="sm" closable>
+                    return <Tag size={props.size} closable>
                       {item}
                     </Tag>;
                   })}
@@ -149,7 +160,17 @@ export default defineComponent({
               onBlur={handleBlur}
               onInput={handleInput}
               onKeydown={handleKeydown}
-              v-slots={iconSlots}
+              v-slots={{
+                suffix: () => [computedCloseVisible.value && <Icon
+                  name="close"
+                  class="clear-icon"
+                  size={20}
+                  onClick={e => handleClearClick(e)}
+                ></Icon>,
+                  <Icon name="chevronDown" class={['down-icon', paneVisible.value && 'translate-icon']} size={20}
+                  ></Icon>
+                ]
+              }}
             >
             </Input>
           </div>

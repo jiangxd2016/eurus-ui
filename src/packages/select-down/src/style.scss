@@ -6,15 +6,20 @@ $select-down-prefix-cls: $prefix + -select-down;
 .#{$select-down-prefix-cls} {
   display: inline-block;
   position: relative;
-  min-width: 150px;
+  min-width: 120px;
+
+  z-index: auto;
+  width: 100%;
 
   &-control {
     position: relative;
+    height: 100%;
 
     .clear-icon {
       cursor: pointer;
+      position: relative;
       opacity: 0;
-      transition: all 0.3s;
+      transition: opacity 0.3s;
     }
 
     &:hover .clear-icon {
@@ -22,38 +27,54 @@ $select-down-prefix-cls: $prefix + -select-down;
     }
 
     .down-icon{
-      transition: all 0.3s;
+      transition:transform 0.3s;
     }
     .translate-icon{
       transform: translateY(0) rotate(-180deg);
     }
 
-    &-multiple{
+
+    &-input {
       position: absolute;
-
-      display: flex;
-      align-items: center;
-
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
       height: 100%;
       width: 100%;
-
       padding: 0 10px;
 
       cursor: pointer;
       box-sizing: border-box;
 
+    }
+
+    &-multiple{
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      height: 100%;
+      width: 100%;
+
+      padding:3px 10px 0 10px;
+      cursor: pointer;
+      box-sizing: border-box;
+
       >*{
-        margin-right: 5px;
+        margin-right: 6px;
+        margin-bottom: 3px;
       }
 
     }
   }
 
   &.disabled {
-    cursor: not-allowed;
 
     .clear-icon {
-      display: none;
+      opacity: 0;
     }
 
     .clear-icon, .down-icon {
@@ -118,4 +139,20 @@ $select-down-prefix-cls: $prefix + -select-down;
 
   }
 
+
+  &-xs{
+    height: 28px;
+  }
+  &-sm{
+    height: 32px;
+  }
+  &-md{
+    height: 36px;
+  }
+  &-lg{
+    height: 40px;
+  }
+  &-xl{
+    height: 44px;
+  }
 }
