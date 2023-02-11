@@ -6,6 +6,7 @@ import { warnOnce } from '@/packages/_utils/warn';
 import type { Size } from '@/packages/_utils/size';
 import { getSize } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+
 const IconProps = {
   size: {
     type: [String, Number] as PropType<Size | number>,
@@ -35,14 +36,20 @@ export default defineComponent({
       IconElement = h(allIcon[props.name as keyof typeof allIcon]);
       // support iconfont
     } else if (!slots.default && props.name) {
-      IconElement = h('i', { class: props.name, });
+      IconElement = h('i', { class: props.name });
     }
     if (!IconElement && !slots.default) {
       warnOnce('icon', `not found ${props.name} , please check you enter`);
 
     }
-    return () => <span class={prefixCls} role="link" tabindex={0} style={mergeStyles.value} onClick={e=>emit('click', e)}>
-      { IconElement ? IconElement : renderSlot(slots, 'default')}
+
+    const handleClick = (e: Event) => {
+      emit('click', e);
+    };
+    return () => <span class={prefixCls} role="link" tabindex={0} style={mergeStyles.value}
+                       onClick={handleClick.bind(this) }
+    >
+      {IconElement ? IconElement : renderSlot(slots, 'default')}
     </span>;
   },
 });
