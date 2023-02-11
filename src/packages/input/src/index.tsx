@@ -71,7 +71,6 @@ const EInputProps = {
 };
 export default defineComponent({
   name: 'EInput',
-  inheritAttrs: false,
   props: EInputProps,
   emits: ['update:modelValue', 'change', 'focus', 'blur', 'clear', 'input', 'keydown', 'compositionstart', 'compositionupdate', 'compositionend'],
   setup(props, { slots, emit, expose }) {
