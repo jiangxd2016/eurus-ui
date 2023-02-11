@@ -4,9 +4,8 @@ $tag-prefix-cls: $prefix + -tag;
 
 .#{$tag-prefix-cls} {
 
-  display: inline-flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 6px;
 
   color: #1989fa;
   line-height: 26px;
@@ -80,7 +79,7 @@ $tag-prefix-cls: $prefix + -tag;
     display:flex;
     align-items: center;
     justify-content: center;
-    padding-left: 10px;
+    padding-left: 4px;
     cursor: pointer;
   }
 }
