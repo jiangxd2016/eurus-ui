@@ -72,6 +72,10 @@ export const sidebarCN = [
         link: '/zh-CN/components/select-down',
       },
       {
+        text: '下拉框 select',
+        link: '/zh-CN/components/select',
+      },
+      {
         text: '标签 tag',
         link: '/zh-CN/components/tag',
       },

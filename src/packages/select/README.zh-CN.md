@@ -1,34 +1,33 @@
 ---
-class: '<%= name %>-doc'
+class: 'ESelect-doc'
 ---
-# <%= name %> [WIP]
+# ESelect [WIP]
 
 ## 引入
 
 ```javascript
-import { <%= name %> } from 'eurus-ui';
+import { ESelect } from 'eurus-ui';
 
-Vue.createApp().use(<%= name %>.name, <%= name %>)
+Vue.createApp().use(ESelect.name, ESelect)
 ```
-<!--
-::::card  <%= name %> 类型
+
+::::card select 类型
 
 按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
 
-:::code <%= name %>Demo0
-<<< ../src/packages/ <%= name %>/demo/demo0.vue
+:::code selectDemo0
+<<< ../src/packages/select/demo/demo0.vue
 :::
 ::::
 
- -->
-### <%= name %> Props
+### ESelect Props
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 
 
 
-###  <%= name %> Slots
+###  ESelect Slots
 
 | 名称    | 参数 | 说明       |
 | ------- | ---- | ---------- |

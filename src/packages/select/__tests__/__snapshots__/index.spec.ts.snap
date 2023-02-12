@@ -1,0 +1,12 @@
+// Vitest Snapshot v1
+
+exports[`ESelect > ESelect snapshot 1`] = `
+"<div class=\\"eu-select\\">
+  <div class=\\"eu-select-down eu-select-down-md\\">
+    <div class=\\"eu-select-down-control\\" role=\\"textbox\\" tabindex=\\"0\\"><span class=\\"eu-input-wrapper eu-input-wrapper--md eu-select-down-control-input\\"><!----><input type=\\"text\\" readonly=\\"\\" tabindex=\\"0\\" placeholder=\\"\\" class=\\"eu-input\\"><!----><span class=\\"eu-input-suffix\\"><!----><!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span></span></span></div>
+    <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+      <!---->
+    </transition-stub>
+  </div>
+</div>"
+`;

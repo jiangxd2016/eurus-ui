@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent,ref, Transition, } from 'vue';
+import { computed, defineComponent, ref, Transition, } from 'vue';
 import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
@@ -151,7 +151,7 @@ export default defineComponent({
                 </div>
                 : ''}
             <Input
-              class={`${prefixCls}-control-input`}
+              class={[`${prefixCls}-control-input`, props.multiple && `${prefixCls}-control-input-multiple`]}
               ref="inputRef"
               placeholder={computedPlaceholder.value}
               disabled={computedDisabled.value}
@@ -165,7 +165,7 @@ export default defineComponent({
                   name="close"
                   class="clear-icon"
                   size={20}
-                  onClick={e => handleClearClick(e)}
+                  onClick={handleClearClick}
                 ></Icon>,
                   <Icon name="chevronDown" class={['down-icon', paneVisible.value && 'translate-icon']} size={20}
                   ></Icon>
@@ -186,9 +186,9 @@ export default defineComponent({
               onClick={(e: Event) => e.stopPropagation()}
             >
               <div class={`${prefixCls}-pane-wrapper`}>
-                <div class="scroll-pane">
+                <ul class="scroll-pane">
                   {slots.default && slots.default()}
-                </div>
+                </ul>
                 <span class="down-arrow"></span>
               </div>
 

@@ -11,16 +11,15 @@ import { <%= name %> } from 'eurus-ui';
 Vue.createApp().use(<%= name %>.name, <%= name %>)
 ```
 <!--
-::::card button 类型
+::::card  <%= name %> 类型
 
 按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
 
-:::code buttonType
-<<< ../src/packages/button/demo/Type.vue
+:::code <%= name %>Demo0
+<<< ../src/packages/ <%= name %>/demo/demo0.vue
 :::
 ::::
- -->
-
+  -->
 ### <%= name %> Props
 
 | Name | Type | Default | Description |

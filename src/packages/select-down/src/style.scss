@@ -12,7 +12,6 @@ $select-down-prefix-cls: $prefix + -select-down;
   width: 100%;
 
   &-control {
-    position: relative;
     height: 100%;
 
     .clear-icon {
@@ -26,30 +25,42 @@ $select-down-prefix-cls: $prefix + -select-down;
       opacity: 1;
     }
 
-    .down-icon{
-      transition:transform 0.3s;
+    .down-icon {
+      transition: transform 0.3s;
     }
-    .translate-icon{
+
+    .translate-icon {
       transform: translateY(0) rotate(-180deg);
     }
 
 
     &-input {
+      height: 100%;
+      width: 100%;
+      padding: 0 10px;
+      line-height: 2;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    &-input-readonly {
+      cursor: default;
+    }
+
+    &-input-disabled {
+      cursor: not-allowed;
+    }
+
+    &-input-multiple {
       position: absolute;
       left: 0;
       top: 0;
       bottom: 0;
       right: 0;
-      height: 100%;
-      width: 100%;
-      padding: 0 10px;
-
-      cursor: pointer;
-      box-sizing: border-box;
 
     }
 
-    &-multiple{
+    &-multiple {
       position: relative;
 
       display: flex;
@@ -59,11 +70,11 @@ $select-down-prefix-cls: $prefix + -select-down;
       height: 100%;
       width: 100%;
 
-      padding:3px 10px 0 10px;
+      padding: 3px 10px 0 10px;
       cursor: pointer;
       box-sizing: border-box;
 
-      >*{
+      > * {
         margin-right: 6px;
         margin-bottom: 3px;
       }
@@ -103,6 +114,12 @@ $select-down-prefix-cls: $prefix + -select-down;
       border: 1px solid $border-color-base;
       box-shadow: $box-shadow-base;
 
+      .scroll-pane {
+        list-style: none;
+        max-height: 200px;
+        overflow: auto;
+      }
+
       .down-arrow {
         position: absolute;
         display: block;
@@ -140,19 +157,23 @@ $select-down-prefix-cls: $prefix + -select-down;
   }
 
 
-  &-xs{
-    height: 28px;
+  &-xs {
+    min-height: 28px;
   }
-  &-sm{
-    height: 32px;
+
+  &-sm {
+    min-height: 32px;
   }
-  &-md{
-    height: 36px;
+
+  &-md {
+    min-height: 36px;
   }
-  &-lg{
-    height: 40px;
+
+  &-lg {
+    min-height: 40px;
   }
-  &-xl{
-    height: 44px;
+
+  &-xl {
+    min-height: 44px;
   }
 }
