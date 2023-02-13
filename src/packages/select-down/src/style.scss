@@ -4,15 +4,41 @@
 $select-down-prefix-cls: $prefix + -select-down;
 
 .#{$select-down-prefix-cls} {
-  display: inline-block;
   position: relative;
-  min-width: 120px;
 
-  z-index: auto;
+  display: inline-block;
+
+  height: auto;
   width: 100%;
+  min-width: 140px;
 
   &-control {
-    height: 100%;
+    position: relative;
+
+    &-xs {
+      min-height: 28px;
+    }
+
+    &-sm {
+      min-height: 32px;
+    }
+
+    &-md {
+      min-height: 36px;
+    }
+
+    &-lg {
+      min-height: 40px;
+    }
+
+    &-xl {
+      min-height: 44px;
+    }
+
+  }
+
+  &-control {
+    position: relative;
 
     .clear-icon {
       cursor: pointer;
@@ -35,6 +61,11 @@ $select-down-prefix-cls: $prefix + -select-down;
 
 
     &-input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
       height: 100%;
       width: 100%;
       padding: 0 10px;
@@ -51,14 +82,6 @@ $select-down-prefix-cls: $prefix + -select-down;
       cursor: not-allowed;
     }
 
-    &-input-multiple {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-
-    }
 
     &-multiple {
       position: relative;
@@ -70,7 +93,7 @@ $select-down-prefix-cls: $prefix + -select-down;
       height: 100%;
       width: 100%;
 
-      padding: 3px 10px 0 10px;
+      padding: 3px 50px 0 10px;
       cursor: pointer;
       box-sizing: border-box;
 
@@ -82,7 +105,7 @@ $select-down-prefix-cls: $prefix + -select-down;
     }
   }
 
-  &.disabled {
+  &-disabled {
 
     .clear-icon {
       opacity: 0;
@@ -96,7 +119,6 @@ $select-down-prefix-cls: $prefix + -select-down;
       cursor: not-allowed;
     }
   }
-
 
   &-pane {
     position: absolute;
@@ -116,8 +138,9 @@ $select-down-prefix-cls: $prefix + -select-down;
 
       .scroll-pane {
         list-style: none;
-        max-height: 200px;
-        overflow: auto;
+        max-height: 248px;
+        padding: 4px;
+        overflow-y: auto;
       }
 
       .down-arrow {
@@ -157,23 +180,4 @@ $select-down-prefix-cls: $prefix + -select-down;
   }
 
 
-  &-xs {
-    min-height: 28px;
-  }
-
-  &-sm {
-    min-height: 32px;
-  }
-
-  &-md {
-    min-height: 36px;
-  }
-
-  &-lg {
-    min-height: 40px;
-  }
-
-  &-xl {
-    min-height: 44px;
-  }
 }

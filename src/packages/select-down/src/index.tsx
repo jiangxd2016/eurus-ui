@@ -9,7 +9,7 @@ import { warn } from '@/packages/_utils/warn';
 import { isArray } from '@/packages/_utils/is';
 import Tag from '@/packages/tag';
 
-const ESelectDownProps = {
+export const ESelectDownProps = {
   modelValue: {
     type: [Array, String, Number, Boolean, Object],
     default: undefined,
@@ -20,16 +20,17 @@ const ESelectDownProps = {
     default: 'md'
   },
   label: String,
-  filterable: {
-    type: Boolean,
-    default: false
-  },
+
   autocomplete: {
     type: String as PropType<'none' | 'both' | 'list' | 'inline'>,
     default: 'none',
   },
   placeholder: String,
   disabled: {
+    type: Boolean,
+    default: false,
+  },
+  readonly: {
     type: Boolean,
     default: false,
   },
@@ -55,6 +56,7 @@ export default defineComponent({
     }
 
     const paneVisible = ref(false);
+    const inputRef = ref<typeof Input>();
     const selectDownRef = ref(null);
     const _value = ref(props.modelValue);
 
@@ -65,7 +67,7 @@ export default defineComponent({
     const computedCls = computed(() => {
       return {
         [prefixCls]: true,
-        [`${prefixCls}-${props.size}`]: props.size,
+        [`${prefixCls}-disabled`]: computedDisabled.value,
       };
     });
 
@@ -97,13 +99,13 @@ export default defineComponent({
 
     const handleControlClick = () => {
       paneVisible.value = true;
+      inputRef.value?.triggerFocus();
     };
-
     const handleFocus = () => {
       paneVisible.value = true;
     };
     const handleBlur = () => {
-      paneVisible.value = false;
+      // paneVisible.value = false;
     };
     const handleInput = (e: any) => {
       _value.value = e.target.value;
@@ -111,7 +113,7 @@ export default defineComponent({
     const handleKeydown = (e: KeyboardEvent): void => {
       switch (e.code) {
         case 'Enter':
-          // console.log('Enter');
+          paneVisible.value = true;
           break;
         case 'ArrowDown':
           // console.log('ArrowDown');
@@ -139,23 +141,22 @@ export default defineComponent({
 
       return (
         <div class={computedCls.value} ref={selectDownRef}>
-          <div class={`${prefixCls}-control`} role="textbox" tabindex={0} onClick={handleControlClick}>
+          <div class={[`${prefixCls}-control`, `${prefixCls}-control-${props.size}`]} role="textbox" tabindex={0} onClick={handleControlClick}>
             {
-              props.multiple && isArray(_value.value) ? <div class={`${prefixCls}-control-multiple`}>
-
+              props.multiple && isArray(_value.value) && <div class={`${prefixCls}-control-multiple`}>
                   {_value.value.map((item: any) => {
                     return <Tag size={props.size} closable>
                       {item}
                     </Tag>;
                   })}
                 </div>
-                : ''}
+            }
             <Input
-              class={[`${prefixCls}-control-input`, props.multiple && `${prefixCls}-control-input-multiple`]}
+              class={`${prefixCls}-control-input`}
               ref="inputRef"
               placeholder={computedPlaceholder.value}
               disabled={computedDisabled.value}
-              readonly={!props.filterable}
+              readonly={props.readonly}
               onFocus={handleFocus}
               onBlur={handleBlur}
               onInput={handleInput}
@@ -175,7 +176,7 @@ export default defineComponent({
             </Input>
           </div>
           <Transition name="slide-toggle">
-            {paneVisible.value && <div
+            { paneVisible.value && <div
               class={{
                 [prefixCls + '-pane']: true,
               }}

@@ -14,8 +14,17 @@ Vue.createApp().use(ESelectDown.name, ESelectDown)
 
 按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
 
-:::code select-downDemo0
-<<< ../src/packages/select-down/demo/demo0.vue
+:::code select-downBase
+<<< ../src/packages/select-down/demo/Base.vue
+:::
+::::
+
+::::card button 类型
+
+按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+
+:::code select-downMultiple
+<<< ../src/packages/select-down/demo/Multiple.vue
 :::
 ::::
 
