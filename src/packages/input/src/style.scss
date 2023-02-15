@@ -11,7 +11,7 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
 
   line-height: 36px;
   border: 1px solid #dcdee0;
-  border-radius: 3px;
+  border-radius: 4px;
   background: none;
   outline: none;
   font-size: 14px;
@@ -26,7 +26,7 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
     border: 1px solid var(--eu-color-primary);
   }
 
-  &-focus {
+  &:focus {
     border: 1px solid var(--eu-color-primary);
     outline: none;
   }

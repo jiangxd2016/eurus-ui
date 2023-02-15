@@ -5,15 +5,26 @@ $select-down-prefix-cls: $prefix + -select-down;
 
 .#{$select-down-prefix-cls} {
   position: relative;
-
   display: inline-block;
-
-  height: auto;
-  width: 100%;
   min-width: 140px;
 
   &-control {
     position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    border: 1px solid #dcdee0;
+    border-radius: 4px;
+    background: none;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10px;
+    transition: border 0.3s;
+    color: #575757;
 
     &-xs {
       min-height: 28px;
@@ -35,10 +46,16 @@ $select-down-prefix-cls: $prefix + -select-down;
       min-height: 44px;
     }
 
-  }
+    &-focus {
+      border: 1px solid var(--eu-color-primary);
+      outline: none;
+    }
 
-  &-control {
-    position: relative;
+    &-input {
+      //display: none;
+      opacity: 0;
+      width: 0;
+    }
 
     .clear-icon {
       cursor: pointer;
@@ -59,29 +76,22 @@ $select-down-prefix-cls: $prefix + -select-down;
       transform: translateY(0) rotate(-180deg);
     }
 
-
-    &-input {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
+    &-single {
       height: 100%;
       width: 100%;
-      padding: 0 10px;
-      line-height: 2;
-      cursor: pointer;
-      box-sizing: border-box;
+
+      padding: 0px 50px 0 10px;
     }
 
-    &-input-readonly {
-      cursor: default;
+    &-placeholder {
+      width: 100%;
+      color: #848b99;
+      pointer-events: none;
+      cursor: text;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-
-    &-input-disabled {
-      cursor: not-allowed;
-    }
-
 
     &-multiple {
       position: relative;
@@ -93,7 +103,7 @@ $select-down-prefix-cls: $prefix + -select-down;
       height: 100%;
       width: 100%;
 
-      padding: 3px 50px 0 10px;
+      padding-top: 3px;
       cursor: pointer;
       box-sizing: border-box;
 
@@ -101,7 +111,6 @@ $select-down-prefix-cls: $prefix + -select-down;
         margin-right: 6px;
         margin-bottom: 3px;
       }
-
     }
   }
 

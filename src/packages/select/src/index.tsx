@@ -13,6 +13,8 @@ export default defineComponent({
 
     const prefixCls = getPrefixCls('select');
 
+    const selectDownRef = ref<typeof SelectDown>();
+
     const _value = ref(props.modelValue);
     const selectItem = (value: any) => {
       if (props.multiple) {
@@ -25,8 +27,14 @@ export default defineComponent({
         } else {
           _value.value = [value];
         }
+
+
       } else {
         _value.value = value;
+
+        selectDownRef.value?.setPaneVisible(false);
+        selectDownRef.value?.setModelValue(value);
+
       }
       emit('update:modelValue', _value.value);
     };
@@ -35,7 +43,7 @@ export default defineComponent({
 
     return () => {
 
-      return <SelectDown class={prefixCls} {...props}>
+      return <SelectDown class={prefixCls} {...props} ref={selectDownRef}>
 
         {slots.default && slots.default()}
 

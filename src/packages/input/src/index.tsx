@@ -91,7 +91,7 @@ export default defineComponent({
       return (props.modelValue ?? _value.value) + '';
     });
     const computedCls = computed(() => {
-      return [wrapperCls, `${wrapperCls}--${size.value}`, props.disabled && `${wrapperCls}--disabled`, isFocus.value && `${wrapperCls}-focus`];
+      return [wrapperCls, `${wrapperCls}--${size.value}`, props.disabled && `${wrapperCls}--disabled`];
     });
 
     const showClearBtn = computed(() => props.clearable && Boolean(computedValue.value));

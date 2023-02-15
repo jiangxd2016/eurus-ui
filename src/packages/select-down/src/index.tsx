@@ -1,10 +1,9 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, ref, Transition, } from 'vue';
+import { computed, defineComponent, nextTick, ref, Transition, watch, } from 'vue';
 import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import Icon from '@/packages/icons';
-import Input from '@/packages/input';
 import { warn } from '@/packages/_utils/warn';
 import { isArray } from '@/packages/_utils/is';
 import Tag from '@/packages/tag';
@@ -48,7 +47,7 @@ export default defineComponent({
   name: 'ESelectDown',
   props: ESelectDownProps,
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'clear', 'input', 'delete'],
-  setup(props, { slots, emit }) {
+  setup(props, { slots, emit, expose }) {
     const prefixCls = getPrefixCls('select-down');
 
     if (!props.multiple && isArray(props.modelValue)) {
@@ -56,9 +55,13 @@ export default defineComponent({
     }
 
     const paneVisible = ref(false);
-    const inputRef = ref<typeof Input>();
-    const selectDownRef = ref(null);
+    const inputRef = ref<HTMLInputElement>();
+    const isFocus = ref(false);
     const _value = ref(props.modelValue);
+
+    watch(() => props.modelValue, (val) => {
+      _value.value = val;
+    });
 
     const computedDisabled = computed(() => {
       return props.disabled;
@@ -71,45 +74,31 @@ export default defineComponent({
       };
     });
 
-    const computedPlaceholder = computed(() => {
+    const computedHasValue = computed(() => {
       if (props.multiple) {
-        return '';
+        if (isArray(props.modelValue) && props.modelValue.length > 0) {
+          return true;
+        }
+        return false;
       }
-      return props.placeholder;
+      if (props.modelValue) {
+        return true;
+      }
+      return false;
     });
 
     const computedCloseVisible = computed(() => {
       if (!props.clear) {
         return false;
       }
-      if (props.multiple) {
-        if (isArray(props.modelValue) && props.modelValue.length === 0) {
-          return false;
-        }
-        if (!isArray(props.modelValue) || !props.modelValue) {
-          return false;
-        }
-      }
-
-      if (!props.multiple && !props.modelValue) {
-        return false;
-      }
-      return true;
+      return computedHasValue.value;
     });
 
     const handleControlClick = () => {
       paneVisible.value = true;
-      inputRef.value?.triggerFocus();
+      inputRef.value?.focus();
     };
-    const handleFocus = () => {
-      paneVisible.value = true;
-    };
-    const handleBlur = () => {
-      // paneVisible.value = false;
-    };
-    const handleInput = (e: any) => {
-      _value.value = e.target.value;
-    };
+
     const handleKeydown = (e: KeyboardEvent): void => {
       switch (e.code) {
         case 'Enter':
@@ -131,52 +120,90 @@ export default defineComponent({
           break;
       }
     };
+    const handleFocus = () => {
+      isFocus.value = true;
+    };
+    const handleBlur = (e: FocusEvent) => {
+      console.log(e.relatedTarget);
+      if ( e.relatedTarget) {
+        inputRef.value?.focus();
+        return;
+      }
+      nextTick(() => {
+        isFocus.value = false;
+        paneVisible.value = false;
+      })
 
+    };
     const handleClearClick = (ev: Event) => {
       ev.stopPropagation();
-      _value.value = [];
+      _value.value = props.multiple && isArray(_value.value) ? [] : undefined;
       emit('update:modelValue', _value.value);
+      emit('clear', _value.value);
     };
-    return () => {
 
+    const setPaneVisible = (visible: boolean) => {
+      paneVisible.value = visible;
+      if (!visible) {
+        isFocus.value = false;
+      }
+    };
+
+    const setModelValue = (value: any) => {
+      inputRef.value?.focus();
+      _value.value = value;
+    };
+
+    expose({
+      setPaneVisible,
+      setModelValue
+    });
+    return () => {
       return (
-        <div class={computedCls.value} ref={selectDownRef}>
-          <div class={[`${prefixCls}-control`, `${prefixCls}-control-${props.size}`]} role="textbox" tabindex={0} onClick={handleControlClick}>
+        <div class={computedCls.value}>
+          <div
+            class={[`${prefixCls}-control`, `${prefixCls}-control-${props.size}`, isFocus.value && `${prefixCls}-control-focus`]}
+            role="listbox" tabindex={0}
+            onClick={handleControlClick} onKeydown={handleKeydown}
+          >
             {
-              props.multiple && isArray(_value.value) && <div class={`${prefixCls}-control-multiple`}>
-                  {_value.value.map((item: any) => {
-                    return <Tag size={props.size} closable>
-                      {item}
-                    </Tag>;
-                  })}
+              computedHasValue.value
+                ? (props.multiple && isArray(_value.value)
+                    ? <div class={`${prefixCls}-control-multiple`}>
+                    {_value.value.map((item: any) => {
+                      return <Tag size={props.size} closable>
+                        {item}
+                      </Tag>;
+                    })}
+                  </div>
+                    : <div class={`${prefixCls}-control-single`}>
+                    {_value.value}
+                  </div>)
+                : <div class={`${prefixCls}-control-placeholder`}>
+                  {props.placeholder}
                 </div>
             }
-            <Input
+            <input
               class={`${prefixCls}-control-input`}
-              ref="inputRef"
-              placeholder={computedPlaceholder.value}
-              disabled={computedDisabled.value}
-              readonly={props.readonly}
+              ref={inputRef}
+              // disabled={true}
               onFocus={handleFocus}
               onBlur={handleBlur}
-              onInput={handleInput}
-              onKeydown={handleKeydown}
-              v-slots={{
-                suffix: () => [computedCloseVisible.value && <Icon
-                  name="close"
-                  class="clear-icon"
-                  size={20}
-                  onClick={handleClearClick}
-                ></Icon>,
-                  <Icon name="chevronDown" class={['down-icon', paneVisible.value && 'translate-icon']} size={20}
-                  ></Icon>
-                ]
-              }}
             >
-            </Input>
+            </input>
+            {
+              computedCloseVisible.value && <Icon
+                name="close"
+                class="clear-icon"
+                size={20}
+                onClick={handleClearClick}
+              ></Icon>}
+            <Icon name="chevronDown" class={['down-icon', paneVisible.value && 'translate-icon']} size={20}
+            ></Icon>
           </div>
+
           <Transition name="slide-toggle">
-            { paneVisible.value && <div
+            {paneVisible.value && <div
               class={{
                 [prefixCls + '-pane']: true,
               }}

@@ -1,5 +1,5 @@
 <template>
-  <ESelectDown v-model="val" :clear="true" placeholder="test----------1">
+  <ESelectDown v-model="val" :clear="true" placeholder="test----------1test----------1test----------1test----------1test----------1test----------1test----------1test----------1test----------1test----------1test----------1test----------1test----------1test----------1test----------1test----------1">
     <p @click="updateSelected(1)">基础用法1</p>
     <p @click="updateSelected(2)">>基础用法1</p>
     <p @click="updateSelected(3)">>基础用法2</p>
@@ -42,9 +42,8 @@ import { ref } from 'vue';
 const val = ref('1');
 
 const updateSelected = (v: any) => {
-  if (!val.value.includes(v)) {
-    val.value.push(v + '');
-  }
+  val.value = v + '';
+  console.log(val.value);
 };
 </script>
 
