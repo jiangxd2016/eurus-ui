@@ -28,6 +28,14 @@ Vue.createApp().use(ESelect.name, ESelect)
 <<< ../src/packages/select/demo/Multiple.vue
 :::
 ::::
+::::card button 类型
+
+按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+
+:::code selectOptions
+<<< ../src/packages/select/demo/Options.vue
+:::
+::::
 
 
 ### ESelect Props

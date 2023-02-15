@@ -1,18 +1,16 @@
-import { computed, defineComponent, inject } from 'vue';
+import { computed, defineComponent, inject, onMounted } from 'vue';
 import './style.scss';
 
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { selectProviderInjectionKey } from '@/packages/_utils/constants';
+import type { SelectOptionItem } from '@/packages/select/src/index';
 
 const EOptionProps = {
   value: {
     type: [String, Number, Boolean, Object],
     default: undefined,
   },
-  selected: {
-    type: Boolean,
-    default: false,
-  },
+
   label: String,
   disabled: {
     type: Boolean,
@@ -30,11 +28,15 @@ export default defineComponent({
 
     const Selected = inject(selectProviderInjectionKey, {});
 
+    onMounted(() => {
+      Selected.setOption && Selected.setOption(props as SelectOptionItem);
+    });
+
     const computedSelected = computed(() => {
       if (Array.isArray(Selected.modelValue)) {
         return Selected.modelValue.includes(props.value);
       } else {
-        return Selected.modelValue === props.value || props.selected;
+        return Selected.modelValue === props.value;
       }
     });
 

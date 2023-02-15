@@ -6,6 +6,7 @@ import { presetAttributify, presetIcons, presetUno, presetWind } from 'unocss';
 import ViteRestart from 'vite-plugin-restart';
 import Inspect from 'vite-plugin-inspect';
 export default defineConfig({
+
   resolve: {
     alias: {
       'eurus-ui/': `${resolve(__dirname, '../dist/es')}/`,

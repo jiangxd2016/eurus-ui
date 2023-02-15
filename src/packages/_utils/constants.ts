@@ -2,6 +2,7 @@ import type { ExtractPropTypes, InjectionKey } from 'vue';
 // import type { EFormProps } from '../form/src';
 import type { Size } from '@/packages/_utils/size';
 import type { ESelectDownProps } from '@/packages/select-down/src';
+import type { SelectOptionItem } from '@/packages/select/src';
 
 export const COMPONENT_PREFIX = 'E';
 export const CLASS_PREFIX = 'eu';
@@ -39,7 +40,7 @@ export interface buttonGroupProviderType {
 export const buttonGroupProviderTypeInjectionKey: InjectionKey<buttonGroupProviderType>
   = Symbol('buttonGroupProvider');
 
-export type SelectCtx = Partial<ExtractPropTypes<typeof ESelectDownProps & { selectItem: (val: any) => void }>>;
+export type SelectCtx = Partial<ExtractPropTypes<typeof ESelectDownProps & { selectItem: (val: any) => void; setOption: (item: SelectOptionItem) => void }>>;
 export const selectProviderInjectionKey: InjectionKey<SelectCtx>
   = Symbol('EurusSelectContextProvider');
 

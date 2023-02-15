@@ -34,12 +34,12 @@ export default defineComponent({
     const prefixCls = getPrefixCls('tag');
     const visible = ref(true);
 
-    const closeClick = () => {
+    const closeClick = (e: Event) => {
       visible.value = false;
-      emit('close');
+      emit('close', e);
     };
-    const tagClick = () => {
-      emit('click');
+    const tagClick = (e: Event) => {
+      emit('click', e);
     };
 
     return () => (
@@ -64,7 +64,7 @@ export default defineComponent({
         {visible.value}
         {slots?.default && slots.default()}
         {props.closable
-          && <span onClick={() => closeClick()} aria-hidden="true" class={`${prefixCls}-icon`}>
+          && <span onClick={closeClick} aria-hidden="true" class={`${prefixCls}-icon`}>
             <EIcon name="close" size={size.value}></EIcon>
           </span>
         }

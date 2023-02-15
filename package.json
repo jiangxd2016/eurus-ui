@@ -46,7 +46,7 @@
     "dev": " pnpm run gen:version && tsx scripts/build.ts dev",
     "build": "pnpm run clean && pnpm run gen:version && tsx scripts/build.ts all",
     "gen:version": "tsx ./scripts/gen-version.ts",
-    "lint": "eslint --cache --fix \"./**/*.{ts,tsx,js,vue}\"",
+    "lint": "eslint --cache --fix \"./**/*.{ts,tsx,vue}\"",
     "build:types": "pnpm run build:types-cjs && pnpm run build:types-esm",
     "build:types-cjs": "vue-tsc -p ./src/tsconfig.cjs.json --declaration --emitDeclarationOnly",
     "build:types-esm": "vue-tsc -p ./src/tsconfig.esm.json --declaration --emitDeclarationOnly",

@@ -4,12 +4,16 @@ import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import Icon from '@/packages/icons';
-import { warn } from '@/packages/_utils/warn';
 import { isArray } from '@/packages/_utils/is';
 import Tag from '@/packages/tag';
+import { stopPropagation } from '@/packages/_utils/shared';
 
 export const ESelectDownProps = {
   modelValue: {
+    type: [Array, String, Number, Boolean, Object],
+    default: undefined,
+  },
+  defaultValue: {
     type: [Array, String, Number, Boolean, Object],
     default: undefined,
   },
@@ -50,14 +54,14 @@ export default defineComponent({
   setup(props, { slots, emit, expose }) {
     const prefixCls = getPrefixCls('select-down');
 
-    if (!props.multiple && isArray(props.modelValue)) {
-      warn('ESelectDown', 'modelValue must be a string or number when multiple is false');
-    }
-
     const paneVisible = ref(false);
+
     const inputRef = ref<HTMLInputElement>();
+    const selectDownRef = ref<HTMLDivElement>();
+
     const isFocus = ref(false);
-    const _value = ref(props.modelValue);
+
+    const _value = ref(props.defaultValue || props.modelValue);
 
     watch(() => props.modelValue, (val) => {
       _value.value = val;
@@ -95,7 +99,9 @@ export default defineComponent({
     });
 
     const handleControlClick = () => {
-      paneVisible.value = true;
+      if (computedDisabled.value) {
+        return;
+      }
       inputRef.value?.focus();
     };
 
@@ -122,17 +128,17 @@ export default defineComponent({
     };
     const handleFocus = () => {
       isFocus.value = true;
+      paneVisible.value = true;
     };
     const handleBlur = (e: FocusEvent) => {
-      console.log(e.relatedTarget);
-      if ( e.relatedTarget) {
+      const target = e.relatedTarget as HTMLElement;
+
+      if (target && selectDownRef.value?.contains(target)) {
         inputRef.value?.focus();
         return;
       }
-      nextTick(() => {
-        isFocus.value = false;
-        paneVisible.value = false;
-      })
+      isFocus.value = false;
+      paneVisible.value = false;
 
     };
     const handleClearClick = (ev: Event) => {
@@ -143,24 +149,41 @@ export default defineComponent({
     };
 
     const setPaneVisible = (visible: boolean) => {
-      paneVisible.value = visible;
-      if (!visible) {
-        isFocus.value = false;
-      }
+      nextTick(() => {
+        paneVisible.value = visible;
+        if (!visible) {
+          isFocus.value = false;
+        }
+      });
     };
 
     const setModelValue = (value: any) => {
-      inputRef.value?.focus();
       _value.value = value;
     };
 
+    const handleTagClose = (e: Event, value: any) => {
+      e.stopPropagation();
+      if (!_value.value || !isArray(_value.value)) {
+        return;
+      }
+      const index = _value.value.indexOf(value);
+      if (index > -1) {
+        _value.value.splice(index, 1);
+      }
+      emit('update:modelValue', value);
+    };
+
+    const handelChevronDownClick = (e: Event) => {
+      e.stopPropagation();
+      paneVisible.value = !paneVisible.value;
+    };
     expose({
       setPaneVisible,
       setModelValue
     });
     return () => {
       return (
-        <div class={computedCls.value}>
+        <div class={computedCls.value} ref={selectDownRef}>
           <div
             class={[`${prefixCls}-control`, `${prefixCls}-control-${props.size}`, isFocus.value && `${prefixCls}-control-focus`]}
             role="listbox" tabindex={0}
@@ -169,9 +192,11 @@ export default defineComponent({
             {
               computedHasValue.value
                 ? (props.multiple && isArray(_value.value)
-                    ? <div class={`${prefixCls}-control-multiple`}>
+                    ? <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0}
+                         onClick={e => e.stopPropagation()}
+                  >
                     {_value.value.map((item: any) => {
-                      return <Tag size={props.size} closable>
+                      return <Tag size={props.size} closable onClose={(e: Event) => handleTagClose(e, item)}>
                         {item}
                       </Tag>;
                     })}
@@ -186,7 +211,6 @@ export default defineComponent({
             <input
               class={`${prefixCls}-control-input`}
               ref={inputRef}
-              // disabled={true}
               onFocus={handleFocus}
               onBlur={handleBlur}
             >
@@ -198,20 +222,20 @@ export default defineComponent({
                 size={20}
                 onClick={handleClearClick}
               ></Icon>}
-            <Icon name="chevronDown" class={['down-icon', paneVisible.value && 'translate-icon']} size={20}
+            <Icon name="chevronDown" onClick={handelChevronDownClick}
+                  class={['down-icon', paneVisible.value && 'translate-icon']} size={20}
             ></Icon>
           </div>
 
           <Transition name="slide-toggle">
-            {paneVisible.value && <div
-              class={{
-                [prefixCls + '-pane']: true,
-              }}
-              onFocus={() => {
+            <div
+              class={`${prefixCls}-pane`}
+              style={{
+                display: paneVisible.value ? 'inline-block' : 'none',
               }}
               role="listbox"
               tabindex={0}
-              onClick={(e: Event) => e.stopPropagation()}
+              onClick={stopPropagation}
             >
               <div class={`${prefixCls}-pane-wrapper`}>
                 <ul class="scroll-pane">
@@ -220,7 +244,7 @@ export default defineComponent({
                 <span class="down-arrow"></span>
               </div>
 
-            </div>}
+            </div>
           </Transition>
         </div>
 

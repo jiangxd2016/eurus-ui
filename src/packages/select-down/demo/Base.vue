@@ -43,7 +43,6 @@ const val = ref('1');
 
 const updateSelected = (v: any) => {
   val.value = v + '';
-  console.log(val.value);
 };
 </script>
 
