@@ -28,7 +28,10 @@ export const ESelectDownProps = {
     type: String as PropType<'none' | 'both' | 'list' | 'inline'>,
     default: 'none',
   },
-  placeholder: String,
+  placeholder: {
+    type: String,
+    default: '请选择',
+  },
   disabled: {
     type: Boolean,
     default: false,
@@ -108,7 +111,7 @@ export default defineComponent({
     const handleKeydown = (e: KeyboardEvent): void => {
       switch (e.code) {
         case 'Enter':
-          paneVisible.value = true;
+          paneVisible.value = !paneVisible.value;
           break;
         case 'ArrowDown':
           // console.log('ArrowDown');
@@ -118,9 +121,13 @@ export default defineComponent({
           break;
         case 'Escape':
           // console.log('Escape');
+          paneVisible.value = false;
+          inputRef.value?.blur();
           break;
         case 'Tab':
           // console.log('Tab');
+          paneVisible.value = false;
+          inputRef.value?.blur();
           break;
         default:
           break;
@@ -195,7 +202,7 @@ export default defineComponent({
                     ? <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0}
                          onClick={e => e.stopPropagation()}
                   >
-                    {_value.value.map((item: any) => {
+                    {_value.value.map((item) => {
                       return <Tag size={props.size} closable onClose={(e: Event) => handleTagClose(e, item)}>
                         {item}
                       </Tag>;

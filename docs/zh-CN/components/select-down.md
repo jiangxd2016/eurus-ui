@@ -10,18 +10,16 @@ import { ESelectDown } from 'eurus-ui';
 
 Vue.createApp().use(ESelectDown.name, ESelectDown)
 ```
-::::card button 类型
+::::card select down 大小
 
-按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+ 分别为  xs、sm、md、lg 和 xl。
 
 :::code select-downBase
 <<< ../src/packages/select-down/demo/Base.vue
 :::
 ::::
 
-::::card button 类型
-
-按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+::::card select down 多选模式
 
 :::code select-downMultiple
 <<< ../src/packages/select-down/demo/Multiple.vue
