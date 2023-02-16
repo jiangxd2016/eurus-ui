@@ -13,12 +13,18 @@ describe('ESelectDown', () => {
       label: '2'
     }
   ];
-  it('ESelectDown snapshot', () => {
-    const wrapper = mount(ESelectDown);
-    expect(wrapper.html()).toMatchSnapshot();
-    wrapper.unmount();
+  it('should work with `size` props', () => {
+    const size = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+    size.forEach((item) => {
+      const wrapper = mount(ESelectDown, {
+        props: {
+          size: item
+        }
+      });
+      expect(wrapper.html()).toMatchSnapshot();
+      wrapper.unmount();
+    });
   });
-
   it('should work with slot and modelValue', () => {
     const wrapper = mount(ESelectDown, {
       props: {
@@ -84,4 +90,23 @@ describe('ESelectDown', () => {
     expect(wrapper.find('.eu-select-down-pane').attributes().style).toBe('display: none;');
     wrapper.unmount();
   });
+
+  it('should work with `disabled | readonly` props', async () => {
+    const wrapper = mount(ESelectDown, {
+      props: {
+        modelValue: '1',
+        placeholder: '请选择',
+        disabled: true,
+        readonly: true
+      },
+      slots: {
+        default: options.map((item) => {
+          return `<li class="select-down-option" value="${item.value}">${item.label}</li>`;
+        })
+      }
+    });
+    expect(wrapper.find('.eu-select-down-control').attributes().disabled).toBe('disabled');
+    expect(wrapper.find('.eu-select-down-control').attributes().readonly).toBe('readonly');
+    wrapper.unmount();
+  })
 });

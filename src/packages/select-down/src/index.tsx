@@ -13,10 +13,6 @@ export const ESelectDownProps = {
     type: [Array, String, Number, Boolean, Object],
     default: undefined,
   },
-  defaultValue: {
-    type: [Array, String, Number, Boolean, Object],
-    default: undefined,
-  },
   width: String,
   size: {
     type: String as PropType<Size>,
@@ -64,7 +60,7 @@ export default defineComponent({
 
     const isFocus = ref(false);
 
-    const _value = ref(props.defaultValue || props.modelValue);
+    const _value = ref( props.modelValue);
 
     watch(() => props.modelValue, (val) => {
       _value.value = val;
@@ -109,6 +105,9 @@ export default defineComponent({
     };
 
     const handleKeydown = (e: KeyboardEvent): void => {
+      if (computedDisabled.value) {
+        return;
+      }
       switch (e.code) {
         case 'Enter':
           paneVisible.value = !paneVisible.value;
@@ -134,10 +133,16 @@ export default defineComponent({
       }
     };
     const handleFocus = () => {
+      if (computedDisabled.value) {
+        return;
+      }
       isFocus.value = true;
       paneVisible.value = true;
     };
     const handleBlur = (e: FocusEvent) => {
+      if (computedDisabled.value) {
+        return;
+      }
       const target = e.relatedTarget as HTMLElement;
 
       if (target && selectDownRef.value?.contains(target)) {
@@ -149,6 +154,9 @@ export default defineComponent({
 
     };
     const handleClearClick = (ev: Event) => {
+      if (computedDisabled.value) {
+        return;
+      }
       ev.stopPropagation();
       _value.value = props.multiple && isArray(_value.value) ? [] : undefined;
       emit('update:modelValue', _value.value);
@@ -169,6 +177,9 @@ export default defineComponent({
     };
 
     const handleTagClose = (e: Event, value: any) => {
+      if (computedDisabled.value) {
+        return;
+      }
       e.stopPropagation();
       if (!_value.value || !isArray(_value.value)) {
         return;
@@ -181,6 +192,9 @@ export default defineComponent({
     };
 
     const handelChevronDownClick = (e: Event) => {
+      if (computedDisabled.value) {
+        return;
+      }
       e.stopPropagation();
       paneVisible.value = !paneVisible.value;
     };
@@ -223,7 +237,7 @@ export default defineComponent({
             >
             </input>
             {
-              computedCloseVisible.value && <Icon
+              computedCloseVisible.value && !computedDisabled.value && <Icon
                 name="close"
                 class="clear-icon"
                 size={20}

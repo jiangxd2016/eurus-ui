@@ -11,33 +11,35 @@ import { ESelect } from 'eurus-ui';
 Vue.createApp().use(ESelect.name, ESelect)
 ```
 
-::::card button 类型
+::::card select 基础用法
 
-按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+size 分别为  分别为  xs、sm、md、lg 和 xl。
 
 :::code selectBase
 <<< ../src/packages/select/demo/Base.vue
 :::
 ::::
 
-::::card button 类型
-
-按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+::::card select 多选模式
 
 :::code selectMultiple
 <<< ../src/packages/select/demo/Multiple.vue
 :::
 ::::
-::::card button 类型
-
-按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
+::::card select option 配置
 
 :::code selectOptions
 <<< ../src/packages/select/demo/Options.vue
 :::
 ::::
 
+::::
+::::card select 可清空
 
+:::code selectClear
+<<< ../src/packages/select/demo/Clear.vue
+:::
+::::
 ### ESelect Props
 
 | 名称 | 类型 | 默认值 | 说明 |

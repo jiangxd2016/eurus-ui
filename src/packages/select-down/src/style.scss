@@ -64,7 +64,7 @@ $select-down-prefix-cls: $prefix + -select-down;
       transition: opacity 0.3s;
     }
 
-    &:hover .clear-icon {
+    &:hover .clear-icon{
       opacity: 1;
     }
 
@@ -115,17 +115,28 @@ $select-down-prefix-cls: $prefix + -select-down;
   }
 
   &-disabled {
+    background-color: #f6f7fa;
+    border-color: #e2e6f0;
+    cursor: not-allowed;
+
+    color: #a8b0bf;
 
     .clear-icon {
       opacity: 0;
     }
 
-    .clear-icon, .down-icon {
-      opacity: 0.5;
+    .#{ $prefix+-tag } {
+      background-color: #f6f7fa;
+      border-color: #e2e6f0;
+      color: #a8b0bf;
     }
 
-    input {
-      cursor: not-allowed;
+    .down-icon{
+      color: #a8b0bf;
+    }
+
+    .#{$select-down-prefix-cls}-control-single {
+      color: #a8b0bf;
     }
   }
 

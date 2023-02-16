@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, provide, reactive, ref, toRefs } from 'vue';
+import { computed, defineComponent, provide, reactive, ref, toRefs, watchEffect } from 'vue';
 import './style.scss';
 
 import Option from './option';
@@ -7,7 +7,7 @@ import SelectDown from '@/packages/select-down';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { selectProviderInjectionKey } from '@/packages/_utils/constants';
 import { ESelectDownProps } from '@/packages/select-down/src';
-import { isArray } from '@/packages/_utils/is';
+import { isArray, } from '@/packages/_utils/is';
 import { warn } from '@/packages/_utils/warn';
 
 export interface SelectOptionItem {
@@ -87,11 +87,19 @@ export default defineComponent({
 
     };
 
+    const handleClear = () => {
+      _value.value = props.multiple ? [] : '';
+      selectDownRef.value?.setModelValue(_value.value);
+      emit('update:modelValue', _value.value);
+      emit('clear');
+    };
+
     provide(selectProviderInjectionKey, reactive({ ...toRefs(props), selectItem, setOption }));
 
     return () => {
       return <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value}
                          onUpdate:modelValue={onUpdateModelValue} ref={selectDownRef}
+                         onClear={handleClear}
       >
         {props.options.length > 0 ? props.options.map((option: any) => {
           return <Option value={option.value} label={option.label} disabled={option.disabled}

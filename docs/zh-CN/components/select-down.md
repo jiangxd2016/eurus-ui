@@ -26,16 +26,36 @@ Vue.createApp().use(ESelectDown.name, ESelectDown)
 :::
 ::::
 
+
+::::card select down 禁用
+
+:::code select-downDisabled
+<<< ../src/packages/select-down/demo/Disabled.vue
+:::
+::::
+
 ### ESelectDown Props
 
 | 名称 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
+| modelValue | any | - | 绑定值 |
+| options | Array | - | 选项 |
+| multiple | Boolean | false | 是否多选 |
+| placeholder | String | 请选择 | 占位符 |
+| disabled | Boolean | false | 是否禁用 |
+| clearable | Boolean | false | 是否可清空 |
+
+### ESelectDown Events
+| 名称 | 参数 | 说明 |
+| --- | --- | --- |
+| change | value | 绑定值改变时触发 |
+  | clear | - | 点击清空按钮时触发 |
 
 
 
 ###  ESelectDown Slots
 
-| 名称    | 参数 | 说明       |
-| ------- | ---- | ---------- |
-| default | -    | 按钮的内容 |
-| icon    | -    | 按钮的图标 |
+| 名称    | 参数 | 说明     |
+| ------- | ---- |--------|
+| default | -    | option |
+

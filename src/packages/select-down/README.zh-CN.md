@@ -26,6 +26,14 @@ Vue.createApp().use(ESelectDown.name, ESelectDown)
 :::
 ::::
 
+
+::::card select down 禁用
+
+:::code select-downDisabled
+<<< ../src/packages/select-down/demo/Disabled.vue
+:::
+::::
+
 ### ESelectDown Props
 
 | 名称 | 类型 | 默认值 | 说明 |
