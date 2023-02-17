@@ -125,12 +125,6 @@ $select-down-prefix-cls: $prefix + -select-down;
       opacity: 0;
     }
 
-    .#{ $prefix+-tag } {
-      background-color: #f6f7fa;
-      border-color: #e2e6f0;
-      color: #a8b0bf;
-    }
-
     .down-icon{
       color: #a8b0bf;
     }

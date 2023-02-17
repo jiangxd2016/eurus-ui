@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, provide, reactive, ref, toRefs, watchEffect } from 'vue';
+import { computed, defineComponent, provide, reactive, ref, toRefs} from 'vue';
 import './style.scss';
 
 import Option from './option';

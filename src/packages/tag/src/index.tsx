@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent } from 'vue';
 import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
@@ -13,6 +13,10 @@ const ETagProps = {
     default: 'default'
   },
   closable: {
+    type: Boolean,
+    default: false
+  },
+  disabled: {
     type: Boolean,
     default: false
   },
@@ -32,10 +36,17 @@ export default defineComponent({
   setup(props, { slots, emit }) {
 
     const prefixCls = getPrefixCls('tag');
-    const visible = ref(true);
+
+    const computedCls = computed(() => {
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}-${props.type}`]: props.type,
+        [`${prefixCls}-${props.size}`]: props.size,
+        [`${prefixCls}-disabled`]: props.disabled,
+      };
+    });
 
     const closeClick = (e: Event) => {
-      visible.value = false;
       emit('close', e);
     };
     const tagClick = (e: Event) => {
@@ -45,23 +56,15 @@ export default defineComponent({
     return () => (
       <span
         role="presentation"
-        aira-hidden={!visible.value}
         aira-label="tag"
-        class={{
-          [prefixCls]: true,
-          [`${prefixCls}-${props.type}`]: props.type,
-          [`${prefixCls}-${props.size}`]: props.size,
-        }}
+        class={computedCls.value}
         style={{
           color: props.color,
           borderColor: props.borderColor,
           backgroundColor: props.bgColor,
-          display: visible.value ? 'inline-flex' : 'none'
-
         }}
         onClick={tagClick.bind(this)}
       >
-        {visible.value}
         {slots?.default && slots.default()}
         {props.closable
           && <span onClick={closeClick} aria-hidden="true" class={`${prefixCls}-icon`}>

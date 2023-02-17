@@ -25,16 +25,13 @@ describe('ETag', () => {
   });
 
   it('should work with `closable` prop', async () => {
-
     const wrapper = mount(ETag, {
       props: {
         closable: true,
       }
     });
-
     await wrapper.find('.eu-tag-icon').trigger('click');
     expect(wrapper.emitted('close')).toBeTruthy();
-    expect(wrapper.find('.eu-tag').attributes('style')).toBe('display: none;');
     wrapper.unmount();
   });
 });

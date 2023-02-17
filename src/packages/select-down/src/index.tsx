@@ -32,10 +32,6 @@ export const ESelectDownProps = {
     type: Boolean,
     default: false,
   },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
   clear: {
     type: Boolean,
     default: false
@@ -101,7 +97,12 @@ export default defineComponent({
       if (computedDisabled.value) {
         return;
       }
-      inputRef.value?.focus();
+      if (paneVisible.value) {
+        inputRef.value?.blur();
+      } else {
+        inputRef.value?.focus();
+
+      }
     };
 
     const handleKeydown = (e: KeyboardEvent): void => {
@@ -177,10 +178,11 @@ export default defineComponent({
     };
 
     const handleTagClose = (e: Event, value: any) => {
+      e.stopPropagation();
+
       if (computedDisabled.value) {
         return;
       }
-      e.stopPropagation();
       if (!_value.value || !isArray(_value.value)) {
         return;
       }
@@ -191,13 +193,6 @@ export default defineComponent({
       emit('update:modelValue', value);
     };
 
-    const handelChevronDownClick = (e: Event) => {
-      if (computedDisabled.value) {
-        return;
-      }
-      e.stopPropagation();
-      paneVisible.value = !paneVisible.value;
-    };
     expose({
       setPaneVisible,
       setModelValue
@@ -217,7 +212,7 @@ export default defineComponent({
                          onClick={e => e.stopPropagation()}
                   >
                     {_value.value.map((item) => {
-                      return <Tag size={props.size} closable onClose={(e: Event) => handleTagClose(e, item)}>
+                      return <Tag size={props.size} closable disabled={computedDisabled.value} onClose={(e: Event) => handleTagClose(e, item)}>
                         {item}
                       </Tag>;
                     })}
@@ -243,7 +238,7 @@ export default defineComponent({
                 size={20}
                 onClick={handleClearClick}
               ></Icon>}
-            <Icon name="chevronDown" onClick={handelChevronDownClick}
+            <Icon name="chevronDown"
                   class={['down-icon', paneVisible.value && 'translate-icon']} size={20}
             ></Icon>
           </div>

@@ -57,7 +57,7 @@ describe('ESelectDown', () => {
         }
       }
     });
-    expect(wrapper.find('.clear-icon"').exists()).toBe(true);
+    expect(wrapper.find('.clear-icon"').exists()).toBeTruthy();
     wrapper.find('.clear-icon').trigger('click');
     expect(wrapper.emitted('update:modelValue')).toBeTruthy();
     expect(modelValue.value).toEqual([]);
@@ -97,7 +97,6 @@ describe('ESelectDown', () => {
         modelValue: '1',
         placeholder: '请选择',
         disabled: true,
-        readonly: true
       },
       slots: {
         default: options.map((item) => {
@@ -105,8 +104,7 @@ describe('ESelectDown', () => {
         })
       }
     });
-    expect(wrapper.find('.eu-select-down-control').attributes().disabled).toBe('disabled');
-    expect(wrapper.find('.eu-select-down-control').attributes().readonly).toBe('readonly');
+    expect(wrapper.classes()).toContain('eu-select-down-disabled');
     wrapper.unmount();
-  })
+  });
 });
