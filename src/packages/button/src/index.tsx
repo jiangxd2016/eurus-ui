@@ -5,7 +5,7 @@ import './style.scss';
 import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { buttonGroupProviderTypeInjectionKey } from '@/packages/_utils/constants';
+import { buttonGroupProviderTypeInjectionKey, configProviderInjectionKey } from '@/packages/_utils/constants';
 
 export type Type =
   | 'default'
@@ -24,7 +24,7 @@ const BtnProps = {
   },
   size: {
     type: String as PropType<Size>,
-    default: 'md',
+    default: '',
   },
   loading: {
     type: Boolean,
@@ -62,8 +62,16 @@ export default defineComponent({
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('button');
 
-    const buttonGroupInject = inject(buttonGroupProviderTypeInjectionKey, {});
-    const { size = props.size } = buttonGroupInject;
+    const buttonGroupInject = inject(buttonGroupProviderTypeInjectionKey, null);
+    const globalConfigInject = inject(configProviderInjectionKey, null);
+
+    // props size > buttonGroup size > globalConfig size
+    const size = computed(() => {
+      const buttonGroupSize = buttonGroupInject?.size;
+      const globalConfigSize = globalConfigInject?.size;
+      return props.size || buttonGroupSize || globalConfigSize || 'md';
+    });
+
     const classNames = computed(() => ({
       disabled: props.disabled || props.loading,
       plain: props.plain,
@@ -81,12 +89,13 @@ export default defineComponent({
     return () => (
       <button
         class={[
-          `${prefixCls}  bg-${props.type} ${prefixCls}--${size} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
+          `${prefixCls}  bg-${props.type} ${prefixCls}--${size.value} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
           classNames.value,
         ]}
-        {...props.native} onClick={handleClick}>
+        {...props.native} onClick={handleClick}
+      >
         {props.loading && (
-          <span class="loading"><EIcon name='loading' size={props.size}></EIcon></span>
+          <span class="loading"><EIcon name="loading" size={size.value}></EIcon></span>
         )}
         {slots?.icon && <span class="inner">{slots.icon?.()}</span>}
         {slots?.default && <span class="inner">{slots.default?.()}</span>}

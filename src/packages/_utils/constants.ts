@@ -4,12 +4,17 @@ import type { Size } from '@/packages/_utils/size';
 import type { ESelectDownProps } from '@/packages/select-down/src';
 import type { SelectOptionItem } from '@/packages/select/src';
 
+export type language = 'zh-cn' | 'en-us';
+
 export const COMPONENT_PREFIX = 'E';
 export const CLASS_PREFIX = 'eu';
 export const GLOBAL_CONFIG_NAME = '$eurus';
 
 export interface ConfigProvider {
   prefixCls?: string;
+  locale: language;
+  size: Size;
+  darkMode: boolean;
 }
 
 export interface CheckboxGroupContext {

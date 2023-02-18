@@ -12,3 +12,8 @@ export * from './switch';
 export * from './select-down';
 export * from './tag';
 export * from './select';
+export * from './date-picker';
+
+export * from './locale';
+export * from './config-provider';
+
