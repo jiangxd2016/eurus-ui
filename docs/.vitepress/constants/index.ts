@@ -79,6 +79,14 @@ export const sidebarCN = [
         text: '标签 tag',
         link: '/zh-CN/components/tag',
       },
+      {
+        text: '日期选择器 date-picker',
+        link: '/zh-CN/components/date-picker',
+      },
+      {
+        text: '配置项 config-provider',
+        link: '/zh-CN/components/config-provider',
+      }
       // {
       //   text: '加载中 loading',
       //   link: '/zh-CN/components/loading',
