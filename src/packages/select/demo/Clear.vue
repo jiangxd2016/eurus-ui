@@ -1,5 +1,5 @@
 <template>
-  <ESelect v-model="vals" clear multiple  :options="options" />
+  <ESelect v-model="vals" clear multiple :options="options" />
 </template>
 
 <script setup lang="ts">

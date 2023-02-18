@@ -12,7 +12,6 @@
 import { ref } from 'vue';
 const vals = ref('1');
 
-
 setTimeout(() => {
   vals.value = '2';
 }, 2000);

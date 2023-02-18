@@ -95,8 +95,6 @@ describe('ESelect', () => {
     expect(wrapper.findComponent(SelectDown).findAll('.eu-select-option-disabled').length).toBe(1);
     expect(wrapper.findComponent(SelectDown).findAll('.eu-select-option-selected').length).toBe(2);
 
-
-
     wrapper.unmount();
 
   });
