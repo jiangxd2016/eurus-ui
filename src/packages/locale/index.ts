@@ -71,7 +71,7 @@ export const useI18n = () => {
     }
     if (isString(temp)) {
       if (args.length > 0) {
-        return temp.replace(/{(\d+)}/g, (sub: string, index: number) => args[index] ?? sub);
+        return temp.replaceAll(/{(\d+)}/g, (sub: string, index: number) => args[index] ?? sub);
       }
 
       return temp;

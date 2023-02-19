@@ -40,8 +40,8 @@ async function updateChangeLog() {
     standardChangelog({}, null, { from: lastCommit, to: 'HEAD' })
       .on('data', (chunk: any) => {
         let changeLogStr = chunk.toString().trim();
-        changeLogStr = changeLogStr.replace(/\(([\d-]+)\)/g, '`$1`');
-        changeLogStr = changeLogStr.replace(/^#\s/g, '## ').trim();
+        changeLogStr = changeLogStr.replaceAll(/\(([\d-]+)\)/g, '`$1`');
+        changeLogStr = changeLogStr.replaceAll(/^#\s/g, '## ').trim();
         data.splice(1, 0, `${changeLogStr}\n`);
       })
       .on('end', resolve);
