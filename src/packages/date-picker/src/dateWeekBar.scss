@@ -1,0 +1,13 @@
+@import '../../../scss//variables.scss';
+
+$date-picker-week-bar-prefix-cls: $prefix + -date-picker-week-bar;
+
+.#{ $date-picker-week-bar-prefix-cls } {
+  th {
+    width: 42px;
+    height: 42px;
+    color: #606266;
+    font-weight: 400;
+    border-bottom: 1px solid #ebeef5;
+  }
+}

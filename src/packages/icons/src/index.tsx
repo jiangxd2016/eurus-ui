@@ -6,10 +6,11 @@ import { warnOnce } from '@/packages/_utils/warn';
 import type { Size } from '@/packages/_utils/size';
 import { getSize } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import type { StringNumber } from '@/packages/_utils/type';
 
 const IconProps = {
   size: {
-    type: [String, Number] as PropType<Size | number>,
+    type: [String, Number] as PropType<Size | number | StringNumber>,
     default: 'md',
   },
   color: String,
@@ -47,7 +48,7 @@ export default defineComponent({
       emit('click', e);
     };
     return () => <span class={prefixCls} role="link" tabindex={0} style={mergeStyles.value}
-                       onClick={handleClick.bind(this) }
+                       onClick={handleClick.bind(this)}
     >
       {IconElement ? IconElement : renderSlot(slots, 'default')}
     </span>;

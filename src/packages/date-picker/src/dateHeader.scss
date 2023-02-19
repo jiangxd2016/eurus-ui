@@ -1,0 +1,32 @@
+@import '../../../scss//variables.scss';
+
+$date-picker-header-prefix-cls: $prefix + -date-picker-header;
+
+.#{ $date-picker-header-prefix-cls } {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+
+  .last-year,
+  .next-month {
+    margin-right: 15px;
+  }
+
+  .arrow-right,
+  .arrow-left {
+    display: flex;
+  }
+
+  .arrow {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.date-picker-footer {
+  text-align: center;
+  cursor: pointer;
+  border-top: 1px solid #eeeeee;
+  padding: 6px 0;
+}
