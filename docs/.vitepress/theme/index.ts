@@ -1,5 +1,4 @@
-import '../style/main.css';
-import '../style/vars.css';
+import "./vars.css"
 
 import 'uno.css';
 import '@unocss/reset/tailwind.css';
