@@ -27,22 +27,27 @@ $select-down-prefix-cls: $prefix + -select-down;
     color: #575757;
 
     &-xs {
+      font-size: 12px;
       min-height: 28px;
     }
 
     &-sm {
+      font-size: 14px;
       min-height: 32px;
     }
 
     &-md {
+      font-size: 14px;
       min-height: 36px;
     }
 
     &-lg {
+      font-size: 16px;
       min-height: 40px;
     }
 
     &-xl {
+      font-size: 18px;
       min-height: 44px;
     }
 
@@ -80,7 +85,7 @@ $select-down-prefix-cls: $prefix + -select-down;
       height: 100%;
       width: 100%;
 
-      padding: 0px 50px 0 10px;
+      padding-right: 30px;
     }
 
     &-placeholder {
@@ -153,7 +158,6 @@ $select-down-prefix-cls: $prefix + -select-down;
       .scroll-pane {
         list-style: none;
         max-height: 248px;
-        padding: 4px;
         overflow-y: auto;
       }
 

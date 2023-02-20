@@ -1,12 +1,12 @@
-import type {PropType} from 'vue';
-import {computed, defineComponent, nextTick, ref, Transition, watch,} from 'vue';
+import type { PropType } from 'vue';
+import { computed, defineComponent, nextTick, ref, Transition, watch, } from 'vue';
 import './style.scss';
-import type {Size} from '@/packages/_utils/size';
-import {getPrefixCls} from '@/packages/_utils/global-config';
+import type { Size } from '@/packages/_utils/size';
+import { getPrefixCls } from '@/packages/_utils/global-config';
 import Icon from '@/packages/icons';
-import {isArray} from '@/packages/_utils/is';
+import { isArray } from '@/packages/_utils/is';
 import Tag from '@/packages/tag';
-import {stopPropagation} from '@/packages/_utils/shared';
+import { stopPropagation } from '@/packages/_utils/shared';
 
 export const ESelectDownProps = {
   modelValue: {
@@ -46,10 +46,10 @@ export default defineComponent({
   name: 'ESelectDown',
   props: ESelectDownProps,
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'clear', 'input', 'delete'],
-  setup(props, {slots, emit, expose}) {
+  setup(props, { slots, emit, expose }) {
     const prefixCls = getPrefixCls('select-down');
 
-    const paneVisible = ref(false);
+    const paneVisible = ref(true);
 
     const inputRef = ref<HTMLInputElement>();
     const selectDownRef = ref<HTMLDivElement>();
@@ -219,7 +219,7 @@ export default defineComponent({
             {
               computedHasValue.value
                 ? (props.multiple && isArray(_value.value)
-                  ? <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0}
+                    ? <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0}
                          onClick={e => e.stopPropagation()}
                   >
                     {_value.value.map((item) => {
@@ -230,7 +230,7 @@ export default defineComponent({
                       </Tag>;
                     })}
                   </div>
-                  : <div class={`${prefixCls}-control-single`}>
+                    : <div class={`${prefixCls}-control-single`}>
                     {_value.value}
                   </div>)
                 : <div class={`${prefixCls}-control-placeholder`}>
