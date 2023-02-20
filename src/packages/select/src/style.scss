@@ -6,9 +6,7 @@ $select-option-prefix-cls: $prefix + -select-option;
 .#{$select-option-prefix-cls} {
 
   list-style: none;
-  height: 25px;
-  line-height: 25px;
-  padding: 0 6px;
+  padding: 4px 10px;
   margin: 0;
   cursor: pointer;
   width: 100%;

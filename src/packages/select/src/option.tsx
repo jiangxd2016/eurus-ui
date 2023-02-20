@@ -51,7 +51,7 @@ export default defineComponent({
         return;
       }
     };
-    const handleClick = (e: Event) => {
+    const handleClick = () => {
       if (props.disabled) {
         return;
       }

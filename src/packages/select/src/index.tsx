@@ -68,10 +68,7 @@ export default defineComponent({
 
       } else {
         _value.value = value;
-        // selectDownRef.value?.setPaneVisible(false);
       }
-
-      selectDownRef.value?.setModelValue(_value.value);
       emit('update:modelValue', _value.value);
     };
 
