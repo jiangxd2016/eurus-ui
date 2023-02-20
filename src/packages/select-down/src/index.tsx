@@ -1,12 +1,12 @@
-import type { PropType } from 'vue';
-import { computed, defineComponent, nextTick, ref, Transition, watch, } from 'vue';
+import type {PropType} from 'vue';
+import {computed, defineComponent, nextTick, ref, Transition, watch,} from 'vue';
 import './style.scss';
-import type { Size } from '@/packages/_utils/size';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import type {Size} from '@/packages/_utils/size';
+import {getPrefixCls} from '@/packages/_utils/global-config';
 import Icon from '@/packages/icons';
-import { isArray } from '@/packages/_utils/is';
+import {isArray} from '@/packages/_utils/is';
 import Tag from '@/packages/tag';
-import { stopPropagation } from '@/packages/_utils/shared';
+import {stopPropagation} from '@/packages/_utils/shared';
 
 export const ESelectDownProps = {
   modelValue: {
@@ -46,7 +46,7 @@ export default defineComponent({
   name: 'ESelectDown',
   props: ESelectDownProps,
   emits: ['update:modelValue', 'change', 'blur', 'focus', 'clear', 'input', 'delete'],
-  setup(props, { slots, emit, expose }) {
+  setup(props, {slots, emit, expose}) {
     const prefixCls = getPrefixCls('select-down');
 
     const paneVisible = ref(false);
@@ -56,7 +56,7 @@ export default defineComponent({
 
     const isFocus = ref(false);
 
-    const _value = ref( props.modelValue);
+    const _value = ref(props.modelValue);
 
     watch(() => props.modelValue, (val) => {
       _value.value = val;
@@ -93,7 +93,9 @@ export default defineComponent({
       return computedHasValue.value;
     });
 
-    const handleControlClick = () => {
+    const handleControlClick = async () => {
+      await nextTick();
+
       if (computedDisabled.value) {
         return;
       }
@@ -101,7 +103,6 @@ export default defineComponent({
         inputRef.value?.blur();
       } else {
         inputRef.value?.focus();
-
       }
     };
 
@@ -165,12 +166,10 @@ export default defineComponent({
     };
 
     const setPaneVisible = (visible: boolean) => {
-      nextTick(() => {
-        paneVisible.value = visible;
-        if (!visible) {
-          isFocus.value = false;
-        }
-      });
+      paneVisible.value = visible;
+      if (!visible) {
+        isFocus.value = false;
+      }
     };
 
     const setModelValue = (value: any) => {
@@ -193,6 +192,18 @@ export default defineComponent({
       emit('update:modelValue', value);
     };
 
+    const handlePanelClick = (e: Event) => {
+      stopPropagation(e);
+      if (computedDisabled.value) {
+        return;
+      }
+      if (props.multiple) {
+        return;
+      }
+      paneVisible.value = false;
+      inputRef.value?.blur();
+    };
+
     expose({
       setPaneVisible,
       setModelValue
@@ -208,16 +219,18 @@ export default defineComponent({
             {
               computedHasValue.value
                 ? (props.multiple && isArray(_value.value)
-                    ? <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0}
+                  ? <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0}
                          onClick={e => e.stopPropagation()}
                   >
                     {_value.value.map((item) => {
-                      return <Tag size={props.size} closable disabled={computedDisabled.value} onClose={(e: Event) => handleTagClose(e, item)}>
+                      return <Tag size={props.size} closable disabled={computedDisabled.value}
+                                  onClose={(e: Event) => handleTagClose(e, item)}
+                      >
                         {item}
                       </Tag>;
                     })}
                   </div>
-                    : <div class={`${prefixCls}-control-single`}>
+                  : <div class={`${prefixCls}-control-single`}>
                     {_value.value}
                   </div>)
                 : <div class={`${prefixCls}-control-placeholder`}>
@@ -251,7 +264,7 @@ export default defineComponent({
               }}
               role="listbox"
               tabindex={0}
-              onClick={stopPropagation}
+              onClick={handlePanelClick}
             >
               <div class={`${prefixCls}-pane-wrapper`}>
                 <ul class="scroll-pane">

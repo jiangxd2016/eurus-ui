@@ -55,10 +55,7 @@ export default defineComponent({
       if (props.disabled) {
         return;
       }
-      e.stopPropagation();
-
       Selected.selectItem && Selected.selectItem(props.value);
-
     };
 
     return () => (
