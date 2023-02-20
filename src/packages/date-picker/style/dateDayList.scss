@@ -1,12 +1,11 @@
-@import '../../../scss//variables.scss';
+@import '../../../scss/variables.scss';
 
-$date-picker-body-prefix-cls: $prefix + -date-picker-body;
+$date-picker-body-prefix-cls: $prefix + -date-picker-day-list;
 
 .#{$date-picker-body-prefix-cls} {
   td {
     position: relative;
-    width: 40px;
-    height: 40px;
+
     color: #606266;
     font-weight: 400;
     text-align: center;
@@ -14,6 +13,10 @@ $date-picker-body-prefix-cls: $prefix + -date-picker-body;
     border: 0;
   }
 
+  .item-value{
+    width: 40px;
+    height: 40px;
+  }
   .disable-item {
     cursor: not-allowed;
     color: #c0c4cc;
@@ -64,7 +67,7 @@ $date-picker-body-prefix-cls: $prefix + -date-picker-body;
       border-radius: 50%;
       background-color: #008c8c;
       position: absolute;
-      bottom: 0;
+      bottom: 8px;
       left: 50%;
       transform: translate(-50%, -50%);
     }

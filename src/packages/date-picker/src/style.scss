@@ -1,45 +1,12 @@
 @import '../../../scss/variables';
 
-@import './dateHeader.scss';
-@import './dateBody.scss';
-@import './dateWeekBar.scss';
+@import '../style/dateWeekBar.scss';
+@import '../style/dateHeader.scss';
+@import '../style/dateDayList';
+@import "../style/dateFooter.scss";
 
 $date-picker-prefix-cls: $prefix + -date-picker;
 $date-picker-pane-prefix-cls: $prefix + -date-picker-pane;
-
-
-$date-picker-header-prefix-cls: $prefix + -date-picker-header;
-$date-picker-body-prefix-cls: $prefix + -date-picker-body;
-$date-picker-footer-prefix-cls: $prefix + -date-picker-footer;
-.#{$date-picker-header-prefix-cls} {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-
-  .last-year,
-  .next-month {
-    margin-right: 15px;
-  }
-
-  .arrow-right,
-  .arrow-left {
-    display: flex;
-  }
-
-  .arrow {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-}
-
-.#{$date-picker-footer-prefix-cls} {
-  text-align: center;
-  cursor: pointer;
-  border-top: 1px solid #eeeeee;
-  padding: 6px 0;
-}
-
 
 .#{$date-picker-prefix-cls} {
   position: relative;
@@ -91,7 +58,6 @@ $date-picker-footer-prefix-cls: $prefix + -date-picker-footer;
     height: 0;
   }
 }
-
 
 .#{$date-picker-pane-prefix-cls}{
   position: absolute;

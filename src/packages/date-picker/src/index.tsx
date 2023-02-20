@@ -57,8 +57,8 @@ export default defineComponent({
 
     const prefixCls = getPrefixCls('date-picker');
 
+    const selectDownRef = ref();
     const _value = ref(props.modelValue);
-    const currentDate = ref<string>('');
     const currentDateList = ref([dayjs(_value.value).year(), dayjs(_value.value).month() + 1]);
     const dateList = ref<datePickerItem[][]>([]);
 
@@ -74,19 +74,24 @@ export default defineComponent({
       return dayjs(_value.value).format('YYYY-MM-DD');
     });
 
-    const setDateListActive = (date: string) => {
+    const setDateListActive = (date: number) => {
+
       dateList.value = dateList.value.map((i: datePickerItem[]) => {
         return i.map((j: datePickerItem) => {
-          j.active = j.date === date;
+          console.log(j.date, dayjs(date).isSame(j.date, 'day'));
+          j.active = dayjs(date).isSame(j.date, 'day');
           return j;
         });
       });
     };
 
-    const dateChange = (date: string) => {
+    const dateChange = (date: number) => {
       emit('change', date);
-      currentDate.value = date;
-      setDateListActive(currentDate.value);
+      emit('update:modelValue', date);
+      _value.value = date;
+      const dateStr = dayjs(_value.value).format('YYYY-MM-DD');
+      selectDownRef.value?.setModelValue(dateStr);
+      setDateListActive(date);
     };
 
     const handleChange = (val: string) => {
@@ -130,14 +135,15 @@ export default defineComponent({
           break;
         case 'today':
           currentDateList.value = [new Date().getFullYear(), new Date().getMonth() + 1];
-          dateChange(dayjs().format('YYYY-MM-DD'));
+
+          dateChange(dayjs().valueOf());
           break;
       }
       getDateList();
     };
 
     return () => (
-      <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value} onUpdate:modelValue={handleChange} onClear={handleClear}>
+      <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value} onUpdate:modelValue={handleChange} onClear={handleClear} ref={selectDownRef}>
         <DateHeader date={currentDateList.value} onDateRangeChange={dateRangeChange}></DateHeader>
         <DateBody list={dateList.value} onDateChange={dateChange} />
         <DateFooter onDateRangeChange={dateRangeChange}></DateFooter>

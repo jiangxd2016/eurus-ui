@@ -10,7 +10,8 @@ export function getFirstMonthDayWeek(month: string) {
 export interface datePickerItem {
   value: number;
   disbled: boolean;
-  date: string;
+  date: number;
+  format: string;
   active?: boolean;
   index: number;
   dot: boolean;
@@ -36,24 +37,27 @@ export function generateDayList([year, month]: number[], disabled: Function): da
     // 上个月需要渲染的td个数，以及对应的值
     if (lastMonthPointer < currentMonthFirstDayWeek) {
       // 上月
+      const date = dayjs(year + '-' + (month - 1) + '-' + (lastMonthCount));
       dayList.unshift({
         value: lastMonthCount--,
         disbled: true,
         hover: false,
         dot: false,
-        date: dayjs(year + '-' + (month - 1) + '-' + (lastMonthCount + 1)).format('YYYY-MM-DD'),
+        date: date.valueOf(),
+        format: date.format('YYYY-MM-DD'),
         index: i,
       });
       lastMonthPointer++;
     } else if (currentMonthPointer <= currentMonthCount) {
       // 当月
-      const date = dayjs(year + '-' + month + '-' + (currentMonthPointer)).format('YYYY-MM-DD');
+      const date = dayjs(year + '-' + month + '-' + (currentMonthPointer));
 
       dayList.push({
         value: currentMonthPointer++,
         disbled: !disabled(date),
         active: false,
-        date,
+        date: date.valueOf(),
+        format: date.format('YYYY-MM-DD'),
         dot:
         new Date().getFullYear() === year
         && new Date().getMonth() + 1 === month
@@ -63,12 +67,14 @@ export function generateDayList([year, month]: number[], disabled: Function): da
       });
     } else {
       // 下月
+      const date = dayjs(year + '-' + (month + 1) + '-' + (nextMonthPointer - 1))
       dayList.push({
         value: nextMonthPointer++,
         disbled: true,
         hover: false,
         dot: false,
-        date: dayjs(year + '-' + (month + 1) + '-' + (nextMonthPointer - 1)).format('YYYY-MM-DD'),
+        date: date.valueOf(),
+        format: date.format('YYYY-MM-DD'),
         index: i,
       });
     }
