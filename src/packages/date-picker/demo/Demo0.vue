@@ -4,6 +4,6 @@
 
 <script setup lang="ts">
 const handleChange = (value: string) => {
-  console.log(value);
+  // console.log(value);
 };
 </script>

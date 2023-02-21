@@ -5,7 +5,7 @@ import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import DateHeader from './DateHeader';
 import DateBody from './DateBody';
-import DateFooter from './DateFooter';
+// import DateFooter from './DateFooter';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import SelectDown from '@/packages/select-down';
 import type { datePickerItem } from '@/packages/_utils/date';
@@ -78,7 +78,6 @@ export default defineComponent({
 
       dateList.value = dateList.value.map((i: datePickerItem[]) => {
         return i.map((j: datePickerItem) => {
-          console.log(j.date, dayjs(date).isSame(j.date, 'day'));
           j.active = dayjs(date).isSame(j.date, 'day');
           return j;
         });
@@ -135,7 +134,6 @@ export default defineComponent({
           break;
         case 'today':
           currentDateList.value = [new Date().getFullYear(), new Date().getMonth() + 1];
-
           dateChange(dayjs().valueOf());
           break;
       }
@@ -146,7 +144,7 @@ export default defineComponent({
       <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value} onUpdate:modelValue={handleChange} onClear={handleClear} ref={selectDownRef}>
         <DateHeader date={currentDateList.value} onDateRangeChange={dateRangeChange}></DateHeader>
         <DateBody list={dateList.value} onDateChange={dateChange} />
-        <DateFooter onDateRangeChange={dateRangeChange}></DateFooter>
+        {/* <DateFooter onDateRangeChange={dateRangeChange}></DateFooter> */}
       </SelectDown>
 
     );

@@ -8,7 +8,6 @@ export const ISSUES = 'https://github.com/jiangxd2016/eurus-ui/issues';
 export const DISCUSSIONS = 'https://github.com/jiangxd2016/eurus-ui/discussions';
 export const CHANGELOG = 'https://github.com/jiangxd2016/eurus-ui/blob/main/CHANGELOG.md';
 
-
 export const sharedConfig = defineConfig({
   title: META_TITLE,
   head: [

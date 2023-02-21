@@ -1,4 +1,4 @@
-import "./vars.css"
+import './vars.css';
 
 import 'uno.css';
 import '@unocss/reset/tailwind.css';

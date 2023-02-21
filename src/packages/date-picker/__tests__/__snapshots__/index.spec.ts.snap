@@ -5,14 +5,14 @@ exports[`EDatePicker > EDatePicker snapshot 1`] = `
       return () =&gt; {};
     }\\">
   <div class=\\"eu-select-down-control eu-select-down-control-md\\" role=\\"listbox\\" tabindex=\\"0\\">
-    <div class=\\"eu-select-down-control-single\\">2023-02-19</div><input class=\\"eu-select-down-control-input\\">
-    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
+    <div class=\\"eu-select-down-control-single\\">2023-02-21</div><input class=\\"eu-select-down-control-input\\">
+    <!----><span class=\\"eu-icon down-icon translate-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"eu-select-down-pane\\" style=\\"display: none;\\" role=\\"listbox\\" tabindex=\\"0\\">
+    <div class=\\"eu-select-down-pane\\" style=\\"display: inline-block;\\" role=\\"listbox\\" tabindex=\\"0\\">
       <div class=\\"eu-select-down-pane-wrapper\\">
         <ul class=\\"scroll-pane\\">
-          <div class=\\"eu-date-picker-header\\">
+          <div class=\\"eu-date-picker-header\\" role=\\"link\\" tabindex=\\"0\\">
             <div class=\\"arrow-left\\"><span class=\\"eu-icon arrow\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 16px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-double-left\\"><path fill=\\"currentColor\\" d=\\"M15.906 4.781 4.687 16l11.22 11.219 1.405-1.438L7.533 16l9.78-9.781zm7 0L11.688 16l11.218 11.219 1.407-1.438L14.53 16l9.781-9.781z\\"></path></svg></span><span class=\\"eu-icon arrow\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 16px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-left\\"><path fill=\\"currentColor\\" d=\\"M10 16 20 6l1.4 1.4-8.6 8.6 8.6 8.6L20 26z\\"></path></svg></span></div>
             <div class=\\"date-content\\">2023-2</div>
             <div class=\\"arrow-right\\"><span class=\\"eu-icon arrow\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 16px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-right\\"><path fill=\\"currentColor\\" d=\\"M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z\\"></path></svg></span><span class=\\"eu-icon arrow\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 16px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-double-right\\"><path fill=\\"currentColor\\" d=\\"M9.094 4.781 7.688 6.22l9.78 9.78-9.78 9.781 1.406 1.438L20.313 16zm7 0L14.687 6.22 24.47 16l-9.782 9.781 1.407 1.438L27.312 16z\\"></path></svg></span></div>
@@ -33,7 +33,6 @@ exports[`EDatePicker > EDatePicker snapshot 1`] = `
               <tbody class=\\"eu-date-picker-day-list\\"></tbody>
             </table>
           </div>
-          <div class=\\"eu-date-picker-footer\\" role=\\"button\\" tabindex=\\"0\\">今天</div>
         </ul><span class=\\"down-arrow\\"></span>
       </div>
     </div>

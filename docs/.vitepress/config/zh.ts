@@ -1,17 +1,17 @@
-import type {DefaultTheme, LocaleSpecificConfig} from 'vitepress';
-import {version} from '../../../package.json';
-import {CHANGELOG, DISCUSSIONS, ISSUES, META_TITLE, META_URL, RELEASES} from './shared';
+import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress';
+import { version } from '../../../package.json';
+import { CHANGELOG, DISCUSSIONS, ISSUES, META_TITLE, META_URL, RELEASES } from './shared';
 
 export const META_DESCRIPTION = '简单易用的Vue UI组件库';
 
 export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
   description: META_DESCRIPTION,
   head: [
-    ['meta', {property: 'og:url', content: META_URL}],
-    ['meta', {property: 'og:description', content: META_DESCRIPTION}],
-    ['meta', {property: 'twitter:url', content: META_URL}],
-    ['meta', {property: 'twitter:title', content: META_TITLE}],
-    ['meta', {property: 'twitter:description', content: META_DESCRIPTION}],
+    ['meta', { property: 'og:url', content: META_URL }],
+    ['meta', { property: 'og:description', content: META_DESCRIPTION }],
+    ['meta', { property: 'twitter:url', content: META_URL }],
+    ['meta', { property: 'twitter:title', content: META_TITLE }],
+    ['meta', { property: 'twitter:description', content: META_DESCRIPTION }],
   ],
 
   themeConfig: {
@@ -30,11 +30,11 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     },
 
     nav: [
-      {text: '组件', link: '/zh/components/button'},
-      {text: '导航', link: '/zh/guider/quick-start'},
-      {text: `v${version}`, items: [{text: 'Release Notes', link: RELEASES,}]},
+      { text: '组件', link: '/zh/components/button' },
+      { text: '导航', link: '/zh/guider/quick-start' },
+      { text: `v${version}`, items: [{ text: 'Release Notes', link: RELEASES, }] },
       {
-        text: '相关链接', items: [{text: '论坛', link: DISCUSSIONS,}, {text: '更新日志', link: CHANGELOG,},
+        text: '相关链接', items: [{ text: '论坛', link: DISCUSSIONS, }, { text: '更新日志', link: CHANGELOG, },
         ],
       },
     ],

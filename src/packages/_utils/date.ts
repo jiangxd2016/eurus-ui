@@ -67,7 +67,7 @@ export function generateDayList([year, month]: number[], disabled: Function): da
       });
     } else {
       // 下月
-      const date = dayjs(year + '-' + (month + 1) + '-' + (nextMonthPointer - 1))
+      const date = dayjs(year + '-' + (month + 1) + '-' + (nextMonthPointer - 1));
       dayList.push({
         value: nextMonthPointer++,
         disbled: true,
