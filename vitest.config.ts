@@ -20,7 +20,7 @@ export default defineConfig({
     },
     coverage: {
       provider: 'c8',
-      exclude: ['index.ts'],
+      exclude: ['docs/**/*', 'script/**/*'],
       reporter: ['text', 'json', 'html'],
     },
     globals: true,

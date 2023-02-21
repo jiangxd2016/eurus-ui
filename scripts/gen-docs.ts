@@ -21,7 +21,7 @@ const PACKAGES_PATH = path.resolve(
 
 export const componentEntry = readDirName(PACKAGES_PATH);
 
-function genDocs(lang = 'zh-CN') {
+function genDocs(lang = 'zh') {
   const descDir = path.resolve(
     process.cwd(),
     `docs/${lang}/`
@@ -37,7 +37,7 @@ function genDocs(lang = 'zh-CN') {
   fs.copyFileSync(
     path.resolve(
       process.cwd(),
-      lang === 'zh-CN' ? 'README.zh-CN.md' : 'README.md'
+      lang === 'zh' ? 'README.zh-CN.md' : 'README.md'
     ),
     path.resolve(descDir, 'guider/quick-start.md')
   );
@@ -47,14 +47,14 @@ function genDocs(lang = 'zh-CN') {
       path.resolve(
         PACKAGES_PATH,
         item,
-        lang === 'zh-CN' ? 'README.zh-CN.md' : 'README.md'
+        lang === 'zh' ? 'README.zh.md' : 'README.md'
       )
     )
       && fs.copyFileSync(
         path.resolve(
           PACKAGES_PATH,
           item,
-          lang === 'zh-CN' ? 'README.zh-CN.md' : 'README.md'
+          lang === 'zh' ? 'README.zh.md' : 'README.md'
         ),
         path.resolve(descDir, 'components/' + item + '.md')
       );
@@ -62,4 +62,4 @@ function genDocs(lang = 'zh-CN') {
 }
 
 genDocs();
-genDocs('en-US');
+genDocs('en');
