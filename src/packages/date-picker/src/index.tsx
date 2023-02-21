@@ -1,11 +1,11 @@
 import type { PropType } from 'vue';
-import { onMounted, computed, defineComponent, ref } from 'vue';
+import { onMounted, computed, defineComponent, ref, unref } from 'vue';
 import './style.scss';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import DateHeader from './DateHeader';
 import DateBody from './DateBody';
-// import DateFooter from './DateFooter';
+import DateFooter from './DateFooter';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import SelectDown from '@/packages/select-down';
 import type { datePickerItem } from '@/packages/_utils/date';
@@ -75,13 +75,15 @@ export default defineComponent({
     });
 
     const setDateListActive = (date: number) => {
-
       dateList.value = dateList.value.map((i: datePickerItem[]) => {
-        return i.map((j: datePickerItem) => {
+        const t = i.map((j: datePickerItem) => {
           j.active = dayjs(date).isSame(j.date, 'day');
           return j;
         });
+        return t;
       });
+      console.log(unref(dateList.value));
+
     };
 
     const dateChange = (date: number) => {
@@ -105,7 +107,6 @@ export default defineComponent({
       emit('change', '');
     };
 
-    // 头部年月切换
     const dateRangeChange = (type: string) => {
 
       const [year, month] = currentDateList.value;
@@ -135,16 +136,16 @@ export default defineComponent({
         case 'today':
           currentDateList.value = [new Date().getFullYear(), new Date().getMonth() + 1];
           dateChange(dayjs().valueOf());
-          break;
+          return;
       }
       getDateList();
     };
 
     return () => (
-      <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value} onUpdate:modelValue={handleChange} onClear={handleClear} ref={selectDownRef}>
+      <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value} scrollPane={false} onUpdate:modelValue={handleChange} onClear={handleClear} ref={selectDownRef}>
         <DateHeader date={currentDateList.value} onDateRangeChange={dateRangeChange}></DateHeader>
         <DateBody list={dateList.value} onDateChange={dateChange} />
-        {/* <DateFooter onDateRangeChange={dateRangeChange}></DateFooter> */}
+        <DateFooter onDateRangeChange={dateRangeChange}></DateFooter>
       </SelectDown>
 
     );

@@ -6,7 +6,7 @@ $date-picker-header-prefix-cls: $prefix + -date-picker-header;
 .#{ $date-picker-header-prefix-cls } {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0 ;
+  padding: 6px 10px;
 
   .last-year,
   .next-month {
@@ -23,5 +23,11 @@ $date-picker-header-prefix-cls: $prefix + -date-picker-header;
     align-items: center;
     cursor: pointer;
   }
+
+  .date-content{
+    font-weight: 500;
+    font-size: 14px;
+  }
+
 }
 

@@ -1,22 +1,38 @@
 @import '../../../scss/variables.scss';
 
-$date-picker-body-prefix-cls: $prefix + -date-picker-day-list;
+$date-picker-dayList-prefix-cls: $prefix + -date-picker-day-list;
+
+$date-picker-body-prefix-cls: $prefix + -date-picker-body;
 
 .#{$date-picker-body-prefix-cls} {
+
+  padding: 0 16px 4px;
+
+}
+
+.#{$date-picker-dayList-prefix-cls} {
   td {
     position: relative;
 
-    color: #606266;
+    color: #282c33;
     font-weight: 400;
     text-align: center;
     cursor: pointer;
     border: 0;
   }
 
-  .item-value{
-    width: 40px;
-    height: 40px;
+  .item-value {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 50%;
+    background-color: transparent;
+    outline: 0;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
   }
+
   .disable-item {
     cursor: not-allowed;
     color: #c0c4cc;
@@ -26,35 +42,14 @@ $date-picker-body-prefix-cls: $prefix + -date-picker-day-list;
   .day-item.active {
     .item-value {
       color: #ffffff;
-      min-width: 24px;
-      height: 24px;
-      width: 24px;
-      font-size: 14px;
-      line-height: 24px;
-      margin: 0 auto;
-      text-align: center;
-      border-radius: 50%;
-      cursor: pointer;
       background-color: $bg-color-primary;
       transition: background-color 0.1s cubic-bezier(0, 0, 1, 1);
     }
   }
 
-  .day-item.active-click {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    color: #ffffff;
-    background-color: #008c8c;
-  }
-
-  .day-item.date-hover {
+  .day-item:hover {
     .item-value {
-      height: 30px;
-      line-height: 30px;
-      color: #ffffff;
-      background-color: rgb(7 207 207 / 50%);
+      background-color: #f6f7fa;
     }
   }
 
@@ -65,9 +60,9 @@ $date-picker-body-prefix-cls: $prefix + -date-picker-day-list;
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background-color: #008c8c;
+      background-color: $bg-color-primary;
       position: absolute;
-      bottom: 8px;
+      bottom: 0;
       left: 50%;
       transform: translate(-50%, -50%);
     }

@@ -153,10 +153,14 @@ $select-down-prefix-cls: $prefix + -select-down;
     &-wrapper {
       position: relative;
       border: 1px solid $border-color-base;
-      box-shadow: $box-shadow-base;
+      box-shadow: $select-down-pane-shadow;
 
-      .scroll-pane {
+      .pane {
         list-style: none;
+
+      }
+
+      .scroll{
         max-height: 248px;
         overflow-y: auto;
       }

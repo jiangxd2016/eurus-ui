@@ -39,6 +39,10 @@ export const ESelectDownProps = {
   multiple: {
     type: Boolean,
     default: false
+  },
+  scrollPane: {
+    type: Boolean,
+    default: true
   }
 };
 
@@ -267,7 +271,7 @@ export default defineComponent({
               onClick={handlePanelClick}
             >
               <div class={`${prefixCls}-pane-wrapper`}>
-                <ul class="scroll-pane">
+                <ul class={['pane',props.scrollPane && 'scroll']}>
                   {slots.default && slots.default()}
                 </ul>
                 <span class="down-arrow"></span>

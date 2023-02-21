@@ -9,7 +9,7 @@ export function getFirstMonthDayWeek(month: string) {
 
 export interface datePickerItem {
   value: number;
-  disbled: boolean;
+  disabled: boolean;
   date: number;
   format: string;
   active?: boolean;
@@ -40,7 +40,7 @@ export function generateDayList([year, month]: number[], disabled: Function): da
       const date = dayjs(year + '-' + (month - 1) + '-' + (lastMonthCount));
       dayList.unshift({
         value: lastMonthCount--,
-        disbled: true,
+        disabled: true,
         hover: false,
         dot: false,
         date: date.valueOf(),
@@ -54,7 +54,7 @@ export function generateDayList([year, month]: number[], disabled: Function): da
 
       dayList.push({
         value: currentMonthPointer++,
-        disbled: !disabled(date),
+        disabled: !disabled(date),
         active: false,
         date: date.valueOf(),
         format: date.format('YYYY-MM-DD'),
@@ -70,7 +70,7 @@ export function generateDayList([year, month]: number[], disabled: Function): da
       const date = dayjs(year + '-' + (month + 1) + '-' + (nextMonthPointer - 1));
       dayList.push({
         value: nextMonthPointer++,
-        disbled: true,
+        disabled: true,
         hover: false,
         dot: false,
         date: date.valueOf(),

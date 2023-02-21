@@ -1,4 +1,4 @@
-import { defineComponent, ref, toRefs } from 'vue';
+import {defineComponent, ref, toRefs} from 'vue';
 import type { PropType } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import type { datePickerItem } from '@/packages/_utils/date';
@@ -20,6 +20,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('date-picker-day-list');
     const { list } = toRefs(props);
 
+
     const currentDay = ref(-1);
     // 处理天的表格点击，触发关闭时间控件面板，设置时间input的值
     const handleDayClick = (item: datePickerItem) => {
@@ -36,17 +37,16 @@ export default defineComponent({
     return () => (
       <tbody class={prefixCls}>
       {
-      list.value.map((item: datePickerItem[], index: number) => {
-        return <tr key={index}>
+      list.value.map((item: datePickerItem[], idx: number) => {
+        return <tr key={idx}>
             {
               item.map((subItem: datePickerItem, index: number) => {
                 return <td
-                  key={index} class={[
-                    subItem.disbled ? 'disable-item' : 'day-item',
+                  key={index}
+                  class={[
+                    subItem.disabled ? 'disable-item' : 'day-item',
                     subItem.active ? 'active' : '',
                     subItem.dot ? 'dot' : '',
-                    subItem.hover && !subItem.active ? 'date-hover' : '',
-                    subItem.index === currentDay.value ? 'active' : '',
                   ]}
                   role="gridcell"
                   onMouseenter={() => handleDayHover(subItem)}
