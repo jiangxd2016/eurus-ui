@@ -1,0 +1,69 @@
+@import '../../../scss/variables';
+
+$divider-prefix-cls: $prefix + -divider;
+
+.#{$divider-prefix-cls} {
+  position: relative;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: color .3s cubic-bezier(0.4, 0, 0.2, 1), background-color .3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  + &-vertical {
+    display: inline-block;
+    height: 1em;
+    margin: 0 8px;
+    vertical-align: middle;
+    width: 1px;
+    line-height: 1.6;
+    min-width: 1px;
+    max-width: 1px;
+    bottom: 1px;
+    border-left: 1px solid $border-color-base;
+  }
+
+  + &-horizontal {
+    clear: both;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+    border-bottom: 1px solid $border-color-base;
+
+    + .#{$divider-prefix-cls}-text {
+      margin: 20px 0;
+    }
+  }
+
+  &-dashed {
+    border-style: dashed;
+  }
+
+
+  &-text {
+    position: absolute;
+    top: 50%;
+    box-sizing: border-box;
+    padding: 0 16px;
+    color: #000000;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2;
+    background: #fff;
+    transform: translateY(-50%);
+
+    &-left {
+      left: 24px;
+    }
+
+    &-right {
+      left: 24px;
+    }
+
+    &-center {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

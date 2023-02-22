@@ -116,6 +116,10 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           {
             text: '配置项 config-provider',
             link: '/zh/components/config-provider',
+          },
+          {
+            text: '分割线 divider',
+            link: '/zh/components/divider',
           }
           // {
           //   text: '加载中 loading',

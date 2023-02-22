@@ -15,5 +15,6 @@ export * from './select';
 export * from './date-picker';
 
 export * from './locale';
+export * from './divider';
 export * from './config-provider';
 

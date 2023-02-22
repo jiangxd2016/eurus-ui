@@ -47,14 +47,14 @@ function genDocs(lang = 'zh') {
       path.resolve(
         PACKAGES_PATH,
         item,
-        lang === 'zh' ? 'README.zh.md' : 'README.md'
+        lang === 'zh' ? 'README.zh-CN.md' : 'README.md'
       )
     )
       && fs.copyFileSync(
         path.resolve(
           PACKAGES_PATH,
           item,
-          lang === 'zh' ? 'README.zh.md' : 'README.md'
+          lang === 'zh' ? 'README.zh-CN.md' : 'README.md'
         ),
         path.resolve(descDir, 'components/' + item + '.md')
       );
