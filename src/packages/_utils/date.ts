@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import useLocaleTransform from '@/packages/_hooks/localeTransform';
 export function getCurrentMonthCount(month: string) {
   return dayjs(month).daysInMonth();
 }
@@ -93,4 +94,59 @@ export function generateDayList([year, month]: number[], disabled: Function): da
     index++;
   }
   return result;
+}
+
+export function generateMonthList([year, month]: number[], disabled: Function): datePickerItem[][] {
+  const t = useLocaleTransform();
+  const monthListStr = [
+    t('datePicker.month.short.January'),
+    t('datePicker.month.short.February'),
+    t('datePicker.month.short.March'),
+    t('datePicker.month.short.April'),
+    t('datePicker.month.short.May'),
+    t('datePicker.month.short.June'),
+    t('datePicker.month.short.July'),
+    t('datePicker.month.short.August'),
+    t('datePicker.month.short.September'),
+    t('datePicker.month.short.October'),
+    t('datePicker.month.short.November'),
+    t('datePicker.month.short.December')
+  ];
+
+  const monthList = [];
+  for (let i = 1; i <= 12; i++) {
+    const date = dayjs(year + '-' + i + '-' + 1);
+    monthList.push({
+      value: i,
+      disabled: !disabled(date),
+      active: false,
+      date: date.valueOf(),
+      format: monthListStr[i - 1],
+      dot: month === i,
+      hover: false,
+      index: i - 1,
+    });
+  }
+
+  const result = [];
+  let index = 1;
+  let i = 0;
+  while (index <= 4) {
+    const arr = [];
+    for (let j = 0; j < 3; j++) {
+      arr.push(monthList[i]);
+      i++;
+    }
+    result.push(arr);
+    index++;
+  }
+  return result;
+}
+
+export function generateList(type: 'date' | 'month' | 'range', [year, month]: number[], disabled: Function) {
+  if (type === 'date') {
+    return generateDayList([year, month], disabled);
+  } else {
+    return generateMonthList([year, month], disabled);
+  }
 }

@@ -25,7 +25,7 @@ $date-picker-body-prefix-cls: $prefix + -date-picker-body;
     width: 32px;
     height: 32px;
     line-height: 32px;
-    border-radius: 50%;
+    border-radius: 4px;
     background-color: transparent;
     outline: 0;
     font-size: 14px;
@@ -47,7 +47,7 @@ $date-picker-body-prefix-cls: $prefix + -date-picker-body;
     }
   }
 
-  .day-item:hover {
+  .day-item:hover,.hover {
     .item-value {
       background-color: #f6f7fa;
     }

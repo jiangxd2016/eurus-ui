@@ -1,15 +1,16 @@
-import type { PropType } from 'vue';
-import { onMounted, computed, defineComponent, ref, unref } from 'vue';
+import type { PropType, VNode } from 'vue';
+import { onMounted, computed, defineComponent, ref } from 'vue';
 import './style.scss';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import DateHeader from './DateHeader';
 import DateBody from './DateBody';
 import DateFooter from './DateFooter';
+import Month from './month';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import SelectDown from '@/packages/select-down';
 import type { datePickerItem } from '@/packages/_utils/date';
-import { generateDayList } from '@/packages/_utils/date';
+import { generateList } from '@/packages/_utils/date';
 import { ESelectDownProps } from '@/packages/select-down/src';
 
 export type dateType = Date | string | number | Dayjs;
@@ -17,7 +18,7 @@ export type dateType = Date | string | number | Dayjs;
 const EDatePickerProps = {
   ...ESelectDownProps,
   type: {
-    type: String as PropType<'date' | 'month' | 'year' | 'range'>,
+    type: String as PropType<'date' | 'month' | 'range'>,
     default: 'date',
   },
   placeholder: {
@@ -45,7 +46,8 @@ const EDatePickerProps = {
   disabledDate: {
     type: Function as PropType<(date: string) => boolean>,
     default() {
-      return () => { };
+      return () => {
+      };
     }
   }
 };
@@ -57,13 +59,15 @@ export default defineComponent({
 
     const prefixCls = getPrefixCls('date-picker');
 
+    const formatRule = props.type === 'month' ? 'YYYY-MM' : 'YYYY-MM-DD';
+
     const selectDownRef = ref();
     const _value = ref(props.modelValue);
     const currentDateList = ref([dayjs(_value.value).year(), dayjs(_value.value).month() + 1]);
     const dateList = ref<datePickerItem[][]>([]);
 
     const getDateList = () => {
-      dateList.value = generateDayList(currentDateList.value, props.disabledDate);
+      dateList.value = generateList(props.type, currentDateList.value, props.disabledDate);
     };
 
     onMounted(() => {
@@ -71,7 +75,7 @@ export default defineComponent({
     });
 
     const computedLabel = computed(() => {
-      return dayjs(_value.value).format('YYYY-MM-DD');
+      return dayjs(_value.value).format(formatRule);
     });
 
     const setDateListActive = (date: number) => {
@@ -82,7 +86,6 @@ export default defineComponent({
         });
         return t;
       });
-      console.log(unref(dateList.value));
 
     };
 
@@ -90,7 +93,7 @@ export default defineComponent({
       emit('change', date);
       emit('update:modelValue', date);
       _value.value = date;
-      const dateStr = dayjs(_value.value).format('YYYY-MM-DD');
+      const dateStr = dayjs(_value.value).format(formatRule);
       selectDownRef.value?.setModelValue(dateStr);
       setDateListActive(date);
     };
@@ -141,13 +144,29 @@ export default defineComponent({
       getDateList();
     };
 
-    return () => (
-      <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value} scrollPane={false} onUpdate:modelValue={handleChange} onClear={handleClear} ref={selectDownRef}>
-        <DateHeader date={currentDateList.value} onDateRangeChange={dateRangeChange}></DateHeader>
-        <DateBody list={dateList.value} onDateChange={dateChange} />
-        <DateFooter onDateRangeChange={dateRangeChange}></DateFooter>
-      </SelectDown>
+    return () => {
+      let Range: VNode[] = [];
+      switch (props.type) {
+        case 'date':
+          Range = [
+            <DateHeader date={currentDateList.value} onDateRangeChange={dateRangeChange}></DateHeader>,
+            <DateBody list={dateList.value} onDateChange={dateChange}/>,
+            <DateFooter onDateRangeChange={dateRangeChange}></DateFooter>,
+          ];
+          break;
+        case 'month':
+          Range = [
+            <DateHeader date={currentDateList.value} type={props.type} onDateRangeChange={dateRangeChange}></DateHeader>,
+            <Month list={dateList.value} onDateChange={dateChange}></Month>
+          ];
 
-    );
+      }
+      return <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value} scrollPane={false}
+                         onUpdate:modelValue={handleChange} onClear={handleClear} ref={selectDownRef}
+      >
+        {Range}
+      </SelectDown>;
+    };
+
   },
 });

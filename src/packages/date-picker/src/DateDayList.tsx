@@ -47,6 +47,7 @@ export default defineComponent({
                     subItem.disabled ? 'disable-item' : 'day-item',
                     subItem.active ? 'active' : '',
                     subItem.dot ? 'dot' : '',
+                    subItem.hover ? 'hover' : '',
                   ]}
                   role="gridcell"
                   onMouseenter={() => handleDayHover(subItem)}

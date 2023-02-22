@@ -1,0 +1,39 @@
+@import '../../../scss/variables.scss';
+
+$date-picker-calendar-prefix-cls: $prefix + -date-picker-calendar;
+
+.#{ $date-picker-calendar-prefix-cls } {
+
+  padding: 10px;
+  border-spacing: 0 20px;
+  width: 240px;
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+  td{
+    width: 33.33%;
+    height: 32px;
+    font-size: 14px;
+    border-radius: 4px;
+    line-height: 32px;
+    cursor: pointer;
+    padding: 0 8px;
+
+    &:hover {
+      background-color: #f6f7fa;
+    }
+
+    &.calendar-date-select {
+      background: $primary;
+      color: #fff;
+    }
+
+    &.calendar-date-disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      color: #999
+    }
+  }
+}
