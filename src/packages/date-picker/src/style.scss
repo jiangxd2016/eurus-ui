@@ -6,9 +6,10 @@
 @import "../style/dateFooter.scss";
 
 @import '../style/dateMonth.scss';
+@import '../style/dateRange.scss';
 
 $date-picker-prefix-cls: $prefix + -date-picker;
-$date-picker-pane-prefix-cls: $prefix + -date-picker-pane;
+$date-picker-panel-prefix-cls: $prefix + -date-picker-panel;
 
 .#{$date-picker-prefix-cls} {
   position: relative;
@@ -71,7 +72,7 @@ $date-picker-pane-prefix-cls: $prefix + -date-picker-pane;
   }
 }
 
-.#{$date-picker-pane-prefix-cls}{
+.#{$date-picker-panel-prefix-cls}{
   position: absolute;
   left: 0;
   top: 50px;

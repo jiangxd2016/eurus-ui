@@ -1,7 +1,8 @@
 <template>
   <EDatePicker @change="handleChange" />
 
-  <EDatePicker @change="handleChange"  type="month"/>
+  <EDatePicker type="month" @change="handleChange" />
+  <EDatePicker type="range" @change="handleChange" />
 </template>
 
 <script setup lang="ts">

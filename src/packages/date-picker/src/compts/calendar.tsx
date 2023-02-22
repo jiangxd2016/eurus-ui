@@ -14,7 +14,7 @@ const CalendarProps = {
       };
     }
   },
-  pane: {
+  panel: {
     type: String as PropType<'month' | 'year'>,
     default: 'month',
   },
@@ -30,7 +30,7 @@ export default defineComponent({
   name: 'Calendar',
   props: CalendarProps,
   emits: ['dateChange'],
-  setup(props,{emit}) {
+  setup(props, { emit }) {
 
     const prefixCls = getPrefixCls('date-picker-calendar');
 

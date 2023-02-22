@@ -1,4 +1,4 @@
-import {defineComponent, ref, toRefs} from 'vue';
+import { defineComponent, ref, toRefs } from 'vue';
 import type { PropType } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import type { datePickerItem } from '@/packages/_utils/date';
@@ -19,7 +19,6 @@ export default defineComponent({
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('date-picker-day-list');
     const { list } = toRefs(props);
-
 
     const currentDay = ref(-1);
     // 处理天的表格点击，触发关闭时间控件面板，设置时间input的值

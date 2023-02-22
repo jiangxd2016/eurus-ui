@@ -1,5 +1,11 @@
 import dayjs from 'dayjs';
+import type { Ref } from 'vue';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
+
+const isBetween = (value: typeof dayjs, left: number, right: number) => {
+  return dayjs(value).isBefore(dayjs(right)) && dayjs(value).isAfter(dayjs(left));
+};
+
 export function getCurrentMonthCount(month: string) {
   return dayjs(month).daysInMonth();
 }
@@ -60,9 +66,9 @@ export function generateDayList([year, month]: number[], disabled: Function): da
         date: date.valueOf(),
         format: date.format('YYYY-MM-DD'),
         dot:
-        new Date().getFullYear() === year
-        && new Date().getMonth() + 1 === month
-        && currentMonthPointer - 1 === new Date().getDate(),
+          new Date().getFullYear() === year
+          && new Date().getMonth() + 1 === month
+          && currentMonthPointer - 1 === new Date().getDate(),
         hover: false,
         index: i,
       });
@@ -143,10 +149,21 @@ export function generateMonthList([year, month]: number[], disabled: Function): 
   return result;
 }
 
-export function generateList(type: 'date' | 'month' | 'range', [year, month]: number[], disabled: Function) {
-  if (type === 'date') {
-    return generateDayList([year, month], disabled);
-  } else {
-    return generateMonthList([year, month], disabled);
-  }
-}
+export const setDateRangeListActive = (date: (string | number)[], list: Ref<any[]>) => {
+  list.value = list.value.map((i: datePickerItem[]) => {
+    return i.map((j: datePickerItem) => {
+      j.active = date.includes(j.date);
+      return j;
+    });
+  });
+};
+export const setDateRangeListHover = (date: string | number, list: Ref<any[]>, clear = false, currentDate: string[]) => {
+  list.value = list.value.map((i: datePickerItem[]) => {
+    return i.map((j: datePickerItem) => {
+      j.hover = clear ? false : isBetween(dayjs(j.date), dayjs(currentDate[0]), dayjs(date));
+      j.active = dayjs(j.date).isSame(dayjs(date));
+      return j;
+    });
+  });
+
+};

@@ -40,7 +40,7 @@ export const ESelectDownProps = {
     type: Boolean,
     default: false
   },
-  scrollPane: {
+  scrollpanel: {
     type: Boolean,
     default: true
   }
@@ -53,7 +53,7 @@ export default defineComponent({
   setup(props, { slots, emit, expose }) {
     const prefixCls = getPrefixCls('select-down');
 
-    const paneVisible = ref(true);
+    const panelVisible = ref(true);
 
     const inputRef = ref<HTMLInputElement>();
     const selectDownRef = ref<HTMLDivElement>();
@@ -103,7 +103,7 @@ export default defineComponent({
       if (computedDisabled.value) {
         return;
       }
-      if (paneVisible.value) {
+      if (panelVisible.value) {
         inputRef.value?.blur();
       } else {
         inputRef.value?.focus();
@@ -116,7 +116,7 @@ export default defineComponent({
       }
       switch (e.code) {
         case 'Enter':
-          paneVisible.value = !paneVisible.value;
+          panelVisible.value = !panelVisible.value;
           break;
         case 'ArrowDown':
           // console.log('ArrowDown');
@@ -126,12 +126,12 @@ export default defineComponent({
           break;
         case 'Escape':
           // console.log('Escape');
-          paneVisible.value = false;
+          panelVisible.value = false;
           inputRef.value?.blur();
           break;
         case 'Tab':
           // console.log('Tab');
-          paneVisible.value = false;
+          panelVisible.value = false;
           inputRef.value?.blur();
           break;
         default:
@@ -143,7 +143,7 @@ export default defineComponent({
         return;
       }
       isFocus.value = true;
-      paneVisible.value = true;
+      panelVisible.value = true;
     };
     const handleBlur = (e: FocusEvent) => {
       if (computedDisabled.value) {
@@ -156,7 +156,7 @@ export default defineComponent({
         return;
       }
       isFocus.value = false;
-      paneVisible.value = false;
+      panelVisible.value = false;
 
     };
     const handleClearClick = (ev: Event) => {
@@ -169,8 +169,8 @@ export default defineComponent({
       emit('clear', _value.value);
     };
 
-    const setPaneVisible = (visible: boolean) => {
-      paneVisible.value = visible;
+    const setpanelVisible = (visible: boolean) => {
+      panelVisible.value = visible;
       if (!visible) {
         isFocus.value = false;
       }
@@ -196,7 +196,7 @@ export default defineComponent({
       emit('update:modelValue', value);
     };
 
-    const handlePanelClick = (e: Event) => {
+    const handlepanelClick = (e: Event) => {
       stopPropagation(e);
       if (computedDisabled.value) {
         return;
@@ -204,12 +204,12 @@ export default defineComponent({
       if (props.multiple) {
         return;
       }
-      paneVisible.value = false;
+      panelVisible.value = false;
       inputRef.value?.blur();
     };
 
     expose({
-      setPaneVisible,
+      setpanelVisible,
       setModelValue
     });
     return () => {
@@ -256,22 +256,22 @@ export default defineComponent({
                 onClick={handleClearClick}
               ></Icon>}
             <Icon name="chevronDown"
-                  class={['down-icon', paneVisible.value && 'translate-icon']} size={20}
+                  class={['down-icon', panelVisible.value && 'translate-icon']} size={20}
             ></Icon>
           </div>
 
           <Transition name="slide-toggle">
             <div
-              class={`${prefixCls}-pane`}
+              class={`${prefixCls}-panel`}
               style={{
-                display: paneVisible.value ? 'inline-block' : 'none',
+                display: panelVisible.value ? 'inline-block' : 'none',
               }}
               role="listbox"
               tabindex={0}
-              onClick={handlePanelClick}
+              onClick={handlepanelClick}
             >
-              <div class={`${prefixCls}-pane-wrapper`}>
-                <ul class={['pane',props.scrollPane && 'scroll']}>
+              <div class={`${prefixCls}-panel-wrapper`}>
+                <ul class={['panel', props.scrollpanel && 'scroll']}>
                   {slots.default && slots.default()}
                 </ul>
                 <span class="down-arrow"></span>

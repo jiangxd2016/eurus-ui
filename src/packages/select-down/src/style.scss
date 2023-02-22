@@ -139,7 +139,7 @@ $select-down-prefix-cls: $prefix + -select-down;
     }
   }
 
-  &-pane {
+  &-panel {
     position: absolute;
     left: 0;
     background: $white;
@@ -153,9 +153,9 @@ $select-down-prefix-cls: $prefix + -select-down;
     &-wrapper {
       position: relative;
       border: 1px solid $border-color-base;
-      box-shadow: $select-down-pane-shadow;
+      box-shadow: $select-down-panel-shadow;
 
-      .pane {
+      .panel {
         list-style: none;
 
       }

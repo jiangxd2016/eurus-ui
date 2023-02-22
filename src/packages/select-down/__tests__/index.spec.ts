@@ -81,13 +81,13 @@ describe('ESelectDown', () => {
       code: 'Enter',
     });
     expect(wrapper.html()).toMatchSnapshot();
-    expect(wrapper.find('.eu-select-down-pane').isVisible()).toBeTruthy();
+    expect(wrapper.find('.eu-select-down-panel').isVisible()).toBeTruthy();
 
     await wrapper.find('.eu-select-down-control').trigger('keydown', {
       code: 'Escape',
     });
     expect(wrapper.html()).toMatchSnapshot();
-    expect(wrapper.find('.eu-select-down-pane').attributes().style).toBe('display: none;');
+    expect(wrapper.find('.eu-select-down-panel').attributes().style).toBe('display: none;');
     wrapper.unmount();
   });
 
