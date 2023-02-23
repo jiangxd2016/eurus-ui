@@ -3,6 +3,9 @@ const lang = {
   empty: {
     description: '暂无数据',
   },
+  select:{
+    placeholder: '请选择',
+  },
   drawer: {
     okText: '确定',
     cancelText: '取消',

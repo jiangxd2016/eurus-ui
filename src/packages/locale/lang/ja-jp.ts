@@ -7,6 +7,9 @@ const lang = {
     okText: 'OK',
     cancelText: 'キャンセル',
   },
+  select: {
+    placeholder: '選択してください',
+  },
   popConfirm: {
     okText: 'OK',
     cancelText: 'キャンセル',

@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { onMounted, defineComponent, ref } from 'vue';
+import { onMounted, defineComponent, ref, Fragment } from 'vue';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import DateHeader from '../compts/DateHeader';
@@ -8,30 +8,11 @@ import DateFooter from '../compts/DateFooter';
 
 import type { datePickerItem } from '@/packages/_utils/date';
 import { generateDayList } from '@/packages/_utils/date';
-import { ESelectDownProps } from '@/packages/select-down/src';
-
-export type dateType = Date | string | number | Dayjs;
 
 const EDatePickerProps = {
-  ...ESelectDownProps,
-  type: {
-    type: String as PropType<'date' | 'month' | 'range'>,
-    default: 'date',
-  },
-  placeholder: {
-    type: String,
-    default: '',
-  },
-  startPlaceholder: {
-    type: String,
-    default: '',
-  },
-  endPlaceholder: {
-    type: String,
-    default: '',
-  },
+
   modelValue: {
-    type: [String, Date, Number, Array] as PropType<dateType>,
+    type: [String, Date, Number] as PropType<Date | string | number | Dayjs>,
     default() {
       return dayjs().valueOf();
     },
@@ -52,11 +33,11 @@ const EDatePickerProps = {
 export default defineComponent({
   name: 'EDatePicker',
   props: EDatePickerProps,
-  emits:["change"],
+  emits: ['change'],
   setup(props, { emit }) {
 
     const selectDownRef = ref();
-    const _value = ref(props.modelValue);
+    const _value = ref(props.modelValue || dayjs().valueOf());
     const currentDateList = ref([dayjs(_value.value).year(), dayjs(_value.value).month() + 1]);
     const dateList = ref<datePickerItem[][]>([]);
 
@@ -121,11 +102,11 @@ export default defineComponent({
       getDateList();
     };
 
-    return () => [
-            <DateHeader date={currentDateList.value} onDateRangeChange={dateRangeChange}></DateHeader>,
-            <DateBody list={dateList.value} onDateChange={dateChange}/>,
-            <DateFooter onDateRangeChange={dateRangeChange}></DateFooter>,
-    ];
+    return () => <Fragment>
+      <DateHeader date={currentDateList.value} onDateRangeChange={dateRangeChange}></DateHeader>
+      <DateBody list={dateList.value} onDateChange={dateChange}/>
+      <DateFooter onDateRangeChange={dateRangeChange}></DateFooter>
+    </Fragment>;
 
   },
 });

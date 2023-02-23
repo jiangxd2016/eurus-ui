@@ -9,6 +9,7 @@ import { selectProviderInjectionKey } from '@/packages/_utils/constants';
 import { ESelectDownProps } from '@/packages/select-down/src';
 import { isArray, } from '@/packages/_utils/is';
 import { warn } from '@/packages/_utils/warn';
+import useLocaleTransform from '@/packages/_hooks/localeTransform';
 
 export interface SelectOptionItem {
   value?: any;
@@ -42,6 +43,8 @@ export default defineComponent({
 
     const _value = ref(props.modelValue);
 
+    const t = useLocaleTransform();
+
     const computedLabel = computed(() => {
 
       const options = props.options.length > 0 ? props.options : _options.value;
@@ -53,6 +56,10 @@ export default defineComponent({
       } else {
         return options.find((option: any) => option.value === _value.value)?.label ?? '';
       }
+    });
+
+    const computedPlaceholder = computed(() => {
+      return props.placeholder ? props.placeholder : t('select.placeholder');
     });
     const selectItem = (value: any) => {
       if (props.multiple) {
@@ -95,6 +102,7 @@ export default defineComponent({
 
     return () => {
       return <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value}
+                         placeholder={computedPlaceholder.value}
                          onUpdate:modelValue={onUpdateModelValue} ref={selectDownRef}
                          onClear={handleClear}
       >

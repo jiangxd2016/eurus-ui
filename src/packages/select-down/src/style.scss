@@ -8,6 +8,15 @@ $select-down-prefix-cls: $prefix + -select-down;
   display: inline-block;
   min-width: 140px;
 
+  &-single {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+
+    padding-right: 30px;
+  }
+
+
   &-control {
     position: relative;
 
@@ -81,12 +90,6 @@ $select-down-prefix-cls: $prefix + -select-down;
       transform: translateY(0) rotate(-180deg);
     }
 
-    &-single {
-      height: 100%;
-      width: 100%;
-
-      padding-right: 30px;
-    }
 
     &-placeholder {
       width: 100%;
@@ -117,6 +120,24 @@ $select-down-prefix-cls: $prefix + -select-down;
         margin-bottom: 3px;
       }
     }
+
+
+
+    &-range{
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+      .#{$select-down-prefix-cls}-single {
+        min-width: 100px;
+        color: #111111;
+
+        .placeholder{
+          width: 100%;
+          color: #a8b0bf;
+        }
+      }
+    }
   }
 
   &-disabled {
@@ -133,11 +154,12 @@ $select-down-prefix-cls: $prefix + -select-down;
     .down-icon{
       color: #a8b0bf;
     }
-
-    .#{$select-down-prefix-cls}-control-single {
+    .#{$select-down-prefix-cls}-single {
       color: #a8b0bf;
     }
+
   }
+
 
   &-panel {
     position: absolute;

@@ -25,10 +25,11 @@ $divider-prefix-cls: $prefix + -divider;
 
   + &-horizontal {
     clear: both;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    margin: 20px 0;
+    display: inline-block;
+    height: 1em;
+    margin: 0 8px;
+    vertical-align: middle;
+    width: 1px;
     border-bottom: 1px solid $border-color-base;
 
     + .#{$divider-prefix-cls}-text {

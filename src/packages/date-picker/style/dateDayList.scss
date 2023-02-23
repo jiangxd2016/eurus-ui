@@ -47,7 +47,7 @@ $date-picker-body-prefix-cls: $prefix + -date-picker-body;
     }
   }
 
-  .day-item:hover,.hover {
+  .day-item.hover {
     .item-value {
       background-color: #f6f7fa;
     }

@@ -1,30 +1,16 @@
 import type { PropType, } from 'vue';
-import { onMounted, defineComponent, ref } from 'vue';
+import { onMounted, defineComponent, ref, Fragment } from 'vue';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import DateHeader from '../compts/DateHeader';
 import Month from '../compts/calendar';
 import type { datePickerItem } from '@/packages/_utils/date';
 import { generateMonthList } from '@/packages/_utils/date';
-import { ESelectDownProps } from '@/packages/select-down/src';
 
 export type dateType = Date | string | number | Dayjs;
 
 const EDatePickerProps = {
-  ...ESelectDownProps,
 
-  placeholder: {
-    type: String,
-    default: '',
-  },
-  startPlaceholder: {
-    type: String,
-    default: '',
-  },
-  endPlaceholder: {
-    type: String,
-    default: '',
-  },
   modelValue: {
     type: [String, Date, Number, Array] as PropType<dateType>,
     default() {
@@ -50,7 +36,7 @@ export default defineComponent({
   emits: ['change'],
   setup(props, { emit }) {
 
-    const _value = ref(props.modelValue);
+    const _value = ref(props.modelValue || dayjs().valueOf());
     const currentDateList = ref([dayjs(_value.value).year(), dayjs(_value.value).month() + 1]);
     const dateList = ref<datePickerItem[][]>([]);
 
@@ -82,10 +68,10 @@ export default defineComponent({
       getDateList();
     };
 
-    return () => [
-            <DateHeader date={currentDateList.value} type="month" onDateRangeChange={dateRangeChange}></DateHeader>,
+    return () => <Fragment>
+            <DateHeader date={currentDateList.value} type="month" onDateRangeChange={dateRangeChange}></DateHeader>
             <Month list={dateList.value} onDateChange={dateChange}></Month>
-    ];
+    </Fragment>;
 
   },
 });

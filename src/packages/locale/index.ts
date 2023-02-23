@@ -59,7 +59,7 @@ export const useI18n = () => {
   );
   const locale = computed<string>(() => i18nMessage.value.locale);
 
-  const transform = (key: string, ...args: any[]): string => {
+  const transform = (key: string, ...args: any[])=> {
     const keyArray = key.split('.');
     let temp: any = i18nMessage.value;
 

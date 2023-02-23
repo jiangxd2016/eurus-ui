@@ -26,7 +26,15 @@ export const ESelectDownProps = {
   },
   placeholder: {
     type: String,
-    default: '请选择',
+    default: '',
+  },
+  startPlaceholder: {
+    type: String,
+    default: '',
+  },
+  endPlaceholder: {
+    type: String,
+    default: '',
   },
   disabled: {
     type: Boolean,
@@ -40,9 +48,17 @@ export const ESelectDownProps = {
     type: Boolean,
     default: false
   },
-  scrollpanel: {
+  scrollPanel: {
     type: Boolean,
     default: true
+  },
+  range: {
+    type: Boolean,
+    default: false
+  },
+  rangeSeparator: {
+    type: String,
+    default: '-'
   }
 };
 
@@ -59,7 +75,6 @@ export default defineComponent({
     const selectDownRef = ref<HTMLDivElement>();
 
     const isFocus = ref(false);
-
     const _value = ref(props.modelValue);
 
     watch(() => props.modelValue, (val) => {
@@ -95,6 +110,15 @@ export default defineComponent({
         return false;
       }
       return computedHasValue.value;
+    });
+
+    // range value
+    const computedRangeValue = computed(() => {
+      if (isArray(_value.value) && _value.value.length > 0) {
+        return _value.value;
+      }
+      return [];
+
     });
 
     const handleControlClick = async () => {
@@ -169,7 +193,7 @@ export default defineComponent({
       emit('clear', _value.value);
     };
 
-    const setpanelVisible = (visible: boolean) => {
+    const setPanelVisible = (visible: boolean) => {
       panelVisible.value = visible;
       if (!visible) {
         isFocus.value = false;
@@ -196,7 +220,7 @@ export default defineComponent({
       emit('update:modelValue', value);
     };
 
-    const handlepanelClick = (e: Event) => {
+    const handlePanelClick = (e: Event) => {
       stopPropagation(e);
       if (computedDisabled.value) {
         return;
@@ -209,10 +233,46 @@ export default defineComponent({
     };
 
     expose({
-      setpanelVisible,
+      setPanelVisible,
       setModelValue
     });
     return () => {
+      const Control = () => {
+        if (props.range) {
+          return <div class={`${prefixCls}-control-range`}>
+            <div class={`${prefixCls}-single`}>
+              {computedRangeValue.value[0] ? computedRangeValue.value[0] : <span class="placeholder">{props.startPlaceholder}</span>}
+            </div>
+            <span>{props.rangeSeparator}</span>
+            <div class={`${prefixCls}-single`}>
+              { computedRangeValue.value[1] ? computedRangeValue.value[1] : <span class="placeholder">{props.endPlaceholder}</span>}
+            </div>
+          </div>;
+        }
+
+        if (!computedHasValue.value) {
+          return <div class={`${prefixCls}-control-placeholder`}>
+            {props.placeholder}
+          </div>;
+        }
+        if (props.multiple && isArray(_value.value)) {
+          return <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0}
+                      onClick={e => e.stopPropagation()}
+          >
+            {_value.value.map((item) => {
+              return <Tag size={props.size} closable disabled={computedDisabled.value}
+                          onClose={(e: Event) => handleTagClose(e, item)}
+              >
+                {item}
+              </Tag>;
+            })}
+          </div>;
+        } else {
+          return <div class={`${prefixCls}-single`}>
+            {_value.value}
+          </div>;
+        }
+      };
       return (
         <div class={computedCls.value} ref={selectDownRef}>
           <div
@@ -220,27 +280,7 @@ export default defineComponent({
             role="listbox" tabindex={0}
             onClick={handleControlClick} onKeydown={handleKeydown}
           >
-            {
-              computedHasValue.value
-                ? (props.multiple && isArray(_value.value)
-                    ? <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0}
-                         onClick={e => e.stopPropagation()}
-                  >
-                    {_value.value.map((item) => {
-                      return <Tag size={props.size} closable disabled={computedDisabled.value}
-                                  onClose={(e: Event) => handleTagClose(e, item)}
-                      >
-                        {item}
-                      </Tag>;
-                    })}
-                  </div>
-                    : <div class={`${prefixCls}-control-single`}>
-                    {_value.value}
-                  </div>)
-                : <div class={`${prefixCls}-control-placeholder`}>
-                  {props.placeholder}
-                </div>
-            }
+            {Control()}
             <input
               class={`${prefixCls}-control-input`}
               ref={inputRef}
@@ -268,10 +308,10 @@ export default defineComponent({
               }}
               role="listbox"
               tabindex={0}
-              onClick={handlepanelClick}
+              onClick={handlePanelClick}
             >
               <div class={`${prefixCls}-panel-wrapper`}>
-                <ul class={['panel', props.scrollpanel && 'scroll']}>
+                <ul class={['panel', props.scrollPanel && 'scroll']}>
                   {slots.default && slots.default()}
                 </ul>
                 <span class="down-arrow"></span>

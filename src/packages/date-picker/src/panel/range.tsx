@@ -4,34 +4,19 @@ import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import DateHeader from '../compts/DateHeader';
 import DateBody from '../compts/DateBody';
-import EDivider from '@/packages/divider';
 
 import type { datePickerItem } from '@/packages/_utils/date';
-import { ESelectDownProps } from '@/packages/select-down/src';
-import { generateDayList } from '@/packages/_utils/date';
+import { generateDayList, isBetween } from '@/packages/_utils/date';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
 export type dateType = Array<Date | string | number | Dayjs>;
 
 const EDatePickerProps = {
-  ...ESelectDownProps,
 
-  placeholder: {
-    type: String,
-    default: '',
-  },
-  startPlaceholder: {
-    type: String,
-    default: '',
-  },
-  endPlaceholder: {
-    type: String,
-    default: '',
-  },
   modelValue: {
     type: Array as PropType<dateType>,
     default() {
-      return ()=>[];
+      return () => [];
     },
   },
   disabled: {
@@ -54,44 +39,39 @@ export default defineComponent({
   setup(props, { emit }) {
 
     const prefixCls = getPrefixCls('date-picker-range');
-    // 用于控制面包显示与隐藏
-    const showDatePanel = ref(false);
+
     // 表格数据
     const startDateList = ref<any>([]);
     const endDateList = ref<any>([]);
-    // 处理props时间为数组格式[年，月]
-    let endDate = '';
 
-    // 如果只有一个值，或两个值都在当月，则第二项为下月
-    if (!props.modelValue[1] || (dayjs(props.modelValue[0]).month() === dayjs(props.modelValue[1]).month())) {
-      endDate = dayjs(props.modelValue[0]).add(1, 'month').format('YYYY-MM-DD');
-    }
-
-    const startDate = dayjs(props.modelValue[0]).format('YYYY-MM-DD');
+    const startDate = dayjs(props.modelValue[0] || dayjs()).valueOf();
+    const endDate = dayjs(props.modelValue[1] || dayjs().add(1, 'month')).valueOf();
 
     const startDateFormatter = ref([dayjs(startDate).year(), dayjs(startDate).month() + 1]);
     const endDateFormatter = ref([dayjs(endDate).year(), dayjs(endDate).month() + 1]);
     // 用户input显示时间
-    const currentDate = ref<string[]>([startDate, endDate]);
+    const currentDate = ref<number[]>([]);
     // 通过props传递的时间，组装成长度为42的数组,具体看utils文件下下面的这个方法
     const getDateList = () => {
       startDateList.value = generateDayList(startDateFormatter.value, props.disabledDate);
       endDateList.value = generateDayList(endDateFormatter.value, props.disabledDate);
     };
 
-    const setDateListActive = (date: string[], list: Ref<any[]>) => {
+    const setDateListActive = (date: number[], list: Ref<any[]>) => {
       list.value = list.value.map((i: datePickerItem[]) => {
         return i.map((j: datePickerItem) => {
-          j.active = date.includes(j.date + '');
+          j.active = date.includes(j.date);
           return j;
         });
       });
     };
-    const setDateListHover = (date: string, list: Ref<any[]>, clear = false) => {
+    const setDateListHover = (date: number, list: Ref<any[]>, clear = false) => {
+      if (!currentDate.value[0]) {
+        return;
+      }
       list.value = list.value.map((i: datePickerItem[]) => {
         return i.map((j: datePickerItem) => {
-          j.hover = clear ? false : dayjs(j.date).isBetween(dayjs(currentDate.value[0]), dayjs(date));
-          j.active = dayjs(j.date).isSame(dayjs(date));
+          j.hover = clear ? false : isBetween(j.date, currentDate.value[0], date);
           return j;
         });
       });
@@ -104,16 +84,15 @@ export default defineComponent({
     };
 
     // 监听每个td时间项点击
-    const dateChange = (date: string) => {
+    const dateChange = (date: number) => {
       const [start, end] = currentDate.value;
       if (!start && !end || start && end) {
-        currentDate.value = [date, ''];
+        currentDate.value = [date];
         setDateListHover(date, endDateList, true);
         setDateListHover(date, startDateList, true);
 
       } else if (isSelectDateOne()) {
         currentDate.value[1] = date;
-        showDatePanel.value = false;
         emit('change', currentDate.value);
       }
       setDateListActive(currentDate.value, startDateList);
@@ -160,8 +139,10 @@ export default defineComponent({
       setDateListActive(currentDate.value, endDateList);
     });
 
-    const onDateHover = (date: string) => {
-      if (props.disabled) { return; }
+    const onDateHover = (date: number) => {
+      if (props.disabled) {
+        return;
+      }
       const [start, end] = currentDate.value;
       if (!start && !end || start && end) {
         return;
@@ -169,19 +150,24 @@ export default defineComponent({
       setDateListHover(date, startDateList);
       setDateListHover(date, endDateList);
     };
-    return () => <div class={prefixCls}>
+
+    const onDateClick = (e: Event) => {
+      if (currentDate.value.length === 1) {
+        e.stopPropagation();
+      }
+    };
+    return () => <div class={prefixCls} onClick={onDateClick}>
       <div class="date-picker-panel">
         <DateHeader
           date={startDateFormatter.value}
-          onDateRangeChange={dateRangeChange}
+          onDateRangeChange={(type: string) => dateRangeChange(type, startDateFormatter)}
         />
         <DateBody list={startDateList.value} onDateHover={onDateHover} onDateChange={dateChange}/>
       </div>
-      <EDivider color='#eee'></EDivider>
       <div class="date-picker-panel">
         <DateHeader
           date={endDateFormatter.value}
-          onDateRangeChange={dateRangeChange}
+          onDateRangeChange={(type: string) => dateRangeChange(type, endDateFormatter)}
         />
         <DateBody list={endDateList.value} onDateHover={onDateHover} onDateChange={dateChange}/>
       </div>

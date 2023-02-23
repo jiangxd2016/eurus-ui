@@ -25,8 +25,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('date-picker-header');
     const toggleDate = (type: dateChangeType) => {
-      // 阻止冒泡
-      emit('dateRangeChange', type);
+      emit('dateRangeChange', type, props.date);
     };
     return () => (
       <div class={prefixCls} role="link" tabindex={0} onClick={stopPropagation}>
@@ -36,7 +35,7 @@ export default defineComponent({
           }
           <Icon name="chevronLeft" size="18" color="#848b99" class="arrow" onClick={() => toggleDate('lastMonth')}></Icon>
         </div>
-        <div class="date-content">{props.date[0] + (props.type === 'day' ? ('-' + props.date[1]) : '')}</div>
+        <div class="date-content">{props.date[0] + (props.type !== 'month' ? ('-' + props.date[1]) : '')}</div>
         <div class="arrow-right">
           <Icon name="chevronRight" size="18" color="#848b99" class="arrow" onClick={() => toggleDate('nextMonth')}></Icon>
           {

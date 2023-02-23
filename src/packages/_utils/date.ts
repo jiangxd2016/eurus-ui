@@ -1,8 +1,7 @@
 import dayjs from 'dayjs';
-import type { Ref } from 'vue';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
 
-const isBetween = (value: typeof dayjs, left: number, right: number) => {
+export const isBetween = (value: number, left: number | string, right: number | string) => {
   return dayjs(value).isBefore(dayjs(right)) && dayjs(value).isAfter(dayjs(left));
 };
 
@@ -149,21 +148,3 @@ export function generateMonthList([year, month]: number[], disabled: Function): 
   return result;
 }
 
-export const setDateRangeListActive = (date: (string | number)[], list: Ref<any[]>) => {
-  list.value = list.value.map((i: datePickerItem[]) => {
-    return i.map((j: datePickerItem) => {
-      j.active = date.includes(j.date);
-      return j;
-    });
-  });
-};
-export const setDateRangeListHover = (date: string | number, list: Ref<any[]>, clear = false, currentDate: string[]) => {
-  list.value = list.value.map((i: datePickerItem[]) => {
-    return i.map((j: datePickerItem) => {
-      j.hover = clear ? false : isBetween(dayjs(j.date), dayjs(currentDate[0]), dayjs(date));
-      j.active = dayjs(j.date).isSame(dayjs(date));
-      return j;
-    });
-  });
-
-};
