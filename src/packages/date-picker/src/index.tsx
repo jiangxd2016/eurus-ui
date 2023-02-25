@@ -1,7 +1,8 @@
 import type { PropType } from 'vue';
-import {defineComponent, computed, ref} from 'vue';
+import { defineComponent, computed, ref } from 'vue';
 import './style.scss';
 import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import Date from './panel/date';
 import Range from './panel/range';
 import Month from './panel/month';
@@ -11,7 +12,6 @@ import { ESelectDownProps } from '@/packages/select-down/src';
 import { warnOnce } from '@/packages/_utils/warn';
 import { isArray } from '@/packages/_utils/is';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
-import dayjs from "dayjs";
 
 export type dateType = Date | string | number | Dayjs | Array<Date | string | number | Dayjs>;
 
@@ -41,7 +41,7 @@ const EDatePickerProps = {
     default: false,
   },
   disabledDate: {
-    type: Function as PropType<(date: string) => boolean>,
+    type: Function as PropType<(date: number) => boolean>,
     default() {
       return () => {
       };
@@ -57,7 +57,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('date-picker');
 
     const t = useLocaleTransform();
-    const selectDownRef = ref()
+    const selectDownRef = ref();
 
     if (__DEV__ && props.modelValue) {
       if (props.type === 'range' && !Array.isArray(props.modelValue)) {
@@ -89,10 +89,10 @@ export default defineComponent({
       }
     });
 
-    const dateChange = (date: number|number[]) => {
+    const dateChange = (date: number | number[]) => {
       emit('change', date);
       emit('update:modelValue', date);
-      const dateStr = Array.isArray(date) ? date.map((item) => dayjs(item).format('YYYY-MM-DD')) : dayjs(date).format('YYYY-MM-DD');
+      const dateStr = Array.isArray(date) ? date.map(item => dayjs(item).format('YYYY-MM-DD')) : dayjs(date).format('YYYY-MM-DD');
       selectDownRef.value?.setModelValue(dateStr);
 
     };

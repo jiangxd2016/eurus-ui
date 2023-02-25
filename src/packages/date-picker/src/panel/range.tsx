@@ -24,7 +24,7 @@ const EDatePickerProps = {
     default: false,
   },
   disabledDate: {
-    type: Function as PropType<(date: string) => boolean>,
+    type: Function as PropType<(date: number) => boolean>,
     default() {
       return () => {
       };
@@ -65,8 +65,14 @@ export default defineComponent({
         });
       });
     };
+
+    // currentDate 是否只选择了，且只选择了一个
+    const isSelectDateOne = (): boolean => {
+      const [start, end] = currentDate.value;
+      return !!(start || end) && !(start && end);
+    };
     const setDateListHover = (date: number, list: Ref<any[]>, clear = false) => {
-      if (!currentDate.value[0]) {
+      if (!isSelectDateOne()) {
         return;
       }
       list.value = list.value.map((i: datePickerItem[]) => {
@@ -77,12 +83,6 @@ export default defineComponent({
       });
 
     };
-    // currentDate 是否只选择了，且只选择了一个
-    const isSelectDateOne = (): boolean => {
-      const [start, end] = currentDate.value;
-      return !!(start || end) && !(start && end);
-    };
-
     // 监听每个td时间项点击
     const dateChange = (date: number) => {
       const [start, end] = currentDate.value;
@@ -147,6 +147,7 @@ export default defineComponent({
       if (!start && !end || start && end) {
         return;
       }
+
       setDateListHover(date, startDateList);
       setDateListHover(date, endDateList);
     };
@@ -156,7 +157,7 @@ export default defineComponent({
         e.stopPropagation();
       }
     };
-    return () => <div class={prefixCls} onClick={onDateClick}>
+    return () => <div class={prefixCls} role="listbox" tabindex="0" onClick={onDateClick}>
       <div class="date-picker-panel">
         <DateHeader
           date={startDateFormatter.value}

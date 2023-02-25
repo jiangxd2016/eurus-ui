@@ -22,7 +22,7 @@ const EDatePickerProps = {
     default: false,
   },
   disabledDate: {
-    type: Function as PropType<(date: string) => boolean>,
+    type: Function as PropType<(date: number) => boolean>,
     default() {
       return () => {
       };

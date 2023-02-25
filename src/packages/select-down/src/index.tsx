@@ -241,11 +241,19 @@ export default defineComponent({
         if (props.range) {
           return <div class={`${prefixCls}-control-range`}>
             <div class={`${prefixCls}-single`}>
-              {computedRangeValue.value[0] ? computedRangeValue.value[0] : <span class="placeholder">{props.startPlaceholder}</span>}
+              {
+                computedRangeValue.value[0]
+                  ? computedRangeValue.value[0]
+                  : <span class="placeholder">{props.startPlaceholder}</span>
+              }
             </div>
             <span>{props.rangeSeparator}</span>
             <div class={`${prefixCls}-single`}>
-              { computedRangeValue.value[1] ? computedRangeValue.value[1] : <span class="placeholder">{props.endPlaceholder}</span>}
+              {
+                computedRangeValue.value[1]
+                  ? computedRangeValue.value[1]
+                  : <span class="placeholder">{props.endPlaceholder}</span>
+            }
             </div>
           </div>;
         }

@@ -24,7 +24,8 @@ export interface datePickerItem {
   hover: boolean;
 }
 
-export function generateDayList([year, month]: number[], disabled: Function): datePickerItem[][] {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function generateDayList([year, month]: number[], disabled: (date: number) => boolean): datePickerItem[][] {
   const listMonth = `${year}-${month - 1}-1`;
   const currentMonth = `${year}-${month}-1`;
   // 获取上月天数
@@ -60,7 +61,7 @@ export function generateDayList([year, month]: number[], disabled: Function): da
 
       dayList.push({
         value: currentMonthPointer++,
-        disabled: !disabled(date),
+        disabled: disabled ? !disabled(date.valueOf()) : false,
         active: false,
         date: date.valueOf(),
         format: date.format('YYYY-MM-DD'),
