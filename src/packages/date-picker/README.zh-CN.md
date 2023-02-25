@@ -15,7 +15,7 @@ Vue.createApp().use(EDatePicker.name, EDatePicker)
 按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
 
 :::code date-pickerDemo0
-<<< ../src/packages/date-picker/demo/demo0.vue
+<<< ../src/packages/date-picker/demo/Demo0.vue
 :::
 ::::
 

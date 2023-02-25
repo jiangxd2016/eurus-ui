@@ -16,7 +16,7 @@ Vue.createApp().use(ESelect.name, ESelect)
 按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
 
 :::code selectDemo0
-<<< ../src/packages/select/demo/demo0.vue
+<<< ../src/packages/select/demo/Demo0.vue
 :::
 ::::
   -->

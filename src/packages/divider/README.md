@@ -16,7 +16,7 @@ Vue.createApp().use(EDivider.name, EDivider)
 按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
 
 :::code EDividerDemo0
-<<< ../src/packages/ EDivider/demo/demo0.vue
+<<< ../src/packages/ EDivider/demo/Demo0.vue
 :::
 ::::
   -->

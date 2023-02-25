@@ -12,7 +12,7 @@ Vue.createApp().use(EIcon.name, EIcon)
 ```
 
 :::buttondemo0
-src/packages/icon/demo/demo0.vue
+src/packages/icon/demo/Demo0.vue
 :::
 
 

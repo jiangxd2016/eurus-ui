@@ -12,7 +12,7 @@ Vue.createApp().use(EButton.name, EButton)
 ```
 
 :::buttonloading
-src/packages/button/demo/demo0.vue
+src/packages/button/demo/Demo0.vue
 :::
 
 ### Button Props

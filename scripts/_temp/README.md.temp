@@ -16,7 +16,7 @@ Vue.createApp().use(<%= name %>.name, <%= name %>)
 按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
 
 :::code <%= name %>Demo0
-<<< ../src/packages/ <%= name %>/demo/demo0.vue
+<<< ../src/packages/ <%= name %>/demo/Demo0.vue
 :::
 ::::
   -->
