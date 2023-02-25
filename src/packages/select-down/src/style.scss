@@ -8,6 +8,14 @@ $select-down-prefix-cls: $prefix + -select-down;
   display: inline-block;
   min-width: 140px;
 
+  &-single {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+
+    padding-right: 30px;
+  }
+
   &-control {
     position: relative;
 
@@ -118,7 +126,7 @@ $select-down-prefix-cls: $prefix + -select-down;
       flex: 1;
       display: inline-block;
 
-      .#{$select-down-prefix-cls}-single {
+      &-single {
         display: inline-block;
         color: #575757;
         min-width: 90px;

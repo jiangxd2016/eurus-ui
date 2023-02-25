@@ -240,7 +240,7 @@ export default defineComponent({
       const Control = () => {
         if (props.range) {
           return <div class={`${prefixCls}-control-range`}>
-            <div class={`${prefixCls}-single`}>
+            <div class={`${prefixCls}-control-range-single`}>
               {
                 computedRangeValue.value[0]
                   ? computedRangeValue.value[0]
@@ -248,7 +248,7 @@ export default defineComponent({
               }
             </div>
             <span class="range-separator">{props.rangeSeparator}</span>
-            <div class={`${prefixCls}-single`}>
+            <div class={`${prefixCls}-control-range-single`}>
               {
                 computedRangeValue.value[1]
                   ? computedRangeValue.value[1]

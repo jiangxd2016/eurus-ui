@@ -38,7 +38,7 @@ describe('ESelectDown', () => {
       }
     });
     expect(wrapper.html()).toMatchSnapshot();
-    expect(wrapper.find('.eu-select-down-control-single').text()).toBe('1');
+    expect(wrapper.find('.eu-select-down-single').text()).toBe('1');
     expect(wrapper.findAll('.select-down-option').length).toBe(2);
     wrapper.unmount();
   });
