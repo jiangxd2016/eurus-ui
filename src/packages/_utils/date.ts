@@ -2,13 +2,12 @@ import dayjs from 'dayjs';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
 
 export const isBetween = (value: number, left: number | string, right: number | string) => {
-  return dayjs(value).isBefore(dayjs(right)) && dayjs(value).isAfter(dayjs(left));
+  return (dayjs(value).isBefore(dayjs(left)) && dayjs(value).isAfter(dayjs(right)) ) || (dayjs(value).isAfter(dayjs(left)) && dayjs(value).isBefore(dayjs(right)));
 };
 
 export function getCurrentMonthCount(month: string) {
   return dayjs(month).daysInMonth();
 }
-
 export function getFirstMonthDayWeek(month: string) {
   return dayjs(month).day();
 }

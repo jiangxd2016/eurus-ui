@@ -72,7 +72,7 @@ export default defineComponent({
       return !!(start || end) && !(start && end);
     };
     const setDateListHover = (date: number, list: Ref<any[]>, clear = false) => {
-      if (!isSelectDateOne()) {
+      if (!currentDate.value[0]) {
         return;
       }
       list.value = list.value.map((i: datePickerItem[]) => {

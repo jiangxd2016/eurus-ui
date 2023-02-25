@@ -247,7 +247,7 @@ export default defineComponent({
                   : <span class="placeholder">{props.startPlaceholder}</span>
               }
             </div>
-            <span>{props.rangeSeparator}</span>
+            <span class="range-separator">{props.rangeSeparator}</span>
             <div class={`${prefixCls}-single`}>
               {
                 computedRangeValue.value[1]
