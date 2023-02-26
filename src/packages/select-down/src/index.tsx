@@ -69,7 +69,7 @@ export default defineComponent({
   setup(props, { slots, emit, expose }) {
     const prefixCls = getPrefixCls('select-down');
 
-    const panelVisible = ref(false);
+    const panelVisible = ref(true);
 
     const inputRef = ref<HTMLInputElement>();
     const selectDownRef = ref<HTMLDivElement>();

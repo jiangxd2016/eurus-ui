@@ -42,8 +42,7 @@ const EDatePickerProps = {
   },
   disabledDate: {
     type: Function as PropType<(date: number) => boolean>,
-    default: () => {
-    }
+    default: null,
   }
 };
 

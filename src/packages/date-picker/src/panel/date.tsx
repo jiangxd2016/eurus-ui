@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { onMounted, defineComponent, ref, Fragment } from 'vue';
+import { onMounted, defineComponent, ref, Fragment, watch } from 'vue';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import DateHeader from '../compts/DateHeader';
@@ -44,6 +44,12 @@ export default defineComponent({
     const getDateList = () => {
       dateList.value = generateDayList(currentDateList.value, props.disabledDate);
     };
+
+    watch(() => props.modelValue, (val) => {
+      _value.value = val;
+      currentDateList.value = [dayjs(_value.value).year(), dayjs(_value.value).month() + 1];
+      getDateList();
+    });
 
     onMounted(() => {
       getDateList();

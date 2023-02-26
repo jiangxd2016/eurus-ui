@@ -51,8 +51,10 @@ export default defineComponent({
                   {
                     item.map((subItem) => {
                       return (
-                        <td class={[subItem.dot && 'calendar-date-select', subItem.disabled && 'calendar-date-disabled']} onClick={() => handleMonthClick(subItem)}>
+                        <td class={[subItem.dot && 'calendar-date-select', subItem.disabled && 'calendar-date-disabled']} >
+                          <div role="button" tabindex={0}onClick={() => handleMonthClick(subItem)}>
                           {subItem.format}
+                          </div>
                         </td>
                       );
                     })

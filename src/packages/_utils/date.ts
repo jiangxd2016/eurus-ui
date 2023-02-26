@@ -123,7 +123,7 @@ export function generateMonthList([year, month]: number[], disabled: Function): 
     const date = dayjs(year + '-' + i + '-' + 1);
     monthList.push({
       value: i,
-      disabled: !disabled(date),
+      disabled: disabled ? !disabled(date.valueOf()) : false,
       active: false,
       date: date.valueOf(),
       format: monthListStr[i - 1],
