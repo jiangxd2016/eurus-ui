@@ -9,7 +9,7 @@ describe('EInput', () => {
     wrapper.unmount();
   });
 
-  it('should  emit input event', async () => {
+  it('should work with emit input event', async () => {
     const fn = vitest.fn();
     const wrapper = mount(EInput, {
       props: {
