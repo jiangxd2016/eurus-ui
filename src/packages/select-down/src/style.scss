@@ -13,7 +13,7 @@ $select-down-prefix-cls: $prefix + -select-down;
     height: 100%;
     width: 100%;
 
-    padding-right: 30px;
+    padding-right: 10px;
   }
 
   &-control {
@@ -125,16 +125,17 @@ $select-down-prefix-cls: $prefix + -select-down;
     &-range{
       flex: 1;
       display: inline-block;
+      padding-right: 10px;
 
       &-single {
         display: inline-block;
         color: #575757;
-        min-width: 90px;
+        min-width: 80px;
         text-align: center;
 
         .placeholder{
           width: 100%;
-          color: #a8b0bf;
+          color: #848b99;
           margin: 0 auto;
         }
       }

@@ -69,7 +69,7 @@ export default defineComponent({
   setup(props, { slots, emit, expose }) {
     const prefixCls = getPrefixCls('select-down');
 
-    const panelVisible = ref(true);
+    const panelVisible = ref(false);
 
     const inputRef = ref<HTMLInputElement>();
     const selectDownRef = ref<HTMLDivElement>();
@@ -94,12 +94,12 @@ export default defineComponent({
 
     const computedHasValue = computed(() => {
       if (props.multiple) {
-        if (isArray(props.modelValue) && props.modelValue.length > 0) {
+        if (isArray(_value.value) && _value.value.length > 0) {
           return true;
         }
         return false;
       }
-      if (props.modelValue) {
+      if (_value.value) {
         return true;
       }
       return false;

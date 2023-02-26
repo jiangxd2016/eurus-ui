@@ -4,10 +4,10 @@ exports[`ESelectDown > should work with \`size\` props 1`] = `
 "<div class=\\"eu-select-down\\">
   <div class=\\"eu-select-down-control eu-select-down-control-xs\\" role=\\"listbox\\" tabindex=\\"0\\">
     <div class=\\"eu-select-down-control-placeholder\\"></div><input class=\\"eu-select-down-control-input\\">
-    <!----><span class=\\"eu-icon down-icon translate-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
+    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"eu-select-down-panel\\" style=\\"display: inline-block;\\" role=\\"listbox\\" tabindex=\\"0\\">
+    <div class=\\"eu-select-down-panel\\" style=\\"display: none;\\" role=\\"listbox\\" tabindex=\\"0\\">
       <div class=\\"eu-select-down-panel-wrapper\\">
         <ul class=\\"panel scroll\\">
           <!---->
@@ -22,10 +22,10 @@ exports[`ESelectDown > should work with \`size\` props 2`] = `
 "<div class=\\"eu-select-down\\">
   <div class=\\"eu-select-down-control eu-select-down-control-sm\\" role=\\"listbox\\" tabindex=\\"0\\">
     <div class=\\"eu-select-down-control-placeholder\\"></div><input class=\\"eu-select-down-control-input\\">
-    <!----><span class=\\"eu-icon down-icon translate-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
+    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"eu-select-down-panel\\" style=\\"display: inline-block;\\" role=\\"listbox\\" tabindex=\\"0\\">
+    <div class=\\"eu-select-down-panel\\" style=\\"display: none;\\" role=\\"listbox\\" tabindex=\\"0\\">
       <div class=\\"eu-select-down-panel-wrapper\\">
         <ul class=\\"panel scroll\\">
           <!---->
@@ -40,10 +40,10 @@ exports[`ESelectDown > should work with \`size\` props 3`] = `
 "<div class=\\"eu-select-down\\">
   <div class=\\"eu-select-down-control eu-select-down-control-md\\" role=\\"listbox\\" tabindex=\\"0\\">
     <div class=\\"eu-select-down-control-placeholder\\"></div><input class=\\"eu-select-down-control-input\\">
-    <!----><span class=\\"eu-icon down-icon translate-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
+    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"eu-select-down-panel\\" style=\\"display: inline-block;\\" role=\\"listbox\\" tabindex=\\"0\\">
+    <div class=\\"eu-select-down-panel\\" style=\\"display: none;\\" role=\\"listbox\\" tabindex=\\"0\\">
       <div class=\\"eu-select-down-panel-wrapper\\">
         <ul class=\\"panel scroll\\">
           <!---->
@@ -58,10 +58,10 @@ exports[`ESelectDown > should work with \`size\` props 4`] = `
 "<div class=\\"eu-select-down\\">
   <div class=\\"eu-select-down-control eu-select-down-control-lg\\" role=\\"listbox\\" tabindex=\\"0\\">
     <div class=\\"eu-select-down-control-placeholder\\"></div><input class=\\"eu-select-down-control-input\\">
-    <!----><span class=\\"eu-icon down-icon translate-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
+    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"eu-select-down-panel\\" style=\\"display: inline-block;\\" role=\\"listbox\\" tabindex=\\"0\\">
+    <div class=\\"eu-select-down-panel\\" style=\\"display: none;\\" role=\\"listbox\\" tabindex=\\"0\\">
       <div class=\\"eu-select-down-panel-wrapper\\">
         <ul class=\\"panel scroll\\">
           <!---->
@@ -76,10 +76,10 @@ exports[`ESelectDown > should work with \`size\` props 5`] = `
 "<div class=\\"eu-select-down\\">
   <div class=\\"eu-select-down-control eu-select-down-control-xl\\" role=\\"listbox\\" tabindex=\\"0\\">
     <div class=\\"eu-select-down-control-placeholder\\"></div><input class=\\"eu-select-down-control-input\\">
-    <!----><span class=\\"eu-icon down-icon translate-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
+    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"eu-select-down-panel\\" style=\\"display: inline-block;\\" role=\\"listbox\\" tabindex=\\"0\\">
+    <div class=\\"eu-select-down-panel\\" style=\\"display: none;\\" role=\\"listbox\\" tabindex=\\"0\\">
       <div class=\\"eu-select-down-panel-wrapper\\">
         <ul class=\\"panel scroll\\">
           <!---->
@@ -94,10 +94,10 @@ exports[`ESelectDown > should work with keydown event 1`] = `
 "<div class=\\"eu-select-down\\">
   <div class=\\"eu-select-down-control eu-select-down-control-md\\" role=\\"listbox\\" tabindex=\\"0\\">
     <div class=\\"eu-select-down-single\\">1</div><input class=\\"eu-select-down-control-input\\">
-    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
+    <!----><span class=\\"eu-icon down-icon translate-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"eu-select-down-panel\\" style=\\"display: none;\\" role=\\"listbox\\" tabindex=\\"0\\">
+    <div class=\\"eu-select-down-panel\\" style=\\"display: inline-block;\\" role=\\"listbox\\" tabindex=\\"0\\">
       <div class=\\"eu-select-down-panel-wrapper\\">
         <ul class=\\"panel scroll\\">
           <li class=\\"select-down-option\\" value=\\"1\\">1</li>
@@ -132,10 +132,10 @@ exports[`ESelectDown > should work with slot and modelValue 1`] = `
 "<div class=\\"eu-select-down\\">
   <div class=\\"eu-select-down-control eu-select-down-control-md\\" role=\\"listbox\\" tabindex=\\"0\\">
     <div class=\\"eu-select-down-single\\">1</div><input class=\\"eu-select-down-control-input\\">
-    <!----><span class=\\"eu-icon down-icon translate-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
+    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
-    <div class=\\"eu-select-down-panel\\" style=\\"display: inline-block;\\" role=\\"listbox\\" tabindex=\\"0\\">
+    <div class=\\"eu-select-down-panel\\" style=\\"display: none;\\" role=\\"listbox\\" tabindex=\\"0\\">
       <div class=\\"eu-select-down-panel-wrapper\\">
         <ul class=\\"panel scroll\\">
           <li class=\\"select-down-option\\" value=\\"1\\">1</li>

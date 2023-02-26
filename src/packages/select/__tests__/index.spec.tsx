@@ -25,12 +25,12 @@ describe('ESelect', () => {
       slots,
     });
     await nextTick();
-    expect(wrapper.findComponent(SelectDown).find('.eu-select-down-control-single').text()).toMatchInlineSnapshot('"基础用法1"');
+    expect(wrapper.findComponent(SelectDown).find('.eu-select-down-single').text()).toMatchInlineSnapshot('"基础用法1"');
     expect(wrapper.findComponent(SelectDown).find('.eu-select-option-selected').text()).toMatchInlineSnapshot('"基础用法1"');
 
     modelValue.value = '2';
     await nextTick();
-    expect(wrapper.findComponent(SelectDown).find('.eu-select-down-control-single').text()).toMatchInlineSnapshot('"基础用法2"');
+    expect(wrapper.findComponent(SelectDown).find('.eu-select-down-single').text()).toMatchInlineSnapshot('"基础用法2"');
     expect(wrapper.findComponent(SelectDown).find('.eu-select-option-selected').text()).toMatchInlineSnapshot('"基础用法2"');
     wrapper.unmount();
   });
