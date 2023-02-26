@@ -13,6 +13,7 @@ const config: InlineConfig = {
   },
   define: {
     __PROD__: true,
+    __DEV__: false,
   },
 
   build: {

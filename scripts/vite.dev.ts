@@ -12,6 +12,7 @@ const config: InlineConfig = {
   },
   define: {
     __DEV__: true,
+    __PROD__: false,
   },
 
   build: {
