@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { defineComponent, onBeforeUnmount, onMounted, ref, Transition } from 'vue';
+import { watchEffect, defineComponent, onBeforeUnmount, onMounted, ref, Transition } from 'vue';
 import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { isDocument, scrollTop } from '@/packages/_utils/dom';
@@ -34,7 +34,7 @@ export default defineComponent({
       backTopVisible.value = scrollTop(scrollElement) > props.height;
     };
     const scrollToTop = () => {
-      ( isDocument(scrollElement)
+      (isDocument(scrollElement)
         ? document.documentElement
         : scrollElement
       ).scrollTo({
@@ -56,8 +56,13 @@ export default defineComponent({
       scrollListenerRegistered = true;
       const { target } = props;
       const targetElement: HTMLElement | Document = typeof target === 'string' ? document.querySelector(target) as HTMLElement : target;
-      if (__DEV__ && !targetElement) {
-        warn('back-top', 'Target is not found.');
+      if (__DEV__) {
+        watchEffect(() => {
+          if (!targetElement) {
+            warn('back-top', 'Target is not found.');
+
+          }
+        });
       }
       scrollElement = (targetElement === document.documentElement) ? document : targetElement;
       scrollElement.addEventListener('scroll', handleScroll);

@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { defineComponent, computed, ref } from 'vue';
+import { watchEffect, defineComponent, computed, ref } from 'vue';
 import './style.scss';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
@@ -33,7 +33,7 @@ const EDatePickerProps = {
     default: '',
   },
   modelValue: {
-    type: [String, Date, Number, Array] as PropType<dateType>,
+    type: [String, Number, Array] as PropType<dateType>,
     default: null,
   },
   disabled: {
@@ -42,9 +42,7 @@ const EDatePickerProps = {
   },
   disabledDate: {
     type: Function as PropType<(date: number) => boolean>,
-    default() {
-      return () => {
-      };
+    default: () => {
     }
   }
 };
@@ -53,22 +51,29 @@ export default defineComponent({
   name: 'EDatePicker',
 
   props: { ...ESelectDownProps, ...EDatePickerProps },
+  emits: ['change', 'update:modelValue'],
   setup(props, { emit }) {
+
     const prefixCls = getPrefixCls('date-picker');
 
     const t = useLocaleTransform();
     const selectDownRef = ref();
 
-    if (__DEV__ && props.modelValue) {
-      if (props.type === 'range' && !Array.isArray(props.modelValue)) {
-        warnOnce(prefixCls, 'modelValue must be an array when type is range');
-      }
-      if (props.type !== 'range' && Array.isArray(props.modelValue)) {
-        warnOnce(prefixCls, 'modelValue must be a string when type is not range');
-      }
-    }
+    if (__DEV__ ) {
+      watchEffect(() => {
+        if (props.modelValue) {
+          if (props.type === 'range' && !Array.isArray(props.modelValue)) {
+            warnOnce(prefixCls, 'modelValue must be an array when type is range');
+          }
+          if (props.type !== 'range' && Array.isArray(props.modelValue)) {
+            warnOnce(prefixCls, 'modelValue must be a string when type is not range');
+          }
 
-    const modelValue = computed(() => {
+        }
+      });
+
+    }
+    const _value = computed(() => {
       return isArray(props.modelValue) ? props.modelValue : props.modelValue ? [props.modelValue] : [];
     });
     const computedDisabled = computed(() => {
@@ -86,6 +91,14 @@ export default defineComponent({
         return [props.startPlaceholder || '', props.endPlaceholder || ''];
       } else {
         return t('datePicker.rangePlaceholder.date');
+      }
+    });
+
+    const computedLabel = computed(() => {
+      if (props.type === 'range') {
+        return _value.value.map(item => dayjs(item).format('YYYY-MM-DD'));
+      } else {
+        return _value.value[0] ? dayjs(_value.value[0]).format('YYYY-MM-DD') : '';
       }
     });
 
@@ -112,15 +125,15 @@ export default defineComponent({
       let panel = null;
       if (props.type === 'date') {
         panel = <Date onChange={dateChange} disabled={computedDisabled.value} disabledDate={props.disabledDate}
-                      modelValue={modelValue.value[0]}
+                      modelValue={_value.value[0]}
         />;
       } else if (props.type === 'month') {
         panel = <Month onChange={dateChange} disabled={computedDisabled.value} disabledDate={props.disabledDate}
-                       modelValue={modelValue.value[0]}
+                       modelValue={_value.value[0]}
         />;
       } else if (props.type === 'range') {
         panel = <Range onChange={dateChange} disabled={computedDisabled.value} disabledDate={props.disabledDate}
-                       modelValue={modelValue.value}
+                       modelValue={_value.value}
         />;
       }
 
@@ -129,7 +142,7 @@ export default defineComponent({
                          endPlaceholder={computedRangePlaceholder.value[1]}
                          range={props.type === 'range'}
                          ref={selectDownRef}
-                         modelValue={modelValue.value}
+                         modelValue={computedLabel.value}
                          onUpdate:modelValue={handleChange} onClear={handleClear}
       >
         {panel}

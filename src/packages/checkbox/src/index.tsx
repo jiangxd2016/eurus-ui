@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, inject } from 'vue';
+import { watchEffect, computed, defineComponent, inject } from 'vue';
 import './style.scss';
 import { isBoolean, isString } from '@/packages/_utils/is';
 import EIcon from '@/packages/icons';
@@ -71,8 +71,12 @@ export default defineComponent({
       }
       if (isGroup.value && checkboxGroupInject) {
         const value = checkboxGroupInject.value;
-        if (__DEV__ && !props.value) {
-          warnOnce('ECheckbox', 'checkbox-group must set value');
+        if (__DEV__ ) {
+          watchEffect(() => {
+            if (!props.value) {
+              warnOnce('ECheckbox', 'checkbox-group must set value');
+            }
+          });
         }
         const index = value.indexOf(props.value || '');
         if (index === -1) {
