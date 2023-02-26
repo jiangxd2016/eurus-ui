@@ -3,7 +3,7 @@ const lang = {
   empty: {
     description: '暂无数据',
   },
-  select:{
+  select: {
     placeholder: '请选择',
   },
   drawer: {

@@ -7,7 +7,7 @@ const lang = {
     okText: 'Ok',
     cancelText: 'Cancel',
   },
-  select:{
+  select: {
     placeholder: 'Please select',
   },
   popConfirm: {
