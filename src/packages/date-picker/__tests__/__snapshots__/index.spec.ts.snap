@@ -1,11 +1,9 @@
 // Vitest Snapshot v1
 
-exports[`EDatePicker > EDatePicker snapshot 1`] = `
-"<div class=\\"eu-select-down eu-date-picker\\" type=\\"date\\" disableddate=\\"default() {
-      return () =&gt; {};
-    }\\">
+exports[`EDatePicker  > should work with \`modelValue\` props 1`] = `
+"<div class=\\"eu-select-down eu-date-picker\\" type=\\"date\\">
   <div class=\\"eu-select-down-control eu-select-down-control-md\\" role=\\"listbox\\" tabindex=\\"0\\">
-    <div class=\\"eu-select-down-single\\"></div><input class=\\"eu-select-down-control-input\\">
+    <div class=\\"eu-select-down-single\\">2023-02-26</div><input class=\\"eu-select-down-control-input\\">
     <!----><span class=\\"eu-icon down-icon translate-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-down\\"><path fill=\\"currentColor\\" d=\\"M16 22 6 12l1.4-1.4 8.6 8.6 8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
@@ -34,7 +32,146 @@ exports[`EDatePicker > EDatePicker snapshot 1`] = `
                   <th>日</th>
                 </tr>
               </thead>
-              <tbody class=\\"eu-date-picker-day-list\\"></tbody>
+              <tbody class=\\"eu-date-picker-day-list\\">
+                <tr>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">30</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">31</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">1</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">2</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">3</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">4</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">5</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">6</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">7</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">8</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">9</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">10</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">11</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">12</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">13</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">14</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">15</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">16</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">17</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">18</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">19</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">20</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">21</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">22</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">23</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">24</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">25</div>
+                  </td>
+                  <td class=\\"day-item dot\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">26</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">27</div>
+                  </td>
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">28</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">1</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">2</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">3</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">4</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">5</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">6</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">7</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">8</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">9</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">10</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">11</div>
+                  </td>
+                  <td class=\\"disable-item\\" role=\\"gridcell\\">
+                    <div class=\\"item-value\\">12</div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <div class=\\"eu-date-picker-footer\\" role=\\"button\\" tabindex=\\"0\\">今天</div>
