@@ -1,0 +1,20 @@
+@import '../../../scss/variables';
+
+
+$form-prefix-cls: $prefix + -form;
+$form-item-prefix-cls: $prefix + -form-item;
+
+.#{$form-prefix-cls}{
+  display: flex;
+  flex-wrap: wrap;
+}
+.#{$form-prefix-cls}__inline{
+  display: flex;
+  flex-wrap: wrap;
+  .#{$form-item-prefix-cls}{
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+}

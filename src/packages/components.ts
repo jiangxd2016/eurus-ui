@@ -14,6 +14,8 @@ export * from './tag';
 export * from './select';
 export * from './date-picker';
 export * from './textarea';
+export * from './form';
+export * from './form-item';
 
 export * from './locale';
 export * from './divider';

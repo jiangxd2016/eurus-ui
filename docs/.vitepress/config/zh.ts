@@ -118,6 +118,14 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
             link: '/zh/components/textarea',
           },
           {
+            text: '国际化 locale',
+            link: '/zh/components/locale',
+          },
+          {
+            text: '表单 form',
+            link: '/zh/components/form'
+          },
+          {
             text: '配置项 config-provider',
             link: '/zh/components/config-provider',
           },

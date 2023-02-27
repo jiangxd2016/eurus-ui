@@ -1,10 +1,11 @@
 import type { PropType } from 'vue';
-import { ref, watch, computed, defineComponent, toRefs } from 'vue';
+import { ref, watch, computed, defineComponent, toRefs, inject } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import './style.scss';
 import { isUndefined, isNull, isKorean } from '@/packages/_utils/is';
 import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
+import { formItemProviderInjectionKey } from '@/packages/_utils/constants';
 
 const EInputProps = {
   type: {
@@ -77,6 +78,14 @@ export default defineComponent({
     const prefixCls = getPrefixCls('input');
     const wrapperCls = getPrefixCls('input-wrapper');
 
+    const formItemFields = inject(formItemProviderInjectionKey);
+    console.log('formItemFields', formItemFields);
+    const controlChangeEvent = (val: unknown, type = 'change') => {
+      if (formItemFields && formItemFields.triggerList.includes(type)) {
+        formItemFields.validate(val);
+      }
+    };
+
     const { size, disabled, type, placeholder, modelValue } = toRefs(props);
 
     const _value = ref(props.defaultValue);
@@ -110,11 +119,15 @@ export default defineComponent({
       }
       _value.value = value;
       emit('update:modelValue', value);
+
+      controlChangeEvent(value);
     };
     const emitChange = (value: string | number, ev: Event) => {
       if (value !== preValue) {
         preValue = value + '';
         emit('change', value, ev);
+
+        controlChangeEvent(value);
       }
     };
 
@@ -127,16 +140,24 @@ export default defineComponent({
 
       updateValue(value);
       emit('input', value, ev);
+
+      controlChangeEvent(value);
     };
     const handleBlur = (ev: Event) => {
       emitChange(computedValue.value, ev);
       isFocus.value = false;
       emit('blur', ev);
+
+      const { value } = ev.target as HTMLInputElement;
+      controlChangeEvent(value, 'blur');
     };
     const handleFocus = (ev: Event) => {
       preValue = computedValue.value;
       isFocus.value = true;
       emit('focus', ev);
+
+      const { value } = ev.target as HTMLInputElement;
+      controlChangeEvent(value, 'blur');
     };
     const handleClear = (ev: MouseEvent) => {
       if (disabled.value) {
@@ -145,6 +166,9 @@ export default defineComponent({
       updateValue('');
       emitChange('', ev);
       emit('clear', ev);
+
+      const { value } = ev.target as HTMLInputElement;
+      controlChangeEvent(value, 'blur');
     };
     const handleKeydown = (ev: KeyboardEvent) => {
       emit('keydown', ev);
@@ -178,7 +202,7 @@ export default defineComponent({
     };
     expose({ focus: triggerFocus, blur: triggerBlur });
     return () => (
-      <span class={computedCls.value} >
+      <span class={computedCls.value}>
         {slots.prefix && (
           <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
         )}

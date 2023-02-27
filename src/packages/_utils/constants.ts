@@ -1,5 +1,4 @@
 import type { ExtractPropTypes, InjectionKey } from 'vue';
-// import type { EFormProps } from '../form/src';
 import type { Size } from '@/packages/_utils/size';
 import type { ESelectDownProps } from '@/packages/select-down/src';
 import type { SelectOptionItem } from '@/packages/select/src';
@@ -55,6 +54,15 @@ export type FormCtx = FormProps & {
   addFormItemField: (field: any) => void;
 };
 
+export interface formItemCtx {
+  disabled: boolean;
+  validate: Function;
+  clear: Function;
+  focusTips: Function;
+  reset: Function;
+  triggerList: string[];
+}
+
 export const formCtxProviderInjectionKey: InjectionKey<FormCtx> = Symbol('EurusFormConfigProvider');
-export const formItemProviderInjectionKey: InjectionKey<any>
+export const formItemProviderInjectionKey: InjectionKey<formItemCtx>
   = Symbol('EurusFormItemContextProvider');

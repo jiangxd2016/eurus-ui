@@ -89,22 +89,27 @@ $button-prefix-cls: $prefix + -button;
 
   &--xs {
     font-size: $button-size-xs;
+    height: 24px;
   }
 
   &--sm {
     font-size: $button-size-sm;
+    height: 28px;
   }
 
   &--md {
     font-size: $button-size-md;
+    height:32px
   }
 
   &--lg {
     font-size: $button-size-lg;
+    height: 34px;
   }
 
   &--xl {
     font-size: $button-size-xl;
+    height: 38px;
   }
 
 }

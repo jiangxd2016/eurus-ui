@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`ETextarea > ETextarea snapshot 1`] = `
+"<div class=\\"eu-textarea\\"><textarea modelvalue=\\"\\" autoheight=\\"false\\" width=\\"100%\\" height=\\"50px\\" placeholder=\\"\\" spellcheck=\\"false\\" wrap=\\"soft\\" showwordlimit=\\"false\\" class=\\"eu-textarea-input-control\\" style=\\"width: 100%; height: 50px; min-height: 50px;\\"></textarea>
+  <!---->
+</div>"
+`;

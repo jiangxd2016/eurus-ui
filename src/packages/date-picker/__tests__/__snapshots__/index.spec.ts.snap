@@ -121,12 +121,12 @@ exports[`EDatePicker  > should work with \`modelValue\` props 1`] = `
                   <td class=\\"day-item\\" role=\\"gridcell\\">
                     <div class=\\"item-value\\">25</div>
                   </td>
-                  <td class=\\"day-item dot\\" role=\\"gridcell\\">
+                  <td class=\\"day-item\\" role=\\"gridcell\\">
                     <div class=\\"item-value\\">26</div>
                   </td>
                 </tr>
                 <tr>
-                  <td class=\\"day-item\\" role=\\"gridcell\\">
+                  <td class=\\"day-item dot\\" role=\\"gridcell\\">
                     <div class=\\"item-value\\">27</div>
                   </td>
                   <td class=\\"day-item\\" role=\\"gridcell\\">
