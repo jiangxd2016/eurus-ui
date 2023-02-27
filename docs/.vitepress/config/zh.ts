@@ -114,6 +114,10 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
             link: '/zh/components/date-picker',
           },
           {
+            text: '文本区域 textarea',
+            link: '/zh/components/textarea',
+          },
+          {
             text: '配置项 config-provider',
             link: '/zh/components/config-provider',
           },

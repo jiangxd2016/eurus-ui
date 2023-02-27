@@ -13,6 +13,7 @@ export * from './select-down';
 export * from './tag';
 export * from './select';
 export * from './date-picker';
+export * from './textarea';
 
 export * from './locale';
 export * from './divider';

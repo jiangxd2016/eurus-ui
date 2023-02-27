@@ -1,0 +1,69 @@
+@import '../../../scss/variables';
+
+$textarea-prefix-cls: $prefix + -textarea;
+
+.#{$textarea-prefix-cls} {
+
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  textarea {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding:6px 10px;
+    box-sizing: border-box;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+      position: relative;
+      z-index: 100;
+      background: #f2f3f5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #dcdee0;
+      background-clip: padding-box;
+      min-height: 28px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-corner {
+      background: #dcdee0;
+    }
+
+    &:focus {
+      border-color: var(--eu-color-primary);
+      outline: 0;
+      box-shadow: 0 0 0 2px rgba(var(--eu-color-primary-rgb), 0.2);
+    }
+
+    &-disabled {
+      color: #ccc;
+      cursor: not-allowed;
+      background-color: #f5f5f5;
+    }
+  }
+
+  .input-count {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    font-size: 12px;
+    color: #999;
+  }
+
+
+}
+
