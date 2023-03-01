@@ -1,5 +1,7 @@
+import type { PropType } from 'vue';
 import { computed, defineComponent, inject, onMounted, provide, reactive, toRaw } from 'vue';
 import './style.scss';
+import type { RuleItem } from 'async-validator';
 import Schema from 'async-validator';
 import { formCtxProviderInjectionKey, formItemProviderInjectionKey } from '@/packages/_utils/constants';
 import { getValue } from '@/packages/_utils/shared';
@@ -22,7 +24,7 @@ const EFormItemProps = {
     default: '120px',
   },
   rules: {
-    type: Array,
+    type: Array as PropType<RuleItem[]>,
     default: () => [],
   },
   prop: {
@@ -44,14 +46,14 @@ export default defineComponent({
   props: EFormItemProps,
   setup(props, { slots, expose }) {
     const clsPrefix = getPrefixCls('form-item');
-    const formProps = inject(formCtxProviderInjectionKey, undefined);
+    const formInject = inject(formCtxProviderInjectionKey, undefined);
 
     const triggerList: string[] = [];
     let formRules;
-    if (formProps?.rules && props.prop && formProps.rules[props.prop]) {
-      formRules = formProps.rules[props.prop];
+    if (formInject?.rules && props.prop && formInject.rules[props.prop]) {
+      formRules = formInject.rules[props.prop];
     }
-    let rules = [...props.rules];
+    let rules: RuleItem[] = [...props.rules];
     if (props.rules?.length === 0 && formRules) {
       // 使用form的，formItem没有设置时使用form
       rules = [...formRules];
@@ -78,7 +80,7 @@ export default defineComponent({
 
     // 如果form组件设置了label的宽
     const labelStyle = computed<any>(() => {
-      const width = formProps?.labelWidth;
+      const width = formInject?.labelWidth;
       if (width) {
         return {
           width
@@ -88,17 +90,19 @@ export default defineComponent({
       }
     }, {});
     const FieldValue = computed(() => {
-      const model = formProps?.model;
+      const model = formInject?.model;
       if (!model || !props.prop) {
         return;
       }
       return getValue(model, props.prop);
     });
 
-    function doValidate(value: any, rules: any) {
-      const rawRules = toRaw(rules);
-      const validator = new Schema({ [props.prop]: rawRules });
-      return validator.validate({ [props.prop]: value || '' }, { firstFields: true }).then(() => {
+    function doValidate( rules: RuleItem[]) {
+      const rawRules = toRaw(FieldValue.value);
+      console.log('doValidate', FieldValue.value, rawRules, props.prop, { [props.prop]: FieldValue.value || '' });
+
+      const validator = new Schema({ [props.prop]: rules });
+      return validator.validate({ [props.prop]: FieldValue.value || '' }, { firstFields: true }).then(() => {
         return true;
       }).catch((err) => {
         return Promise.reject(err);
@@ -106,16 +110,15 @@ export default defineComponent({
 
     }
 
-    const validate = (value: any) => {
-      value = value || FieldValue.value;
+    const validate = () => {
       return new Promise((resolve, reject) => {
         if (state.rules) {
-          doValidate(value, state.rules).then((result) => {
+          doValidate(state.rules).then((result) => {
             if (result) {
               // 通过
               state.errorTips = '';
               state.iconType = 'icon-success';
-              resolve(value);
+              resolve(FieldValue.value);
             }
           }, (err) => {
             // 默认取第一个信息
@@ -127,7 +130,7 @@ export default defineComponent({
 
         } else {
           // 没有校验规则
-          resolve(value);
+          resolve(FieldValue.value);
         }
       });
     };
@@ -149,8 +152,8 @@ export default defineComponent({
       state.errorTips = '';
       state.iconType = '';
     };
-    const addFormItemField = formProps?.addFormItemField;
-    const getAllFormItemFields = () => {
+    const addFormItemField = formInject?.addFormItemField;
+    const setFormItemFields = () => {
       if (addFormItemField) {
         addFormItemField({
           validate,
@@ -166,15 +169,15 @@ export default defineComponent({
       clear: clearTips,
       focusTips,
       reset,
-      disabled: formProps?.disabled,
+      disabled: formInject?.disabled,
       triggerList
     }));
     onMounted(() => {
-      getAllFormItemFields();
+      setFormItemFields();
     });
 
     function reset() {
-      const modelValue = formProps?.model;
+      const modelValue = formInject?.model;
       if (modelValue) {
         modelValue[props.prop] = '';
       }

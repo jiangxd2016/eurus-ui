@@ -47,7 +47,7 @@ const EInputNumberProps = {
 export default defineComponent({
   name: 'EInputNumber',
   props: EInputNumberProps,
-  emits: ['update:modelValue', 'change'],
+  emits: ['update:modelValue', 'change', 'focus', 'blur'],
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('input-number');
 
@@ -106,13 +106,19 @@ export default defineComponent({
 
     };
 
-    const onInput = (value: number) => {
-
+    const handleInput = (value: number) => {
       updateInputValue('round', value);
     };
-    const onChange = (value: number) => {
-
+    const handleChange = (value: number) => {
       updateInputValue('round', value);
+    };
+
+    const handleFocus = (event: MouseEvent | FocusEvent) => {
+      emit('focus', event);
+    };
+
+    const handleBlur = (event: MouseEvent | FocusEvent) => {
+      emit('blur', event);
     };
 
     watch(() => props.modelValue, (n, o) => {
@@ -123,12 +129,12 @@ export default defineComponent({
     const slot = props.controls ? {
       prefix: () => (
         <span class={`${prefixCls}-minus`} aria-hidden="true" onClick={() => updateInputValue('minus')}>
-          {slots['minus-icon'] ? slots['minus-icon']() : <EIcon name="minus" />}
+          {slots['minus-icon'] ? slots['minus-icon']() : <EIcon name="minus"/>}
         </span>
       ),
       suffix: () => (
         <span class={`${prefixCls}-plus`} aria-hidden="true" onClick={() => updateInputValue('plus')}>
-          {slots['plus-icon'] ? slots['plus-icon']() : <EIcon name="plus" />}
+          {slots['plus-icon'] ? slots['plus-icon']() : <EIcon name="plus"/>}
         </span>
       )
     } : {};
@@ -140,8 +146,10 @@ export default defineComponent({
           modelValue={_value.value}
           placeholder={props.placeholder}
           disabled={props.disabled}
-          onInput={onInput}
-          onChange={onChange}
+          onInput={handleInput}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
           aria-valuemax={props.max}
           aria-valuemin={props.min}
           aria-valuenow={_value.value}

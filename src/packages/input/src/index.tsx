@@ -79,7 +79,7 @@ export default defineComponent({
     const wrapperCls = getPrefixCls('input-wrapper');
 
     const formItemFields = inject(formItemProviderInjectionKey);
-    console.log('formItemFields', formItemFields);
+
     const controlChangeEvent = (val: unknown, type = 'change') => {
       if (formItemFields && formItemFields.triggerList.includes(type)) {
         formItemFields.validate(val);
@@ -109,6 +109,7 @@ export default defineComponent({
     watch(modelValue, (value) => {
       if (isUndefined(value) || isNull(value)) {
         _value.value = '';
+        controlChangeEvent(value);
       }
     });
 

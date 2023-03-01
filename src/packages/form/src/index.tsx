@@ -86,7 +86,6 @@ export default defineComponent({
           }
         };
         formItemFields.forEach((item: any) => {
-          console.log(item.prop);
           item
             .validate()
             .then(() => {
