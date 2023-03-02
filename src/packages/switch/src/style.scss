@@ -86,6 +86,16 @@ $switch-prefix-cls: $prefix + -switch;
 
   }
 
+
+  &-disabled   &__label-right {
+    color: 	#767676
+  }
+
+  &-disabled &__label-left {
+    color: 	#767676
+  }
+
+
   &-disabled:not(&-checked) &__inner {
     cursor: not-allowed;
     background-color: $switch-disabled-bg-color;

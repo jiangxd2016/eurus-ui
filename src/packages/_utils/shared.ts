@@ -6,7 +6,6 @@ export const hasOwn = <T extends object, K extends keyof T>(val: T, key: K): key
 export const stopPropagation = (e: Event) => e.stopPropagation();
 export const preventDefault = (e: Event) => e.preventDefault();
 
-
 /**
  *  深度获取对象的值
  * @param object

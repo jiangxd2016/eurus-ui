@@ -13,8 +13,8 @@ $form-item-prefix-cls: $prefix + -form-item;
   flex-wrap: wrap;
   .#{$form-item-prefix-cls}{
     display: inline-flex;
-    flex: 0 0 auto;
-    margin-right: 20px;
-    margin-bottom: 0;
+    vertical-align: middle;
+    margin-right: 32px;
+    width: auto;
   }
 }

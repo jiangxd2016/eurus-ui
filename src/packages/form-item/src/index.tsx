@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, inject, onMounted, provide, reactive, toRaw } from 'vue';
+import { computed, defineComponent, inject, onMounted, provide, reactive } from 'vue';
 import './style.scss';
 import type { RuleItem } from 'async-validator';
 import Schema from 'async-validator';
@@ -62,6 +62,7 @@ export default defineComponent({
     rules.forEach((rule: any) => {
       if (rule.trigger) {
         triggerList.push(...[].concat(rule.trigger));
+        delete rule.trigger;
       }
     });
     if (props.required) {
@@ -97,23 +98,20 @@ export default defineComponent({
       return getValue(model, props.prop);
     });
 
-    function doValidate( rules: RuleItem[]) {
-      const rawRules = toRaw(FieldValue.value);
-      console.log('doValidate', FieldValue.value, rawRules, props.prop, { [props.prop]: FieldValue.value || '' });
-
+    function doValidate(validValue: any, rules: RuleItem[]) {
       const validator = new Schema({ [props.prop]: rules });
-      return validator.validate({ [props.prop]: FieldValue.value || '' }, { firstFields: true }).then(() => {
+      return validator.validate({ [props.prop]: validValue || '' }, { firstFields: true }).then(() => {
         return true;
       }).catch((err) => {
         return Promise.reject(err);
       });
-
     }
 
-    const validate = () => {
+    const validate = (val: any) => {
+      const validValue = val || FieldValue.value;
       return new Promise((resolve, reject) => {
         if (state.rules) {
-          doValidate(state.rules).then((result) => {
+          doValidate(validValue, state.rules).then((result) => {
             if (result) {
               // 通过
               state.errorTips = '';

@@ -10,6 +10,7 @@ import { ESelectDownProps } from '@/packages/select-down/src';
 import { isArray, } from '@/packages/_utils/is';
 import { warn } from '@/packages/_utils/warn';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
+import { useFormValidate } from '@/packages/_utils/form';
 
 export interface SelectOptionItem {
   value?: any;
@@ -29,22 +30,25 @@ const ESelectProps = {
 export default defineComponent({
   name: 'ESelect',
   props: ESelectProps,
+  emits: ['update:modelValue', 'change', 'clear', 'focus', 'blur'],
   setup(props, { emit, slots }) {
 
-    if (!props.multiple && isArray(props.modelValue)) {
+    if (__DEV__ && !props.multiple && isArray(props.modelValue)) {
       warn('ESelectDown', 'modelValue must be a string or number when multiple is false');
     }
-
     const prefixCls = getPrefixCls('select');
+
+    const { formItemFields, validateEvent } = useFormValidate();
+
+    const t = useLocaleTransform();
+    const _value = ref(props.modelValue);
+    const _options = ref<SelectOptionItem[]>([]);
 
     const selectDownRef = ref<typeof SelectDown>();
 
-    const _options = ref<SelectOptionItem[]>([]);
-
-    const _value = ref(props.modelValue);
-
-    const t = useLocaleTransform();
-
+    const computedDisabled = computed(() => {
+      return props.disabled || formItemFields?.disabled;
+    });
     const computedLabel = computed(() => {
 
       const options = props.options.length > 0 ? props.options : _options.value;
@@ -76,6 +80,7 @@ export default defineComponent({
       } else {
         _value.value = value;
       }
+      validateEvent(_value.value);
       emit('update:modelValue', _value.value);
     };
 
@@ -85,6 +90,9 @@ export default defineComponent({
       }
     };
     const onUpdateModelValue = (label: string) => {
+      if (computedDisabled.value) {
+        return;
+      }
       const options = props.options.length > 0 ? props.options : _options.value;
       const value = options.find((option: SelectOptionItem) => option.label === label)?.value ?? '';
       selectItem(value);
@@ -92,8 +100,12 @@ export default defineComponent({
     };
 
     const handleClear = () => {
+      if (computedDisabled.value) {
+        return;
+      }
       _value.value = props.multiple ? [] : '';
       selectDownRef.value?.setModelValue(_value.value);
+      validateEvent(_value.value);
       emit('update:modelValue', _value.value);
       emit('clear');
     };
@@ -103,6 +115,7 @@ export default defineComponent({
     return () => {
       return <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value}
                          placeholder={computedPlaceholder.value}
+                          disabled={computedDisabled.value}
                          onUpdate:modelValue={onUpdateModelValue} ref={selectDownRef}
                          onClear={handleClear}
       >
@@ -113,7 +126,7 @@ export default defineComponent({
         }) : slots.default && slots.default()
         }
 
-        {/* TODO: need empty  */}
+        {/* TODO: need empty style  */}
       </SelectDown>;
     };
   },

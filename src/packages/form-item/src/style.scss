@@ -2,6 +2,7 @@
 
 $form-item-prefix-cls: $prefix + -form-item;
 .#{$form-item-prefix-cls} {
+  width: 100%;
   display: flex;
   margin-bottom: 18px;
 
@@ -19,16 +20,21 @@ $form-item-prefix-cls: $prefix + -form-item;
   }
 
   .content {
+    position: relative;
     flex: 1;
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
-    padding: 0 10px;
-
   }
 
 
   .error {
-    padding-top: 2px;
     font-size: 12px;
+    line-height: 1;
+    padding-top: 2px;
+    position: absolute;
+    top: 100%;
+    left: 0;
     color: #f56c6c;
   }
 

@@ -32,11 +32,11 @@ describe('EInputNumber', () => {
       },
     });
 
-    expect(wrapper.find('input').element.value).toEqual('10');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('10');
 
     await wrapper.find('.eu-input-number-plus').trigger('click');
     await nextTick();
-    expect(wrapper.find('input').element.value).toEqual('10');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('10');
     wrapper.unmount();
   });
 
@@ -49,10 +49,10 @@ describe('EInputNumber', () => {
       },
     });
 
-    expect(wrapper.find('input').element.value).toEqual('10');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('10');
     await wrapper.find('.eu-input-number-minus').trigger('click');
     await nextTick();
-    expect(wrapper.find('input').element.value).toEqual('10');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('10');
     wrapper.unmount();
   });
 
@@ -65,14 +65,14 @@ describe('EInputNumber', () => {
       },
     });
 
-    expect(wrapper.find('input').element.value).toEqual('10');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('10');
     await wrapper.find('.eu-input-number-minus').trigger('click');
     await nextTick();
-    expect(wrapper.find('input').element.value).toEqual('8');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('8');
 
     await wrapper.find('.eu-input-number-plus').trigger('click');
     await nextTick();
-    expect(wrapper.find('input').element.value).toEqual('10');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('10');
     wrapper.unmount();
   });
 
@@ -86,18 +86,18 @@ describe('EInputNumber', () => {
       },
     });
 
-    expect(wrapper.find('input').element.value).toEqual('1.11');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('1.11');
     await wrapper.find('.eu-input-number-minus').trigger('click');
     await nextTick();
-    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('"0.88"');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('0.88');
 
     await wrapper.find('.eu-input-number-minus').trigger('click');
     await nextTick();
-    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('"0.65"');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('0.65');
 
     await wrapper.find('.eu-input-number-plus').trigger('click');
     await nextTick();
-    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('"0.88"');
+    expect(wrapper.find('input').element.value).toMatchInlineSnapshot('0.88');
     wrapper.unmount();
   });
 });

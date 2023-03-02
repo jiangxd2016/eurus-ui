@@ -1,11 +1,11 @@
 import type { PropType } from 'vue';
-import { ref, watch, computed, defineComponent, toRefs, inject } from 'vue';
+import { ref, watch, computed, defineComponent, toRefs } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import './style.scss';
 import { isUndefined, isNull, isKorean } from '@/packages/_utils/is';
 import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
-import { formItemProviderInjectionKey } from '@/packages/_utils/constants';
+import { useFormValidate } from '@/packages/_utils/form';
 
 const EInputProps = {
   type: {
@@ -13,7 +13,7 @@ const EInputProps = {
     default: 'text'
   },
   modelValue: {
-    type: [String, Number] as PropType<string | number>,
+    type: [String, Number] as PropType<string | number | null | undefined>,
     default: ''
   },
   defaultValue: {
@@ -78,15 +78,9 @@ export default defineComponent({
     const prefixCls = getPrefixCls('input');
     const wrapperCls = getPrefixCls('input-wrapper');
 
-    const formItemFields = inject(formItemProviderInjectionKey);
+    const { formItemFields, validateEvent } = useFormValidate(props.type !== 'number');
 
-    const controlChangeEvent = (val: unknown, type = 'change') => {
-      if (formItemFields && formItemFields.triggerList.includes(type)) {
-        formItemFields.validate(val);
-      }
-    };
-
-    const { size, disabled, type, placeholder, modelValue } = toRefs(props);
+    const { size, type, placeholder, modelValue } = toRefs(props);
 
     const _value = ref(props.defaultValue);
     const inputRef = ref<HTMLInputElement | null>(null);
@@ -97,81 +91,91 @@ export default defineComponent({
       return props.maxLength > 0 ? props.maxLength : undefined;
     });
     const computedValue = computed(() => {
-      return (props.modelValue ?? _value.value) + '';
-    });
-    const computedCls = computed(() => {
-      return [wrapperCls, `${wrapperCls}--${size.value}`, props.disabled && `${wrapperCls}--disabled`];
+      return props.modelValue ?? _value.value;
     });
 
+    const computedDisabled = computed(() => {
+      return props.disabled || formItemFields?.disabled;
+    });
+    const computedCls = computed(() => {
+      return [wrapperCls, `${wrapperCls}--${size.value}`, computedDisabled.value && `${wrapperCls}--disabled`];
+    });
     const showClearBtn = computed(() => props.clearable && Boolean(computedValue.value));
 
     let preValue = computedValue.value;
     watch(modelValue, (value) => {
-      if (isUndefined(value) || isNull(value)) {
+      if ((isUndefined(value) || isNull(value)) && props.type !== 'number') {
         _value.value = '';
-        controlChangeEvent(value);
+        validateEvent(value);
       }
     });
-
     // update value
-    const updateValue = (value: string) => {
-      if (maxLength.value && value.length > maxLength.value) {
-        value = value.slice(0, maxLength.value);
+    const updateValue = (value: string | number | null) => {
+      let valueStr = '';
+      if (value) {
+        valueStr = String(value);
+        if (maxLength.value && valueStr.length > maxLength.value) {
+          valueStr = valueStr.slice(0, maxLength.value);
+        }
       }
-      _value.value = value;
+
+      _value.value = valueStr;
       emit('update:modelValue', value);
 
-      controlChangeEvent(value);
+      validateEvent(value);
     };
     const emitChange = (value: string | number, ev: Event) => {
       if (value !== preValue) {
-        preValue = value + '';
+        preValue = value;
         emit('change', value, ev);
 
-        controlChangeEvent(value);
+        validateEvent(value);
       }
     };
 
     const handleInput = (ev: Event) => {
-
+      if (computedDisabled.value) {
+        return;
+      }
       if (isComposing.value) {
         return;
       }
-      const value = (ev.target as HTMLInputElement).value;
+      let value: string | number | null = (ev.target as HTMLInputElement).value;
+      if (props.type === 'number') {
+        value = value ? Number(value) : null;
+      }
 
       updateValue(value);
       emit('input', value, ev);
 
-      controlChangeEvent(value);
+      validateEvent(value);
     };
     const handleBlur = (ev: Event) => {
-      emitChange(computedValue.value, ev);
       isFocus.value = false;
       emit('blur', ev);
 
-      const { value } = ev.target as HTMLInputElement;
-      controlChangeEvent(value, 'blur');
+      validateEvent(computedValue.value, 'blur');
     };
     const handleFocus = (ev: Event) => {
-      preValue = computedValue.value;
       isFocus.value = true;
       emit('focus', ev);
 
-      const { value } = ev.target as HTMLInputElement;
-      controlChangeEvent(value, 'blur');
+      validateEvent(computedValue.value, 'blur');
     };
     const handleClear = (ev: MouseEvent) => {
-      if (disabled.value) {
+      if (computedDisabled.value) {
         return;
       }
       updateValue('');
       emitChange('', ev);
       emit('clear', ev);
 
-      const { value } = ev.target as HTMLInputElement;
-      controlChangeEvent(value, 'blur');
+      validateEvent(computedValue.value, 'blur');
     };
     const handleKeydown = (ev: KeyboardEvent) => {
+      if (computedDisabled.value) {
+        return;
+      }
       emit('keydown', ev);
     };
 
@@ -217,7 +221,7 @@ export default defineComponent({
           tabindex={props.tabindex}
           placeholder={placeholder.value}
           form={props.form}
-          disabled={disabled.value}
+          disabled={computedDisabled.value}
           maxlength={maxLength.value}
           class={[prefixCls]}
           onCompositionstart={compositionStart}
@@ -237,7 +241,7 @@ export default defineComponent({
           <span class={`${prefixCls}-suffix`}>
             {Boolean(props.maxLength) && props.showWordLimit && (
               <span class={`${prefixCls}-word-limit`}>
-                {computedValue.value.length} / {maxLength.value}
+                {(computedValue.value + '').length} / {maxLength.value}
               </span>
             )}{slots.suffix?.()}</span>
 

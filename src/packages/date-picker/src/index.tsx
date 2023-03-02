@@ -12,6 +12,7 @@ import { ESelectDownProps } from '@/packages/select-down/src';
 import { warnOnce } from '@/packages/_utils/warn';
 import { isArray } from '@/packages/_utils/is';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
+import { useFormValidate } from '@/packages/_utils/form';
 
 export type dateType = Date | string | number | Dayjs | Array<Date | string | number | Dayjs>;
 
@@ -55,6 +56,8 @@ export default defineComponent({
 
     const prefixCls = getPrefixCls('date-picker');
 
+    const { formItemFields, validateEvent } = useFormValidate();
+
     const t = useLocaleTransform();
     const selectDownRef = ref();
 
@@ -76,7 +79,7 @@ export default defineComponent({
       return isArray(props.modelValue) ? props.modelValue : props.modelValue ? [props.modelValue] : [];
     });
     const computedDisabled = computed(() => {
-      return props.disabled;
+      return props.disabled || formItemFields?.disabled;
     });
 
     const computedPlaceholder = computed(() => {
@@ -102,6 +105,10 @@ export default defineComponent({
     });
 
     const dateChange = (date: number | number[]) => {
+      if (computedDisabled.value) {
+        return;
+      }
+      validateEvent(date);
       emit('change', date);
       emit('update:modelValue', date);
       const dateStr = Array.isArray(date) ? date.map(item => dayjs(item).format('YYYY-MM-DD')) : dayjs(date).format('YYYY-MM-DD');
@@ -110,12 +117,18 @@ export default defineComponent({
     };
 
     const handleChange = (val: string) => {
+      if (computedDisabled.value) {
+        return;
+      }
       emit('update:modelValue', val);
       emit('change', val);
 
     };
 
     const handleClear = () => {
+      if (computedDisabled.value) {
+        return;
+      }
       emit('update:modelValue', '');
       emit('change', '');
     };
@@ -141,6 +154,7 @@ export default defineComponent({
                          endPlaceholder={computedRangePlaceholder.value[1]}
                          range={props.type === 'range'}
                          ref={selectDownRef}
+                         disabled={computedDisabled.value}
                          modelValue={computedLabel.value}
                          onUpdate:modelValue={handleChange} onClear={handleClear}
       >

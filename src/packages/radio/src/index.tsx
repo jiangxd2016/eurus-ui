@@ -2,6 +2,7 @@ import { computed, defineComponent, inject } from 'vue';
 import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { RadioGroupKey } from '@/packages/_utils/constants';
+import { useFormValidate } from '@/packages/_utils/form';
 
 const ERadioProps = {
   modelValue: {
@@ -35,6 +36,8 @@ export default defineComponent({
     const radioGroupInject = inject(RadioGroupKey, undefined);
     const isGroup = computed(() => !!radioGroupInject);
 
+    const { formItemFields, validateEvent } = useFormValidate();
+
     const computedChecked = computed(() => {
       if (radioGroupInject) {
         return radioGroupInject.value === props.value;
@@ -44,7 +47,7 @@ export default defineComponent({
 
     const computedDisabled = computed(() => {
       if (radioGroupInject) {
-        return radioGroupInject.disabled || props.disabled;
+        return formItemFields?.disabled || radioGroupInject.disabled || props.disabled;
       }
 
       return props.disabled;
@@ -68,6 +71,7 @@ export default defineComponent({
         radioGroupInject.handleChange(value, e);
       } else {
         const val = props.modelValue === props.value ? '' : props.value;
+        validateEvent(val);
         emit('change', val, e);
         emit('update:modelValue', val);
       }

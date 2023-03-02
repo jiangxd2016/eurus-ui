@@ -36,27 +36,27 @@ $select-down-prefix-cls: $prefix + -select-down;
 
     &-xs {
       font-size: 12px;
-      min-height: 28px;
+      min-height: 26px;
     }
 
     &-sm {
       font-size: 14px;
-      min-height: 32px;
+      min-height: 30px;
     }
 
     &-md {
       font-size: 14px;
-      min-height: 36px;
+      min-height: 34px;
     }
 
     &-lg {
       font-size: 16px;
-      min-height: 40px;
+      min-height: 38px;
     }
 
     &-xl {
       font-size: 18px;
-      min-height: 44px;
+      min-height: 40px;
     }
 
     &-focus {
@@ -92,7 +92,7 @@ $select-down-prefix-cls: $prefix + -select-down;
 
     &-placeholder {
       width: 100%;
-      color: #848b99;
+      color: #a8b0bf;
       pointer-events: none;
       cursor: text;
       overflow: hidden;

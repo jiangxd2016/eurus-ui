@@ -1,4 +1,4 @@
-<template >
-<EFormItem></EFormItem>
+<template>
+  <EFormItem />
 </template>
 

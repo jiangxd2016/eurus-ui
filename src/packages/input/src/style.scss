@@ -18,7 +18,7 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
   overflow: hidden;
   box-sizing: border-box;
   width: 100%;
-  transition: all 0.3s;
+  transition: border 0.3s;
   color: #575757;
 
   &:hover {
@@ -47,13 +47,13 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
   }
 
 
-
   & .#{$input-prefix-cls} {
     flex: 1;
     transition: all 0.3s;
     color: #575757;
 
   }
+
   & .#{$input-prefix-cls}-word-limit {
     font-size: 12px;
     color: rgb(118, 124, 130);
@@ -79,9 +79,6 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
 }
 
 
-
-
-
 .#{$input-wrapper-prefix-cls}--disabled {
   background: #f7f7fa;
   border: 1px solid #e5e5ea;
@@ -101,35 +98,34 @@ $input-wrapper-prefix-cls: $prefix + -input-wrapper;
 
 .#{$input-wrapper-prefix-cls}--xs {
   font-size: 12px;
-  line-height: 1.667;
+  height: 26px;
   padding: 2px 6px;
 }
 
 .#{$input-wrapper-prefix-cls}--sm {
   font-size: 14px;
-  line-height: 1.5715;
+  height: 30px;
   padding: 5px 8px;
 }
 
 
 .#{$input-wrapper-prefix-cls}--md {
   padding: 5px 8px;
-  line-height: 1.5715;
+  height: 34px;
   font-size: 14px;
 }
 
 .#{$input-wrapper-prefix-cls}--lg {
-  font-size: 18px;
-  line-height: 1.875;
+  font-size: 16px;
+  height: 38px;
   padding: 10px 10px;
 }
 
 .#{$input-wrapper-prefix-cls}--xl {
-  font-size: 22px;
-  line-height: 2.142;
+  font-size: 18px;
+  height: 40px;
   padding: 10px 10px;
 }
-
 
 
 .#{$input-prefix-cls}::placeholder {

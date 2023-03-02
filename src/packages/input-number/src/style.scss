@@ -2,11 +2,12 @@
 
 
 $number-prefix-cls: $prefix + -input-number;
+$input-wrapper-prefix-cls: $prefix + -input-wrapper;
 
 .#{$number-prefix-cls} {
   position: relative;
   display: inline-flex;
-  min-width: 40px;
+
 
 
   &-minus, &-plus{
@@ -19,7 +20,6 @@ $number-prefix-cls: $prefix + -input-number;
     cursor: pointer;
     user-select: none;
     color: var(--eu-color-grey);
-    border: 1px solid var(--eu-color-grey);
     border-radius: 2px;
     transition: all .3s;
     &:hover{

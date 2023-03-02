@@ -6,6 +6,7 @@ import EIcon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import EInput from '@/packages/input';
 import { isNumber } from '@/packages/_utils/is';
+import { useFormValidate } from '@/packages/_utils/form';
 
 type NPMethod = 'plus' | 'minus' | 'times' | 'divide' | 'round';
 
@@ -51,8 +52,10 @@ export default defineComponent({
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('input-number');
 
+    const { formItemFields, validateEvent } = useFormValidate();
+
     const computedDisabled = computed(() => {
-      return props.disabled;
+      return props.disabled || formItemFields?.disabled;
     });
 
     const computedCls = computed(() => {
@@ -64,17 +67,18 @@ export default defineComponent({
 
     const getStringValue = (number: number | undefined) => {
       if (!isNumber(number)) {
-        return '';
+        return undefined;
       }
 
       return props.precision
-        ? number.toFixed(props.precision)
-        : String(number);
+        ? +number.toFixed(props.precision)
+        : number;
     };
 
     const _value = ref(getStringValue(props.modelValue ?? props.defaultValue));
 
     const emitEvent = (value: number) => {
+      validateEvent(value);
       emit('update:modelValue', value);
       emit('change', value);
     };
@@ -91,50 +95,67 @@ export default defineComponent({
       if (value) {
         val = value;
       } else {
-        val = NP[methods](_value.value, _step);
+        val = NP[methods](value || _value.value || 0, _step);
       }
-
       if (val > max) {
         val = max;
       }
       if (val < min) {
         val = min;
       }
-
-      _value.value = round(val, _precision).toFixed(_precision);
-      emitEvent(+_value.value);
+      _value.value = +round(val, _precision).toFixed(_precision);
+      emitEvent(_value.value);
 
     };
 
     const handleInput = (value: number) => {
-      updateInputValue('round', value);
+      if (computedDisabled.value) {
+        return;
+      }
+      _value.value = value;
+      emitEvent(value);
     };
     const handleChange = (value: number) => {
-      updateInputValue('round', value);
+      if (computedDisabled.value) {
+        return;
+      }
+      _value.value = value;
+      emitEvent(value);
     };
 
     const handleFocus = (event: MouseEvent | FocusEvent) => {
+      if (computedDisabled.value) {
+        return;
+      }
+      validateEvent(_value.value);
       emit('focus', event);
     };
 
     const handleBlur = (event: MouseEvent | FocusEvent) => {
+      if (computedDisabled.value) {
+        return;
+      }
+      if (props.precision) {
+        updateInputValue('round', _value.value);
+      }
+      validateEvent(_value.value);
       emit('blur', event);
     };
 
     watch(() => props.modelValue, (n, o) => {
-      if (n && n !== o && n !== +_value.value) {
+      if (n && n !== o && n !== +(_value.value || 0)) {
         updateInputValue('round', n);
       }
     });
     const slot = props.controls ? {
       prefix: () => (
         <span class={`${prefixCls}-minus`} aria-hidden="true" onClick={() => updateInputValue('minus')}>
-          {slots['minus-icon'] ? slots['minus-icon']() : <EIcon name="minus"/>}
+          {slots['minus-icon'] ? slots['minus-icon']() : <EIcon name="minus" size="22"/>}
         </span>
       ),
       suffix: () => (
         <span class={`${prefixCls}-plus`} aria-hidden="true" onClick={() => updateInputValue('plus')}>
-          {slots['plus-icon'] ? slots['plus-icon']() : <EIcon name="plus"/>}
+          {slots['plus-icon'] ? slots['plus-icon']() : <EIcon name="plus" size="22"/>}
         </span>
       )
     } : {};

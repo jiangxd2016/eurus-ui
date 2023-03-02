@@ -3,7 +3,7 @@ import EForm from '..';
 
 describe('EForm', () => {
 
- it('EForm snapshot', () => {
+  it('EForm snapshot', () => {
     const wrapper = mount(EForm);
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();

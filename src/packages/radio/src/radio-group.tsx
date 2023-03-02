@@ -1,6 +1,7 @@
 import { computed, defineComponent, provide, reactive, ref } from 'vue';
 import { RadioGroupKey } from '@/packages/_utils/constants';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import { useFormValidate } from '@/packages/_utils/form';
 
 export default defineComponent({
   name: 'ERadioGroup',
@@ -21,6 +22,12 @@ export default defineComponent({
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('radio-group');
     const _value = ref(props.defaultValue);
+
+    const { formItemFields, validateEvent } = useFormValidate();
+
+    const computedDisabled = computed(() => {
+      return props.disabled || formItemFields?.disabled;
+    });
     const computedValue = computed(() => props.modelValue ?? _value.value);
 
     const computedCls = computed(() => {
@@ -29,10 +36,11 @@ export default defineComponent({
       };
     });
     const updateValue = (value: string | boolean | number, e: Event) => {
-      if (props.disabled) {
+      if (computedDisabled.value) {
         return;
       }
       _value.value = value;
+      validateEvent(_value.value);
       emit('change', value, e);
       emit('update:modelValue', value);
     };
@@ -40,13 +48,13 @@ export default defineComponent({
       handleChange: updateValue,
       name: 'EuRadioGroup',
       value: computedValue,
-      disabled: props.disabled,
-    } ));
+      disabled: computedDisabled.value,
+    }));
 
     return () => (
-			<div class={[prefixCls, computedCls.value]}>
-				{slots.default && slots.default()}
-			</div>
+      <div class={[prefixCls, computedCls.value]}>
+        {slots.default && slots.default()}
+      </div>
     );
   }
 });

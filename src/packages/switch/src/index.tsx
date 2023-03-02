@@ -1,6 +1,7 @@
 import { computed, defineComponent, ref } from 'vue';
 import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import { useFormValidate } from '@/packages/_utils/form';
 
 const ESwitchProps = {
 
@@ -46,6 +47,12 @@ export default defineComponent({
   setup(props, { emit }) {
     const prefixCls = getPrefixCls('switch');
 
+    const { formItemFields, validateEvent } = useFormValidate();
+
+    const computedDisabled = computed(() => {
+      return props.disabled || formItemFields?.disabled;
+    });
+
     const _checked = ref(
       props.defaultChecked ? props.checkedValue : props.uncheckedValue
     );
@@ -56,7 +63,7 @@ export default defineComponent({
     const computedCls = computed(() => {
       return {
         [`${prefixCls}-checked`]: computedChecked.value,
-        [`${prefixCls}-disabled`]: props.disabled
+        [`${prefixCls}-disabled`]: computedDisabled.value
       };
     });
     const computedStyles = computed(() => {
@@ -76,10 +83,11 @@ export default defineComponent({
       ev.stopPropagation();
     };
     const handleChange = (ev: Event) => {
-      if (props.disabled) {
+      if (computedDisabled.value) {
         return;
       }
       _checked.value = !computedChecked.value ? props.checkedValue : props.uncheckedValue;
+      validateEvent(_checked.value);
       emit('update:modelValue', _checked.value);
       emit('change', _checked.value, ev);
     };
@@ -91,9 +99,9 @@ export default defineComponent({
 										type="checkbox"
 										role="switch"
 										aria-checked={computedChecked.value}
-										aria-disabled={props.disabled}
+										aria-disabled={computedDisabled.value}
 										onClick={handleClick}
-										disabled={props.disabled}
+										disabled={computedDisabled.value}
 										onChange={handleChange}
 								/>
 								{props.uncheckedLabel && <span class={`${prefixCls}__label-left`}>

@@ -78,7 +78,6 @@ export default defineComponent({
               return fi !== 'true';
             });
             if (tips.length > 0) {
-              // console.log('不通过')
               reject(tips);
             } else {
               resolve(true);

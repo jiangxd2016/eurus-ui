@@ -2,6 +2,7 @@ import type { PropType } from 'vue';
 import { computed, defineComponent, ref, watch } from 'vue';
 import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import {useFormValidate} from "@/packages/_utils/form";
 
 const ETextareaProps = {
   modelValue: {
@@ -16,10 +17,7 @@ const ETextareaProps = {
     type: String,
     default: '100%',
   },
-  height: {
-    type: String,
-    default: '50px',
-  },
+
   disabled: {
     type: Boolean,
     default: false,
@@ -65,19 +63,25 @@ export default defineComponent({
     const _value = ref(props.modelValue);
     const textareaEl = ref(null);
 
+    const { formItemFields, validateEvent } = useFormValidate();
+
+
     watch(() => props.modelValue, (val) => {
       _value.value = val;
     });
 
     const computedDisabled = computed(() => {
-      return props.disabled;
+      return props.disabled || formItemFields?.disabled;
     });
-
+    const computedCls = computed(() => {
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}-disabled`]: computedDisabled.value
+      };
+    });
     const computedStyle = computed(() => {
       return {
         width: props.width,
-        height: props.height,
-        minHeight: props.height,
         overflow: props.autoHeight ? 'hidden' : ''
       };
     });
@@ -85,10 +89,11 @@ export default defineComponent({
     const handleChange = (e: Event) => {
       const target = e.target as HTMLTextAreaElement;
       _value.value = target.value;
+      validateEvent(_value.value);
       emit('update:modelValue', target.value);
     };
     return () => (
-      <div class={prefixCls}>
+      <div class={computedCls.value}>
         <textarea
           ref={textareaEl}
           {...props}
