@@ -1,0 +1,80 @@
+@import '../../../scss/variables';
+
+$drawer-prefix-cls: $prefix + -drawer;
+$drawer-container-prefix-cls: $drawer-prefix-cls + '-container';
+
+
+.#{$drawer-container-prefix-cls} {
+  position: fixed;
+  overflow: auto;
+  z-index: 1050;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  .#{$drawer-prefix-cls}-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #272c36;
+    opacity: 0.3;
+  }
+
+  .#{$drawer-prefix-cls} {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    opacity: 1;
+    width: 50%;
+    height: 100vh;
+    overflow: visible;
+    outline: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1050;
+
+    &-header {
+      flex-shrink: 0;
+      padding: 16px 24px;
+      display: flex;
+      font-weight: 500;
+      line-height: 1;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #575757;
+
+      .title {
+
+        flex: 1;
+
+      }
+
+
+    }
+
+    &-body {
+      flex: 1;
+      padding: 24px;
+      overflow: auto;
+    }
+
+    &-footer {
+      display: flex;
+      justify-content: flex-end;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 16px 24px;
+
+      >* {
+        margin-left: 8px;
+      }
+    }
+  }
+}
+

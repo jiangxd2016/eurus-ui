@@ -137,6 +137,10 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           {
             text:"面包屑 breadcrumb",
             link:"/zh/components/breadcrumb"
+          },
+          {
+            text:"抽屉 drawer",
+            link:"/zh/components/drawer"
           }
           // {
           //   text: '加载中 loading',
