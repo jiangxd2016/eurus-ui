@@ -132,6 +132,11 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           {
             text: '分割线 divider',
             link: '/zh/components/divider',
+          },
+
+          {
+            text:"面包屑 breadcrumb",
+            link:"/zh/components/breadcrumb"
           }
           // {
           //   text: '加载中 loading',

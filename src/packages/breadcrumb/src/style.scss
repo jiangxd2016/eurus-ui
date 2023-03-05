@@ -1,0 +1,35 @@
+@import '../../../scss/variables';
+
+
+$breadcrumb-prefix-cls: $prefix + -breadcrumb;
+
+
+.#{$breadcrumb-prefix-cls} {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #222;
+  line-height: 1.5;
+  white-space: nowrap;
+
+  .separator {
+    color: #231;
+    margin: 0 8px;
+
+  }
+
+  &_item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--e-color-primary);
+    }
+
+    &.is-active {
+      color: var(--e-color-primary);
+      cursor: default;
+    }
+  }
+}
