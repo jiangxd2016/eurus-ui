@@ -1,12 +1,12 @@
+import type { PropType } from 'vue';
+import { defineComponent } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { defineComponent, PropType } from 'vue';
 import './style.scss';
 
 export interface BreadcrumbItem {
   title: string;
   href?: string;
 }
-
 
 const EBreadcrumbProps = {
   data: {
@@ -22,7 +22,7 @@ const EBreadcrumbProps = {
 export default defineComponent({
   name: 'EBreadcrumb',
   props: EBreadcrumbProps,
-  setup(props, { slots, emit }) {
+  setup(props) {
     const prefixCls = getPrefixCls('breadcrumb');
 
     return () => (

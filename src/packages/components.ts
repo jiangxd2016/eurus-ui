@@ -21,6 +21,5 @@ export * from './locale';
 export * from './divider';
 export * from './config-provider';
 
-
-export * from "./breadcrumb"
-export * from "./drawer"
+export * from './breadcrumb';
+export * from './drawer';

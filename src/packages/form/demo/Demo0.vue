@@ -89,9 +89,9 @@ const rules = {
 const submit = () => {
   formRef.value && formRef.value.validate().then((valid: boolean) => {
     if (valid) {
-      console.log('submit!');
+      // console.log('submit!');
     } else {
-      console.log('error submit!!');
+      // console.log('error submit!!');
     }
   });
 };

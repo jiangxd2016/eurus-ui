@@ -2,7 +2,7 @@ import type { PropType } from 'vue';
 import { computed, defineComponent, ref, watch } from 'vue';
 import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import {useFormValidate} from "@/packages/_utils/form";
+import { useFormValidate } from '@/packages/_utils/form';
 
 const ETextareaProps = {
   modelValue: {
@@ -64,7 +64,6 @@ export default defineComponent({
     const textareaEl = ref(null);
 
     const { formItemFields, validateEvent } = useFormValidate();
-
 
     watch(() => props.modelValue, (val) => {
       _value.value = val;

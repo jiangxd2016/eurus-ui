@@ -1,5 +1,6 @@
+import type { PropType } from 'vue';
+import { defineComponent, Transition } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { defineComponent, PropType, Transition } from 'vue';
 import './style.scss';
 import Icon from '@/packages/icons';
 import EButton from '@/packages/button';
@@ -30,7 +31,7 @@ const EDrawerProps = {
 export default defineComponent({
   name: 'EDrawer',
   props: EDrawerProps,
-  emits: ["close"],
+  emits: ['close'],
   setup(props, { slots, emit }) {
 
     const prefixCls = getPrefixCls('drawer');
@@ -47,7 +48,6 @@ export default defineComponent({
       props.cancel();
       closeDrawer();
     };
-
 
     return () => (
       <Transition name="EuDrawer">
