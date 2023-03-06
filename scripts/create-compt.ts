@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { templateCompile, toKebabCase, toPascalCase } from '@estjs/tools';
+import { genDocs } from './gen-docs';
 
 const globaleComponentPrefix = 'E';
 
@@ -14,42 +15,38 @@ function renderTemplate(template: string, data: object) {
   return temp.render(data);
 }
 
-async function createComponent(name: string, tempPath: string, outPath: string) {
-  fs.readdir(tempPath, (err, files) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    files.forEach((filename) => {
-      const filedir = path.join(tempPath, filename);
-      const outdir = path.join(outPath, filename);
-      fs.stat(filedir, (error, stats) => {
-        if (error) {
-          console.warn('获取文件stats失败');
-        }
-        const isFile = stats.isFile();
-        const isDir = stats.isDirectory();
-        if (isFile) {
-          const file = fs.readFileSync(filedir, 'utf-8');
-          const fileName = path.basename(filedir);
-          const template = renderTemplate(file, { name: globaleComponentPrefix + toPascalCase(name) });
-          console.log(outPath, 'outPath');
-          fs.writeFileSync(outPath + '/' + fileName.split('.temp')[0], template);
+function createComponent(name: string, tempPath: string, outPath: string) {
 
+  const files = fs.readdirSync(tempPath);
+  files.forEach((filename) => {
+    const filedir = path.join(tempPath, filename);
+    const outdir = path.join(outPath, filename);
+    fs.stat(filedir, (error, stats) => {
+      if (error) {
+        console.warn('获取文件stats失败');
+      }
+      const isFile = stats.isFile();
+      const isDir = stats.isDirectory();
+      if (isFile) {
+        const file = fs.readFileSync(filedir, 'utf-8');
+        const fileName = path.basename(filedir);
+        const template = renderTemplate(file, { prefixName: globaleComponentPrefix + toPascalCase(name), name });
+        console.log('outPath', outPath);
+        fs.writeFileSync(outPath + '/' + fileName.split('.temp')[0], template);
+
+      }
+      if (isDir) {
+        if (!fs.existsSync(outdir)) {
+          fs.mkdirSync(outdir);
         }
-        if (isDir) {
-          if (!fs.existsSync(outdir)) {
-            fs.mkdirSync(outdir);
-          }
-          createComponent(name, filedir, outdir);
-        }
-      });
+        createComponent(name, filedir, outdir);
+      }
     });
   });
 }
 
 (async () => {
-  const name = args[0];
+  const [name] = args;
   if (!name) {
     console.warn('please enter component name!');
     return;
@@ -68,6 +65,9 @@ async function createComponent(name: string, tempPath: string, outPath: string) 
   const distPath = resolve(`./src/packages/${name}`);
 
   createComponent(comptName, tempPath, distPath);
+
+  genDocs();
+  genDocs('en');
 
 })();
 

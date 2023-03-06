@@ -1,11 +1,12 @@
 import { mount } from '@vue/test-utils';
-import <%= name %> from '..';
+import <%= prefixName %> from '..';
 
 describe('<%= name %>', () => {
 
  it('<%= name %> snapshot', () => {
-    const wrapper = mount(<%= name %>);
+    const wrapper = mount(<%= prefixName %>);
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
   });
+
 });

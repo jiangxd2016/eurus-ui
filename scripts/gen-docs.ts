@@ -21,7 +21,7 @@ const PACKAGES_PATH = path.resolve(
 
 export const componentEntry = readDirName(PACKAGES_PATH);
 
-function genDocs(lang = 'zh') {
+export function genDocs(lang = 'zh') {
   const descDir = path.resolve(
     process.cwd(),
     `docs/${lang}/`

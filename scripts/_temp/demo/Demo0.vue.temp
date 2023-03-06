@@ -1,4 +1,4 @@
 <template >
-<<%= name %>></<%= name %>>
+  <<%= prefixName %>></<%= prefixName %>>
 </template>
 

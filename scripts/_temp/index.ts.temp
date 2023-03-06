@@ -1,9 +1,9 @@
 import type { App } from 'vue';
-import <%= name %> from './src';
+import <%= prefixName %> from './src';
 
-<%= name %>.install = (app: App) => {
-  app.component(<%= name %>.name, <%= name %>);
+<%= prefixName %>.install = (app: App) => {
+  app.component(<%= prefixName %>.name, <%= prefixName %>);
 };
 
-export { <%= name %> };
-export default <%= name %>;
+export { <%= prefixName %> };
+export default <%= prefixName %>;

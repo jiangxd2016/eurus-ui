@@ -1,25 +1,23 @@
 ---
 class: '<%= name %>-doc'
 ---
-# <%= name %> [WIP]
+# <%= prefixName %> [WIP]
 
 ## use
 
 ```javascript
-import { <%= name %> } from 'eurus-ui';
+import { <%= prefixName %> } from 'eurus-ui';
 
-Vue.createApp().use(<%= name %>.name, <%= name %>)
+Vue.createApp().use(<%= prefixName %>.name, <%= prefixName %>)
 ```
-<!--
 ::::card  <%= name %> 类型
 
 按钮的 type 分别为 default、tertiary、primary、info、success、warning 和 error。
 
 :::code <%= name %>Demo0
-<<< ../src/packages/ <%= name %>/demo/Demo0.vue
+<<< ../src/packages/<%= name %>/demo/Demo0.vue
 :::
 ::::
-  -->
 ### <%= name %> Props
 
 | Name | Type | Default | Description |
