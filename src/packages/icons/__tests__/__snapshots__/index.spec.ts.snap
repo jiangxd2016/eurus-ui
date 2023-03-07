@@ -1,4 +1,4 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Vitest Snapshot v1
 
 exports[`EIcon > EIcon snapshot 1`] = `"<span class=\\"eu-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 40px; color: red;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-arrow-down\\"><path fill=\\"currentColor\\" d=\\"M24.59 16.59 17 24.17V4h-2v20.17l-7.59-7.58L6 18l10 10 10-10-1.41-1.41z\\"></path></svg></span>"`;
 

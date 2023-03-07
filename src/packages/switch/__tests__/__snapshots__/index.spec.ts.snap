@@ -1,4 +1,4 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Vitest Snapshot v1
 
 exports[`ESwitch > ESwitch snapshot 1`] = `"<label class=\\"eu-switch\\"><input class=\\"eu-switch__input\\" type=\\"checkbox\\" role=\\"switch\\" aria-checked=\\"false\\"><span class=\\"eu-switch__inner\\"></span></label>"`;
 

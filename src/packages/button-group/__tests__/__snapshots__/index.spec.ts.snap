@@ -1,4 +1,4 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Vitest Snapshot v1
 
 exports[`EButtonGroup > EButtonGroup snapshot 1`] = `
 "<div class=\\"eu-button-group\\">

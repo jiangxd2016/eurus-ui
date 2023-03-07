@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`EDrawer > EDrawer snapshot 1`] = `
+"<transition-stub name=\\"EuDrawer\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+  <!---->
+</transition-stub>"
+`;
