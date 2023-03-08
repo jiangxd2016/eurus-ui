@@ -145,6 +145,10 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           {
             text: '间距 space',
             link: '/zh/components/space'
+          },
+          {
+            text: '轮播图 carousel',
+            link: '/zh/components/carousel'
           }
           // {
           //   text: '加载中 loading',

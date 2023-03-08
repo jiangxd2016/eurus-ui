@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`carousel > carousel snapshot 1`] = `
+"<div class=\\"eu-carousel\\" style=\\"height: 300px;\\">
+  <transition-stub name=\\"carousel-arrow-left\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><button class=\\"eu-carousel-arrow eu-carousel-arrow--left\\"><span class=\\"eu-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 30px; color: #fff;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-left\\"><path fill=\\"currentColor\\" d=\\"M10 16 20 6l1.4 1.4-8.6 8.6 8.6 8.6L20 26z\\"></path></svg></span></button></transition-stub>
+  <transition-stub name=\\"carousel-arrow-right\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\"><button class=\\"eu-carousel-arrow eu-carousel-arrow--right\\"><span class=\\"eu-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 30px; color: #fff;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" viewBox=\\"0 0 32 32\\" class=\\"eu-icon eu-icon-chevron-right\\"><path fill=\\"currentColor\\" d=\\"M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z\\"></path></svg></span></button></transition-stub>
+  <!---->
+  <div role=\\"list\\" class=\\"eu-carousel__indicator eu-carousel__indicator--horizontal\\"></div>
+</div>"
+`;

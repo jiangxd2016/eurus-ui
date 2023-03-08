@@ -46,8 +46,8 @@ function createComponent(name: string, tempPath: string, outPath: string) {
 }
 
 function appendToComponents(name: string) {
-  const compts = fs.readFileSync(resolve('./src/components.ts'), 'utf-8');
-  fs.writeFileSync(resolve('./src/components.ts'), compts + '\n' + `export  * from './${name}';`);
+  const compts = fs.readFileSync(resolve('./src/packages/components.ts'), 'utf-8');
+  fs.writeFileSync(resolve('./src/packages/components.ts'), compts + '\n' + `export  * from './${name}';`);
 }
 
 (async () => {

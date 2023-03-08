@@ -2,7 +2,7 @@ import { computed, defineComponent, inject, onMounted } from 'vue';
 import './style.scss';
 
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { selectProviderInjectionKey } from '@/packages/_utils/constants';
+import { selectKey } from '@/packages/_utils/constants';
 import type { SelectOptionItem } from '@/packages/select/src/index';
 
 const EOptionProps = {
@@ -26,7 +26,7 @@ export default defineComponent({
 
     const prefixCls = getPrefixCls('select-option');
 
-    const Selected = inject(selectProviderInjectionKey, {});
+    const Selected = inject(selectKey, {});
 
     onMounted(() => {
       Selected.setOption && Selected.setOption(props as SelectOptionItem);

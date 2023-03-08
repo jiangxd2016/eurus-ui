@@ -5,7 +5,7 @@ import './style.scss';
 import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { buttonGroupProviderTypeInjectionKey, configProviderInjectionKey } from '@/packages/_utils/constants';
+import { buttonGroupKey, configKey } from '@/packages/_utils/constants';
 
 export type Type =
   | 'default'
@@ -62,8 +62,8 @@ export default defineComponent({
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('button');
 
-    const buttonGroupInject = inject(buttonGroupProviderTypeInjectionKey, null);
-    const globalConfigInject = inject(configProviderInjectionKey, null);
+    const buttonGroupInject = inject(buttonGroupKey, null);
+    const globalConfigInject = inject(configKey, null);
 
     // props size > buttonGroup size > globalConfig size
     const size = computed(() => {
