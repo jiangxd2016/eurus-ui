@@ -149,6 +149,10 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           {
             text: '轮播图 carousel',
             link: '/zh/components/carousel'
+          },
+          {
+            text: '对话框 dialog',
+            link: '/zh/components/dialog'
           }
           // {
           //   text: '加载中 loading',

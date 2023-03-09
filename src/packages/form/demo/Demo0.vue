@@ -30,7 +30,7 @@
       <ESwitch v-model="form.weather" checked-label="好" unchecked-label="不好" />
     </EFormItem>
     <EFormItem label="详细地址" prop="address">
-      <ETextarea v-model="form.address" placeholder="text" show-word-limit :maxlength="20" />
+      <ETextarea v-model="form.address" placeholder="text" visible-word-limit :maxlength="20" />
     </EFormItem>
     <EFormItem>
       <EButton type="primary" @click="submit">提交</EButton>

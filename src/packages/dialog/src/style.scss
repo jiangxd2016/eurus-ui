@@ -1,0 +1,80 @@
+@import '../../../scss/variables';
+
+$dialog-prefix-cls: $prefix + -dialog;
+$dialog-mask-prefix-cls: $dialog-prefix-cls + '-mask';
+$dialog-container-prefix-cls: $dialog-prefix-cls + '-container';
+
+.#{$dialog-container-prefix-cls} {
+  position: fixed;
+  overflow: auto;
+  z-index: 1050;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.#{$dialog-mask-prefix-cls} {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #272c36;
+  opacity: 0.3;
+}
+
+
+.#{$dialog-prefix-cls} {
+  opacity: 1;
+  overflow: visible;
+  outline: 0;
+  border-radius: 6px;
+  margin: 30px auto 0;
+  position: relative;
+  z-index: 1050;
+
+  &-header {
+    display: flex;
+
+    .title {
+      width: 95%;
+    }
+
+    .close {
+      text-align: center;
+      cursor: pointer;
+      width: 5%;
+    }
+  }
+
+  &-content {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 6px;
+    outline: 0;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 12%), 0 0 10px rgb(0 0 0 / 6%);
+    padding: 20px;
+
+  }
+
+
+  &-footer {
+    text-align: end;
+
+    .confirm {
+      margin-right: 10px;
+    }
+  }
+
+}
+
+.e-dialog-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.e-dialog-enter,
+.fade-leave-to {
+  opacity: 0;
+}

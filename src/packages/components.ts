@@ -26,3 +26,4 @@ export * from './drawer';
 export * from './space';
 
 export * from './carousel';
+export * from './dialog';
