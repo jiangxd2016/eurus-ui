@@ -3,19 +3,17 @@
 $dialog-prefix-cls: $prefix + -dialog;
 $dialog-mask-prefix-cls: $dialog-prefix-cls + '-mask';
 $dialog-container-prefix-cls: $dialog-prefix-cls + '-container';
-
+$dialog-wrapper-prefix-cls: $dialog-prefix-cls + '-wrapper';
 .#{$dialog-container-prefix-cls} {
   position: fixed;
-  overflow: auto;
-  z-index: 1050;
   top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   left: 0;
 }
 
 .#{$dialog-mask-prefix-cls} {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -24,15 +22,38 @@ $dialog-container-prefix-cls: $dialog-prefix-cls + '-container';
   opacity: 0.3;
 }
 
+.#{$dialog-wrapper-prefix-cls} {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  text-align: center;
+  white-space: nowrap;
+
+  &::after{
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+    white-space: nowrap;
+  }
+}
 
 .#{$dialog-prefix-cls} {
-  opacity: 1;
-  overflow: visible;
-  outline: 0;
-  border-radius: 6px;
-  margin: 30px auto 0;
   position: relative;
-  z-index: 1050;
+  top: 0;
+  display: inline-block;
+  width: 520px;
+  margin: 0 auto;
+  line-height: 1.5715;
+  white-space: initial;
+  text-align: left;
+  border-radius: 6px;
+  vertical-align: middle;
+
 
   &-header {
     display: flex;
@@ -69,12 +90,12 @@ $dialog-container-prefix-cls: $dialog-prefix-cls + '-container';
 
 }
 
-.e-dialog-enter-active,
+.eu-dialog-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
 }
 
-.e-dialog-enter,
+.eu-dialog-enter,
 .fade-leave-to {
   opacity: 0;
 }
