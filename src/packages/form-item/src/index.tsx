@@ -3,7 +3,7 @@ import { computed, defineComponent, inject, onMounted, provide, reactive } from 
 import './style.scss';
 import type { RuleItem } from 'async-validator';
 import Schema from 'async-validator';
-import { formCtxProviderInjectionKey, formItemProviderInjectionKey } from '@/packages/_utils/constants';
+import { formCtxKey, formItemKey } from '@/packages/_utils/constants';
 import { getValue } from '@/packages/_utils/shared';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
@@ -46,7 +46,7 @@ export default defineComponent({
   props: EFormItemProps,
   setup(props, { slots, expose }) {
     const clsPrefix = getPrefixCls('form-item');
-    const formInject = inject(formCtxProviderInjectionKey, undefined);
+    const formInject = inject(formCtxKey, undefined);
 
     const triggerList: string[] = [];
     let formRules;
@@ -162,7 +162,7 @@ export default defineComponent({
       }
     };
 
-    provide(formItemProviderInjectionKey, reactive({
+    provide(formItemKey, reactive({
       validate,
       clear: clearTips,
       focusTips,

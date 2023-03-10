@@ -3,7 +3,7 @@ import { defineComponent, getCurrentInstance, provide, reactive, renderSlot, toR
 import './style.scss';
 import type { language } from '@/packages/_utils/constants';
 import type { Size } from '@/packages/_utils/size';
-import { configProviderInjectionKey } from '@/packages/_utils/constants';
+import { configKey } from '@/packages/_utils/constants';
 
 const EConfigProviderProps = {
   locale: {
@@ -44,10 +44,10 @@ export default defineComponent({
     if (props.global) {
       const instance = getCurrentInstance();
       if (instance) {
-        instance.appContext.app.provide(configProviderInjectionKey, config);
+        instance.appContext.app.provide(configKey, config);
       }
     } else {
-      provide(configProviderInjectionKey, config);
+      provide(configKey, config);
     }
     return () => renderSlot(slots, 'default', { config });
   },

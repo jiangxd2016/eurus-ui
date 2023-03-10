@@ -1,9 +1,9 @@
 import { getCurrentInstance, inject } from 'vue';
-import { CLASS_PREFIX, configProviderInjectionKey, GLOBAL_CONFIG_NAME } from './constants';
+import { CLASS_PREFIX, configKey, GLOBAL_CONFIG_NAME } from './constants';
 
 export const getPrefixCls = (componentName?: string): string => {
   const instance = getCurrentInstance();
-  const configProvider = inject(configProviderInjectionKey, undefined);
+  const configProvider = inject(configKey, undefined);
 
   const prefix
     = configProvider?.prefixCls

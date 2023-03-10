@@ -1,7 +1,7 @@
 import { defineComponent, onMounted, provide, reactive, toRefs, } from 'vue';
 import type { PropType } from 'vue';
 import './style.scss';
-import { formCtxProviderInjectionKey } from '@/packages/_utils/constants';
+import { formCtxKey } from '@/packages/_utils/constants';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 export const EFormProps = {
   model: {
@@ -106,7 +106,7 @@ export default defineComponent({
     const addFormItemField = (Field: any) => {
       formItemFields.push(Field);
     };
-    provide(formCtxProviderInjectionKey, reactive({
+    provide(formCtxKey, reactive({
       ...toRefs(props),
       addFormItemField,
     }));

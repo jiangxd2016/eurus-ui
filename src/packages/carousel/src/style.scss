@@ -1,0 +1,113 @@
+@import '../../../scss/variables';
+
+$carousel-prefix-cls: $prefix + -carousel;
+
+.#{$carousel-prefix-cls} {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+
+  &-item {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.is-animating {
+      transition: transform 0.4s ease-in-out;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    background-color: rgb(31 45 61 / 30%);
+    transform: translateY(-50%);
+    border-radius: 50%;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+    outline: 0;
+    border: none;
+
+    &--left {
+      left: 16px;
+    }
+
+    &--right {
+      right: 16px;
+    }
+  }
+
+
+  &__indicator {
+    position: absolute;
+    display: flex;
+    cursor: pointer;
+
+    &--horizontal {
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &--vertical {
+      right: 6px;
+      top: 50%;
+      transform-origin: 100% 50%;
+      transform: rotate(90deg) translateX(50%);
+    }
+
+    .#{$carousel-prefix-cls}__item {
+      display: inline-flex;
+      padding: 5px;
+    }
+  }
+
+
+  &__button {
+    border: none;
+    background-color: rgb(31 45 61 / 23%);
+    height: 2px;
+
+    &--horizontal {
+      width: 30px;
+    }
+
+    &--vertical {
+      width: 10px;
+    }
+
+    &.is-active {
+      transform-origin: 0 50%;
+      transition: transform 0.3s ease-in-out;
+      transform: scale(1.2);
+      background-color: #ffffff;
+    }
+
+  }
+}
+
+.carousel-arrow-left-enter-from, .carousel-arrow-left-leave-active {
+  transform: translateY(-50%) translateX(-10px);
+  opacity: 0;
+}
+
+.carousel-arrow-right-enter-from, .carousel-arrow-right-leave-active {
+  transform: translateY(-50%) translateX(10px);
+  opacity: 0;
+}
+
+

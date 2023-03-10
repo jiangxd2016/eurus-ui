@@ -6,7 +6,7 @@ import Icon from '@/packages/icons';
 import EButton from '@/packages/button';
 
 const EDrawerProps = {
-  show: {
+  visible: {
     type: Boolean,
     default: false,
   },
@@ -51,7 +51,7 @@ export default defineComponent({
 
     return () => (
       <Transition name="EuDrawer">
-        {props.show
+        {props.visible
           ? <div class={`${prefixCls}-container`}>
             <div class="eu-drawer-mask " role="button" tabindex={-1} onClick={closeDrawer}>
             </div>

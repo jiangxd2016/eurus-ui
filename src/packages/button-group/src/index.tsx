@@ -2,7 +2,7 @@ import type { PropType } from 'vue';
 import { defineComponent, provide } from 'vue';
 import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { buttonGroupProviderTypeInjectionKey } from '@/packages/_utils/constants';
+import { buttonGroupKey } from '@/packages/_utils/constants';
 import type { Size } from '@/packages/_utils/size';
 
 const EButtonGroupProps = {
@@ -22,7 +22,7 @@ export default defineComponent({
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('button-group');
 
-    provide(buttonGroupProviderTypeInjectionKey, props);
+    provide(buttonGroupKey, props);
     return () => (
       <div class={[prefixCls, props.vertical && 'vertical']}>
         {slots?.default && slots.default()}

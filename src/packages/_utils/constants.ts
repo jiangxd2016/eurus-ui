@@ -1,4 +1,4 @@
-import type { ExtractPropTypes, InjectionKey } from 'vue';
+import type { ExtractPropTypes, InjectionKey, Ref } from 'vue';
 import type { Size } from '@/packages/_utils/size';
 import type { ESelectDownProps } from '@/packages/select-down/src';
 import type { SelectOptionItem } from '@/packages/select/src';
@@ -34,18 +34,18 @@ export interface RadioGroupContext {
 
 export const RadioGroupKey: InjectionKey<RadioGroupContext> = Symbol('RadioGroupKey');
 
-export const configProviderInjectionKey: InjectionKey<ConfigProvider>
+export const configKey: InjectionKey<ConfigProvider>
   = Symbol('EurusConfigProvider');
 
 export interface buttonGroupProviderType {
   size?: Size;
 }
 
-export const buttonGroupProviderTypeInjectionKey: InjectionKey<buttonGroupProviderType>
+export const buttonGroupKey: InjectionKey<buttonGroupProviderType>
   = Symbol('buttonGroupProvider');
 
 export type SelectCtx = Partial<ExtractPropTypes<typeof ESelectDownProps & { selectItem: (val: any) => void; setOption: (item: SelectOptionItem) => void }>>;
-export const selectProviderInjectionKey: InjectionKey<SelectCtx>
+export const selectKey: InjectionKey<SelectCtx>
   = Symbol('EurusSelectContextProvider');
 
 export type FormProps = ExtractPropTypes<any>;
@@ -63,6 +63,27 @@ export interface formItemCtx {
   triggerList: string[];
 }
 
-export const formCtxProviderInjectionKey: InjectionKey<FormCtx> = Symbol('EurusFormConfigProvider');
-export const formItemProviderInjectionKey: InjectionKey<formItemCtx>
+export const formCtxKey: InjectionKey<FormCtx> = Symbol('EurusFormConfigProvider');
+export const formItemKey: InjectionKey<formItemCtx>
   = Symbol('EurusFormItemContextProvider');
+
+// Carousel Provider
+
+export interface ICarouselItem {
+  uid: number;
+  transformItem: (
+    index: number,
+    activeIndex: number,
+    isAnimate?: boolean,
+  ) => void;
+}
+
+export interface CarouselProvider {
+  offsetHeight: Ref<number>;
+  offsetWidth: Ref<number>;
+  oldActiveIndex: Ref<number>;
+  itemReact: ICarouselItem[];
+  isLoop: Ref<boolean>;
+}
+
+export const CarouselKey: InjectionKey<CarouselProvider> = Symbol('EurusCarouselProvider');

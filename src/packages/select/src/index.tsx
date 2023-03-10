@@ -5,7 +5,7 @@ import './style.scss';
 import Option from './option';
 import SelectDown from '@/packages/select-down';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { selectProviderInjectionKey } from '@/packages/_utils/constants';
+import { selectKey } from '@/packages/_utils/constants';
 import { ESelectDownProps } from '@/packages/select-down/src';
 import { isArray, } from '@/packages/_utils/is';
 import { warn } from '@/packages/_utils/warn';
@@ -110,7 +110,7 @@ export default defineComponent({
       emit('clear');
     };
 
-    provide(selectProviderInjectionKey, reactive({ ...toRefs(props), selectItem, setOption }));
+    provide(selectKey, reactive({ ...toRefs(props), selectItem, setOption }));
 
     return () => {
       return <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value}
