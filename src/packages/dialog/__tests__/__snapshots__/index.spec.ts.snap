@@ -1,0 +1,6 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`dialog > dialog snapshot 1`] = `
+"<!--teleport start-->
+<!--teleport end-->"
+`;

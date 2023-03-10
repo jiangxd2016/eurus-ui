@@ -22,6 +22,7 @@ $dialog-wrapper-prefix-cls: $dialog-prefix-cls + '-wrapper';
   opacity: 0.3;
 }
 
+
 .#{$dialog-wrapper-prefix-cls} {
   position: absolute;
   top: 0;
@@ -30,9 +31,8 @@ $dialog-wrapper-prefix-cls: $dialog-prefix-cls + '-wrapper';
   left: 0;
   overflow: auto;
   text-align: center;
-  white-space: nowrap;
 
-  &::after{
+  &::after {
     display: inline-block;
     width: 0;
     height: 100%;
@@ -41,6 +41,7 @@ $dialog-wrapper-prefix-cls: $dialog-prefix-cls + '-wrapper';
     white-space: nowrap;
   }
 }
+
 
 .#{$dialog-prefix-cls} {
   position: relative;
@@ -54,9 +55,19 @@ $dialog-wrapper-prefix-cls: $dialog-prefix-cls + '-wrapper';
   border-radius: 6px;
   vertical-align: middle;
 
+  background-color: #ffffff;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 12%), 0 0 10px rgb(0 0 0 / 6%);
 
   &-header {
+
     display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    padding: 0 20px;
+    border-bottom: 1px solid rgb(229, 230, 235);
 
     .title {
       width: 95%;
@@ -66,36 +77,50 @@ $dialog-wrapper-prefix-cls: $dialog-prefix-cls + '-wrapper';
       text-align: center;
       cursor: pointer;
       width: 5%;
+      line-height: 1;
     }
   }
 
-  &-content {
-    position: relative;
-    background-color: #ffffff;
-    border-radius: 6px;
-    outline: 0;
-    box-shadow: 0 4px 4px rgb(0 0 0 / 12%), 0 0 10px rgb(0 0 0 / 6%);
+  &-body {
     padding: 20px;
-
   }
 
-
   &-footer {
+    padding: 20px;
     text-align: end;
 
     .confirm {
       margin-right: 10px;
     }
   }
-
 }
 
-.eu-dialog-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
+.#{$dialog-wrapper-prefix-cls}-draggable {
+
+
+  .#{$dialog-prefix-cls} {
+    top: 0;
+    vertical-align: middle;
+    &-header {
+      cursor: move;
+    }
+  }
 }
 
-.eu-dialog-enter,
-.fade-leave-to {
-  opacity: 0;
+.#{$dialog-wrapper-prefix-cls}-moved {
+  text-align: left;
+
+  .#{$dialog-prefix-cls} {
+    top: 0;
+    vertical-align: top;
+  }
 }
+  .eu-dialog-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .eu-dialog-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
