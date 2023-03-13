@@ -23,7 +23,7 @@ const showCode = ref(false);
       </div>
 
       <div
-        v-visible="showCode"
+        v-show="showCode"
       >
         <slot name="code" />
       </div>
