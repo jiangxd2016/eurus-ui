@@ -1,3 +1,6 @@
+import type { RenderContent } from '@/packages/_utils/type';
+import { isFunction } from '@/packages/_utils/is';
+
 export const noop = () => {};
 export const now = () => Date.now();
 export const timestamp = () => +Date.now();
@@ -33,3 +36,10 @@ export function throttle(fn: Function, stop: number) {
     }
   };
 }
+export const getSlotFunction = (param: RenderContent | undefined) => {
+  if (param) {
+    if (isFunction(param)) { return param; }
+    return () => param;
+  }
+  return undefined;
+};

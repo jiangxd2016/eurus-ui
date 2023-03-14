@@ -19,7 +19,7 @@
     "@types/klaw-sync": "^6.0.1",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-container": "^2.0.5",
-    "@types/node": "^18.15.1",
+    "@types/node": "^18.15.3",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vueuse/core": "^9.13.0",
     "eurus-ui": "workspace:*",
@@ -34,6 +34,6 @@
     "vite-plugin-inspect": "^0.7.16",
     "vite-plugin-pwa": "^0.14.4",
     "vite-plugin-restart": "^0.3.1",
-    "vitepress": "^1.0.0-alpha.54"
+    "vitepress": "^1.0.0-alpha.56"
   }
 }

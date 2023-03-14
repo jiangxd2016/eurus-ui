@@ -5,7 +5,7 @@ import { useI18n } from '@/packages/locale';
 import { getPrefixCls, isNumber } from '@/packages/_utils';
 import Icons from '@/packages/icons';
 import EButton from '@/packages/button';
-import usePopupManager from '@/packages/_hooks/usePopupMangaer';
+import usePopupManager from '@/packages/_hooks/usePopupManager';
 import { useDraggable } from '@/packages/_hooks/useDraggable';
 
 const EDialogProps = {

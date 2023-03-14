@@ -42,7 +42,7 @@ const config: InlineConfig = {
         },
       ],
 
-      external: ['vue', 'dayjs', 'async-validator', 'number-precision'],
+      external: ['vue', 'dayjs', 'async-validator', 'number-precision','eurus-icons-vue'],
     },
     lib: {
       entry: 'src/index.ts',

@@ -1,27 +1,28 @@
-import type { Component, PropType } from 'vue';
-import { renderSlot, h, computed, defineComponent } from 'vue';
-import * as allIcon from '../icons-vue';
+import type {Component, PropType} from 'vue';
+import {renderSlot, h, computed, defineComponent} from 'vue';
+import * as allIcon from 'eurus-icons-vue';
 import './style.scss';
-import { warnOnce } from '@/packages/_utils/warn';
-import type { Size } from '@/packages/_utils/size';
-import { getSize } from '@/packages/_utils/size';
-import { getPrefixCls } from '@/packages/_utils/global-config';
-import type { StringNumber } from '@/packages/_utils/type';
+import {warnOnce} from '@/packages/_utils/warn';
+import type {Size} from '@/packages/_utils/size';
+import {getSize} from '@/packages/_utils/size';
+import {getPrefixCls} from '@/packages/_utils/global-config';
+import type {StringNumber} from '@/packages/_utils/type';
 
+type allIconKeyType = keyof typeof allIcon;
 const IconProps = {
   size: {
     type: [String, Number] as PropType<Size | number | StringNumber>,
     default: 'md',
   },
   color: String,
-  name: String as PropType<keyof typeof allIcon | string | undefined>,
+  name: String as PropType<allIconKeyType | string | undefined>,
 };
 
 export default defineComponent({
   name: 'EIcon',
   props: IconProps,
   emits: ['click'],
-  setup(props, { slots, emit }) {
+  setup(props, {slots, emit}) {
 
     const prefixCls = getPrefixCls('icon');
 
@@ -34,10 +35,11 @@ export default defineComponent({
     let IconElement: Component | null = null;
 
     if (props.name && Object.keys(allIcon).includes(props.name)) {
-      IconElement = h(allIcon[props.name as keyof typeof allIcon]);
+      // eslint-disable-next-line import/namespace
+      IconElement = h(allIcon[props.name as allIconKeyType]);
       // support iconfont
     } else if (!slots.default && props.name) {
-      IconElement = h('i', { class: props.name });
+      IconElement = h('i', {class: props.name});
     }
     if (!IconElement && !slots.default) {
       warnOnce('icon', `not found ${props.name} , please check you enter`);

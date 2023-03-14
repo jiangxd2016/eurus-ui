@@ -153,6 +153,9 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           {
             text: '对话框 dialog',
             link: '/zh/components/dialog'
+          }, {
+            text: '消息提示 message',
+            link: '/zh/components/message'
           }
           // {
           //   text: '加载中 loading',

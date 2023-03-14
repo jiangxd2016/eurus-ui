@@ -27,3 +27,5 @@ export * from './space';
 
 export * from './carousel';
 export * from './dialog';
+
+export * from './message';

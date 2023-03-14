@@ -87,3 +87,7 @@ export interface CarouselProvider {
 }
 
 export const CarouselKey: InjectionKey<CarouselProvider> = Symbol('EurusCarouselProvider');
+
+// message type
+export const MESSAGE_TYPES = ['info', 'success', 'warning', 'error'] as const;
+export type MessageType = typeof MESSAGE_TYPES[number];

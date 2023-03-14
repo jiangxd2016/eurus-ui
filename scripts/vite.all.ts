@@ -1,5 +1,5 @@
-import { resolve } from 'path';
-import type { InlineConfig } from 'vite';
+import {resolve} from 'path';
+import type {InlineConfig} from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
@@ -25,7 +25,7 @@ const config: InlineConfig = {
       output: {
         exports: 'named',
       },
-      external: ['vue', 'dayjs', 'async-validator', 'number-precision'],
+      external: ['vue', 'dayjs', 'async-validator', 'number-precision', 'eurus-icons-vue'],
     },
 
     lib: {
