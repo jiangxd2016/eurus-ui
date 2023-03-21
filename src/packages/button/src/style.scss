@@ -3,114 +3,134 @@
 $button-prefix-cls: $prefix + -button;
 
 .#{$button-prefix-cls} {
-  position: relative;
-  display: inline-flex;
-  align-items: stretch;
-  width: auto;
-  height: auto;
-  padding: 2px 16px;
-  font-size: 14px;
-  line-height: 1.715em;
-  font-weight: 500;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  outline: 0;
-  border: 0;
-  border-radius: 4px;
+	position: relative;
+	display: inline-flex;
+	align-items: stretch;
+	width: auto;
+	height: auto;
+	padding: 2px 16px;
+	font-size: 14px;
+	line-height: 1.715em;
+	font-weight: 500;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	outline: 0;
+	border: 0;
+	border-radius: 4px;
 
-  & .loading {
-    display: flex;
-    align-items: center;
-    padding-right: 0.2rem;
-  }
-  & .inner{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 10000 1 0%;
-  }
-  &:hover {
-    opacity:$button-opacity;
-  }
+	& .loading {
+		display: flex;
+		align-items: center;
+		padding-right: 0.2rem;
+	}
 
-  &:active {
-    opacity:$button-opacity;
-    box-shadow: $button-box-shadow-active;
-  }
+	& .inner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 10000 1 0%;
+	}
 
-  &::before {
-    border-radius: inherit;
-    bottom: 0;
-    box-shadow: $button-box-shadow;
-    content: '';
-    display: block;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+	&:hover {
+		opacity: $button-opacity;
+	}
 
-  &.disabled {
-    opacity: 0.7 !important;
-    cursor: not-allowed !important;
-    outline: 0 !important;
-    box-shadow: none;
-  }
+	&:active {
+		opacity: $button-opacity;
+		box-shadow: $button-box-shadow-active;
+	}
 
-  &.plain {
-    background: none !important;
-    color:var(--eu-color-primary) !important;
+	&::before {
+		border-radius: inherit;
+		bottom: 0;
+		box-shadow: $button-box-shadow;
+		content: '';
+		display: block;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
 
-    &::before {
-      box-shadow: none;
-    }
-  }
+	&.disabled {
+		opacity: 0.7 !important;
+		cursor: not-allowed !important;
+		outline: 0 !important;
+		box-shadow: none;
+	}
 
-  &.round {
-    border-radius: 50%;
-    padding: 0;
-    min-width: 3em;
-    min-height: 3em;
-  }
+	&.plain {
+		background: none !important;
+		color: var(--eu-color-primary) !important;
 
-  &.circle {
-    border-radius: 50%;
-  }
+		&::before {
+			box-shadow: none;
+		}
+	}
 
-  &.loading {
-    display: flex;
-    align-items: center;
-    width: 1.2em;
-    margin-right: 4px;
-    margin-top: -2px;
-  }
+	&.text {
+		color: var(--eu-color-primary) !important;
+		&::before {
+			box-shadow: none;
+		}
+		&:hover {
+			background-color: $button-default-bg;
+			opacity: $button-opacity;
+		}
 
-  &--xs {
-    font-size: $button-size-xs;
-    height: 24px;
-  }
+	}
 
-  &--sm {
-    font-size: $button-size-sm;
-    height: 28px;
-  }
+	&.round {
+		border-radius: 50%;
+		padding: 2px;
+		height: auto;
+		&::before {
+			box-shadow: none;
+		}
+		&:hover {
+			background-color: $button-default-bg;
+			opacity: $button-opacity;
+		}
+	}
 
-  &--md {
-    font-size: $button-size-md;
-    height:32px
-  }
+	&.circle {
+		border-radius: 50%;
+	}
 
-  &--lg {
-    font-size: $button-size-lg;
-    height: 34px;
-  }
+	&.loading {
+		display: flex;
+		align-items: center;
+		width: 1.2em;
+		margin-right: 4px;
+		margin-top: -2px;
+	}
 
-  &--xl {
-    font-size: $button-size-xl;
-    height: 38px;
-  }
+	&--xs {
+		font-size: $button-size-xs;
+		height: 24px;
+	}
+
+	&--sm {
+		font-size: $button-size-sm;
+		height: 28px;
+	}
+
+	&--md {
+		font-size: $button-size-md;
+		height: 32px
+	}
+
+	&--lg {
+		font-size: $button-size-lg;
+		height: 34px;
+	}
+
+	&--xl {
+		font-size: $button-size-xl;
+		height: 38px;
+	}
 
 }
 

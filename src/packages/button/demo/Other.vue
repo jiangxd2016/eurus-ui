@@ -10,5 +10,10 @@
       <EIcon name="errorOutline" color="#aaa" />
     </template>
   </EButton>
+	<EButton round type="text">
+		<template #icon>
+			<EIcon name="close" color="#aaa" />
+		</template>
+	</EButton>
 </template>
 

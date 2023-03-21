@@ -6,17 +6,17 @@ export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export const sizeToPx = (size: Size): number => {
   switch (size) {
     case 'xs':
-      return 8;
-    case 'sm':
       return 12;
+    case 'sm':
+      return 16;
     case 'md':
-      return 16;
-    case 'lg':
       return 20;
-    case 'xl':
+    case 'lg':
       return 24;
+    case 'xl':
+      return 28;
     default:
-      return 16;
+      return 22;
   }
 };
 export const getSize = (size: Size | number | StringNumber): string => {
