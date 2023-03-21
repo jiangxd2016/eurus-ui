@@ -4,7 +4,7 @@ exports[`EDatePicker  > should work with \`modelValue\` props 1`] = `
 "<div class=\\"eu-select-down eu-date-picker\\" type=\\"date\\">
   <div class=\\"eu-select-down-control eu-select-down-control-md\\" role=\\"listbox\\" tabindex=\\"0\\">
     <div class=\\"eu-select-down-single\\">2023-02-26</div><input class=\\"eu-select-down-control-input\\">
-    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><i class=\\"chevronDown\\"></i></span>
+    <!----><span class=\\"eu-icon down-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 20px;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\" width=\\"1em\\" height=\\"1em\\" viewBox=\\"0 0 32 32\\"><path fill=\\"currentColor\\" d=\\"M16 22L6 12l1.4-1.4l8.6 8.6l8.6-8.6L26 12z\\"></path></svg></span>
   </div>
   <transition-stub name=\\"slide-toggle\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
     <div class=\\"eu-select-down-panel\\" style=\\"display: none;\\" role=\\"listbox\\" tabindex=\\"0\\">
@@ -12,10 +12,10 @@ exports[`EDatePicker  > should work with \`modelValue\` props 1`] = `
         <ul class=\\"panel\\">
           <div class=\\"eu-date-picker-header\\" role=\\"link\\" tabindex=\\"0\\">
             <div class=\\"arrow-left\\">
-              <!----><span class=\\"eu-icon arrow\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 18px; color: #848b99;\\"><i class=\\"chevronLeft\\"></i></span>
+              <!----><span class=\\"eu-icon arrow\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 18px; color: #848b99;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\" width=\\"1em\\" height=\\"1em\\" viewBox=\\"0 0 32 32\\"><path fill=\\"currentColor\\" d=\\"M10 16L20 6l1.4 1.4l-8.6 8.6l8.6 8.6L20 26z\\"></path></svg></span>
             </div>
             <div class=\\"date-content\\">2023-2</div>
-            <div class=\\"arrow-right\\"><span class=\\"eu-icon arrow\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 18px; color: #848b99;\\"><i class=\\"chevronRight\\"></i></span>
+            <div class=\\"arrow-right\\"><span class=\\"eu-icon arrow\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 18px; color: #848b99;\\"><svg xmlns=\\"http://www.w3.org/2000/svg\\" xmlns:xlink=\\"http://www.w3.org/1999/xlink\\" width=\\"1em\\" height=\\"1em\\" viewBox=\\"0 0 32 32\\"><path fill=\\"currentColor\\" d=\\"M22 16L12 26l-1.4-1.4l8.6-8.6l-8.6-8.6L12 6z\\"></path></svg></span>
               <!---->
             </div>
           </div>

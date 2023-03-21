@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`EConfigProvider > should work with props 1`] = `
-"<div class=\\"test-config-provider\\"><span class=\\"text\\">Today</span><button class=\\"test-button  bg-default test-button--sm text-black\\">
+"<div class=\\"test-config-provider\\"><span class=\\"text\\">Today</span><button class=\\"test-button bg-default test-button--sm text-black\\">
     <!---->
     <!----><span class=\\"inner\\">Test Config Provider</span>
   </button></div>"

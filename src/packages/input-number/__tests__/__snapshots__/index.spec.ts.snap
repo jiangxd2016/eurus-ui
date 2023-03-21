@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`EInputNumber > EInputNumber snapshot 1`] = `
-"<div class=\\"eu-input-number\\"><span class=\\"eu-input-wrapper eu-input-wrapper--md\\" aria-valuemax=\\"9007199254740991\\" aria-valuemin=\\"-9007199254740991\\"><span class=\\"eu-input-prefix\\"><span class=\\"eu-input-number-minus\\" aria-hidden=\\"true\\"><span class=\\"eu-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 22px;\\"><i class=\\"minus\\"></i></span></span></span><input type=\\"number\\" tabindex=\\"0\\" placeholder=\\"\\" class=\\"eu-input\\">
-  <!----><span class=\\"eu-input-suffix\\"><!----><span class=\\"eu-input-number-plus\\" aria-hidden=\\"true\\"><span class=\\"eu-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 22px;\\"><i class=\\"plus\\"></i></span></span></span></span>
+"<div class=\\"eu-input-number\\"><span class=\\"eu-input-wrapper eu-input-wrapper--md\\" aria-valuemax=\\"9007199254740991\\" aria-valuemin=\\"-9007199254740991\\"><span class=\\"eu-input-prefix\\"><span class=\\"eu-input-number-minus\\" aria-hidden=\\"true\\"><span class=\\"eu-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 22px;\\"><i class=\\"minus\\" style=\\"font-size: 22px;\\"></i></span></span></span><input type=\\"number\\" tabindex=\\"0\\" placeholder=\\"\\" class=\\"eu-input\\">
+  <!----><span class=\\"eu-input-suffix\\"><!----><span class=\\"eu-input-number-plus\\" aria-hidden=\\"true\\"><span class=\\"eu-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 22px;\\"><i class=\\"plus\\" style=\\"font-size: 22px;\\"></i></span></span></span></span>
 </div>"
 `;
