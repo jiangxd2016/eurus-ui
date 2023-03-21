@@ -156,6 +156,10 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           }, {
             text: '消息提示 message',
             link: '/zh/components/message'
+          },
+          {
+            text: '通知 notification',
+            link: '/zh/components/notify'
           }
           // {
           //   text: '加载中 loading',

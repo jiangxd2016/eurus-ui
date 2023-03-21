@@ -29,3 +29,5 @@ export * from './carousel';
 export * from './dialog';
 
 export * from './message';
+
+export * from './notify';

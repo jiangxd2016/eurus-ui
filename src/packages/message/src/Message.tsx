@@ -98,7 +98,7 @@ export default defineComponent({
 					{slots.default?.()}
 				</div>
 				{props.closable && (
-					<EButton round type="text" class={`${prefixCls}-close`} v-slots={{
+					<EButton round type="text" class={`${prefixCls}-close`} onClick={handleClose} v-slots={{
 					  default: () => <EIcons name="close" color="#aaa"/>
 					}}
 					>
