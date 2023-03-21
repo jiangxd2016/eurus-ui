@@ -1,12 +1,13 @@
-import type {Component, PropType} from 'vue';
-import {renderSlot, h, computed, defineComponent} from 'vue';
+import type { Component, PropType } from 'vue';
+import { renderSlot, h, computed, defineComponent } from 'vue';
 import * as allIcon from 'eurus-icons-vue';
 import './style.scss';
-import {warnOnce} from '@/packages/_utils/warn';
-import type {Size} from '@/packages/_utils/size';
-import {getSize} from '@/packages/_utils/size';
-import {getPrefixCls} from '@/packages/_utils/global-config';
-import type {StringNumber} from '@/packages/_utils/type';
+import { warnOnce } from '@/packages/_utils/warn';
+import type { Size } from '@/packages/_utils/size';
+import { getSize } from '@/packages/_utils/size';
+import { getPrefixCls } from '@/packages/_utils/global-config';
+import type { StringNumber } from '@/packages/_utils/type';
+import { toPascalCase } from '@/packages/_utils';
 
 type allIconKeyType = keyof typeof allIcon;
 const IconProps = {
@@ -22,7 +23,7 @@ export default defineComponent({
   name: 'EIcon',
   props: IconProps,
   emits: ['click'],
-  setup(props, {slots, emit}) {
+  setup(props, { slots, emit }) {
 
     const prefixCls = getPrefixCls('icon');
 
@@ -34,12 +35,16 @@ export default defineComponent({
     });
     let IconElement: Component | null = null;
 
-    if (props.name && Object.keys(allIcon).includes(props.name)) {
+    const iconName = toPascalCase(props.name || '');
+
+		console.log({iconName, allIcon, props});
+
+    if (props.name && Object.keys(allIcon).includes(iconName)) {
       // eslint-disable-next-line import/namespace
-      IconElement = h(allIcon[props.name as allIconKeyType]);
+      IconElement = h(allIcon[toPascalCase(iconName) as allIconKeyType]);
       // support iconfont
     } else if (!slots.default && props.name) {
-      IconElement = h('i', {class: props.name});
+      IconElement = h('i', { class: props.name, style: mergeStyles.value });
     }
     if (!IconElement && !slots.default) {
       warnOnce('icon', `not found ${props.name} , please check you enter`);

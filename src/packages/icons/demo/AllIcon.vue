@@ -1,5 +1,5 @@
 <template>
-  <ESpace>
+  <ESpace wrap>
     <div v-for="(icon, index) in AllIconKeys" :key="index">
       <EIcon :name="icon" />
       <span>{{ icon }}</span>

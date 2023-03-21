@@ -43,3 +43,21 @@ export const getSlotFunction = (param: RenderContent | undefined) => {
   }
   return undefined;
 };
+
+// 转换短横线命名
+// xxXXXxx => xx-xxx-xx
+export const toKebabCase = (string: string): string => {
+  return string.replaceAll(/[A-Z]+/g, (match, offset) => {
+    return `${offset > 0 ? '-' : ''}${match.toLocaleLowerCase()}`;
+  });
+};
+
+// 转换驼峰命名
+// xx-xxx-xx => xxXXXxx
+export const toPascalCase = (string: string): string => {
+  return string
+    .replace(/^./, match => match.toLocaleUpperCase())
+    .replaceAll(/-(.)/g, (match, p1: string) => {
+      return p1.toLocaleUpperCase();
+    });
+};
