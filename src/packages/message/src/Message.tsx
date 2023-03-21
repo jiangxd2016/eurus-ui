@@ -2,7 +2,9 @@ import type { PropType } from 'vue';
 import { defineComponent, onMounted, onUnmounted, onUpdated } from 'vue';
 import './style.scss';
 import type { MessageType } from '@/packages/_utils';
-import { getPrefixCls } from '@/packages/_utils';
+import { getPrefixCls, toKebabCase } from '@/packages/_utils';
+import EIcons from '@/packages/icons';
+import EButton from '@/packages/button';
 
 export const EMessageProps = {
   type: {
@@ -38,6 +40,7 @@ export default defineComponent({
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('message');
     let timer = 0;
+    const iconName = toKebabCase(props.type);
 
     const handleClose = () => {
       emit('close');
@@ -84,21 +87,25 @@ export default defineComponent({
     };
     return () => (
 
-      <li role="alert" class={[prefixCls, `${prefixCls}-${props.type}`, { [`${prefixCls}-closable`]: props.closable }]}
-          onMouseenter={handleMouseEnter}
-          onMouseleave={handleMouseLeave}
-      >
-        {props.showIcon && (
-          <i class={[`${prefixCls}-icon`, `${prefixCls}-icon-${props.type}`]}/>
-        )}
-        <div class={`${prefixCls}-content`}>
-          {slots.default?.()}
-        </div>
-        {props.closable && (
-          <i class={`${prefixCls}-close`} onClick={handleClose}/>
-        )}
+			<li role="alert" class={[prefixCls, `${prefixCls}-${props.type}`, { [`${prefixCls}-closable`]: props.closable }]}
+					onMouseenter={handleMouseEnter}
+					onMouseleave={handleMouseLeave}
+			>
+				{props.showIcon && (
+					<EIcons name={iconName} class={`${prefixCls}-icon ${prefixCls}-icon-${props.type}`} size="sm"></EIcons>
+				)}
+				<div class={`${prefixCls}-content`}>
+					{slots.default?.()}
+				</div>
+				{props.closable && (
+					<EButton round type="text" class={`${prefixCls}-close`} v-slots={{
+					  default: () => <EIcons name="close" color="#aaa"/>
+					}}
+					>
+					</EButton>
 
-      </li>
+				)}
+			</li>
 
     );
   },

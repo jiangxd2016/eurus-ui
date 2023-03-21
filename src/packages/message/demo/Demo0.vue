@@ -1,20 +1,32 @@
 <template>
-  <div class="demo0">
-    <EButton type="primary" @click="openMessage">Open the message box</EButton>
-  </div>
+  <ESpace>
+    <EButton type="primary" @click="openMessage">Open message box</EButton>
+    <EButton type="primary" @click="openCloseMessage">Open close message box</EButton>
+    <EButton type="primary" @click="openCloseMessage">Open close message box</EButton>
+  </ESpace>
 </template>
 
-<script setup  lang="ts">
-import { getCurrentInstance, onMounted } from 'vue';
-const instance = getCurrentInstance();
+<script setup lang="ts">
+import { getCurrentInstance } from 'vue';
 
-onMounted(() => {
-  console.log(instance);
-});
+const instance = getCurrentInstance();
+const messageType = ['success', 'info', 'warning', 'error'];
 const openMessage = () => {
+
+  messageType.forEach((type) => {
+    instance?.appContext.config.globalProperties.$message[type]({
+      content: `This is a ${type} message`,
+			duration:0
+    });
+  }
+  );
+};
+
+const openCloseMessage = () => {
   instance?.appContext.config.globalProperties.$message.info({
     content: 'This is a normal message',
-    duration: 0,
+    closable: true,
+    duration: 0
   });
 };
 </script>

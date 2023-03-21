@@ -127,4 +127,4 @@ message.clear = (position?: MessagePosition) => {
   }
 };
 
-export default  message
+export default message;

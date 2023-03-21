@@ -4,78 +4,105 @@
 $message-prefix-cls: $prefix + '-message' !default;
 $message-list-prefix-cls: $message-prefix-cls + '-list' !default;
 
-.#{$message-list-prefix-cls}  {
-  position: fixed;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  padding: 0 10px;
-  text-align: center;
-  pointer-events: none;
+.#{$message-list-prefix-cls} {
+	position: fixed;
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0;
+	padding: 0 10px;
+	text-align: center;
+	pointer-events: none;
 
-&-top {
-  top: 40px;
+	&-top {
+		top: 40px;
+	}
+
+	&-bottom {
+		bottom: 40px;
+	}
 }
 
-&-bottom {
-  bottom: 40px;
-}
-}
+
+.#{$message-prefix-cls} {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	margin-bottom: 16px;
+	padding: 10px;
+	overflow: hidden;
+	line-height: 1;
+	text-align: center;
+	list-style: none;
+	background-color: #fff;
+	border: 1px solid var(-color-neutral-3);
+	border-radius: 2px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	transition: all 0.1s cubic-bezier(0, 0, 1, 1);
+	pointer-events: auto;
+
+	&-content {
+		font-size: 14px;
+		color: #666;
+		vertical-align: middle;
+	}
 
 
-.#{$message-prefix-cls}{
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 16px;
-  padding: 10px;
-  overflow: hidden;
-  line-height: 1;
-  text-align: center;
-  list-style: none;
-  background-color: #fff;
-  border: 1px solid var(-color-neutral-3);
-  border-radius: 2px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.1s cubic-bezier(0, 0, 1, 1);
-  pointer-events: auto;
+	&-icon {
+		margin-right: 6px;
 
-  &-content {
-    font-size: 14px;
-    color: #666;
-    vertical-align: middle;
-  }
+		&-success {
+			color: #52c41a;
+		}
+
+		&-info {
+			color: #1890ff;
+		}
+
+		&-warning {
+			color: #faad14;
+		}
+
+		&-error {
+			color: #f5222d;
+		}
+
+	}
+
+
+	&-close {
+		margin-left: 10px;
+	}
 }
 
 
 .fade-message-enter-from, .fade-message-appear-from {
-  opacity: 0;
+	opacity: 0;
 }
 
 .fade-message-enter-to, .fade-message-appear-to {
-  opacity: 1;
+	opacity: 1;
 }
 
 .fade-message-enter-active, .fade-message-appear-active {
-  transition: opacity;
+	transition: opacity;
 }
 
 .fade-message-leave-from {
-  opacity: 1;
+	opacity: 1;
 }
 
 .fade-message-leave-to {
-  opacity: 0;
+	opacity: 0;
 }
 
 .fade-message-leave-active {
-  position: absolute;
+	position: absolute;
 }
 
 .flip-list-move {
-  transition: transform 0.8s ease;
+	transition: transform 0.8s ease;
 }
