@@ -31,3 +31,6 @@ export * from './dialog';
 export * from './message';
 
 export * from './notify';
+
+export * from './menu';
+export * from './tooltip';

@@ -160,6 +160,9 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           {
             text: '通知 notification',
             link: '/zh/components/notify'
+          }, {
+            text: '提示 tooltip',
+            link: '/zh/components/tooltip'
           }
           // {
           //   text: '加载中 loading',

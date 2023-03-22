@@ -1,4 +1,5 @@
 import type { ExtractPropTypes, InjectionKey, Ref } from 'vue';
+import type { EMenuProps } from '../menu/src';
 import type { Size } from '@/packages/_utils/size';
 import type { ESelectDownProps } from '@/packages/select-down/src';
 import type { SelectOptionItem } from '@/packages/select/src';
@@ -91,3 +92,17 @@ export const CarouselKey: InjectionKey<CarouselProvider> = Symbol('EurusCarousel
 // message type
 export const MESSAGE_TYPES = ['info', 'success', 'warning', 'error'] as const;
 export type MessageType = typeof MESSAGE_TYPES[number];
+
+// menu provider
+
+// props
+export type menuProps = ExtractPropTypes<typeof EMenuProps>;
+export const MenuPropsKeys: InjectionKey<menuProps> = Symbol('EurusMenuProvider');
+
+// flat
+export const MenuFlatKeys: InjectionKey<any> = Symbol('EurusMenuFlatProvider');
+export const MenuFlatChangeKeys: InjectionKey<any> = Symbol('EurusMenuFlatChangeProvider');
+
+// selected
+export const MenuSelectedKeys: InjectionKey<any> = Symbol('EurusMenuSelectedProvider');
+export const MenuSelectedChangeKeys: InjectionKey<any> = Symbol('EurusMenuSelectedChangeProvider');

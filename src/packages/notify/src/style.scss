@@ -58,18 +58,18 @@ $notify-list-prefix-cls: $notify-prefix-cls + '-list' !default;
 
 	&-title{
 		margin-bottom: 4px;
-		color: rgb(29,33,41);
+		color:#1D2129;
 		font-weight: 500;
 		font-size: 16px;
 	}
 
 	&-content {
-		color: rgb(29,33,41);
+		color:#1D2129;
 		font-size: 14px;
 	}
 
 	&-footer{
-		color: rgb(29,33,41);
+		color: #1D2129;
 		font-size: 14px;
 	}
 
@@ -108,7 +108,7 @@ $notify-list-prefix-cls: $notify-prefix-cls + '-list' !default;
 		position: absolute;
 		top: 12px;
 		right: 12px;
-		color: rgb(29,33,41);
+		color:#1D2129;
 		font-size: 12px;
 		cursor: pointer;
 

@@ -1,5 +1,12 @@
 import { noop } from '@/packages/_utils/shared';
 
+interface Offset {
+  width: number;
+  height: number;
+  left: number;
+  top: number;
+}
+
 export const scrollTop = (element: HTMLElement | Document = document.body) => {
   const el = isDocument(element) ? document.documentElement : element;
   return el.scrollTop;
@@ -51,3 +58,28 @@ export const off = (() => {
     );
   };
 })();
+
+export const getOffset = (el: HTMLElement): Offset => {
+
+  const componentRect: DOMRect = el.getBoundingClientRect();
+  const top
+    = componentRect.top
+    + (window.pageYOffset || document.documentElement.scrollTop)
+    - (document.documentElement.clientTop || 0);
+  const left
+    = componentRect.left
+    + (window.pageXOffset || document.documentElement.scrollLeft)
+    - (document.documentElement.clientLeft || 0);
+  const width = el.offsetWidth;
+  const height = el.offsetHeight;
+  return { left, top, width, height };
+};
+
+export const getWindow = () => {
+  // 返回窗口宽高
+  const width
+    = document.documentElement.clientWidth || document.body.clientWidth;
+  const height
+    = document.documentElement.clientHeight || document.body.clientHeight;
+  return { width, height };
+};
