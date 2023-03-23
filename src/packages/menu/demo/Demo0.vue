@@ -1,4 +1,4 @@
-<template >
-  <EMenu></EMenu>
+<template>
+  <EMenu />
 </template>
 

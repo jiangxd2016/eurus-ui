@@ -16,7 +16,7 @@ const openMessage = () => {
   messageType.forEach((type) => {
     instance?.appContext.config.globalProperties.$message[type]({
       content: `This is a ${type} message`,
-			duration:0
+      duration: 0
     });
   }
   );

@@ -1,7 +1,7 @@
 import type { PropType } from 'vue';
-import { onBeforeUnmount, onMounted, ref, provide, defineComponent } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, provide, defineComponent } from 'vue';
 import type { Item } from './interface';
-import MenuList from './meunList';
+import MenuList from './menuList';
 import { getPrefixCls, MenuFlatChangeKeys, MenuFlatKeys, MenuPropsKeys, MenuSelectedKeys } from '@/packages/_utils';
 import './style.scss';
 
@@ -44,6 +44,15 @@ export default defineComponent({
 
     const prefixCls = getPrefixCls('menu');
 
+    const computedCls = computed(() => {
+      return {
+        [prefixCls]: true,
+        [`${prefixCls}-${props.mode}`]: true,
+        [`${prefixCls}-${props.theme}`]: true,
+        [`${prefixCls}-collapsed`]: props.collapsed && props.mode === 'vertical',
+      };
+    });
+
     provide(MenuPropsKeys, props);
 
     const flatList = ref<string[]>([]);
@@ -67,7 +76,7 @@ export default defineComponent({
       emit('update:selectedKey', val);
     });
 
-		  // 收起全部
+    // 收起全部
     const slideUp = () => {
       flatList.value = [];
       selectKey.value = '';
@@ -90,13 +99,8 @@ export default defineComponent({
     });
 
     return () => (
-			<div class={{
-			  [prefixCls]: true,
-			  [`${prefixCls}-${props.mode}`]: true,
-			  [`${prefixCls}-${props.theme}`]: true,
-			  [`${prefixCls}-collapsed`]: props.collapsed && props.mode === 'vertical',
-			}}>
-  <MenuList items={props.items} onClick={handleClick} onSelect={handleSelect}></MenuList>
+			<div class={computedCls.value}>
+				<MenuList items={props.items} onClick={handleClick} onSelect={handleSelect}></MenuList>
 			</div>
 
     );

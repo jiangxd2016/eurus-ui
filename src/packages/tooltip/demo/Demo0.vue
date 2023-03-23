@@ -17,7 +17,8 @@
         上右
       </ETooltip>
     </e-space>
-    <EuSpace>
+    <br />
+    <e-space>
       <ETooltip direction="left" content="这是提示内容direction=left">
         左边
       </ETooltip>
@@ -25,8 +26,9 @@
       <ETooltip direction="right" content="这是提示内容direction=right">
         右边
       </ETooltip>
-    </EuSpace>
-    <EuSpace>
+    </e-space>
+    <br />
+    <e-space>
       <ETooltip
         direction="bottom-left"
         content="这是提示内容direction=bottom-left"
@@ -42,6 +44,6 @@
       >
         下右
       </ETooltip>
-    </EuSpace>
+    </e-space>
   </div>
 </template>

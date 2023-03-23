@@ -5,5 +5,5 @@
   <EButton type="warning">warning</EButton>
   <EButton type="error">error</EButton>
   <EButton type="purple">purple</EButton>
-	<EButton type="text">Text</EButton>
+  <EButton type="text">Text</EButton>
 </template>

@@ -27,7 +27,7 @@ const ETooltipProps = {
   },
   appendToBody: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   transition: {
     type: String,
@@ -90,7 +90,7 @@ export default defineComponent({
       }
     );
 
-    const getIf = (slot: any) => {
+    const getContent = (slot: any) => {
       if (props.disabled) {
         // 不可用状态
         return false;
@@ -122,7 +122,6 @@ export default defineComponent({
             style.bottom = bottom;
             break;
           case 'top':
-            // 先让提示左边和当前标签中间对齐（偏移位置+标签宽的一半），再向左移50%
             style.transform = 'translateX(-50%)';
             style.left
 							= translate(offset.left + offset.width / 2 + props.x) + 'px';
@@ -134,13 +133,11 @@ export default defineComponent({
             style.bottom = bottom;
             break;
           case 'left':
-            // top先让提示语顶部跟标签中间对齐，再上移50%
             style.right = windowWidth - (offset.left - 8 + props.x) + 'px';
             style.top = translate(offset.top + offset.height / 2) + 'px';
             style.transform = 'translateY(-50%)';
             break;
           case 'right':
-            // top和左边一样
             style.left = offset.left + offset.width + 8 + props.x + 'px';
             style.top = translate(offset.top + offset.height / 2) + 'px';
             style.transform = 'translateY(-50%)';
@@ -250,12 +247,12 @@ export default defineComponent({
 
 					<Transition name={`tooltip-${props.transition}`}>
 						{
-							getIf(slots) && state.visible && (
+							getContent(slots) && (
 								<div
 
 									ref={tooltipRef}
 									class={[prefixCls, props.direction]}
-									style={state.tooltipStyle}
+									style={{ ...state.tooltipStyle, ...{ display: state.visible ? 'block' : 'block' } }}
 								>
 									<EIcons name="arrow" class="arrow"></EIcons>
 									{
@@ -263,7 +260,9 @@ export default defineComponent({
 									}
 								</div>
 
-							)}
+							)
+							}
+
 					</Transition>
 				</div>
 

@@ -77,7 +77,7 @@ export default defineComponent({
       plain: props.plain,
       circle: props.circle,
       round: props.round,
-			text: props.type === 'text',
+      text: props.type === 'text',
     }));
 
     const handleClick = (e: Event) => {
@@ -90,7 +90,7 @@ export default defineComponent({
     return () => (
       <button
         class={[
-          `${prefixCls} bg-${props.type} ${prefixCls}--${size.value} ${props.type === 'default'  ? 'text-black' : 'text-white'}`,
+          `${prefixCls} bg-${props.type} ${prefixCls}--${size.value} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
           classNames.value,
         ]}
         {...props.native} onClick={handleClick}

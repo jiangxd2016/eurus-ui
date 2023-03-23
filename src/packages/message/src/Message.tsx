@@ -88,8 +88,8 @@ export default defineComponent({
     return () => (
 
 			<li role="alert" class={[prefixCls, `${prefixCls}-${props.type}`, { [`${prefixCls}-closable`]: props.closable }]}
-					onMouseenter={handleMouseEnter}
-					onMouseleave={handleMouseLeave}
+				onMouseenter={handleMouseEnter}
+				onMouseleave={handleMouseLeave}
 			>
 				{props.showIcon && (
 					<EIcons name={iconName} class={`${prefixCls}-icon ${prefixCls}-icon-${props.type}`} size="sm"></EIcons>
@@ -98,9 +98,12 @@ export default defineComponent({
 					{slots.default?.()}
 				</div>
 				{props.closable && (
-					<EButton round type="text" class={`${prefixCls}-close`} onClick={handleClose} v-slots={{
-					  default: () => <EIcons name="close" color="#aaa"/>
-					}}
+					<EButton
+						round
+						type="text"
+						class={`${prefixCls}-close`}
+						onClick={handleClose}
+						v-slots={{ default: () => <EIcons name="close" color="#aaa" /> }}
 					>
 					</EButton>
 

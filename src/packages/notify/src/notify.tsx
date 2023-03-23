@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { defineComponent, onMounted, onUpdated, onUnmounted } from 'vue';
+import { computed, defineComponent, onMounted, onUpdated, onUnmounted } from 'vue';
 import type { MessageType } from '@/packages/_utils';
 import { toKebabCase, getPrefixCls } from '@/packages/_utils';
 import EIcons from '@/packages/icons';
@@ -31,6 +31,15 @@ export default defineComponent({
   emits: ['close'],
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('notify');
+
+    const computedCls = computed(() => {
+      return [
+        prefixCls,
+				`${prefixCls}-${props.type}`,
+				{ [`${prefixCls}-closable`]: props.closable },
+      ];
+    });
+
     let timer = 0;
     const iconName = toKebabCase(props.type);
 
@@ -64,11 +73,7 @@ export default defineComponent({
     return () => (
 			<li
 				role="alert"
-				class={[
-				  prefixCls,
-					`${prefixCls}-${props.type}`,
-					{ [`${prefixCls}-closable`]: props.closable },
-				]}
+				class={computedCls.value}
 			>
 				<div class={`${prefixCls}-left`}>
 					{props.showIcon && (
@@ -88,9 +93,12 @@ export default defineComponent({
 
 				</div>
 				{props.closable && (
-					<EButton round type="text" class={`${prefixCls}-close`} onClick={handleClose} v-slots={{
-					  default: () => <EIcons name="close" color="#aaa"/>
-					}}
+					<EButton
+					round
+					type="text"
+					class={`${prefixCls}-close`}
+					onClick={handleClose}
+					v-slots={{ default: () => <EIcons name="close" color="#aaa"/> }}
 					>
 					</EButton>
 

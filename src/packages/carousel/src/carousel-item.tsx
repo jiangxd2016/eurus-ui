@@ -25,7 +25,6 @@ export default defineComponent({
     },
   },
   setup(props, { slots }) {
-
     const prefixCls = getPrefixCls('carousel-item');
     const instance = getCurrentInstance();
     const itemStyle = ref<string>('');

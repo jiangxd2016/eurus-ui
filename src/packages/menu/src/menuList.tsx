@@ -1,8 +1,16 @@
 import type { PropType } from 'vue';
 import { Transition, inject, ref, defineComponent } from 'vue';
 import type { Item } from './interface';
-import { MenuFlatChangeKeys, MenuFlatKeys, MenuPropsKeys, MenuSelectedChangeKeys, MenuSelectedKeys } from '@/packages/_utils';
+import {
+  MenuFlatChangeKeys,
+  MenuFlatKeys,
+  MenuPropsKeys,
+  MenuSelectedChangeKeys,
+  MenuSelectedKeys
+} from '@/packages/_utils';
 import ToolTip from '@/packages/tooltip';
+import EIcons from '@/packages/icons';
+
 const EMenuListProps = {
   items: {
     type: Array as PropType<Array<Item>>,
@@ -10,7 +18,8 @@ const EMenuListProps = {
   },
   itemUl: {
     type: Object as PropType<Item>,
-    default: () => { },
+    default: () => {
+    },
   },
   layer: {
     type: Number,
@@ -21,18 +30,20 @@ const EMenuListProps = {
 const MenuList = defineComponent({
   name: 'EMenuList',
   props: EMenuListProps,
-  emit: ['click', 'select'],
+  emits: ['click', 'select'],
   setup(props, { emit }) {
 
     // flat list
     const flatList = inject(MenuFlatKeys, ref<string[]>([]));
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const flatChange = inject(MenuFlatChangeKeys, (key: string, add: boolean) => { });
+    const flatChange = inject(MenuFlatChangeKeys, (key: string, add: boolean) => {
+    });
 
     // selected key
     const selectedKey = inject(MenuSelectedKeys, ref<string>(''));
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const selectedChange = inject(MenuSelectedChangeKeys, (key: string) => { });
+    const selectedChange = inject(MenuSelectedChangeKeys, (key: string) => {
+    });
 
     const menuProps = inject(MenuPropsKeys, {
       mode: 'horizontal',
@@ -114,29 +125,28 @@ const MenuList = defineComponent({
 
     return () => (
 			<Transition name="menu"
-				onBeforeEnter={() => beforeEvent}
-				onAfterEnter={() => afterEvent}
-				onBeforeLeave={() => beforeEvent}
-				onAfterLeave={() => afterEvent}
+									onBeforeEnter={() => beforeEvent}
+									onAfterEnter={() => afterEvent}
+									onBeforeLeave={() => beforeEvent}
+									onAfterLeave={() => afterEvent}
 			>
 
 				{
-					props.itemUl || flatList.value.includes( props.itemUl?.key) ? (
-						<ul class={{ ['layer-' + props.layer]: true, 'is-child': props.itemUl }}>
-							{props.items.map(item => (
-								// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-								<li
-									class={{
-									  'is-active': item.key === selectedKey.value,
-									  'is-disabled': item.disabled,
-									  'is-open': flatList.value.includes(item.key),
-									}}
-									onKeydown={evt => click(item)}
-									onMouseenter={() => mouseenter(item)}
-									onMouseleave={() => mouseleave(item)}
-									onClick={evt => click(item, evt)}
-								>
-									<div class="menu-items">
+
+					<ul class={{ ['layer-' + props.layer]: true, 'is-child': props.itemUl }}
+							style={{ display: (!props.itemUl || flatList.value.includes(props.itemUl?.key)) ? 'block' : 'none' }}
+					>
+						{props.items.map(item => (
+							// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+							<li
+								class={{ 'is-active': item.key === selectedKey.value, 'is-disabled': item.disabled, 'is-open': flatList.value.includes(item.key) }}
+								onKeydown={() => {
+								}}
+								onMouseenter={() => mouseenter(item)}
+								onMouseleave={() => mouseleave(item)}
+								onClick={evt => click(item, evt)}
+							>
+								<div class="menu-items">
 										<span class="menu-title">
 											<ToolTip
 												content={item.label}
@@ -144,27 +154,30 @@ const MenuList = defineComponent({
 												x={15}
 												disabled={!(props.layer === 0 && !item.children && menuProps.collapsed)}
 											>
-												<i class={`icon icon-${item.icon}`} v-if="items.icon"></i>
+												{
+													item.icon && <EIcons name={item.icon} class="icon"></EIcons>
+												}
 											</ToolTip>
 											<span class="name">{item.label}</span>
-											<i class="icon-arrow" v-if="items.children"></i>
+											{
+												item.children && <EIcons name="arrow-right" class="icon"></EIcons>
+											}
 										</span>
-										{
-											item.children && (
-												<MenuList
-													items={item.children}
-													itemUl={item}
-													layer={props.layer + 1}
-													onSelect={select}
-													onClick={clickEmit}
-												/>
-											)
-										}
-									</div>
-								</li>
-							))}
-						</ul>
-					) : ''
+									{
+										item.children && (
+											<MenuList
+												items={item.children}
+												itemUl={item}
+												layer={props.layer + 1}
+												onSelect={select}
+												onClick={clickEmit}
+											/>
+										)
+									}
+								</div>
+							</li>
+						))}
+					</ul>
 				}
 
 			</Transition>
