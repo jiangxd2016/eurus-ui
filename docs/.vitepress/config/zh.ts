@@ -163,6 +163,10 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           }, {
             text: '提示 tooltip',
             link: '/zh/components/tooltip'
+          },
+          {
+            text: '菜单 menu',
+            link: '/zh/components/menu'
           }
           // {
           //   text: '加载中 loading',

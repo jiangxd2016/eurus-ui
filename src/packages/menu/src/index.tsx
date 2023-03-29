@@ -1,8 +1,15 @@
 import type { PropType } from 'vue';
-import { computed, onBeforeUnmount, onMounted, ref, provide, defineComponent } from 'vue';
+import { reactive, computed, onBeforeUnmount, onMounted, ref, provide, defineComponent } from 'vue';
 import type { Item } from './interface';
 import MenuList from './menuList';
-import { getPrefixCls, MenuFlatChangeKeys, MenuFlatKeys, MenuPropsKeys, MenuSelectedKeys } from '@/packages/_utils';
+import {
+  getPrefixCls,
+  MenuFlatChangeKeys,
+  MenuFlatKeys,
+  MenuPropsKeys,
+  MenuSelectedChangeKeys,
+  MenuSelectedKeys
+} from '@/packages/_utils';
 import './style.scss';
 
 export const EMenuProps = {
@@ -57,8 +64,7 @@ export default defineComponent({
 
     const flatList = ref<string[]>([]);
 
-    provide(MenuFlatKeys, flatList);
-    provide(MenuFlatChangeKeys, (key: string, add: boolean) => {
+    const flatChange = (key: string, add: boolean) => {
       if (add) {
         flatList.value.push(key);
       } else {
@@ -66,15 +72,19 @@ export default defineComponent({
         flatList.value.splice(index, 1);
       }
       emit('update:openkeys', flatList.value);
-    });
+    };
+
+    provide(MenuFlatKeys, flatList);
+    provide(MenuFlatChangeKeys, reactive({ flatChange }));
 
     const selectKey = ref(props.selectedKey);
+    const selectedChange = (key: string) => {
+      selectKey.value = key;
+      emit('update:selectedKey', key);
+    };
 
     provide(MenuSelectedKeys, selectKey);
-    provide(MenuFlatChangeKeys, (val: string) => {
-      selectKey.value = val;
-      emit('update:selectedKey', val);
-    });
+    provide(MenuSelectedChangeKeys, reactive({ selectedChange }));
 
     // 收起全部
     const slideUp = () => {

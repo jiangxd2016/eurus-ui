@@ -249,16 +249,16 @@ export default defineComponent({
 						{
 							getContent(slots) && (
 								<div
-
 									ref={tooltipRef}
 									class={[prefixCls, props.direction]}
-									style={{ ...state.tooltipStyle, ...{ display: state.visible ? 'block' : 'block' } }}
+									style={{ ...state.tooltipStyle, ...{ display: state.visible ? 'block' : 'none' } }}
 								>
 									<EIcons name="arrow" class="arrow"></EIcons>
 									{
 										props.content ? <span v-html={props.content}></span>	: slots.content?.()
 									}
-								</div>
+								</div
+>
 
 							)
 							}

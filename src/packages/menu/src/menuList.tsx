@@ -1,12 +1,11 @@
 import type { PropType } from 'vue';
-import { Transition, inject, ref, defineComponent } from 'vue';
+import { Transition, inject, defineComponent, ref } from 'vue';
 import type { Item } from './interface';
 import {
   MenuFlatChangeKeys,
   MenuFlatKeys,
-  MenuPropsKeys,
-  MenuSelectedChangeKeys,
-  MenuSelectedKeys
+  MenuPropsKeys, MenuSelectedChangeKeys,
+  MenuSelectedKeys, noop
 } from '@/packages/_utils';
 import ToolTip from '@/packages/tooltip';
 import EIcons from '@/packages/icons';
@@ -34,16 +33,11 @@ const MenuList = defineComponent({
   setup(props, { emit }) {
 
     // flat list
-    const flatList = inject(MenuFlatKeys, ref<string[]>([]));
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const flatChange = inject(MenuFlatChangeKeys, (key: string, add: boolean) => {
-    });
-
+    const flatList = inject(MenuFlatKeys, ref([]));
+    const { flatChange } = inject(MenuFlatChangeKeys, noop);
     // selected key
-    const selectedKey = inject(MenuSelectedKeys, ref<string>(''));
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const selectedChange = inject(MenuSelectedChangeKeys, (key: string) => {
-    });
+    const selectedKey = inject(MenuSelectedKeys, ref(''));
+    const { selectedChange } = inject(MenuSelectedChangeKeys, noop);
 
     const menuProps = inject(MenuPropsKeys, {
       mode: 'horizontal',
@@ -102,6 +96,7 @@ const MenuList = defineComponent({
       }
       emit('click', items);
       evt.stopPropagation();
+
     };
 
     const select = (items: Item) => {
@@ -125,21 +120,22 @@ const MenuList = defineComponent({
 
     return () => (
 			<Transition name="menu"
-									onBeforeEnter={() => beforeEvent}
-									onAfterEnter={() => afterEvent}
-									onBeforeLeave={() => beforeEvent}
-									onAfterLeave={() => afterEvent}
+				onBeforeEnter={() => beforeEvent}
+				onAfterEnter={() => afterEvent}
+				onBeforeLeave={() => beforeEvent}
+				onAfterLeave={() => afterEvent}
 			>
 
 				{
 
-					<ul class={{ ['layer-' + props.layer]: true, 'is-child': props.itemUl }}
-							style={{ display: (!props.itemUl || flatList.value.includes(props.itemUl?.key)) ? 'block' : 'none' }}
+					<ul class={`layer${props.layer}`}
+						style={{ display: (!props.itemUl || flatList.value.includes(props.itemUl?.key)) ? 'block' : 'none' }}
 					>
+
 						{props.items.map(item => (
 							// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 							<li
-								class={{ 'is-active': item.key === selectedKey.value, 'is-disabled': item.disabled, 'is-open': flatList.value.includes(item.key) }}
+								class={{ 'is-selected': item.key === selectedKey.value, 'is-disabled': item.disabled, 'is-open': flatList.value.includes(item.key), 'is-has-child': item.children }}
 								onKeydown={() => {
 								}}
 								onMouseenter={() => mouseenter(item)}
@@ -147,22 +143,22 @@ const MenuList = defineComponent({
 								onClick={evt => click(item, evt)}
 							>
 								<div class="menu-items">
-										<span class="menu-title">
-											<ToolTip
-												content={item.label}
-												direction="right"
-												x={15}
-												disabled={!(props.layer === 0 && !item.children && menuProps.collapsed)}
-											>
-												{
-													item.icon && <EIcons name={item.icon} class="icon"></EIcons>
-												}
-											</ToolTip>
-											<span class="name">{item.label}</span>
+									<span class="menu-title">
+										<ToolTip
+											content={item.label}
+											direction="right"
+											x={15}
+											disabled={!(props.layer === 0 && !item.children && menuProps.collapsed)}
+										>
 											{
-												item.children && <EIcons name="arrow-right" class="icon"></EIcons>
+												item.icon && <EIcons name={item.icon} class="icon"></EIcons>
 											}
-										</span>
+										</ToolTip>
+										<span class="name">{item.label}</span>
+										{
+											item.children && <EIcons name="chevron-down" class="icon-arrow"></EIcons>
+										}
+									</span>
 									{
 										item.children && (
 											<MenuList
