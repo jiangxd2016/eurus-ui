@@ -1,5 +1,5 @@
-import { execSync } from 'child_process';
-import { writeFileSync, readFileSync, createWriteStream } from 'fs';
+import { execSync } from 'node:child_process';
+import { writeFileSync, readFileSync, createWriteStream } from 'node:fs';
 // @ts-expect-error
 import standardChangelog from 'standard-changelog';
 import { version as _version } from '../package.json';

@@ -1,5 +1,6 @@
 @import '../../../scss/variables';
-
+$tooltip-prefix-cls: $prefix+ '-tooltip' !default;
+$tooltip-wrapper-prefix-cls: $tooltip-prefix-cls + '-wrapper' !default;
 
 $menu-prefix-cls: $prefix + '-menu' !default;
 
@@ -7,10 +8,16 @@ $menu-prefix-cls: $prefix + '-menu' !default;
 	.icon-arrow {
 		font-size: 14px;
 		transform: scale(.8);
-		margin-left: 5px;
 		display: block;
 		cursor: pointer;
+		margin-left: 18px;
 		transition: all .3s;
+	}
+
+	.title-icon {
+		display: flex;
+		align-items: center;
+		margin-right: 18px;
 	}
 
 	li {
@@ -126,12 +133,12 @@ $menu-prefix-cls: $prefix + '-menu' !default;
 	}
 
 	&-vertical {
-		padding: 4px 8px;
 
 		li {
 			line-height: 40px;
+			padding: 4px 8px;
 
-			&:hover {
+			&.is-hover:not(.disabled) {
 				& > .menu-items {
 					display: block;
 
@@ -144,33 +151,28 @@ $menu-prefix-cls: $prefix + '-menu' !default;
 			}
 		}
 
-		.layer-1 {
-			.menu-title {
-				padding-left: 40px;
-			}
-		}
-
-		.layer-2 {
-			.menu-title {
-				padding-left: 60px;
-			}
-		}
-
-		.layer-3 {
-			.menu-title {
-				padding-left: 80px;
-			}
-		}
 	}
-
-	&collapsed {
+	&-collapsed {
 		width: 60px;
 
 		.layer-0 {
 			& > li {
-				& > .menu-title {
-					&:hover {
-						background: #f2f3f5;
+				& > .menu-items {
+					.title-icon{
+						margin-right:0;
+					}
+
+					& > .menu-title {
+						height: 40px;
+						&:hover {
+							background-color: rgba(255, 255, 255, .04);
+						}
+						.name{
+							display: none;
+						}
+						.icon-arrow{
+							display: none;
+						}
 					}
 				}
 			}
@@ -194,12 +196,16 @@ $menu-prefix-cls: $prefix + '-menu' !default;
 	}
 
 	&-dark {
-		background: rgb(68, 75, 80);
-		color: #fff;
+		li{
+			background: rgb(68, 75, 80);
+			color: #fff;
+		}
+
 
 		&-vertical {
+
 			li {
-				&:hover {
+				&.is-hover {
 					& > .menu-title {
 						background: #1989fa;
 						color: #fff;

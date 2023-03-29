@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`tool-tip > tool-tip snapshot 1`] = `
+"<div class=\\"eu-tooltip-wrapper\\">
+  <!---->
+  <transition-stub name=\\"tooltip-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+    <!---->
+  </transition-stub>
+</div>"
+`;

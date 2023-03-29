@@ -5,7 +5,7 @@ import {
   MenuFlatChangeKeys,
   MenuFlatKeys,
   MenuPropsKeys, MenuSelectedChangeKeys,
-  MenuSelectedKeys, noop
+  MenuSelectedKeys, MenuSelectHoverKeys, noop
 } from '@/packages/_utils';
 import ToolTip from '@/packages/tooltip';
 import EIcons from '@/packages/icons';
@@ -39,6 +39,9 @@ const MenuList = defineComponent({
     const selectedKey = inject(MenuSelectedKeys, ref(''));
     const { selectedChange } = inject(MenuSelectedChangeKeys, noop);
 
+    // hover
+    const itemHoverKey = inject(MenuSelectHoverKeys, ref(''));
+
     const menuProps = inject(MenuPropsKeys, {
       mode: 'horizontal',
       items: [],
@@ -71,18 +74,23 @@ const MenuList = defineComponent({
         pushOrSplice(item, add);
       }
     };
-    const mouseenter = (item: Item) => {
+    const mouseenter = (item: Item, e: MouseEvent) => {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      itemHoverKey.value = item.key;
       if (item.children && item?.children.length > 0) {
         onMouseEvent(item, true);
       }
     };
-    const mouseleave = (item: Item) => {
+    const mouseleave = (item: Item, e: MouseEvent) => {
+      e.stopPropagation();
+      itemHoverKey.value = '';
       if (item.children && item?.children.length > 0) {
         onMouseEvent(item, false);
       }
     };
 
-    const click = (items: Item, evt: MouseEvent) => {
+    const click = (items: Item, e: MouseEvent) => {
       if (items.disabled) {
         return;
       }
@@ -95,7 +103,7 @@ const MenuList = defineComponent({
         emit('select', items);
       }
       emit('click', items);
-      evt.stopPropagation();
+      e.stopPropagation();
 
     };
 
@@ -118,31 +126,52 @@ const MenuList = defineComponent({
       node.style.overflow = '';
     };
 
+    const getItemCls = (item: Item) => {
+      return {
+        'is-selected': item.key === selectedKey.value,
+        'is-disabled': item.disabled,
+        'is-open': flatList.value.includes(item.key),
+        'is-hover': itemHoverKey.value === item.key,
+      };
+    };
+
+    const renderIcon = (item: Item) => {
+      if (!item.icon) {
+        return null;
+      }
+      if (typeof item.icon === 'string') {
+        return <EIcons name={item.icon} class="icon"></EIcons>;
+      }
+      if (typeof item.icon === 'function') {
+        return item.icon();
+      }
+    };
+
     return () => (
 			<Transition name="menu"
-				onBeforeEnter={() => beforeEvent}
-				onAfterEnter={() => afterEvent}
-				onBeforeLeave={() => beforeEvent}
-				onAfterLeave={() => afterEvent}
-			>
-
+									onBeforeEnter={() => beforeEvent}
+									onAfterEnter={() => afterEvent}
+									onBeforeLeave={() => beforeEvent}
+									onAfterLeave={() => afterEvent}>
 				{
-
-					<ul class={`layer${props.layer}`}
-						style={{ display: (!props.itemUl || flatList.value.includes(props.itemUl?.key)) ? 'block' : 'none' }}
+					<ul class={`layer-${props.layer}`}
+							style={{ display: (!props.itemUl || flatList.value.includes(props.itemUl?.key)) ? 'block' : 'none' }}
 					>
 
 						{props.items.map(item => (
 							// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 							<li
-								class={{ 'is-selected': item.key === selectedKey.value, 'is-disabled': item.disabled, 'is-open': flatList.value.includes(item.key), 'is-has-child': item.children }}
+								class={getItemCls(item)}
 								onKeydown={() => {
 								}}
-								onMouseenter={() => mouseenter(item)}
-								onMouseleave={() => mouseleave(item)}
-								onClick={evt => click(item, evt)}
+								onMouseenter={e => mouseenter(item, e)}
+								onMouseleave={e => mouseleave(item, e)}
+								onMousemove={e => mouseenter(item, e)}
+								onClick={e => click(item, e)}
 							>
-								<div class="menu-items">
+								<div class="menu-items" style={{ marginLeft: (menuProps.mode === 'vertical' && !menuProps.collapsed) ? (props.layer * 10 + 10) + 'px' : '0px'
+								}}
+								>
 									<span class="menu-title">
 										<ToolTip
 											content={item.label}
@@ -150,13 +179,15 @@ const MenuList = defineComponent({
 											x={15}
 											disabled={!(props.layer === 0 && !item.children && menuProps.collapsed)}
 										>
-											{
-												item.icon && <EIcons name={item.icon} class="icon"></EIcons>
-											}
+											<div class="title-icon">
+												{
+													renderIcon(item)
+												}
+											</div>
 										</ToolTip>
 										<span class="name">{item.label}</span>
 										{
-											item.children && <EIcons name="chevron-down" class="icon-arrow"></EIcons>
+											item.children && (menuProps.collapsed ? <EIcons name="chevron-right" class="icon-arrow"></EIcons> : <EIcons name="chevron-down" class="icon-arrow"></EIcons>)
 										}
 									</span>
 									{
@@ -170,7 +201,8 @@ const MenuList = defineComponent({
 											/>
 										)
 									}
-								</div>
+								</div
+								>
 							</li>
 						))}
 					</ul>

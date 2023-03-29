@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { resolve } from 'path';
+import fs from 'node:fs';
+import { resolve } from 'node:path';
 import type { Plugin, ResolvedConfig } from 'vite';
 import sass from 'sass';
 

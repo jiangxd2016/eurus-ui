@@ -8,7 +8,12 @@ import { noop } from '@/packages/_utils/shared';
  * @param listener - event listener
  * @param options - event listener options
  */
-export default function useEventListener(target: HTMLElement | Window = window, event: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): Fn {
+export default function useEventListener(
+  target: HTMLElement | Window = window,
+  event: string,
+  listener: EventListenerOrEventListenerObject,
+  options?: boolean | AddEventListenerOptions
+): Fn {
 
   if (!event || !listener) {
     return noop;

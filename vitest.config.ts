@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { defineConfig } from 'vitest/config';
 import Vue from '@vitejs/plugin-vue';
 import Jsx from '@vitejs/plugin-vue-jsx';

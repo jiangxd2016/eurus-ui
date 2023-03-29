@@ -1,7 +1,9 @@
+import type { RenderContent } from '@/packages/_utils';
+
 export interface Item {
   label?: string;
   key: string;
-  icon?: string;
+  icon?: RenderContent;
   children?: Item[];
   disabled?: boolean;
   className?: string;

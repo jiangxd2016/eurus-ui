@@ -1,17 +1,25 @@
 <template>
   <div>
+    <e-button @click="setCollapsed">change collapsed</e-button>
     <e-menu :items="items" mode="vertical" />
     <p>dark主题</p>
-    <e-menu :items="items" mode="vertical" theme="dark" />
+    <e-menu :items="items" mode="vertical" :collapsed="collapsed" theme="dark" />
   </div>
 </template>
 
 <script setup>
+import { ref, h } from 'vue';
+import { EIcon } from 'eurus-ui';
+
 const items = [
   {
     label: '用户管理',
     key: 'user',
-    icon: 'user',
+    icon: () => h(EIcon, {
+      name: 'star',
+      color: '#fff'
+
+    }),
     children: [
       {
         label: '用户列表',
@@ -26,7 +34,11 @@ const items = [
   {
     label: 'Navigator Two',
     key: 'b',
-    icon: 'search',
+    icon: () => h(EIcon, {
+      name: 'star',
+      color: '#fff'
+
+    }),
     children: [
       {
         label: 'item one',
@@ -55,8 +67,17 @@ const items = [
   {
     label: '系统设置',
     key: 'set',
-    icon: 'date',
+    icon: () => h(EIcon, {
+      name: 'star',
+      color: '#fff'
+
+    }),
     disabled: true
   }
 ];
+
+const collapsed = ref(false);
+const setCollapsed = () => {
+  collapsed.value = !collapsed.value;
+};
 </script>

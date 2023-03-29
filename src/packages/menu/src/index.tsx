@@ -8,7 +8,7 @@ import {
   MenuFlatKeys,
   MenuPropsKeys,
   MenuSelectedChangeKeys,
-  MenuSelectedKeys
+  MenuSelectedKeys, MenuSelectHoverKeys
 } from '@/packages/_utils';
 import './style.scss';
 
@@ -85,6 +85,9 @@ export default defineComponent({
 
     provide(MenuSelectedKeys, selectKey);
     provide(MenuSelectedChangeKeys, reactive({ selectedChange }));
+
+    const itemHoverKey = ref('');
+    provide(MenuSelectHoverKeys, itemHoverKey);
 
     // 收起全部
     const slideUp = () => {

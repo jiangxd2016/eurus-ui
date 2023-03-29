@@ -218,8 +218,8 @@ export default defineComponent({
         if (props.trigger === 'click') {
           document.addEventListener('click', mouseClick, false);
         } else {
-          wrapperRef.value.addEventListener('mouseenter', mouseEnter, false);
-          wrapperRef.value.addEventListener('mouseleave', mouseLeave, false);
+          wrapperRef.value?.addEventListener('mouseenter', mouseEnter, false);
+          wrapperRef.value?.addEventListener('mouseleave', mouseLeave, false);
         }
         if (props.appendToBody && tooltipRef.value) {
           document.body.append(tooltipRef.value);
@@ -231,40 +231,40 @@ export default defineComponent({
       if (props.trigger === 'click') {
         document.removeEventListener('click', mouseClick, false);
       } else {
-        wrapperRef.value.removeEventListener('mouseenter', mouseEnter, false);
-        wrapperRef.value.removeEventListener('mouseleave', mouseLeave, false);
+        wrapperRef.value?.removeEventListener('mouseenter', mouseEnter, false);
+        wrapperRef.value?.removeEventListener('mouseleave', mouseLeave, false);
       }
       if (props.appendToBody && tooltipRef.value) {
         tooltipRef.value.remove();
       }
     });
     return () => (
-				<div ref={wrapperRef} class={`${prefixCls}-wrapper`}>
+			<div ref={wrapperRef} class={`${prefixCls}-wrapper`}>
 
+				{
+					slots?.default?.()
+				}
+
+				<Transition name={`tooltip-${props.transition}`}>
 					{
-						slots?.default?.()
+						getContent(slots) && (
+							<div
+								ref={tooltipRef}
+								class={[prefixCls, props.direction]}
+								style={{ ...state.tooltipStyle, ...{ display: state.visible ? 'block' : 'block' } }}
+							>
+								<EIcons name="arrow" class="arrow"></EIcons>
+								{
+									props.content ? <span v-html={props.content}></span> : slots.content?.()
+								}
+							</div
+							>
+
+						)
 					}
 
-					<Transition name={`tooltip-${props.transition}`}>
-						{
-							getContent(slots) && (
-								<div
-									ref={tooltipRef}
-									class={[prefixCls, props.direction]}
-									style={{ ...state.tooltipStyle, ...{ display: state.visible ? 'block' : 'none' } }}
-								>
-									<EIcons name="arrow" class="arrow"></EIcons>
-									{
-										props.content ? <span v-html={props.content}></span>	: slots.content?.()
-									}
-								</div
->
-
-							)
-							}
-
-					</Transition>
-				</div>
+				</Transition>
+			</div>
 
     );
   },

@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`menu > menu snapshot 1`] = `
+"<div class=\\"eu-menu eu-menu-horizontal eu-menu-light\\">
+  <transition-stub name=\\"menu\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+    <ul class=\\"layer-0\\" style=\\"display: block;\\"></ul>
+  </transition-stub>
+</div>"
+`;

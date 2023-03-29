@@ -1,6 +1,6 @@
 import type { PropType } from 'vue';
 import { defineComponent, TransitionGroup } from 'vue';
-import Message from './message';
+import Message from './Message';
 import type { MessageItem, MessagePosition } from './interface';
 import { getPrefixCls, getSlotFunction } from '@/packages/_utils';
 import usePopupManager from '@/packages/_hooks/usePopupManager';

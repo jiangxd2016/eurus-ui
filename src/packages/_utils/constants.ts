@@ -106,3 +106,5 @@ export const MenuFlatChangeKeys: InjectionKey<any> = Symbol('EurusMenuFlatChange
 // selected
 export const MenuSelectedKeys: InjectionKey<any> = Symbol('EurusMenuSelectedProvider');
 export const MenuSelectedChangeKeys: InjectionKey<any> = Symbol('EurusMenuSelectedChangeProvider');
+
+export const MenuSelectHoverKeys: InjectionKey<any> = Symbol('EurusMenuSelectHoverProvider');
