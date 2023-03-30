@@ -17,13 +17,16 @@ $menu-prefix-cls: $prefix + '-menu' !default;
 	.title-icon {
 		display: flex;
 		align-items: center;
-		margin-right: 18px;
 	}
 
 	li {
-		&.disabled {
-			opacity: .5;
+		&.is-disabled {
+			color:#ccc;
 			cursor: not-allowed;
+
+			.title-icon{
+				color:#ccc;
+			}
 
 			.menu-title {
 				cursor: not-allowed;

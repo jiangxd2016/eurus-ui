@@ -169,8 +169,7 @@ const MenuList = defineComponent({
 								onMousemove={e => mouseenter(item, e)}
 								onClick={e => click(item, e)}
 							>
-								<div class="menu-items" style={{ marginLeft: (menuProps.mode === 'vertical' && !menuProps.collapsed) ? (props.layer * 10 + 10) + 'px' : '0px'
-								}}
+								<div class="menu-items" style={{ textIndent: (menuProps.mode === 'vertical' && !menuProps.collapsed) ? (props.layer * 10 + 10) + 'px' : '0px' }}
 								>
 									<span class="menu-title">
 										<ToolTip
@@ -179,7 +178,7 @@ const MenuList = defineComponent({
 											x={15}
 											disabled={!(props.layer === 0 && !item.children && menuProps.collapsed)}
 										>
-											<div class="title-icon">
+											<div class="title-icon" style={{ marginRight: (renderIcon(item) && !menuProps.collapsed) ? '18px' : '' }}>
 												{
 													renderIcon(item)
 												}
@@ -201,8 +200,7 @@ const MenuList = defineComponent({
 											/>
 										)
 									}
-								</div
-								>
+								</div>
 							</li>
 						))}
 					</ul>
