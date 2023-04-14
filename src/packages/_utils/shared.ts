@@ -1,4 +1,4 @@
-import type { RenderContent } from '@/packages/_utils/type';
+import type { RenderContent } from '@/packages/_utils/types';
 import { isFunction } from '@/packages/_utils/is';
 
 export const noop = () => {};

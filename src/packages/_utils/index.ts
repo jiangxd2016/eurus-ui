@@ -7,5 +7,6 @@ export * from './flatten';
 export * from './global-config';
 export * from './is' ;
 export * from './size';
-export * from './type';
+export * from './types';
 export * from './warn';
+export * from './vue-utils';

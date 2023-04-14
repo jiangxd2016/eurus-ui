@@ -1,0 +1,27 @@
+@import '../../../scss/variables';
+
+$empty-prefix-cls: #{$prefix}-empty;
+
+.#{$empty-prefix-cls} {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10px 0;
+	text-align: center;
+
+	&-image {
+		margin-bottom: 4px;
+		color: #000000;
+		font-size: 48px;
+		line-height: 1;
+
+		img {
+			height: 80px;
+		}
+	}
+
+	& &-description {
+		color: #000000;
+		font-size: 14px;
+	}
+
+}

@@ -21,6 +21,7 @@ importers:
       lint-staged: ^13.2.0
       number-precision: ^1.6.0
       pnpm: 8.0.0
+      resize-observer-polyfill: ^1.5.1
       rimraf: ^4.4.1
       sass: ^1.60.0
       simple-git-hooks: ^2.8.1
@@ -36,6 +37,7 @@ importers:
       dayjs: 1.11.7
       eurus-icons-vue: 0.0.16_vue@3.2.47
       number-precision: 1.6.0
+      resize-observer-polyfill: 1.5.1
     devDependencies:
       '@estjs/eslint-config': 0.4.14_bcnce6t2n5ss3lv2getliffzhq
       '@estjs/tools': 0.0.32
@@ -2535,7 +2537,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.2.1_@types+node@18.15.11
+      vite: 4.2.1_hghbulspu73jfdazs4i6yiqype
       vue: 3.2.47
     dev: true
 
@@ -6288,6 +6290,10 @@ packages:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /resize-observer-polyfill/1.5.1:
+    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
+    dev: false
 
   /resolve-from/4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}

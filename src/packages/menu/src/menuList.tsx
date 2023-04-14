@@ -159,7 +159,6 @@ const MenuList = defineComponent({
 					>
 
 						{props.items.map(item => (
-							// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 							<li
 								class={getItemCls(item)}
 								onKeydown={() => {

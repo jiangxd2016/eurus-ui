@@ -1,0 +1,110 @@
+@import '../../../scss/variables';
+
+.eu-page {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	> div {
+		margin-right: 10px;
+	}
+
+	.page-list ul {
+		display: flex;
+
+		li {
+			padding: 0;
+			display: block;
+			height: 32px;
+			min-width: 32px;
+			line-height: 30px;
+			margin: 0 4px 0 0;
+			cursor: pointer;
+
+			a {
+				display: block;
+				border: 1px solid #dcdee0;
+				border-radius: 4px;
+				transition: all 0.5s;
+				text-align: center;
+
+				&:hover {
+					border-color: #1989fa;
+					color: #2d8cf0;
+				}
+
+				&.active {
+					border-color: #1989fa;
+					color: #fff;
+					background: #1989fa;
+				}
+
+				&.disabled {
+					opacity: 0.5;
+					cursor: not-allowed;
+				}
+
+				&.jump-prev {
+					font-size: 10px;
+
+					&:before {
+						content: "•••";
+					}
+
+					&:hover:before {
+						content: "<<";
+					}
+				}
+
+				&.jump-next {
+					font-size: 10px;
+
+					&:before {
+						content: "•••";
+					}
+
+					&:hover:before {
+						content: ">>";
+					}
+				}
+			}
+		}
+	}
+
+	.eu-input-control {
+		text-align: center;
+		width: 50px;
+		height: 32px;
+		line-height: 32px;
+		box-sizing: border-box;
+	}
+
+	.eu-select {
+		min-width: inherit;
+
+		.eu-input-control {
+			width: 100px;
+		}
+	}
+
+	.total {
+		line-height: 32px;
+
+		span {
+			color: #1989fa;
+		}
+	}
+
+
+	.show-jumper{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		input{
+			width: 60px;
+			margin: 0 4px;
+		}
+
+	}
+}

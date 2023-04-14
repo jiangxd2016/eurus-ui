@@ -1,17 +1,12 @@
 {
-  "plugins": [
-    "jsx-a11y"
-  ],
   "extends": [
-    "@estjs/eslint-config",
-    "plugin:jsx-a11y/recommended"
+    "@estjs/eslint-config"
   ],
   "rules": {
     "no-unused-vars": 0,
     "import/no-named-as-default": 0,
-    // TODO: Remove this rule when we have time to fix the issues
-    "jsx-a11y/click-events-have-key-events": 0
-
+		"@typescript-eslint/no-use-before-define": 0,
+		"@typescript-eslint/no-unused-vars": 0
   },
   "globals": {
     "__DEV__": "readonly"

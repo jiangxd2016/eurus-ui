@@ -1,0 +1,4 @@
+<template>
+  <ETrigger />
+</template>
+

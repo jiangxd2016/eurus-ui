@@ -1,0 +1,39 @@
+@import '../../../scss/variables';
+
+ .eu-trigger-wrapper {
+	 display: inline-block;
+}
+ .eu-trigger-popup {
+	 position: absolute;
+	 z-index: 1000;
+}
+ .eu-trigger-arrow {
+	 position: absolute;
+	 z-index: -1;
+	 display: block;
+	 box-sizing: border-box;
+	 width: 8px;
+	 height: 8px;
+	 background-color: #373739;;
+	 content: '';
+}
+ .eu-trigger-popup[trigger-placement='top'] .eu-trigger-arrow, .eu-trigger-popup[trigger-placement='tl'] .eu-trigger-arrow, .eu-trigger-popup[trigger-placement='tr'] .eu-trigger-arrow {
+	 border-top: none;
+	 border-left: none;
+	 border-bottom-right-radius: 2px;
+}
+ .eu-trigger-popup[trigger-placement='bottom'] .eu-trigger-arrow, .eu-trigger-popup[trigger-placement='bl'] .eu-trigger-arrow, .eu-trigger-popup[trigger-placement='br'] .eu-trigger-arrow {
+	 border-right: none;
+	 border-bottom: none;
+	 border-top-left-radius: 2px;
+}
+ .eu-trigger-popup[trigger-placement='left'] .eu-trigger-arrow, .eu-trigger-popup[trigger-placement='lt'] .eu-trigger-arrow, .eu-trigger-popup[trigger-placement='lb'] .eu-trigger-arrow {
+	 border-bottom: none;
+	 border-left: none;
+	 border-top-right-radius: 2px;
+}
+ .eu-trigger-popup[trigger-placement='right'] .eu-trigger-arrow, .eu-trigger-popup[trigger-placement='rt'] .eu-trigger-arrow, .eu-trigger-popup[trigger-placement='rb'] .eu-trigger-arrow {
+	 border-top: none;
+	 border-right: none;
+	 border-bottom-left-radius: 2px;
+}

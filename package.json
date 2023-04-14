@@ -70,7 +70,8 @@
     "async-validator": "^4.2.5",
     "dayjs": "^1.11.7",
     "eurus-icons-vue": "^0.0.16",
-    "number-precision": "^1.6.0"
+    "number-precision": "^1.6.0",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@estjs/eslint-config": "^0.4.14",

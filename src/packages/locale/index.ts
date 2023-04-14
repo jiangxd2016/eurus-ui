@@ -2,7 +2,7 @@ import { ref, reactive, inject, computed } from 'vue';
 import zhCN from './lang/zh-cn';
 import enUS from './lang/en-us';
 import jaJP from './lang/ja-jp';
-import { configKey } from '@/packages/_utils/constants';
+import { EurusConfigProviderKey } from '@/packages/_utils/constants';
 import { isString } from '@/packages/_utils/is';
 
 export type language = 'zh-cn' | 'en-us';
@@ -53,7 +53,7 @@ export const getLocale = () => {
 };
 
 export const useI18n = () => {
-  const configProvider = inject(configKey, undefined);
+  const configProvider = inject(EurusConfigProviderKey, undefined);
   const i18nMessage = computed<typeof zhCN>(
     () =>I18N_MESSAGES[ configProvider?.locale ?? LOCALE.value]
   );

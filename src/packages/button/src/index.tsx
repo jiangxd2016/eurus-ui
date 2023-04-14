@@ -5,7 +5,7 @@ import './style.scss';
 import EIcon from '@/packages/icons';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import { buttonGroupKey, configKey } from '@/packages/_utils/constants';
+import { buttonGroupKey, EurusConfigProviderKey } from '@/packages/_utils/constants';
 
 export type Type =
   | 'default'
@@ -63,7 +63,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('button');
 
     const buttonGroupInject = inject(buttonGroupKey, null);
-    const globalConfigInject = inject(configKey, null);
+    const globalConfigInject = inject(EurusConfigProviderKey, null);
 
     // props size > buttonGroup size > globalConfig size
     const size = computed(() => {

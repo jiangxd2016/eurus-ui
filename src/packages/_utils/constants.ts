@@ -1,4 +1,4 @@
-import type { ExtractPropTypes, InjectionKey, Ref } from 'vue';
+import type { ExtractPropTypes, InjectionKey, Ref, Slots } from 'vue';
 import type { EMenuProps } from '../menu/src';
 import type { Size } from '@/packages/_utils/size';
 import type { ESelectDownProps } from '@/packages/select-down/src';
@@ -27,7 +27,7 @@ export interface CheckboxGroupContext {
 export const CheckboxGroupKey: InjectionKey<CheckboxGroupContext> = Symbol('CheckboxGroupKey');
 
 export interface RadioGroupContext {
-  name: string;
+  name: string; slots: Slots;
   value: string | number | boolean;
   disabled: boolean;
   handleChange: (value: string | number | boolean, e: Event) => void;
@@ -35,7 +35,7 @@ export interface RadioGroupContext {
 
 export const RadioGroupKey: InjectionKey<RadioGroupContext> = Symbol('RadioGroupKey');
 
-export const configKey: InjectionKey<ConfigProvider>
+export const EurusConfigProviderKey: InjectionKey<ConfigProvider>
   = Symbol('EurusConfigProvider');
 
 export interface buttonGroupProviderType {

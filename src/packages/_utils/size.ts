@@ -1,5 +1,5 @@
 import { isStringNumber } from '@/packages/_utils/is';
-import type { StringNumber } from '@/packages/_utils/type';
+import type { StringNumber } from '@/packages/_utils/types';
 
 export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 

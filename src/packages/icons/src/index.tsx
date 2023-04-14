@@ -6,7 +6,7 @@ import { warnOnce } from '@/packages/_utils/warn';
 import type { Size } from '@/packages/_utils/size';
 import { getSize } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import type { StringNumber } from '@/packages/_utils/type';
+import type { StringNumber } from '@/packages/_utils/types';
 import { toPascalCase } from '@/packages/_utils';
 
 type allIconKeyType = keyof typeof allIcon;
