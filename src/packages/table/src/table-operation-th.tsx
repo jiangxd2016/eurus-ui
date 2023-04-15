@@ -1,10 +1,10 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent, inject } from 'vue';
-import Checkbox from '../checkbox';
 import type { TableOperationColumn } from './interface';
 import { getOperationFixedCls, getOperationStyle } from './utils';
 import type { TableContext } from './context';
 import { tableInjectionKey } from './context';
+import Checkbox from '@/packages/checkbox';
 import { isFunction } from '@/packages/_utils/is';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 

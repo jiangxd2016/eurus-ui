@@ -1,10 +1,5 @@
 import type { PropType, VNode } from 'vue';
 import { computed, defineComponent, inject } from 'vue';
-import Checkbox from '../checkbox';
-import Radio from '../radio';
-import IconPlus from '../icon/icon-plus';
-import IconMinus from '../icon/icon-minus';
-import IconDragDotVertical from '../icon/icon-drag-dot-vertical';
 import type { TableContext } from './context';
 import { tableInjectionKey } from './context';
 import {
@@ -14,6 +9,9 @@ import {
   getSelectionStatus,
 } from './utils';
 import type { TableDataWithRaw, TableOperationColumn } from './interface';
+import Checkbox from '@/packages/checkbox';
+import Radio from '@/packages/radio';
+import Icons from '@/packages/icons';
 import type { BaseType } from '@/packages/_utils/types';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
@@ -22,8 +20,6 @@ export default defineComponent({
   components: {
     Checkbox,
     Radio,
-    IconPlus,
-    IconMinus,
   },
   props: {
     operationColumn: {
@@ -141,7 +137,6 @@ export default defineComponent({
             onChange={checked =>
               tableCtx.onSelect?.(checked as boolean, props.record)
             }
-            // @ts-expect-error
             onClick={(ev: Event) => ev.stopPropagation()}
           />
         );
@@ -153,7 +148,7 @@ export default defineComponent({
         return null;
       }
       if (props.operationColumn.name === 'drag-handle') {
-        return slots['drag-handle-icon']?.() ?? <IconDragDotVertical />;
+        return slots['drag-handle-icon']?.() ?? <Icons name="DragDotVertical" />;
       }
       return null;
     };
