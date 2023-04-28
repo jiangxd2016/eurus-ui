@@ -1,7 +1,7 @@
 {
   "name": "eurus-ui",
   "type": "module",
-  "version": "0.0.36-beta.0",
+  "version": "0.0.36-beta.1",
   "packageManager": "pnpm@7.32.2",
   "description": "A Vue 3 Component Library.Uses TypeScript, Fast, Small, Easy to use.",
   "author": "jiangxd <jiangxd2016@gmail.com>",
@@ -61,7 +61,7 @@
     "typecheck": "vue-tsc -p ./src/tsconfig.esm.json --noEmit",
     "coverage": "vitest run --coverage",
     "prerelease": "pnpm run clean && pnpm run gen:version && pnpm run typecheck && pnpm run test && pnpm run build",
-    "release": "pnpm run prerelease && pnpm run changelog && bumpp --commit --tag --push"
+    "release": "pnpm run prerelease && pnpm run changelog && bumpp --commit --tag --push  && pnpm -r publish --access public"
   },
   "peerDependencies": {
     "vue": "^3.2.47"
