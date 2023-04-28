@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`scrollbar > scrollbar snapshot 1`] = `
+"<div class=\\"eu-scrollbar eu-scrollbar-type-embed\\">
+  <div class=\\"eu-scrollbar-container\\">
+    <!---->
+  </div>
+  <!--v-if-->
+  <!--v-if-->
+</div>"
+`;

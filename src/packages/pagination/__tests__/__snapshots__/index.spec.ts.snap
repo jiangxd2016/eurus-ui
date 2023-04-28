@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`pagination > pagination snapshot 1`] = `
+"<div class=\\"eu-page\\">
+  <!---->
+  <!---->
+  <div class=\\"page-list\\">
+    <ul>
+      <li><a title=\\"上一页\\" class=\\"prev disabled\\">
+          << /a>
+      </li>
+      <li><a title=\\"1\\" class=\\"active\\">1</a></li>
+      <!---->
+      <!---->
+      <!---->
+      <li><a title=\\"下一页\\" class=\\"next disabled\\">></a></li>
+    </ul>
+  </div>
+  <!---->
+</div>"
+`;
