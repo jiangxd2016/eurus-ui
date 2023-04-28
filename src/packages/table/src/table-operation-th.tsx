@@ -67,8 +67,6 @@ export default defineComponent({
                 : props.operationColumn.title,
             }}
             modelValue={checkboxStatus.value.checked}
-            indeterminate={checkboxStatus.value.indeterminate}
-            uninjectGroupContext
             onChange={(checked) => {
               tableCtx.onSelectAll?.(checked as boolean);
             }}

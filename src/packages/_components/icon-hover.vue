@@ -34,6 +34,7 @@ export default defineComponent({
       default: false,
     },
   },
+  emits: ['click'],
   setup() {
     const prefixCls = getPrefixCls('icon-hover');
 
