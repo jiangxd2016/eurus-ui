@@ -5,13 +5,14 @@ import viteDev from './vite.dev';
 import configProd from './vite.prod';
 import configAll from './vite.all';
 import { compileToCSS } from './gen-scss';
+
 const execPromise = promisify(exec);
 
 const args = process.argv.slice(2);
 const nodeEnv = args[0];
 console.log(`[eurus-ui env] ${nodeEnv}`);
 
-// complie
+// compile
 (async () => {
   if (nodeEnv === 'dev') {
     await build(viteDev);

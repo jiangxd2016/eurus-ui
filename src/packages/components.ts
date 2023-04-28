@@ -41,3 +41,4 @@ export * from './pagination';
 export * from './empty';
 export * from './scrollbar';
 export * from './trigger';
+export * from './table';

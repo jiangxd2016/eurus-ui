@@ -1,4 +1,4 @@
 <template>
-  <ETable />
+  <e-table />
 </template>
 
