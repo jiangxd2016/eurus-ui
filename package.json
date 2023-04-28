@@ -1,7 +1,7 @@
 {
   "name": "eurus-ui",
   "type": "module",
-  "version": "0.0.36-beta.5",
+  "version": "0.0.36-beta.6",
   "packageManager": "pnpm@7.32.2",
   "description": "A Vue 3 Component Library.Uses TypeScript, Fast, Small, Easy to use.",
   "author": "jiangxd <jiangxd2016@gmail.com>",
