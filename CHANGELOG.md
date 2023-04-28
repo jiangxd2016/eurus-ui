@@ -5,6 +5,11 @@ toc: false
 docClass: timeline
 ---
 
+## [0.0.36-beta.3](https://github.com/jiangxd2016/eurus-ui/compare/v0.0.36-beta.2...v0.0.36-beta.3) `2023-04-28`
+
+
+
+
 ## [0.0.36-beta.2](https://github.com/jiangxd2016/eurus-ui/compare/v0.0.36-beta.1...v0.0.36-beta.2) `2023-04-28`
 
 
