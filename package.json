@@ -1,7 +1,7 @@
 {
   "name": "eurus-ui",
   "type": "module",
-  "version": "0.0.36-beta.5",
+  "version": "0.0.36-beta.6",
   "packageManager": "pnpm@7.32.2",
   "description": "A Vue 3 Component Library.Uses TypeScript, Fast, Small, Easy to use.",
   "author": "jiangxd <jiangxd2016@gmail.com>",
@@ -41,8 +41,6 @@
     "node": ">= 16"
   },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "postinstall": "npx simple-git-hooks",
     "dev": " pnpm run gen:version && tsx scripts/build.ts dev",
     "build": "pnpm run clean && pnpm run gen:version && tsx scripts/build.ts all",
     "gen:version": "tsx ./scripts/gen-version.ts",
