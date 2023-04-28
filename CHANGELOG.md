@@ -5,6 +5,81 @@ toc: false
 docClass: timeline
 ---
 
+## [0.0.36-beta.0](https://github.com/jiangxd2016/eurus-ui/compare/v0.0.35...v0.0.36-beta.0) `2023-04-28`
+
+
+### Bug Fixes
+
+* **button:** update button text & round style ([75b4e48](https://github.com/jiangxd2016/eurus-ui/commit/75b4e489839c25b0aae56855ffa98bcf4a0e2437))
+* **component:** [input] delete inheriAttrs option ([7bf1662](https://github.com/jiangxd2016/eurus-ui/commit/7bf16625384f4ca97d073a3bfee7e86b8138b533))
+* **component:** [tag] fix tag size ([acf4292](https://github.com/jiangxd2016/eurus-ui/commit/acf4292898340b7c8eeedc47820ece62938c6b7b))
+* **config-provider:** fix demo name ([30a798e](https://github.com/jiangxd2016/eurus-ui/commit/30a798e9038b4e0ca0f962c012b3475a255495dc))
+* **date-picker:** fix date--picker hover style ([8869c2b](https://github.com/jiangxd2016/eurus-ui/commit/8869c2b9fae60079a7aaa2e66b1765feea9243d2))
+* **date-picker:** fix date--picker range control style ([494ef68](https://github.com/jiangxd2016/eurus-ui/commit/494ef688f7568011fc969aa0ceaf4b092438d614))
+* **date-picker:** lint date picker ([c14318b](https://github.com/jiangxd2016/eurus-ui/commit/c14318b742f09a57c5563c0500785e4fdc87efc2))
+* eslint lint style ([40bd02d](https://github.com/jiangxd2016/eurus-ui/commit/40bd02dac509ce788b3675619bbbe31c91427040))
+* fix docs v-show ([6952bc9](https://github.com/jiangxd2016/eurus-ui/commit/6952bc9e952d5c0530836c6ce7f072dbcfa88ac8))
+* fix test error ([df0acdb](https://github.com/jiangxd2016/eurus-ui/commit/df0acdb31c8963a5a450e483bef435c0ad88528d))
+* **select-down:** fix select down close pane , open pane agin error ([a25efaf](https://github.com/jiangxd2016/eurus-ui/commit/a25efaf2fe21bc09cdc1a1cd8d3514a26e37152f))
+* **select-down:** panel visible ([39c0e75](https://github.com/jiangxd2016/eurus-ui/commit/39c0e75d286594eb7deaaecb107abd593c976d74))
+* **select-down:** select-down size ([cbdd0db](https://github.com/jiangxd2016/eurus-ui/commit/cbdd0db7dd052ea8cbf00ad9812c30a36c47e2dd))
+* **select:** fix select option name ([012885d](https://github.com/jiangxd2016/eurus-ui/commit/012885dc8da6493e9385cfdcbcfbd85b81f06d33))
+* **select:** fix select update modelValue ([a188d82](https://github.com/jiangxd2016/eurus-ui/commit/a188d820ddc37db05ae7bcf6446e07a58b8cec61))
+* **table:** fix table typescript error ([16da3ec](https://github.com/jiangxd2016/eurus-ui/commit/16da3ec3eefcad71c59da288aeedbe90cd1b1475))
+
+
+### Features
+
+* **breadcrumb:** update new compts ([a665ae7](https://github.com/jiangxd2016/eurus-ui/commit/a665ae742e65b50210f637e3e487ee9434c07cb7))
+* **component:** [icon] update icon click event ([33caf1a](https://github.com/jiangxd2016/eurus-ui/commit/33caf1a90aabf3aa900e2d8885e7782634da20f6))
+* **component:** [input] update input expose methods ([3f52d04](https://github.com/jiangxd2016/eurus-ui/commit/3f52d044c369de6f65dfb677389e3c75d188b079))
+* **component:** [input] update input native attr ([872c4fc](https://github.com/jiangxd2016/eurus-ui/commit/872c4fc746d1e54c6165874369179b88e26c9230))
+* **component:** [select-down] multiple select ([bfe9306](https://github.com/jiangxd2016/eurus-ui/commit/bfe9306ca99083523fe94f7ecee506893d08f2c9))
+* **component:** [select] update select ([9dba016](https://github.com/jiangxd2016/eurus-ui/commit/9dba016ec79db8575644dc1933adcd5d50f69829))
+* **component:** [tag] add new component ([e11f9de](https://github.com/jiangxd2016/eurus-ui/commit/e11f9de2557a31552fa801d2219664037c7c0062))
+* **component:** [tag] update tag docs ([307daa3](https://github.com/jiangxd2016/eurus-ui/commit/307daa345242a90776e61066d21d5e675d57c562))
+* **component:** [tag] update tag style ([a2d3902](https://github.com/jiangxd2016/eurus-ui/commit/a2d390217248e43b126d2eea6a5b65b82ea68ff8))
+* **component:** update component style ([838585e](https://github.com/jiangxd2016/eurus-ui/commit/838585eed3dffedbe292e415d1fc52bf9daf8cb2))
+* **config-provider:** create new component ([dc91d7a](https://github.com/jiangxd2016/eurus-ui/commit/dc91d7a21a5276a17de46336e9d3c80a8facf6e9))
+* **date-picker:**  update ([16be7da](https://github.com/jiangxd2016/eurus-ui/commit/16be7da8e7717200a1f0549d007059aeac0522fb))
+* **date-picker:** add month ([713f921](https://github.com/jiangxd2016/eurus-ui/commit/713f9216ac1e0167857cd832aaf8d8010bd7a55a))
+* **date-picker:** create new component ([6633a4d](https://github.com/jiangxd2016/eurus-ui/commit/6633a4d95ad4cf49ca85b180b56afa114ce07ca6))
+* **date-picker:** fix date picker a11y error ([d38baaa](https://github.com/jiangxd2016/eurus-ui/commit/d38baaaf4c08fc8aca092a2f903b26356db45775))
+* **date-picker:** format date-picker style ([31b9f40](https://github.com/jiangxd2016/eurus-ui/commit/31b9f407c802635aee0a9a5a17c2a532b3e45def))
+* **date-picker:** update [WIP] ([586844c](https://github.com/jiangxd2016/eurus-ui/commit/586844cbc9fe8cf0218445d43f1a2f353f1a6aa4))
+* **date-picker:** update date-picker basic style ([c61f539](https://github.com/jiangxd2016/eurus-ui/commit/c61f539fd9b06c454542bb853e2ade1e26a40ce3))
+* **date-picker:** update date-picker range mode ([13791d7](https://github.com/jiangxd2016/eurus-ui/commit/13791d766f688e561ebf072032d531001a4f7bae))
+* delete vite config file ([3dca16f](https://github.com/jiangxd2016/eurus-ui/commit/3dca16f0796cda4c87c545dec302a703e732646b))
+* **divider:** new divider component ([525de05](https://github.com/jiangxd2016/eurus-ui/commit/525de057543ca4e353c421a9e3d67c220327a9ca))
+* **drawer:** update new compts ([fea7f6d](https://github.com/jiangxd2016/eurus-ui/commit/fea7f6d17b53f14429531e03fe3f82633238bdd0))
+* **form-item:** new compts ([c094cd1](https://github.com/jiangxd2016/eurus-ui/commit/c094cd16af2dd8bc098aa815c7395f16752c3484))
+* **form:** form validator ([f20caec](https://github.com/jiangxd2016/eurus-ui/commit/f20caec9f991c18596a19a25ac490b0d66b39613))
+* **form:** update new compts ([58501cb](https://github.com/jiangxd2016/eurus-ui/commit/58501cb3c5894e24233178dcfe727e3edcac7274))
+* **icons:** update icon ([37f5800](https://github.com/jiangxd2016/eurus-ui/commit/37f5800a0d8a420431d9149f2078a044a37f49f5))
+* **locale:** create new component ([3b3a280](https://github.com/jiangxd2016/eurus-ui/commit/3b3a2808dc91f08d78b117e6668bee108fd44a30))
+* **menu:** add new compts [WIP] ([11256d0](https://github.com/jiangxd2016/eurus-ui/commit/11256d0c493a9b2d607910c1680c9477369e716e))
+* **menu:** update menu style ([c9b2f54](https://github.com/jiangxd2016/eurus-ui/commit/c9b2f5455784f4e25b878325be788836ac209e45))
+* **menu:** update menu style ([dcf46e7](https://github.com/jiangxd2016/eurus-ui/commit/dcf46e7f9ca0ac614cab780b1730cfdfe0aaf428))
+* **message:** message ([b3b8fdb](https://github.com/jiangxd2016/eurus-ui/commit/b3b8fdb26666579d4e818d7c871f437e31185f19))
+* **notify:** update new compts ([f3913d2](https://github.com/jiangxd2016/eurus-ui/commit/f3913d276a9895589713b04f30a86206a3f1134c))
+* **select-dowm:** update disabled props & update docs ([745a99f](https://github.com/jiangxd2016/eurus-ui/commit/745a99f7fd3592f60bb88432c9ca0aaf7c33ffb4))
+* **select:** lint select file ([02e54fc](https://github.com/jiangxd2016/eurus-ui/commit/02e54fcc4e26dc2aa2b7ec84c80e7b1f60048929))
+* **select:** select snapshots ([2f6ebf6](https://github.com/jiangxd2016/eurus-ui/commit/2f6ebf66d6f48a139bba20dfdd9b5ece6d4f2e83))
+* **select:** select value update [WIP] ([3817f17](https://github.com/jiangxd2016/eurus-ui/commit/3817f175bf624daafdce44f1d198e724071509ab))
+* **select:** update [WIP] ([b8d0c98](https://github.com/jiangxd2016/eurus-ui/commit/b8d0c98cbe0bd682b2410c108fcbab804f1840b4))
+* **select:** update select style ([0b3ff57](https://github.com/jiangxd2016/eurus-ui/commit/0b3ff574a76c014f262b87c7e9722ce3f8abf6f5))
+* **space:** update new compts ([e2acee2](https://github.com/jiangxd2016/eurus-ui/commit/e2acee28f2989557185265ed7e257a1dd01534fc))
+* **textarea:** new compts ([0cac615](https://github.com/jiangxd2016/eurus-ui/commit/0cac61531814ab562a178eac9047d7d2f81b21d9))
+* **tooltip:** add tooltip compts ([0861285](https://github.com/jiangxd2016/eurus-ui/commit/08612852248fc48c080d2cb26e03741d092c6cb0))
+* update ([3d71787](https://github.com/jiangxd2016/eurus-ui/commit/3d71787877c18f7b49e2126ce5882bd87bd49cc4))
+* update table ([a88539f](https://github.com/jiangxd2016/eurus-ui/commit/a88539fb614819a2d4323d229996aea114211647))
+
+
+
+
+
+
+
 ## [0.0.35](https://github.com/jiangxd2016/eurus-ui/compare/f9dd1cc2a0604dd2365ef5e3c816bad54cc7a55e...v0.0.35) `2022-12-12`
 
 
