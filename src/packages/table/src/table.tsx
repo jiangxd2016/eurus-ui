@@ -53,7 +53,6 @@ import { useScrollbar } from '@/packages/_hooks/use-scrollbar';
 import type { BaseType } from '@/packages/_utils/types';
 import { useComponentRef } from '@/packages/_hooks/use-component-ref';
 import { useChildrenComponents } from '@/packages/_hooks/use-children-components';
-import ClientOnly from '@/packages/_components/client-only';
 import { EurusConfigProviderKey } from '@/packages/_utils/constants';
 import { omit } from '@/packages/_utils/omit';
 import type { VirtualListProps } from '@/packages/_components/virtual-list/interface';
@@ -470,9 +469,9 @@ export default defineComponent({
     /**
 		 * @zh 表格每页数据数量发生改变时触发
 		 * @en Triggered when the number of data per page of the table changes
-		 * @param {number} packagesize
+		 * @param {number} pageSize
 		 */
-    'packagesizeChange': (packagesize: number) => true,
+    'pageSizeChange': (pageSize: number) => true,
     /**
 		 * @zh 表格数据发生变化时触发
 		 * @en Triggered when table data changes
@@ -656,10 +655,11 @@ export default defineComponent({
 			= useComponentRef('containerRef');
     const { componentRef: tbodyComRef, elementRef: tbodyRef }
 			= useComponentRef('containerRef');
-    const { componentRef: virtualComRef, elementRef: virtualRef }
+    const { elementRef: virtualRef }
 			= useComponentRef('viewportRef');
     const { componentRef: theadComRef, elementRef: theadRef }
 			= useComponentRef('containerRef');
+
     const containerElement = computed(() => {
       if (splitTable.value) {
         if (isVirtualList.value) {
@@ -765,7 +765,7 @@ export default defineComponent({
       const extra: TableChangeExtra = {
         type,
         page: page.value,
-        packagesize: packagesize.value,
+        pageSize: pageSize.value,
         sorter: computedSorter.value,
         filters: computedFilters.value,
         dragTarget: type === 'drag' ? dragState.data : undefined,
@@ -870,7 +870,6 @@ export default defineComponent({
     });
 
     const {
-      isRadio,
       selectedRowKeys,
       currentSelectedRowKeys,
       handleSelect,
@@ -927,7 +926,6 @@ export default defineComponent({
       dragState,
       handleDragStart,
       handleDragEnter,
-      handleDragLeave,
       handleDragover,
       handleDragEnd,
       handleDrop,
@@ -1029,7 +1027,7 @@ export default defineComponent({
       return data;
     });
 
-    const { page, packagesize, handlePageChange, handlepackagesizeChange }
+    const { page, pageSize, handlePageChange, handlePageSizeChange }
 			= usePagination(props, emit);
 
     const onlyCurrent = computed(
@@ -1043,10 +1041,10 @@ export default defineComponent({
     });
 
     const flattenData = computed(() => {
-      if (props.pagination && sortedData.value.length > packagesize.value) {
+      if (props.pagination && sortedData.value.length > pageSize.value) {
         return sortedData.value.slice(
-          (page.value - 1) * packagesize.value,
-          page.value * packagesize.value
+          (page.value - 1) * pageSize.value,
+          page.value * pageSize.value
         );
       }
       return sortedData.value;
@@ -1477,7 +1475,6 @@ export default defineComponent({
 						  ? props.rowClass(record.raw, rowIndex)
 						  : props.rowClass,
 					]}
-					// @ts-expect-error
 					onClick={(ev: Event) => handleRowClick(record, ev)}
 				>
 					{operations.value.map((operation, index) => {
@@ -1528,7 +1525,6 @@ export default defineComponent({
 								rowSpan={rowspan}
 								colSpan={colspan}
 								summary
-								// @ts-expect-error
 								onClick={(ev: Event) => handleCellClick(record, column, ev)}
 							/>
 					  );
@@ -1548,36 +1544,6 @@ export default defineComponent({
         );
       }
       return null;
-    };
-
-    const renderVirtualListBody = () => {
-      return (
-				<ClientOnly>
-					<VirtualList
-						v-slots={{
-						  item: ({
-						    item,
-						    index,
-						  }: {
-						    item: TableDataWithRaw;
-						    index: number;
-						  }) => renderRecord(item, index),
-						}}
-						ref={virtualComRef}
-						class={`${prefixCls}-body`}
-						data={flattenData.value}
-						itemKey="_key"
-						type="table"
-						outerAttrs={{
-						  class: `${prefixCls}-element`,
-						  style: contentStyle.value,
-						}}
-						{...props.virtualListProps}
-						onResize={handleTbodyResize}
-						onScroll={handleScroll}
-					/>
-				</ClientOnly>
-      );
     };
 
     const renderExpandBtn = (
@@ -1717,7 +1683,6 @@ export default defineComponent({
 						rowIndex={rowIndex}
 						record={record}
 						checked={selectedRowKeys.value?.includes(currentKey)}
-						// @ts-expect-error
 						onClick={(ev: Event) => handleRowClick(record, ev)}
 						{...(dragType.value === 'row' ? dragSourceEvent : {})}
 						{...dragTargetEvent}
@@ -1790,7 +1755,6 @@ export default defineComponent({
 									renderExpandBtn={renderExpandBtn}
 									colSpan={colspan}
 									{...extraProps}
-									// @ts-expect-error
 									onClick={(ev: Event) => handleCellClick(record, column, ev)}
 								/>
 						  );
@@ -2085,9 +2049,9 @@ export default defineComponent({
       const paginationProps = isObject(props.pagination)
         ? omit(props.pagination, [
           'current',
-          'packagesize',
+          'pageSize',
           'defaultCurrent',
-          'defaultpackagesize',
+          'defaultpageSize',
         ])
         : {};
 
@@ -2097,13 +2061,13 @@ export default defineComponent({
 					<Pagination
 						total={validData.value.length}
 						current={page.value}
-						packagesize={packagesize.value}
+						pageSize={pageSize.value}
 						onChange={(page: number) => {
 						  handlePageChange(page);
 						  handleChange('pagination');
 						}}
-						onpackagesizeChange={(packagesize: number) => {
-						  handlepackagesizeChange(packagesize);
+						on-pageSizeChange={(pageSize: number) => {
+						  handlePageSizeChange(pageSize);
 						  handleChange('pagination');
 						}}
 						{...paginationProps}

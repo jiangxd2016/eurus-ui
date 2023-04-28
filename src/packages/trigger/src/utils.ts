@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'vue';
-import { isArray } from '@estjs/tools';
 import type { TriggerPopupTranslate } from './interface';
+import { isArray } from '@/packages/_utils';
 import type { TriggerPosition } from '@/packages/_utils/types';
 
 const getViewPortSize = () => {
@@ -267,8 +267,6 @@ const getPopupOffset = (
     translate?: TriggerPopupTranslate;
   } = {}
 ): PositionOffset => {
-  // prettier-ignore
-  // @ts-expect-error
   const _translate = (isArray(translate) ? translate : translate[position]) ?? [0, 0];
 
   switch (position) {

@@ -10,9 +10,7 @@ import {
   watch,
 } from 'vue';
 import ResizeObserver from 'resize-observer-polyfill';
-import { getFirstComponent } from '@/packages/_utils/vue-utils';
-
-import { isComponentInstance } from '@/packages/_utils/is';
+import { getFirstComponent, isComponentInstance } from '@/packages/_utils/vue-utils';
 
 export default defineComponent({
   name: 'ResizeObserver',

@@ -22,6 +22,7 @@ export default defineComponent({
       default: () => ({}),
     },
   },
+  emits: ['click'],
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('table');
 

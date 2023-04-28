@@ -50,7 +50,7 @@ export type {
   TableExpandable,
   TableDraggable,
   TableChangeExtra,
-} from './interface';
+} from './src/interface';
 
 export {
   _Thead as Thead,

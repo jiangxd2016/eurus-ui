@@ -15,6 +15,7 @@ export interface ConfigProvider {
   locale: language;
   size: Size;
   darkMode: boolean;
+  updateAtScroll?: boolean;
 }
 
 export interface CheckboxGroupContext {

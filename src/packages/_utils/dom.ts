@@ -1,4 +1,8 @@
+import { isString } from './is';
 import { noop } from '@/packages/_utils/shared';
+export const NOOP = () => {
+  return undefined;
+};
 
 interface Offset {
   width: number;
@@ -82,4 +86,27 @@ export const getWindow = () => {
   const height
     = document.documentElement.clientHeight || document.body.clientHeight;
   return { width, height };
+};
+
+export const querySelector = (
+  selectors: string,
+  container?: Document | HTMLElement
+) => {
+  if (isServerRendering) {
+    return NOOP();
+  }
+  return (
+    (container ?? document).querySelector<HTMLElement>(selectors) ?? undefined
+  );
+};
+
+export const getElement = (
+  target: string | HTMLElement | undefined,
+  container?: Document | HTMLElement
+): HTMLElement | undefined => {
+  if (isString(target)) {
+    const selector = target[0] === '#' ? `[id='${target.slice(1)}']` : target;
+    return querySelector(selector, container);
+  }
+  return target;
 };

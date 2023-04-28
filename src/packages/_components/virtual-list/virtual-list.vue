@@ -157,7 +157,7 @@ export default defineComponent({
       buffer,
     });
 
-    const currentList = computed(() => {
+    const currentList = computed<any[]>(() => {
       if (props.threshold && data.value.length <= props.threshold) {
         return data.value;
       }
@@ -185,7 +185,6 @@ export default defineComponent({
         if (isNumber(options)) {
           containerRef.value.scrollTop = options;
         } else {
-          const { align = 'top' } = options;
           const _index
             = options.index ?? dataKeys.value.indexOf(options.key ?? '');
           setStart(_index - buffer.value);

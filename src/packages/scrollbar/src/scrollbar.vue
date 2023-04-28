@@ -34,6 +34,7 @@
 <script lang="ts">
 import type {
   CSSProperties,
+  ComputedRef,
   PropType,
   StyleValue } from 'vue';
 import {
@@ -230,7 +231,7 @@ export default defineComponent({
       }
     };
 
-    const style = computed<StyleValue>(() => {
+    const style = computed(() => {
       const style: CSSProperties = {};
       if (props.type === 'track') {
         if (hasHorizontalScrollbar.value) {
@@ -241,7 +242,7 @@ export default defineComponent({
         }
       }
       return [style, props.outerStyle].filter(Boolean);
-    });
+    }) as ComputedRef<StyleValue>;
 
     const cls = computed(() => [
       `${prefixCls}`,

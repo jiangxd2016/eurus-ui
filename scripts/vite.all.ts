@@ -25,7 +25,7 @@ const config: InlineConfig = {
       output: {
         exports: 'named',
       },
-      external: ['vue', 'dayjs', 'async-validator', 'number-precision', 'eurus-icons-vue'],
+      external: ['vue', 'dayjs', 'async-validator', 'number-precision', 'eurus-icons-vue', 'resize-observer-polyfill'],
     },
 
     lib: {

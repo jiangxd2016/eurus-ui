@@ -30,6 +30,7 @@ const ERadioProps = {
 export default defineComponent({
   name: 'ERadio',
   props: ERadioProps,
+  emits: ['change', 'click', 'update:modelValue'],
   setup(props, { slots, emit }) {
 
     const prefixCls = getPrefixCls('radio');

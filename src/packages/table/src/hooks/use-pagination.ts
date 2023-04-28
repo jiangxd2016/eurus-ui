@@ -10,7 +10,7 @@ export const usePagination = (props: TableProps, emit: any) => {
     isObject(props.pagination) ? props.pagination.defaultPageSize ?? 10 : 10
   );
 
-  const pageSize = computed(() =>
+  const pageSize = computed<number>(() =>
     isObject(props.pagination)
       ? props.pagination.pageSize ?? _pageSize.value
       : _pageSize.value

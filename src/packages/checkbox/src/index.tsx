@@ -31,6 +31,7 @@ const ECheckboxProps = {
 export default defineComponent({
   name: 'ECheckbox',
   props: ECheckboxProps,
+  emits: ['change', 'click', 'update:modelValue'],
   setup(props, { slots, emit }) {
 
     const prefixCls = getPrefixCls('checkbox');
@@ -94,7 +95,6 @@ export default defineComponent({
         }
         emit('change', val, e);
         emit('update:modelValue', val);
-
       }
 
     };

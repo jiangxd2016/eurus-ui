@@ -1,6 +1,6 @@
 import type { ComponentPublicInstance } from 'vue';
 import { onMounted, ref, watch } from 'vue';
-import { isComponentInstance } from '../_utils/is';
+import { isComponentInstance } from '../_utils/vue-utils';
 
 export const useComponentRef = (name: string) => {
   const componentRef = ref<HTMLElement | ComponentPublicInstance>();

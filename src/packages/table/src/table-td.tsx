@@ -90,6 +90,7 @@ export default defineComponent({
       default: false,
     },
   },
+  emits: ['click'],
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('table');
 

@@ -1,6 +1,3 @@
-import type {
-  ComponentPublicInstance,
-} from 'vue';
 import type { StringNumber } from '@/packages/_utils/types';
 export const _toString = Object.prototype.toString;
 export const _hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -67,10 +64,4 @@ export function isStringNumber(value: string): value is StringNumber {
 
 export const isKorean = (text: string): boolean => {
   return /([()|\u3130-\u318F\uAC00-\uD7AF])+/gi.test(text);
-};
-
-export const isComponentInstance = (
-  value: any
-): value is ComponentPublicInstance => {
-  return value?.$ !== undefined;
 };

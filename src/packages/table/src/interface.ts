@@ -1,5 +1,5 @@
 import type { CSSProperties, RenderFunction, Slots, VNodeChild } from 'vue';
-import type { TriggerProps } from '../trigger';
+import type { TriggerProps } from '@/packages/trigger';
 import type { BaseType, ClassName, Data } from '@/packages/_utils/types';
 
 export const TABLE_PAGE_POSITION = [

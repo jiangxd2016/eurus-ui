@@ -77,21 +77,21 @@ export const useSize = ({
     let offset = 0;
 
     for (let i = start; i < end; i++) {
-      offset += getItemSize(i);
+      offset += getItemSize(i) || 0;
     }
 
     return offset;
   };
   const getScrollOffset = (index: number) => {
     if (isFixed.value) {
-      return _estimatedSize?.value * index;
+      return (_estimatedSize?.value || 0) * index;
     }
     return getOffset(0, index);
   };
 
   const frontPadding = computed(() => {
     if (isFixed.value) {
-      return _estimatedSize.value * start.value;
+      return (_estimatedSize.value || 0) * start.value;
     }
     return getOffset(0, start.value);
   });
@@ -102,7 +102,7 @@ export const useSize = ({
     const _start = isForward ? start.value : start.value - 1;
     let offsetIndex = 0;
     while (offset > 0) {
-      offset -= getItemSize(_start + offsetIndex);
+      offset -= getItemSize(_start + offsetIndex) || 0;
       isForward ? offsetIndex++ : offsetIndex--;
     }
     return offsetIndex;
@@ -118,7 +118,7 @@ export const useSize = ({
 
   const behindPadding = computed(() => {
     if (isFixed.value) {
-      return _estimatedSize?.value * (total.value - end.value);
+      return (_estimatedSize?.value || 0) * (total.value - end.value);
     }
     return getOffset(end.value, total.value);
   });

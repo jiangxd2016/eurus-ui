@@ -317,11 +317,9 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
           column.children = getColumnsFromSlot(vn.children.default());
         }
         if (vn.children.cell) {
-          // @ts-expect-error
           column.render = vn.children.cell;
         }
         if (vn.children.title) {
-          // @ts-expect-error
           column.title = vn.children.title;
         }
       }
@@ -329,7 +327,7 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
     } else if (isArrayChildren(vn, vn.children)) {
       columns.push(...getColumnsFromSlot(vn.children));
     } else if (isArray(vn)) {
-      columns.push(...getColumnsFromSlot(vn));
+      columns.push(...getColumnsFromSlot(vn as VNode[]));
     }
   }
   return columns;

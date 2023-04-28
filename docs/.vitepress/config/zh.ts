@@ -167,6 +167,9 @@ export const zhConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           {
             text: '菜单 menu',
             link: '/zh/components/menu'
+          }, {
+            text: '表格 table',
+            link: '/zh/components/table'
           }
           // {
           //   text: '加载中 loading',

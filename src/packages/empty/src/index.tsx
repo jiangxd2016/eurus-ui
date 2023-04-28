@@ -1,7 +1,7 @@
-import { defineComponent, inject } from 'vue';
+import { defineComponent } from 'vue';
 import './style.scss';
 import Icons from '@/packages/icons';
-import { EurusConfigProviderKey, getPrefixCls } from '@/packages/_utils';
+import { getPrefixCls } from '@/packages/_utils';
 import { useI18n } from '@/packages/locale';
 const EEmptyProps = {
   description: String,

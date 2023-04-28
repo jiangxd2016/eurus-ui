@@ -30,7 +30,7 @@ const config: InlineConfig = {
           preserveModules: true,
         },
       ],
-      external: ['vue', 'dayjs', 'async-validator', 'number-precision', 'eurus-icons-vue'],
+      external: ['vue', 'dayjs', 'async-validator', 'number-precision', 'eurus-icons-vue', 'resize-observer-polyfill'],
     },
     lib: {
       entry: 'src/index.ts',

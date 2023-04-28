@@ -139,9 +139,7 @@ export default defineComponent({
                   {isMultipleFilter.value ? (
                     <Checkbox
                       value={item.value}
-                      // @ts-expect-error
-                      modelValue={columnFilterValue.value}
-                      uninjectGroupContext
+                      modelValue={columnFilterValue.value as unknown as string}
                       onChange={handleCheckboxFilterChange}
                     >
                       {item.text}
@@ -150,8 +148,6 @@ export default defineComponent({
                     <Radio
                       value={item.value}
                       modelValue={columnFilterValue.value[0] ?? ''}
-                      // @ts-expect-error
-                      uninjectGroupContext
                       onChange={handleRadioFilterChange}
                     >
                       {item.text}
@@ -200,7 +196,6 @@ export default defineComponent({
               },
             ]}
             disabled={!filterIconAlignLeft.value}
-            // @ts-expect-error
             onClick={(ev: Event) => ev.stopPropagation()}
           >
             {props.column.slots?.['filter-icon']?.() ?? filterable.icon?.() ?? (

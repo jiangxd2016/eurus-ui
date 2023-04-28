@@ -289,7 +289,6 @@ export default defineComponent({
 
     if (instance) {
       if (tableColumnCtx) {
-        // @ts-expect-error
         tableColumnCtx.addChild(instance.uid, column);
       } else {
         tableCtx.addColumn?.(instance.uid, column);
@@ -299,7 +298,7 @@ export default defineComponent({
     onBeforeUnmount(() => {
       if (instance) {
         if (tableColumnCtx) {
-          instance.uid.remove();
+          // instance.uid.remove();
         } else {
           tableCtx.removeColumn?.(instance.uid);
         }

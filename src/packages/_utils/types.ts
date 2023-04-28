@@ -1,4 +1,4 @@
-import type { Ref, RenderFunction } from 'vue';
+import type { Ref, RenderFunction, VNode } from 'vue';
 export type StringNumber = `${number}`;
 export type Fn = () => void;
 export type MaybeRef<T> = T | Ref<T>;
@@ -41,3 +41,24 @@ export type ClassName =
   | string
   | Record<string, boolean>
   | (string | Record<string, boolean>)[];
+
+	type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+	  k: infer I
+	) => void
+	  ? I
+	  : never;
+
+export type EmitFn2<
+  Options = Record<string, any>,
+  Event extends keyof Options = keyof Options
+> = UnionToIntersection<
+  {
+    [key in Event]: Options[key] extends (...args: infer Args) => any
+      ? (event: key, ...args: Args) => void
+      : (event: key, ...args: any[]) => void;
+  }[Event]
+>;
+
+export interface SlotChildren {
+  value?: VNode[];
+}

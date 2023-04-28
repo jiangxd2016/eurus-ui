@@ -1,6 +1,6 @@
 import type { VNode } from 'vue';
 
-export type VirtualItemKey = string | number;
+export type VirtualItemKey = string | number | undefined;
 
 export interface InternalDataItem {
   key: VirtualItemKey;
@@ -52,7 +52,7 @@ export interface VirtualListProps {
    */
   buffer?: number;
   data?: unknown[];
-  itemKey?: string | ((item: unknown) => VirtualItemKey);
+  itemKey?: string | undefined;
   component?: keyof HTMLElementTagNameMap;
 }
 

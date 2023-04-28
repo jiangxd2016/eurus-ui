@@ -38,6 +38,7 @@ import ClientOnly from '@/packages/_components/client-only';
 import { useTeleportContainer } from '@/packages/_hooks/use-teleport-container';
 import { useFirstElement } from '@/packages/_hooks/use-first-element';
 import { omit } from '@/packages/_utils/omit';
+import { EurusConfigProviderKey } from '@/packages/_utils/constants';
 
 const TRIGGER_EVENTS = [
   'onClick',
@@ -353,7 +354,7 @@ export default defineComponent({
     const { popupContainer } = toRefs(props);
     const prefixCls = getPrefixCls('trigger');
     const popupAttrs = computed(() => omit(attrs, TRIGGER_EVENTS));
-    const configCtx = inject(configProviderInjectionKey, undefined);
+    const configCtx = inject(EurusConfigProviderKey, undefined);
 
     const triggerMethods = computed(() =>
       ([] as Array<TriggerEvent>).concat(props.trigger)

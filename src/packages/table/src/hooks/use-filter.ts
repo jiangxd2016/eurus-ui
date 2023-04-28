@@ -1,7 +1,7 @@
 import type { Ref } from 'vue';
 import { computed, ref, watch } from 'vue';
 import type { Filters, TableColumnData } from '../interface';
-import { isEqual } from '../../_utils/is-equal';
+import { isEqual } from '../../../_utils/is-equal';
 
 export const useFilter = ({
   columns,

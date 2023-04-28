@@ -3,7 +3,7 @@ import { computed, ref } from 'vue';
 import type { BaseType, EmitFn2 } from '../../../_utils/types';
 import type { TableDataWithRaw, TableRowSelection, TableData } from '../interface';
 import { getLeafKeys } from '../utils';
-import { union } from '../../_utils/array';
+import { union } from '../../../_utils/array';
 
 export const useRowSelection = ({
   selectedKeys,
