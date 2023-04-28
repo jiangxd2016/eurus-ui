@@ -1,8 +1,11 @@
-import { execSync } from 'node:child_process';
+import { execSync, exec } from 'node:child_process';
 import { writeFileSync, readFileSync, createWriteStream } from 'node:fs';
+import { promisify } from 'node:util';
 // @ts-expect-error
 import standardChangelog from 'standard-changelog';
 import { version as _version } from '../package.json';
+
+const execPromise = promisify(exec);
 
 const VERSION_REG = /\d+\.\d+\.\d+/;
 
@@ -45,7 +48,7 @@ async function updateChangeLog() {
         data.splice(1, 0, `${changeLogStr}\n`);
       })
       .on('end', resolve);
-  }).then(() => {
+  }).then(async () => {
     getGitCommitMap(lastCommit);
 
     const writeStream = createWriteStream('CHANGELOG.md', 'utf8');
@@ -53,7 +56,10 @@ async function updateChangeLog() {
     writeStream.end();
     console.log('generate changelog done.');
 
+    await execPromise('git add CHANGELOG.md');
+    await execPromise('git commit -m \'chore: update changelog\'');
+    await execPromise('git push');
   });
 }
 
-updateChangeLog();
+await updateChangeLog();
