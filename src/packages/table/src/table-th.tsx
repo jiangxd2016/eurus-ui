@@ -25,8 +25,7 @@ import { isBoolean, isFunction, isObject } from '@/packages/_utils/is';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
 export default defineComponent({
-  // eslint-disable-next-line vue/no-reserved-component-names
-  name: 'Th',
+  name: 'ETh',
   props: {
     column: {
       type: Object as PropType<TableColumnData>,

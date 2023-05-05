@@ -24,7 +24,6 @@ export default {
 
     if (typeof process === 'undefined') {
       const EurusUI = await import('eurus-ui');
-
       app.use({
         install: EurusUI.default.install as (app: any, ...options: any[]) => any
       });

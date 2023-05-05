@@ -33,3 +33,9 @@ npm install eurus-ui # or yarn add eurus-ui or pnpm install eurus-ui
 ```
 
 
+
+### todo
+
+- [ ]  优化css，支持黑暗模式
+- [ ]  component使用 componentPrefix + name的模式
+- [ ]  文档

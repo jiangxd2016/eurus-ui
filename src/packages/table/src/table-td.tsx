@@ -33,8 +33,7 @@ const TD_TYPES = [
 type TdTypes = typeof TD_TYPES[number];
 
 export default defineComponent({
-  // eslint-disable-next-line vue/no-reserved-component-names
-  name: 'Td',
+  name: 'ETd',
   props: {
     rowIndex: Number,
     record: {

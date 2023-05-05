@@ -1,8 +1,7 @@
 import { createVNode, defineComponent } from 'vue';
 
 export default defineComponent({
-  // eslint-disable-next-line vue/no-reserved-component-names
-  name: 'Tbody',
+  name: 'ETbody',
   setup(_, { slots }) {
     return () => {
       return createVNode(slots.tbody?.()[0] ?? 'tbody', null, {

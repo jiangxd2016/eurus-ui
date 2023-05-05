@@ -1,43 +1,37 @@
 import type { App } from 'vue';
-import _Table from './src/table';
-import _Thead from './src/table-thead';
-import _Tbody from './src/table-tbody';
-import _Tr from './src/table-tr';
-import _Th from './src/table-th';
-import _Td from './src/table-td';
-import _Column from './src/table-column';
-import { getComponentPrefix } from '@/packages/_utils';
-import type { EuOptions } from '@/packages/_utils';
-import { setGlobalConfig } from '@/packages/_utils/global-config';
+import ETable from './src/table';
+import EThead from './src/table-thead';
+import ETbody from './src/table-tbody';
+import ETr from './src/table-tr';
+import ETh from './src/table-th';
+import ETd from './src/table-td';
+import EColumn from './src/table-column';
 
-const Table = Object.assign(_Table, {
-  Thead: _Thead,
-  Tbody: _Tbody,
-  Tr: _Tr,
-  Th: _Th,
-  Td: _Td,
-  Column: _Column,
-  install: (app: App, options?: EuOptions) => {
-    setGlobalConfig(app, options);
-    const componentPrefix = getComponentPrefix(options);
-
-    app.component(componentPrefix + _Table.name, _Table);
-    app.component(componentPrefix + _Thead.name, _Thead);
-    app.component(componentPrefix + _Tbody.name, _Tbody);
-    app.component(componentPrefix + _Tr.name, _Tr);
-    app.component(componentPrefix + _Th.name, _Th);
-    app.component(componentPrefix + _Td.name, _Td);
-    app.component(componentPrefix + _Column.name, _Column);
+const Table = Object.assign(ETable, {
+  Thead: EThead,
+  Tbody: ETbody,
+  Tr: ETr,
+  Th: ETh,
+  Td: ETd,
+  Column: EColumn,
+  install: (app: App) => {
+    app.component( ETable.name, ETable);
+    app.component( EThead.name, EThead);
+    app.component( ETbody.name, ETbody);
+    app.component( ETr.name, ETr);
+    app.component( ETh.name, ETh);
+    app.component( ETd.name, ETd);
+    app.component( EColumn.name, EColumn);
   },
 });
 
-export type TableInstance = InstanceType<typeof _Table>;
-export type TheadInstance = InstanceType<typeof _Thead>;
-export type TbodyInstance = InstanceType<typeof _Tbody>;
-export type TrInstance = InstanceType<typeof _Tr>;
-export type ThInstance = InstanceType<typeof _Th>;
-export type TdInstance = InstanceType<typeof _Td>;
-export type TableColumnInstance = InstanceType<typeof _Column>;
+export type TableInstance = InstanceType<typeof ETable>;
+export type TheadInstance = InstanceType<typeof EThead>;
+export type TbodyInstance = InstanceType<typeof ETbody>;
+export type TrInstance = InstanceType<typeof ETr>;
+export type ThInstance = InstanceType<typeof ETh>;
+export type TdInstance = InstanceType<typeof ETd>;
+export type TableColumnInstance = InstanceType<typeof EColumn>;
 
 export type {
   TableData,
@@ -53,12 +47,12 @@ export type {
 } from './src/interface';
 
 export {
-  _Thead as Thead,
-  _Tbody as Tbody,
-  _Tr as Tr,
-  _Th as Th,
-  _Td as Td,
-  _Column as TableColumn,
+  Table as ETable,
+  EThead,
+  ETbody,
+  ETr,
+  ETh,
+  ETd,
+  EColumn,
 };
 
-export default Table;

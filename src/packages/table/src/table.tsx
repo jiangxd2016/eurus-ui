@@ -73,6 +73,8 @@ import {
 import type { Size } from '@/packages/_utils';
 import Icons from '@/packages/icons';
 
+import './style.scss';
+
 const DEFAULT_BORDERED = {
   wrapper: true,
   cell: false,

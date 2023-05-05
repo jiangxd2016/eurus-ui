@@ -30,7 +30,7 @@ import { usePureProp } from '@/packages/_hooks/use-pure-prop';
 import type { ClassName } from '@/packages/_utils/types';
 
 export default defineComponent({
-  name: 'TableColumn',
+  name: 'ETableColumn',
   props: {
     /**
      * @zh 列信息的标识，对应TableData中的数据

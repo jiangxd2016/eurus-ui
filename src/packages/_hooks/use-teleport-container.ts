@@ -12,9 +12,12 @@ export const useTeleportContainer = ({
   visible: Ref<boolean>;
   defaultContainer?: string;
   documentContainer?: boolean;
-}) => {
-  const teleportContainer = ref(popupContainer.value);
-  const containerRef = ref<HTMLElement>();
+}): {
+  teleportContainer: Ref<string | HTMLElement | undefined>;
+  containerRef: Ref<HTMLElement | undefined>;
+} => {
+  const teleportContainer: Ref<string | HTMLElement | undefined> = ref(popupContainer.value);
+  const containerRef: Ref<HTMLElement | undefined> = ref();
 
   const getContainer = () => {
     const element = getElement(popupContainer.value);

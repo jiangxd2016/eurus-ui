@@ -4,8 +4,7 @@ import type { TableDataWithRaw } from './interface';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
 export default defineComponent({
-  // eslint-disable-next-line vue/no-reserved-component-names
-  name: 'Tr',
+  name: 'ETr',
   props: {
     expand: {
       type: Boolean,
