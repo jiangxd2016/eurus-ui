@@ -4,6 +4,7 @@ import './style.scss';
 
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+
 const EAvatarProps = {
   size: {
     type: String as PropType<Size>,

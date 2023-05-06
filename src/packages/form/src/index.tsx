@@ -3,6 +3,7 @@ import type { PropType } from 'vue';
 import './style.scss';
 import { formCtxKey } from '@/packages/_utils/constants';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+
 export const EFormProps = {
   model: {
     type: Object,

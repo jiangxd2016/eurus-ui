@@ -24,5 +24,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+
 const inputValue1 = ref('fucking crazy Thursday');
 </script>

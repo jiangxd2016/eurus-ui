@@ -1,5 +1,5 @@
 <template>
-  <EForm ref="formRef" :model="form" :rules="rules" inline disabled>
+  <EForm ref="formRef" :model="form" :rules="rules" disabled inline>
     <EFormItem label="姓名" prop="name">
       <EInput v-model="form.name" />
     </EFormItem>

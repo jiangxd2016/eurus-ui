@@ -53,7 +53,7 @@ export default defineComponent({
       <Transition name="EuDrawer">
         {props.visible
           ? <div class={`${prefixCls}-container`}>
-            <div class="eu-drawer-mask " role="button" tabindex={-1} onClick={closeDrawer}>
+            <div class="eu-drawer-mask" role="button" tabindex={-1} onClick={closeDrawer}>
             </div>
             <div class={prefixCls}>
               <div class="eu-drawer-header">

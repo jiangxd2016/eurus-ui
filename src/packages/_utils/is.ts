@@ -1,4 +1,5 @@
 import type { StringNumber } from '@/packages/_utils/types';
+
 export const _toString = Object.prototype.toString;
 export const _hasOwnProperty = Object.prototype.hasOwnProperty;
 

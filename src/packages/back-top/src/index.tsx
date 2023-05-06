@@ -4,6 +4,7 @@ import './style.scss';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { isDocument, scrollTop } from '@/packages/_utils/dom';
 import { warn } from '@/packages/_utils/warn';
+
 const EBackTopProps = {
   text: {
     type: String,

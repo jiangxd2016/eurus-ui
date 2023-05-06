@@ -1,4 +1,5 @@
 import type { Ref, RenderFunction, VNode } from 'vue';
+
 export type StringNumber = `${number}`;
 export type Fn = () => void;
 export type MaybeRef<T> = T | Ref<T>;

@@ -10,6 +10,7 @@ import {
 import Notify from './notify';
 import { getPrefixCls, getSlotFunction, toKebabCase } from '@/packages/_utils';
 import usePopupManager from '@/packages/_hooks/usePopupManager';
+
 export default defineComponent({
   name: 'NotifyList',
   props: {

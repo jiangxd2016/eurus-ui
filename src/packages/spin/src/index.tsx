@@ -2,6 +2,7 @@ import { cloneVNode, computed, defineComponent } from 'vue';
 import DotLoading from './dot-loading';
 import { getFirstComponent, getPrefixCls } from '@/packages/_utils';
 import Icons from '@/packages/icons';
+
 export default defineComponent({
   name: 'Spin',
   props: {

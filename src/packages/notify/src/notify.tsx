@@ -4,6 +4,7 @@ import type { MessageType } from '@/packages/_utils';
 import { toKebabCase, getPrefixCls } from '@/packages/_utils';
 import EIcons from '@/packages/icons';
 import EButton from '@/packages/button';
+
 export default defineComponent({
   name: 'Notify',
   props: {

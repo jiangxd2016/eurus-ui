@@ -6,6 +6,7 @@ import { isUndefined, isFunction, isString } from '@/packages/_utils';
 import { MESSAGE_TYPES } from '@/packages/_utils/constants';
 import type { MessageType } from '@/packages/_utils/constants';
 import './style.scss';
+
 type _NotifyConfig = NotifyConfig & {
   type: MessageType;
 };
