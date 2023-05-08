@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import ETable from '..';
+import { ETable } from '..';
 
 describe('table', () => {
 
