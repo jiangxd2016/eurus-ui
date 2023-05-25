@@ -1,4 +1,4 @@
-import type { ExtractPropTypes, InjectionKey, Ref, Slots } from 'vue';
+import type { ExtractPropTypes, InjectionKey, Ref } from 'vue';
 import type { EMenuProps } from '../menu/src';
 import type { Size } from '@/packages/_utils/size';
 import type { ESelectDownProps } from '@/packages/select-down/src';
