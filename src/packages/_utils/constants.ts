@@ -20,7 +20,7 @@ export interface ConfigProvider {
 
 export interface CheckboxGroupContext {
   name: string;
-  value: Array<string | number>;
+  value: Array<string | number | boolean>;
   disabled: boolean;
   handleChange: (value: Array<string | number | boolean>, e: Event) => void;
 }

@@ -12,15 +12,15 @@
     "serve": "vitepress serve ."
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.16",
     "@types/klaw-sync": "^6.0.1",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-container": "^2.0.5",
-    "@types/node": "^18.16.3",
-    "@vitejs/plugin-vue": "^4.2.1",
+    "@types/node": "^20.2.3",
+    "@vitejs/plugin-vue": "^4.2.3",
     "@vueuse/core": "^10.1.2",
     "eurus-ui": "workspace:*",
     "klaw-sync": "^6.0.0",
@@ -29,11 +29,11 @@
     "postcss": "^8.4.23",
     "postcss-prefix-selector": "^1.16.0",
     "typescript": "^5.0.4",
-    "unocss": "^0.51.8",
-    "vite": "^4.3.4",
-    "vite-plugin-inspect": "^0.7.24",
-    "vite-plugin-pwa": "^0.14.7",
+    "unocss": "^0.52.3",
+    "vite": "^4.3.8",
+    "vite-plugin-inspect": "^0.7.28",
+    "vite-plugin-pwa": "^0.15.1",
     "vite-plugin-restart": "^0.3.1",
-    "vitepress": "^1.0.0-alpha.74"
+    "vitepress": "^1.0.0-beta.1"
   }
 }

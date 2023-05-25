@@ -8,7 +8,7 @@ export default defineComponent({
   props: {
     modelValue: {
       type: Array as PropType<Array<string | number | boolean>>,
-      default: undefined,
+      default: ()=>[],
     },
     defaultChecked: {
       type: Array as PropType<Array<string | number | boolean>>,
@@ -22,7 +22,7 @@ export default defineComponent({
   },
   setup(props, { slots, emit }) {
     const prefixCls = getPrefixCls('checkbox-group');
-    const handleChange = (value: Array<string | number>, e: Event) => {
+    const handleChange = (value: Array<string | number | boolean>, e: Event) => {
       emit('update:modelValue', value);
       emit('change', value, e);
     };
@@ -36,9 +36,9 @@ export default defineComponent({
       })
     );
     return () => (
-						<div class={[prefixCls]}>
-								{slots.default && slots.default()}
-						</div>
+			<div class={[prefixCls]}>
+				{slots.default && slots.default()}
+			</div>
     );
   }
 });

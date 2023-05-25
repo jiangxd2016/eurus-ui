@@ -1,9 +1,7 @@
 import type { CSSProperties } from 'vue';
 import type { TriggerEvent, TriggerPosition } from '@/packages/_utils/types';
 
-export type TriggerPopupTranslate =
-  | [number, number]
-  | { [key in TriggerPosition]?: [number, number] };
+export type TriggerPopupTranslate = { [key in TriggerPosition]?: [number, number] };
 
 export interface TriggerProps {
   popupVisible?: boolean;
