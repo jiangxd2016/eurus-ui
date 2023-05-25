@@ -1,3 +1,4 @@
+import type { PropType } from 'vue';
 import { computed, defineComponent, provide, reactive, ref } from 'vue';
 import { RadioGroupKey } from '@/packages/_utils/constants';
 import { getPrefixCls } from '@/packages/_utils/global-config';
@@ -7,11 +8,11 @@ export default defineComponent({
   name: 'ERadioGroup',
   props: {
     modelValue: {
-      type: [String, Number, Boolean],
+      type: [String, Number, Boolean] as PropType<string | number | boolean | undefined>,
       default: null
     },
     defaultValue: {
-      type: [String, Number, Boolean],
+      type: [String, Number, Boolean] as PropType<string | number | boolean | undefined>,
       default: null
     },
     disabled: {
@@ -35,7 +36,7 @@ export default defineComponent({
         [`${prefixCls}-disabled`]: props.disabled
       };
     });
-    const updateValue = (value: string | boolean | number, e: Event) => {
+    const updateValue = (value: string | boolean | number | undefined, e: Event) => {
       if (computedDisabled.value) {
         return;
       }
