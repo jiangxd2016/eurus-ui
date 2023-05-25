@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
-import Unocss from 'unocss/vite';
+import UnoCSS from 'unocss/vite';
 import { presetAttributify, presetIcons, presetUno, presetWind } from 'unocss';
 import ViteRestart from 'vite-plugin-restart';
 import Inspect from 'vite-plugin-inspect';
@@ -25,7 +25,7 @@ export default defineConfig({
       manifest: {},
       workbox: { skipWaiting: true, clientsClaim: true }
     }),
-    Unocss({
+    UnoCSS({
       presets: [
         presetUno({
           dark: 'media',
