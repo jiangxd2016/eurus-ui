@@ -1,30 +1,8 @@
-import type {
-  CSSProperties,
-  PropType,
-  Ref } from 'vue';
-import {
-  defineComponent,
-  getCurrentInstance,
-  inject,
-  onBeforeUnmount,
-  provide,
-  reactive,
-  ref,
-  toRefs,
-  watch,
-} from 'vue';
-import {
-  tableColumnInjectionKey,
-  tableInjectionKey,
-} from './context';
-import type {
-  TableContext } from './context';
-import type {
-  TableColumnData,
-  TableData,
-  TableFilterable,
-  TableSortable,
-} from './interface';
+import type { CSSProperties, PropType, Ref } from 'vue';
+import { defineComponent, getCurrentInstance, inject, onBeforeUnmount, provide, reactive, ref, toRefs, watch } from 'vue';
+import { tableColumnInjectionKey, tableInjectionKey } from './context';
+import type { TableContext } from './context';
+import type { TableColumnData, TableData, TableFilterable, TableSortable } from './interface';
 import { useChildrenComponents } from '@/packages/_hooks/use-children-components';
 import { usePureProp } from '@/packages/_hooks/use-pure-prop';
 import type { ClassName } from '@/packages/_utils/types';
@@ -107,9 +85,7 @@ export default defineComponent({
      * @version 2.36.0
      */
     bodyCellClass: {
-      type: [String, Array, Object, Function] as PropType<
-        ClassName | ((record: TableData) => ClassName)
-      >,
+      type: [String, Array, Object, Function] as PropType<ClassName | ((record: TableData) => ClassName)>,
     },
     /**
      * @zh 自定义总结栏单元格类名
@@ -117,9 +93,7 @@ export default defineComponent({
      * @version 2.36.0
      */
     summaryCellClass: {
-      type: [String, Array, Object, Function] as PropType<
-        ClassName | ((record: TableData) => ClassName)
-      >,
+      type: [String, Array, Object, Function] as PropType<ClassName | ((record: TableData) => ClassName)>,
     },
     /**
      * @zh 自定义单元格样式
@@ -143,9 +117,7 @@ export default defineComponent({
      * @version 2.29.0
      */
     bodyCellStyle: {
-      type: [Object, Function] as PropType<
-        CSSProperties | ((record: TableData) => CSSProperties)
-      >,
+      type: [Object, Function] as PropType<CSSProperties | ((record: TableData) => CSSProperties)>,
     },
     /**
      * @zh 自定义总结栏单元格样式
@@ -153,9 +125,7 @@ export default defineComponent({
      * @version 2.30.0
      */
     summaryCellStyle: {
-      type: [Object, Function] as PropType<
-        CSSProperties | ((record: TableData) => CSSProperties)
-      >,
+      type: [Object, Function] as PropType<CSSProperties | ((record: TableData) => CSSProperties)>,
     },
     /**
      * @zh 用于手动指定选项的 index。2.26.0 版本后不再需要手动指定
@@ -205,22 +175,13 @@ export default defineComponent({
    * @version 2.23.0
    */
   setup(props, { slots }) {
-    const { dataIndex, title, width, align, fixed, ellipsis, index }
-      = toRefs(props);
+    const { dataIndex, title, width, align, fixed, ellipsis, index } = toRefs(props);
     const sortable = usePureProp(props, 'sortable');
     const filterable = usePureProp(props, 'filterable');
-    const cellClass = usePureProp(props, 'cellClass') as Ref<
-      typeof props.cellClass
-    >;
-    const headerCellClass = usePureProp(props, 'headerCellClass') as Ref<
-      typeof props.headerCellClass
-    >;
-    const bodyCellClass = usePureProp(props, 'bodyCellClass') as Ref<
-      typeof props.bodyCellClass
-    >;
-    const summaryCellClass = usePureProp(props, 'summaryCellClass') as Ref<
-      typeof props.summaryCellClass
-    >;
+    const cellClass = usePureProp(props, 'cellClass') as Ref<typeof props.cellClass>;
+    const headerCellClass = usePureProp(props, 'headerCellClass') as Ref<typeof props.headerCellClass>;
+    const bodyCellClass = usePureProp(props, 'bodyCellClass') as Ref<typeof props.bodyCellClass>;
+    const summaryCellClass = usePureProp(props, 'summaryCellClass') as Ref<typeof props.summaryCellClass>;
     const cellStyle = usePureProp(props, 'cellStyle');
     const headerCellStyle = usePureProp(props, 'headerCellStyle');
     const bodyCellStyle = usePureProp(props, 'bodyCellStyle');
@@ -248,21 +209,20 @@ export default defineComponent({
     });
 
     const childrenColumns = ref<TableColumnData[]>();
-    watch(
-      [components, childrenColumnMap],
-      ([components, childrenColumnMap]) => {
-        if (components.length > 0) {
-          const columns: TableColumnData[] = [];
-          components.forEach((id) => {
-            const column = childrenColumnMap.get(id);
-            if (column) { columns.push(column); }
-          });
-          childrenColumns.value = columns;
-        } else {
-          childrenColumns.value = undefined;
-        }
+    watch([components, childrenColumnMap], ([components, childrenColumnMap]) => {
+      if (components.length > 0) {
+        const columns: TableColumnData[] = [];
+        components.forEach((id) => {
+          const column = childrenColumnMap.get(id);
+          if (column) {
+            columns.push(column);
+          }
+        });
+        childrenColumns.value = columns;
+      } else {
+        childrenColumns.value = undefined;
       }
-    );
+    });
 
     const column = reactive({
       dataIndex,

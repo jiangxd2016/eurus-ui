@@ -4,12 +4,10 @@ import EDatePicker from '..';
 import EuSelectDown from '../../select-down';
 
 describe('EDatePicker ', () => {
-
   it('should work with `modelValue` props', async () => {
-
     const wrapper = mount(EDatePicker, {
       props: {
-        modelValue: undefined
+        modelValue: undefined,
       },
     });
     wrapper.setProps({ modelValue: '2023-02-26' });
@@ -22,5 +20,4 @@ describe('EDatePicker ', () => {
     await nextTick();
     expect(wrapper.findComponent(EuSelectDown).find('.eu-select-down-single').text()).toBe('2023-02-27');
   });
-
 });

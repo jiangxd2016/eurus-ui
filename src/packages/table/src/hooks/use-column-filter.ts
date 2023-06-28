@@ -4,13 +4,7 @@ import { isArray } from '../../../_utils/is';
 import type { TableColumnData } from '../interface';
 import type { TableContext } from '../context';
 
-export const useColumnFilter = ({
-  column,
-  tableCtx,
-}: {
-  column: Ref<TableColumnData>;
-  tableCtx: Partial<TableContext>;
-}) => {
+export const useColumnFilter = ({ column, tableCtx }: { column: Ref<TableColumnData>; tableCtx: Partial<TableContext> }) => {
   const filterValue = computed(() => {
     if (column.value.dataIndex && tableCtx.filters?.[column.value.dataIndex]) {
       return tableCtx.filters[column.value.dataIndex];
@@ -20,9 +14,7 @@ export const useColumnFilter = ({
 
   const filterPopupVisible = ref(false);
   const isFilterActive = computed(() => filterValue.value.length > 0);
-  const isMultipleFilter = computed(() =>
-    Boolean(column.value.filterable?.multiple)
-  );
+  const isMultipleFilter = computed(() => Boolean(column.value.filterable?.multiple));
   const columnFilterValue = ref<string[]>(filterValue.value);
 
   watch(filterValue, (value) => {
@@ -49,11 +41,7 @@ export const useColumnFilter = ({
 
   const handleFilterConfirm = (ev: Event) => {
     if (column.value.dataIndex) {
-      tableCtx.onFilterChange?.(
-        column.value.dataIndex,
-        columnFilterValue.value,
-        ev
-      );
+      tableCtx.onFilterChange?.(column.value.dataIndex, columnFilterValue.value, ev);
     }
     handleFilterPopupVisibleChange(false);
   };
@@ -61,11 +49,7 @@ export const useColumnFilter = ({
   const handleFilterReset = (ev: Event) => {
     setFilterValue([]);
     if (column.value.dataIndex) {
-      tableCtx.onFilterChange?.(
-        column.value.dataIndex,
-        columnFilterValue.value,
-        ev
-      );
+      tableCtx.onFilterChange?.(column.value.dataIndex, columnFilterValue.value, ev);
     }
     handleFilterPopupVisibleChange(false);
   };

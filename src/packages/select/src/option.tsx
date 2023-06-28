@@ -23,7 +23,6 @@ export default defineComponent({
   props: EOptionProps,
   emits: ['click', 'hover'],
   setup(props, { slots }) {
-
     const prefixCls = getPrefixCls('select-option');
 
     const Selected = inject(selectKey, {});
@@ -59,13 +58,9 @@ export default defineComponent({
     };
 
     return () => (
-
-      <li class={computedCls.value} role="option" aria-selected={computedSelected.value} onClick={handleClick}
-          onMouseenter={handleHover}
-      >
+      <li class={computedCls.value} role="option" aria-selected={computedSelected.value} onClick={handleClick} onMouseenter={handleHover}>
         {slots.default ? slots.default() : props.label || props.value}
       </li>
-
     );
   },
 });

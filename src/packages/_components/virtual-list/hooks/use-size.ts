@@ -20,12 +20,16 @@ export const useSize = ({
   const start = ref(0);
   const end = computed(() => {
     const _end = start.value + buffer.value * 3;
-    if (_end > total.value) { return total.value; }
+    if (_end > total.value) {
+      return total.value;
+    }
     return _end;
   });
   const maxStart = computed(() => {
     const max = total.value - buffer.value * 3;
-    if (max < 0) { return 0; }
+    if (max < 0) {
+      return 0;
+    }
     return max;
   });
 
@@ -65,10 +69,7 @@ export const useSize = ({
   };
 
   onMounted(() => {
-    const firstRangeTotalSize = Array.from(sizeMap.values()).reduce(
-      (pre, value) => pre + value,
-      0
-    );
+    const firstRangeTotalSize = Array.from(sizeMap.values()).reduce((pre, value) => pre + value, 0);
     if (firstRangeTotalSize > 0) {
       firstRangeAverageSize.value = firstRangeTotalSize / sizeMap.size;
     }
@@ -111,8 +112,12 @@ export const useSize = ({
   const getStartByScroll = (scrollOffset: number) => {
     const offsetIndex = getOffsetIndex(scrollOffset);
     const _start = start.value + offsetIndex - buffer.value;
-    if (_start < 0) { return 0; }
-    if (_start > maxStart.value) { return maxStart.value; }
+    if (_start < 0) {
+      return 0;
+    }
+    if (_start > maxStart.value) {
+      return maxStart.value;
+    }
     return _start;
   };
 

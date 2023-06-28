@@ -86,30 +86,24 @@ export default defineComponent({
       }
     };
     return () => (
-
-			<li role="alert" class={[prefixCls, `${prefixCls}-${props.type}`, { [`${prefixCls}-closable`]: props.closable }]}
-				onMouseenter={handleMouseEnter}
-				onMouseleave={handleMouseLeave}
-			>
-				{props.showIcon && (
-					<EIcons name={iconName} class={`${prefixCls}-icon ${prefixCls}-icon-${props.type}`} size="sm"></EIcons>
-				)}
-				<div class={`${prefixCls}-content`}>
-					{slots.default?.()}
-				</div>
-				{props.closable && (
-					<EButton
-						round
-						type="text"
-						class={`${prefixCls}-close`}
-						onClick={handleClose}
-						v-slots={{ default: () => <EIcons name="close" color="#aaa" /> }}
-					>
-					</EButton>
-
-				)}
-			</li>
-
+      <li
+        role="alert"
+        class={[prefixCls, `${prefixCls}-${props.type}`, { [`${prefixCls}-closable`]: props.closable }]}
+        onMouseenter={handleMouseEnter}
+        onMouseleave={handleMouseLeave}
+      >
+        {props.showIcon && <EIcons name={iconName} class={`${prefixCls}-icon ${prefixCls}-icon-${props.type}`} size="sm"></EIcons>}
+        <div class={`${prefixCls}-content`}>{slots.default?.()}</div>
+        {props.closable && (
+          <EButton
+            round
+            type="text"
+            class={`${prefixCls}-close`}
+            onClick={handleClose}
+            v-slots={{ default: () => <EIcons name="close" color="#aaa" /> }}
+          ></EButton>
+        )}
+      </li>
     );
   },
 });

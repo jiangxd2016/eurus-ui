@@ -1,24 +1,16 @@
 <template>
   <EInput v-model="inputValue1">
-    <template #prefix>
-      prefix
-    </template>
+    <template #prefix> prefix </template>
   </EInput>
   <EInput v-model="inputValue1">
     <template #suffix>
-      <div>
-        suffix
-      </div>
+      <div>suffix</div>
     </template>
   </EInput>
 
   <EInput v-model="inputValue1">
-    <template #prefix>
-      prefix
-    </template>
-    <template #suffix>
-      suffix
-    </template>
+    <template #prefix> prefix </template>
+    <template #suffix> suffix </template>
   </EInput>
 </template>
 

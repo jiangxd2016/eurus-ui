@@ -13,25 +13,16 @@ export default defineComponent({
   name: 'EEmpty',
   props: EEmptyProps,
   setup(props, { slots }) {
-
     const prefixCls = getPrefixCls('empty');
     const { t } = useI18n();
 
     return () => (
       <div class={prefixCls}>
-				<div class={`${prefixCls}-image`}>
-            {slots.image?.()
-              ?? (props.imgSrc ? (
-                <img src={props.imgSrc} alt={props.description || 'empty'} />
-              ) : (
-                <Icons name="empty" />
-              ))}
-          </div>
-          <div class={`${prefixCls}-description`}>
-            {slots.default?.() ?? (props.description || t('empty.description'))}
-          </div>
+        <div class={`${prefixCls}-image`}>
+          {slots.image?.() ?? (props.imgSrc ? <img src={props.imgSrc} alt={props.description || 'empty'} /> : <Icons name="empty" />)}
+        </div>
+        <div class={`${prefixCls}-description`}>{slots.default?.() ?? (props.description || t('empty.description'))}</div>
       </div>
-
     );
   },
 });

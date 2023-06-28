@@ -1,36 +1,17 @@
-import type {
-  PropType,
-  VNode } from 'vue';
-import {
-  computed,
-  createVNode,
-  defineComponent,
-  inject,
-  ref
-} from 'vue';
+import type { PropType, VNode } from 'vue';
+import { computed, createVNode, defineComponent, inject, ref } from 'vue';
 import type { TableContext } from './context';
 import { tableInjectionKey } from './context';
 import { getFixedCls, getStyle } from './utils';
-import type {
-  TableColumnData,
-  TableData,
-  TableDataWithRaw,
-  TableOperationColumn,
-} from './interface';
+import type { TableColumnData, TableData, TableDataWithRaw, TableOperationColumn } from './interface';
 import Icons from '@/packages/icons';
 import AutoTooltip from '@/packages/_components/auto-tooltip/auto-tooltip';
 import { isFunction, isObject } from '@/packages/_utils/is';
 import { getValueByPath } from '@/packages/_utils/get-value-by-path';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
-const TD_TYPES = [
-  'normal',
-  'operation',
-  'checkbox',
-  'radio',
-  'expand',
-] as const;
-type TdTypes = typeof TD_TYPES[number];
+const TD_TYPES = ['normal', 'operation', 'checkbox', 'radio', 'expand'] as const;
+type TdTypes = (typeof TD_TYPES)[number];
 
 export default defineComponent({
   name: 'ETd',
@@ -80,9 +61,7 @@ export default defineComponent({
       default: 0,
     },
     renderExpandBtn: {
-      type: Function as PropType<
-        (record: TableDataWithRaw, stopPropagation?: boolean) => VNode
-      >,
+      type: Function as PropType<(record: TableDataWithRaw, stopPropagation?: boolean) => VNode>,
     },
     summary: {
       type: Boolean,
@@ -100,27 +79,15 @@ export default defineComponent({
       return undefined;
     });
 
-    const isSorted = computed(
-      () =>
-        props.column?.dataIndex
-        && tableCtx.sorter?.field === props.column.dataIndex
-    );
+    const isSorted = computed(() => props.column?.dataIndex && tableCtx.sorter?.field === props.column.dataIndex);
 
-    const resizing = computed(
-      () =>
-        props.column?.dataIndex
-        && tableCtx.resizingColumn === props.column.dataIndex
-    );
+    const resizing = computed(() => props.column?.dataIndex && tableCtx.resizingColumn === props.column.dataIndex);
 
     const getCustomClass = () => {
       if (props.summary) {
-        return isFunction(props.column?.summaryCellClass)
-          ? props.column.summaryCellClass(props.record?.raw)
-          : props.column?.summaryCellClass;
+        return isFunction(props.column?.summaryCellClass) ? props.column.summaryCellClass(props.record?.raw) : props.column?.summaryCellClass;
       }
-      return isFunction(props.column?.bodyCellClass)
-        ? props.column.bodyCellClass(props.record?.raw)
-        : props.column?.bodyCellClass;
+      return isFunction(props.column?.bodyCellClass) ? props.column.bodyCellClass(props.record?.raw) : props.column?.bodyCellClass;
     };
 
     const cls = computed(() => [
@@ -136,13 +103,9 @@ export default defineComponent({
 
     const getCustomStyle = () => {
       if (props.summary) {
-        return isFunction(props.column?.summaryCellStyle)
-          ? props.column.summaryCellStyle(props.record?.raw)
-          : props.column?.summaryCellStyle;
+        return isFunction(props.column?.summaryCellStyle) ? props.column.summaryCellStyle(props.record?.raw) : props.column?.summaryCellStyle;
       }
-      return isFunction(props.column?.bodyCellStyle)
-        ? props.column.bodyCellStyle(props.record?.raw)
-        : props.column?.bodyCellStyle;
+      return isFunction(props.column?.bodyCellStyle) ? props.column.bodyCellStyle(props.record?.raw) : props.column?.bodyCellStyle;
     };
 
     const style = computed(() => {
@@ -190,19 +153,13 @@ export default defineComponent({
       if (props.column.slotName && tableCtx.slots?.[props.column.slotName]) {
         return tableCtx.slots[props.column.slotName]?.(data);
       }
-      return String(
-        getValueByPath(props.record?.raw, props.column.dataIndex) ?? ''
-      );
+      return String(getValueByPath(props.record?.raw, props.column.dataIndex) ?? '');
     };
 
     const isLoading = ref(false);
 
     const handleClick = (ev: Event) => {
-      if (
-        isFunction(tableCtx.loadMore)
-        && !props.record?.isLeaf
-        && !props.record?.children
-      ) {
+      if (isFunction(tableCtx.loadMore) && !props.record?.isLeaf && !props.record?.children) {
         isLoading.value = true;
         new Promise<TableData[] | undefined>((resolve) => {
           tableCtx.loadMore?.(props.record.raw, resolve);
@@ -236,18 +193,11 @@ export default defineComponent({
           )}
           {props.showExpandBtn && (
             <span class={`${prefixCls}-cell-inline-icon`} onClick={handleClick}>
-              {isLoading.value ? (
-                <Icons name="loading" />
-              ) : (
-                props.renderExpandBtn?.(props.record, false)
-              )}
+              {isLoading.value ? <Icons name="loading" /> : props.renderExpandBtn?.(props.record, false)}
             </span>
           )}
           {props.column?.ellipsis && props.column?.tooltip ? (
-            <AutoTooltip
-              class={`${prefixCls}-td-content`}
-              tooltipProps={tooltipProps.value}
-            >
+            <AutoTooltip class={`${prefixCls}-td-content`} tooltipProps={tooltipProps.value}>
               {renderContent()}
             </AutoTooltip>
           ) : (
@@ -281,7 +231,7 @@ export default defineComponent({
         },
         {
           default: () => [renderCell()],
-        }
+        },
       );
     };
   },

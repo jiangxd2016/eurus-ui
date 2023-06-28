@@ -8,4 +8,3 @@ import { ref } from 'vue';
 
 const value = ref('uncheck');
 </script>
-

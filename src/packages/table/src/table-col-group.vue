@@ -1,20 +1,10 @@
 <template>
   <colgroup>
-    <col
-      v-for="item of operations"
-      :key="`arco-col-${item.name}`"
-      :class="`arco-table-${item.name}-col`"
-      :style="fixedWidth(item.width)"
-    />
+    <col v-for="item of operations" :key="`arco-col-${item.name}`" :class="`arco-table-${item.name}-col`" :style="fixedWidth(item.width)" />
     <col
       v-for="item of dataColumns"
       :key="`arco-col-${item.dataIndex}`"
-      :style="
-        fixedWidth(
-          (columnWidth && item.dataIndex && columnWidth[item.dataIndex])
-            || item.width,
-        )
-      "
+      :style="fixedWidth((columnWidth && item.dataIndex && columnWidth[item.dataIndex]) || item.width)"
     />
   </colgroup>
 </template>

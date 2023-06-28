@@ -1,16 +1,4 @@
-import {
-  computed,
-  defineComponent,
-  nextTick,
-  onMounted,
-  onUnmounted,
-  provide,
-  reactive,
-  ref,
-  toRefs,
-  Transition,
-  watch
-} from 'vue';
+import { computed, defineComponent, nextTick, onMounted, onUnmounted, provide, reactive, ref, toRefs, Transition, watch } from 'vue';
 import './style.scss';
 import EIcon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
@@ -52,7 +40,6 @@ export default defineComponent({
   props: ECarouselProps,
   emits: ['change'],
   setup(props, { slots, emit }) {
-
     const prefixCls = getPrefixCls('carousel');
 
     const rootRef = ref<HTMLElement>();
@@ -70,13 +57,12 @@ export default defineComponent({
     });
 
     const indicatorComputed = computed(() => {
-
       return [
         `${prefixCls}__indicator`,
         {
           [`${prefixCls}__indicator--horizontal`]: props.direction === 'horizontal',
           [`${prefixCls}__indicator--vertical`]: props.direction === 'vertical',
-        }
+        },
       ];
     });
 
@@ -109,10 +95,7 @@ export default defineComponent({
     }
 
     function setTheOffset() {
-
-      props.direction === 'horizontal'
-        ? (offsetWidth.value = rootRef!.value!.offsetWidth)
-        : (offsetHeight.value = rootRef!.value!.offsetHeight);
+      props.direction === 'horizontal' ? (offsetWidth.value = rootRef!.value!.offsetWidth) : (offsetHeight.value = rootRef!.value!.offsetHeight);
     }
 
     function handleMouseEnter() {
@@ -178,39 +161,26 @@ export default defineComponent({
     });
 
     return () => (
-      <div class={prefixCls} ref={rootRef} style={{ height: props.height }} onMouseenter={handleMouseEnter}
-           onMouseleave={handleMouseLeave}
-      >
+      <div class={prefixCls} ref={rootRef} style={{ height: props.height }} onMouseenter={handleMouseEnter} onMouseleave={handleMouseLeave}>
         <Transition name="carousel-arrow-left">
-          {<button
-            class={`${prefixCls}-arrow ${prefixCls}-arrow--left`}
-            onClick={() => throttleArrowClick('left')}
-          >
-            <EIcon name="chevronLeft" size={30} color="#fff"></EIcon>
-          </button>
+          {
+            <button class={`${prefixCls}-arrow ${prefixCls}-arrow--left`} onClick={() => throttleArrowClick('left')}>
+              <EIcon name="chevronLeft" size={30} color="#fff"></EIcon>
+            </button>
           }
         </Transition>
         <Transition name="carousel-arrow-right">
-          {<button
-            class={`${prefixCls}-arrow ${prefixCls}-arrow--right`}
-            onClick={() => throttleArrowClick('right')}
-          >
-            < EIcon name="chevronRight" size={30} color="#fff"></EIcon>
-          </button>
+          {
+            <button class={`${prefixCls}-arrow ${prefixCls}-arrow--right`} onClick={() => throttleArrowClick('right')}>
+              <EIcon name="chevronRight" size={30} color="#fff"></EIcon>
+            </button>
           }
         </Transition>
         {slots.default ? slots.default() : null}
-        <div
-          role="list"
-          class={indicatorComputed.value}
-        >
-          {
-            Array.from({ length: data.itemReactLength }).map((item, index) => {
-              return <div
-                key={index} class={`${prefixCls}__item` }
-                role="none"
-                onClick={() => indicatorClick(index)}
-              >
+        <div role="list" class={indicatorComputed.value}>
+          {Array.from({ length: data.itemReactLength }).map((item, index) => {
+            return (
+              <div key={index} class={`${prefixCls}__item`} role="none" onClick={() => indicatorClick(index)}>
                 <button
                   class={{
                     [`${prefixCls}__button`]: true,
@@ -219,12 +189,11 @@ export default defineComponent({
                     [`${prefixCls}__button--vertical`]: props.direction === 'vertical',
                   }}
                 />
-              </div>;
-            })
-          }
-        </div >
-      </div >
+              </div>
+            );
+          })}
+        </div>
+      </div>
     );
   },
 });
-

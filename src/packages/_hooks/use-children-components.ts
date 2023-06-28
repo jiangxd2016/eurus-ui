@@ -10,10 +10,7 @@ export const useChildrenComponents = (name: string) => {
   const getComponents = () => {
     if (children.value) {
       const _components = getComponentsFromChildren(children.value, name);
-      if (
-        _components.length !== components.value.length
-        || _components.toString() !== components.value.toString()
-      ) {
+      if (_components.length !== components.value.length || _components.toString() !== components.value.toString()) {
         components.value = _components;
       }
     }

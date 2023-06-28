@@ -2,12 +2,7 @@ import type { PropType, VNode } from 'vue';
 import { computed, defineComponent, inject } from 'vue';
 import type { TableContext } from './context';
 import { tableInjectionKey } from './context';
-import {
-  getLeafKeys,
-  getOperationFixedCls,
-  getOperationStyle,
-  getSelectionStatus,
-} from './utils';
+import { getLeafKeys, getOperationFixedCls, getOperationStyle, getSelectionStatus } from './utils';
 import type { TableDataWithRaw, TableOperationColumn } from './interface';
 import Checkbox from '@/packages/checkbox';
 import Radio from '@/packages/radio';
@@ -42,9 +37,7 @@ export default defineComponent({
       type: Array as PropType<BaseType[]>,
     },
     renderExpandBtn: {
-      type: Function as PropType<
-        (record: TableDataWithRaw, stopPropagation?: boolean) => VNode
-      >,
+      type: Function as PropType<(record: TableDataWithRaw, stopPropagation?: boolean) => VNode>,
     },
     colSpan: {
       type: Number,
@@ -63,30 +56,23 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const prefixCls = getPrefixCls('table');
     const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
-    const style = computed(() =>
-      getOperationStyle(props.operationColumn, props.operations)
-    );
+    const style = computed(() => getOperationStyle(props.operationColumn, props.operations));
 
     const cls = computed(() => [
       `${prefixCls}-td`,
       `${prefixCls}-operation`,
       {
-        [`${prefixCls}-checkbox`]:
-          props.operationColumn.name === 'selection-checkbox',
-        [`${prefixCls}-radio`]:
-          props.operationColumn.name === 'selection-radio',
+        [`${prefixCls}-checkbox`]: props.operationColumn.name === 'selection-checkbox',
+        [`${prefixCls}-radio`]: props.operationColumn.name === 'selection-radio',
         [`${prefixCls}-expand`]: props.operationColumn.name === 'expand',
-        [`${prefixCls}-drag-handle`]:
-          props.operationColumn.name === 'drag-handle',
+        [`${prefixCls}-drag-handle`]: props.operationColumn.name === 'drag-handle',
       },
       ...getOperationFixedCls(prefixCls, props.operationColumn),
     ]);
 
     const leafKeys = computed(() => getLeafKeys(props.record));
 
-    const selectionStatus = computed(() =>
-      getSelectionStatus(tableCtx.currentSelectedRowKeys ?? [], leafKeys.value)
-    );
+    const selectionStatus = computed(() => getSelectionStatus(tableCtx.currentSelectedRowKeys ?? [], leafKeys.value));
 
     const renderContent = () => {
       if (props.summary) {
@@ -103,9 +89,7 @@ export default defineComponent({
             <Checkbox
               modelValue={selectionStatus.value.checked}
               disabled={Boolean(props.record.disabled)}
-              onChange={checked =>
-                tableCtx.onSelectAllLeafs?.(props.record, checked as boolean)
-              }
+              onChange={(checked) => tableCtx.onSelectAllLeafs?.(props.record, checked as boolean)}
               onClick={(ev: Event) => ev.stopPropagation()}
             />
           );
@@ -115,7 +99,7 @@ export default defineComponent({
           <Checkbox
             modelValue={props.selectedRowKeys?.includes(value) ?? false}
             disabled={Boolean(props.record.disabled)}
-            onChange={checked =>tableCtx.onSelect?.(checked as boolean, props.record)}
+            onChange={(checked) => tableCtx.onSelect?.(checked as boolean, props.record)}
             onClick={(ev: Event) => ev.stopPropagation()}
           />
         );
@@ -126,9 +110,7 @@ export default defineComponent({
           <Radio
             modelValue={props.selectedRowKeys?.includes(value) ?? false}
             disabled={Boolean(props.record.disabled)}
-            onChange={checked =>
-              tableCtx.onSelect?.(checked as boolean, props.record)
-            }
+            onChange={(checked) => tableCtx.onSelect?.(checked as boolean, props.record)}
             onClick={(ev: Event) => ev.stopPropagation()}
           />
         );
@@ -146,12 +128,7 @@ export default defineComponent({
     };
 
     return () => (
-      <td
-        class={cls.value}
-        style={style.value}
-        rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
-        colspan={props.colSpan > 1 ? props.colSpan : undefined}
-      >
+      <td class={cls.value} style={style.value} rowspan={props.rowSpan > 1 ? props.rowSpan : undefined} colspan={props.colSpan > 1 ? props.colSpan : undefined}>
         <span class={`${prefixCls}-cell`}>{renderContent()}</span>
       </td>
     );

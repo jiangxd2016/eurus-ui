@@ -37,10 +37,7 @@ export default defineComponent({
       let checked = false;
       let indeterminate = false;
 
-      const currentSelectedEnabledRowKeys
-        = tableCtx.currentSelectedRowKeys?.filter(
-          key => tableCtx.currentAllEnabledRowKeys?.includes(key) ?? true
-        ) ?? [];
+      const currentSelectedEnabledRowKeys = tableCtx.currentSelectedRowKeys?.filter((key) => tableCtx.currentAllEnabledRowKeys?.includes(key) ?? true) ?? [];
 
       const selectedNumber = currentSelectedEnabledRowKeys.length;
       const totalEnabledNumber = tableCtx.currentAllEnabledRowKeys?.length ?? 0;
@@ -62,9 +59,7 @@ export default defineComponent({
         return (
           <Checkbox
             v-slots={{
-              default: isFunction(props.operationColumn.title)
-                ? props.operationColumn.title()
-                : props.operationColumn.title,
+              default: isFunction(props.operationColumn.title) ? props.operationColumn.title() : props.operationColumn.title,
             }}
             modelValue={checkboxStatus.value.checked}
             onChange={(checked) => {
@@ -74,16 +69,12 @@ export default defineComponent({
         );
       }
       if (props.operationColumn.title) {
-        return isFunction(props.operationColumn.title)
-          ? props.operationColumn.title()
-          : props.operationColumn.title;
+        return isFunction(props.operationColumn.title) ? props.operationColumn.title() : props.operationColumn.title;
       }
       return null;
     };
 
-    const style = computed(() =>
-      getOperationStyle(props.operationColumn, props.operations)
-    );
+    const style = computed(() => getOperationStyle(props.operationColumn, props.operations));
 
     const cls = computed(() => [
       `${prefixCls}-th`,
@@ -95,11 +86,7 @@ export default defineComponent({
     ]);
 
     return () => (
-      <th
-        class={cls.value}
-        style={style.value}
-        rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
-      >
+      <th class={cls.value} style={style.value} rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}>
         <span class={`${prefixCls}-cell`}>{renderContent()}</span>
       </th>
     );

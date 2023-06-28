@@ -12,9 +12,8 @@ export default function useEventListener(
   target: HTMLElement | Window = window,
   event: string,
   listener: EventListenerOrEventListenerObject,
-  options?: boolean | AddEventListenerOptions
+  options?: boolean | AddEventListenerOptions,
 ): Fn {
-
   if (!event || !listener) {
     return noop;
   }
@@ -28,4 +27,3 @@ export default function useEventListener(
     target.removeEventListener(event, listener, options);
   };
 }
-

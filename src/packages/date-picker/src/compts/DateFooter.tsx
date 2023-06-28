@@ -16,5 +16,5 @@ export default defineComponent({
         {t('datePicker.today')}
       </div>
     );
-  }
+  },
 });

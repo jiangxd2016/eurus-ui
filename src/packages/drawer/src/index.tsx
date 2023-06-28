@@ -20,12 +20,12 @@ const EDrawerProps = {
   },
   confirm: {
     type: Function as PropType<() => void>,
-    default: () => { }
+    default: () => {},
   },
   cancel: {
     type: Function as PropType<() => void>,
-    default: () => { }
-  }
+    default: () => {},
+  },
 };
 
 export default defineComponent({
@@ -33,7 +33,6 @@ export default defineComponent({
   props: EDrawerProps,
   emits: ['close'],
   setup(props, { slots, emit }) {
-
     const prefixCls = getPrefixCls('drawer');
     const closeDrawer = () => {
       emit('close', false);
@@ -51,39 +50,28 @@ export default defineComponent({
 
     return () => (
       <Transition name="EuDrawer">
-        {props.visible
-          ? <div class={`${prefixCls}-container`}>
-            <div class="eu-drawer-mask" role="button" tabindex={-1} onClick={closeDrawer}>
-            </div>
+        {props.visible ? (
+          <div class={`${prefixCls}-container`}>
+            <div class="eu-drawer-mask" role="button" tabindex={-1} onClick={closeDrawer}></div>
             <div class={prefixCls}>
               <div class="eu-drawer-header">
-                <div class="title">
-                  {props.title}
-                </div>
+                <div class="title">{props.title}</div>
                 <Icon name="close" size="22"></Icon>
-
               </div>
-              <div class={`${prefixCls}-body`}>
-                {slots.default && slots.default()}
-              </div>
+              <div class={`${prefixCls}-body`}>{slots.default && slots.default()}</div>
 
-              {props.footer && <div class="eu-drawer-footer">
-                <EButton
-                  type="primary"
-                  onClick={thisConfirm}
-                >
-                  确认
-                </EButton>
-                <EButton onClick={thisCancel}>
-                  取消
-                </EButton>
-              </div>}
+              {props.footer && (
+                <div class="eu-drawer-footer">
+                  <EButton type="primary" onClick={thisConfirm}>
+                    确认
+                  </EButton>
+                  <EButton onClick={thisCancel}>取消</EButton>
+                </div>
+              )}
             </div>
           </div>
-          : null}
-
+        ) : null}
       </Transition>
-
     );
   },
 });

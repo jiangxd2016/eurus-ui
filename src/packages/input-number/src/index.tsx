@@ -70,9 +70,7 @@ export default defineComponent({
         return undefined;
       }
 
-      return props.precision
-        ? +number.toFixed(props.precision)
-        : number;
+      return props.precision ? +number.toFixed(props.precision) : number;
     };
 
     const _value = ref(getStringValue(props.modelValue ?? props.defaultValue));
@@ -105,7 +103,6 @@ export default defineComponent({
       }
       _value.value = +round(val, _precision).toFixed(_precision);
       emitEvent(_value.value);
-
     };
 
     const handleInput = (value: number) => {
@@ -142,23 +139,28 @@ export default defineComponent({
       emit('blur', event);
     };
 
-    watch(() => props.modelValue, (n, o) => {
-      if (n && n !== o && n !== +(_value.value || 0)) {
-        updateInputValue('round', n);
-      }
-    });
-    const slot = props.controls ? {
-      prefix: () => (
-        <span class={`${prefixCls}-minus`} aria-hidden="true" onClick={() => updateInputValue('minus')}>
-          {slots['minus-icon'] ? slots['minus-icon']() : <EIcon name="minus" size="22"/>}
-        </span>
-      ),
-      suffix: () => (
-        <span class={`${prefixCls}-plus`} aria-hidden="true" onClick={() => updateInputValue('plus')}>
-          {slots['plus-icon'] ? slots['plus-icon']() : <EIcon name="plus" size="22"/>}
-        </span>
-      )
-    } : {};
+    watch(
+      () => props.modelValue,
+      (n, o) => {
+        if (n && n !== o && n !== +(_value.value || 0)) {
+          updateInputValue('round', n);
+        }
+      },
+    );
+    const slot = props.controls
+      ? {
+          prefix: () => (
+            <span class={`${prefixCls}-minus`} aria-hidden="true" onClick={() => updateInputValue('minus')}>
+              {slots['minus-icon'] ? slots['minus-icon']() : <EIcon name="minus" size="22" />}
+            </span>
+          ),
+          suffix: () => (
+            <span class={`${prefixCls}-plus`} aria-hidden="true" onClick={() => updateInputValue('plus')}>
+              {slots['plus-icon'] ? slots['plus-icon']() : <EIcon name="plus" size="22" />}
+            </span>
+          ),
+        }
+      : {};
     return () => (
       <div class={computedCls.value}>
         <EInput
@@ -175,10 +177,8 @@ export default defineComponent({
           aria-valuemin={props.min}
           aria-valuenow={_value.value}
           v-slots={slot}
-        >
-        </EInput>
+        ></EInput>
       </div>
-
     );
   },
 });

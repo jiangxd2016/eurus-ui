@@ -2,7 +2,6 @@ import { mount } from '@vue/test-utils';
 import ESwitch from '..';
 
 describe('ESwitch', () => {
-
   it('ESwitch snapshot', () => {
     const wrapper = mount(ESwitch);
     expect(wrapper.html()).toMatchSnapshot();
@@ -13,8 +12,8 @@ describe('ESwitch', () => {
     const wrapper = mount(ESwitch, {
       props: {
         modelValue: '1',
-        onChange: fn
-      }
+        onChange: fn,
+      },
     });
 
     await wrapper.find('input').trigger('change');
@@ -27,8 +26,8 @@ describe('ESwitch', () => {
       props: {
         modelValue: '1',
         disabled: true,
-        onChange: fn
-      }
+        onChange: fn,
+      },
     });
 
     await wrapper.find('input').trigger('change');
@@ -42,9 +41,8 @@ describe('ESwitch', () => {
         checkedValue: '1',
         uncheckedValue: '0',
         checkedLabel: '开',
-        uncheckedLabel: '关'
-
-      }
+        uncheckedLabel: '关',
+      },
     });
     expect(wrapper.find('.eu-switch__label-left').text()).toBe('关');
     await wrapper.find('input').trigger('change');
@@ -56,8 +54,8 @@ describe('ESwitch', () => {
     const wrapper = mount(ESwitch, {
       props: {
         checkedColor: '#13ce66',
-        uncheckedColor: '#ff4949'
-      }
+        uncheckedColor: '#ff4949',
+      },
     });
     expect(wrapper.find('.eu-switch__inner').attributes('style')).toMatchInlineSnapshot('"background-color: #ff4949;"');
     await wrapper.find('input').trigger('change');

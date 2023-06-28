@@ -21,8 +21,7 @@ export default defineComponent({
 
     const calTooltip = () => {
       if (containerRef.value && contentRef.value) {
-        const _show
-          = contentRef.value.offsetWidth > containerRef.value.offsetWidth;
+        const _show = contentRef.value.offsetWidth > containerRef.value.offsetWidth;
         if (_show !== showTooltip.value) {
           showTooltip.value = _show;
         }
@@ -30,10 +29,7 @@ export default defineComponent({
     };
 
     const getText = () => {
-      if (
-        contentRef.value?.textContent
-        && contentRef.value.textContent !== text.value
-      ) {
+      if (contentRef.value?.textContent && contentRef.value.textContent !== text.value) {
         text.value = contentRef.value.textContent;
       }
     };
@@ -78,9 +74,7 @@ export default defineComponent({
         );
       }
 
-      return (
-        <ResizeObserver onResize={onResize}>{renderContent()}</ResizeObserver>
-      );
+      return <ResizeObserver onResize={onResize}>{renderContent()}</ResizeObserver>;
     };
   },
 });

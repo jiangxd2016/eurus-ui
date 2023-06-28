@@ -10,9 +10,8 @@ const CalendarProps = {
   disabledDate: {
     type: Function as PropType<(date: string, type: String) => boolean>,
     default() {
-      return () => {
-      };
-    }
+      return () => {};
+    },
   },
   panel: {
     type: String as PropType<'month' | 'year'>,
@@ -31,7 +30,6 @@ export default defineComponent({
   props: CalendarProps,
   emits: ['dateChange'],
   setup(props, { emit }) {
-
     const prefixCls = getPrefixCls('date-picker-calendar');
 
     const handleMonthClick = (item: datePickerItem) => {
@@ -42,30 +40,24 @@ export default defineComponent({
     };
     return () => (
       <div class={prefixCls}>
-
         <table>
-          {
-            props.list.map((item) => {
-              return (
-                <tr>
-                  {
-                    item.map((subItem) => {
-                      return (
-                        <td class={[subItem.dot && 'calendar-date-select', subItem.disabled && 'calendar-date-disabled']} >
-                          <div role="button" tabindex={0}onClick={() => handleMonthClick(subItem)}>
-                          {subItem.format}
-                          </div>
-                        </td>
-                      );
-                    })
-                  }
-                </tr>
-              );
-            })
-          }
+          {props.list.map((item) => {
+            return (
+              <tr>
+                {item.map((subItem) => {
+                  return (
+                    <td class={[subItem.dot && 'calendar-date-select', subItem.disabled && 'calendar-date-disabled']}>
+                      <div role="button" tabindex={0} onClick={() => handleMonthClick(subItem)}>
+                        {subItem.format}
+                      </div>
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
         </table>
       </div>
-
     );
-  }
+  },
 });

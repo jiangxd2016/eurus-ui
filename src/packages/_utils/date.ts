@@ -2,7 +2,9 @@ import dayjs from 'dayjs';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
 
 export const isBetween = (value: number, left: number | string, right: number | string) => {
-  return (dayjs(value).isBefore(dayjs(left)) && dayjs(value).isAfter(dayjs(right)) ) || (dayjs(value).isAfter(dayjs(left)) && dayjs(value).isBefore(dayjs(right)));
+  return (
+    (dayjs(value).isBefore(dayjs(left)) && dayjs(value).isAfter(dayjs(right))) || (dayjs(value).isAfter(dayjs(left)) && dayjs(value).isBefore(dayjs(right)))
+  );
 };
 
 export function getCurrentMonthCount(month: string) {
@@ -43,7 +45,7 @@ export function generateDayList([year, month]: number[], disabled: (date: number
     // 上个月需要渲染的td个数，以及对应的值
     if (lastMonthPointer < currentMonthFirstDayWeek) {
       // 上月
-      const date = dayjs(year + '-' + (month - 1) + '-' + (lastMonthCount));
+      const date = dayjs(year + '-' + (month - 1) + '-' + lastMonthCount);
       dayList.unshift({
         value: lastMonthCount--,
         disabled: true,
@@ -56,7 +58,7 @@ export function generateDayList([year, month]: number[], disabled: (date: number
       lastMonthPointer++;
     } else if (currentMonthPointer <= currentMonthCount) {
       // 当月
-      const date = dayjs(year + '-' + month + '-' + (currentMonthPointer));
+      const date = dayjs(year + '-' + month + '-' + currentMonthPointer);
 
       dayList.push({
         value: currentMonthPointer++,
@@ -64,10 +66,7 @@ export function generateDayList([year, month]: number[], disabled: (date: number
         active: false,
         date: date.valueOf(),
         format: date.format('YYYY-MM-DD'),
-        dot:
-          new Date().getFullYear() === year
-          && new Date().getMonth() + 1 === month
-          && currentMonthPointer - 1 === new Date().getDate(),
+        dot: new Date().getFullYear() === year && new Date().getMonth() + 1 === month && currentMonthPointer - 1 === new Date().getDate(),
         hover: false,
         index: i,
       });
@@ -115,7 +114,7 @@ export function generateMonthList([year, month]: number[], disabled: Function): 
     t('datePicker.month.short.September'),
     t('datePicker.month.short.October'),
     t('datePicker.month.short.November'),
-    t('datePicker.month.short.December')
+    t('datePicker.month.short.December'),
   ];
 
   const monthList = [];
@@ -147,4 +146,3 @@ export function generateMonthList([year, month]: number[], disabled: Function): 
   }
   return result;
 }
-

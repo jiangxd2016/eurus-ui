@@ -1,4 +1,1 @@
-<template>
-  <EEmpty />
-</template>
-
+<template><EEmpty /></template>

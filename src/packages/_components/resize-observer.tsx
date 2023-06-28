@@ -1,14 +1,5 @@
-import type {
-  ComponentPublicInstance } from 'vue';
-import {
-  defineComponent,
-  onMounted,
-  onUnmounted,
-  ref,
-  computed,
-  cloneVNode,
-  watch,
-} from 'vue';
+import type { ComponentPublicInstance } from 'vue';
+import { defineComponent, onMounted, onUnmounted, ref, computed, cloneVNode, watch } from 'vue';
 import ResizeObserver from 'resize-observer-polyfill';
 import { getFirstComponent, isComponentInstance } from '@/packages/_utils/vue-utils';
 
@@ -26,14 +17,12 @@ export default defineComponent({
 
     const componentRef = ref<HTMLElement | ComponentPublicInstance>();
 
-    const element = computed<HTMLElement>(() =>
-      isComponentInstance(componentRef.value)
-        ? componentRef.value.$el
-        : componentRef.value
-    );
+    const element = computed<HTMLElement>(() => (isComponentInstance(componentRef.value) ? componentRef.value.$el : componentRef.value));
 
     const createResizeObserver = (target: HTMLElement) => {
-      if (!target) { return; }
+      if (!target) {
+        return;
+      }
       resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
         const entry = entries[0];
         emit('resize', entry);
@@ -49,8 +38,12 @@ export default defineComponent({
     };
 
     watch(element, (_element) => {
-      if (resizeObserver) { destroyResizeObserver(); }
-      if (_element) { createResizeObserver(_element); }
+      if (resizeObserver) {
+        destroyResizeObserver();
+      }
+      if (_element) {
+        createResizeObserver(_element);
+      }
     });
 
     onMounted(() => {
@@ -72,7 +65,7 @@ export default defineComponent({
           {
             ref: componentRef,
           },
-          true
+          true,
         );
       }
 

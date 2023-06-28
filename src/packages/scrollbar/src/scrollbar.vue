@@ -1,12 +1,7 @@
 <template>
   <div :class="cls" :style="style">
     <ResizeObserver @resize="handleResize">
-      <div
-        ref="containerRef"
-        :class="`${prefixCls}-container`"
-        v-bind="$attrs"
-        @scroll="handleScroll"
-      >
+      <div ref="containerRef" :class="`${prefixCls}-container`" v-bind="$attrs" @scroll="handleScroll">
         <ResizeObserver @resize="handleResize">
           <slot />
         </ResizeObserver>
@@ -32,17 +27,8 @@
 </template>
 
 <script lang="ts">
-import type {
-  CSSProperties,
-  ComputedRef,
-  PropType,
-  StyleValue } from 'vue';
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  ref
-} from 'vue';
+import type { CSSProperties, ComputedRef, PropType, StyleValue } from 'vue';
+import { computed, defineComponent, onMounted, ref } from 'vue';
 import Thumb from './thumb.vue';
 import type { ThumbData } from './interface';
 import ResizeObserver from '@/packages/_components/resize-observer';
@@ -111,56 +97,23 @@ export default defineComponent({
     const verticalThumbRef = ref();
     const _hasHorizontalScrollbar = ref(false);
     const _hasVerticalScrollbar = ref(false);
-    const hasHorizontalScrollbar = computed(
-      () => _hasHorizontalScrollbar.value && !props.disableHorizontal
-    );
-    const hasVerticalScrollbar = computed(
-      () => _hasVerticalScrollbar.value && !props.disableVertical
-    );
+    const hasHorizontalScrollbar = computed(() => _hasHorizontalScrollbar.value && !props.disableHorizontal);
+    const hasVerticalScrollbar = computed(() => _hasVerticalScrollbar.value && !props.disableVertical);
     const isBoth = ref(false);
 
     const getContainerSize = () => {
       if (containerRef.value) {
-        const {
-          clientWidth,
-          clientHeight,
-          offsetWidth,
-          offsetHeight,
-          scrollWidth,
-          scrollHeight,
-          scrollTop,
-          scrollLeft,
-        } = containerRef.value;
+        const { clientWidth, clientHeight, offsetWidth, offsetHeight, scrollWidth, scrollHeight, scrollTop, scrollLeft } = containerRef.value;
         _hasHorizontalScrollbar.value = scrollWidth > clientWidth;
         _hasVerticalScrollbar.value = scrollHeight > clientHeight;
-        isBoth.value
-          = hasHorizontalScrollbar.value && hasVerticalScrollbar.value;
-        const horizontalTrackWidth
-          = props.type === 'embed' && isBoth.value
-            ? offsetWidth - TRACK_SIZE
-            : offsetWidth;
-        const verticalTrackHeight
-          = props.type === 'embed' && isBoth.value
-            ? offsetHeight - TRACK_SIZE
-            : offsetHeight;
+        isBoth.value = hasHorizontalScrollbar.value && hasVerticalScrollbar.value;
+        const horizontalTrackWidth = props.type === 'embed' && isBoth.value ? offsetWidth - TRACK_SIZE : offsetWidth;
+        const verticalTrackHeight = props.type === 'embed' && isBoth.value ? offsetHeight - TRACK_SIZE : offsetHeight;
 
-        const horizontalThumbWidth = Math.round(
-          horizontalTrackWidth
-            / Math.min(
-              scrollWidth / clientWidth,
-              horizontalTrackWidth / THUMB_MIN_SIZE
-            )
-        );
+        const horizontalThumbWidth = Math.round(horizontalTrackWidth / Math.min(scrollWidth / clientWidth, horizontalTrackWidth / THUMB_MIN_SIZE));
         const maxHorizontalOffset = horizontalTrackWidth - horizontalThumbWidth;
-        const horizontalRatio
-          = (scrollWidth - clientWidth) / maxHorizontalOffset;
-        const verticalThumbHeight = Math.round(
-          verticalTrackHeight
-            / Math.min(
-              scrollHeight / clientHeight,
-              verticalTrackHeight / THUMB_MIN_SIZE
-            )
-        );
+        const horizontalRatio = (scrollWidth - clientWidth) / maxHorizontalOffset;
+        const verticalThumbHeight = Math.round(verticalTrackHeight / Math.min(scrollHeight / clientHeight, verticalTrackHeight / THUMB_MIN_SIZE));
         const maxVerticalOffset = verticalTrackHeight - verticalThumbHeight;
         const verticalRatio = (scrollHeight - clientHeight) / maxVerticalOffset;
 
@@ -175,15 +128,11 @@ export default defineComponent({
           max: maxVerticalOffset,
         };
         if (scrollTop > 0) {
-          const verticalOffset = Math.round(
-            scrollTop / (verticalData.value?.ratio ?? 1)
-          );
+          const verticalOffset = Math.round(scrollTop / (verticalData.value?.ratio ?? 1));
           verticalThumbRef.value?.setOffset(verticalOffset);
         }
         if (scrollLeft > 0) {
-          const horizontalOffset = Math.round(
-            scrollLeft / (verticalData.value?.ratio ?? 1)
-          );
+          const horizontalOffset = Math.round(scrollLeft / (verticalData.value?.ratio ?? 1));
           horizontalThumbRef.value?.setOffset(horizontalOffset);
         }
       }
@@ -200,15 +149,11 @@ export default defineComponent({
     const handleScroll = (ev: Event) => {
       if (containerRef.value) {
         if (hasHorizontalScrollbar.value && !props.disableHorizontal) {
-          const horizontalOffset = Math.round(
-            containerRef.value.scrollLeft / (horizontalData.value?.ratio ?? 1)
-          );
+          const horizontalOffset = Math.round(containerRef.value.scrollLeft / (horizontalData.value?.ratio ?? 1));
           horizontalThumbRef.value?.setOffset(horizontalOffset);
         }
         if (hasVerticalScrollbar.value && !props.disableVertical) {
-          const verticalOffset = Math.round(
-            containerRef.value.scrollTop / (verticalData.value?.ratio ?? 1)
-          );
+          const verticalOffset = Math.round(containerRef.value.scrollTop / (verticalData.value?.ratio ?? 1));
           verticalThumbRef.value?.setOffset(verticalOffset);
         }
       }
@@ -281,20 +226,17 @@ export default defineComponent({
      */
     scrollTo(
       options?:
-      | number
-      | {
-        left?: number;
-        top?: number;
-      },
-      y?: number
+        | number
+        | {
+            left?: number;
+            top?: number;
+          },
+      y?: number,
     ) {
       if (isObject(options)) {
         (this.$refs.containerRef as HTMLElement)?.scrollTo(options);
       } else if (options || y) {
-        (this.$refs.containerRef as HTMLElement)?.scrollTo(
-          options as number,
-          y as number
-        );
+        (this.$refs.containerRef as HTMLElement)?.scrollTo(options as number, y as number);
       }
     },
     /**

@@ -7,7 +7,6 @@ import ViteRestart from 'vite-plugin-restart';
 import Inspect from 'vite-plugin-inspect';
 
 export default defineConfig({
-
   resolve: {
     alias: {
       'eurus-ui/': `${resolve(__dirname, '../dist/es')}/`,
@@ -16,14 +15,14 @@ export default defineConfig({
   },
   server: {
     fs: {
-      allow: ['..']
+      allow: ['..'],
     },
   },
 
   plugins: [
     VitePWA({
       manifest: {},
-      workbox: { skipWaiting: true, clientsClaim: true }
+      workbox: { skipWaiting: true, clientsClaim: true },
     }),
     UnoCSS({
       presets: [
@@ -39,10 +38,8 @@ export default defineConfig({
       ],
     }),
     ViteRestart({
-      reload: [
-        '../dist/es/*',
-      ],
+      reload: ['../dist/es/*'],
     }),
     Inspect(),
-  ]
+  ],
 });

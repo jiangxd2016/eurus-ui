@@ -27,27 +27,27 @@ export default defineComponent({
 
     return () => (
       <div class={prefixCls}>
-        {
-          props.data.map((item, index) => {
-            return [item.href
-              ? <router-link
+        {props.data.map((item, index) => {
+          return [
+            item.href ? (
+              <router-link
                 key={index}
                 class={{ [prefixCls + '-item']: true, 'last-child': props.data.length === index + 1 }}
                 to={item.href}
                 v-text={item.title}
               />
-              : <span class={{ [prefixCls + '__item']: true }} key={`span${index}`} v-text={item.title}></span>,
+            ) : (
+              <span class={{ [prefixCls + '__item']: true }} key={`span${index}`} v-text={item.title}></span>
+            ),
 
-            props.data.length > index + 1
-            && <span
-              key={index + 100}
-              class="separator"
-            >{props.separator}</span >
-            ];
-          })
-        }
+            props.data.length > index + 1 && (
+              <span key={index + 100} class="separator">
+                {props.separator}
+              </span>
+            ),
+          ];
+        })}
       </div>
-
     );
   },
 });

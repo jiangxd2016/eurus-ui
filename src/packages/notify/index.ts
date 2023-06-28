@@ -11,8 +11,7 @@ const ENotify = {
     } as NotifyMethod;
 
     for (const key of MESSAGE_TYPES) {
-      _notification[key] = (config, appContext = app._context) =>
-        Notify[key](config, appContext);
+      _notification[key] = (config, appContext = app._context) => Notify[key](config, appContext);
     }
 
     app.config.globalProperties.$notify = _notification;

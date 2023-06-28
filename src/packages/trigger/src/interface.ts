@@ -1,9 +1,7 @@
 import type { CSSProperties } from 'vue';
 import type { TriggerEvent, TriggerPosition } from '@/packages/_utils/types';
 
-export type TriggerPopupTranslate =
-  | [number, number]
-  | { [key in TriggerPosition]?: [number, number] };
+export type TriggerPopupTranslate = [number, number] | { [key in TriggerPosition]?: [number, number] };
 
 export interface TriggerProps {
   popupVisible?: boolean;
@@ -27,11 +25,11 @@ export interface TriggerProps {
   popupStyle?: CSSProperties;
   animationName?: string;
   duration?:
-  | number
-  | {
-    enter: number;
-    leave: number;
-  };
+    | number
+    | {
+        enter: number;
+        leave: number;
+      };
   mouseEnterDelay?: number;
   mouseLeaveDelay?: number;
   focusDelay?: number;

@@ -2,15 +2,13 @@ import { mount } from '@vue/test-utils';
 import EIcon from '..';
 
 describe('EIcon', () => {
-
   it('EIcon snapshot', () => {
     const wrapper = mount(EIcon, {
       props: {
         name: 'arrowDown',
         size: 40,
-        color: 'red'
-      }
-
+        color: 'red',
+      },
     });
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();

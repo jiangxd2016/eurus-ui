@@ -36,19 +36,16 @@ export interface RadioGroupContext {
 
 export const RadioGroupKey: InjectionKey<RadioGroupContext> = Symbol('RadioGroupKey');
 
-export const EurusConfigProviderKey: InjectionKey<ConfigProvider>
-  = Symbol('EurusConfigProvider');
+export const EurusConfigProviderKey: InjectionKey<ConfigProvider> = Symbol('EurusConfigProvider');
 
 export interface buttonGroupProviderType {
   size?: Size;
 }
 
-export const buttonGroupKey: InjectionKey<buttonGroupProviderType>
-  = Symbol('buttonGroupProvider');
+export const buttonGroupKey: InjectionKey<buttonGroupProviderType> = Symbol('buttonGroupProvider');
 
 export type SelectCtx = Partial<ExtractPropTypes<typeof ESelectDownProps & { selectItem: (val: any) => void; setOption: (item: SelectOptionItem) => void }>>;
-export const selectKey: InjectionKey<SelectCtx>
-  = Symbol('EurusSelectContextProvider');
+export const selectKey: InjectionKey<SelectCtx> = Symbol('EurusSelectContextProvider');
 
 export type FormProps = ExtractPropTypes<any>;
 
@@ -66,18 +63,13 @@ export interface formItemCtx {
 }
 
 export const formCtxKey: InjectionKey<FormCtx> = Symbol('EurusFormConfigProvider');
-export const formItemKey: InjectionKey<formItemCtx>
-  = Symbol('EurusFormItemContextProvider');
+export const formItemKey: InjectionKey<formItemCtx> = Symbol('EurusFormItemContextProvider');
 
 // Carousel Provider
 
 export interface ICarouselItem {
   uid: number;
-  transformItem: (
-    index: number,
-    activeIndex: number,
-    isAnimate?: boolean,
-  ) => void;
+  transformItem: (index: number, activeIndex: number, isAnimate?: boolean) => void;
 }
 
 export interface CarouselProvider {
@@ -92,7 +84,7 @@ export const CarouselKey: InjectionKey<CarouselProvider> = Symbol('EurusCarousel
 
 // message type
 export const MESSAGE_TYPES = ['info', 'success', 'warning', 'error'] as const;
-export type MessageType = typeof MESSAGE_TYPES[number];
+export type MessageType = (typeof MESSAGE_TYPES)[number];
 
 // menu provider
 

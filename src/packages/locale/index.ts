@@ -13,7 +13,7 @@ const LOCALE = ref<language>('zh-cn');
 const I18N_MESSAGES = reactive<i18nMessage>({
   'zh-cn': zhCN,
   'en-us': enUS,
-  'ja-jp': jaJP
+  'ja-jp': jaJP,
 });
 
 /**
@@ -25,7 +25,7 @@ export const addI18nMessages = (
   messages: i18nMessage,
   options?: {
     overwrite?: boolean;
-  }
+  },
 ) => {
   for (const key of Object.keys(messages)) {
     if (!I18N_MESSAGES[key] || options?.overwrite) {
@@ -54,12 +54,10 @@ export const getLocale = () => {
 
 export const useI18n = () => {
   const configProvider = inject(EurusConfigProviderKey, undefined);
-  const i18nMessage = computed<typeof zhCN>(
-    () =>I18N_MESSAGES[ configProvider?.locale ?? LOCALE.value]
-  );
+  const i18nMessage = computed<typeof zhCN>(() => I18N_MESSAGES[configProvider?.locale ?? LOCALE.value]);
   const locale = computed<string>(() => i18nMessage.value.locale);
 
-  const transform = (key: string, ...args: any[])=> {
+  const transform = (key: string, ...args: any[]) => {
     const keyArray = key.split('.');
     let temp: any = i18nMessage.value;
 

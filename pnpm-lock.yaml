@@ -21,8 +21,8 @@ importers:
         version: 1.5.1
     devDependencies:
       '@estjs/eslint-config':
-        specifier: ^0.7.0
-        version: 0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
+        specifier: ^0.7.2
+        version: 0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
       '@estjs/tools':
         specifier: ^0.1.7
         version: 0.1.7
@@ -1791,8 +1791,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@estjs/eslint-config-basic@0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8):
-    resolution: {integrity: sha512-P46uqVbiyLQSAZZ4bdRr7jEljxoDPXOuzLcTgoAUS8cjNN/8CpOj+JFLcGfDGcOq4BPyor0sydmktX3DJssnew==}
+  /@estjs/eslint-config-basic@0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8):
+    resolution: {integrity: sha512-SjXFNg1ldHUo1fQoTDthe99WtxiunqPeMZKEXo/tuGk0ZSdQI/R8ZArrnmnCBAD1IO2BUr8KiWOEDB5EGnMitA==}
     peerDependencies:
       eslint: '>=8.28.0'
       prettier: ^2.7.1
@@ -1815,13 +1815,13 @@ packages:
       - supports-color
     dev: true
 
-  /@estjs/eslint-config-react@0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
-    resolution: {integrity: sha512-J0+ufMKA7z2YepAFk8fERFy9kaI4EmdTy6bKiCF5znkYH8s/6BNa57Zq6SyKu331DYr64na5LJxGr5GjmvhkLA==}
+  /@estjs/eslint-config-react@0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
+    resolution: {integrity: sha512-wMbzN5sjrn/1xTcgAiOgmjjO8RHPN+hQLpL9X4mMJlpMzgKssKInDDJv9wvRyMiou4dFVZm7QtfdlGikfB1bfQ==}
     peerDependencies:
       eslint: '>=8.28.0'
     dependencies:
-      '@estjs/eslint-config-basic': 0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
-      '@estjs/eslint-config-ts': 0.7.0(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
+      '@estjs/eslint-config-basic': 0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
+      '@estjs/eslint-config-ts': 0.7.2(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
       eslint: 8.43.0
       eslint-plugin-react: 7.32.2(eslint@8.43.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.43.0)
@@ -1834,10 +1834,10 @@ packages:
       - typescript
     dev: true
 
-  /@estjs/eslint-config-ts@0.7.0(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
-    resolution: {integrity: sha512-faZnTlJ964VFcr7z0OqcqZI04T/68ZtM4qPBiNKAmbmnu11SRdFlPY3Vf0g4mkNsclW3RdG+Q1O9oYQlyXTr8w==}
+  /@estjs/eslint-config-ts@0.7.2(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
+    resolution: {integrity: sha512-i0M3cJoVG8G4HNFTuxQ2U2Im+G3KYyQVX/xpA6pR233mkMsXD2VWS3fSLI2UFjQpNooZTAq89bb3LGc1RfAPUw==}
     dependencies:
-      '@estjs/eslint-config-basic': 0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
+      '@estjs/eslint-config-basic': 0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
       '@typescript-eslint/eslint-plugin': 5.59.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(typescript@5.1.5)
       '@typescript-eslint/parser': 5.59.2(eslint@8.43.0)(typescript@5.1.5)
     transitivePeerDependencies:
@@ -1849,13 +1849,13 @@ packages:
       - typescript
     dev: true
 
-  /@estjs/eslint-config-vue2@0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
-    resolution: {integrity: sha512-S2qLlYFMlAPdBlc3DdXOTltUVsfKVEHCgeN4Flc952QSrD+5i/bPBHTUPKBhgSOrb2vX4048Rc2YaTIvNqmP0g==}
+  /@estjs/eslint-config-vue2@0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
+    resolution: {integrity: sha512-GN1GVwknhNNGjKyrTklAViwXwo9sTx47TknfQU2xKFK0vMy7/hEDFDnKPklJfWkNesi/hgIb1hYzsMo2rvH23A==}
     peerDependencies:
       eslint: '>=8.28.0 '
     dependencies:
-      '@estjs/eslint-config-basic': 0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
-      '@estjs/eslint-config-ts': 0.7.0(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
+      '@estjs/eslint-config-basic': 0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
+      '@estjs/eslint-config-ts': 0.7.2(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
       eslint: 8.43.0
       eslint-plugin-vue: 9.11.1(eslint@8.43.0)
     transitivePeerDependencies:
@@ -1867,13 +1867,13 @@ packages:
       - typescript
     dev: true
 
-  /@estjs/eslint-config-vue@0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
-    resolution: {integrity: sha512-OTw/rwS7eXe8IgKXiRQPVqYG2Qk7ej1+Hzo6AgZajK7ri0LWAytAIVMtLE7ahk1SxKHo5pVZGkka5weo+RRh0w==}
+  /@estjs/eslint-config-vue@0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
+    resolution: {integrity: sha512-oBz9Cv0DGwLCGEn68tLm1wOinJ2JT73jIayEC9PR2PWWJDs1FO5pKp95DxG+prLvFfsFwauKnYU//1vlUvWf4Q==}
     peerDependencies:
       eslint: '>=8.28.0 '
     dependencies:
-      '@estjs/eslint-config-basic': 0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
-      '@estjs/eslint-config-ts': 0.7.0(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
+      '@estjs/eslint-config-basic': 0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
+      '@estjs/eslint-config-ts': 0.7.2(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
       eslint: 8.43.0
       eslint-plugin-vue: 9.11.1(eslint@8.43.0)
     transitivePeerDependencies:
@@ -1885,17 +1885,17 @@ packages:
       - typescript
     dev: true
 
-  /@estjs/eslint-config@0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
-    resolution: {integrity: sha512-cS6B7SLWJkWe2Okt4gz/80MgzkpNyNCV4wL7VRmt8xlh+D4PdtBqOJxTsD8SFMu59MIQL1F/MqGGTkcn7BWkwA==}
+  /@estjs/eslint-config@0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5):
+    resolution: {integrity: sha512-riUmAHjT/Ym2fwIuAVh4ig+mSmxIBd+rzeDsWLJgc9i0oFmOI0+ghrIxGFcunmB9YYSYiw3+1EOHEO62p+JgpQ==}
     peerDependencies:
       eslint: '>=8.28.0 '
     dependencies:
-      '@estjs/eslint-config-basic': 0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
-      '@estjs/eslint-config-react': 0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
-      '@estjs/eslint-config-ts': 0.7.0(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
-      '@estjs/eslint-config-vue': 0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
-      '@estjs/eslint-config-vue2': 0.7.0(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
-      '@estjs/eslint-plugin': 0.7.0
+      '@estjs/eslint-config-basic': 0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)
+      '@estjs/eslint-config-react': 0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
+      '@estjs/eslint-config-ts': 0.7.2(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
+      '@estjs/eslint-config-vue': 0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
+      '@estjs/eslint-config-vue2': 0.7.2(@typescript-eslint/parser@5.59.2)(eslint@8.43.0)(prettier@2.8.8)(typescript@5.1.5)
+      '@estjs/eslint-plugin': 0.7.2
       eslint: 8.43.0
       local-pkg: 0.4.3
     transitivePeerDependencies:
@@ -1907,8 +1907,8 @@ packages:
       - typescript
     dev: true
 
-  /@estjs/eslint-plugin@0.7.0:
-    resolution: {integrity: sha512-TklSNXT6E9HD51iasoEX0Pz5/Oa0KNsjwPaP4z+Q/xDQfimYd6KgzeWUm5ISNJhix9ZtpFoPv2XRYq8VaSiCaQ==}
+  /@estjs/eslint-plugin@0.7.2:
+    resolution: {integrity: sha512-cuXFVLv0X7Li3YN21CXNRhkRxcEZumOxx1JkL7shqaVwlTaMAkNTo2NO8q+9GBIUNvcvhbKBSGlOedTbm6tuxg==}
     engines: {node: '>=14'}
     dependencies:
       '@unocss/config': 0.51.12

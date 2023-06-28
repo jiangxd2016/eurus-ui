@@ -7,15 +7,10 @@ import SelectDown from '@/packages/select-down';
 import Tag from '@/packages/tag';
 
 const slots = {
-  default: [
-    <EOption value="1" label="基础用法1"/>,
-    <EOption value="2" label="基础用法2"/>,
-    <EOption value="3" label="基础用法3"/>,
-  ]
+  default: [<EOption value="1" label="基础用法1" />, <EOption value="2" label="基础用法2" />, <EOption value="3" label="基础用法3" />],
 };
 
 describe('ESelect', () => {
-
   it('should work with `modelValue` props', async () => {
     const modelValue = ref('1');
     const wrapper = mount(ESelect, {
@@ -55,7 +50,7 @@ describe('ESelect', () => {
     wrapper.unmount();
   });
 
-  it('should work with `multiple,options` props', async ()=>{
+  it('should work with `multiple,options` props', async () => {
     const vals = ref(['1', '2']);
 
     const options = [
@@ -87,7 +82,7 @@ describe('ESelect', () => {
         modelValue: vals,
         options,
         multiple: true,
-      }
+      },
     });
     await nextTick();
     expect(wrapper.findComponent(SelectDown).findAllComponents(Tag).length).toBe(2);
@@ -96,6 +91,5 @@ describe('ESelect', () => {
     expect(wrapper.findComponent(SelectDown).findAll('.eu-select-option-selected').length).toBe(2);
 
     wrapper.unmount();
-
   });
 });

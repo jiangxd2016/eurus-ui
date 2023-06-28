@@ -49,7 +49,7 @@ const ETextareaProps = {
   showWordLimit: {
     type: Boolean,
     default: false,
-  }
+  },
 };
 
 export default defineComponent({
@@ -57,7 +57,6 @@ export default defineComponent({
   props: ETextareaProps,
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-
     const prefixCls = getPrefixCls('textarea');
 
     const _value = ref(props.modelValue);
@@ -65,9 +64,12 @@ export default defineComponent({
 
     const { formItemFields, validateEvent } = useFormValidate();
 
-    watch(() => props.modelValue, (val) => {
-      _value.value = val;
-    });
+    watch(
+      () => props.modelValue,
+      (val) => {
+        _value.value = val;
+      },
+    );
 
     const computedDisabled = computed(() => {
       return props.disabled || formItemFields?.disabled;
@@ -75,13 +77,13 @@ export default defineComponent({
     const computedCls = computed(() => {
       return {
         [prefixCls]: true,
-        [`${prefixCls}-disabled`]: computedDisabled.value
+        [`${prefixCls}-disabled`]: computedDisabled.value,
       };
     });
     const computedStyle = computed(() => {
       return {
         width: props.width,
-        overflow: props.autoHeight ? 'hidden' : ''
+        overflow: props.autoHeight ? 'hidden' : '',
       };
     });
 
@@ -109,9 +111,12 @@ export default defineComponent({
           wrap={props.wrap}
           onInput={handleChange}
         ></textarea>
-        {props.showWordLimit && props.maxlength && <span class="input-count" >{_value.value.length}/{props.maxlength}</span>}
+        {props.showWordLimit && props.maxlength && (
+          <span class="input-count">
+            {_value.value.length}/{props.maxlength}
+          </span>
+        )}
       </div>
-
     );
   },
 });

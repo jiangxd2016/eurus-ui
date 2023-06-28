@@ -18,9 +18,9 @@ describe('Locale', () => {
           setup() {
             const { t } = useI18n();
             return () => <div>{t('datePicker.today')}</div>;
-          }
-        })
-      }
+          },
+        }),
+      },
     });
     await nextTick();
     expect(wrapper.text()).toMatchInlineSnapshot('"Today"');

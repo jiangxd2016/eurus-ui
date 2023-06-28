@@ -1,4 +1,1 @@
-<template>
-  <ETrigger />
-</template>
-
+<template><ETrigger /></template>

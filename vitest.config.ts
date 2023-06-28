@@ -26,6 +26,6 @@ export default defineConfig({
     },
     globals: true,
     environment: 'happy-dom',
-    watch: false
+    watch: false,
   },
 });

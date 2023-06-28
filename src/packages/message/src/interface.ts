@@ -3,58 +3,40 @@ import type { MessageType, RenderContent } from '@/packages/_utils';
 
 export const MESSAGE_POSITION = ['top', 'bottom'] as const;
 
-export type MessagePosition = typeof MESSAGE_POSITION[number];
+export type MessagePosition = (typeof MESSAGE_POSITION)[number];
 
 export interface MessageMethod {
   /**
    * @zh 显示信息提示
    * @en Show info message
    */
-  info: (
-    config: string | MessageConfig,
-    appContext?: AppContext
-  ) => MessageReturn;
+  info: (config: string | MessageConfig, appContext?: AppContext) => MessageReturn;
   /**
    * @zh 显示成功提示
    * @en Show success message
    */
-  success: (
-    config: string | MessageConfig,
-    appContext?: AppContext
-  ) => MessageReturn;
+  success: (config: string | MessageConfig, appContext?: AppContext) => MessageReturn;
   /**
    * @zh 显示警告提示
    * @en Show warning message
    */
-  warning: (
-    config: string | MessageConfig,
-    appContext?: AppContext
-  ) => MessageReturn;
+  warning: (config: string | MessageConfig, appContext?: AppContext) => MessageReturn;
   /**
    * @zh 显示错误提示
    * @en Show error message
    */
-  error: (
-    config: string | MessageConfig,
-    appContext?: AppContext
-  ) => MessageReturn;
+  error: (config: string | MessageConfig, appContext?: AppContext) => MessageReturn;
   /**
    * @zh 显示加载中提示
    * @en Show loading message
    */
-  loading: (
-    config: string | MessageConfig,
-    appContext?: AppContext
-  ) => MessageReturn;
+  loading: (config: string | MessageConfig, appContext?: AppContext) => MessageReturn;
   /**
    * @zh 显示提示
    * @en Show message
    * @version 2.41.0
    */
-  normal: (
-    config: string | MessageConfig,
-    appContext?: AppContext
-  ) => MessageReturn;
+  normal: (config: string | MessageConfig, appContext?: AppContext) => MessageReturn;
   /**
    * @zh 清空全部提示
    * @en Clear all messages

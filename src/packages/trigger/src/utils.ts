@@ -32,10 +32,7 @@ interface ScrollRect {
   height: number;
 }
 
-export const getElementScrollRect = (
-  element: HTMLElement,
-  containerRect: DOMRect
-) => {
+export const getElementScrollRect = (element: HTMLElement, containerRect: DOMRect) => {
   const rect = element.getBoundingClientRect();
 
   return {
@@ -82,10 +79,7 @@ const getBoundaryPosition = (position: TriggerPosition): BasePosition => {
   }
 };
 
-const changePosition = (
-  position: TriggerPosition,
-  direction: BasePosition
-): TriggerPosition => {
+const changePosition = (position: TriggerPosition, direction: BasePosition): TriggerPosition => {
   switch (direction) {
     case 'top':
       switch (position) {
@@ -151,7 +145,7 @@ const getFitPosition = (
     popupRect: ScrollRect;
     offset: number;
     translate: TriggerPopupTranslate;
-  }
+  },
 ) => {
   const direction = getBoundaryPosition(position);
   const viewPortSize = getViewPortSize();
@@ -265,18 +259,14 @@ const getPopupOffset = (
   }: {
     offset?: number;
     translate?: TriggerPopupTranslate;
-  } = {}
+  } = {},
 ): PositionOffset => {
   const _translate = (isArray(translate) ? translate : translate[position]) ?? [0, 0];
 
   switch (position) {
     case 'top':
       return {
-        left:
-          triggerRect.scrollLeft
-          + Math.round(triggerRect.width / 2)
-          - Math.round(popupRect.width / 2)
-          + _translate[0],
+        left: triggerRect.scrollLeft + Math.round(triggerRect.width / 2) - Math.round(popupRect.width / 2) + _translate[0],
         top: triggerRect.scrollTop - popupRect.height - offset + _translate[1],
       };
     case 'tl':
@@ -291,11 +281,7 @@ const getPopupOffset = (
       };
     case 'bottom':
       return {
-        left:
-          triggerRect.scrollLeft
-          + Math.round(triggerRect.width / 2)
-          - Math.round(popupRect.width / 2)
-          + _translate[0],
+        left: triggerRect.scrollLeft + Math.round(triggerRect.width / 2) - Math.round(popupRect.width / 2) + _translate[0],
         top: triggerRect.scrollBottom + offset + _translate[1],
       };
     case 'bl':
@@ -311,11 +297,7 @@ const getPopupOffset = (
     case 'left':
       return {
         left: triggerRect.scrollLeft - popupRect.width - offset + _translate[0],
-        top:
-          triggerRect.scrollTop
-          + Math.round(triggerRect.height / 2)
-          - Math.round(popupRect.height / 2)
-          + _translate[1],
+        top: triggerRect.scrollTop + Math.round(triggerRect.height / 2) - Math.round(popupRect.height / 2) + _translate[1],
       };
     case 'lt':
       return {
@@ -330,11 +312,7 @@ const getPopupOffset = (
     case 'right':
       return {
         left: triggerRect.scrollRight + offset + _translate[0],
-        top:
-          triggerRect.scrollTop
-          + Math.round(triggerRect.height / 2)
-          - Math.round(popupRect.height / 2)
-          + _translate[1],
+        top: triggerRect.scrollTop + Math.round(triggerRect.height / 2) - Math.round(popupRect.height / 2) + _translate[1],
       };
     case 'rt':
       return {
@@ -385,7 +363,7 @@ export const getPopupStyle = (
     translate?: TriggerPopupTranslate;
     customStyle?: CSSProperties;
     autoFitPosition?: boolean;
-  } = {}
+  } = {},
 ): { style: CSSProperties; position: TriggerPosition } => {
   let finalPosition = position;
   let popupPosition = getPopupOffset(position, triggerRect, popupRect, {
@@ -425,12 +403,10 @@ export const getArrowStyle = (
     customStyle = {},
   }: {
     customStyle?: CSSProperties;
-  }
+  },
 ): CSSProperties => {
   if (['top', 'tl', 'tr', 'bottom', 'bl', 'br'].includes(position)) {
-    let offsetLeft = Math.abs(
-      triggerRect.scrollLeft + triggerRect.width / 2 - popupRect.scrollLeft
-    );
+    let offsetLeft = Math.abs(triggerRect.scrollLeft + triggerRect.width / 2 - popupRect.scrollLeft);
 
     if (offsetLeft > popupRect.width - 8) {
       if (triggerRect.width > popupRect.width) {
@@ -455,9 +431,7 @@ export const getArrowStyle = (
       ...customStyle,
     };
   }
-  let offsetTop = Math.abs(
-    triggerRect.scrollTop + triggerRect.height / 2 - popupRect.scrollTop
-  );
+  let offsetTop = Math.abs(triggerRect.scrollTop + triggerRect.height / 2 - popupRect.scrollTop);
 
   if (offsetTop > popupRect.height - 8) {
     if (triggerRect.height > popupRect.height) {
@@ -484,10 +458,7 @@ export const getArrowStyle = (
 };
 
 export const isScrollElement = (element: HTMLElement) => {
-  return (
-    element.scrollHeight > element.offsetHeight
-    || element.scrollWidth > element.offsetWidth
-  );
+  return element.scrollHeight > element.offsetHeight || element.scrollWidth > element.offsetWidth;
 };
 
 export const getScrollElements = (container: HTMLElement | undefined) => {

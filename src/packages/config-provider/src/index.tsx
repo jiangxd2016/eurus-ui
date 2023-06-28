@@ -16,7 +16,7 @@ const EConfigProviderProps = {
   },
   size: {
     type: String as PropType<Size>,
-    default: 'md'
+    default: 'md',
   },
   global: {
     type: Boolean,
@@ -26,20 +26,19 @@ const EConfigProviderProps = {
   darkMode: {
     type: Boolean,
     default: false,
-  }
+  },
 };
 
 export default defineComponent({
   name: 'EConfigProvider',
   props: EConfigProviderProps,
   setup(props, { slots }) {
-
     const { prefixCls, locale, size, darkMode } = toRefs(props);
     const config = reactive({
       prefixCls,
       locale,
       size,
-      darkMode
+      darkMode,
     });
     if (props.global) {
       const instance = getCurrentInstance();

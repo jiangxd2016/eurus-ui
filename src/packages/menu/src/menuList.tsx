@@ -1,12 +1,7 @@
 import type { PropType } from 'vue';
 import { Transition, inject, defineComponent, ref } from 'vue';
 import type { Item } from './interface';
-import {
-  MenuFlatChangeKeys,
-  MenuFlatKeys,
-  MenuPropsKeys, MenuSelectedChangeKeys,
-  MenuSelectedKeys, MenuSelectHoverKeys, noop
-} from '@/packages/_utils';
+import { MenuFlatChangeKeys, MenuFlatKeys, MenuPropsKeys, MenuSelectedChangeKeys, MenuSelectedKeys, MenuSelectHoverKeys, noop } from '@/packages/_utils';
 import ToolTip from '@/packages/tooltip';
 import EIcons from '@/packages/icons';
 
@@ -17,8 +12,7 @@ const EMenuListProps = {
   },
   itemUl: {
     type: Object as PropType<Item>,
-    default: () => {
-    },
+    default: () => {},
   },
   layer: {
     type: Number,
@@ -31,7 +25,6 @@ const MenuList = defineComponent({
   props: EMenuListProps,
   emits: ['click', 'select'],
   setup(props, { emit }) {
-
     // flat list
     const flatList = inject(MenuFlatKeys, ref([]));
     const { flatChange } = inject(MenuFlatChangeKeys, noop);
@@ -49,7 +42,7 @@ const MenuList = defineComponent({
       openkeys: [],
       theme: 'light',
       selectedKey: '',
-      collapsed: false
+      collapsed: false,
     });
 
     const pushOrSplice = (item: Item, add: boolean) => {
@@ -67,10 +60,7 @@ const MenuList = defineComponent({
     };
 
     const onMouseEvent = (item: Item, add: boolean) => {
-      if (
-        (menuProps.trigger === 'hover' && menuProps.mode === 'horizontal')
-				|| (menuProps.mode === 'vertical' && menuProps.collapsed)
-      ) {
+      if ((menuProps.trigger === 'hover' && menuProps.mode === 'horizontal') || (menuProps.mode === 'vertical' && menuProps.collapsed)) {
         pushOrSplice(item, add);
       }
     };
@@ -104,7 +94,6 @@ const MenuList = defineComponent({
       }
       emit('click', items);
       e.stopPropagation();
-
     };
 
     const select = (items: Item) => {
@@ -148,66 +137,48 @@ const MenuList = defineComponent({
     };
 
     return () => (
-			<Transition name="menu"
-									onBeforeEnter={() => beforeEvent}
-									onAfterEnter={() => afterEvent}
-									onBeforeLeave={() => beforeEvent}
-									onAfterLeave={() => afterEvent}>
-				{
-					<ul class={`layer-${props.layer}`}
-							style={{ display: (!props.itemUl || flatList.value.includes(props.itemUl?.key)) ? 'block' : 'none' }}
-					>
-
-						{props.items.map(item => (
-							<li
-								class={getItemCls(item)}
-								onKeydown={() => {
-								}}
-								onMouseenter={e => mouseenter(item, e)}
-								onMouseleave={e => mouseleave(item, e)}
-								onMousemove={e => mouseenter(item, e)}
-								onClick={e => click(item, e)}
-							>
-								<div class="menu-items" style={{ textIndent: (menuProps.mode === 'vertical' && !menuProps.collapsed) ? (props.layer * 10 + 10) + 'px' : '0px' }}
-								>
-									<span class="menu-title">
-										<ToolTip
-											content={item.label}
-											direction="right"
-											x={15}
-											disabled={!(props.layer === 0 && !item.children && menuProps.collapsed)}
-										>
-											<div class="title-icon" style={{ marginRight: (renderIcon(item) && !menuProps.collapsed) ? '18px' : '' }}>
-												{
-													renderIcon(item)
-												}
-											</div>
-										</ToolTip>
-										<span class="name">{item.label}</span>
-										{
-											item.children && (menuProps.collapsed ? <EIcons name="chevron-right" class="icon-arrow"></EIcons> : <EIcons name="chevron-down" class="icon-arrow"></EIcons>)
-										}
-									</span>
-									{
-										item.children && (
-											<MenuList
-												items={item.children}
-												itemUl={item}
-												layer={props.layer + 1}
-												onSelect={select}
-												onClick={clickEmit}
-											/>
-										)
-									}
-								</div>
-							</li>
-						))}
-					</ul>
-				}
-
-			</Transition>
+      <Transition
+        name="menu"
+        onBeforeEnter={() => beforeEvent}
+        onAfterEnter={() => afterEvent}
+        onBeforeLeave={() => beforeEvent}
+        onAfterLeave={() => afterEvent}
+      >
+        {
+          <ul class={`layer-${props.layer}`} style={{ display: !props.itemUl || flatList.value.includes(props.itemUl?.key) ? 'block' : 'none' }}>
+            {props.items.map((item) => (
+              <li
+                class={getItemCls(item)}
+                onKeydown={() => {}}
+                onMouseenter={(e) => mouseenter(item, e)}
+                onMouseleave={(e) => mouseleave(item, e)}
+                onMousemove={(e) => mouseenter(item, e)}
+                onClick={(e) => click(item, e)}
+              >
+                <div class="menu-items" style={{ textIndent: menuProps.mode === 'vertical' && !menuProps.collapsed ? props.layer * 10 + 10 + 'px' : '0px' }}>
+                  <span class="menu-title">
+                    <ToolTip content={item.label} direction="right" x={15} disabled={!(props.layer === 0 && !item.children && menuProps.collapsed)}>
+                      <div class="title-icon" style={{ marginRight: renderIcon(item) && !menuProps.collapsed ? '18px' : '' }}>
+                        {renderIcon(item)}
+                      </div>
+                    </ToolTip>
+                    <span class="name">{item.label}</span>
+                    {item.children &&
+                      (menuProps.collapsed ? (
+                        <EIcons name="chevron-right" class="icon-arrow"></EIcons>
+                      ) : (
+                        <EIcons name="chevron-down" class="icon-arrow"></EIcons>
+                      ))}
+                  </span>
+                  {item.children && <MenuList items={item.children} itemUl={item} layer={props.layer + 1} onSelect={select} onClick={clickEmit} />}
+                </div>
+              </li>
+            ))}
+          </ul>
+        }
+      </Transition>
     );
-  }
+  },
 });
 
 export default MenuList;

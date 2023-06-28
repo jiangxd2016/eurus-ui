@@ -1,4 +1,4 @@
-import { defineComponent, onMounted, provide, reactive, toRefs, } from 'vue';
+import { defineComponent, onMounted, provide, reactive, toRefs } from 'vue';
 import type { PropType } from 'vue';
 import './style.scss';
 import { formCtxKey } from '@/packages/_utils/constants';
@@ -27,7 +27,7 @@ export const EFormProps = {
   // label 位置 left center right
   labelAlign: {
     type: String as PropType<'left' | 'center' | 'right'>,
-    default: 'center'
+    default: 'center',
   },
   rules: {
     type: Object,
@@ -39,11 +39,10 @@ export default defineComponent({
   name: 'EForm',
   props: EFormProps,
   setup(props, { slots, expose }) {
-
     const prefixCls = getPrefixCls('form');
 
     const state = reactive({
-      defaultValue: '' // 用于保存所有表单元素初始值
+      defaultValue: '', // 用于保存所有表单元素初始值
     });
     const formItemFields: any = []; // 所有formItem
 
@@ -56,18 +55,18 @@ export default defineComponent({
     // 重置表单元素值
     const resetForm = () => {
       // 将所有提示清空
-      formItemFields
-      && formItemFields.forEach((item: any) => {
-        item.clear();
-        item.reset();
-      });
+      formItemFields &&
+        formItemFields.forEach((item: any) => {
+          item.clear();
+          item.reset();
+        });
     };
     // 清空校验提示
     const clearValidate = () => {
-      formItemFields
-      && formItemFields.forEach((item: any) => {
-        item.clear();
-      });
+      formItemFields &&
+        formItemFields.forEach((item: any) => {
+          item.clear();
+        });
     };
     const validate = () => {
       const allTips: string[] = [];
@@ -97,7 +96,6 @@ export default defineComponent({
               returnResult();
             });
         });
-
       });
     };
     onMounted(() => {
@@ -107,17 +105,18 @@ export default defineComponent({
     const addFormItemField = (Field: any) => {
       formItemFields.push(Field);
     };
-    provide(formCtxKey, reactive({
-      ...toRefs(props),
-      addFormItemField,
-    }));
+    provide(
+      formCtxKey,
+      reactive({
+        ...toRefs(props),
+        addFormItemField,
+      }),
+    );
     expose({ validate, clearValidate, resetForm });
     return () => (
-      <form class={props.inline ? `${prefixCls}__inline` : prefixCls} onSubmit={event=>event.preventDefault()}>
+      <form class={props.inline ? `${prefixCls}__inline` : prefixCls} onSubmit={(event) => event.preventDefault()}>
         {slots.default && slots.default()}
       </form>
-
     );
   },
 });
-

@@ -13,19 +13,11 @@ const showCode = ref(false);
         <slot name="demo" />
       </div>
 
-      <div
-        class="flex b-#ccc items-center justify-end mt-2 text-gray-600 b-t-1 p-y-2 p-x-4 dark:text-gray-600"
-        :class="{ '!text-primary': showCode }"
-      >
-        <div
-          class="i-carbon-code cursor-pointer"
-          @click="showCode = !showCode"
-        />
+      <div class="flex b-#ccc items-center justify-end mt-2 text-gray-600 b-t-1 p-y-2 p-x-4 dark:text-gray-600" :class="{ '!text-primary': showCode }">
+        <div class="i-carbon-code cursor-pointer" @click="showCode = !showCode" />
       </div>
 
-      <div
-        v-show="showCode"
-      >
+      <div v-show="showCode">
         <slot name="code" />
       </div>
     </div>
@@ -33,7 +25,7 @@ const showCode = ref(false);
 </template>
 
 <style>
-.vp-docs{
+.vp-docs {
   margin: 0 !important;
 }
 </style>

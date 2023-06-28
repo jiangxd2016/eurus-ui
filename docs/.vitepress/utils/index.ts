@@ -1,7 +1,7 @@
 export const extractFileNameFromPath = (path: string): string => {
   // console.log(path.split('/').at(-3) as string + path.split('/').at(-1)?.split('.')[0] as string);
 
-  return path.split('/').at(-3) as string + path.split('/').at(-1)?.split('.')[0] as string;
+  return ((path.split('/').at(-3) as string) + path.split('/').at(-1)?.split('.')[0]) as string;
 };
 
 export const extractFileNameFromGlobImport = (demos: string[]) => {
@@ -12,4 +12,3 @@ export const extractFileNameFromGlobImport = (demos: string[]) => {
 
   return names;
 };
-

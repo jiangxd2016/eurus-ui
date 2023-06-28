@@ -17,7 +17,7 @@ export const scrollTop = (element: HTMLElement | Document = document.body) => {
   return el.scrollTop;
 };
 
-export function isDocument (node: Node): node is Document {
+export function isDocument(node: Node): node is Document {
   return node.nodeName === '#document';
 }
 export const isServerRendering = (() => {
@@ -36,13 +36,9 @@ export const on = (() => {
     element: HTMLElement | Window,
     event: K,
     handler: (ev: HTMLElementEventMap[K]) => void,
-    options: boolean | AddEventListenerOptions = false
+    options: boolean | AddEventListenerOptions = false,
   ) => {
-    element.addEventListener(
-      event,
-      handler as EventListenerOrEventListenerObject,
-      options
-    );
+    element.addEventListener(event, handler as EventListenerOrEventListenerObject, options);
   };
 })();
 
@@ -54,27 +50,16 @@ export const off = (() => {
     element: HTMLElement | Window,
     type: K,
     handler: (ev: HTMLElementEventMap[K]) => void,
-    options: boolean | EventListenerOptions = false
+    options: boolean | EventListenerOptions = false,
   ) => {
-    element.removeEventListener(
-      type,
-      handler as EventListenerOrEventListenerObject,
-      options
-    );
+    element.removeEventListener(type, handler as EventListenerOrEventListenerObject, options);
   };
 })();
 
 export const getOffset = (el: HTMLElement): Offset => {
-
   const componentRect: DOMRect = el.getBoundingClientRect();
-  const top
-    = componentRect.top
-    + (window.pageYOffset || document.documentElement.scrollTop)
-    - (document.documentElement.clientTop || 0);
-  const left
-    = componentRect.left
-    + (window.pageXOffset || document.documentElement.scrollLeft)
-    - (document.documentElement.clientLeft || 0);
+  const top = componentRect.top + (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
+  const left = componentRect.left + (window.pageXOffset || document.documentElement.scrollLeft) - (document.documentElement.clientLeft || 0);
   const width = el.offsetWidth;
   const height = el.offsetHeight;
   return { left, top, width, height };
@@ -82,29 +67,19 @@ export const getOffset = (el: HTMLElement): Offset => {
 
 export const getWindow = () => {
   // 返回窗口宽高
-  const width
-    = document.documentElement.clientWidth || document.body.clientWidth;
-  const height
-    = document.documentElement.clientHeight || document.body.clientHeight;
+  const width = document.documentElement.clientWidth || document.body.clientWidth;
+  const height = document.documentElement.clientHeight || document.body.clientHeight;
   return { width, height };
 };
 
-export const querySelector = (
-  selectors: string,
-  container?: Document | HTMLElement
-) => {
+export const querySelector = (selectors: string, container?: Document | HTMLElement) => {
   if (isServerRendering) {
     return NOOP();
   }
-  return (
-    (container ?? document).querySelector<HTMLElement>(selectors) ?? undefined
-  );
+  return (container ?? document).querySelector<HTMLElement>(selectors) ?? undefined;
 };
 
-export const getElement = (
-  target: string | HTMLElement | undefined,
-  container?: Document | HTMLElement
-): HTMLElement | undefined => {
+export const getElement = (target: string | HTMLElement | undefined, container?: Document | HTMLElement): HTMLElement | undefined => {
   if (isString(target)) {
     const selector = target[0] === '#' ? `[id='${target.slice(1)}']` : target;
     return querySelector(selector, container);

@@ -1,19 +1,7 @@
 <template>
   <transition>
-    <div
-      ref="trackRef"
-      :class="[
-        `${prefixCls}-track`,
-        `${prefixCls}-track-direction-${direction}`,
-      ]"
-      @mousedown.self="handleTrackClick"
-    >
-      <div
-        ref="thumbRef"
-        :class="thumbCls"
-        :style="thumbStyle"
-        @mousedown="handleThumbMouseDown"
-      >
+    <div ref="trackRef" :class="[`${prefixCls}-track`, `${prefixCls}-track-direction-${direction}`]" @mousedown.self="handleTrackClick">
+      <div ref="thumbRef" :class="thumbCls" :style="thumbStyle" @mousedown="handleThumbMouseDown">
         <div :class="`${prefixCls}-thumb-bar`" />
       </div>
     </div>
@@ -88,9 +76,7 @@ export default defineComponent({
       ev.preventDefault();
 
       if (thumbRef.value) {
-        mouseOffset.value
-          = ev[thumbMap.value.client]
-          - thumbRef.value.getBoundingClientRect()[thumbMap.value.direction];
+        mouseOffset.value = ev[thumbMap.value.client] - thumbRef.value.getBoundingClientRect()[thumbMap.value.direction];
         isDragging.value = true;
         on(window, 'mousemove', handleMouseMove);
         on(window, 'mouseup', handleMouseUp);
@@ -103,10 +89,9 @@ export default defineComponent({
 
       if (thumbRef.value) {
         const _offset = getLegalOffset(
-          ev[thumbMap.value.client]
-            > thumbRef.value.getBoundingClientRect()[thumbMap.value.direction]
+          ev[thumbMap.value.client] > thumbRef.value.getBoundingClientRect()[thumbMap.value.direction]
             ? offset.value + (props.data?.thumbSize ?? 0)
-            : offset.value - (props.data?.thumbSize ?? 0)
+            : offset.value - (props.data?.thumbSize ?? 0),
         );
         if (_offset !== offset.value) {
           offset.value = _offset;
@@ -127,11 +112,7 @@ export default defineComponent({
 
     const handleMouseMove = (ev: MouseEvent) => {
       if (trackRef.value && thumbRef.value) {
-        const _offset = getLegalOffset(
-          ev[thumbMap.value.client]
-            - trackRef.value.getBoundingClientRect()[thumbMap.value.direction]
-            - mouseOffset.value
-        );
+        const _offset = getLegalOffset(ev[thumbMap.value.client] - trackRef.value.getBoundingClientRect()[thumbMap.value.direction] - mouseOffset.value);
         if (_offset !== offset.value) {
           offset.value = _offset;
           emit('scroll', _offset);

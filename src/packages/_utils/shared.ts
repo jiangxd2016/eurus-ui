@@ -22,7 +22,6 @@ export function getValue(object: Record<string, any>, path: string): unknown {
     result = result[p];
   }
   return result;
-
 }
 
 export function throttle(fn: Function, stop: number) {
@@ -38,7 +37,9 @@ export function throttle(fn: Function, stop: number) {
 }
 export const getSlotFunction = (param: RenderContent | undefined) => {
   if (param) {
-    if (isFunction(param)) { return param; }
+    if (isFunction(param)) {
+      return param;
+    }
     return () => param;
   }
   return undefined;
@@ -56,7 +57,7 @@ export const toKebabCase = (string: string): string => {
 // xx-xxx-xx => xxXXXxx
 export const toPascalCase = (string: string): string => {
   return string
-    .replace(/^./, match => match.toLocaleUpperCase())
+    .replace(/^./, (match) => match.toLocaleUpperCase())
     .replaceAll(/-(.)/g, (match, p1: string) => {
       return p1.toLocaleUpperCase();
     });

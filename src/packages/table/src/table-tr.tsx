@@ -43,7 +43,7 @@ export default defineComponent({
         { class: cls.value },
         {
           default: slots.default,
-        }
+        },
       );
     };
   },

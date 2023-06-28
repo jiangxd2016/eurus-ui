@@ -17,28 +17,28 @@
 const columns = [
   {
     title: '名称',
-    slotName: 'name'
+    slotName: 'name',
   },
   {
     title: 'ID',
-    dataIndex: 'id'
+    dataIndex: 'id',
   },
   {
     title: '标示',
-    dataIndex: 'code'
+    dataIndex: 'code',
   },
   {
     title: '备注',
-    dataIndex: 'remark'
+    dataIndex: 'remark',
   },
   {
     title: '创建时间',
-    slotName: 'create_time'
+    slotName: 'create_time',
   },
   {
     title: '操作',
-    slotName: 'option'
-  }
+    slotName: 'option',
+  },
 ];
 
 const data = [
@@ -104,7 +104,6 @@ const data = [
     model_name: 'A模型',
     remark: null,
     create_time: '2023-04-26T10:24:14.865710',
-
   },
   {
     id: '8',
@@ -114,7 +113,6 @@ const data = [
     model_name: 'A模型',
     remark: null,
     create_time: '2023-04-26T10:17:58.546062',
-
   },
   {
     id: '9',
@@ -124,7 +122,6 @@ const data = [
     model_name: 'B模型',
     remark: null,
     create_time: '2023-04-25T15:14:08.164173',
-
   },
 ];
 </script>

@@ -2,13 +2,11 @@ import type { VNodeChild, VNode } from 'vue';
 import { Fragment, createTextVNode, Comment } from 'vue';
 
 // o(n) flatten
-export function flatten (
-  vNodes: VNodeChild[],
-  filterCommentNode = true,
-  result: VNode[] = []
-): VNode[] {
+export function flatten(vNodes: VNodeChild[], filterCommentNode = true, result: VNode[] = []): VNode[] {
   vNodes.forEach((vNode) => {
-    if (vNode === null) { return; }
+    if (vNode === null) {
+      return;
+    }
     if (typeof vNode !== 'object') {
       if (typeof vNode === 'string' || typeof vNode === 'number') {
         result.push(createTextVNode(String(vNode)));
@@ -20,7 +18,9 @@ export function flatten (
       return;
     }
     if (vNode.type === Fragment) {
-      if (vNode.children === null) { return; }
+      if (vNode.children === null) {
+        return;
+      }
       if (Array.isArray(vNode.children)) {
         flatten(vNode.children, filterCommentNode, result);
       }

@@ -2,15 +2,8 @@ import type { CSSProperties, RenderFunction, Slots, VNodeChild } from 'vue';
 import type { TriggerProps } from '@/packages/trigger';
 import type { BaseType, ClassName, Data } from '@/packages/_utils/types';
 
-export const TABLE_PAGE_POSITION = [
-  'tl',
-  'top',
-  'tr',
-  'bl',
-  'bottom',
-  'br',
-] as const;
-export type TablePagePosition = typeof TABLE_PAGE_POSITION[number];
+export const TABLE_PAGE_POSITION = ['tl', 'top', 'tr', 'bl', 'bottom', 'br'] as const;
+export type TablePagePosition = (typeof TABLE_PAGE_POSITION)[number];
 
 export interface TableData {
   /**
@@ -63,13 +56,7 @@ export interface TableSortable {
    * @zh 排序函数。设置为 `true` 可关闭内部排序。2.19.0 版本修改传出数据。
    * @en Sorting function. Set to `true` to turn off internal sorting. Version 2.19.0 modifies outgoing data.
    */
-  sorter?:
-  | ((
-    a: TableData,
-    b: TableData,
-    extra: { dataIndex: string; direction: 'ascend' | 'descend' }
-  ) => number)
-  | boolean;
+  sorter?: ((a: TableData, b: TableData, extra: { dataIndex: string; direction: 'ascend' | 'descend' }) => number) | boolean;
   /**
    * @zh 排序方向
    * @en Sort direction
@@ -255,11 +242,7 @@ export interface TableColumnData {
    * @zh 自定义列单元格的渲染
    * @en Customize the rendering of column cells
    */
-  render?: (data: {
-    record: TableData;
-    column: TableColumnData;
-    rowIndex: number;
-  }) => VNodeChild;
+  render?: (data: { record: TableData; column: TableColumnData; rowIndex: number }) => VNodeChild;
   /**
    * @zh 设置当前列的渲染插槽的名字。插槽参数同 #cell
    * @en Sets the name of the render slot for the current column. Slot parameters are the same as #cell
@@ -423,11 +406,7 @@ export interface TableDraggable {
   fixed?: boolean;
 }
 
-export type OperationName =
-  | 'selection-checkbox'
-  | 'selection-radio'
-  | 'expand'
-  | 'drag-handle';
+export type OperationName = 'selection-checkbox' | 'selection-radio' | 'expand' | 'drag-handle';
 
 export interface TableOperationColumn {
   name: OperationName | string;
@@ -439,11 +418,7 @@ export interface TableOperationColumn {
 }
 
 export interface TableComponents {
-  operations: (operations: {
-    dragHandle?: TableOperationColumn;
-    expand?: TableOperationColumn;
-    selection?: TableOperationColumn;
-  }) => TableOperationColumn[];
+  operations: (operations: { dragHandle?: TableOperationColumn; expand?: TableOperationColumn; selection?: TableOperationColumn }) => TableOperationColumn[];
 }
 
 export interface TableChangeExtra {
@@ -489,6 +464,9 @@ export interface TableProps {
   pagePosition?: string;
 }
 
-export interface Sorter { field: string; direction: 'ascend' | 'descend' }
+export interface Sorter {
+  field: string;
+  direction: 'ascend' | 'descend';
+}
 
 export type Filters = Record<string, string[]>;

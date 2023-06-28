@@ -12,5 +12,4 @@ const inputValue = ref('KFC');
   <EInput v-model="inputValue" size="xl" />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

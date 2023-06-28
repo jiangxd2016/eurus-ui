@@ -16,10 +16,7 @@ interface UiCreateOptions {
   componentPrefix?: string;
 }
 
-function create({
-  componentPrefix = COMPONENT_PREFIX,
-  components = Object.values(all)
-}: UiCreateOptions = {}): UiInstance {
+function create({ componentPrefix = COMPONENT_PREFIX, components = Object.values(all) }: UiCreateOptions = {}): UiInstance {
   const installTargets: App[] = [];
 
   function registerComponent(app: App, name: string, component: ComponentType, options: any[]) {

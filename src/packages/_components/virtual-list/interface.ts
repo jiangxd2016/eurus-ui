@@ -56,9 +56,7 @@ export interface VirtualListProps {
   component?: keyof HTMLElementTagNameMap;
 }
 
-export type ScrollOptions =
-  | number
-  | { index?: number; key?: VirtualItemKey; align?: 'auto' | 'top' | 'bottom' };
+export type ScrollOptions = number | { index?: number; key?: VirtualItemKey; align?: 'auto' | 'top' | 'bottom' };
 
 export interface VirtualListRef {
   scrollTo: (options: ScrollOptions) => void;

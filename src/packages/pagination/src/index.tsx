@@ -15,7 +15,7 @@ const EPaginationProps = {
   pageSizes: { type: Array as PropType<number[]>, default: () => [] },
   showTotal: { type: Boolean },
   hideSinglePage: { type: Boolean },
-  format: { type: Boolean }
+  format: { type: Boolean },
 };
 // showJumper?: boolean // 显示快速切换到某一页
 // pagerCount?: number // 点击折叠向前或向后跳多少页
@@ -38,7 +38,7 @@ export default defineComponent({
     const state = reactive({
       active: props.current, // 当前页
       goToPage: props.current, // 快速跳到第几页
-      selectChange: props.pageSize
+      selectChange: props.pageSize,
     });
     const pageCount = computed(() => {
       return Math.ceil(props.total / state.selectChange);
@@ -58,8 +58,7 @@ export default defineComponent({
         start = state.active - pagerCount2;
       } else {
         // 当前页小于pagerCount时
-        end
-					= props.pagerCount > pageCount.value ? pageCount.value : props.pagerCount;
+        end = props.pagerCount > pageCount.value ? pageCount.value : props.pagerCount;
       }
       // 接近尾页时
       if (pageCount.value - state.active < props.pagerCount) {
@@ -98,9 +97,7 @@ export default defineComponent({
     const formatValue = computed(() => {
       let val = props.total.toString();
       if (props.format) {
-        val = props.total
-          .toString()
-          .replaceAll(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,');
+        val = props.total.toString().replaceAll(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,');
       }
       return val;
     });
@@ -112,7 +109,7 @@ export default defineComponent({
           state.active = pageCount.value;
         }
         emits('changePageSizes', val);
-      }
+      },
     );
     const goTo = (page: number, disabled?: boolean) => {
       if (disabled) {
@@ -136,81 +133,73 @@ export default defineComponent({
       goTo(toPage);
     };
     return () => (
-			<div v-show={!hidePage.value} class={[prefixCls]}>
-				{
-					props.showTotal && <div class="total">共<span>{ formatValue.value }</span>条</div>
-				}
-				{
-					props.pageSizes.length > 0 && <ESelect v-model={state.selectChange} options={selectOptions.value} />
-				}
-				<div class="page-list">
-					<ul>
-						<li>
-							<a
-								title="上一页"
-								class={{ prev: true, disabled: state.active === 1 }}
-								onClick={() => goTo(state.active - 1, state.active === 1)}>&lt;</a>
-						</li>
-						<li>
-							<a
-								title="1"
-								class={{ active: state.active === 1 }}
-								onClick={() => goTo(1, state.active === 1)}>1</a>
-						</li>
-						{
-							pageStart.value > 2 && <li>
-								<a
-									title={`向前${props.pagerCount}页`}
-									class="jump-prev"
-									onClick={() => goTo(state.active - props.pagerCount)}
-								></a>
-							</li>
-						}
-						{
-							pages.value[0].map((page: number, index: number) => (
-									<li key={index}>
-										<a
-											title={page.toString()}
-											class={{ active: page === state.active }}
-											onClick={() => goTo(page, page === state.active)}
-										>{page}</a>
-									</li>)
-							)}
-						{
-							pageCount.value > pageEnd.value + 1 && <li>
-								<a
-									title={`向后${props.pagerCount}页`}
-									class="jump-next"
-									onClick={() => goTo(state.active + props.pagerCount)}
-								></a>
-							</li>
-						}
+      <div v-show={!hidePage.value} class={[prefixCls]}>
+        {props.showTotal && (
+          <div class="total">
+            共<span>{formatValue.value}</span>条
+          </div>
+        )}
+        {props.pageSizes.length > 0 && <ESelect v-model={state.selectChange} options={selectOptions.value} />}
+        <div class="page-list">
+          <ul>
+            <li>
+              <a title="上一页" class={{ prev: true, disabled: state.active === 1 }} onClick={() => goTo(state.active - 1, state.active === 1)}>
+                &lt;
+              </a>
+            </li>
+            <li>
+              <a title="1" class={{ active: state.active === 1 }} onClick={() => goTo(1, state.active === 1)}>
+                1
+              </a>
+            </li>
+            {pageStart.value > 2 && (
+              <li>
+                <a title={`向前${props.pagerCount}页`} class="jump-prev" onClick={() => goTo(state.active - props.pagerCount)}></a>
+              </li>
+            )}
+            {pages.value[0].map((page: number, index: number) => (
+              <li key={index}>
+                <a title={page.toString()} class={{ active: page === state.active }} onClick={() => goTo(page, page === state.active)}>
+                  {page}
+                </a>
+              </li>
+            ))}
+            {pageCount.value > pageEnd.value + 1 && (
+              <li>
+                <a title={`向后${props.pagerCount}页`} class="jump-next" onClick={() => goTo(state.active + props.pagerCount)}></a>
+              </li>
+            )}
 
-						{pageCount.value > 1 && <li>
-							<a
-								title={pageCount.value + ''}
-								class={{ active: state.active === pageCount.value }}
-								onClick={() => goTo(pageCount.value, state.active === pageCount.value)}
-							>{pageCount.value}</a >
-						</li>}
+            {pageCount.value > 1 && (
+              <li>
+                <a
+                  title={pageCount.value + ''}
+                  class={{ active: state.active === pageCount.value }}
+                  onClick={() => goTo(pageCount.value, state.active === pageCount.value)}
+                >
+                  {pageCount.value}
+                </a>
+              </li>
+            )}
 
-						<li>
-							<a
-								title="下一页"
-								class={{ next: true, disabled: pageCount.value <= state.active }}
-								onClick={() => goTo(state.active + 1, pageCount.value <= state.active)}
-							>&gt;</a >
-						</li>
-					</ul>
-				</div>
-				{
-					props.showJumper && <div class="show-jumper">
-						前往
-						<EInputNumber v-model={state.goToPage} max={5} onBlur={blur} />
-						页
-					</div>
-				}
-			</div>
+            <li>
+              <a
+                title="下一页"
+                class={{ next: true, disabled: pageCount.value <= state.active }}
+                onClick={() => goTo(state.active + 1, pageCount.value <= state.active)}
+              >
+                &gt;
+              </a>
+            </li>
+          </ul>
+        </div>
+        {props.showJumper && (
+          <div class="show-jumper">
+            前往
+            <EInputNumber v-model={state.goToPage} max={5} onBlur={blur} />页
+          </div>
+        )}
+      </div>
     );
-  }
+  },
 });

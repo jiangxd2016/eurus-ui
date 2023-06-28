@@ -5,7 +5,6 @@ import ECheckbox from '..';
 import ECheckboxGroup from '../src/checkbox-group';
 
 describe('ECheckbox', () => {
-
   it('ECheckbox snapshot', () => {
     const wrapper = mount(ECheckbox);
     expect(wrapper.html()).toMatchSnapshot();
@@ -17,11 +16,9 @@ describe('ECheckbox', () => {
     const wrapper = mount(ECheckbox, {
       props: {
         modelValue: false,
-        onChange: fn
-
-      }
-    }
-    );
+        onChange: fn,
+      },
+    });
     await wrapper.find('input').trigger('change');
     expect(fn).toHaveBeenCalled();
   });
@@ -32,8 +29,8 @@ describe('ECheckbox', () => {
       props: {
         modelValue: false,
         onChange: fn,
-        disabled: true
-      }
+        disabled: true,
+      },
     });
     await wrapper.find('input').trigger('change');
     expect(fn).not.toHaveBeenCalled();
@@ -44,12 +41,11 @@ describe('ECheckbox', () => {
     const wrapper = mount(ECheckboxGroup, {
       props: {
         modelValue: ['1'],
-        onChange: fn
+        onChange: fn,
       },
       slots: {
-
-        default: () => h(ECheckbox, { label: '1', value: '1' })
-      }
+        default: () => h(ECheckbox, { label: '1', value: '1' }),
+      },
     });
     expect(wrapper.html()).toMatchSnapshot();
     await wrapper.findComponent(ECheckbox).find('input').trigger('change');
@@ -59,11 +55,10 @@ describe('ECheckbox', () => {
   it('should work with label props', () => {
     const wrapper = mount(ECheckbox, {
       props: {
-        label: 'test'
-      }
+        label: 'test',
+      },
     });
     expect(wrapper.html()).toMatchSnapshot();
     expect(wrapper.find('.eu-checkbox__label').text()).toBe('test');
   });
 });
-

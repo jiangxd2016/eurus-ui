@@ -1,6 +1,4 @@
-<template>
-  <ESwitch v-model="switchValue" checked-color="red" unchecked-color="blue" @change="onChange" />
-</template>
+<template><ESwitch v-model="switchValue" checked-color="red" unchecked-color="blue" @change="onChange" /></template>
 
 <script setup lang="ts">
 import { ref } from 'vue';

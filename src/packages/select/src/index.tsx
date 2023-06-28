@@ -7,7 +7,7 @@ import SelectDown from '@/packages/select-down';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { selectKey } from '@/packages/_utils/constants';
 import { ESelectDownProps } from '@/packages/select-down/src';
-import { isArray, } from '@/packages/_utils/is';
+import { isArray } from '@/packages/_utils/is';
 import { warn } from '@/packages/_utils/warn';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
 import { useFormValidate } from '@/packages/_utils/form';
@@ -24,7 +24,7 @@ const ESelectProps = {
   options: {
     type: Array as PropType<SelectOptionItem[]>,
     default: () => [],
-  }
+  },
 };
 
 export default defineComponent({
@@ -32,7 +32,6 @@ export default defineComponent({
   props: ESelectProps,
   emits: ['update:modelValue', 'change', 'clear', 'focus', 'blur'],
   setup(props, { emit, slots }) {
-
     if (__DEV__ && !props.multiple && isArray(props.modelValue)) {
       warn('ESelectDown', 'modelValue must be a string or number when multiple is false');
     }
@@ -50,13 +49,16 @@ export default defineComponent({
       return props.disabled || formItemFields?.disabled;
     });
     const computedLabel = computed(() => {
-
       const options = props.options.length > 0 ? props.options : _options.value;
 
       if (props.multiple) {
-        return options.filter((option: any) => {
-          return Array.isArray(_value.value) && _value.value.includes(option.value);
-        }).map((option: any) => option.label) ?? [];
+        return (
+          options
+            .filter((option: any) => {
+              return Array.isArray(_value.value) && _value.value.includes(option.value);
+            })
+            .map((option: any) => option.label) ?? []
+        );
       } else {
         return options.find((option: any) => option.value === _value.value)?.label ?? '';
       }
@@ -76,7 +78,6 @@ export default defineComponent({
         } else {
           _value.value = [value];
         }
-
       } else {
         _value.value = value;
       }
@@ -96,7 +97,6 @@ export default defineComponent({
       const options = props.options.length > 0 ? props.options : _options.value;
       const value = options.find((option: SelectOptionItem) => option.label === label)?.value ?? '';
       selectItem(value);
-
     };
 
     const handleClear = () => {
@@ -113,21 +113,26 @@ export default defineComponent({
     provide(selectKey, reactive({ ...toRefs(props), selectItem, setOption }));
 
     return () => {
-      return <SelectDown class={prefixCls} {...props} modelValue={computedLabel.value}
-                         placeholder={computedPlaceholder.value}
-                          disabled={computedDisabled.value}
-                         onUpdate:modelValue={onUpdateModelValue} ref={selectDownRef}
-                         onClear={handleClear}
-      >
-        {props.options.length > 0 ? props.options.map((option: any) => {
-          return <Option value={option.value} label={option.label} disabled={option.disabled}
-                         onClick={selectItem}
-          />;
-        }) : slots.default && slots.default()
-        }
+      return (
+        <SelectDown
+          class={prefixCls}
+          {...props}
+          modelValue={computedLabel.value}
+          placeholder={computedPlaceholder.value}
+          disabled={computedDisabled.value}
+          onUpdate:modelValue={onUpdateModelValue}
+          ref={selectDownRef}
+          onClear={handleClear}
+        >
+          {props.options.length > 0
+            ? props.options.map((option: any) => {
+                return <Option value={option.value} label={option.label} disabled={option.disabled} onClick={selectItem} />;
+              })
+            : slots.default && slots.default()}
 
-        {/* TODO: need empty style  */}
-      </SelectDown>;
+          {/* TODO: need empty style  */}
+        </SelectDown>
+      );
     };
   },
 });

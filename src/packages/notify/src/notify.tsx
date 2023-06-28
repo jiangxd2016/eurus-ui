@@ -34,11 +34,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('notify');
 
     const computedCls = computed(() => {
-      return [
-        prefixCls,
-				`${prefixCls}-${props.type}`,
-				{ [`${prefixCls}-closable`]: props.closable },
-      ];
+      return [prefixCls, `${prefixCls}-${props.type}`, { [`${prefixCls}-closable`]: props.closable }];
     });
 
     let timer = 0;
@@ -72,39 +68,25 @@ export default defineComponent({
       }
     });
     return () => (
-			<li
-				role="alert"
-				class={computedCls.value}
-			>
-				<div class={`${prefixCls}-left`}>
-					{props.showIcon && (
-						<EIcons name={iconName} class={`${prefixCls}-icon ${prefixCls}-icon-${props.type}`} size="sm"></EIcons>
-					)}
-				</div>
-				<div class={`${prefixCls}-right`}>
-					<div class={`${prefixCls}-title`}>
-						{slots?.default?.()}
-					</div>
-					<div class={`${prefixCls}-content`}>
-						{slots?.content?.()}
-					</div>
-					{slots?.footer && <div class={`${prefixCls}-footer`}>
-						{slots.footer()}
-					</div>}
-
-				</div>
-				{props.closable && (
-					<EButton
-					round
-					type="text"
-					class={`${prefixCls}-close`}
-					onClick={handleClose}
-					v-slots={{ default: () => <EIcons name="close" color="#aaa"/> }}
-					>
-					</EButton>
-
-				)}
-			</li>
+      <li role="alert" class={computedCls.value}>
+        <div class={`${prefixCls}-left`}>
+          {props.showIcon && <EIcons name={iconName} class={`${prefixCls}-icon ${prefixCls}-icon-${props.type}`} size="sm"></EIcons>}
+        </div>
+        <div class={`${prefixCls}-right`}>
+          <div class={`${prefixCls}-title`}>{slots?.default?.()}</div>
+          <div class={`${prefixCls}-content`}>{slots?.content?.()}</div>
+          {slots?.footer && <div class={`${prefixCls}-footer`}>{slots.footer()}</div>}
+        </div>
+        {props.closable && (
+          <EButton
+            round
+            type="text"
+            class={`${prefixCls}-close`}
+            onClick={handleClose}
+            v-slots={{ default: () => <EIcons name="close" color="#aaa" /> }}
+          ></EButton>
+        )}
+      </li>
     );
-  }
+  },
 });

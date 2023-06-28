@@ -23,11 +23,6 @@ export default defineComponent({
     const prefixCls = getPrefixCls('button-group');
 
     provide(buttonGroupKey, props);
-    return () => (
-      <div class={[prefixCls, props.vertical && 'vertical']}>
-        {slots?.default && slots.default()}
-      </div>
-
-    );
-  }
+    return () => <div class={[prefixCls, props.vertical && 'vertical']}>{slots?.default && slots.default()}</div>;
+  },
 });

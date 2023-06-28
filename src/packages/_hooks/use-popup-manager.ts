@@ -15,10 +15,8 @@ class PopupManager {
   };
 
   private getNextZIndex = (type: PopupType) => {
-    const current
-      = type === 'message'
-        ? Array.from(this.popupStack.message).pop() || MESSAGE_BASE_Z_INDEX
-        : Array.from(this.popupStack.popup).pop() || POPUP_BASE_Z_INDEX;
+    const current =
+      type === 'message' ? Array.from(this.popupStack.message).pop() || MESSAGE_BASE_Z_INDEX : Array.from(this.popupStack.popup).pop() || POPUP_BASE_Z_INDEX;
     return current + Z_INDEX_STEP;
   };
 
@@ -56,7 +54,7 @@ export default function usePopupManager(
   }: {
     visible?: Ref<boolean>;
     runOnMounted?: boolean;
-  } = {}
+  } = {},
 ) {
   const zIndex = ref(0);
 
@@ -86,7 +84,7 @@ export default function usePopupManager(
     },
     {
       immediate: true,
-    }
+    },
   );
 
   if (runOnMounted) {

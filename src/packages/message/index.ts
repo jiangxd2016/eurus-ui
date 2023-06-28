@@ -13,7 +13,6 @@ const Message: any = {
 
     for (const key of types) {
       _message[key] = (config, appContext = app._context) => {
-
         return EMessage[key](config, appContext);
       };
     }

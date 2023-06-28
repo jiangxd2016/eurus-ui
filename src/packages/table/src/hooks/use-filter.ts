@@ -23,8 +23,7 @@ export const useFilter = ({
     const filters: Filters = {};
     for (const item of columns.value) {
       if (item.dataIndex) {
-        const value
-          = item.filterable?.filteredValue ?? _filters.value[item.dataIndex];
+        const value = item.filterable?.filteredValue ?? _filters.value[item.dataIndex];
         if (value) {
           filters[item.dataIndex] = value;
         }

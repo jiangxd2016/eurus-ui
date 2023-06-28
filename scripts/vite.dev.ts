@@ -37,10 +37,7 @@ const config: InlineConfig = {
       formats: ['es'],
     },
   },
-  plugins: [
-    vue(),
-    vueJsx()
-  ],
+  plugins: [vue(), vueJsx()],
 };
 
 export default config;

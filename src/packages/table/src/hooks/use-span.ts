@@ -1,11 +1,6 @@
 import type { Ref } from 'vue';
 import { computed } from 'vue';
-import type {
-  TableColumnData,
-  TableData,
-  TableDataWithRaw,
-  TableOperationColumn,
-} from '../interface';
+import type { TableColumnData, TableData, TableDataWithRaw, TableOperationColumn } from '../interface';
 
 export const useSpan = ({
   spanMethod,
@@ -14,11 +9,11 @@ export const useSpan = ({
 }: {
   spanMethod: Ref<
     | ((data: {
-      record: TableData;
-      column: TableColumnData | TableOperationColumn;
-      rowIndex: number;
-      columnIndex: number;
-    }) => { rowspan?: number; colspan?: number } | void)
+        record: TableData;
+        column: TableColumnData | TableOperationColumn;
+        rowIndex: number;
+        columnIndex: number;
+      }) => { rowspan?: number; colspan?: number } | void)
     | undefined
   >;
   data: Ref<TableDataWithRaw[]>;
@@ -29,8 +24,8 @@ export const useSpan = ({
     if (spanMethod.value) {
       data.value.forEach((record, rowIndex) => {
         columns.value.forEach((column, columnIndex) => {
-          const { rowspan = 1, colspan = 1 }
-            = spanMethod.value?.({
+          const { rowspan = 1, colspan = 1 } =
+            spanMethod.value?.({
               record: record.raw,
               column,
               rowIndex,
@@ -49,7 +44,7 @@ export const useSpan = ({
   const removedCells = computed(() => {
     const data: string[] = [];
     for (const indexKey of Object.keys(tableSpan.value)) {
-      const indexArray = indexKey.split('-').map(item => Number(item));
+      const indexArray = indexKey.split('-').map((item) => Number(item));
       const span = tableSpan.value[indexKey];
       for (let i = 1; i < span[0]; i++) {
         data.push(`${indexArray[0] + i}-${indexArray[1]}`);

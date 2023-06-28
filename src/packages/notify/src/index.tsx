@@ -116,13 +116,10 @@ export const Notify = MESSAGE_TYPES.reduce((pre, value) => {
       config = { content: config as string };
     }
 
-    const _config: _NotifyConfig = { type: value, ...config as NotifyConfig };
+    const _config: _NotifyConfig = { type: value, ...(config as NotifyConfig) };
     const { position = 'topRight' } = _config;
     if (!notificationInstance[position]) {
-      notificationInstance[position] = new NotifyManger(
-        _config,
-        appContext
-      );
+      notificationInstance[position] = new NotifyManger(_config, appContext);
     }
     return notificationInstance[position]!.add(_config);
   };
@@ -133,6 +130,6 @@ Notify.clear = (position?: NotifyPosition) => {
   if (position) {
     notificationInstance[position]?.clear();
   } else {
-    Object.values(notificationInstance).forEach(item => item?.clear());
+    Object.values(notificationInstance).forEach((item) => item?.clear());
   }
 };

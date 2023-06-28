@@ -7,8 +7,7 @@ const msgPath = process.argv[2];
 const msg = readFileSync(msgPath, 'utf-8').trim();
 
 const releaseRE = /^v\d/;
-const commitRE
-  = /^(revert: )?(feat|fix|docs|dx|refactor|perf|test|workflow|build|ci|chore|types|wip|release|deps)(\(.+\))?: .{1,50}/;
+const commitRE = /^(revert: )?(feat|fix|docs|dx|refactor|perf|test|workflow|build|ci|chore|types|wip|release|deps)(\(.+\))?: .{1,50}/;
 
 console.log('msg', msg);
 if (!releaseRE.test(msg) && !commitRE.test(msg)) {
@@ -20,7 +19,7 @@ if (!releaseRE.test(msg) && !commitRE.test(msg)) {
     'feat(compiler): add \'comments\' option'
     'fix(v-model): handle events on blur (close #28)'
      \n
-     See .github/commit-convention.md for more details.\n`
+     See .github/commit-convention.md for more details.\n`,
   );
   process.exit(1);
 }

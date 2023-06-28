@@ -10,15 +10,15 @@ type tagType = 'default' | 'primary' | 'positive' | 'warning' | 'danger' | 'info
 const ETagProps = {
   type: {
     type: String as PropType<tagType>,
-    default: 'default'
+    default: 'default',
   },
   closable: {
     type: Boolean,
-    default: false
+    default: false,
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   color: { default: '' },
   borderColor: { default: '' },
@@ -34,7 +34,6 @@ export default defineComponent({
   props: ETagProps,
   emits: ['click', 'close'],
   setup(props, { slots, emit }) {
-
     const prefixCls = getPrefixCls('tag');
 
     const computedCls = computed(() => {
@@ -66,14 +65,12 @@ export default defineComponent({
         onClick={tagClick.bind(this)}
       >
         {slots?.default && slots.default()}
-        {props.closable
-          && <span onClick={closeClick} aria-hidden="true" class={`${prefixCls}-icon`}>
+        {props.closable && (
+          <span onClick={closeClick} aria-hidden="true" class={`${prefixCls}-icon`}>
             <EIcon name="close" size={size.value}></EIcon>
           </span>
-        }
-
+        )}
       </span>
-
     );
   },
 });

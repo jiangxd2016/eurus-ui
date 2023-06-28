@@ -45,4 +45,3 @@ const updateSelected = (v: any) => {
   val.value = v + '';
 };
 </script>
-

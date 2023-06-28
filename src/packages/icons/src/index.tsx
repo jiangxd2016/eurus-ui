@@ -24,7 +24,6 @@ export default defineComponent({
   props: IconProps,
   emits: ['click'],
   setup(props, { slots, emit }) {
-
     const prefixCls = getPrefixCls('icon');
 
     const mergeStyles = computed(() => {
@@ -46,16 +45,15 @@ export default defineComponent({
     }
     if (!IconElement && !slots.default) {
       warnOnce('icon', `not found ${props.name} , please check you enter`);
-
     }
 
     const handleClick = (e: Event) => {
       emit('click', e);
     };
-    return () => <span class={prefixCls} role="link" tabindex={0} style={mergeStyles.value}
-                       onClick={handleClick.bind(this)}
-    >
-      {IconElement ? IconElement : renderSlot(slots, 'default')}
-    </span>;
+    return () => (
+      <span class={prefixCls} role="link" tabindex={0} style={mergeStyles.value} onClick={handleClick.bind(this)}>
+        {IconElement ? IconElement : renderSlot(slots, 'default')}
+      </span>
+    );
   },
 });

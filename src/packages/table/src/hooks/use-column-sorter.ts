@@ -3,33 +3,20 @@ import { computed } from 'vue';
 import type { TableColumnData } from '../interface';
 import type { TableContext } from '../context';
 
-export const useColumnSorter = ({
-  column,
-  tableCtx,
-}: {
-  column: Ref<TableColumnData>;
-  tableCtx: Partial<TableContext>;
-}) => {
+export const useColumnSorter = ({ column, tableCtx }: { column: Ref<TableColumnData>; tableCtx: Partial<TableContext> }) => {
   const sortOrder = computed(() => {
-    if (
-      column.value.dataIndex
-      && column.value.dataIndex === tableCtx.sorter?.field
-    ) {
+    if (column.value.dataIndex && column.value.dataIndex === tableCtx.sorter?.field) {
       return tableCtx.sorter.direction;
     }
     return undefined;
   });
 
-  const sortDirections = computed(
-    () => column.value?.sortable?.sortDirections ?? []
-  );
+  const sortDirections = computed(() => column.value?.sortable?.sortDirections ?? []);
 
   const hasSorter = computed(() => sortDirections.value.length > 0);
 
   const hasAscendBtn = computed(() => sortDirections.value.includes('ascend'));
-  const hasDescendBtn = computed(() =>
-    sortDirections.value.includes('descend')
-  );
+  const hasDescendBtn = computed(() => sortDirections.value.includes('descend'));
 
   const nextSortOrder = computed(() => {
     if (!sortOrder.value) {
@@ -43,11 +30,7 @@ export const useColumnSorter = ({
 
   const handleClickSorter = (ev: Event) => {
     if (column.value.dataIndex) {
-      tableCtx.onSorterChange?.(
-        column.value.dataIndex,
-        nextSortOrder.value,
-        ev
-      );
+      tableCtx.onSorterChange?.(column.value.dataIndex, nextSortOrder.value, ev);
     }
   };
 

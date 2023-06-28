@@ -12,21 +12,19 @@ import { getCurrentInstance } from 'vue';
 const instance = getCurrentInstance();
 const messageType = ['success', 'info', 'warning', 'error'];
 const openMessage = () => {
-
   messageType.forEach((type) => {
     instance?.appContext.config.globalProperties.$message[type]({
       content: `This is a ${type} message`,
-      duration: 0
+      duration: 0,
     });
-  }
-  );
+  });
 };
 
 const openCloseMessage = () => {
   instance?.appContext.config.globalProperties.$message.info({
     content: 'This is a normal message',
     closable: true,
-    duration: 0
+    duration: 0,
   });
 };
 </script>

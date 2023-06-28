@@ -14,10 +14,7 @@ export const sharedConfig = defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
 
-    [
-      'meta',
-      { name: 'wwads-cn-verify', content: '5878a7ab84fb43402106c575658472fa' },
-    ],
+    ['meta', { name: 'wwads-cn-verify', content: '5878a7ab84fb43402106c575658472fa' }],
 
     [
       'meta',
@@ -34,7 +31,6 @@ export const sharedConfig = defineConfig({
         content: 'summary_large_image',
       },
     ],
-
   ],
 
   lastUpdated: true,
@@ -64,7 +60,6 @@ export const sharedConfig = defineConfig({
     },
   },
   markdown: {
-    config: md => mdPlugin(md),
+    config: (md) => mdPlugin(md),
   },
 });
-

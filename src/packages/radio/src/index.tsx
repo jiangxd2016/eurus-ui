@@ -7,24 +7,24 @@ import { useFormValidate } from '@/packages/_utils/form';
 const ERadioProps = {
   modelValue: {
     type: [String, Number, Boolean],
-    default: false
+    default: false,
   },
   defaultValue: {
     type: [String, Number, Boolean],
-    default: false
+    default: false,
   },
   value: {
     type: [String, Number, Boolean],
-    default: false
+    default: false,
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   label: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 };
 
 export default defineComponent({
@@ -32,7 +32,6 @@ export default defineComponent({
   props: ERadioProps,
   emits: ['change', 'click', 'update:modelValue'],
   setup(props, { slots, emit }) {
-
     const prefixCls = getPrefixCls('radio');
     const radioGroupInject = inject(RadioGroupKey, undefined);
     const isGroup = computed(() => !!radioGroupInject);
@@ -56,7 +55,7 @@ export default defineComponent({
     const computedCls = computed(() => {
       return {
         [`${prefixCls}-checked`]: computedChecked.value,
-        [`${prefixCls}-disabled`]: computedDisabled.value
+        [`${prefixCls}-disabled`]: computedDisabled.value,
       };
     });
     const handleClick = (ev: Event) => {
@@ -78,22 +77,19 @@ export default defineComponent({
       }
     };
     return () => (
-						<label class={[prefixCls, computedCls.value]} aria-hidden="true">
-								<input
-                    type="radio"
-                    checked={computedChecked.value}
-                    value={props.value}
-                    onClick={handleClick}
-                    onChange={updateValue}
-                    disabled={computedDisabled.value}
-                    class={[`${prefixCls}__input`]}
-								/>
-								<span class={`${prefixCls}-inner`}/>
-								<div class={[`${prefixCls}__label`, props.disabled && 'disabled']}>
-										{props.label || slots.default && slots.default()}
-								</div>
-						</label>
-
+      <label class={[prefixCls, computedCls.value]} aria-hidden="true">
+        <input
+          type="radio"
+          checked={computedChecked.value}
+          value={props.value}
+          onClick={handleClick}
+          onChange={updateValue}
+          disabled={computedDisabled.value}
+          class={[`${prefixCls}__input`]}
+        />
+        <span class={`${prefixCls}-inner`} />
+        <div class={[`${prefixCls}__label`, props.disabled && 'disabled']}>{props.label || (slots.default && slots.default())}</div>
+      </label>
     );
   },
 });

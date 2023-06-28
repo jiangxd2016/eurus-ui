@@ -1,11 +1,5 @@
 import type { Ref } from 'vue';
-import {
-  getCurrentInstance,
-  onMounted,
-  onBeforeUnmount,
-  ref,
-  watch,
-} from 'vue';
+import { getCurrentInstance, onMounted, onBeforeUnmount, ref, watch } from 'vue';
 
 export type PopupType = 'popup' | 'dialog' | 'message';
 
@@ -88,7 +82,7 @@ export default function usePopupManager(type: PopupType, { visible, runOnMounted
     },
     {
       immediate: true,
-    }
+    },
   );
 
   if (runOnMounted) {

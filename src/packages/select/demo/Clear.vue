@@ -1,6 +1,4 @@
-<template>
-  <ESelect v-model="vals" clear multiple :options="options" />
-</template>
+<template><ESelect v-model="vals" multiple clear :options="options" /></template>
 
 <script setup lang="ts">
 import { ref } from 'vue';

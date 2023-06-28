@@ -5,4 +5,3 @@
   <EButton type="primary" size="lg">lg</EButton>
   <EButton type="primary" size="xl">xl</EButton>
 </template>
-

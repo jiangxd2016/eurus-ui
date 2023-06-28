@@ -1,12 +1,5 @@
-import type {
-  PropType } from 'vue';
-import {
-  computed,
-  createVNode,
-  defineComponent,
-  inject,
-  toRefs,
-} from 'vue';
+import type { PropType } from 'vue';
+import { computed, createVNode, defineComponent, inject, toRefs } from 'vue';
 import type { TableColumnData, TableOperationColumn } from './interface';
 import { useColumnSorter } from './hooks/use-column-sorter';
 import { useColumnFilter } from './hooks/use-column-filter';
@@ -48,11 +41,7 @@ export default defineComponent({
 
     const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
 
-    const resizing = computed(
-      () =>
-        props.column?.dataIndex
-        && tableCtx.resizingColumn === props.column.dataIndex
-    );
+    const resizing = computed(() => props.column?.dataIndex && tableCtx.resizingColumn === props.column.dataIndex);
 
     const tooltipProps = computed(() => {
       if (isObject(props.column?.tooltip)) {
@@ -62,23 +51,13 @@ export default defineComponent({
     });
 
     const filterIconAlignLeft = computed(() => {
-      if (
-        props.column?.filterable
-        && isBoolean(props.column.filterable.alignLeft)
-      ) {
+      if (props.column?.filterable && isBoolean(props.column.filterable.alignLeft)) {
         return props.column.filterable.alignLeft;
       }
       return tableCtx.filterIconAlignLeft;
     });
 
-    const {
-      sortOrder,
-      hasSorter,
-      hasAscendBtn,
-      hasDescendBtn,
-      nextSortOrder,
-      handleClickSorter,
-    } = useColumnSorter({
+    const { sortOrder, hasSorter, hasAscendBtn, hasDescendBtn, nextSortOrder, handleClickSorter } = useColumnSorter({
       column,
       tableCtx,
     });
@@ -136,19 +115,11 @@ export default defineComponent({
               return (
                 <li class={`${prefixCls}-filters-item`} key={index}>
                   {isMultipleFilter.value ? (
-                    <Checkbox
-                      value={item.value}
-                      modelValue={columnFilterValue.value as unknown as string}
-                      onChange={handleCheckboxFilterChange}
-                    >
+                    <Checkbox value={item.value} modelValue={columnFilterValue.value as unknown as string} onChange={handleCheckboxFilterChange}>
                       {item.text}
                     </Checkbox>
                   ) : (
-                    <Radio
-                      value={item.value}
-                      modelValue={columnFilterValue.value[0] ?? ''}
-                      onChange={handleRadioFilterChange}
-                    >
+                    <Radio value={item.value} modelValue={columnFilterValue.value[0] ?? ''} onChange={handleRadioFilterChange}>
                       {item.text}
                     </Radio>
                   )}
@@ -197,21 +168,14 @@ export default defineComponent({
             disabled={!filterIconAlignLeft.value}
             onClick={(ev: Event) => ev.stopPropagation()}
           >
-            {props.column.slots?.['filter-icon']?.() ?? filterable.icon?.() ?? (
-              <Icons name="filter" />
-            )}
+            {props.column.slots?.['filter-icon']?.() ?? filterable.icon?.() ?? <Icons name="filter" />}
           </IconHover>
         </Trigger>
       );
     };
 
     const cellCls = computed(() => {
-      const cls: any[] = [
-        `${prefixCls}-cell`,
-        `${prefixCls}-cell-align-${
-          props.column?.align ?? (props.column.children ? 'center' : 'left')
-        }`,
-      ];
+      const cls: any[] = [`${prefixCls}-cell`, `${prefixCls}-cell-align-${props.column?.align ?? (props.column.children ? 'center' : 'left')}`];
 
       if (hasSorter.value) {
         cls.push(`${prefixCls}-cell-with-sorter`, {
@@ -231,10 +195,7 @@ export default defineComponent({
       if (slots.default) {
         return slots.default();
       }
-      if (
-        props.column?.titleSlotName
-        && tableCtx.slots?.[props.column.titleSlotName]
-      ) {
+      if (props.column?.titleSlotName && tableCtx.slots?.[props.column.titleSlotName]) {
         return tableCtx.slots[props.column.titleSlotName]?.({
           column: props.column,
         });
@@ -249,26 +210,13 @@ export default defineComponent({
     };
 
     const renderCell = () => (
-      <span
-        class={cellCls.value}
-        onClick={hasSorter.value ? handleClickSorter : undefined}
-      >
+      <span class={cellCls.value} onClick={hasSorter.value ? handleClickSorter : undefined}>
         {props.column?.ellipsis && props.column?.tooltip ? (
-          <AutoTooltip
-            class={`${prefixCls}-th-title`}
-            tooltipProps={tooltipProps.value}
-          >
+          <AutoTooltip class={`${prefixCls}-th-title`} tooltipProps={tooltipProps.value}>
             {renderTitle()}
           </AutoTooltip>
         ) : (
-          <span
-            class={[
-              `${prefixCls}-th-title`,
-              { [`${prefixCls}-text-ellipsis`]: props.column?.ellipsis },
-            ]}
-          >
-            {renderTitle()}
-          </span>
+          <span class={[`${prefixCls}-th-title`, { [`${prefixCls}-text-ellipsis`]: props.column?.ellipsis }]}>{renderTitle()}</span>
         )}
         {hasSorter.value && (
           <span class={`${prefixCls}-sorter`}>
@@ -277,8 +225,7 @@ export default defineComponent({
                 class={[
                   `${prefixCls}-sorter-icon`,
                   {
-                    [`${prefixCls}-sorter-icon-active`]:
-                      sortOrder.value === 'ascend',
+                    [`${prefixCls}-sorter-icon-active`]: sortOrder.value === 'ascend',
                   },
                 ]}
               >
@@ -290,8 +237,7 @@ export default defineComponent({
                 class={[
                   `${prefixCls}-sorter-icon`,
                   {
-                    [`${prefixCls}-sorter-icon-active`]:
-                      sortOrder.value === 'descend',
+                    [`${prefixCls}-sorter-icon-active`]: sortOrder.value === 'descend',
                   },
                 ]}
               >
@@ -350,14 +296,9 @@ export default defineComponent({
           default: () => [
             renderCell(),
             !filterIconAlignLeft.value && renderFilter(),
-            props.resizable && (
-              <span
-                class={`${prefixCls}-column-handle`}
-                onMousedown={handleMouseDown}
-              />
-            ),
+            props.resizable && <span class={`${prefixCls}-column-handle`} onMousedown={handleMouseDown} />,
           ],
-        }
+        },
       );
     };
   },

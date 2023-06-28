@@ -25,7 +25,8 @@ const EDividerProps = {
   orientation: {
     type: String as PropType<'left' | 'center' | 'right'>,
     default: 'center',
-  } };
+  },
+};
 
 export default defineComponent({
   name: 'EDivider',
@@ -42,14 +43,13 @@ export default defineComponent({
       };
     });
     return () => (
-      <div role="separator" class={computedCls.value} >
-        {
-          slots.default && <span class={`${prefixCls}-text ${prefixCls}-text-${props.orientation}`} style={{ color: props.color }}>
+      <div role="separator" class={computedCls.value}>
+        {slots.default && (
+          <span class={`${prefixCls}-text ${prefixCls}-text-${props.orientation}`} style={{ color: props.color }}>
             {slots.default()}
           </span>
-        }
+        )}
       </div>
-
     );
   },
 });

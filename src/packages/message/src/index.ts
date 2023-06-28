@@ -123,7 +123,7 @@ message.clear = (position?: MessagePosition) => {
   if (position) {
     messageInstance[position]?.clear();
   } else {
-    Object.values(messageInstance).forEach(item => item?.clear());
+    Object.values(messageInstance).forEach((item) => item?.clear());
   }
 };
 

@@ -44,7 +44,7 @@ const EDatePickerProps = {
   disabledDate: {
     type: Function as PropType<(date: number) => boolean>,
     default: null,
-  }
+  },
 };
 
 export default defineComponent({
@@ -53,7 +53,6 @@ export default defineComponent({
   props: { ...ESelectDownProps, ...EDatePickerProps },
   emits: ['change', 'update:modelValue'],
   setup(props, { emit }) {
-
     const prefixCls = getPrefixCls('date-picker');
 
     const { formItemFields, validateEvent } = useFormValidate();
@@ -61,7 +60,7 @@ export default defineComponent({
     const t = useLocaleTransform();
     const selectDownRef = ref();
 
-    if (__DEV__ ) {
+    if (__DEV__) {
       watchEffect(() => {
         if (props.modelValue) {
           if (props.type === 'range' && !Array.isArray(props.modelValue)) {
@@ -70,10 +69,8 @@ export default defineComponent({
           if (props.type !== 'range' && Array.isArray(props.modelValue)) {
             warnOnce(prefixCls, 'modelValue must be a string when type is not range');
           }
-
         }
       });
-
     }
     const _value = computed(() => {
       return isArray(props.modelValue) ? props.modelValue : props.modelValue ? [props.modelValue] : [];
@@ -98,7 +95,7 @@ export default defineComponent({
 
     const computedLabel = computed(() => {
       if (props.type === 'range') {
-        return _value.value.map(item => dayjs(item).format('YYYY-MM-DD'));
+        return _value.value.map((item) => dayjs(item).format('YYYY-MM-DD'));
       } else {
         return _value.value[0] ? dayjs(_value.value[0]).format('YYYY-MM-DD') : '';
       }
@@ -111,9 +108,8 @@ export default defineComponent({
       validateEvent(date);
       emit('change', date);
       emit('update:modelValue', date);
-      const dateStr = Array.isArray(date) ? date.map(item => dayjs(item).format('YYYY-MM-DD')) : dayjs(date).format('YYYY-MM-DD');
+      const dateStr = Array.isArray(date) ? date.map((item) => dayjs(item).format('YYYY-MM-DD')) : dayjs(date).format('YYYY-MM-DD');
       selectDownRef.value?.setModelValue(dateStr);
-
     };
 
     const handleChange = (val: string) => {
@@ -122,7 +118,6 @@ export default defineComponent({
       }
       emit('update:modelValue', val);
       emit('change', val);
-
     };
 
     const handleClear = () => {
@@ -136,31 +131,31 @@ export default defineComponent({
     return () => {
       let panel = null;
       if (props.type === 'date') {
-        panel = <Date onChange={dateChange} disabled={computedDisabled.value} disabledDate={props.disabledDate}
-                      modelValue={_value.value[0]}
-        />;
+        panel = <Date onChange={dateChange} disabled={computedDisabled.value} disabledDate={props.disabledDate} modelValue={_value.value[0]} />;
       } else if (props.type === 'month') {
-        panel = <Month onChange={dateChange} disabled={computedDisabled.value} disabledDate={props.disabledDate}
-                       modelValue={_value.value[0]}
-        />;
+        panel = <Month onChange={dateChange} disabled={computedDisabled.value} disabledDate={props.disabledDate} modelValue={_value.value[0]} />;
       } else if (props.type === 'range') {
-        panel = <Range onChange={dateChange} disabled={computedDisabled.value} disabledDate={props.disabledDate}
-                       modelValue={_value.value}
-        />;
+        panel = <Range onChange={dateChange} disabled={computedDisabled.value} disabledDate={props.disabledDate} modelValue={_value.value} />;
       }
 
-      return <SelectDown class={prefixCls} {...props} scrollPanel={false} placeholder={computedPlaceholder.value}
-                         startPlaceholder={computedRangePlaceholder.value[0]}
-                         endPlaceholder={computedRangePlaceholder.value[1]}
-                         range={props.type === 'range'}
-                         ref={selectDownRef}
-                         disabled={computedDisabled.value}
-                         modelValue={computedLabel.value}
-                         onUpdate:modelValue={handleChange} onClear={handleClear}
-      >
-        {panel}
-      </SelectDown>;
+      return (
+        <SelectDown
+          class={prefixCls}
+          {...props}
+          scrollPanel={false}
+          placeholder={computedPlaceholder.value}
+          startPlaceholder={computedRangePlaceholder.value[0]}
+          endPlaceholder={computedRangePlaceholder.value[1]}
+          range={props.type === 'range'}
+          ref={selectDownRef}
+          disabled={computedDisabled.value}
+          modelValue={computedLabel.value}
+          onUpdate:modelValue={handleChange}
+          onClear={handleClear}
+        >
+          {panel}
+        </SelectDown>
+      );
     };
-
   },
 });

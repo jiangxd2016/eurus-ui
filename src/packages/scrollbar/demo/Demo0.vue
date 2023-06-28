@@ -1,4 +1,1 @@
-<template>
-  <EScrollbar />
-</template>
-
+<template><EScrollbar /></template>

@@ -34,13 +34,11 @@ const EDialogProps = {
 
   beforeConfirm: {
     type: Function as PropType<() => void>,
-    default: () => {
-    }
+    default: () => {},
   },
   beforeCancel: {
     type: Function as PropType<() => void>,
-    default: () => {
-    }
+    default: () => {},
   },
   draggable: {
     type: Boolean,
@@ -60,7 +58,7 @@ export default defineComponent({
 
     const { t } = useI18n();
     const prefixCls = getPrefixCls('dialog');
-    const { zIndex } = usePopupManager('message', { runOnMounted: true, visible, });
+    const { zIndex } = usePopupManager('message', { runOnMounted: true, visible });
 
     const wrapperRef = ref<HTMLElement>();
     const modalRef = ref<HTMLElement>();
@@ -118,35 +116,28 @@ export default defineComponent({
     return () => (
       <Teleport to={props.popupContainer}>
         <Transition name="EuDialog">
-          {
-            props.visible && <div class={`${prefixCls}-container`} style={{ zIndex: zIndex.value }}>
-              <div class={`${prefixCls}-mask`} role="button" tabindex={-1} onClick={handleClose}/>
+          {props.visible && (
+            <div class={`${prefixCls}-container`} style={{ zIndex: zIndex.value }}>
+              <div class={`${prefixCls}-mask`} role="button" tabindex={-1} onClick={handleClose} />
               <div class={wrapperCls.value} ref={wrapperRef}>
                 <div class={prefixCls} ref={modalRef} style={mergedContentStyle.value}>
                   <div class={`${prefixCls}-header`} role="button" tabindex="0" onMousedown={handleMoveDown}>
-                    <div class="title">
-                      {title.value}
-                    </div>
+                    <div class="title">{title.value}</div>
                     <div class="close">
-                      <Icons name="close" class="icon-close" size="26" onClick={handleClose}/>
+                      <Icons name="close" class="icon-close" size="26" onClick={handleClose} />
                     </div>
-
                   </div>
-                  <div class={`${prefixCls}-body`}>
-                    {slots.default && slots.default()}
-                  </div>
+                  <div class={`${prefixCls}-body`}>{slots.default && slots.default()}</div>
                   <div class={`${prefixCls}-footer`}>
-                    <EButton type="primary" class="confirm" onClick={handelConfirm}>{
-                      confirmText.value
-                    }</EButton>
-                    <EButton onClick={handelCancel}>{
-                      cancelText.value
-                    }</EButton>
+                    <EButton type="primary" class="confirm" onClick={handelConfirm}>
+                      {confirmText.value}
+                    </EButton>
+                    <EButton onClick={handelCancel}>{cancelText.value}</EButton>
                   </div>
                 </div>
               </div>
             </div>
-          }
+          )}
         </Transition>
       </Teleport>
     );

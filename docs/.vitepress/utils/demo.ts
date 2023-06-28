@@ -24,4 +24,3 @@ export const mdPlugin = async (md: MarkdownIt) => {
     },
   });
 };
-

@@ -16,7 +16,6 @@ function renderTemplate(template: string, data: object) {
 }
 
 function createComponent(name: string, tempPath: string, outPath: string) {
-
   const files = fs.readdirSync(tempPath);
   files.forEach((filename) => {
     const filedir = path.join(tempPath, filename);
@@ -33,7 +32,6 @@ function createComponent(name: string, tempPath: string, outPath: string) {
         const template = renderTemplate(file, { prefixName: globaleComponentPrefix + toPascalCase(name), name });
         console.log('outPath', outPath);
         fs.writeFileSync(outPath + '/' + fileName.split('.temp')[0], template);
-
       }
       if (isDir) {
         if (!fs.existsSync(outdir)) {
@@ -75,6 +73,4 @@ function appendToComponents(name: string) {
   genDocs('en');
 
   appendToComponents(name);
-
 })();
-

@@ -1,16 +1,7 @@
 import type { CSSProperties, VNode } from 'vue';
-import type {
-  TableColumnData,
-  TableDataWithRaw,
-  TableOperationColumn,
-} from './interface';
+import type { TableColumnData, TableDataWithRaw, TableOperationColumn } from './interface';
 import { isArray, isNull, isUndefined } from '@/packages/_utils/is';
-import {
-  resolveProps,
-  isNamedComponent,
-  isSlotsChildren,
-  isArrayChildren,
-} from '@/packages/_utils/vue-utils';
+import { resolveProps, isNamedComponent, isSlotsChildren, isArrayChildren } from '@/packages/_utils/vue-utils';
 import type { BaseType } from '@/packages/_utils/types';
 
 const getDataColumnsNumber = (columns: TableColumnData[]): number => {
@@ -64,17 +55,12 @@ const setParentFixed = (column: TableColumnData, fixed: 'left' | 'right') => {
 };
 
 // Get the grouped header row data
-export const getGroupColumns = (
-  columns: TableColumnData[],
-  columnMap: Map<string, TableColumnData>
-) => {
+export const getGroupColumns = (columns: TableColumnData[], columnMap: Map<string, TableColumnData>) => {
   const totalHeaderRows = getTotalHeaderRows(columns);
 
   columnMap.clear();
   const dataColumns: TableColumnData[] = [];
-  const groupColumns: TableColumnData[][] = [...Array.from({ length: totalHeaderRows })].map(
-    () => []
-  );
+  const groupColumns: TableColumnData[][] = [...Array.from({ length: totalHeaderRows })].map(() => []);
 
   // For recording
   let lastLeftFixedIndex: number | undefined;
@@ -90,7 +76,7 @@ export const getGroupColumns = (
       level?: number;
       parent?: TableColumnData;
       fixed?: 'left' | 'right';
-    } = {}
+    } = {},
   ) => {
     for (const item of columns) {
       const cell: TableColumnData = { ...item, parent };
@@ -146,10 +132,7 @@ export const getGroupColumns = (
   return { dataColumns, groupColumns };
 };
 
-const getOperationColumnIndex = (
-  operations: TableOperationColumn[],
-  name: string
-) => {
+const getOperationColumnIndex = (operations: TableOperationColumn[], name: string) => {
   for (const [i, operation] of operations.entries()) {
     if (operation.name === name) {
       return i;
@@ -158,10 +141,7 @@ const getOperationColumnIndex = (
   return -1;
 };
 
-export const getOperationFixedNumber = (
-  column: TableOperationColumn,
-  operations: TableOperationColumn[]
-) => {
+export const getOperationFixedNumber = (column: TableOperationColumn, operations: TableOperationColumn[]) => {
   const index = getOperationColumnIndex(operations, column.name);
   if (index <= 0) {
     return 0;
@@ -176,12 +156,16 @@ export const getOperationFixedNumber = (
 };
 
 const getFirstDataColumn = (column: TableColumnData): TableColumnData => {
-  if (column.children && column.children.length > 0) { return getFirstDataColumn(column.children[0]); }
+  if (column.children && column.children.length > 0) {
+    return getFirstDataColumn(column.children[0]);
+  }
   return column;
 };
 
 const getLastDataColumn = (column: TableColumnData): TableColumnData => {
-  if (column.children && column.children.length > 0) { return getFirstDataColumn(column.children[column.children.length - 1]); }
+  if (column.children && column.children.length > 0) {
+    return getFirstDataColumn(column.children[column.children.length - 1]);
+  }
   return column;
 };
 
@@ -194,7 +178,7 @@ export const getFixedNumber = (
   }: {
     dataColumns: TableColumnData[];
     operations: TableOperationColumn[];
-  }
+  },
 ) => {
   let count = 0;
 
@@ -226,10 +210,7 @@ export const getFixedNumber = (
   return count;
 };
 
-export const getOperationFixedCls = (
-  prefixCls: string,
-  column: TableOperationColumn
-): any[] => {
+export const getOperationFixedCls = (prefixCls: string, column: TableOperationColumn): any[] => {
   if (column.fixed) {
     return [
       `${prefixCls}-col-fixed-left`,
@@ -241,13 +222,7 @@ export const getOperationFixedCls = (
   return [];
 };
 
-export const getFixedCls = (
-  prefixCls: string,
-  column: Pick<
-    TableColumnData,
-    'fixed' | 'isLastLeftFixed' | 'isFirstRightFixed'
-  >
-): any[] => {
+export const getFixedCls = (prefixCls: string, column: Pick<TableColumnData, 'fixed' | 'isLastLeftFixed' | 'isFirstRightFixed'>): any[] => {
   if (column.fixed === 'left') {
     return [
       `${prefixCls}-col-fixed-left`,
@@ -275,7 +250,7 @@ export const getStyle = (
   }: {
     dataColumns: TableColumnData[];
     operations: TableOperationColumn[];
-  }
+  },
 ): CSSProperties => {
   if (column.fixed) {
     const offset = `${getFixedNumber(column, { dataColumns, operations })}px`;
@@ -291,10 +266,7 @@ export const getStyle = (
   return {};
 };
 
-export const getOperationStyle = (
-  column: TableOperationColumn,
-  operations: TableOperationColumn[]
-) => {
+export const getOperationStyle = (column: TableOperationColumn, operations: TableOperationColumn[]) => {
   if (column.fixed) {
     return {
       left: `${getOperationFixedNumber(column, operations)}px`,
@@ -333,11 +305,7 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
   return columns;
 };
 
-export const spliceFromPath = (
-  data: TableDataWithRaw[],
-  path: number[],
-  item?: TableDataWithRaw
-): TableDataWithRaw | undefined => {
+export const spliceFromPath = (data: TableDataWithRaw[], path: number[], item?: TableDataWithRaw): TableDataWithRaw | undefined => {
   let parent = data;
   for (let i = 0; i < path.length; i++) {
     const index = path[i];
@@ -368,15 +336,10 @@ export const getLeafKeys = (record: TableDataWithRaw) => {
   return keys;
 };
 
-export const getSelectionStatus = (
-  selectedRowKeys: BaseType[],
-  leafKeys: BaseType[]
-) => {
+export const getSelectionStatus = (selectedRowKeys: BaseType[], leafKeys: BaseType[]) => {
   let checked = false;
   let indeterminate = false;
-  const selectedLeafKeys = leafKeys.filter(key =>
-    selectedRowKeys.includes(key)
-  );
+  const selectedLeafKeys = leafKeys.filter((key) => selectedRowKeys.includes(key));
   if (selectedLeafKeys.length > 0) {
     if (selectedLeafKeys.length >= leafKeys.length) {
       checked = true;

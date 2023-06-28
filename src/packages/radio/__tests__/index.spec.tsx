@@ -4,7 +4,6 @@ import { h } from 'vue';
 import ERadio, { ERadioGroup } from '..';
 
 describe('ERadio', () => {
-
   it('should emit change event', async () => {
     const fn = vi.fn();
     const wrapper = mount(ERadio, {
@@ -12,8 +11,8 @@ describe('ERadio', () => {
         modelValue: '1',
         value: '1',
         label: '1',
-        onChange: fn
-      }
+        onChange: fn,
+      },
     });
 
     await wrapper.find('input').trigger('change');
@@ -28,18 +27,18 @@ describe('ERadio', () => {
         value: '1',
         label: '1',
         disabled: true,
-        onChange: fn
-      }
+        onChange: fn,
+      },
     });
     const groupWrapper = mount(ERadioGroup, {
       props: {
         modelValue: '1',
         disabled: true,
-        onChange: fn
+        onChange: fn,
       },
       slots: {
-        default: () => h(ERadio, { label: '1', value: '1' })
-      }
+        default: () => h(ERadio, { label: '1', value: '1' }),
+      },
     });
     await wrapper.trigger('click');
     await groupWrapper.findComponent(ERadio).trigger('click');

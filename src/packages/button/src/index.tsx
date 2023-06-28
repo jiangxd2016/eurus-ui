@@ -7,15 +7,7 @@ import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { buttonGroupKey, EurusConfigProviderKey } from '@/packages/_utils/constants';
 
-export type Type =
-  | 'default'
-  | 'text'
-  | 'primary'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'purple';
+export type Type = 'default' | 'text' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'purple';
 
 const BtnProps = {
   type: {
@@ -89,14 +81,14 @@ export default defineComponent({
 
     return () => (
       <button
-        class={[
-          `${prefixCls} bg-${props.type} ${prefixCls}--${size.value} ${props.type === 'default' ? 'text-black' : 'text-white'}`,
-          classNames.value,
-        ]}
-        {...props.native} onClick={handleClick}
+        class={[`${prefixCls} bg-${props.type} ${prefixCls}--${size.value} ${props.type === 'default' ? 'text-black' : 'text-white'}`, classNames.value]}
+        {...props.native}
+        onClick={handleClick}
       >
         {props.loading && (
-          <span class="loading"><EIcon name="loading" size={size.value}></EIcon></span>
+          <span class="loading">
+            <EIcon name="loading" size={size.value}></EIcon>
+          </span>
         )}
         {slots?.icon && <span class="inner">{slots.icon?.()}</span>}
         {slots?.default && <span class="inner">{slots.default?.()}</span>}

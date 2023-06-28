@@ -29,7 +29,7 @@ const EFormItemProps = {
   },
   prop: {
     type: String,
-    default: ''
+    default: '',
   },
   showMessage: {
     type: Boolean,
@@ -84,7 +84,7 @@ export default defineComponent({
       const width = formInject?.labelWidth;
       if (width) {
         return {
-          width
+          width,
         };
       } else {
         return null;
@@ -100,32 +100,36 @@ export default defineComponent({
 
     function doValidate(validValue: any, rules: RuleItem[]) {
       const validator = new Schema({ [props.prop]: rules });
-      return validator.validate({ [props.prop]: validValue || '' }, { firstFields: true }).then(() => {
-        return true;
-      }).catch((err) => {
-        return Promise.reject(err);
-      });
+      return validator
+        .validate({ [props.prop]: validValue || '' }, { firstFields: true })
+        .then(() => {
+          return true;
+        })
+        .catch((err) => {
+          return Promise.reject(err);
+        });
     }
 
     const validate = (val: any) => {
       const validValue = val || FieldValue.value;
       return new Promise((resolve, reject) => {
         if (state.rules) {
-          doValidate(validValue, state.rules).then((result) => {
-            if (result) {
-              // 通过
-              state.errorTips = '';
-              state.iconType = 'icon-success';
-              resolve(FieldValue.value);
-            }
-          }, (err) => {
-            // 默认取第一个信息
-            state.errorTips = err?.errors[0]?.message;
-            state.iconType = 'icon-failure';
-            reject(state.errorTips);
-          }
+          doValidate(validValue, state.rules).then(
+            (result) => {
+              if (result) {
+                // 通过
+                state.errorTips = '';
+                state.iconType = 'icon-success';
+                resolve(FieldValue.value);
+              }
+            },
+            (err) => {
+              // 默认取第一个信息
+              state.errorTips = err?.errors[0]?.message;
+              state.iconType = 'icon-failure';
+              reject(state.errorTips);
+            },
           );
-
         } else {
           // 没有校验规则
           resolve(FieldValue.value);
@@ -157,19 +161,22 @@ export default defineComponent({
           validate,
           clear: clearTips,
           reset,
-          prop: props.prop || `prop${Date.now()}` // 当有prop时随机添加一个
+          prop: props.prop || `prop${Date.now()}`, // 当有prop时随机添加一个
         });
       }
     };
 
-    provide(formItemKey, reactive({
-      validate,
-      clear: clearTips,
-      focusTips,
-      reset,
-      disabled: formInject?.disabled,
-      triggerList
-    }));
+    provide(
+      formItemKey,
+      reactive({
+        validate,
+        clear: clearTips,
+        focusTips,
+        reset,
+        disabled: formInject?.disabled,
+        triggerList,
+      }),
+    );
     onMounted(() => {
       setFormItemFields();
     });
@@ -184,10 +191,14 @@ export default defineComponent({
     expose({ validate, clearTips });
     return () => (
       <div class={clsPrefix}>
-        <label class={['label', props.required ? ' is-required' : '']} style={labelStyle.value}>{props.label}</label>
+        <label class={['label', props.required ? ' is-required' : '']} style={labelStyle.value}>
+          {props.label}
+        </label>
         <div class="content">
           {slots.default?.()}
-          <div class="error" style={`visibility:${state.errorTips ? 'visible' : 'hidden'}`}>{state.errorTips}</div>
+          <div class="error" style={`visibility:${state.errorTips ? 'visible' : 'hidden'}`}>
+            {state.errorTips}
+          </div>
         </div>
       </div>
     );

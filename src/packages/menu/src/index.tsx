@@ -8,7 +8,8 @@ import {
   MenuFlatKeys,
   MenuPropsKeys,
   MenuSelectedChangeKeys,
-  MenuSelectedKeys, MenuSelectHoverKeys
+  MenuSelectedKeys,
+  MenuSelectHoverKeys,
 } from '@/packages/_utils';
 import './style.scss';
 
@@ -48,7 +49,6 @@ export default defineComponent({
   props: EMenuProps,
   emits: ['update:openkeys', 'update:selectedKey', 'click', 'select'],
   setup(props, { emit }) {
-
     const prefixCls = getPrefixCls('menu');
 
     const computedCls = computed(() => {
@@ -112,10 +112,9 @@ export default defineComponent({
     });
 
     return () => (
-			<div class={computedCls.value}>
-				<MenuList items={props.items} onClick={handleClick} onSelect={handleSelect}></MenuList>
-			</div>
-
+      <div class={computedCls.value}>
+        <MenuList items={props.items} onClick={handleClick} onSelect={handleSelect}></MenuList>
+      </div>
     );
   },
 });

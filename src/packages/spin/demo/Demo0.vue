@@ -1,4 +1,1 @@
-<template>
-  <ESpin />
-</template>
-
+<template><ESpin /></template>

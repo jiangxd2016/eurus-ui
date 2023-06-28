@@ -47,10 +47,10 @@ describe('eventListener', () => {
   });
   describe('given array of events but single listener', () => {
     const listener = vitest.fn();
-    const events = ['click', 'scroll', 'blur', 'resize'] ;
+    const events = ['click', 'scroll', 'blur', 'resize'];
 
     it('should add listener for all events', () => {
-      events.forEach(event => expect(addSpy).toBeCalledWith(event, listener, options));
+      events.forEach((event) => expect(addSpy).toBeCalledWith(event, listener, options));
     });
 
     it('should trigger listener with all events', () => {
@@ -67,7 +67,7 @@ describe('eventListener', () => {
       stop();
 
       expect(removeSpy).toBeCalledTimes(events.length);
-      events.forEach(event => expect(removeSpy).toBeCalledWith(event, listener, options));
+      events.forEach((event) => expect(removeSpy).toBeCalledWith(event, listener, options));
     });
   });
 });

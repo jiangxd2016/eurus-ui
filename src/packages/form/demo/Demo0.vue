@@ -54,46 +54,39 @@ const form = reactive({
 });
 
 const rules = {
-  name: [
-    { required: true, message: '请输入姓名', trigger: ['change', 'blur'] }
-  ],
+  name: [{ required: true, message: '请输入姓名', trigger: ['change', 'blur'] }],
   age: [
     { message: '请输入年龄', required: true, trigger: ['change', 'blur'] },
     { type: 'number', message: 'age must be a number' },
   ],
   sex: [
     {
-      required: true, validator: (rule: any, value: any, callback: any) => {
+      required: true,
+      validator: (rule: any, value: any, callback: any) => {
         if (value === '4') {
           callback(new Error('双性人不允许'));
         } else {
           callback();
         }
-      }, trigger: ['change', 'blur']
-    }
+      },
+      trigger: ['change', 'blur'],
+    },
   ],
-  city: [
-    { required: true, message: '请选择位置', trigger: ['change', 'blur'] }
-  ],
-  date: [
-    { required: true, message: '请选择时间', trigger: ['change', 'blur'] }
-  ],
-  weather: [
-    { required: true, message: '请选择好天气', trigger: ['change', 'blur'] }
-  ],
-  address: [
-    { required: true, message: '请输入详细地址', trigger: ['change', 'blur'] }
-  ],
+  city: [{ required: true, message: '请选择位置', trigger: ['change', 'blur'] }],
+  date: [{ required: true, message: '请选择时间', trigger: ['change', 'blur'] }],
+  weather: [{ required: true, message: '请选择好天气', trigger: ['change', 'blur'] }],
+  address: [{ required: true, message: '请输入详细地址', trigger: ['change', 'blur'] }],
 };
 
 const submit = () => {
-  formRef.value && formRef.value.validate().then((valid: boolean) => {
-    if (valid) {
-      // console.log('submit!');
-    } else {
-      // console.log('error submit!!');
-    }
-  });
+  formRef.value &&
+    formRef.value.validate().then((valid: boolean) => {
+      if (valid) {
+        // console.log('submit!');
+      } else {
+        // console.log('error submit!!');
+      }
+    });
 };
 
 const reset = () => {

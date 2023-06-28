@@ -26,9 +26,7 @@ const compileToCSS = async function (path: string) {
         fs.mkdirSync(output, { recursive: true });
       }
       fs.writeFileSync(output + '/style.css', res.css.toString());
-
     });
-
   } catch (e) {
     console.log(e);
   }
@@ -48,7 +46,7 @@ export default function viteCssPlugin(): Plugin {
         compileToCSS(path);
         return {
           code: code.replace(importCssReg, ''),
-          map: null // 如果可行将提供 source map
+          map: null, // 如果可行将提供 source map
         };
       }
       return;

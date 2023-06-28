@@ -16,7 +16,7 @@ function getLastChangeLogCommit() {
     encoding: 'utf-8',
   }).split('\n');
 
-  return changeLogCommits.find(cmt => VERSION_REG.test(cmt))?.slice(0, 8) ?? '';
+  return changeLogCommits.find((cmt) => VERSION_REG.test(cmt))?.slice(0, 8) ?? '';
 }
 
 function getGitCommitMap(lastCommit: string) {
@@ -57,7 +57,7 @@ async function updateChangeLog() {
     console.log('generate changelog done.');
 
     await execPromise('git add CHANGELOG.md');
-    await execPromise('git commit -m \'chore: update changelog\'');
+    await execPromise("git commit -m 'chore: update changelog'");
     await execPromise('git push');
   });
 }

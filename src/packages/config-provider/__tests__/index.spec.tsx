@@ -7,7 +7,6 @@ import { getPrefixCls } from '@/packages/_utils/global-config';
 import { useI18n } from '@/packages/locale';
 
 describe('EConfigProvider', () => {
-
   it('should work with props', async () => {
     const wrapper = mount(EConfigProvider, {
       props: {
@@ -21,15 +20,15 @@ describe('EConfigProvider', () => {
           setup() {
             const { t } = useI18n();
             const prefixCls = getPrefixCls('config-provider');
-            return () => <div class={prefixCls}>
-              <span class="text">
-                {t('datePicker.today')}
-              </span>
-              <EuButton>Test Config Provider</EuButton>
-            </div>;
-          }
-        })
-      }
+            return () => (
+              <div class={prefixCls}>
+                <span class="text">{t('datePicker.today')}</span>
+                <EuButton>Test Config Provider</EuButton>
+              </div>
+            );
+          },
+        }),
+      },
     });
 
     await nextTick();
@@ -42,7 +41,5 @@ describe('EConfigProvider', () => {
     expect(button.classes()).toContain('test-button--sm');
 
     // dork mode is not supported yet
-
   });
-
 });

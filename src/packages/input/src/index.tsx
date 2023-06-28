@@ -10,19 +10,19 @@ import { useFormValidate } from '@/packages/_utils/form';
 const EInputProps = {
   type: {
     type: String as PropType<'text' | 'password' | 'number'>,
-    default: 'text'
+    default: 'text',
   },
   modelValue: {
     type: [String, Number] as PropType<string | number | null | undefined>,
-    default: ''
+    default: '',
   },
   defaultValue: {
     type: String,
-    default: ''
+    default: '',
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   size: {
     type: String as PropType<Size>,
@@ -30,19 +30,19 @@ const EInputProps = {
   },
   placeholder: {
     type: String,
-    default: ''
+    default: '',
   },
   maxLength: {
     type: Number,
-    default: 0
+    default: 0,
   },
   showWordLimit: {
     type: Boolean,
-    default: false
+    default: false,
   },
   clearable: {
     type: Boolean,
-    default: false
+    default: false,
   },
 
   autocomplete: {
@@ -51,7 +51,7 @@ const EInputProps = {
   },
   readonly: {
     type: Boolean,
-    default: false
+    default: false,
   },
   label: {
     type: String,
@@ -208,9 +208,7 @@ export default defineComponent({
     expose({ focus: triggerFocus, blur: triggerBlur });
     return () => (
       <span class={computedCls.value}>
-        {slots.prefix && (
-          <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>
-        )}
+        {slots.prefix && <span class={`${prefixCls}-prefix`}>{slots.prefix()}</span>}
         <input
           id={props.id}
           ref={inputRef}
@@ -243,8 +241,9 @@ export default defineComponent({
               <span class={`${prefixCls}-word-limit`}>
                 {(computedValue.value + '').length} / {maxLength.value}
               </span>
-            )}{slots.suffix?.()}</span>
-
+            )}
+            {slots.suffix?.()}
+          </span>
         )}
       </span>
     );

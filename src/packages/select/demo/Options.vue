@@ -1,6 +1,4 @@
-<template>
-  <ESelect v-model="vals" multiple :options="options" />
-</template>
+<template><ESelect v-model="vals" multiple :options="options" /></template>
 
 <script setup lang="ts">
 import { ref } from 'vue';

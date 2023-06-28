@@ -10,11 +10,11 @@ import { warnOnce } from '@/packages/_utils/warn';
 const ECheckboxProps = {
   modelValue: {
     type: [Boolean, String] as PropType<string | boolean>,
-    default: false
+    default: false,
   },
   defaultChecked: {
     type: Boolean,
-    default: false
+    default: false,
   },
   value: {
     type: [String, Number] as PropType<string | number>,
@@ -24,8 +24,8 @@ const ECheckboxProps = {
   },
   disabled: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 };
 
 export default defineComponent({
@@ -33,7 +33,6 @@ export default defineComponent({
   props: ECheckboxProps,
   emits: ['change', 'click', 'update:modelValue'],
   setup(props, { slots, emit }) {
-
     const prefixCls = getPrefixCls('checkbox');
 
     const checkboxGroupInject = inject(CheckboxGroupKey, undefined);
@@ -63,7 +62,7 @@ export default defineComponent({
     const classNames = computed(() => {
       return {
         [prefixCls + '-disabled']: computedDisabled.value,
-        [prefixCls + '-checked']: computedChecked.value
+        [prefixCls + '-checked']: computedChecked.value,
       };
     });
     const updateValue = (e: Event) => {
@@ -72,7 +71,7 @@ export default defineComponent({
       }
       if (isGroup.value && checkboxGroupInject) {
         const value = checkboxGroupInject.value;
-        if (__DEV__ ) {
+        if (__DEV__) {
           watchEffect(() => {
             if (!props.value) {
               warnOnce('ECheckbox', 'checkbox-group must set value');
@@ -96,30 +95,27 @@ export default defineComponent({
         emit('change', val, e);
         emit('update:modelValue', val);
       }
-
     };
     const handleClick = (ev: Event) => {
       ev.stopPropagation();
     };
 
     return () => (
-						<label class={[prefixCls, classNames.value]} aria-hidden="true">
-              <input
-                  type="checkbox"
-                  checked={computedChecked.value}
-                  value={props.value}
-                  onClick={handleClick}
-                  onChange={updateValue}
-                  disabled={computedDisabled.value}
-                  class={[`${prefixCls}__input`]}
-              />
-                <span class={[prefixCls + '-inner']}>
-								<EIcon name="checkedFill" class={`${prefixCls}-icon`} size={14}></EIcon>
-                </span>
-								<div class={`${prefixCls}__label`}>
-										{props.label || slots.default && slots.default()}
-								</div>
-						</label>
+      <label class={[prefixCls, classNames.value]} aria-hidden="true">
+        <input
+          type="checkbox"
+          checked={computedChecked.value}
+          value={props.value}
+          onClick={handleClick}
+          onChange={updateValue}
+          disabled={computedDisabled.value}
+          class={[`${prefixCls}__input`]}
+        />
+        <span class={[prefixCls + '-inner']}>
+          <EIcon name="checkedFill" class={`${prefixCls}-icon`} size={14}></EIcon>
+        </span>
+        <div class={`${prefixCls}__label`}>{props.label || (slots.default && slots.default())}</div>
+      </label>
     );
   },
 });

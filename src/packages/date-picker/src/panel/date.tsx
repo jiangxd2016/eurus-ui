@@ -10,7 +10,6 @@ import type { datePickerItem } from '@/packages/_utils/date';
 import { generateDayList } from '@/packages/_utils/date';
 
 const EDatePickerProps = {
-
   modelValue: {
     type: [String, Date, Number] as PropType<Date | string | number | Dayjs>,
     default() {
@@ -24,10 +23,9 @@ const EDatePickerProps = {
   disabledDate: {
     type: Function as PropType<(date: number) => boolean>,
     default() {
-      return () => {
-      };
-    }
-  }
+      return () => {};
+    },
+  },
 };
 
 export default defineComponent({
@@ -35,7 +33,6 @@ export default defineComponent({
   props: EDatePickerProps,
   emits: ['change'],
   setup(props, { emit }) {
-
     const selectDownRef = ref();
     const _value = ref(props.modelValue || dayjs().valueOf());
     const currentDateList = ref([dayjs(_value.value).year(), dayjs(_value.value).month() + 1]);
@@ -45,11 +42,14 @@ export default defineComponent({
       dateList.value = generateDayList(currentDateList.value, props.disabledDate);
     };
 
-    watch(() => props.modelValue, (val) => {
-      _value.value = val;
-      currentDateList.value = [dayjs(_value.value).year(), dayjs(_value.value).month() + 1];
-      getDateList();
-    });
+    watch(
+      () => props.modelValue,
+      (val) => {
+        _value.value = val;
+        currentDateList.value = [dayjs(_value.value).year(), dayjs(_value.value).month() + 1];
+        getDateList();
+      },
+    );
 
     onMounted(() => {
       getDateList();
@@ -63,7 +63,6 @@ export default defineComponent({
         });
         return t;
       });
-
     };
 
     const dateChange = (date: number) => {
@@ -75,7 +74,6 @@ export default defineComponent({
     };
 
     const dateRangeChange = (type: string) => {
-
       const [year, month] = currentDateList.value;
       switch (type) {
         // 上一年点击
@@ -84,10 +82,7 @@ export default defineComponent({
           break;
         // 上一月点击（月份<1,就要返回到上一年的12月份）
         case 'lastMonth':
-          currentDateList.value = [
-            month - 1 <= 0 ? year - 1 : year,
-            month - 1 <= 0 ? 12 : month - 1,
-          ];
+          currentDateList.value = [month - 1 <= 0 ? year - 1 : year, month - 1 <= 0 ? 12 : month - 1];
           break;
         // 下一年点击
         case 'nextYear':
@@ -95,10 +90,7 @@ export default defineComponent({
           break;
         case 'nextMonth':
           // 下一月点击（月份>12,就要到下一年的一月份）
-          currentDateList.value = [
-            month + 1 > 12 ? year + 1 : year,
-            month + 1 > 12 ? 1 : month + 1,
-          ];
+          currentDateList.value = [month + 1 > 12 ? year + 1 : year, month + 1 > 12 ? 1 : month + 1];
           break;
         case 'today':
           currentDateList.value = [new Date().getFullYear(), new Date().getMonth() + 1];
@@ -108,11 +100,12 @@ export default defineComponent({
       getDateList();
     };
 
-    return () => <Fragment>
-      <DateHeader date={currentDateList.value} onDateRangeChange={dateRangeChange}></DateHeader>
-      <DateBody list={dateList.value} onDateChange={dateChange}/>
-      <DateFooter onDateRangeChange={dateRangeChange}></DateFooter>
-    </Fragment>;
-
+    return () => (
+      <Fragment>
+        <DateHeader date={currentDateList.value} onDateRangeChange={dateRangeChange}></DateHeader>
+        <DateBody list={dateList.value} onDateChange={dateChange} />
+        <DateFooter onDateRangeChange={dateRangeChange}></DateFooter>
+      </Fragment>
+    );
   },
 });

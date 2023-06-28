@@ -5,7 +5,7 @@ export * from './form';
 export * from './date';
 export * from './flatten';
 export * from './global-config';
-export * from './is' ;
+export * from './is';
 export * from './size';
 export * from './types';
 export * from './warn';

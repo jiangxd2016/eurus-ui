@@ -7,7 +7,6 @@ const INPUT_PATH = 'src/scss';
 const SCSS_OUT_PATH = 'dist/scss';
 const DIST_STYLE_PATH = 'dist/style.css';
 export const compileToCSS = function (nodeEnv: string) {
-
   if (!fs.existsSync(SCSS_OUT_PATH)) {
     fs.mkdirSync(SCSS_OUT_PATH, { recursive: true });
   }
@@ -15,7 +14,7 @@ export const compileToCSS = function (nodeEnv: string) {
     fs.mkdirSync(OUT_PATH, { recursive: true });
   }
 
-  const css = sass.compile(INPUT_PATH + '/index.scss',);
+  const css = sass.compile(INPUT_PATH + '/index.scss');
   fs.writeFileSync(OUT_PATH + '/index.css', css.css.toString());
 
   if (nodeEnv === 'all') {
@@ -25,7 +24,6 @@ export const compileToCSS = function (nodeEnv: string) {
     copyDir(INPUT_PATH, SCSS_OUT_PATH);
 
     fs.writeFileSync('dist/es/style.css', css.css.toString() + '\n' + styleCss);
-
   }
 };
 

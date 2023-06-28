@@ -15,30 +15,30 @@ const items = [
   {
     label: '用户管理',
     key: 'user',
-    icon: () => h(EIcon, {
-      name: 'star',
-      color: '#fff'
-
-    }),
+    icon: () =>
+      h(EIcon, {
+        name: 'star',
+        color: '#fff',
+      }),
     children: [
       {
         label: '用户列表',
-        key: 'aa'
+        key: 'aa',
       },
       {
         label: '添加用户',
-        key: 'ab'
-      }
-    ]
+        key: 'ab',
+      },
+    ],
   },
   {
     label: 'Navigator Two',
     key: 'b',
-    icon: () => h(EIcon, {
-      name: 'star',
-      color: '#fff'
-
-    }),
+    icon: () =>
+      h(EIcon, {
+        name: 'star',
+        color: '#fff',
+      }),
     children: [
       {
         label: 'item one',
@@ -51,8 +51,8 @@ const items = [
           {
             label: 'item three',
             key: 'b3',
-          }
-        ]
+          },
+        ],
       },
       {
         label: 'item one',
@@ -61,19 +61,19 @@ const items = [
       {
         label: 'item one',
         key: 'b5',
-      }
-    ]
+      },
+    ],
   },
   {
     label: '系统设置',
     key: 'set',
-    icon: () => h(EIcon, {
-      name: 'star',
-      color: '#fff'
-
-    }),
-    disabled: true
-  }
+    icon: () =>
+      h(EIcon, {
+        name: 'star',
+        color: '#fff',
+      }),
+    disabled: true,
+  },
 ];
 
 const collapsed = ref(false);

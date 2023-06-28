@@ -29,7 +29,7 @@ const EAvatarProps = {
   count: {
     type: Number,
     default: 0,
-  }
+  },
 };
 
 export default defineComponent({
@@ -55,7 +55,6 @@ export default defineComponent({
         {(props.offline || props.online) && <div class="dot" />}
         {props.notice && <div class="reddot" data-count={props.count} />}
       </div>
-
     );
   },
 });

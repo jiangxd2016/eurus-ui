@@ -37,18 +37,11 @@ export const useExpand = ({
 
   const _expandedRowKeys = ref(getDefaultExpandedRowKeys());
 
-  const expandedRowKeys = computed(
-    () =>
-      expandedKeys.value
-      ?? expandable.value?.expandedRowKeys
-      ?? _expandedRowKeys.value
-  );
+  const expandedRowKeys = computed(() => expandedKeys.value ?? expandable.value?.expandedRowKeys ?? _expandedRowKeys.value);
 
   const handleExpand = (rowKey: BaseType, record: TableData) => {
     const isExpanded = expandedRowKeys.value.includes(rowKey);
-    const newExpandedRowKeys = isExpanded
-      ? expandedRowKeys.value.filter(key => rowKey !== key)
-      : expandedRowKeys.value.concat(rowKey);
+    const newExpandedRowKeys = isExpanded ? expandedRowKeys.value.filter((key) => rowKey !== key) : expandedRowKeys.value.concat(rowKey);
     _expandedRowKeys.value = newExpandedRowKeys;
     emit('expand', rowKey, record);
     emit('expandedChange', newExpandedRowKeys);
@@ -57,9 +50,7 @@ export const useExpand = ({
 
   const expand = (rowKey: BaseType | BaseType[], expanded = true) => {
     const _rowKeys = ([] as BaseType[]).concat(rowKey);
-    const newExpandedRowKeys = expanded
-      ? expandedRowKeys.value.concat(_rowKeys)
-      : expandedRowKeys.value.filter(key => !_rowKeys.includes(key));
+    const newExpandedRowKeys = expanded ? expandedRowKeys.value.concat(_rowKeys) : expandedRowKeys.value.filter((key) => !_rowKeys.includes(key));
     _expandedRowKeys.value = newExpandedRowKeys;
     emit('expandedChange', newExpandedRowKeys);
     emit('update:expandedKeys', newExpandedRowKeys);

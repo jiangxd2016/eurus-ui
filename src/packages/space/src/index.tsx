@@ -7,7 +7,6 @@ import { isNumber } from '@/packages/_utils/is';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 
 const ESpaceProps = {
-
   align: {
     type: String as PropType<'start' | 'end' | 'center' | 'baseline'>,
     default: 'start',
@@ -34,12 +33,9 @@ export default defineComponent({
   name: 'ESpace',
   props: ESpaceProps,
   setup(props, { slots }) {
-
     const prefixCls = getPrefixCls('space');
 
-    const mergedAlign = computed(
-      () => props.align ?? (props.direction === 'horizontal' ? 'center' : '')
-    );
+    const mergedAlign = computed(() => props.align ?? (props.direction === 'horizontal' ? 'center' : ''));
 
     const computedCls = computed(() => {
       return {
@@ -49,8 +45,7 @@ export default defineComponent({
         [`${prefixCls}-wrap`]: props.wrap,
         [`${prefixCls}-fill`]: props.fill,
       };
-    }
-    );
+    });
 
     function getMargin(size: Size | number) {
       if (isNumber(size)) {
@@ -94,19 +89,17 @@ export default defineComponent({
     return () => {
       const children = flatten(slots.default?.() || []);
 
-      return <div class={computedCls.value}>
-        {children.map((child, index) => {
-          return (
-            <div
-              key={child.key ?? `item-${index}`}
-              class={`${prefixCls}-item`}
-              style={getMarginStyle(index, index === children.length - 1)}
-            >
-              {child}
-            </div>
-          );
-        })}
-      </div>;
+      return (
+        <div class={computedCls.value}>
+          {children.map((child, index) => {
+            return (
+              <div key={child.key ?? `item-${index}`} class={`${prefixCls}-item`} style={getMarginStyle(index, index === children.length - 1)}>
+                {child}
+              </div>
+            );
+          })}
+        </div>
+      );
     };
   },
 });

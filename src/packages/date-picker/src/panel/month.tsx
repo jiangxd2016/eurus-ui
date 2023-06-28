@@ -1,4 +1,4 @@
-import type { PropType, } from 'vue';
+import type { PropType } from 'vue';
 import { onMounted, defineComponent, ref, Fragment } from 'vue';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
@@ -10,7 +10,6 @@ import { generateMonthList } from '@/packages/_utils/date';
 export type dateType = Date | string | number | Dayjs;
 
 const EDatePickerProps = {
-
   modelValue: {
     type: [String, Date, Number, Array] as PropType<dateType>,
     default() {
@@ -24,10 +23,9 @@ const EDatePickerProps = {
   disabledDate: {
     type: Function as PropType<(date: number) => boolean>,
     default() {
-      return () => {
-      };
-    }
-  }
+      return () => {};
+    },
+  },
 };
 
 export default defineComponent({
@@ -35,7 +33,6 @@ export default defineComponent({
   props: EDatePickerProps,
   emits: ['change'],
   setup(props, { emit }) {
-
     const _value = ref(props.modelValue || dayjs().valueOf());
     const currentDateList = ref([dayjs(_value.value).year(), dayjs(_value.value).month() + 1]);
     const dateList = ref<datePickerItem[][]>([]);
@@ -52,7 +49,6 @@ export default defineComponent({
     };
 
     const dateRangeChange = (type: string) => {
-
       const [year, month] = currentDateList.value;
       switch (type) {
         // 上一年点击
@@ -63,15 +59,15 @@ export default defineComponent({
         case 'nextYear':
           currentDateList.value = [year + 1, month];
           break;
-
       }
       getDateList();
     };
 
-    return () => <Fragment>
-            <DateHeader date={currentDateList.value} type="month" onDateRangeChange={dateRangeChange}></DateHeader>
-            <Month list={dateList.value} onDateChange={dateChange}></Month>
-    </Fragment>;
-
+    return () => (
+      <Fragment>
+        <DateHeader date={currentDateList.value} type="month" onDateRangeChange={dateRangeChange}></DateHeader>
+        <Month list={dateList.value} onDateChange={dateChange}></Month>
+      </Fragment>
+    );
   },
 });

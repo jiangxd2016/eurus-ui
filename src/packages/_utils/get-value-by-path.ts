@@ -1,10 +1,7 @@
 import type { Data } from './types';
 import { isArray, isObject } from './is';
 
-export const getValueByPath = <T = any>(
-  obj: Data | undefined,
-  path: string | undefined
-): T | undefined => {
+export const getValueByPath = <T = any>(obj: Data | undefined, path: string | undefined): T | undefined => {
   if (!obj || !path) {
     return undefined;
   }
@@ -30,11 +27,7 @@ export const getValueByPath = <T = any>(
   return undefined;
 };
 
-export const setValueByPath = (
-  obj: Data | undefined,
-  path: string | undefined,
-  value: any
-) => {
+export const setValueByPath = (obj: Data | undefined, path: string | undefined, value: any) => {
   if (!obj || !path) {
     return;
   }

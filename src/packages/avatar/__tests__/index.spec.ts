@@ -2,7 +2,6 @@ import { mount } from '@vue/test-utils';
 import EAvatar from '..';
 
 describe('EAvatar', () => {
-
   it('EAvatar snapshot', () => {
     const wrapper = mount(EAvatar);
     expect(wrapper.html()).toMatchSnapshot();
@@ -10,7 +9,6 @@ describe('EAvatar', () => {
   });
 
   it('should work with `props`', () => {
-
     const wrapper = mount(EAvatar, {
       props: {
         size: 'md',
@@ -21,6 +19,5 @@ describe('EAvatar', () => {
     });
     expect(wrapper.html()).toMatchSnapshot();
     wrapper.unmount();
-
   });
 });

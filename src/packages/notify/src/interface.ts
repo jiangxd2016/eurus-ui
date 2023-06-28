@@ -2,48 +2,31 @@ import type { AppContext, RenderFunction } from 'vue';
 import type { MessageType } from '@/packages/_utils/constants';
 import type { RenderContent } from '@/packages/_utils';
 
-export const NOTIFICATION_POSITION = [
-  'topLeft',
-  'topRight',
-  'bottomLeft',
-  'bottomRight',
-] as const;
+export const NOTIFICATION_POSITION = ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'] as const;
 
-export type NotifyPosition = typeof NOTIFICATION_POSITION[number];
+export type NotifyPosition = (typeof NOTIFICATION_POSITION)[number];
 
 export interface NotifyMethod {
   /**
    * @zh 显示信息提醒框
    * @en Show info notify
    */
-  info: (
-    config: string | NotifyConfig,
-    appContext?: AppContext
-  ) => NotifyReturn;
+  info: (config: string | NotifyConfig, appContext?: AppContext) => NotifyReturn;
   /**
    * @zh 显示成功提醒框
    * @en Show success notify
    */
-  success: (
-    config: string | NotifyConfig,
-    appContext?: AppContext
-  ) => NotifyReturn;
+  success: (config: string | NotifyConfig, appContext?: AppContext) => NotifyReturn;
   /**
    * @zh 显示警告提醒框
    * @en Show warning notify
    */
-  warning: (
-    config: string | NotifyConfig,
-    appContext?: AppContext
-  ) => NotifyReturn;
+  warning: (config: string | NotifyConfig, appContext?: AppContext) => NotifyReturn;
   /**
    * @zh 显示错误提醒框
    * @en Show error notify
    */
-  error: (
-    config: string | NotifyConfig,
-    appContext?: AppContext
-  ) => NotifyReturn;
+  error: (config: string | NotifyConfig, appContext?: AppContext) => NotifyReturn;
   /**
    * @zh 清除全部提醒框
    * @en Clear all notifications

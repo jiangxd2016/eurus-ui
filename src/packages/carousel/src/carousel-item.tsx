@@ -36,25 +36,15 @@ export default defineComponent({
     let direction: 'horizontal' | 'vertical' = 'horizontal';
 
     watchEffect(() => {
-      direction = carouselProvide?.offsetWidth.value
-        ? 'horizontal'
-        : 'vertical';
+      direction = carouselProvide?.offsetWidth.value ? 'horizontal' : 'vertical';
     });
 
     // fun
-    function transformItem(
-      index: number,
-      activeIndex: number,
-      isAnimate = true,
-    ) {
+    function transformItem(index: number, activeIndex: number, isAnimate = true) {
       if (isAnimate) {
         isAnimating(index, activeIndex, carouselProvide?.itemReact.length || 0);
       }
-      index = processIndex(
-        index,
-        activeIndex,
-        carouselProvide?.itemReact.length || 0,
-      );
+      index = processIndex(index, activeIndex, carouselProvide?.itemReact.length || 0);
       calcTransform(index, activeIndex);
     }
 
@@ -89,45 +79,30 @@ export default defineComponent({
         data.animating = true;
         return;
       }
-      if (
-        index === activeIndex
-        || index === carouselProvide?.oldActiveIndex.value
-      ) {
+      if (index === activeIndex || index === carouselProvide?.oldActiveIndex.value) {
         data.animating = true;
       }
 
       if (
-        (activeIndex === 0
-          && carouselProvide?.oldActiveIndex.value === length - 1)
-        || (activeIndex === length - 1
-          && carouselProvide?.oldActiveIndex.value === 0)
+        (activeIndex === 0 && carouselProvide?.oldActiveIndex.value === length - 1) ||
+        (activeIndex === length - 1 && carouselProvide?.oldActiveIndex.value === 0)
       ) {
         return;
       }
 
       if (activeIndex > carouselProvide?.oldActiveIndex.value) {
-        if (
-          index <= activeIndex
-          && index >= carouselProvide?.oldActiveIndex.value
-        ) {
+        if (index <= activeIndex && index >= carouselProvide?.oldActiveIndex.value) {
           data.animating = true;
         }
-      } else if (activeIndex < carouselProvide?.oldActiveIndex.value
-        && index >= activeIndex
-        && index <= carouselProvide?.oldActiveIndex.value
-      ) {
+      } else if (activeIndex < carouselProvide?.oldActiveIndex.value && index >= activeIndex && index <= carouselProvide?.oldActiveIndex.value) {
         data.animating = true;
       }
     }
 
     addCarouseItem();
     return () => (
-      <div style={{ transform: itemStyle.value }}
-           class={[prefixCls, data.animating && 'is-animating']}
-      >
-        {
-          slots.default?.()
-        }
+      <div style={{ transform: itemStyle.value }} class={[prefixCls, data.animating && 'is-animating']}>
+        {slots.default?.()}
       </div>
     );
   },

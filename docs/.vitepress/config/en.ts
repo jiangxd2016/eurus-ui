@@ -22,9 +22,12 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     nav: [
       { text: 'components', link: '/en/components/button' },
       { text: 'guider', link: '/en/guider/quick-start' },
-      { text: `v${version}`, items: [{ text: 'Release Notes', link: RELEASES, }] },
+      { text: `v${version}`, items: [{ text: 'Release Notes', link: RELEASES }] },
       {
-        text: 'Links', items: [{ text: 'Discussions', link: DISCUSSIONS, }, { text: 'Changelog', link: CHANGELOG, },
+        text: 'Links',
+        items: [
+          { text: 'Discussions', link: DISCUSSIONS },
+          { text: 'Changelog', link: CHANGELOG },
         ],
       },
     ],
@@ -105,7 +108,7 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
             {
               text: 'config-provider',
               link: '/en/components/config-provider',
-            }
+            },
             // {
             //   text: '加载中 loading',
             //   link: '/en/components/loading',
@@ -125,7 +128,6 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
             //   text: '消息组件',
             //   link: '/en/components/message',
             // },
-
           ],
         },
       ],

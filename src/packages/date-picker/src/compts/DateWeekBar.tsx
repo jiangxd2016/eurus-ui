@@ -5,7 +5,6 @@ import { getPrefixCls } from '@/packages/_utils/global-config';
 export default defineComponent({
   name: 'DateWeekBar',
   setup() {
-
     const prefixCls = getPrefixCls('date-picker-week-bar');
 
     const t = useLocaleTransform();
@@ -16,18 +15,17 @@ export default defineComponent({
       t('datePicker.week.short.thursday'),
       t('datePicker.week.short.friday'),
       t('datePicker.week.short.saturday'),
-      t('datePicker.week.short.sunday')];
+      t('datePicker.week.short.sunday'),
+    ];
 
     return () => (
       <thead class={prefixCls}>
         <tr>
-          {
-            weekList.map((item) => {
-              return <th key={item}>{item}</th>;
-            })
-          }
+          {weekList.map((item) => {
+            return <th key={item}>{item}</th>;
+          })}
         </tr>
       </thead>
     );
-  }
+  },
 });

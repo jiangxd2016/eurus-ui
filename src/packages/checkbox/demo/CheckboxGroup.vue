@@ -4,19 +4,19 @@
     <ECheckbox value="B" label="checkboxB" />
     <ECheckbox value="C" label="checkboxC" />
     <ECheckbox value="D" label="checkboxD" />
-  </echeckboxgroup>
+  </ECheckboxGroup>
   <ECheckboxGroup v-model="checkboxGroupValue" disabled @change="onchange">
     <ECheckbox value="A" label="checkboxA" />
     <ECheckbox value="B" label="checkboxB" />
     <ECheckbox value="C" label="checkboxC" />
     <ECheckbox value="D" label="checkboxD" />
-  </echeckboxgroup>
+  </ECheckboxGroup>
   <ECheckboxGroup v-model="checkboxGroupValue2" @change="onchange">
     <ECheckbox value="A" label="checkboxA" disabled />
     <ECheckbox value="B" label="checkboxB" />
     <ECheckbox value="C" label="checkboxC" disabled />
     <ECheckbox value="D" label="checkboxD" />
-  </echeckboxgroup>
+  </ECheckboxGroup>
 </template>
 
 <script lang="ts" setup>

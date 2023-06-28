@@ -1,20 +1,14 @@
 <template>
-  <Component
-    :is="mergedComponent.container"
-    ref="containerRef"
-    :class="prefixCls"
-    :style="style"
-    @scroll="onScroll"
-  >
+  <Component :is="mergedComponent.container" ref="containerRef" :class="prefixCls" :style="style" @scroll="onScroll">
     <Component
       :is="mergedComponent.list"
       v-bind="listAttrs"
       :style="
         paddingPosition === 'list'
           ? {
-            paddingTop: `${frontPadding}px`,
-            paddingBottom: `${behindPadding}px`,
-          }
+              paddingTop: `${frontPadding}px`,
+              paddingBottom: `${behindPadding}px`,
+            }
           : {}
       "
     >
@@ -25,18 +19,13 @@
         :style="
           paddingPosition === 'content'
             ? {
-              paddingTop: `${frontPadding}px`,
-              paddingBottom: `${behindPadding}px`,
-            }
+                paddingTop: `${frontPadding}px`,
+                paddingBottom: `${behindPadding}px`,
+              }
             : {}
         "
       >
-        <VirtualListItem
-          v-for="(item, index) of currentList"
-          :key="item[itemKey] ?? start + index"
-          :has-item-size="hasItemSize"
-          :set-item-size="setItemSize"
-        >
+        <VirtualListItem v-for="(item, index) of currentList" :key="item[itemKey] ?? start + index" :has-item-size="hasItemSize" :set-item-size="setItemSize">
           <slot name="item" :item="item" :index="start + index" />
         </VirtualListItem>
       </Component>
@@ -104,8 +93,7 @@ export default defineComponent({
     reachBottom: (ev: Event) => true,
   },
   setup(props, { emit }) {
-    const { data, itemKey, fixedSize, estimatedSize, buffer, height }
-      = toRefs(props);
+    const { data, itemKey, fixedSize, estimatedSize, buffer, height } = toRefs(props);
     const prefixCls = getPrefixCls('virtual-list');
     const mergedComponent = computed(() => {
       if (isObject(props.component)) {
@@ -136,20 +124,10 @@ export default defineComponent({
     const dataKeys = computed(() =>
       data.value.map((item: any, index) => {
         return (item[itemKey.value] ?? index) as string | number;
-      })
+      }),
     );
 
-    const {
-      frontPadding,
-      behindPadding,
-      start,
-      end,
-      getStartByScroll,
-      setItemSize,
-      hasItemSize,
-      setStart,
-      getScrollOffset,
-    } = useSize({
+    const { frontPadding, behindPadding, start, end, getStartByScroll, setItemSize, hasItemSize, setStart, getScrollOffset } = useSize({
       dataKeys,
       contentRef,
       fixedSize,
@@ -166,8 +144,7 @@ export default defineComponent({
     });
 
     const onScroll = (ev: Event) => {
-      const { scrollTop, scrollHeight, offsetHeight }
-        = ev.target as HTMLElement;
+      const { scrollTop, scrollHeight, offsetHeight } = ev.target as HTMLElement;
 
       const _start = getStartByScroll(scrollTop);
       if (_start !== start.value) {
@@ -185,8 +162,7 @@ export default defineComponent({
         if (isNumber(options)) {
           containerRef.value.scrollTop = options;
         } else {
-          const _index
-            = options.index ?? dataKeys.value.indexOf(options.key ?? '');
+          const _index = options.index ?? dataKeys.value.indexOf(options.key ?? '');
           setStart(_index - buffer.value);
           containerRef.value.scrollTop = getScrollOffset(_index);
           nextTick(() => {

@@ -1,12 +1,7 @@
 import type { PropType } from 'vue';
 import { defineComponent, TransitionGroup } from 'vue';
-import type {
-  NotifyItem,
-  NotifyPosition
-} from './interface';
-import {
-  NOTIFICATION_POSITION
-} from './interface';
+import type { NotifyItem, NotifyPosition } from './interface';
+import { NOTIFICATION_POSITION } from './interface';
 import Notify from './notify';
 import { getPrefixCls, getSlotFunction, toKebabCase } from '@/packages/_utils';
 import usePopupManager from '@/packages/_hooks/usePopupManager';
@@ -36,13 +31,7 @@ export default defineComponent({
 
     return () => (
       <div class={`${prefixCls} ${prefixCls}-${kebabPosition}`} style={{ zIndex: zIndex.value }}>
-
-        <TransitionGroup
-
-          name={`slide-${isRight ? 'right' : 'left'}-notify`}
-          onAfterLeave={() => context.emit('afterClose')}
-          tag="ul"
-        >
+        <TransitionGroup name={`slide-${isRight ? 'right' : 'left'}-notify`} onAfterLeave={() => context.emit('afterClose')} tag="ul">
           {props.notifications.map((item) => {
             const slots = {
               default: getSlotFunction(item.title),
@@ -63,7 +52,6 @@ export default defineComponent({
           })}
         </TransitionGroup>
       </div>
-
     );
   },
 });

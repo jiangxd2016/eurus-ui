@@ -52,7 +52,7 @@ const ETooltipProps = {
   style: {
     type: Object as PropType<Record<string, any>>,
     default: () => ({}),
-  }
+  },
 };
 
 export default defineComponent({
@@ -60,7 +60,6 @@ export default defineComponent({
   props: ETooltipProps,
   emits: ['click'],
   setup(props, { slots, emit, expose }) {
-
     const prefixCls = getPrefixCls('tooltip');
 
     const tooltipRef = ref<HTMLElement>();
@@ -69,7 +68,7 @@ export default defineComponent({
     const state = reactive({
       clearTime: 0,
       visible: false,
-      tooltipStyle: {}
+      tooltipStyle: {},
     });
     const hasAppendToBody = ref(false);
     // const instance = getCurrentInstance()
@@ -77,17 +76,12 @@ export default defineComponent({
       () => props.disabled,
       (val: boolean) => {
         nextTick(() => {
-          if (
-            !val
-						&& props.appendToBody
-						&& tooltipRef.value
-						&& !hasAppendToBody.value
-          ) {
+          if (!val && props.appendToBody && tooltipRef.value && !hasAppendToBody.value) {
             document.body.append(tooltipRef.value);
             hasAppendToBody.value = true;
           }
         });
-      }
+      },
     );
 
     const getContent = (slot: any) => {
@@ -111,7 +105,7 @@ export default defineComponent({
       const windowWidth = getWindow().width;
       const space = props.y + 8; // 当前标签与提示语之间的距离
       const style: any = {
-        maxWidth: props.maxWidth + 'px'
+        maxWidth: props.maxWidth + 'px',
       };
       if (props.appendToBody) {
         const windowHeight = getWindow().height;
@@ -123,13 +117,11 @@ export default defineComponent({
             break;
           case 'top':
             style.transform = 'translateX(-50%)';
-            style.left
-							= translate(offset.left + offset.width / 2 + props.x) + 'px';
+            style.left = translate(offset.left + offset.width / 2 + props.x) + 'px';
             style.bottom = bottom;
             break;
           case 'top-right':
-            style.right
-							= windowWidth - (offset.left + offset.width + props.x) + 'px';
+            style.right = windowWidth - (offset.left + offset.width + props.x) + 'px';
             style.bottom = bottom;
             break;
           case 'left':
@@ -147,14 +139,12 @@ export default defineComponent({
             style.top = offset.top + offset.height + space + 'px';
             break;
           case 'bottom':
-            style.left
-							= translate(offset.left + offset.width / 2 + props.x) + 'px';
+            style.left = translate(offset.left + offset.width / 2 + props.x) + 'px';
             style.transform = 'translateX(-50%)';
             style.top = offset.top + offset.height + space + 'px';
             break;
           case 'bottom-right':
-            style.right
-							= windowWidth - (offset.left + offset.width + props.x) + 'px';
+            style.right = windowWidth - (offset.left + offset.width + props.x) + 'px';
             style.top = offset.top + offset.height + space + 'px';
             break;
         }
@@ -239,33 +229,18 @@ export default defineComponent({
       }
     });
     return () => (
-			<div ref={wrapperRef} class={`${prefixCls}-wrapper`}>
+      <div ref={wrapperRef} class={`${prefixCls}-wrapper`}>
+        {slots?.default?.()}
 
-				{
-					slots?.default?.()
-				}
-
-				<Transition name={`tooltip-${props.transition}`}>
-					{
-						getContent(slots) && (
-							<div
-								ref={tooltipRef}
-								class={[prefixCls, props.direction]}
-								style={{ ...state.tooltipStyle, ...{ display: state.visible ? 'block' : 'block' } }}
-							>
-								<EIcons name="arrow" class="arrow"></EIcons>
-								{
-									props.content ? <span v-html={props.content}></span> : slots.content?.()
-								}
-							</div
-							>
-
-						)
-					}
-
-				</Transition>
-			</div>
-
+        <Transition name={`tooltip-${props.transition}`}>
+          {getContent(slots) && (
+            <div ref={tooltipRef} class={[prefixCls, props.direction]} style={{ ...state.tooltipStyle, ...{ display: state.visible ? 'block' : 'block' } }}>
+              <EIcons name="arrow" class="arrow"></EIcons>
+              {props.content ? <span v-html={props.content}></span> : slots.content?.()}
+            </div>
+          )}
+        </Transition>
+      </div>
     );
   },
 });

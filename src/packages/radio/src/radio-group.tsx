@@ -9,15 +9,15 @@ export default defineComponent({
   props: {
     modelValue: {
       type: [String, Number, Boolean] as PropType<string | number | boolean | undefined>,
-      default: null
+      default: null,
     },
     defaultValue: {
       type: [String, Number, Boolean] as PropType<string | number | boolean | undefined>,
-      default: null
+      default: null,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
   },
   setup(props, { slots, emit }) {
@@ -33,7 +33,7 @@ export default defineComponent({
 
     const computedCls = computed(() => {
       return {
-        [`${prefixCls}-disabled`]: props.disabled
+        [`${prefixCls}-disabled`]: props.disabled,
       };
     });
     const updateValue = (value: string | boolean | number | undefined, e: Event) => {
@@ -45,17 +45,16 @@ export default defineComponent({
       emit('change', value, e);
       emit('update:modelValue', value);
     };
-    provide(RadioGroupKey, reactive({
-      handleChange: updateValue,
-      name: 'EuRadioGroup',
-      value: computedValue,
-      disabled: computedDisabled.value,
-    }));
-
-    return () => (
-      <div class={[prefixCls, computedCls.value]}>
-        {slots.default && slots.default()}
-      </div>
+    provide(
+      RadioGroupKey,
+      reactive({
+        handleChange: updateValue,
+        name: 'EuRadioGroup',
+        value: computedValue,
+        disabled: computedDisabled.value,
+      }),
     );
-  }
+
+    return () => <div class={[prefixCls, computedCls.value]}>{slots.default && slots.default()}</div>;
+  },
 });

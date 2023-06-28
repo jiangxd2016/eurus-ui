@@ -1,13 +1,5 @@
-import type {
-  ComponentPublicInstance } from 'vue';
-import {
-  cloneVNode,
-  defineComponent,
-  getCurrentInstance,
-  onBeforeUnmount,
-  onMounted,
-  ref,
-} from 'vue';
+import type { ComponentPublicInstance } from 'vue';
+import { cloneVNode, defineComponent, getCurrentInstance, onBeforeUnmount, onMounted, ref } from 'vue';
 import { getFirstComponent } from '../../_utils/vue-utils';
 
 export default defineComponent({
@@ -46,7 +38,7 @@ export default defineComponent({
           {
             ref: itemRef,
           },
-          true
+          true,
         );
       }
 

@@ -10,7 +10,7 @@ const DateBodyProps = {
   list: {
     type: Array as PropType<datePickerItem[][]>,
     default() {
-      return ()=>[];
+      return () => [];
     },
   },
 };
@@ -19,7 +19,6 @@ export default defineComponent({
   props: DateBodyProps,
   emits: ['dateChange', 'dateHover'],
   setup(props, { emit }) {
-
     const prefixCls = getPrefixCls('date-picker-body');
 
     const dateChange = (date: string) => {
@@ -32,13 +31,9 @@ export default defineComponent({
       <div class={prefixCls}>
         <table>
           <DateWeekBar />
-          <DateDayList
-            list={props.list}
-            onDateChange={dateChange}
-            onDateHover={dateHover}
-          />
+          <DateDayList list={props.list} onDateChange={dateChange} onDateHover={dateHover} />
         </table>
       </div>
     );
-  }
+  },
 });

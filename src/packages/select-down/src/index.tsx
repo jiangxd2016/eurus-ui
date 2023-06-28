@@ -1,5 +1,5 @@
 import type { PropType } from 'vue';
-import { computed, defineComponent, nextTick, ref, Transition, watch, } from 'vue';
+import { computed, defineComponent, nextTick, ref, Transition, watch } from 'vue';
 import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
@@ -16,7 +16,7 @@ export const ESelectDownProps = {
   width: String,
   size: {
     type: String as PropType<Size>,
-    default: 'md'
+    default: 'md',
   },
   label: String,
 
@@ -42,24 +42,24 @@ export const ESelectDownProps = {
   },
   clear: {
     type: Boolean,
-    default: false
+    default: false,
   },
   multiple: {
     type: Boolean,
-    default: false
+    default: false,
   },
   scrollPanel: {
     type: Boolean,
-    default: true
+    default: true,
   },
   range: {
     type: Boolean,
-    default: false
+    default: false,
   },
   rangeSeparator: {
     type: String,
-    default: '-'
-  }
+    default: '-',
+  },
 };
 
 export default defineComponent({
@@ -77,9 +77,12 @@ export default defineComponent({
     const isFocus = ref(false);
     const _value = ref(props.modelValue);
 
-    watch(() => props.modelValue, (val) => {
-      _value.value = val;
-    });
+    watch(
+      () => props.modelValue,
+      (val) => {
+        _value.value = val;
+      },
+    );
 
     const computedDisabled = computed(() => {
       return props.disabled;
@@ -118,7 +121,6 @@ export default defineComponent({
         return _value.value;
       }
       return [];
-
     });
 
     const handleControlClick = async () => {
@@ -181,7 +183,6 @@ export default defineComponent({
       }
       isFocus.value = false;
       panelVisible.value = false;
-
     };
     const handleClearClick = (ev: Event) => {
       if (computedDisabled.value) {
@@ -234,78 +235,56 @@ export default defineComponent({
 
     expose({
       setPanelVisible,
-      setModelValue
+      setModelValue,
     });
     return () => {
       const Control = () => {
         if (props.range) {
-          return <div class={`${prefixCls}-control-range`}>
-            <div class={`${prefixCls}-control-range-single`}>
-              {
-                computedRangeValue.value[0]
-                  ? computedRangeValue.value[0]
-                  : <span class="placeholder">{props.startPlaceholder}</span>
-              }
+          return (
+            <div class={`${prefixCls}-control-range`}>
+              <div class={`${prefixCls}-control-range-single`}>
+                {computedRangeValue.value[0] ? computedRangeValue.value[0] : <span class="placeholder">{props.startPlaceholder}</span>}
+              </div>
+              <span class="range-separator">{props.rangeSeparator}</span>
+              <div class={`${prefixCls}-control-range-single`}>
+                {computedRangeValue.value[1] ? computedRangeValue.value[1] : <span class="placeholder">{props.endPlaceholder}</span>}
+              </div>
             </div>
-            <span class="range-separator">{props.rangeSeparator}</span>
-            <div class={`${prefixCls}-control-range-single`}>
-              {
-                computedRangeValue.value[1]
-                  ? computedRangeValue.value[1]
-                  : <span class="placeholder">{props.endPlaceholder}</span>
-            }
-            </div>
-          </div>;
+          );
         }
 
         if (!computedHasValue.value) {
-          return <div class={`${prefixCls}-control-placeholder`}>
-            {props.placeholder}
-          </div>;
+          return <div class={`${prefixCls}-control-placeholder`}>{props.placeholder}</div>;
         }
         if (props.multiple && isArray(_value.value)) {
-          return <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0}
-                      onClick={e => e.stopPropagation()}
-          >
-            {_value.value.map((item) => {
-              return <Tag size={props.size} closable disabled={computedDisabled.value}
-                          onClose={(e: Event) => handleTagClose(e, item)}
-              >
-                {item}
-              </Tag>;
-            })}
-          </div>;
+          return (
+            <div class={`${prefixCls}-control-multiple`} role="menu" tabindex={0} onClick={(e) => e.stopPropagation()}>
+              {_value.value.map((item) => {
+                return (
+                  <Tag size={props.size} closable disabled={computedDisabled.value} onClose={(e: Event) => handleTagClose(e, item)}>
+                    {item}
+                  </Tag>
+                );
+              })}
+            </div>
+          );
         } else {
-          return <div class={`${prefixCls}-single`}>
-            {_value.value}
-          </div>;
+          return <div class={`${prefixCls}-single`}>{_value.value}</div>;
         }
       };
       return (
         <div class={computedCls.value} ref={selectDownRef}>
           <div
             class={[`${prefixCls}-control`, `${prefixCls}-control-${props.size}`, isFocus.value && `${prefixCls}-control-focus`]}
-            role="listbox" tabindex={0}
-            onClick={handleControlClick} onKeydown={handleKeydown}
+            role="listbox"
+            tabindex={0}
+            onClick={handleControlClick}
+            onKeydown={handleKeydown}
           >
             {Control()}
-            <input
-              class={`${prefixCls}-control-input`}
-              ref={inputRef}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-            >
-            </input>
-            {
-              computedCloseVisible.value && !computedDisabled.value && <Icon
-                name="close"
-                class="clear-icon"
-                size={20}
-                onClick={handleClearClick}
-              ></Icon>}
-            <Icon name="chevronDown"
-                  class={['down-icon', panelVisible.value && 'translate-icon']} size={20}
-            ></Icon>
+            <input class={`${prefixCls}-control-input`} ref={inputRef} onFocus={handleFocus} onBlur={handleBlur}></input>
+            {computedCloseVisible.value && !computedDisabled.value && <Icon name="close" class="clear-icon" size={20} onClick={handleClearClick}></Icon>}
+            <Icon name="chevronDown" class={['down-icon', panelVisible.value && 'translate-icon']} size={20}></Icon>
           </div>
 
           <Transition name="slide-toggle">
@@ -319,16 +298,12 @@ export default defineComponent({
               onClick={handlePanelClick}
             >
               <div class={`${prefixCls}-panel-wrapper`}>
-                <ul class={['panel', props.scrollPanel && 'scroll']}>
-                  {slots.default && slots.default()}
-                </ul>
+                <ul class={['panel', props.scrollPanel && 'scroll']}>{slots.default && slots.default()}</ul>
                 <span class="down-arrow"></span>
               </div>
-
             </div>
           </Transition>
         </div>
-
       );
     };
   },

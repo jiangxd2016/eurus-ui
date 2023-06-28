@@ -33,13 +33,10 @@ const config: InlineConfig = {
       formats: ['es', 'cjs'],
       fileName: (module) => {
         return `eurus-ui.${module === 'es' ? 'm' : 'c'}js`;
-      }
+      },
     },
   },
-  plugins: [
-    vue(),
-    vueJsx()
-  ],
+  plugins: [vue(), vueJsx()],
 };
 
 export default config;

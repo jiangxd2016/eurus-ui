@@ -29,12 +29,7 @@ export const useDrag = (draggable: Ref<TableDraggable | undefined>) => {
     dragState.data = {};
   };
 
-  const handleDragStart = (
-    ev: DragEvent,
-    targetKey: string,
-    targetPath: number[],
-    data: Record<string, unknown>
-  ) => {
+  const handleDragStart = (ev: DragEvent, targetKey: string, targetPath: number[], data: Record<string, unknown>) => {
     if (ev.dataTransfer) {
       ev.dataTransfer.effectAllowed = 'move';
       if (ev.target && (ev.target as HTMLElement).tagName === 'TD') {

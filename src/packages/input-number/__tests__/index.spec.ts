@@ -3,7 +3,6 @@ import { nextTick, ref } from 'vue';
 import EInputNumber from '..';
 
 describe('EInputNumber', () => {
-
   it('EInputNumber snapshot', () => {
     const wrapper = mount(EInputNumber);
     expect(wrapper.html()).toMatchSnapshot();
