@@ -1,1 +1,0 @@
-<template><EPagination /></template>

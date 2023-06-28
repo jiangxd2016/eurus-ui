@@ -9,7 +9,7 @@ exports[`ECheckbox > ECheckbox snapshot 1`] = `
 `;
 
 exports[`ECheckbox > should work emit change event in group 1`] = `
-"<div class=\\"eu-checkbox-group\\"><label class=\\"eu-checkbox eu-checkbox-checked\\" aria-hidden=\\"true\\"><input type=\\"checkbox\\" class=\\"eu-checkbox__input\\" value=\\"1\\"><span class=\\"eu-checkbox-inner\\"><span class=\\"eu-icon eu-checkbox-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 14px;\\"><i class=\\"checkedFill\\" style=\\"font-size: 14px;\\"></i></span></span>
+"<div class=\\"eu-checkbox-group\\"><label class=\\"eu-checkbox eu-checkbox-checked\\" aria-hidden=\\"true\\"><input type=\\"checkbox\\" checked=\\"\\" class=\\"eu-checkbox__input\\" value=\\"1\\"><span class=\\"eu-checkbox-inner\\"><span class=\\"eu-icon eu-checkbox-icon\\" role=\\"link\\" tabindex=\\"0\\" style=\\"font-size: 14px;\\"><i class=\\"checkedFill\\" style=\\"font-size: 14px;\\"></i></span></span>
     <div class=\\"eu-checkbox__label\\">1</div>
   </label></div>"
 `;

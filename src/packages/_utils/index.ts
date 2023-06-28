@@ -9,4 +9,3 @@ export * from './is';
 export * from './size';
 export * from './types';
 export * from './warn';
-export * from './vue-utils';

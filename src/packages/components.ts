@@ -34,11 +34,3 @@ export * from './notify';
 
 export * from './menu';
 export * from './tooltip';
-
-export * from './table';
-export * from './spin';
-export * from './pagination';
-export * from './empty';
-export * from './scrollbar';
-export * from './trigger';
-export * from './table';

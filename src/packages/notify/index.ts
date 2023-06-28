@@ -1,7 +1,7 @@
 import type { App, AppContext } from 'vue';
+import { MESSAGE_TYPES } from '../_utils';
 import { Notify } from './src';
 import type { NotifyMethod } from './src/interface';
-import { MESSAGE_TYPES } from '@/packages/_utils';
 
 const ENotify = {
   ...Notify,

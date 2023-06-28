@@ -1,5 +1,6 @@
 import type { StyleValue } from 'vue';
 
+export {};
 declare global {
   const __DEV__: boolean;
   namespace JSX {

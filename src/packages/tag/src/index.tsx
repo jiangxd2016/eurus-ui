@@ -4,7 +4,6 @@ import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import EIcon from '@/packages/icons';
-import size from '@/packages/input/demo/Size.vue';
 
 type tagType = 'default' | 'primary' | 'positive' | 'warning' | 'danger' | 'info';
 const ETagProps = {
@@ -67,7 +66,7 @@ export default defineComponent({
         {slots?.default && slots.default()}
         {props.closable && (
           <span onClick={closeClick} aria-hidden="true" class={`${prefixCls}-icon`}>
-            <EIcon name="close" size={size.value}></EIcon>
+            <EIcon name="close" size="md"></EIcon>
           </span>
         )}
       </span>
