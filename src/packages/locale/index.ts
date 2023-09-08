@@ -1,4 +1,4 @@
-import { ref, reactive, inject, computed } from 'vue';
+import { computed, inject, reactive, ref } from 'vue';
 import zhCN from './lang/zh-cn';
 import enUS from './lang/en-us';
 import jaJP from './lang/ja-jp';
@@ -11,9 +11,9 @@ type i18nMessage = Record<string, typeof zhCN>;
 
 const LOCALE = ref<language>('zh-cn');
 const I18N_MESSAGES = reactive<i18nMessage>({
-  'zh-cn': zhCN,
-  'en-us': enUS,
-  'ja-jp': jaJP,
+	'zh-cn': zhCN,
+	'en-us': enUS,
+	'ja-jp': jaJP,
 });
 
 /**
@@ -22,63 +22,65 @@ const I18N_MESSAGES = reactive<i18nMessage>({
  * @param options
  */
 export const addI18nMessages = (
-  messages: i18nMessage,
-  options?: {
-    overwrite?: boolean;
-  },
+	messages: i18nMessage,
+	options?: {
+		overwrite?: boolean;
+	},
 ) => {
-  for (const key of Object.keys(messages)) {
-    if (!I18N_MESSAGES[key] || options?.overwrite) {
-      I18N_MESSAGES[key] = messages[key];
-    }
-  }
+	for (const key of Object.keys(messages)) {
+		if (!I18N_MESSAGES[key] || options?.overwrite) {
+			I18N_MESSAGES[key] = messages[key];
+		}
+	}
 };
 
 /**
  * 切换地区语言。
  */
 export const useLocale = (locale: string) => {
-  if (!I18N_MESSAGES[locale]) {
-    console.warn(`use ${locale} failed! Please add ${locale} first`);
-    return;
-  }
-  LOCALE.value = locale as language;
+	if (!I18N_MESSAGES[locale]) {
+		console.warn(`use ${locale} failed! Please add ${locale} first`);
+		return;
+	}
+	LOCALE.value = locale as language;
 };
 
 /**
  * 获取当前的地区语言
  */
 export const getLocale = () => {
-  return LOCALE.value;
+	return LOCALE.value;
 };
 
 export const useI18n = () => {
-  const configProvider = inject(EurusConfigProviderKey, undefined);
-  const i18nMessage = computed<typeof zhCN>(() => I18N_MESSAGES[configProvider?.locale ?? LOCALE.value]);
-  const locale = computed<string>(() => i18nMessage.value.locale);
+	const configProvider = inject(EurusConfigProviderKey, undefined);
+	const i18nMessage = computed<typeof zhCN>(
+		() => I18N_MESSAGES[configProvider?.locale ?? LOCALE.value],
+	);
+	const locale = computed<string>(() => i18nMessage.value.locale);
 
-  const transform = (key: string, ...args: any[]) => {
-    const keyArray = key.split('.');
-    let temp: any = i18nMessage.value;
+	const transform = (key: string, ...args: any[]) => {
+		const keyArray = key.split('.');
+		let temp: any = i18nMessage.value;
 
-    for (const keyItem of keyArray) {
-      if (!temp[keyItem]) {
-        return key;
-      }
-      temp = temp[keyItem];
-    }
-    if (isString(temp)) {
-      if (args.length > 0) {
-        return temp.replaceAll(/{(\d+)}/g, (sub: string, index: number) => args[index] ?? sub);
-      }
+		for (const keyItem of keyArray) {
+			if (!temp[keyItem]) {
+				return key;
+			}
+			temp = temp[keyItem];
+		}
+		if (isString(temp)) {
+			if (args.length > 0) {
+				return temp.replaceAll(/{(\d+)}/g, (sub: string, index: number) => args[index] ?? sub);
+			}
 
-      return temp;
-    }
-    return temp;
-  };
+			return temp;
+		}
+		return temp;
+	};
 
-  return {
-    locale,
-    t: transform,
-  };
+	return {
+		locale,
+		t: transform,
+	};
 };

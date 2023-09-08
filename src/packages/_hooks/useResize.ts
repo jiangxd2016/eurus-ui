@@ -8,21 +8,25 @@ import { noop } from '@/packages/_utils/shared';
  * @param cb - callback
  * @param options - options
  */
-export default function useResize(target: HTMLElement, cb: () => {}, options?: ResizeObserverOptions | AddEventListenerOptions) {
-  let observer: ResizeObserver | undefined;
-  const isSupported = window && 'ResizeObserver' in window;
-  if (!target) {
-    warn('useResize', 'target is required');
-    return noop;
-  }
-  if (!isSupported) {
-    return useEventListener(target, 'resize', cb, options as AddEventListenerOptions);
-  } else {
-    observer = new ResizeObserver(cb);
-    observer.observe(target, options as ResizeObserverOptions);
+export default function useResize(
+	target: HTMLElement,
+	cb: () => {},
+	options?: ResizeObserverOptions | AddEventListenerOptions,
+) {
+	let observer: ResizeObserver | undefined;
+	const isSupported = window && 'ResizeObserver' in window;
+	if (!target) {
+		warn('useResize', 'target is required');
+		return noop;
+	}
+	if (!isSupported) {
+		return useEventListener(target, 'resize', cb, options as AddEventListenerOptions);
+	} else {
+		observer = new ResizeObserver(cb);
+		observer.observe(target, options as ResizeObserverOptions);
 
-    return () => {
-      observer?.disconnect();
-    };
-  }
+		return () => {
+			observer?.disconnect();
+		};
+	}
 }

@@ -1,1 +1,3 @@
-<template><EConfigProvider /></template>
+<template>
+	<EConfigProvider />
+</template>

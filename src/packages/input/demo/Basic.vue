@@ -1,6 +1,6 @@
 <template>
-  <EInput v-model="inputValue" />
-  <EInput placeholder="please enter" />
+	<EInput v-model="inputValue" />
+	<EInput placeholder="please enter" />
 </template>
 
 <script lang="ts" setup>

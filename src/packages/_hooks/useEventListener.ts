@@ -9,21 +9,21 @@ import { noop } from '@/packages/_utils/shared';
  * @param options - event listener options
  */
 export default function useEventListener(
-  target: HTMLElement | Window = window,
-  event: string,
-  listener: EventListenerOrEventListenerObject,
-  options?: boolean | AddEventListenerOptions,
+	target: HTMLElement | Window = window,
+	event: string,
+	listener: EventListenerOrEventListenerObject,
+	options?: boolean | AddEventListenerOptions,
 ): Fn {
-  if (!event || !listener) {
-    return noop;
-  }
-  if (!target.addEventListener) {
-    return noop;
-  }
+	if (!event || !listener) {
+		return noop;
+	}
+	if (!target.addEventListener) {
+		return noop;
+	}
 
-  target.addEventListener(event, listener, options);
+	target.addEventListener(event, listener, options);
 
-  return () => {
-    target.removeEventListener(event, listener, options);
-  };
+	return () => {
+		target.removeEventListener(event, listener, options);
+	};
 }

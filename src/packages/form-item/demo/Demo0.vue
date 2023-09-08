@@ -1,1 +1,3 @@
-<template><EFormItem /></template>
+<template>
+	<EFormItem />
+</template>
