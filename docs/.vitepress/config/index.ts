@@ -4,10 +4,10 @@ import { zhConfig } from './zh';
 import { enConfig } from './en';
 
 export default defineConfig({
-  ...sharedConfig,
+	...sharedConfig,
 
-  locales: {
-    en: { label: 'English', lang: 'en', link: '/en', ...enConfig },
-    zh: { label: '简体中文', lang: 'zh', link: '/zh/', ...zhConfig },
-  },
+	locales: {
+		en: { label: 'English', lang: 'en', link: '/en', ...enConfig },
+		zh: { label: '简体中文', lang: 'zh', link: '/zh/', ...zhConfig },
+	},
 });

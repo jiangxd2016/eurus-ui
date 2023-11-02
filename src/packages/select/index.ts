@@ -3,11 +3,11 @@ import ESelect from './src';
 import EOption from './src/option';
 
 ESelect.install = (app: App) => {
-  app.component(ESelect.name, ESelect);
+	app.component(ESelect.name, ESelect);
 };
 
 EOption.install = (app: App) => {
-  app.component(EOption.name, EOption);
+	app.component(EOption.name, EOption);
 };
 
 export { ESelect, EOption };

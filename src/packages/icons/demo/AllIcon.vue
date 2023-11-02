@@ -1,10 +1,10 @@
 <template>
-  <ESpace wrap>
-    <div v-for="(icon, index) in AllIconKeys" :key="index">
-      <EIcon :name="icon" />
-      <span>{{ icon }}</span>
-    </div>
-  </ESpace>
+	<ESpace wrap>
+		<div v-for="(icon, index) in AllIconKeys" :key="index">
+			<EIcon :name="icon" />
+			<span>{{ icon }}</span>
+		</div>
+	</ESpace>
 </template>
 
 <script lang="ts" setup>

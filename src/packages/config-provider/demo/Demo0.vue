@@ -1,4 +1,3 @@
 <template>
-  <EConfigProvider />
+	<EConfigProvider />
 </template>
-

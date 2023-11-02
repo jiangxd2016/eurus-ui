@@ -1,38 +1,28 @@
 {
-  "compilerOptions": {
-    "sourceMap": false,
-    "useDefineForClassFields": false,
-    "allowJs": false,
-    "noUnusedLocals": true,
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "baseUrl": "./src",
-    "jsx": "preserve",
-    "lib": [
-      "esnext",
-      "DOM"
-    ],
-    "declaration": true,
-    "strictNullChecks": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "outDir": "./dist",
-    "paths": {
-      "@/*": [
-        "*"
-      ],
-      "eurus-ui": [
-        "index.ts"
-      ]
-    },
-    "types": [
-      "vite/client",
-      "vitest/globals"
-    ]
-  }
+	"compilerOptions": {
+		"sourceMap": false,
+		"useDefineForClassFields": false,
+		"allowJs": false,
+		"noUnusedLocals": true,
+		"experimentalDecorators": true,
+		"esModuleInterop": true,
+		"removeComments": false,
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"strict": true,
+		"baseUrl": "./src",
+		"jsx": "preserve",
+		"lib": ["esnext", "DOM"],
+		"declaration": true,
+		"strictNullChecks": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"outDir": "./dist",
+		"paths": {
+			"@/*": ["*"],
+			"eurus-ui": ["index.ts"]
+		},
+		"types": ["vite/client", "vitest/globals"]
+	}
 }

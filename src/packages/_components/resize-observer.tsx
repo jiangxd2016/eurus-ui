@@ -1,82 +1,77 @@
-import type {
-  ComponentPublicInstance } from 'vue';
-import {
-  defineComponent,
-  onMounted,
-  onUnmounted,
-  ref,
-  computed,
-  cloneVNode,
-  watch,
-} from 'vue';
+import type { ComponentPublicInstance } from 'vue';
+import { cloneVNode, computed, defineComponent, onMounted, onUnmounted, ref, watch } from 'vue';
 import ResizeObserver from 'resize-observer-polyfill';
 import { getFirstComponent, isComponentInstance } from '@/packages/_utils/vue-utils';
 
 export default defineComponent({
-  name: 'ResizeObserver',
-  emits: [
-    /**
-     * resize 事件
-     * @property {ResizeObserverEntry} entry 触发 resize 的 dom 元素
-     */
-    'resize',
-  ],
-  setup(props, { emit, slots }) {
-    let resizeObserver: ResizeObserver | null;
+	name: 'ResizeObserver',
+	emits: [
+		/**
+		 * resize 事件
+		 * @property {ResizeObserverEntry} entry 触发 resize 的 dom 元素
+		 */
+		'resize',
+	],
+	setup(props, { emit, slots }) {
+		let resizeObserver: ResizeObserver | null;
 
-    const componentRef = ref<HTMLElement | ComponentPublicInstance>();
+		const componentRef = ref<HTMLElement | ComponentPublicInstance>();
 
-    const element = computed<HTMLElement>(() =>
-      isComponentInstance(componentRef.value)
-        ? componentRef.value.$el
-        : componentRef.value
-    );
+		const element = computed<HTMLElement>(() =>
+			isComponentInstance(componentRef.value) ? componentRef.value.$el : componentRef.value,
+		);
 
-    const createResizeObserver = (target: HTMLElement) => {
-      if (!target) { return; }
-      resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-        const entry = entries[0];
-        emit('resize', entry);
-      });
-      resizeObserver.observe(target);
-    };
+		const createResizeObserver = (target: HTMLElement) => {
+			if (!target) {
+				return;
+			}
+			resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+				const entry = entries[0];
+				emit('resize', entry);
+			});
+			resizeObserver.observe(target);
+		};
 
-    const destroyResizeObserver = () => {
-      if (resizeObserver) {
-        resizeObserver.disconnect();
-        resizeObserver = null;
-      }
-    };
+		const destroyResizeObserver = () => {
+			if (resizeObserver) {
+				resizeObserver.disconnect();
+				resizeObserver = null;
+			}
+		};
 
-    watch(element, (_element) => {
-      if (resizeObserver) { destroyResizeObserver(); }
-      if (_element) { createResizeObserver(_element); }
-    });
+		watch(element, _element => {
+			if (resizeObserver) {
+				destroyResizeObserver();
+			}
+			if (_element) {
+				createResizeObserver(_element);
+			}
+		});
 
-    onMounted(() => {
-      if (element.value) {
-        createResizeObserver(element.value);
-      }
-    });
+		onMounted(() => {
+			if (element.value) {
+				createResizeObserver(element.value);
+			}
+		});
 
-    onUnmounted(() => {
-      destroyResizeObserver();
-    });
+		onUnmounted(() => {
+			destroyResizeObserver();
+		});
 
-    return () => {
-      const firstChild = getFirstComponent(slots.default?.() ?? []);
+		return () => {
+			const firstChild = getFirstComponent(slots.default?.() ?? []);
 
-      if (firstChild) {
-        return cloneVNode(
-          firstChild,
-          {
-            ref: componentRef,
-          },
-          true
-        );
-      }
+			if (firstChild) {
+				return cloneVNode(
+					firstChild,
+					{
+						ref: componentRef,
+					},
+					true,
+				);
+			}
 
-      return null;
-    };
-  },
+			return null;
+		};
+	},
 });

@@ -1,4 +1,3 @@
 <template>
-  <ESpin />
+	<ESpin />
 </template>
-

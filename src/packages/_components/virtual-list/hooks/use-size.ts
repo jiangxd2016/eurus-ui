@@ -2,136 +2,141 @@ import type { Ref } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 
 export const useSize = ({
-  dataKeys,
-  fixedSize,
-  estimatedSize,
-  buffer,
+	dataKeys,
+	fixedSize,
+	estimatedSize,
+	buffer,
 }: {
-  dataKeys: Ref<(string | number)[]>;
-  contentRef: Ref<HTMLElement | undefined>;
-  fixedSize: Ref<boolean>;
-  estimatedSize: Ref<number | undefined>;
-  buffer: Ref<number>;
+	dataKeys: Ref<(string | number)[]>;
+	contentRef: Ref<HTMLElement | undefined>;
+	fixedSize: Ref<boolean>;
+	estimatedSize: Ref<number | undefined>;
+	buffer: Ref<number>;
 }) => {
-  const firstRangeAverageSize = ref(0);
-  const sizeMap = new Map<string | number, number>();
+	const firstRangeAverageSize = ref(0);
+	const sizeMap = new Map<string | number, number>();
 
-  const total = computed(() => dataKeys.value.length);
-  const start = ref(0);
-  const end = computed(() => {
-    const _end = start.value + buffer.value * 3;
-    if (_end > total.value) { return total.value; }
-    return _end;
-  });
-  const maxStart = computed(() => {
-    const max = total.value - buffer.value * 3;
-    if (max < 0) { return 0; }
-    return max;
-  });
+	const total = computed(() => dataKeys.value.length);
+	const start = ref(0);
+	const end = computed(() => {
+		const _end = start.value + buffer.value * 3;
+		if (_end > total.value) {
+			return total.value;
+		}
+		return _end;
+	});
+	const maxStart = computed(() => {
+		const max = total.value - buffer.value * 3;
+		if (max < 0) {
+			return 0;
+		}
+		return max;
+	});
 
-  const setStart = (index: number) => {
-    if (index < 0) {
-      start.value = 0;
-    } else if (index > maxStart.value) {
-      start.value = maxStart.value;
-    } else {
-      start.value = index;
-    }
-  };
+	const setStart = (index: number) => {
+		if (index < 0) {
+			start.value = 0;
+		} else if (index > maxStart.value) {
+			start.value = maxStart.value;
+		} else {
+			start.value = index;
+		}
+	};
 
-  const isFixed = ref(fixedSize.value);
-  const _estimatedSize = computed(() => {
-    if (estimatedSize.value !== 30) {
-      return estimatedSize.value;
-    }
-    return firstRangeAverageSize.value || estimatedSize.value;
-  });
+	const isFixed = ref(fixedSize.value);
+	const _estimatedSize = computed(() => {
+		if (estimatedSize.value !== 30) {
+			return estimatedSize.value;
+		}
+		return firstRangeAverageSize.value || estimatedSize.value;
+	});
 
-  const setItemSize = (key: string | number, size: number) => {
-    sizeMap.set(key, size);
-  };
+	const setItemSize = (key: string | number, size: number) => {
+		sizeMap.set(key, size);
+	};
 
-  const getItemSize = (index: number) => {
-    if (isFixed.value) {
-      return _estimatedSize.value;
-    }
+	const getItemSize = (index: number) => {
+		if (isFixed.value) {
+			return _estimatedSize.value;
+		}
 
-    const _key = dataKeys.value[index];
-    return sizeMap.get(_key) ?? _estimatedSize.value;
-  };
+		const _key = dataKeys.value[index];
+		return sizeMap.get(_key) ?? _estimatedSize.value;
+	};
 
-  const hasItemSize = (key: string | number) => {
-    return sizeMap.has(key);
-  };
+	const hasItemSize = (key: string | number) => {
+		return sizeMap.has(key);
+	};
 
-  onMounted(() => {
-    const firstRangeTotalSize = Array.from(sizeMap.values()).reduce(
-      (pre, value) => pre + value,
-      0
-    );
-    if (firstRangeTotalSize > 0) {
-      firstRangeAverageSize.value = firstRangeTotalSize / sizeMap.size;
-    }
-  });
-  const getOffset = (start: number, end: number) => {
-    let offset = 0;
+	onMounted(() => {
+		const firstRangeTotalSize = Array.from(sizeMap.values()).reduce((pre, value) => pre + value, 0);
+		if (firstRangeTotalSize > 0) {
+			firstRangeAverageSize.value = firstRangeTotalSize / sizeMap.size;
+		}
+	});
+	const getOffset = (start: number, end: number) => {
+		let offset = 0;
 
-    for (let i = start; i < end; i++) {
-      offset += getItemSize(i) || 0;
-    }
+		for (let i = start; i < end; i++) {
+			offset += getItemSize(i) || 0;
+		}
 
-    return offset;
-  };
-  const getScrollOffset = (index: number) => {
-    if (isFixed.value) {
-      return (_estimatedSize?.value || 0) * index;
-    }
-    return getOffset(0, index);
-  };
+		return offset;
+	};
+	const getScrollOffset = (index: number) => {
+		if (isFixed.value) {
+			return (_estimatedSize?.value || 0) * index;
+		}
+		return getOffset(0, index);
+	};
 
-  const frontPadding = computed(() => {
-    if (isFixed.value) {
-      return (_estimatedSize.value || 0) * start.value;
-    }
-    return getOffset(0, start.value);
-  });
+	const frontPadding = computed(() => {
+		if (isFixed.value) {
+			return (_estimatedSize.value || 0) * start.value;
+		}
+		return getOffset(0, start.value);
+	});
 
-  const getOffsetIndex = (scrollOffset: number) => {
-    const isForward = scrollOffset >= frontPadding.value;
-    let offset = Math.abs(scrollOffset - frontPadding.value);
-    const _start = isForward ? start.value : start.value - 1;
-    let offsetIndex = 0;
-    while (offset > 0) {
-      offset -= getItemSize(_start + offsetIndex) || 0;
-      isForward ? offsetIndex++ : offsetIndex--;
-    }
-    return offsetIndex;
-  };
+	const getOffsetIndex = (scrollOffset: number) => {
+		const isForward = scrollOffset >= frontPadding.value;
+		let offset = Math.abs(scrollOffset - frontPadding.value);
+		const _start = isForward ? start.value : start.value - 1;
+		let offsetIndex = 0;
+		while (offset > 0) {
+			offset -= getItemSize(_start + offsetIndex) || 0;
+			isForward ? offsetIndex++ : offsetIndex--;
+		}
+		return offsetIndex;
+	};
 
-  const getStartByScroll = (scrollOffset: number) => {
-    const offsetIndex = getOffsetIndex(scrollOffset);
-    const _start = start.value + offsetIndex - buffer.value;
-    if (_start < 0) { return 0; }
-    if (_start > maxStart.value) { return maxStart.value; }
-    return _start;
-  };
+	const getStartByScroll = (scrollOffset: number) => {
+		const offsetIndex = getOffsetIndex(scrollOffset);
+		const _start = start.value + offsetIndex - buffer.value;
+		if (_start < 0) {
+			return 0;
+		}
+		if (_start > maxStart.value) {
+			return maxStart.value;
+		}
+		return _start;
+	};
 
-  const behindPadding = computed(() => {
-    if (isFixed.value) {
-      return (_estimatedSize?.value || 0) * (total.value - end.value);
-    }
-    return getOffset(end.value, total.value);
-  });
+	const behindPadding = computed(() => {
+		if (isFixed.value) {
+			return (_estimatedSize?.value || 0) * (total.value - end.value);
+		}
+		return getOffset(end.value, total.value);
+	});
 
-  return {
-    frontPadding,
-    behindPadding,
-    start,
-    end,
-    getStartByScroll,
-    setItemSize,
-    hasItemSize,
-    setStart,
-    getScrollOffset,
-  };
+	return {
+		frontPadding,
+		behindPadding,
+		start,
+		end,
+		getStartByScroll,
+		setItemSize,
+		hasItemSize,
+		setStart,
+		getScrollOffset,
+	};
 };

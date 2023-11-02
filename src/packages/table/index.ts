@@ -8,21 +8,21 @@ import ETd from './src/table-td';
 import EColumn from './src/table-column';
 
 const Table = Object.assign(ETable, {
-  Thead: EThead,
-  Tbody: ETbody,
-  Tr: ETr,
-  Th: ETh,
-  Td: ETd,
-  Column: EColumn,
-  install: (app: App) => {
-    app.component( ETable.name, ETable);
-    app.component( EThead.name, EThead);
-    app.component( ETbody.name, ETbody);
-    app.component( ETr.name, ETr);
-    app.component( ETh.name, ETh);
-    app.component( ETd.name, ETd);
-    app.component( EColumn.name, EColumn);
-  },
+	Thead: EThead,
+	Tbody: ETbody,
+	Tr: ETr,
+	Th: ETh,
+	Td: ETd,
+	Column: EColumn,
+	install: (app: App) => {
+		app.component(ETable.name, ETable);
+		app.component(EThead.name, EThead);
+		app.component(ETbody.name, ETbody);
+		app.component(ETr.name, ETr);
+		app.component(ETh.name, ETh);
+		app.component(ETd.name, ETd);
+		app.component(EColumn.name, EColumn);
+	},
 });
 
 export type TableInstance = InstanceType<typeof ETable>;
@@ -34,25 +34,16 @@ export type TdInstance = InstanceType<typeof ETd>;
 export type TableColumnInstance = InstanceType<typeof EColumn>;
 
 export type {
-  TableData,
-  TableSortable,
-  TableFilterData,
-  TableFilterable,
-  TableColumnData,
-  TableBorder,
-  TableRowSelection,
-  TableExpandable,
-  TableDraggable,
-  TableChangeExtra,
+	TableData,
+	TableSortable,
+	TableFilterData,
+	TableFilterable,
+	TableColumnData,
+	TableBorder,
+	TableRowSelection,
+	TableExpandable,
+	TableDraggable,
+	TableChangeExtra,
 } from './src/interface';
 
-export {
-  Table as ETable,
-  EThead,
-  ETbody,
-  ETr,
-  ETh,
-  ETd,
-  EColumn,
-};
-
+export { Table as ETable, EThead, ETbody, ETr, ETh, ETd, EColumn };

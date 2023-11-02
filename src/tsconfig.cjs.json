@@ -1,17 +1,11 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "rootDir": "../src",
-    "outDir": "../dist/lib",
-    "module": "CommonJS",
-    "target": "ES6"
-  },
-  "rootDir": "./src",
-  "exclude": [
-    "**/__tests__/*",
-    "**/*.md",
-    "**/demo/*",
-    "example",
-    "node_modules"
-  ]
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"rootDir": "../src",
+		"outDir": "../dist/lib",
+		"module": "CommonJS",
+		"target": "ES6"
+	},
+	"rootDir": "./src",
+	"exclude": ["**/__tests__/*", "**/*.md", "**/demo/*", "example", "node_modules"]
 }

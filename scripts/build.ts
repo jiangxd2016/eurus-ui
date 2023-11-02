@@ -14,23 +14,21 @@ console.log(`[eurus-ui env] ${nodeEnv}`);
 
 // compile
 (async () => {
-  if (nodeEnv === 'dev') {
-    await build(viteDev);
-    console.log('[eurus-ui build]: start build css');
-    compileToCSS(nodeEnv);
-    console.log('[eurus-ui build]: start build type');
-    await execPromise('npm run build:types-esm');
+	if (nodeEnv === 'dev') {
+		await build(viteDev);
+		console.log('[eurus-ui build]: start build css');
+		compileToCSS(nodeEnv);
+		console.log('[eurus-ui build]: start build type');
+		await execPromise('npm run build:types-esm');
+	} else {
+		await build(configProd);
+		await build(configAll);
+		console.log('[eurus-ui build]: start build css');
+		compileToCSS(nodeEnv);
+		console.log('[eurus-ui build]: start build type');
+		await execPromise('npm run build:types');
+	}
+	// console.log('[eurus-ui build]: start build css');
 
-  } else {
-    await build(configProd);
-    await build(configAll);
-    console.log('[eurus-ui build]: start build css');
-    compileToCSS(nodeEnv);
-    console.log('[eurus-ui build]: start build type');
-    await execPromise('npm run build:types');
-
-  }
-  // console.log('[eurus-ui build]: start build css');
-
-  console.log('[eurus-ui build]: ✨ build done');
+	console.log('[eurus-ui build]: ✨ build done');
 })();

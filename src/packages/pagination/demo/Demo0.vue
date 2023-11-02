@@ -1,4 +1,3 @@
 <template>
-  <EPagination />
+	<EPagination />
 </template>
-

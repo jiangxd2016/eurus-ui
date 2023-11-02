@@ -3,27 +3,27 @@ import { onMounted, ref, watch } from 'vue';
 import { isComponentInstance } from '../_utils/vue-utils';
 
 export const useComponentRef = (name: string) => {
-  const componentRef = ref<HTMLElement | ComponentPublicInstance>();
+	const componentRef = ref<HTMLElement | ComponentPublicInstance>();
 
-  const getElement = () => {
-    if (isComponentInstance(componentRef.value)) {
-      return componentRef.value.$refs[name] as HTMLElement;
-    }
-    return componentRef.value;
-  };
+	const getElement = () => {
+		if (isComponentInstance(componentRef.value)) {
+			return componentRef.value.$refs[name] as HTMLElement;
+		}
+		return componentRef.value;
+	};
 
-  const elementRef = ref();
+	const elementRef = ref();
 
-  onMounted(() => {
-    elementRef.value = getElement();
-  });
+	onMounted(() => {
+		elementRef.value = getElement();
+	});
 
-  watch([componentRef], () => {
-    elementRef.value = getElement();
-  });
+	watch([componentRef], () => {
+		elementRef.value = getElement();
+	});
 
-  return {
-    componentRef,
-    elementRef,
-  };
+	return {
+		componentRef,
+		elementRef,
+	};
 };

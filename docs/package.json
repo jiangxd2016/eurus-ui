@@ -1,39 +1,39 @@
 {
-  "name": "@eurus-ui/docs",
-  "version": "1.0.0",
-  "private": true,
-  "description": "",
-  "author": "",
-  "license": "MIT",
-  "main": "index.js",
-  "scripts": {
-    "dev": " vitepress dev .",
-    "build": "vitepress build .",
-    "serve": "vitepress serve ."
-  },
-  "dependencies": {
-    "vue": "^3.3.7"
-  },
-  "devDependencies": {
-    "@iconify-json/carbon": "^1.1.21",
-    "@types/klaw-sync": "^6.0.3",
-    "@types/markdown-it": "^13.0.5",
-    "@types/markdown-it-container": "^2.0.8",
-    "@types/node": "^20.8.8",
-    "@vitejs/plugin-vue": "^4.4.0",
-    "@vueuse/core": "^10.5.0",
-    "eurus-ui": "workspace:*",
-    "klaw-sync": "^6.0.0",
-    "markdown-it": "^13.0.2",
-    "markdown-it-container": "^3.0.0",
-    "postcss": "^8.4.31",
-    "postcss-prefix-selector": "^1.16.0",
-    "typescript": "^5.2.2",
-    "unocss": "^0.57.1",
-    "vite": "^4.5.0",
-    "vite-plugin-inspect": "^0.7.40",
-    "vite-plugin-pwa": "^0.16.5",
-    "vite-plugin-restart": "^0.3.1",
-    "vitepress": "^1.0.0-rc.24"
-  }
+	"name": "@eurus-ui/docs",
+	"version": "1.0.0",
+	"private": true,
+	"description": "",
+	"author": "",
+	"license": "MIT",
+	"main": "index.js",
+	"scripts": {
+		"dev": " vitepress dev .",
+		"build": "vitepress build .",
+		"serve": "vitepress serve ."
+	},
+	"dependencies": {
+		"vue": "^3.3.7"
+	},
+	"devDependencies": {
+		"@iconify-json/carbon": "^1.1.21",
+		"@types/klaw-sync": "^6.0.3",
+		"@types/markdown-it": "^13.0.5",
+		"@types/markdown-it-container": "^2.0.8",
+		"@types/node": "^20.8.8",
+		"@vitejs/plugin-vue": "^4.4.0",
+		"@vueuse/core": "^10.5.0",
+		"eurus-ui": "workspace:*",
+		"klaw-sync": "^6.0.0",
+		"markdown-it": "^13.0.2",
+		"markdown-it-container": "^3.0.0",
+		"postcss": "^8.4.31",
+		"postcss-prefix-selector": "^1.16.0",
+		"typescript": "^5.2.2",
+		"unocss": "^0.57.1",
+		"vite": "^4.5.0",
+		"vite-plugin-inspect": "^0.7.40",
+		"vite-plugin-pwa": "^0.16.5",
+		"vite-plugin-restart": "^0.3.1",
+		"vitepress": "^1.0.0-rc.24"
+	}
 }
