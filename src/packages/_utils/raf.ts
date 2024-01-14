@@ -1,5 +1,4 @@
-const target = typeof window === 'undefined' ? global : window;
-
+const taget = globalThis;
 const raf = target.requestAnimationFrame;
 const caf = target.cancelAnimationFrame;
 
