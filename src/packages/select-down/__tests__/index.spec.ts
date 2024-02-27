@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { ref } from 'vue';
 import ESelectDown from '..';
 
-describe('ESelectDown', () => {
+describe('eSelectDown', () => {
 	const options = [
 		{
 			value: '1',

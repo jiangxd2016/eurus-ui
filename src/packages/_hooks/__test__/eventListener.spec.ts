@@ -1,5 +1,5 @@
-import type { SpyInstance } from 'vitest';
 import useEventListener from '@/packages/_hooks/useEventListener';
+import type { SpyInstance } from 'vitest';
 
 describe('eventListener', () => {
 	const options = { capture: true };

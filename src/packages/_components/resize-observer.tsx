@@ -1,7 +1,7 @@
-import type { ComponentPublicInstance } from 'vue';
 import { cloneVNode, computed, defineComponent, onMounted, onUnmounted, ref, watch } from 'vue';
 import ResizeObserver from 'resize-observer-polyfill';
 import { getFirstComponent, isComponentInstance } from '@/packages/_utils/vue-utils';
+import type { ComponentPublicInstance } from 'vue';
 
 export default defineComponent({
 	name: 'ResizeObserver',

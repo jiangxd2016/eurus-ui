@@ -1,8 +1,8 @@
-import type { PropType } from 'vue';
 import { defineComponent } from 'vue';
 import Icon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { stopPropagation } from '@/packages/_utils/shared';
+import type { PropType } from 'vue';
 
 const DateHeaderProps = {
 	date: {
@@ -48,7 +48,7 @@ export default defineComponent({
 					></Icon>
 				</div>
 				<div class="date-content">
-					{props.date[0] + (props.type !== 'month' ? '-' + props.date[1] : '')}
+					{props.date[0] + (props.type !== 'month' ? `-${props.date[1]}` : '')}
 				</div>
 				<div class="arrow-right">
 					<Icon

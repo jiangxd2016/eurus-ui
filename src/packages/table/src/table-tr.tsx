@@ -1,7 +1,7 @@
-import type { PropType } from 'vue';
 import { computed, createVNode, defineComponent } from 'vue';
-import type { TableDataWithRaw } from './interface';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import type { PropType } from 'vue';
+import type { TableDataWithRaw } from './interface';
 
 export default defineComponent({
 	name: 'ETr',

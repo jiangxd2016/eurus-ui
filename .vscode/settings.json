@@ -6,6 +6,7 @@
 		"source.fixAll.eslint": "explicit",
 		"source.organizeImports": "never"
 	},
+	"eslint.experimental.useFlatConfig": true,
 	"cSpell.userWords": [
 		"esbuild",
 		"esno",

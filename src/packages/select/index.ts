@@ -1,6 +1,6 @@
-import type { App } from 'vue';
 import ESelect from './src';
 import EOption from './src/option';
+import type { App } from 'vue';
 
 ESelect.install = (app: App) => {
 	app.component(ESelect.name, ESelect);

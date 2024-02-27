@@ -1,6 +1,6 @@
-import type { PropType } from 'vue';
 import { defineComponent } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import type { PropType } from 'vue';
 import './style.scss';
 
 export interface BreadcrumbItem {
@@ -33,7 +33,7 @@ export default defineComponent({
 							<router-link
 								key={index}
 								class={{
-									[prefixCls + '-item']: true,
+									[`${prefixCls}-item`]: true,
 									'last-child': props.data.length === index + 1,
 								}}
 								to={item.href}
@@ -41,7 +41,7 @@ export default defineComponent({
 							/>
 						) : (
 							<span
-								class={{ [prefixCls + '__item']: true }}
+								class={{ [`${prefixCls}__item`]: true }}
 								key={`span${index}`}
 								v-text={item.title}
 							></span>

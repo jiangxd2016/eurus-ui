@@ -1,9 +1,9 @@
-import type { AppContext, Ref } from 'vue';
 import { createVNode, reactive, ref, render } from 'vue';
-import type { NotifyConfig, NotifyItem, NotifyMethod, NotifyPosition } from './interface';
-import NotifyList from './notifyList';
 import { isFunction, isString, isUndefined } from '@/packages/_utils';
 import { MESSAGE_TYPES } from '@/packages/_utils/constants';
+import NotifyList from './notifyList';
+import type { NotifyConfig, NotifyItem, NotifyMethod, NotifyPosition } from './interface';
+import type { AppContext, Ref } from 'vue';
 import type { MessageType } from '@/packages/_utils/constants';
 import './style.scss';
 

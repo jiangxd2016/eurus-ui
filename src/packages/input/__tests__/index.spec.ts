@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 import EInput from '..';
 
-describe('EInput', () => {
-	it('EInput snapshot', () => {
+describe('eInput', () => {
+	it('eInput snapshot', () => {
 		const wrapper = mount(EInput);
 		expect(wrapper.html()).toMatchSnapshot();
 		wrapper.unmount();
@@ -57,7 +57,7 @@ describe('EInput', () => {
 					size,
 				},
 			});
-			expect(wrapper.find('.eu-input-wrapper--' + size).exists()).toBe(true);
+			expect(wrapper.find(`.eu-input-wrapper--${size}`).exists()).toBe(true);
 			wrapper.unmount();
 		});
 	});

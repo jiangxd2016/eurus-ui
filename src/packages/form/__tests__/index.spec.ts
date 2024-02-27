@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 import EForm from '..';
 
-describe('EForm', () => {
-	it('EForm snapshot', () => {
+describe('eForm', () => {
+	it('eForm snapshot', () => {
 		const wrapper = mount(EForm);
 		expect(wrapper.html()).toMatchSnapshot();
 		wrapper.unmount();

@@ -34,7 +34,7 @@ function createComponent(name: string, tempPath: string, outPath: string) {
 					name,
 				});
 				console.log('outPath', outPath);
-				fs.writeFileSync(outPath + '/' + fileName.split('.temp')[0], template);
+				fs.writeFileSync(`${outPath}/${fileName.split('.temp')[0]}`, template);
 			}
 			if (isDir) {
 				if (!fs.existsSync(outdir)) {
@@ -50,7 +50,7 @@ function appendToComponents(name: string) {
 	const compts = fs.readFileSync(resolve('./src/packages/components.ts'), 'utf-8');
 	fs.writeFileSync(
 		resolve('./src/packages/components.ts'),
-		compts + '\n' + `export  * from './${name}';`,
+		`${compts}\n` + `export  * from './${name}';`,
 	);
 }
 

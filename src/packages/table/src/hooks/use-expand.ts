@@ -1,5 +1,5 @@
-import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
+import type { Ref } from 'vue';
 import type { TableData, TableExpandable } from '../interface';
 import type { BaseType, EmitFn2 } from '../../../_utils/types';
 

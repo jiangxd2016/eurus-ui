@@ -1,6 +1,6 @@
-import type { Ref } from 'vue';
 import ResizeObserver from 'resize-observer-polyfill';
 import { isFunction } from '../_utils/is';
+import type { Ref } from 'vue';
 
 export const useResizeObserver = ({
 	elementRef,

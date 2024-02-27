@@ -195,7 +195,7 @@ export default defineComponent({
 						{pageCount.value > 1 && (
 							<li>
 								<a
-									title={pageCount.value + ''}
+									title={`${pageCount.value}`}
 									class={{ active: state.active === pageCount.value }}
 									onClick={() => goTo(pageCount.value, state.active === pageCount.value)}
 								>

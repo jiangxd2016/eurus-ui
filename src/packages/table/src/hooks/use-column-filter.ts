@@ -1,6 +1,6 @@
-import type { Ref } from 'vue';
 import { computed, ref, watch } from 'vue';
 import { isArray } from '../../../_utils/is';
+import type { Ref } from 'vue';
 import type { TableColumnData } from '../interface';
 import type { TableContext } from '../context';
 

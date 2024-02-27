@@ -1,9 +1,9 @@
 import { computed, inject, reactive, ref } from 'vue';
+import { EurusConfigProviderKey } from '@/packages/_utils/constants';
+import { isString } from '@/packages/_utils/is';
 import zhCN from './lang/zh-cn';
 import enUS from './lang/en-us';
 import jaJP from './lang/ja-jp';
-import { EurusConfigProviderKey } from '@/packages/_utils/constants';
-import { isString } from '@/packages/_utils/is';
 
 export type language = 'zh-cn' | 'en-us';
 

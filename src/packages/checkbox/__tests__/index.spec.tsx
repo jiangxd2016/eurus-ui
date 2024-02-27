@@ -4,8 +4,8 @@ import { expect } from 'vitest';
 import ECheckbox from '..';
 import ECheckboxGroup from '../src/checkbox-group';
 
-describe('ECheckbox', () => {
-	it('ECheckbox snapshot', () => {
+describe('eCheckbox', () => {
+	it('eCheckbox snapshot', () => {
 		const wrapper = mount(ECheckbox);
 		expect(wrapper.html()).toMatchSnapshot();
 		wrapper.unmount();

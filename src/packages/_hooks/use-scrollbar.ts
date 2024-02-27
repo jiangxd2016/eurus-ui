@@ -1,7 +1,7 @@
-import type { Ref } from 'vue';
 import { computed } from 'vue';
-import type { ScrollbarProps } from '../scrollbar';
 import { isBoolean } from '../_utils/is';
+import type { Ref } from 'vue';
+import type { ScrollbarProps } from '../scrollbar';
 
 export const useScrollbar = (scrollbar: Ref<ScrollbarProps | boolean>) => {
 	const displayScrollbar = computed(() => Boolean(scrollbar.value));

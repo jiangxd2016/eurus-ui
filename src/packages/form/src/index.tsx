@@ -91,8 +91,8 @@ export default defineComponent({
 							allTips.push('true');
 							returnResult(); // 通过
 						})
-						.catch((res: string) => {
-							allTips.push(res);
+						.catch((error: string) => {
+							allTips.push(error);
 							returnResult();
 						});
 				});

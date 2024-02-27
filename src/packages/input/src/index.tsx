@@ -4,8 +4,8 @@ import { getPrefixCls } from '@/packages/_utils/global-config';
 import './style.scss';
 import { isKorean, isNull, isUndefined } from '@/packages/_utils/is';
 import EIcon from '@/packages/icons';
-import type { Size } from '@/packages/_utils/size';
 import { useFormValidate } from '@/packages/_utils/form';
+import type { Size } from '@/packages/_utils/size';
 
 const EInputProps = {
 	type: {
@@ -202,7 +202,7 @@ export default defineComponent({
 		const compositionUpdate = (ev: Event) => {
 			emit('compositionupdate', ev);
 			const text = (ev.target as HTMLInputElement)?.value;
-			const lastCharacter = text[text.length - 1] || '';
+			const lastCharacter = text.at(-1) || '';
 			isComposing.value = !isKorean(lastCharacter);
 		};
 		const compositionEnd = (ev: Event) => {
@@ -254,7 +254,7 @@ export default defineComponent({
 					<span class={`${prefixCls}-suffix`}>
 						{Boolean(props.maxLength) && props.showWordLimit && (
 							<span class={`${prefixCls}-word-limit`}>
-								{(computedValue.value + '').length} / {maxLength.value}
+								{`${computedValue.value}`.length} / {maxLength.value}
 							</span>
 						)}
 						{slots.suffix?.()}

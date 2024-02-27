@@ -1,7 +1,7 @@
-import type { App } from 'vue';
 import version from './version';
 import * as all from './packages/components';
 import { COMPONENT_PREFIX } from './packages/_utils/constants';
+import type { App } from 'vue';
 
 type ComponentType = any;
 

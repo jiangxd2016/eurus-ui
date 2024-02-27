@@ -1,4 +1,3 @@
-import type { CSSProperties, PropType, Ref } from 'vue';
 import {
 	defineComponent,
 	getCurrentInstance,
@@ -10,11 +9,12 @@ import {
 	toRefs,
 	watch,
 } from 'vue';
-import { tableColumnInjectionKey, tableInjectionKey } from './context';
-import type { TableContext } from './context';
-import type { TableColumnData, TableData, TableFilterable, TableSortable } from './interface';
 import { useChildrenComponents } from '@/packages/_hooks/use-children-components';
 import { usePureProp } from '@/packages/_hooks/use-pure-prop';
+import { tableColumnInjectionKey, tableInjectionKey } from './context';
+import type { CSSProperties, PropType, Ref } from 'vue';
+import type { TableContext } from './context';
+import type { TableColumnData, TableData, TableFilterable, TableSortable } from './interface';
 import type { ClassName } from '@/packages/_utils/types';
 
 export default defineComponent({

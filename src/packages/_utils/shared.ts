@@ -1,5 +1,5 @@
-import type { RenderContent } from '@/packages/_utils/types';
 import { isFunction } from '@/packages/_utils/is';
+import type { RenderContent } from '@/packages/_utils/types';
 
 export const noop = () => {};
 export const now = () => Date.now();

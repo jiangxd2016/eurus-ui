@@ -1,6 +1,4 @@
-import type { PropType } from 'vue';
 import { Transition, defineComponent, inject, ref } from 'vue';
-import type { Item } from './interface';
 import {
 	MenuFlatChangeKeys,
 	MenuFlatKeys,
@@ -12,6 +10,8 @@ import {
 } from '@/packages/_utils';
 import ToolTip from '@/packages/tooltip';
 import EIcons from '@/packages/icons';
+import type { Item } from './interface';
+import type { PropType } from 'vue';
 
 const EMenuListProps = {
 	items: {
@@ -117,7 +117,7 @@ const MenuList = defineComponent({
 		const beforeEvent = (node: HTMLElement) => {
 			const height = node.dataset.height;
 			if (height) {
-				node.style.height = height + 'px';
+				node.style.height = `${height}px`;
 				node.style.overflow = 'hidden';
 			}
 		};
@@ -177,7 +177,7 @@ const MenuList = defineComponent({
 									style={{
 										textIndent:
 											menuProps.mode === 'vertical' && !menuProps.collapsed
-												? props.layer * 10 + 10 + 'px'
+												? `${props.layer * 10 + 10}px`
 												: '0px',
 									}}
 								>

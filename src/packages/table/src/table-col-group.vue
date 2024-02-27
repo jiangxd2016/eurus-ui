@@ -17,8 +17,8 @@
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue';
 import { defineComponent } from 'vue';
+import type { PropType } from 'vue';
 import type { TableColumnData, TableOperationColumn } from './interface';
 
 export default defineComponent({

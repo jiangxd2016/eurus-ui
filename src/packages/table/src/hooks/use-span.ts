@@ -1,5 +1,5 @@
-import type { Ref } from 'vue';
 import { computed } from 'vue';
+import type { Ref } from 'vue';
 import type {
 	TableColumnData,
 	TableData,

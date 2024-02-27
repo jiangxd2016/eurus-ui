@@ -3,7 +3,7 @@ import { nextTick } from 'vue';
 import EDatePicker from '..';
 import EuSelectDown from '../../select-down';
 
-describe('EDatePicker', () => {
+describe('eDatePicker', () => {
 	it('should work with `modelValue` props', async () => {
 		const wrapper = mount(EDatePicker, {
 			props: {

@@ -14,9 +14,9 @@ import {
 import './style.scss';
 import EIcon from '@/packages/icons';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import type { ICarouselItem } from '@/packages/_utils/constants';
 import { CarouselKey } from '@/packages/_utils/constants';
 import { throttle } from '@/packages/_utils/shared';
+import type { ICarouselItem } from '@/packages/_utils/constants';
 
 const ECarouselProps = {
 	height: {

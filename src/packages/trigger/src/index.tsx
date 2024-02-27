@@ -1,4 +1,3 @@
-import type { CSSProperties, PropType, Ref } from 'vue';
 import {
 	Teleport,
 	Transition,
@@ -16,17 +15,7 @@ import {
 	toRefs,
 	watch,
 } from 'vue';
-import type { TriggerPopupTranslate } from './interface';
-import { triggerInjectionKey } from './context';
-import {
-	getArrowStyle,
-	getElementScrollRect,
-	getPopupStyle,
-	getScrollElements,
-	getTransformOrigin,
-} from './utils';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import type { TriggerEvent, TriggerPosition } from '@/packages/_utils/types';
 import ResizeObserver from '@/packages/_components/resize-observer';
 import { off, on } from '@/packages/_utils/dom';
 import { isEmptyChildren, mergeFirstChild } from '@/packages/_utils/vue-utils';
@@ -39,6 +28,17 @@ import { useTeleportContainer } from '@/packages/_hooks/use-teleport-container';
 import { useFirstElement } from '@/packages/_hooks/use-first-element';
 import { omit } from '@/packages/_utils/omit';
 import { EurusConfigProviderKey } from '@/packages/_utils/constants';
+import {
+	getArrowStyle,
+	getElementScrollRect,
+	getPopupStyle,
+	getScrollElements,
+	getTransformOrigin,
+} from './utils';
+import { triggerInjectionKey } from './context';
+import type { TriggerEvent, TriggerPosition } from '@/packages/_utils/types';
+import type { TriggerPopupTranslate } from './interface';
+import type { CSSProperties, PropType, Ref } from 'vue';
 
 const TRIGGER_EVENTS = [
 	'onClick',

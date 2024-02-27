@@ -61,8 +61,8 @@ export default defineComponent({
 
 		const classNames = computed(() => {
 			return {
-				[prefixCls + '-disabled']: computedDisabled.value,
-				[prefixCls + '-checked']: computedChecked.value,
+				[`${prefixCls}-disabled`]: computedDisabled.value,
+				[`${prefixCls}-checked`]: computedChecked.value,
 			};
 		});
 		const updateValue = (e: Event) => {
@@ -111,7 +111,7 @@ export default defineComponent({
 					disabled={computedDisabled.value}
 					class={[`${prefixCls}__input`]}
 				/>
-				<span class={[prefixCls + '-inner']}>
+				<span class={[`${prefixCls}-inner`]}>
 					<EIcon name="checkedFill" class={`${prefixCls}-icon`} size={14}></EIcon>
 				</span>
 				<div class={`${prefixCls}__label`}>{props.label || (slots.default && slots.default())}</div>

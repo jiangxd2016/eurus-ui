@@ -2,7 +2,6 @@ import type { PropType } from 'vue';
 import { computed, defineComponent, provide, reactive, ref, toRefs } from 'vue';
 import './style.scss';
 
-import Option from './option';
 import SelectDown from '@/packages/select-down';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { selectKey } from '@/packages/_utils/constants';
@@ -11,6 +10,7 @@ import { isArray } from '@/packages/_utils/is';
 import { warn } from '@/packages/_utils/warn';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
 import { useFormValidate } from '@/packages/_utils/form';
+import Option from './option';
 
 export interface SelectOptionItem {
 	value?: any;

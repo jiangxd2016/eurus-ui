@@ -1,4 +1,3 @@
-import type { App } from 'vue';
 import { getCurrentInstance, inject } from 'vue';
 import {
 	CLASS_PREFIX,
@@ -6,6 +5,7 @@ import {
 	EurusConfigProviderKey,
 	GLOBAL_CONFIG_NAME,
 } from './constants';
+import type { App } from 'vue';
 import type { EuOptions } from './types';
 
 export const getPrefixCls = (componentName?: string): string => {

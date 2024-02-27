@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils';
-import type { VNode } from 'vue';
 import { nextTick } from 'vue';
 import EBackTop from '..';
+import type { VNode } from 'vue';
 
 const _mount = (render: () => VNode) => mount(render, { attachTo: document.body });
 
-describe('EBackTop', () => {
+describe('eBackTop', () => {
 	it('should work with props', async () => {
 		const wrapper = _mount(() => (
 			<div class="target" style="height: 100px; overflow: auto">

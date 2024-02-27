@@ -1,5 +1,3 @@
-import type { CSSProperties, VNode } from 'vue';
-import type { TableColumnData, TableDataWithRaw, TableOperationColumn } from './interface';
 import { isArray, isNull, isUndefined } from '@/packages/_utils/is';
 import {
 	isArrayChildren,
@@ -7,6 +5,8 @@ import {
 	isSlotsChildren,
 	resolveProps,
 } from '@/packages/_utils/vue-utils';
+import type { CSSProperties, VNode } from 'vue';
+import type { TableColumnData, TableDataWithRaw, TableOperationColumn } from './interface';
 import type { BaseType } from '@/packages/_utils/types';
 
 const getDataColumnsNumber = (columns: TableColumnData[]): number => {
@@ -177,7 +177,7 @@ const getFirstDataColumn = (column: TableColumnData): TableColumnData => {
 
 const getLastDataColumn = (column: TableColumnData): TableColumnData => {
 	if (column.children && column.children.length > 0) {
-		return getFirstDataColumn(column.children[column.children.length - 1]);
+		return getFirstDataColumn(column.children.at(-1));
 	}
 	return column;
 };

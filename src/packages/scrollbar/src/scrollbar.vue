@@ -32,13 +32,13 @@
 </template>
 
 <script lang="ts">
-import type { CSSProperties, ComputedRef, PropType, StyleValue } from 'vue';
 import { computed, defineComponent, onMounted, ref } from 'vue';
-import Thumb from './thumb.vue';
-import type { ThumbData } from './interface';
 import ResizeObserver from '@/packages/_components/resize-observer';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { isObject } from '@/packages/_utils/is';
+import Thumb from './thumb.vue';
+import type { ThumbData } from './interface';
+import type { CSSProperties, ComputedRef, PropType, StyleValue } from 'vue';
 
 const THUMB_MIN_SIZE = 20;
 const TRACK_SIZE = 15;

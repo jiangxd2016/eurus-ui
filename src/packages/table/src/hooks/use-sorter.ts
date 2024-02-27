@@ -1,8 +1,8 @@
-import type { Ref } from 'vue';
 import { computed, ref, watch } from 'vue';
 import { isString } from '../../../_utils/is';
-import type { Sorter, TableColumnData } from '../interface';
 import { isEqual } from '../../../_utils/is-equal';
+import type { Sorter, TableColumnData } from '../interface';
+import type { Ref } from 'vue';
 
 export const useSorter = ({
 	columns,

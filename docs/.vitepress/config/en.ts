@@ -1,6 +1,6 @@
-import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress';
 import { version } from '../../../package.json';
 import { CHANGELOG, DISCUSSIONS, ISSUES, META_TITLE, META_URL, RELEASES } from './shared';
+import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress';
 
 export const META_DESCRIPTION = 'easy to use Vue UI components library';
 

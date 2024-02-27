@@ -1,11 +1,4 @@
-import type { PropType } from 'vue';
 import { computed, createVNode, defineComponent, inject, toRefs } from 'vue';
-import type { TableColumnData, TableOperationColumn } from './interface';
-import { useColumnSorter } from './hooks/use-column-sorter';
-import { useColumnFilter } from './hooks/use-column-filter';
-import { getFixedCls, getStyle } from './utils';
-import type { TableContext } from './context';
-import { tableInjectionKey } from './context';
 import Checkbox from '@/packages/checkbox';
 import Radio from '@/packages/radio';
 import Button from '@/packages/button';
@@ -16,6 +9,13 @@ import AutoTooltip from '@/packages/_components/auto-tooltip/auto-tooltip';
 import IconHover from '@/packages/_components/icon-hover.vue';
 import { isBoolean, isFunction, isObject } from '@/packages/_utils/is';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import { tableInjectionKey } from './context';
+import { getFixedCls, getStyle } from './utils';
+import { useColumnFilter } from './hooks/use-column-filter';
+import { useColumnSorter } from './hooks/use-column-sorter';
+import type { TableContext } from './context';
+import type { TableColumnData, TableOperationColumn } from './interface';
+import type { PropType } from 'vue';
 
 export default defineComponent({
 	name: 'ETh',

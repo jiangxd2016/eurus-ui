@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 import ESwitch from '..';
 
-describe('ESwitch', () => {
-	it('ESwitch snapshot', () => {
+describe('eSwitch', () => {
+	it('eSwitch snapshot', () => {
 		const wrapper = mount(ESwitch);
 		expect(wrapper.html()).toMatchSnapshot();
 		wrapper.unmount();

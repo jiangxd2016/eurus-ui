@@ -1,6 +1,6 @@
+import { isArray } from '@/packages/_utils';
 import type { CSSProperties } from 'vue';
 import type { TriggerPopupTranslate } from './interface';
-import { isArray } from '@/packages/_utils';
 import type { TriggerPosition } from '@/packages/_utils/types';
 
 const getViewPortSize = () => {

@@ -1,7 +1,7 @@
-import type { App, AppContext } from 'vue';
-import EMessage from './src';
-import type { MessageMethod } from '@/packages/message/src/interface';
 import { MESSAGE_TYPES } from '@/packages/_utils';
+import EMessage from './src';
+import type { App, AppContext } from 'vue';
+import type { MessageMethod } from '@/packages/message/src/interface';
 
 const types = [...MESSAGE_TYPES, 'loading', 'normal'] as const;
 const Message: any = {

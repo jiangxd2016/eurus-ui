@@ -3,9 +3,9 @@ import { computed, defineComponent, inject } from 'vue';
 
 import './style.scss';
 import EIcon from '@/packages/icons';
-import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { EurusConfigProviderKey, buttonGroupKey } from '@/packages/_utils/constants';
+import type { Size } from '@/packages/_utils/size';
 
 export type Type =
 	| 'default'

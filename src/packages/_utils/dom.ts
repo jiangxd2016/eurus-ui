@@ -1,5 +1,5 @@
-import { isString } from './is';
 import { noop } from '@/packages/_utils/shared';
+import { isString } from './is';
 
 export const NOOP = () => {
 	return undefined;

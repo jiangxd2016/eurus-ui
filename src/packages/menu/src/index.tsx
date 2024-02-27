@@ -1,7 +1,4 @@
-import type { PropType } from 'vue';
 import { computed, defineComponent, onBeforeUnmount, onMounted, provide, reactive, ref } from 'vue';
-import type { Item } from './interface';
-import MenuList from './menuList';
 import {
 	MenuFlatChangeKeys,
 	MenuFlatKeys,
@@ -11,6 +8,9 @@ import {
 	MenuSelectedKeys,
 	getPrefixCls,
 } from '@/packages/_utils';
+import MenuList from './menuList';
+import type { PropType } from 'vue';
+import type { Item } from './interface';
 import './style.scss';
 
 export const EMenuProps = {

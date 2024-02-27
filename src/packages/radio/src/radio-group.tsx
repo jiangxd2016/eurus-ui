@@ -1,8 +1,8 @@
-import type { PropType } from 'vue';
 import { computed, defineComponent, provide, reactive, ref } from 'vue';
 import { RadioGroupKey } from '@/packages/_utils/constants';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { useFormValidate } from '@/packages/_utils/form';
+import type { PropType } from 'vue';
 
 export default defineComponent({
 	name: 'ERadioGroup',

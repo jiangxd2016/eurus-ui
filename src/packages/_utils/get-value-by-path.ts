@@ -1,5 +1,5 @@
-import type { Data } from './types';
 import { isArray, isObject } from './is';
+import type { Data } from './types';
 
 export const getValueByPath = <T = any>(
 	obj: Data | undefined,

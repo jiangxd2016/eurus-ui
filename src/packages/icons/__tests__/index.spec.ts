@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 import EIcon from '..';
 
-describe('EIcon', () => {
-	it('EIcon snapshot', () => {
+describe('eIcon', () => {
+	it('eIcon snapshot', () => {
 		const wrapper = mount(EIcon, {
 			props: {
 				name: 'arrowDown',

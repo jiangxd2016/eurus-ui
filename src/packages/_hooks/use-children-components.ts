@@ -1,6 +1,6 @@
 import { onMounted, onUpdated, ref } from 'vue';
-import type { SlotChildren } from '@/packages/_utils/types';
 import { getComponentsFromChildren } from '@/packages/_utils/vue-utils';
+import type { SlotChildren } from '@/packages/_utils/types';
 
 export const useChildrenComponents = (name: string) => {
 	// only save VNodes reference, not use ref

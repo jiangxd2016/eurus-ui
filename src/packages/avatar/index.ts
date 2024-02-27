@@ -1,5 +1,5 @@
-import type { App } from 'vue';
 import EAvatar from './src';
+import type { App } from 'vue';
 
 EAvatar.install = (app: App) => {
 	app.component(EAvatar.name, EAvatar);

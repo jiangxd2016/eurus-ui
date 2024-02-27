@@ -14,9 +14,9 @@
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue';
 import { defineComponent } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
+import type { PropType } from 'vue';
 import type { Size } from '../_utils/size';
 
 export default defineComponent({

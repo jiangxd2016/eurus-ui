@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils';
 import { defineComponent, nextTick } from 'vue';
 import { expect } from 'vitest';
-import EConfigProvider from '..';
 import EuButton from '@/packages/button';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { useI18n } from '@/packages/locale';
+import EConfigProvider from '..';
 
-describe('EConfigProvider', () => {
+describe('eConfigProvider', () => {
 	it('should work with props', async () => {
 		const wrapper = mount(EConfigProvider, {
 			props: {

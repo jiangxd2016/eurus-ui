@@ -1,9 +1,9 @@
-import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
-import type { BaseType, EmitFn2 } from '../../../_utils/types';
-import type { TableData, TableDataWithRaw, TableRowSelection } from '../interface';
 import { getLeafKeys } from '../utils';
 import { union } from '../../../_utils/array';
+import type { Ref } from 'vue';
+import type { BaseType, EmitFn2 } from '../../../_utils/types';
+import type { TableData, TableDataWithRaw, TableRowSelection } from '../interface';
 
 export const useRowSelection = ({
 	selectedKeys,

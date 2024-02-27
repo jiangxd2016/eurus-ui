@@ -1,28 +1,29 @@
 {
 	"compilerOptions": {
-		"sourceMap": false,
-		"useDefineForClassFields": false,
-		"allowJs": false,
-		"noUnusedLocals": true,
-		"experimentalDecorators": true,
-		"esModuleInterop": true,
-		"removeComments": false,
 		"target": "esnext",
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+		"lib": ["esnext", "DOM"],
+		"useDefineForClassFields": false,
+		"experimentalDecorators": true,
+		"baseUrl": "./src",
 		"module": "esnext",
 		"moduleResolution": "node",
-		"strict": true,
-		"baseUrl": "./src",
-		"jsx": "preserve",
-		"lib": ["esnext", "DOM"],
-		"declaration": true,
-		"strictNullChecks": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"outDir": "./dist",
 		"paths": {
 			"@/*": ["*"],
 			"eurus-ui": ["index.ts"]
 		},
-		"types": ["vite/client", "vitest/globals"]
+		"allowJs": false,
+		"sourceMap": false,
+		"noUnusedLocals": true,
+		"resolveJsonModule": true,
+		"types": ["vite/client", "vitest/globals"],
+		"removeComments": false,
+		"esModuleInterop": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"declaration": true,
+		"outDir": "./dist",
+		"skipLibCheck": true
 	}
 }

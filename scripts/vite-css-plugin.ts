@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { resolve } from 'node:path';
-import type { Plugin, ResolvedConfig } from 'vite';
 import sass from 'sass';
+import type { Plugin, ResolvedConfig } from 'vite';
 
 const dirname = resolve();
 
@@ -15,20 +15,20 @@ const pathReg = /(?<=src).*/;
 const compileToCSS = async function (path: string) {
 	try {
 		const res = sass.compile(path, {
-			loadPaths: [dirname + '/src/scss/*'],
+			loadPaths: [`${dirname}/src/scss/*`],
 		});
 
 		const outputDir = viteConfig.inlineConfig?.build?.rollupOptions?.output as any[];
 		const resolvePath = resolve(path, '../');
 		outputDir.forEach(item => {
-			const output = dirname + '/' + item.dir + resolvePath.match(pathReg)![0];
+			const output = `${dirname}/${item.dir}${resolvePath.match(pathReg)![0]}`;
 			if (!fs.existsSync(output)) {
 				fs.mkdirSync(output, { recursive: true });
 			}
-			fs.writeFileSync(output + '/style.css', res.css.toString());
+			fs.writeFileSync(`${output}/style.css`, res.css.toString());
 		});
-	} catch (e) {
-		console.log(e);
+	} catch (error) {
+		console.log(error);
 	}
 };
 

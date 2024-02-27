@@ -43,7 +43,7 @@ const val = ref(['1', '2', '3']);
 
 const updateSelected = (v: any) => {
 	if (!val.value.includes(v)) {
-		val.value.push(v + '');
+		val.value.push(`${v}`);
 	}
 };
 </script>

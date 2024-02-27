@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts">
-import type { PropType } from 'vue';
 import { computed, defineComponent, ref } from 'vue';
-import type { ThumbData, ThumbMap } from './interface';
 import { off, on } from '@/packages/_utils/dom';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import type { ThumbData, ThumbMap } from './interface';
+import type { PropType } from 'vue';
 import type { Direction } from '@/packages/_utils/types';
 
 export default defineComponent({

@@ -1,4 +1,3 @@
-import type { ComponentPublicInstance } from 'vue';
 import {
 	cloneVNode,
 	defineComponent,
@@ -8,6 +7,7 @@ import {
 	ref,
 } from 'vue';
 import { getFirstComponent } from '../../_utils/vue-utils';
+import type { ComponentPublicInstance } from 'vue';
 
 export default defineComponent({
 	name: 'VirtualListItem',

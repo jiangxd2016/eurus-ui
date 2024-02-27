@@ -1,5 +1,5 @@
-import type { App } from 'vue';
 import ESpin from './src';
+import type { App } from 'vue';
 
 ESpin.install = (app: App) => {
 	app.component(ESpin.name, ESpin);

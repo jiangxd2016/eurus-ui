@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
-import type { InlineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import type { InlineConfig } from 'vite';
 
 const config: InlineConfig = {
 	mode: 'development',

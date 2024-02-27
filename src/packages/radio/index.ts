@@ -1,6 +1,6 @@
-import type { App } from 'vue';
 import ERadio from './src';
 import ERadioGroup from './src/radio-group';
+import type { App } from 'vue';
 
 ERadio.install = (app: App) => {
 	app.component(ERadio.name, ERadio);

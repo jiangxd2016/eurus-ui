@@ -1,5 +1,5 @@
-import type { App } from 'vue';
 import EScrollbar from './src/scrollbar.vue';
+import type { App } from 'vue';
 
 EScrollbar.install = (app: App) => {
 	app.component('EScrollbar', EScrollbar);

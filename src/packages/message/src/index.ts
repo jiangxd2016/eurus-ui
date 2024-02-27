@@ -1,10 +1,10 @@
-import type { AppContext, Ref } from 'vue';
 import { createVNode, reactive, ref, render } from 'vue';
-import type { MessageConfig, MessageItem, MessageMethod, MessagePosition } from './interface';
 import Message from '@/packages/message';
-import type { MessageType } from '@/packages/_utils';
 import { MESSAGE_TYPES, isFunction, isString, isUndefined } from '@/packages/_utils';
 import MessageList from '@/packages/message/src/MessageList';
+import type { MessageType } from '@/packages/_utils';
+import type { MessageConfig, MessageItem, MessageMethod, MessagePosition } from './interface';
+import type { AppContext, Ref } from 'vue';
 
 type _MessageConfig = MessageConfig & {
 	type: MessageType | 'loading' | 'normal';

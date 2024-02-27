@@ -1,24 +1,24 @@
 {
 	"compilerOptions": {
+		"target": "esnext",
+		"jsx": "preserve",
+		"lib": ["DOM", "ESNext"],
 		"baseUrl": ".",
 		"module": "esnext",
-		"target": "esnext",
-		"lib": ["DOM", "ESNext"],
-		"strict": true,
-		"jsx": "preserve",
-		"esModuleInterop": true,
-		"skipLibCheck": true,
 		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"noUnusedLocals": true,
-		"strictNullChecks": true,
-		"allowJs": true,
-		"forceConsistentCasingInFileNames": true,
-		"types": ["vite/client", "vue"],
 		"paths": {
 			"~/*": ["src/*"],
 			"eurus-ui": ["node_modules/eurus-ui/src"]
-		}
+		},
+		"resolveJsonModule": true,
+		"types": ["vite/client", "vue"],
+		"allowJs": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"noUnusedLocals": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true
 	},
 	"include": ["./*.d.ts", ".vitepress/**/*.ts", ".vitepress/**/*.vue"]
 }

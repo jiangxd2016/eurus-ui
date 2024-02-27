@@ -1,5 +1,5 @@
-import type { App } from 'vue';
 import ESpace from './src';
+import type { App } from 'vue';
 
 ESpace.install = (app: App) => {
 	app.component(ESpace.name, ESpace);

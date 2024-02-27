@@ -49,7 +49,7 @@ export function generateDayList(
 		// 上个月需要渲染的td个数，以及对应的值
 		if (lastMonthPointer < currentMonthFirstDayWeek) {
 			// 上月
-			const date = dayjs(year + '-' + (month - 1) + '-' + lastMonthCount);
+			const date = dayjs(`${year}-${month - 1}-${lastMonthCount}`);
 			dayList.unshift({
 				value: lastMonthCount--,
 				disabled: true,
@@ -62,7 +62,7 @@ export function generateDayList(
 			lastMonthPointer++;
 		} else if (currentMonthPointer <= currentMonthCount) {
 			// 当月
-			const date = dayjs(year + '-' + month + '-' + currentMonthPointer);
+			const date = dayjs(`${year}-${month}-${currentMonthPointer}`);
 
 			dayList.push({
 				value: currentMonthPointer++,
@@ -79,7 +79,7 @@ export function generateDayList(
 			});
 		} else {
 			// 下月
-			const date = dayjs(year + '-' + (month + 1) + '-' + (nextMonthPointer - 1));
+			const date = dayjs(`${year}-${month + 1}-${nextMonthPointer - 1}`);
 			dayList.push({
 				value: nextMonthPointer++,
 				disabled: true,
@@ -126,7 +126,7 @@ export function generateMonthList([year, month]: number[], disabled: Function): 
 
 	const monthList = [];
 	for (let i = 1; i <= 12; i++) {
-		const date = dayjs(year + '-' + i + '-' + 1);
+		const date = dayjs(`${year}-${i}-${1}`);
 		monthList.push({
 			value: i,
 			disabled: disabled ? !disabled(date.valueOf()) : false,

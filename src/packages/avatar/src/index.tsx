@@ -1,5 +1,5 @@
-import type { PropType } from 'vue';
 import { computed, defineComponent, reactive } from 'vue';
+import type { PropType } from 'vue';
 import './style.scss';
 
 import type { Size } from '@/packages/_utils/size';

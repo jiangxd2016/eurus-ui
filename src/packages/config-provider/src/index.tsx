@@ -1,5 +1,5 @@
-import type { PropType } from 'vue';
 import { defineComponent, getCurrentInstance, provide, reactive, renderSlot, toRefs } from 'vue';
+import type { PropType } from 'vue';
 import './style.scss';
 import type { language } from '@/packages/_utils/constants';
 import type { Size } from '@/packages/_utils/size';

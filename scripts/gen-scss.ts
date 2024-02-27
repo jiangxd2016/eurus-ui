@@ -14,16 +14,16 @@ export const compileToCSS = function (nodeEnv: string) {
 		fs.mkdirSync(OUT_PATH, { recursive: true });
 	}
 
-	const css = sass.compile(INPUT_PATH + '/index.scss');
-	fs.writeFileSync(OUT_PATH + '/index.css', css.css.toString());
+	const css = sass.compile(`${INPUT_PATH}/index.scss`);
+	fs.writeFileSync(`${OUT_PATH}/index.css`, css.css.toString());
 
 	if (nodeEnv === 'all') {
 		const styleCss = fs.readFileSync(DIST_STYLE_PATH, 'utf8');
 		// base.css和vite生产的style.css合并
-		fs.writeFileSync('dist/style.css', css.css.toString() + '\n' + styleCss);
+		fs.writeFileSync('dist/style.css', `${css.css.toString()}\n${styleCss}`);
 		copyDir(INPUT_PATH, SCSS_OUT_PATH);
 
-		fs.writeFileSync('dist/es/style.css', css.css.toString() + '\n' + styleCss);
+		fs.writeFileSync('dist/es/style.css', `${css.css.toString()}\n${styleCss}`);
 	}
 };
 

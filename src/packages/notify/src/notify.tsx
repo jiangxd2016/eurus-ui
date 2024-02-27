@@ -1,9 +1,9 @@
-import type { PropType } from 'vue';
 import { computed, defineComponent, onMounted, onUnmounted, onUpdated } from 'vue';
-import type { MessageType } from '@/packages/_utils';
 import { getPrefixCls, toKebabCase } from '@/packages/_utils';
 import EIcons from '@/packages/icons';
 import EButton from '@/packages/button';
+import type { MessageType } from '@/packages/_utils';
+import type { PropType } from 'vue';
 
 export default defineComponent({
 	name: 'Notify',

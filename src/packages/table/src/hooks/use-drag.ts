@@ -1,5 +1,5 @@
-import type { Ref } from 'vue';
 import { computed, reactive } from 'vue';
+import type { Ref } from 'vue';
 import type { TableDraggable } from '../interface';
 
 export const useDrag = (draggable: Ref<TableDraggable | undefined>) => {

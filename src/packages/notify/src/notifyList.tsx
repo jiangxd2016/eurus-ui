@@ -1,10 +1,10 @@
-import type { PropType } from 'vue';
 import { TransitionGroup, defineComponent } from 'vue';
-import type { NotifyItem, NotifyPosition } from './interface';
-import { NOTIFICATION_POSITION } from './interface';
-import Notify from './notify';
 import { getPrefixCls, getSlotFunction, toKebabCase } from '@/packages/_utils';
 import usePopupManager from '@/packages/_hooks/usePopupManager';
+import { NOTIFICATION_POSITION } from './interface';
+import Notify from './notify';
+import type { NotifyItem, NotifyPosition } from './interface';
+import type { PropType } from 'vue';
 
 export default defineComponent({
 	name: 'NotifyList',

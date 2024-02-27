@@ -1,11 +1,11 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent, inject, onMounted, provide, reactive } from 'vue';
 import './style.scss';
-import type { RuleItem } from 'async-validator';
 import Schema from 'async-validator';
 import { formCtxKey, formItemKey } from '@/packages/_utils/constants';
 import { getValue } from '@/packages/_utils/shared';
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import type { RuleItem } from 'async-validator';
 
 export interface FormItemField {
 	prop: string;
@@ -105,8 +105,8 @@ export default defineComponent({
 				.then(() => {
 					return true;
 				})
-				.catch(err => {
-					return Promise.reject(err);
+				.catch(error => {
+					return Promise.reject(error);
 				});
 		}
 
@@ -123,9 +123,9 @@ export default defineComponent({
 								resolve(FieldValue.value);
 							}
 						},
-						err => {
+						error => {
 							// 默认取第一个信息
-							state.errorTips = err?.errors[0]?.message;
+							state.errorTips = error?.errors[0]?.message;
 							state.iconType = 'icon-failure';
 							reject(state.errorTips);
 						},

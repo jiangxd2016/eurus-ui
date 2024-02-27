@@ -1,6 +1,6 @@
-import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress';
 import { version } from '../../../package.json';
 import { CHANGELOG, DISCUSSIONS, ISSUES, META_TITLE, META_URL, RELEASES } from './shared';
+import type { DefaultTheme, LocaleSpecificConfig } from 'vitepress';
 
 export const META_DESCRIPTION = '简单易用的Vue UI组件库';
 

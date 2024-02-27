@@ -1,5 +1,5 @@
-import type { Ref } from 'vue';
 import { computed, onMounted, ref } from 'vue';
+import type { Ref } from 'vue';
 
 export const useSize = ({
 	dataKeys,

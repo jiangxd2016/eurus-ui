@@ -1,6 +1,6 @@
-import type { Ref } from 'vue';
 import { ref } from 'vue';
 import { off, on } from '@/packages/_utils';
+import type { Ref } from 'vue';
 
 export const useDraggable = ({
 	modalRef,

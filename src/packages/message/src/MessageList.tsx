@@ -1,9 +1,9 @@
-import type { PropType } from 'vue';
 import { TransitionGroup, defineComponent } from 'vue';
-import Message from './Message';
-import type { MessageItem, MessagePosition } from './interface';
 import { getPrefixCls, getSlotFunction } from '@/packages/_utils';
 import usePopupManager from '@/packages/_hooks/usePopupManager';
+import Message from './Message';
+import type { MessageItem, MessagePosition } from './interface';
+import type { PropType } from 'vue';
 
 export default defineComponent({
 	name: 'MessageList',

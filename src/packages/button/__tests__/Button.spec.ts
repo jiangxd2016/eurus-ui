@@ -8,7 +8,7 @@ describe('button', () => {
 		).forEach(type => {
 			const wrapper = mount(EButton, { props: { type }, slots: { default: type } });
 			expect(wrapper.html()).toMatchSnapshot();
-			expect(wrapper.classes()).toContain('bg-' + type);
+			expect(wrapper.classes()).toContain(`bg-${type}`);
 			wrapper.unmount();
 		});
 	});
@@ -17,7 +17,7 @@ describe('button', () => {
 		(['xs', 'sm', 'md', 'lg', 'xl'] as const).forEach(size => {
 			const wrapper = mount(EButton, { props: { size }, slots: { default: size } });
 			expect(wrapper.html()).toMatchSnapshot();
-			expect(wrapper.classes()).toContain('eu-button--' + size);
+			expect(wrapper.classes()).toContain(`eu-button--${size}`);
 			wrapper.unmount();
 		});
 	});

@@ -2,8 +2,8 @@ import { mount } from '@vue/test-utils';
 import { nextTick, ref } from 'vue';
 import EInputNumber from '..';
 
-describe('EInputNumber', () => {
-	it('EInputNumber snapshot', () => {
+describe('eInputNumber', () => {
+	it('eInputNumber snapshot', () => {
 		const wrapper = mount(EInputNumber);
 		expect(wrapper.html()).toMatchSnapshot();
 		wrapper.unmount();

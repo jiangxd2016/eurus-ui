@@ -1,5 +1,5 @@
-import type MarkdownIt from 'markdown-it';
 import Container from 'markdown-it-container';
+import type MarkdownIt from 'markdown-it';
 
 export const mdPlugin = async (md: MarkdownIt) => {
 	md.use(Container, 'card', {

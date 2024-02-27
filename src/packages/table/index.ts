@@ -1,4 +1,3 @@
-import type { App } from 'vue';
 import ETable from './src/table';
 import EThead from './src/table-thead';
 import ETbody from './src/table-tbody';
@@ -6,6 +5,7 @@ import ETr from './src/table-tr';
 import ETh from './src/table-th';
 import ETd from './src/table-td';
 import EColumn from './src/table-column';
+import type { App } from 'vue';
 
 const Table = Object.assign(ETable, {
 	Thead: EThead,

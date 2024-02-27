@@ -3,7 +3,7 @@ import { expect } from 'vitest';
 import { h } from 'vue';
 import ERadio, { ERadioGroup } from '..';
 
-describe('ERadio', () => {
+describe('eRadio', () => {
 	it('should emit change event', async () => {
 		const fn = vi.fn();
 		const wrapper = mount(ERadio, {

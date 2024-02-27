@@ -1,11 +1,7 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent, ref, watchEffect } from 'vue';
 import './style.scss';
-import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
-import Date from './panel/date';
-import Range from './panel/range';
-import Month from './panel/month';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import SelectDown from '@/packages/select-down';
 import { ESelectDownProps } from '@/packages/select-down/src';
@@ -13,6 +9,10 @@ import { warnOnce } from '@/packages/_utils/warn';
 import { isArray } from '@/packages/_utils/is';
 import useLocaleTransform from '@/packages/_hooks/localeTransform';
 import { useFormValidate } from '@/packages/_utils/form';
+import Month from './panel/month';
+import Range from './panel/range';
+import Date from './panel/date';
+import type { Dayjs } from 'dayjs';
 
 export type dateType = Date | string | number | Dayjs | Array<Date | string | number | Dayjs>;
 

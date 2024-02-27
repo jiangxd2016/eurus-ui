@@ -1,5 +1,5 @@
-import type { Ref } from 'vue';
 import { getCurrentInstance, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import type { Ref } from 'vue';
 
 export type PopupType = 'popup' | 'dialog' | 'message';
 
@@ -44,7 +44,7 @@ class PopupManager {
 	public isLastDialog = (id: number) => {
 		if (this.popupStack.dialog.size > 1) {
 			const array = Array.from(this.popupStack.dialog);
-			return id === array[array.length - 1];
+			return id === array.at(-1);
 		}
 		return true;
 	};

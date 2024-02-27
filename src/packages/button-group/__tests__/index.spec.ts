@@ -3,8 +3,8 @@ import { h } from 'vue';
 import { EButton } from '../../button';
 import EButtonGroup from '..';
 
-describe('EButtonGroup', () => {
-	it('EButtonGroup snapshot', () => {
+describe('eButtonGroup', () => {
+	it('eButtonGroup snapshot', () => {
 		const wrapper = mount(EButtonGroup);
 		expect(wrapper.html()).toMatchSnapshot();
 		wrapper.unmount();

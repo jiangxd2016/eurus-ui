@@ -37,7 +37,7 @@ export function genDocs(lang = 'zh') {
 		) &&
 			fs.copyFileSync(
 				path.resolve(PACKAGES_PATH, item, lang === 'zh' ? 'README.zh-CN.md' : 'README.md'),
-				path.resolve(descDir, 'components/' + item + '.md'),
+				path.resolve(descDir, `components/${item}.md`),
 			);
 	});
 }

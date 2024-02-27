@@ -4,9 +4,9 @@ import 'uno.css';
 import '@unocss/reset/tailwind.css';
 
 import DefaultTheme from 'vitepress/theme';
-import type { EnhanceAppContext } from 'vitepress/dist/client';
 import Demo from '../components/Demo.vue';
 import { extractFileNameFromPath } from '../utils';
+import type { EnhanceAppContext } from 'vitepress/dist/client';
 
 import 'dist/css/index.css';
 import 'eurus-ui/style.css';

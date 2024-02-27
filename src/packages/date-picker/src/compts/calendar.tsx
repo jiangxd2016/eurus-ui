@@ -1,7 +1,7 @@
-import type { PropType } from 'vue';
 import { defineComponent } from 'vue';
 
 import { getPrefixCls } from '@/packages/_utils/global-config';
+import type { PropType } from 'vue';
 import type { datePickerItem } from '@/packages/_utils/date';
 
 const CalendarProps = {

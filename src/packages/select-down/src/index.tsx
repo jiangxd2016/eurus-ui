@@ -1,12 +1,12 @@
 import type { PropType } from 'vue';
 import { Transition, computed, defineComponent, nextTick, ref, watch } from 'vue';
 import './style.scss';
-import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import Icon from '@/packages/icons';
 import { isArray } from '@/packages/_utils/is';
 import Tag from '@/packages/tag';
 import { stopPropagation } from '@/packages/_utils/shared';
+import type { Size } from '@/packages/_utils/size';
 
 export const ESelectDownProps = {
 	modelValue: {

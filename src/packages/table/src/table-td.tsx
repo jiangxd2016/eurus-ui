@@ -1,19 +1,19 @@
-import type { PropType, VNode } from 'vue';
 import { computed, createVNode, defineComponent, inject, ref } from 'vue';
-import type { TableContext } from './context';
-import { tableInjectionKey } from './context';
+import Icons from '@/packages/icons';
+import AutoTooltip from '@/packages/_components/auto-tooltip/auto-tooltip';
+import { isFunction, isObject } from '@/packages/_utils/is';
+import { getValueByPath } from '@/packages/_utils/get-value-by-path';
+import { getPrefixCls } from '@/packages/_utils/global-config';
 import { getFixedCls, getStyle } from './utils';
+import { tableInjectionKey } from './context';
 import type {
 	TableColumnData,
 	TableData,
 	TableDataWithRaw,
 	TableOperationColumn,
 } from './interface';
-import Icons from '@/packages/icons';
-import AutoTooltip from '@/packages/_components/auto-tooltip/auto-tooltip';
-import { isFunction, isObject } from '@/packages/_utils/is';
-import { getValueByPath } from '@/packages/_utils/get-value-by-path';
-import { getPrefixCls } from '@/packages/_utils/global-config';
+import type { TableContext } from './context';
+import type { PropType, VNode } from 'vue';
 
 const TD_TYPES = ['normal', 'operation', 'checkbox', 'radio', 'expand'] as const;
 type TdTypes = (typeof TD_TYPES)[number];

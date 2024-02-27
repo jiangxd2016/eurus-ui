@@ -79,15 +79,15 @@ export default defineComponent({
 					aria-hidden="true"
 					onClick={backTopClick}
 					style={{
-						right: props.right + 'px',
-						bottom: props.bottom + 'px',
+						right: `${props.right}px`,
+						bottom: `${props.bottom}px`,
 						visibility: backTopVisible.value ? 'visible' : 'hidden',
 					}}
 				>
 					{slots?.default ? (
 						slots.default()
 					) : (
-						<span class={[prefixCls + '-text']} v-text={props.text}></span>
+						<span class={[`${prefixCls}-text`]} v-text={props.text}></span>
 					)}
 				</div>
 			</Transition>

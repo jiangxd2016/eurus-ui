@@ -1,5 +1,5 @@
-import type { Ref } from 'vue';
 import { onBeforeUnmount, onMounted, readonly, ref, watch } from 'vue';
+import type { Ref } from 'vue';
 
 export type PopupType = 'popup' | 'dialog' | 'message';
 

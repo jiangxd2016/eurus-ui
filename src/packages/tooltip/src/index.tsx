@@ -114,47 +114,47 @@ export default defineComponent({
 			const windowWidth = getWindow().width;
 			const space = props.y + 8; // 当前标签与提示语之间的距离
 			const style: any = {
-				maxWidth: props.maxWidth + 'px',
+				maxWidth: `${props.maxWidth}px`,
 			};
 			if (props.appendToBody) {
 				const windowHeight = getWindow().height;
-				const bottom = windowHeight - offset.top + space + 'px';
+				const bottom = `${windowHeight - offset.top + space}px`;
 				switch (props.direction) {
 					case 'top-left':
-						style.left = offset.left + props.x + 'px';
+						style.left = `${offset.left + props.x}px`;
 						style.bottom = bottom;
 						break;
 					case 'top':
 						style.transform = 'translateX(-50%)';
-						style.left = translate(offset.left + offset.width / 2 + props.x) + 'px';
+						style.left = `${translate(offset.left + offset.width / 2 + props.x)}px`;
 						style.bottom = bottom;
 						break;
 					case 'top-right':
-						style.right = windowWidth - (offset.left + offset.width + props.x) + 'px';
+						style.right = `${windowWidth - (offset.left + offset.width + props.x)}px`;
 						style.bottom = bottom;
 						break;
 					case 'left':
-						style.right = windowWidth - (offset.left - 8 + props.x) + 'px';
-						style.top = translate(offset.top + offset.height / 2) + 'px';
+						style.right = `${windowWidth - (offset.left - 8 + props.x)}px`;
+						style.top = `${translate(offset.top + offset.height / 2)}px`;
 						style.transform = 'translateY(-50%)';
 						break;
 					case 'right':
-						style.left = offset.left + offset.width + 8 + props.x + 'px';
-						style.top = translate(offset.top + offset.height / 2) + 'px';
+						style.left = `${offset.left + offset.width + 8 + props.x}px`;
+						style.top = `${translate(offset.top + offset.height / 2)}px`;
 						style.transform = 'translateY(-50%)';
 						break;
 					case 'bottom-left':
-						style.left = offset.left + props.x + 'px';
-						style.top = offset.top + offset.height + space + 'px';
+						style.left = `${offset.left + props.x}px`;
+						style.top = `${offset.top + offset.height + space}px`;
 						break;
 					case 'bottom':
-						style.left = translate(offset.left + offset.width / 2 + props.x) + 'px';
+						style.left = `${translate(offset.left + offset.width / 2 + props.x)}px`;
 						style.transform = 'translateX(-50%)';
-						style.top = offset.top + offset.height + space + 'px';
+						style.top = `${offset.top + offset.height + space}px`;
 						break;
 					case 'bottom-right':
-						style.right = windowWidth - (offset.left + offset.width + props.x) + 'px';
-						style.top = offset.top + offset.height + space + 'px';
+						style.right = `${windowWidth - (offset.left + offset.width + props.x)}px`;
+						style.top = `${offset.top + offset.height + space}px`;
 						break;
 				}
 			}

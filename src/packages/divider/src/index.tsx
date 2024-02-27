@@ -1,5 +1,5 @@
-import type { PropType } from 'vue';
 import { computed, defineComponent } from 'vue';
+import type { PropType } from 'vue';
 import './style.scss';
 import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';

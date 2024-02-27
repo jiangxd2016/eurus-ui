@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils';
 import { defineComponent, nextTick } from 'vue';
-import { useI18n } from '..';
 import configProvider from '@/packages/config-provider';
+import { useI18n } from '..';
 
-describe('Locale', () => {
+describe('locale', () => {
 	it('should work use default language(zh-cn)', async () => {
 		const { t } = useI18n();
 		expect(t('datePicker.today')).toMatchInlineSnapshot('"今天"');

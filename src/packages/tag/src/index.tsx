@@ -1,10 +1,10 @@
 import type { PropType } from 'vue';
 import { computed, defineComponent } from 'vue';
 import './style.scss';
-import type { Size } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import EIcon from '@/packages/icons';
 import size from '@/packages/input/demo/Size.vue';
+import type { Size } from '@/packages/_utils/size';
 
 type tagType = 'default' | 'primary' | 'positive' | 'warning' | 'danger' | 'info';
 const ETagProps = {

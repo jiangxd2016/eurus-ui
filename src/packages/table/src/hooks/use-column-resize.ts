@@ -1,6 +1,6 @@
-import type { Ref } from 'vue';
 import { reactive, ref } from 'vue';
 import { off, on } from '../../../_utils/dom';
+import type { Ref } from 'vue';
 import type { EmitFn2 } from '../../../_utils/types';
 
 export const useColumnResize = (

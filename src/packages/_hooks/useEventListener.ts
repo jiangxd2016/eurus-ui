@@ -1,5 +1,5 @@
-import type { Fn } from '@/packages/_utils/types';
 import { noop } from '@/packages/_utils/shared';
+import type { Fn } from '@/packages/_utils/types';
 
 /**
  *  event listener hook

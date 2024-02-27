@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils';
 import { nextTick, ref } from 'vue';
 import { expect } from 'vitest';
-import ESelect from '..';
-import EOption from '../src/option';
 import SelectDown from '@/packages/select-down';
 import Tag from '@/packages/tag';
+import ESelect from '..';
+import EOption from '../src/option';
 
 const slots = {
 	default: [
@@ -14,7 +14,7 @@ const slots = {
 	],
 };
 
-describe('ESelect', () => {
+describe('eSelect', () => {
 	it('should work with `modelValue` props', async () => {
 		const modelValue = ref('1');
 		const wrapper = mount(ESelect, {

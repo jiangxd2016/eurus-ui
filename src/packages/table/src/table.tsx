@@ -1,4 +1,3 @@
-import type { CSSProperties, ComponentPublicInstance, PropType, Slot } from 'vue';
 import {
 	computed,
 	defineComponent,
@@ -11,19 +10,14 @@ import {
 	watch,
 	watchEffect,
 } from 'vue';
-import type {
-	TableBorder,
-	TableChangeExtra,
-	TableColumnData,
-	TableComponents,
-	TableData,
-	TableDataWithRaw,
-	TableDraggable,
-	TableExpandable,
-	TableOperationColumn,
-	TablePagePosition,
-	TableRowSelection,
-} from './interface';
+import Scrollbar from '@/packages/scrollbar';
+import { useScrollbar } from '@/packages/_hooks/use-scrollbar';
+import { useComponentRef } from '@/packages/_hooks/use-component-ref';
+import { useChildrenComponents } from '@/packages/_hooks/use-children-components';
+import { EurusConfigProviderKey } from '@/packages/_utils/constants';
+import { omit } from '@/packages/_utils/omit';
+import ResizeObserver from '@/packages/_components/resize-observer';
+import VirtualList from '@/packages/_components/virtual-list';
 import { getGroupColumns, spliceFromPath } from './utils';
 import { useRowSelection } from './hooks/use-row-selection';
 import { useExpand } from './hooks/use-expand';
@@ -42,17 +36,9 @@ import { tableInjectionKey } from './context';
 import { useFilter } from './hooks/use-filter';
 import { useSorter } from './hooks/use-sorter';
 import { useSpan } from './hooks/use-span';
-import Scrollbar from '@/packages/scrollbar';
 import type { ScrollbarProps } from '@/packages/scrollbar';
-import { useScrollbar } from '@/packages/_hooks/use-scrollbar';
 import type { BaseType } from '@/packages/_utils/types';
-import { useComponentRef } from '@/packages/_hooks/use-component-ref';
-import { useChildrenComponents } from '@/packages/_hooks/use-children-components';
-import { EurusConfigProviderKey } from '@/packages/_utils/constants';
-import { omit } from '@/packages/_utils/omit';
 import type { VirtualListProps } from '@/packages/_components/virtual-list/interface';
-import ResizeObserver from '@/packages/_components/resize-observer';
-import VirtualList from '@/packages/_components/virtual-list';
 import Empty from '@/packages/empty';
 import Pagination from '@/packages/pagination';
 import Spin from '@/packages/spin';
@@ -68,6 +54,20 @@ import {
 } from '@/packages/_utils';
 import type { Size } from '@/packages/_utils';
 import Icons from '@/packages/icons';
+import type {
+	TableBorder,
+	TableChangeExtra,
+	TableColumnData,
+	TableComponents,
+	TableData,
+	TableDataWithRaw,
+	TableDraggable,
+	TableExpandable,
+	TableOperationColumn,
+	TablePagePosition,
+	TableRowSelection,
+} from './interface';
+import type { CSSProperties, ComponentPublicInstance, PropType, Slot } from 'vue';
 
 import './style.scss';
 
@@ -1176,12 +1176,8 @@ export default defineComponent({
 				};
 				operations.push(selection);
 			}
-			if (
-				!hasLeftFixedDataColumns.value &&
-				operations.length > 0 &&
-				operations[operations.length - 1].fixed
-			) {
-				operations[operations.length - 1].isLastLeftFixed = true;
+			if (!hasLeftFixedDataColumns.value && operations.length > 0 && operations.at(-1).fixed) {
+				operations.at(-1).isLastLeftFixed = true;
 			}
 			const operationsFn = props.components?.operations;
 
@@ -1783,7 +1779,7 @@ export default defineComponent({
 								style={style}
 								{...(scrollbar.value
 									? {
-											hide: flattenData.value.length !== 0,
+											hide: flattenData.value.length > 0,
 											disableVertical: true,
 											...scrollbarProps.value,
 									  }
@@ -1852,7 +1848,7 @@ export default defineComponent({
 										cellpadding={0}
 										cellspacing={0}
 									>
-										{flattenData.value.length !== 0 && (
+										{flattenData.value.length > 0 && (
 											<ColGroup
 												dataColumns={dataColumns.value}
 												operations={operations.value}

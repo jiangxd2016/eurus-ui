@@ -1,7 +1,7 @@
-import type { PropType } from 'vue';
 import { defineComponent, provide, reactive } from 'vue';
 import { getPrefixCls } from '@/packages/_utils/global-config';
 import { CheckboxGroupKey } from '@/packages/_utils/constants';
+import type { PropType } from 'vue';
 
 export default defineComponent({
 	name: 'ECheckboxGroup',

@@ -3,11 +3,11 @@ import { computed, defineComponent, h, renderSlot } from 'vue';
 import * as allIcon from 'eurus-icons-vue';
 import './style.scss';
 import { warnOnce } from '@/packages/_utils/warn';
-import type { Size } from '@/packages/_utils/size';
 import { getSize } from '@/packages/_utils/size';
 import { getPrefixCls } from '@/packages/_utils/global-config';
-import type { StringNumber } from '@/packages/_utils/types';
 import { toPascalCase } from '@/packages/_utils';
+import type { StringNumber } from '@/packages/_utils/types';
+import type { Size } from '@/packages/_utils/size';
 
 type allIconKeyType = keyof typeof allIcon;
 const IconProps = {

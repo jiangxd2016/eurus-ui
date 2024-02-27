@@ -1,6 +1,6 @@
-import type { App } from 'vue';
 import ECheckbox from './src';
 import checkboxGroup from './src/checkbox-group';
+import type { App } from 'vue';
 
 ECheckbox.install = (app: App) => {
 	app.component(ECheckbox.name, ECheckbox);

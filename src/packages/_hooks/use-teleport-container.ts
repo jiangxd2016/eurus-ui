@@ -1,6 +1,6 @@
-import type { Ref } from 'vue';
 import { onMounted, ref, watch } from 'vue';
 import { getElement } from '../_utils/dom';
+import type { Ref } from 'vue';
 
 export const useTeleportContainer = ({
 	popupContainer,

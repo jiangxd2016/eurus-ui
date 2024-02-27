@@ -2,8 +2,8 @@ import { mount } from '@vue/test-utils';
 import { expect } from 'vitest';
 import ETag from '..';
 
-describe('ETag', () => {
-	it('ETag snapshot', () => {
+describe('eTag', () => {
+	it('eTag snapshot', () => {
 		const wrapper = mount(ETag);
 		expect(wrapper.html()).toMatchSnapshot();
 		wrapper.unmount();

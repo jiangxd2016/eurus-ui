@@ -1,7 +1,7 @@
 import { cloneVNode, computed, defineComponent } from 'vue';
-import DotLoading from './dot-loading';
 import { getFirstComponent, getPrefixCls } from '@/packages/_utils';
 import Icons from '@/packages/icons';
+import DotLoading from './dot-loading';
 
 export default defineComponent({
 	name: 'Spin',
@@ -68,7 +68,7 @@ export default defineComponent({
 		};
 
 		const renderSpinIcon = () => {
-			const style = props.size ? { fontSize: `${props.size}px` } : undefined;
+			const style = props.size > 0 ? { fontSize: `${props.size}px` } : undefined;
 
 			return (
 				<>

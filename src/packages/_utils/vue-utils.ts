@@ -1,3 +1,7 @@
+import { Fragment, cloneVNode, isVNode } from 'vue';
+import { isArray, isFunction, isNumber, isObject, isString } from './is';
+import { toKebabCase, toPascalCase } from './shared';
+import type { Data, RenderContent } from './types';
 import type {
 	Component,
 	ComponentPublicInstance,
@@ -8,10 +12,6 @@ import type {
 	VNodeArrayChildren,
 	VNodeTypes,
 } from 'vue';
-import { Fragment, cloneVNode, isVNode } from 'vue';
-import type { Data, RenderContent } from './types';
-import { isArray, isFunction, isNumber, isObject, isString } from './is';
-import { toKebabCase, toPascalCase } from './shared';
 
 // Quoted from vue-next
 // https://github.com/vuejs/vue-next/blob/master/packages/shared/src/shapeFlags.ts
