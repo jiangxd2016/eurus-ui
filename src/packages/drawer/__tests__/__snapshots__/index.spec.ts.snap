@@ -5,3 +5,9 @@ exports[`EDrawer > EDrawer snapshot 1`] = `
   <!---->
 </transition-stub>"
 `;
+
+exports[`eDrawer > eDrawer snapshot 1`] = `
+"<transition-stub name="EuDrawer" appear="false" persisted="false" css="true">
+  <!---->
+</transition-stub>"
+`;

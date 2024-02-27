@@ -20,7 +20,7 @@ export default defineConfig({
 			web: [/\.[jt]sx$/],
 		},
 		coverage: {
-			provider: 'c8',
+			provider: 'v8',
 			exclude: ['docs/**/*', 'script/**/*'],
 			reporter: ['text', 'json', 'html'],
 		},

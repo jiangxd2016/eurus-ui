@@ -5,3 +5,9 @@ exports[`EDivider > EDivider snapshot 1`] = `
   <!---->
 </div>"
 `;
+
+exports[`eDivider > eDivider snapshot 1`] = `
+"<div role="separator" class="eu-divider eu-divider-horizontal eu-divider-md">
+  <!---->
+</div>"
+`;

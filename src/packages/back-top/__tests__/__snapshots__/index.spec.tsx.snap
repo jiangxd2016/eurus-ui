@@ -29,3 +29,33 @@ exports[`EBackTop > should work with props 4`] = `
   </div>
 </div>"
 `;
+
+exports[`eBackTop > should work with props 1`] = `
+"<div class="target" style="height: 100px; overflow: auto;">
+  <div style="height: 10000px; width: 100%;">
+    <transition-stub name="fade-in" appear="false" persisted="false" css="true">
+      <div class="eu-back-top" role="button" aria-hidden="true" style="right: 100px; bottom: 200px; visibility: hidden;"><span class="eu-back-top-text">返回顶部</span></div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`eBackTop > should work with props 2`] = `
+"<div class="target" style="height: 100px; overflow: auto;">
+  <div style="height: 10000px; width: 100%;">
+    <transition-stub name="fade-in" appear="false" persisted="false" css="true">
+      <div class="eu-back-top" role="button" aria-hidden="true" style="right: 100px; bottom: 200px; visibility: hidden;"><span class="eu-back-top-text">返回顶部</span></div>
+    </transition-stub>
+  </div>
+</div>"
+`;
+
+exports[`eBackTop > should work with props 4`] = `
+"<div class="target" style="height: 100px; overflow: auto;">
+  <div style="height: 10000px; width: 100%;">
+    <transition-stub name="fade-in" appear="false" persisted="false" css="true">
+      <div class="eu-back-top" role="button" aria-hidden="true" style="right: 100px; bottom: 200px; visibility: visible;"><span class="eu-back-top-text">返回顶部</span></div>
+    </transition-stub>
+  </div>
+</div>"
+`;

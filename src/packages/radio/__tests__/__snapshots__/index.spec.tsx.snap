@@ -17,3 +17,21 @@ exports[`ERadio > should work with disabled props 2`] = `
     <div class=\\"eu-radio__label\\">1</div>
   </label></div>"
 `;
+
+exports[`eRadio > should emit change event 1`] = `
+"<label class="eu-radio eu-radio-checked" aria-hidden="true"><input type="radio" class="eu-radio__input" value="1"><span class="eu-radio-inner"></span>
+  <div class="eu-radio__label">1</div>
+</label>"
+`;
+
+exports[`eRadio > should work with disabled props 1`] = `
+"<label class="eu-radio eu-radio-checked eu-radio-disabled" aria-hidden="true"><input type="radio" disabled="" class="eu-radio__input" value="1"><span class="eu-radio-inner"></span>
+  <div class="eu-radio__label disabled">1</div>
+</label>"
+`;
+
+exports[`eRadio > should work with disabled props 2`] = `
+"<div class="eu-radio-group eu-radio-group-disabled"><label class="eu-radio eu-radio-checked eu-radio-disabled" aria-hidden="true"><input type="radio" disabled="" class="eu-radio__input" value="1"><span class="eu-radio-inner"></span>
+    <div class="eu-radio__label">1</div>
+  </label></div>"
+`;

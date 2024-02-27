@@ -5,3 +5,9 @@ exports[`ETextarea > ETextarea snapshot 1`] = `
   <!---->
 </div>"
 `;
+
+exports[`eTextarea > eTextarea snapshot 1`] = `
+"<div class="eu-textarea"><textarea modelvalue="" autoheight="false" width="100%" placeholder="" spellcheck="false" wrap="soft" showwordlimit="false" class="eu-textarea-input-control" style="width: 100%;"></textarea>
+  <!---->
+</div>"
+`;

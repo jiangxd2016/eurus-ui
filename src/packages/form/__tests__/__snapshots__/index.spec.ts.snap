@@ -5,3 +5,9 @@ exports[`EForm > EForm snapshot 1`] = `
   <!---->
 </form>"
 `;
+
+exports[`eForm > eForm snapshot 1`] = `
+"<form class="eu-form">
+  <!---->
+</form>"
+`;

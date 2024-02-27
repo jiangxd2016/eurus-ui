@@ -18,3 +18,22 @@ exports[`EButtonGroup > should work with button group 1`] = `
     <!----><span class=\\"inner\\">button3</span>
   </button></div>"
 `;
+
+exports[`eButtonGroup > eButtonGroup snapshot 1`] = `
+"<div class="eu-button-group">
+  <!---->
+</div>"
+`;
+
+exports[`eButtonGroup > should work with button group 1`] = `
+"<div class="eu-button-group"><button class="eu-button bg-primary eu-button--md text-white">
+    <!---->
+    <!----><span class="inner">button1</span>
+  </button><button class="eu-button bg-primary eu-button--md text-white">
+    <!---->
+    <!----><span class="inner">button2</span>
+  </button><button class="eu-button bg-primary eu-button--md text-white">
+    <!---->
+    <!----><span class="inner">button3</span>
+  </button></div>"
+`;

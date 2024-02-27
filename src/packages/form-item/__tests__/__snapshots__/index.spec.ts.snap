@@ -8,3 +8,12 @@ exports[`EFormItem > EFormItem snapshot 1`] = `
   </div>
 </div>"
 `;
+
+exports[`eFormItem > eFormItem snapshot 1`] = `
+"<div class="eu-form-item"><label class="label"></label>
+  <div class="content">
+    <!---->
+    <div class="error" style="visibility: hidden;"></div>
+  </div>
+</div>"
+`;

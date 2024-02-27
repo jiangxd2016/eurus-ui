@@ -1,3 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`EInput > EInput snapshot 1`] = `"<span class=\\"eu-input-wrapper eu-input-wrapper--md\\"><!----><input type=\\"text\\" tabindex=\\"0\\" placeholder=\\"\\" class=\\"eu-input\\"><!----><!----></span>"`;
+
+exports[`eInput > eInput snapshot 1`] = `"<span class="eu-input-wrapper eu-input-wrapper--md"><!----><input type="text" tabindex="0" placeholder="" class="eu-input"><!----><!----></span>"`;

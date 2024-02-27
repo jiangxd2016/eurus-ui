@@ -5,3 +5,9 @@ exports[`ESwitch > ESwitch snapshot 1`] = `"<label class=\\"eu-switch\\"><input 
 exports[`ESwitch > should emit change event 1`] = `"<label class=\\"eu-switch\\"><input class=\\"eu-switch__input\\" type=\\"checkbox\\" role=\\"switch\\" aria-checked=\\"false\\"><span class=\\"eu-switch__inner\\"></span></label>"`;
 
 exports[`ESwitch > should work with \`disabled\` props 1`] = `"<label class=\\"eu-switch eu-switch-disabled\\"><input class=\\"eu-switch__input\\" type=\\"checkbox\\" role=\\"switch\\" aria-checked=\\"false\\" aria-disabled=\\"true\\" disabled=\\"\\"><span class=\\"eu-switch__inner\\"></span></label>"`;
+
+exports[`eSwitch > eSwitch snapshot 1`] = `"<label class="eu-switch"><input class="eu-switch__input" type="checkbox" role="switch" aria-checked="false"><span class="eu-switch__inner"></span></label>"`;
+
+exports[`eSwitch > should emit change event 1`] = `"<label class="eu-switch"><input class="eu-switch__input" type="checkbox" role="switch" aria-checked="false"><span class="eu-switch__inner"></span></label>"`;
+
+exports[`eSwitch > should work with \`disabled\` props 1`] = `"<label class="eu-switch eu-switch-disabled"><input class="eu-switch__input" type="checkbox" role="switch" aria-checked="false" aria-disabled="true" disabled=""><span class="eu-switch__inner"></span></label>"`;

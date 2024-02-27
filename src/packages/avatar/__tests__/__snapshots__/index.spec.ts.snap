@@ -14,3 +14,18 @@ exports[`EAvatar > should work with \`props\` 1`] = `
   <!---->
 </div>"
 `;
+
+exports[`eAvatar > eAvatar snapshot 1`] = `
+"<div class="eu-avatar md" style="background-color: #fff;">
+  <!---->
+  <!---->
+  <!---->
+</div>"
+`;
+
+exports[`eAvatar > should work with \`props\` 1`] = `
+"<div class="eu-avatar md" style="background-color: #fff;">EAvatar
+  <!---->
+  <!---->
+</div>"
+`;

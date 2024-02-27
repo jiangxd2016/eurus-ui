@@ -3,3 +3,7 @@
 exports[`ETag > ETag snapshot 1`] = `"<span role=\\"presentation\\" aira-label=\\"tag\\" class=\\"eu-tag eu-tag-default eu-tag-md\\"><!----><!----></span>"`;
 
 exports[`ETag > should work with props 1`] = `"<span role=\\"presentation\\" aira-label=\\"tag\\" class=\\"eu-tag eu-tag-primary eu-tag-md\\" style=\\"color: red; border-color: blue;\\"><!----><!----></span>"`;
+
+exports[`eTag > eTag snapshot 1`] = `"<span role="presentation" aira-label="tag" class="eu-tag eu-tag-default eu-tag-md"><!----><!----></span>"`;
+
+exports[`eTag > should work with props 1`] = `"<span role="presentation" aira-label="tag" class="eu-tag eu-tag-primary eu-tag-md" style="color: red; border-color: blue;"><!----><!----></span>"`;
