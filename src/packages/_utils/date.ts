@@ -26,7 +26,6 @@ export interface datePickerItem {
 	hover: boolean;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function generateDayList(
 	[year, month]: number[],
 	disabled: (date: number) => boolean,

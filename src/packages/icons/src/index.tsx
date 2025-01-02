@@ -37,7 +37,6 @@ export default defineComponent({
 		const iconName = toPascalCase(props.name || '');
 
 		if (props.name && Object.keys(allIcon).includes(iconName)) {
-			// eslint-disable-next-line import/namespace
 			IconElement = h(allIcon[toPascalCase(iconName) as allIconKeyType]);
 			// support iconfont
 		} else if (!slots.default && props.name) {

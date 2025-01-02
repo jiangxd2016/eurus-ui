@@ -18,6 +18,20 @@ import { EurusConfigProviderKey } from '@/packages/_utils/constants';
 import { omit } from '@/packages/_utils/omit';
 import ResizeObserver from '@/packages/_components/resize-observer';
 import VirtualList from '@/packages/_components/virtual-list';
+import Empty from '@/packages/empty';
+import Pagination from '@/packages/pagination';
+import Spin from '@/packages/spin';
+import {
+	getPrefixCls,
+	isArray,
+	isFunction,
+	isNull,
+	isNumber,
+	isObject,
+	isString,
+	isUndefined,
+} from '@/packages/_utils';
+import Icons from '@/packages/icons';
 import { getGroupColumns, spliceFromPath } from './utils';
 import { useRowSelection } from './hooks/use-row-selection';
 import { useExpand } from './hooks/use-expand';
@@ -39,21 +53,7 @@ import { useSpan } from './hooks/use-span';
 import type { ScrollbarProps } from '@/packages/scrollbar';
 import type { BaseType } from '@/packages/_utils/types';
 import type { VirtualListProps } from '@/packages/_components/virtual-list/interface';
-import Empty from '@/packages/empty';
-import Pagination from '@/packages/pagination';
-import Spin from '@/packages/spin';
-import {
-	getPrefixCls,
-	isArray,
-	isFunction,
-	isNull,
-	isNumber,
-	isObject,
-	isString,
-	isUndefined,
-} from '@/packages/_utils';
 import type { Size } from '@/packages/_utils';
-import Icons from '@/packages/icons';
 import type {
 	TableBorder,
 	TableChangeExtra,

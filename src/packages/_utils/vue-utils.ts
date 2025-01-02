@@ -281,7 +281,7 @@ export const mergeFirstChild = (
 				children[i] = cloneVNode(child, props, true);
 				return true;
 			}
-			// eslint-disable-next-line @typescript-eslint/no-use-before-define
+
 			const _children = getChildrenArray(child);
 			if (_children && _children.length > 0) {
 				const result = mergeFirstChild(_children, extraProps);
@@ -321,7 +321,7 @@ export const getFirstElementFromVNode = (vn: VNode): HTMLElement | undefined => 
 		}
 	} else {
 		const children = getChildrenArray(vn);
-		// eslint-disable-next-line @typescript-eslint/no-use-before-define
+
 		return getFirstElementFromChildren(children);
 	}
 	return undefined;
@@ -481,7 +481,6 @@ export const getComponentsFromVNode = (vn: VNode, name: string) => {
 	} else {
 		const children = getChildrenArray(vn);
 		if (children) {
-			// eslint-disable-next-line @typescript-eslint/no-use-before-define
 			components.push(...getComponentsFromChildren(children, name));
 		}
 	}

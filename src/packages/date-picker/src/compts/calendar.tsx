@@ -8,7 +8,7 @@ const CalendarProps = {
 	modelValue: Date,
 
 	disabledDate: {
-		type: Function as PropType<(date: string, type: String) => boolean>,
+		type: Function as PropType<(date: string, type: string) => boolean>,
 		default() {
 			return () => {};
 		},

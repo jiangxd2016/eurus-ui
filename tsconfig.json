@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
+		"jsx": "preserve",
+		"jsxImportSource": "vue",
 		"lib": ["esnext", "DOM"],
 		"useDefineForClassFields": false,
 		"experimentalDecorators": true,
@@ -13,17 +13,17 @@
 			"@/*": ["*"],
 			"eurus-ui": ["index.ts"]
 		},
-		"allowJs": false,
-		"sourceMap": false,
-		"noUnusedLocals": true,
 		"resolveJsonModule": true,
 		"types": ["vite/client", "vitest/globals"],
-		"removeComments": false,
-		"esModuleInterop": true,
+		"allowJs": false,
 		"strict": true,
 		"strictNullChecks": true,
+		"noUnusedLocals": true,
 		"declaration": true,
 		"outDir": "./dist",
+		"removeComments": false,
+		"sourceMap": false,
+		"esModuleInterop": true,
 		"skipLibCheck": true
 	}
 }

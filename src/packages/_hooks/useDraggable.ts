@@ -31,14 +31,14 @@ export const useDraggable = ({
 			if (x < 0) {
 				x = 0;
 			}
-			// eslint-disable-next-line prefer-destructuring
+
 			if (x > maxPosition.value[0]) {
 				x = maxPosition.value[0];
 			}
 			if (y < 0) {
 				y = 0;
 			}
-			// eslint-disable-next-line prefer-destructuring
+
 			if (y > maxPosition.value[1]) {
 				y = maxPosition.value[1];
 			}

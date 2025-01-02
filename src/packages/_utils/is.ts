@@ -64,5 +64,5 @@ export function isStringNumber(value: string): value is StringNumber {
 }
 
 export const isKorean = (text: string): boolean => {
-	return /([()|\u3130-\u318F\uAC00-\uD7AF])+/gi.test(text);
+	return /([()|\u3130-\u318F\uAC00-\uD7AF])+/.test(text);
 };
